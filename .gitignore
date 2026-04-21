@@ -1,0 +1,10 @@
+output/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

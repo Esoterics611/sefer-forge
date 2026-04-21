@@ -1,0 +1,19 @@
+# Book structure.
+# Add discourse slugs (the "<slug>" portion of discourses/NNN-<slug>/) to
+# the appropriate chapter's `discourses:` list as they become ready.
+
+front_matter:
+  - 01-title-page.md
+  - 03-introduction.md
+
+chapters:
+  - title: "שער לג בעומר"
+    discourses:
+      - lag-baomer
+  # - title: "פרק ב"
+  #   intro: 02-chapter-intro.md  # optional, file under book/chapters/
+  #   discourses:
+  #     - some-slug
+
+back_matter:
+  - 01-bibliography.md

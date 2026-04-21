@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash scripts/new-discourse.sh lag-baomer)",
+      "Bash(bash scripts/new-session.sh lag-baomer)",
+      "Bash(python scripts/transcribe.py discourses/001-lag-baomer/sessions/001)",
+      "Bash(wait)",
+      "Read(//c/Users/ronni/AppData/Local/Temp/claude/C--code-sefer-forge/4c9befbc-94bb-4bce-96d7-f1b91750ce46/tasks/**)",
+      "Bash(pandoc --version)",
+      "Bash(where pandoc *)",
+      "Bash(winget install *)",
+      "Bash(choco install *)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/ronni/AppData/Local/Pandoc//**)",
+      "Read(//c/Users/ronni/**)",
+      "Bash(\"/c/Program Files/Pandoc/pandoc.exe\" --version)",
+      "Bash(python scripts/assemble-discourse.py discourses/001-lag-baomer)",
+      "Bash(winget list *)",
+      "Bash(cmd.exe /c \"where pandoc\")",
+      "Bash(cmd.exe /c \"pandoc --version\")",
+      "Bash(powershell.exe -Command \"pandoc --version\")",
+      "PowerShell(Get-Command pandoc -ErrorAction SilentlyContinue)",
+      "PowerShell(winget install --id JohnMacFarlane.Pandoc --location \"C:\\\\tools\\\\pandoc\" -e 2>&1)",
+      "PowerShell(winget show JohnMacFarlane.Pandoc 2>&1)",
+      "PowerShell(winget install --id JohnMacFarlane.Pandoc --force 2>&1)",
+      "PowerShell(pandoc --version)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); pandoc --version | Select-Object -First 1)"
+    ]
+  }
+}
