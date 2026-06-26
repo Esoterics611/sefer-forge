@@ -13,7 +13,7 @@ NNN-<slug>/
     │   ├── voicenotes/          # .m4a + .raw.txt (Whisper output)
     │   ├── ocr.md               # Claude's OCR of the images (NEVER edit)
     │   ├── commentary.md        # cleaned voicenote (editable)
-    │   └── section.md           # session output: frontmatter + interleaved source/commentary
+    │   └── section.md           # session output: frontmatter + paired spreads (source chunk / voicenote commentary / underlined terms footer)
     ├── 002/
     └── ...
 ```

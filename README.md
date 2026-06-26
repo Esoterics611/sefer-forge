@@ -13,17 +13,44 @@ Hebrew book publishing pipeline. Images of book pages + Hebrew voicenotes → Ma
 - **chapter** = 1..N discourses assigned via `book/structure.yaml`
 - **book** = compiled + rendered output
 
-## Daily workflow in 60 seconds
+## Daily workflow — adding a new session
 
-1. **Capture** on phone — photos of pages (with your underlines) + Hebrew voicenote explaining them.
-2. **Scaffold** — `./scripts/new-discourse.sh my-slug` once per discourse; `./scripts/new-session.sh my-slug` for each session.
-3. **Drop** images into `discourses/NNN-my-slug/sessions/MMM/images/` and audio into `.../voicenotes/`.
-4. **Transcribe** — `python scripts/transcribe.py discourses/NNN-my-slug/sessions/MMM`.
-5. **Ingest in Claude** — paste `prompts/02-ingest-session.md`. Claude writes `ocr.md`, `commentary.md`, `section.md`.
-6. **Repeat** 1–5 until the discourse is done.
-7. **Assemble discourse** — `prompts/03-assemble-discourse.md`.
-8. **Assign to chapter** — `prompts/04-assign-to-chapter.md`.
-9. **Build** — `./scripts/build-all.sh` → `output/book.docx`.
+### Step A — Create the session folder
+```bash
+./scripts/new-session.sh <slug>
+# e.g. ./scripts/new-session.sh lag-baomer
+# Creates discourses/NNN-<slug>/sessions/MMM/ with empty images/ and voicenotes/ subfolders.
+```
+
+### Step B — Drop your files in
+- Photos → `discourses/NNN-<slug>/sessions/MMM/images/`
+- Voicenote (`.m4a` etc.) → `discourses/NNN-<slug>/sessions/MMM/voicenotes/`
+
+### Step C — Transcribe
+```bash
+python scripts/transcribe.py discourses/NNN-<slug>/sessions/MMM
+# Writes a .raw.txt next to the audio file. Must exist before Claude ingests.
+```
+
+### Step D — Ingest in Claude
+Tell Claude: **"ingest session discourses/NNN-\<slug\>/sessions/MMM"**
+Claude reads `prompts/02-ingest-session.md` and writes three files:
+- `ocr.md` — full OCR of every image
+- `commentary.md` — cleaned voicenote transcript
+- `section.md` — paired spreads (source chunk + voicenote commentary + explained terms)
+
+Repeat A–D for each session in a discourse.
+
+### After all sessions are done
+5. **Assemble discourse** — tell Claude: `"assemble discourse discourses/NNN-<slug>"` → `discourse.md`
+6. **Assign to chapter** — tell Claude: `"add to chapter"` → edits `book/structure.yaml`
+7. **Build** — `./scripts/build-all.sh` → `output/book.docx`
+
+### Starting a brand-new discourse
+```bash
+./scripts/new-discourse.sh my-slug   # only needed once per new topic
+```
+Then follow Steps A–D above.
 
 ## Directory map
 

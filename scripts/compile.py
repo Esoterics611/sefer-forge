@@ -6,6 +6,7 @@ still test builds while the book is incomplete.
 """
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -14,6 +15,10 @@ try:
 except ImportError:
     print("Missing dependency. Install with: pip install pyyaml")
     sys.exit(1)
+
+
+def strip_yaml_frontmatter(text: str) -> str:
+    return re.sub(r"^---[\s\S]*?---\s*\n?", "", text, count=1)
 
 
 def main() -> int:
@@ -55,7 +60,7 @@ def main() -> int:
             dd = matches[0]
             dmd = dd / "discourse.md"
             if dmd.exists():
-                parts.append(dmd.read_text(encoding="utf-8"))
+                parts.append(strip_yaml_frontmatter(dmd.read_text(encoding="utf-8")))
             else:
                 warnings.append(f"missing discourse.md in {dd}")
 

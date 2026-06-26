@@ -19,10 +19,12 @@ A Hebrew book assembled from **discourses**. Each discourse is built up across m
 - **Never hand-edit**: anything in `compiled/` or `output/`.
 
 ## Markdown conventions
-- **Underline**: `[text]{.underline}` (pandoc bracketed_spans).
 - **Snapshot marker**: leading/trailing `...` on text that was cut off in the photo.
-- **Source text** (from the book): blockquotes (`>`).
-- **Commentary** (the user's voicenote, cleaned): body paragraphs.
+- **RTL wrapping**: every Hebrew paragraph is wrapped in `[text]{dir="rtl"}`.
+- **`section.md` layout = three named sections:**
+  1. `## הַנֹּסַח הָעִקָּרִי` — full OCR text as flowing `[...]{dir="rtl"}` paragraphs; bold key transitional words; preserve `...` snapshot markers and `<!-- UNCLEAR: ... -->` flags; no `{.underline}` markup here.
+  2. `## נְקֻדּוֹת מַפְתֵּחַ` — 5–8 bold topic labels each followed by a `>` blockquote of the key source passage, both in `{dir="rtl"}`.
+  3. `## בֵּיאוּר וּפֵירוּשׁ` — sequence of single-column `+---+` grid-table boxes, one per voicenote topic, each headed `**[■ ביאור — <topic>]{dir="rtl"}**` with the cleaned voicenote commentary.
 - **YAML frontmatter** on every `section.md` and `discourse.md`.
 - Hebrew stays Hebrew — never translate unless explicitly asked.
 
