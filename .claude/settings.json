@@ -5,5 +5,17 @@
       "PowerShell(C:\\\\Users\\\\Nexus\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cpu --force-reinstall 2>&1)",
       "PowerShell(winget install --id Gyan.FFmpeg -e --accept-package-agreements --accept-source-agreements 2>&1)"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
   }
 }

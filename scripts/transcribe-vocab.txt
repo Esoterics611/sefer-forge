@@ -1,0 +1,35 @@
+# Domain vocabulary fed to Whisper as its "initial prompt" — biases the model
+# toward spelling these terms correctly. One term per line; lines starting
+# with # are ignored. Keep it short: Whisper only reads the first ~220 tokens,
+# and Hebrew is token-heavy (roughly 40–60 short terms fit).
+הקדוש ברוך הוא
+אדמו"ר הזקן
+הבעל שם טוב
+רבי שמעון בר יוחאי
+רשב"י
+ל"ג בעומר
+תניא
+שער הייחוד והאמונה
+זוהר
+גמרא
+מדרש
+חסידות
+אלקות
+אין סוף
+יש מאין
+צמצום
+השתלשלות
+ביטול
+ספירות
+חסד
+גבורה
+תפארת
+נצח
+הוד
+יסוד
+מלכות
+חכמה
+בינה
+דעת
+עולמות
+נשמה

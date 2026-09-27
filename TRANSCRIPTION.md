@@ -1,24 +1,35 @@
 # Transcription setup
 
-Whisper (Hebrew, medium model) is managed inside this repo via a Python virtual environment.
+Voicenotes are transcribed by `scripts/transcribe.py` using **faster-whisper** with
+**`ivrit-ai/whisper-large-v3-turbo-ct2`** — Whisper large-v3-turbo fine-tuned on Hebrew
+by [ivrit.ai](https://huggingface.co/ivrit-ai). This replaced stock Whisper `medium`,
+which garbled a lot of Hebrew (e.g. "שוקים את הקדוש בר חושב" for "שהקדוש ברוך הוא").
 
-## One-time setup
+What the script does beyond plain Whisper:
+- **Domain vocabulary** — `scripts/transcribe-vocab.txt` is passed as the initial prompt so
+  terms like תניא / אדמו"ר הזקן / השתלשלות are spelled right. **Add terms there** whenever
+  you see the same word misspelled across sessions.
+- **Voice-activity detection** — skips silences, which stops Whisper from hallucinating
+  repeated phrases.
+- **Paragraph breaks** at pauses > 1.5 s, instead of one giant line.
 
-Requires Python 3.12 and ffmpeg.
+## Running a transcription
 
-**Python** — install from [python.org](https://www.python.org/downloads/) if not present.  
-The expected path on this machine is:
+```bash
+python scripts/transcribe.py discourses/<NNN>-<slug>/sessions/<MMM>
+# or a single file / several targets:
+python scripts/transcribe.py "path/to/Voice 123.m4a" another/session
 ```
-C:\Users\Nexus\AppData\Local\Programs\Python\Python312\python.exe
-```
 
-**ffmpeg** — install once via winget (already done on this machine):
-```powershell
-winget install --id Gyan.FFmpeg -e --accept-package-agreements --accept-source-agreements
-```
-Then open a fresh terminal so ffmpeg lands on PATH.
+Output is `<audio-file>.raw.txt` in the same `voicenotes/` folder. The script skips files
+that already have a transcript — delete the `.raw.txt` to retranscribe (e.g. to redo an
+old session with the better model).
 
-**Virtual environment + deps:**
+Options: `--model ivrit-ai/whisper-large-v3-ct2` (slower, occasionally better),
+`--beam 8` (slower, slightly better), `--no-vocab`.
+
+## Setup — Windows PC (one time)
+
 ```powershell
 # From the repo root
 C:\Users\Nexus\AppData\Local\Programs\Python\Python312\python.exe -m venv .venv
@@ -26,30 +37,21 @@ C:\Users\Nexus\AppData\Local\Programs\Python\Python312\python.exe -m venv .venv
 pip install -r requirements.txt
 ```
 
-`requirements.txt` pins `torch==2.2.2+cpu` (CPU-only build, no CUDA needed) and `numpy<2`.
-The Whisper medium model (~1.4 GB) downloads automatically on first transcription and is cached
-in `%USERPROFILE%\.cache\whisper\`.
+No torch and no ffmpeg needed any more — faster-whisper decodes `.m4a` itself.
+The model (~1.6 GB) downloads from Hugging Face on first run and is cached in
+`%USERPROFILE%\.cache\huggingface\`. Speed on CPU: roughly real-time or faster
+(an 11-minute voicenote ≈ 5–15 min depending on the machine).
 
-## Running a transcription
+## Setup — Claude Code cloud sessions
 
-```powershell
-# Activate the venv first (once per terminal session)
-.venv\Scripts\Activate.ps1
+`.claude/hooks/session-start.sh` runs automatically in cloud sessions and installs
+faster-whisper + git-lfs. Two things must be true:
 
-# Then transcribe a session
-python scripts/transcribe.py discourses/<NNN>-<slug>/sessions/<MMM>
-```
+1. **The voicenote is pushed** to GitHub (it's stored in Git LFS). In the session, fetch
+   just that audio: `git lfs pull --include="discourses/<NNN>-<slug>/sessions/<MMM>/voicenotes/*"`.
+2. **The environment's network access allows Hugging Face** so the model can download.
+   In the cloud environment settings (environment menu in the session title bar → Edit),
+   add these to the allowed domains, or pick a broader access level:
+   `huggingface.co`, `cdn-lfs.huggingface.co`, `cas-bridge.xethub.hf.co`, `*.hf.co`.
 
-Output is written as `<audio-file>.raw.txt` in the same `voicenotes/` folder.
-The script skips files that already have a transcript — delete the `.raw.txt` to retranscribe.
-
-## Why these version pins
-
-| Package | Version | Reason |
-|---------|---------|--------|
-| `torch` | `2.2.2+cpu` | Newer builds (2.11+) fail with `WinError 1114` on this machine — likely a CUDA DLL loaded even in non-CUDA builds. CPU build from the PyTorch CPU index avoids it. |
-| `numpy` | `<2` | torch 2.2.x was compiled against NumPy 1.x; NumPy 2.x causes import warnings and potential instability. |
-
-## After cloning on a new machine
-
-Same steps as one-time setup above. The venv is gitignored — each machine runs its own.
+Cloud containers are CPU-only (4 cores), so expect roughly real-time speed there too.

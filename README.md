@@ -29,7 +29,8 @@ Hebrew book publishing pipeline. Images of book pages + Hebrew voicenotes → Ma
 ### Step C — Transcribe
 ```bash
 python scripts/transcribe.py discourses/NNN-<slug>/sessions/MMM
-# Writes a .raw.txt next to the audio file. Must exist before Claude ingests.
+# Writes a .raw.txt next to the audio file (Hebrew-tuned ivrit.ai Whisper — see TRANSCRIPTION.md).
+# Must exist before Claude ingests.
 ```
 
 ### Step D — Ingest in Claude
@@ -68,5 +69,5 @@ Then follow Steps A–D above.
 
 - `pandoc` ≥ 3.0
 - `python` ≥ 3.10 (+ `requirements.txt`)
-- `ffmpeg` (for Whisper)
+- `faster-whisper` (via requirements.txt; see TRANSCRIPTION.md)
 - `git-lfs`
