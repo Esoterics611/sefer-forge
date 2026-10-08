@@ -3,10 +3,18 @@
 
 Run from repo root: python scripts/create-template.py
 
-Re-run any time to regenerate. Templates/book-template.docx is the output;
-commit it (tracked via git-lfs) so every checkout gets a working template.
+Starts from pandoc's own default reference.docx (so every style pandoc emits
+exists — Title, Subtitle, Block Text, Footnote Text, TOC Heading, ...) and
+restyles it for a Hebrew sefer: David, RTL, justified, A4.
+
+templates/book-template.docx is the output. It is NOT committed:
+scripts/build-docx.sh regenerates it automatically when it is missing or
+older than this script, so editing this file is all it takes to restyle.
+A single book can override it with books/<book>/reference.docx.
 """
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 try:
@@ -14,6 +22,7 @@ try:
     from docx.oxml.ns import qn
     from docx.oxml import OxmlElement
     from docx.enum.style import WD_STYLE_TYPE
+    from docx.shared import Cm
 except ImportError:
     print("Missing dependency. Run: pip install python-docx")
     sys.exit(1)
@@ -40,7 +49,8 @@ def configure(s,
               bold=False, italic=False, color_auto=True,
               rtl=True, justify=False,
               spacing_factor=None, space_before_pt=None, space_after_pt=None,
-              page_break=False, indent_cm=None):
+              page_break=False, indent_cm=None, first_line_cm=None,
+              align=None):
     """Apply a standard set of properties to a style element (s = style._element)."""
     # --- Run properties ---
     rPr = goa(s, 'w:rPr')
@@ -63,7 +73,10 @@ def configure(s,
             if elem is not None:
                 rPr.remove(elem)
     # Italic — remove from headings if inherited
-    if not italic:
+    if italic:
+        goa(rPr, 'w:i')
+        goa(rPr, 'w:iCs')
+    else:
         for tag in ('w:i', 'w:iCs'):
             elem = rPr.find(qn(tag))
             if elem is not None:
@@ -83,6 +96,8 @@ def configure(s,
     # Justification
     if justify:
         goa(pPr, 'w:jc').set(qn('w:val'), 'both')
+    elif align:
+        goa(pPr, 'w:jc').set(qn('w:val'), align)
     # Line spacing
     if spacing_factor:
         sp = goa(pPr, 'w:spacing')
@@ -104,6 +119,8 @@ def configure(s,
         twips = str(int(indent_cm * 567))
         ind.set(qn('w:start'), twips)
         ind.set(qn('w:end'), twips)
+    if first_line_cm is not None:
+        goa(pPr, 'w:ind').set(qn('w:firstLine'), str(int(first_line_cm * 567)))
 
 
 def get_or_create_style(doc, name, based_on='Normal'):
@@ -122,45 +139,72 @@ def get_or_create_style(doc, name, based_on='Normal'):
 # Build the document
 # ---------------------------------------------------------------------------
 
-doc = Document()
+with tempfile.TemporaryDirectory() as tmp:
+    base = Path(tmp) / "reference.docx"
+    with open(base, "wb") as fh:
+        subprocess.run(["pandoc", "--print-default-data-file", "reference.docx"],
+                       stdout=fh, check=True)
+    doc = Document(str(base))
 
-# Normal (body text)
+BODY_PT = 13
+
+# Normal — base for everything
 configure(doc.styles['Normal']._element,
-          size_pt=12, rtl=True, justify=True, spacing_factor=1.5,
+          size_pt=BODY_PT, rtl=True, justify=True, spacing_factor=1.6,
           space_before_pt=0, space_after_pt=6)
 
-# Heading 1 — chapter title
+# Body paragraphs. First Paragraph (right after a heading) gets no indent;
+# following paragraphs get a classic first-line indent.
+for name, indent in (('First Paragraph', None), ('Body Text', 0.8), ('Compact', None)):
+    configure(get_or_create_style(doc, name)._element,
+              size_pt=BODY_PT, rtl=True, justify=True, spacing_factor=1.6,
+              space_before_pt=0, space_after_pt=6, first_line_cm=indent)
+
+# Title page (pandoc renders metadata title/subtitle/author/date with these)
+configure(get_or_create_style(doc, 'Title')._element,
+          size_pt=30, bold=True, rtl=True, align='center',
+          space_before_pt=120, space_after_pt=12)
+configure(get_or_create_style(doc, 'Subtitle')._element,
+          size_pt=15, italic=True, rtl=True, align='center',
+          space_before_pt=0, space_after_pt=24)
+for name in ('Author', 'Date'):
+    configure(get_or_create_style(doc, name)._element,
+              size_pt=14, rtl=True, align='center',
+              space_before_pt=6, space_after_pt=6)
+
+# Heading 1 — chapter / lesson title; always starts a new page
 configure(get_or_create_style(doc, 'Heading 1')._element,
-          size_pt=24, bold=True, rtl=True,
-          page_break=True, space_before_pt=12, space_after_pt=6)
-
-# Heading 2 — discourse / major section
+          size_pt=22, bold=True, rtl=True,
+          page_break=True, space_before_pt=12, space_after_pt=10)
 configure(get_or_create_style(doc, 'Heading 2')._element,
-          size_pt=18, bold=True, rtl=True,
-          space_before_pt=10, space_after_pt=4)
-
-# Heading 3 — subsection
+          size_pt=16, bold=True, rtl=True,
+          space_before_pt=14, space_after_pt=6)
 configure(get_or_create_style(doc, 'Heading 3')._element,
           size_pt=14, bold=True, rtl=True,
-          space_before_pt=8, space_after_pt=4)
+          space_before_pt=10, space_after_pt=4)
 
 # Block Text — pandoc uses this for blockquotes (source text)
 configure(get_or_create_style(doc, 'Block Text', 'Normal')._element,
-          size_pt=11, rtl=True, justify=True, indent_cm=1.5,
-          space_before_pt=4, space_after_pt=4)
+          size_pt=12, italic=True, rtl=True, justify=True, indent_cm=1.0,
+          spacing_factor=1.5, space_before_pt=4, space_after_pt=8)
 
-# Body Text — alternate paragraph style (some pandoc templates)
-configure(get_or_create_style(doc, 'Body Text', 'Normal')._element,
-          size_pt=12, rtl=True, justify=True, spacing_factor=1.5)
-
-# Compact — tight paragraphs (pandoc tight lists)
-configure(get_or_create_style(doc, 'Compact', 'Normal')._element,
-          size_pt=12, rtl=True, justify=True,
+# Footnotes
+configure(get_or_create_style(doc, 'Footnote Text')._element,
+          size_pt=10.5, rtl=True, justify=True, spacing_factor=1.15,
           space_before_pt=0, space_after_pt=2)
 
-# First Paragraph (pandoc may use this for the first para in a block)
-configure(get_or_create_style(doc, 'First Paragraph', 'Normal')._element,
-          size_pt=12, rtl=True, justify=True, spacing_factor=1.5)
+# Table of contents heading
+configure(get_or_create_style(doc, 'TOC Heading')._element,
+          size_pt=20, bold=True, rtl=True, align='center',
+          space_before_pt=12, space_after_pt=12)
+
+# Page: A4, 2.5 cm margins, RTL section
+section = doc.sections[0]
+section.page_height = Cm(29.7)
+section.page_width = Cm(21.0)
+for side in ('top_margin', 'bottom_margin', 'left_margin', 'right_margin'):
+    setattr(section, side, Cm(2.5))
+goa(section._sectPr, 'w:bidi')
 
 # ---------------------------------------------------------------------------
 # Save
@@ -168,10 +212,5 @@ configure(get_or_create_style(doc, 'First Paragraph', 'Normal')._element,
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 doc.save(str(OUT))
-sz = OUT.stat().st_size
-print(f"Created: {OUT}  ({sz:,} bytes)")
-print(f"Font: {HEBREW_FONT}  |  Direction: RTL  |  Styles: Normal, Heading 1-3, Block Text, Body Text, Compact")
-print()
-print("To test the template:")
-print('  pandoc --print-default-data-file reference.docx > /tmp/ref.docx  # baseline comparison')
-print(f"  pandoc compiled/book.md -o output/test.docx --reference-doc={OUT}")
+print(f"Created: {OUT}  ({OUT.stat().st_size:,} bytes)")
+print(f"Font: {HEBREW_FONT}  |  Direction: RTL  |  Page: A4")

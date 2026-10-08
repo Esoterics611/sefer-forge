@@ -7,9 +7,14 @@ Usage:
 Produces `<audio>.raw.txt` next to each audio file. Skips files that
 already have a transcript. Never overwrites — delete the .raw.txt if
 you want to retranscribe.
+
+Then runs scripts/apply-fixes.py on the session, producing
+`<audio>.fixed.txt` with the recurring corrections from
+glossary/whisper-fixes.yaml already applied.
 """
 from __future__ import annotations
 
+import subprocess
 import sys
 from pathlib import Path
 
@@ -51,7 +56,9 @@ def main() -> int:
         out.write_text(result["text"], encoding="utf-8")
         print(f"  -> {out.name}  ({len(result['text'])} chars)")
 
-    return 0
+    print()
+    fixer = Path(__file__).with_name("apply-fixes.py")
+    return subprocess.call([sys.executable, str(fixer), str(session)])
 
 
 if __name__ == "__main__":

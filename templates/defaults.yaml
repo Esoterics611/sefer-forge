@@ -1,0 +1,5 @@
+# Metadata shared by every book. Each book's books/<book>/metadata.yaml
+# is applied after this file and wins on any key it sets.
+lang: he
+dir: rtl
+toc-title: "תוכן העניינים"

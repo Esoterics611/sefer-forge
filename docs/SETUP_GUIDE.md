@@ -11,7 +11,7 @@ pip install -r requirements.txt                 # python deps (openai-whisper, p
 git lfs install                                 # once per machine (LFS already init'd here)
 ```
 
-Then build the Word reference template — see [templates/README.md](templates/README.md). (One-time; after that every build inherits its styles.)
+The Word reference template is generated automatically on the first build (`scripts/create-template.py`; edit that script to change typography).
 
 ## 2. The 5 process prompts
 
@@ -23,6 +23,7 @@ Your daily workflow uses these five paste-into-Claude prompts:
 |---|--------|-------------|
 | 1 | `prompts/01-new-discourse.md` | Starting a new lecture/essay |
 | 2 | `prompts/02-ingest-session.md` | You have images + voicenote for one batch |
+| 2v | `prompts/02v-ingest-voice-session.md` | A recorded shiur for a voice-only discourse (say "ingest voice session <path>") |
 | 3 | `prompts/03-assemble-discourse.md` | All sessions for a discourse are done |
 | 4 | `prompts/04-assign-to-chapter.md` | A discourse is ready to place in the book |
 | 5 | `prompts/05-build-book.md` | Render the current state to `.docx` |
@@ -52,8 +53,8 @@ Do this once to verify everything works before committing to real content:
 7. Verify `section.md` looks right.
 8. `python scripts/assemble-discourse.py discourses/001-smoke-test`
 9. Verify `discourse.md` looks right.
-10. Edit `book/structure.yaml` → add `smoke-test` to Chapter 1's `discourses:` list.
-11. `./scripts/build-all.sh` → open `output/book.docx`.
+10. Edit `books/<book>/structure.yaml` → add `smoke-test` to Chapter 1's `discourses:` list.
+11. `bash scripts/build-all.sh <book>` → open `output/<book>.docx`.
 
 If all 11 steps pass, the pipeline is good. Delete the smoke-test discourse when done.
 
@@ -80,8 +81,8 @@ If all 11 steps pass, the pipeline is good. Delete the smoke-test discourse when
    python scripts/assemble-discourse.py  ──►  discourse.md
                   │
                   ▼
-   edit book/structure.yaml (assign to chapter)
+   edit books/<book>/structure.yaml (assign to chapter)
                   │
                   ▼
-   ./scripts/build-all.sh  ──►  output/book.docx
+   bash scripts/build-all.sh <book>  ──►  output/<book>.docx
 ```

@@ -1,0 +1,10 @@
+title: "שער היחוד"
+subtitle: "ליקוטי ביאורים לרבי הלל מפאריטש — שיעורים"
+author: "רני רנדל"
+date: "תשפ\"ו · 2026"
+
+# Typography carried over from the old hand-rolled build.py
+# (body 1.7 line spacing, blockquotes 1.5).
+polish:
+  body_line_spacing: 1.7
+  quote_line_spacing: 1.5

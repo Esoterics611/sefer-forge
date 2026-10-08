@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Scaffold a new discourse folder.
-# Usage: ./scripts/new-discourse.sh <slug>
+# Usage: ./scripts/new-discourse.sh <slug> [--voice-only]
+#   --voice-only: sessions are recorded shiurim (transcript.md), no photos
 set -e
 
 if [ -z "$1" ]; then
@@ -9,6 +10,8 @@ if [ -z "$1" ]; then
 fi
 
 SLUG="$1"
+TYPE="images+voice"
+[ "$2" = "--voice-only" ] && TYPE="voice-only"
 N=$(ls -1 discourses/ 2>/dev/null | awk -F- '/^[0-9]+-/ {print $1+0}' | sort -n | tail -1)
 NEXT=$(printf "%03d" $((${N:-0} + 1)))
 DIR="discourses/$NEXT-$SLUG"
@@ -25,6 +28,7 @@ discourse: $NEXT
 slug: $SLUG
 title: ""
 status: draft
+type: $TYPE
 chapter: null
 EOF
 

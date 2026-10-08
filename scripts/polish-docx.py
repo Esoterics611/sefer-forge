@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Polish output/book.docx: fix paragraph spacing and line-height so the
+"""Polish output/<book>.docx: fix paragraph spacing and line-height so the
 document reads as a scholarly sefer, not a wall of text.
 
 What this does:
@@ -10,11 +10,17 @@ What this does:
   - Indents blockquotes slightly and adds spacing.
   - Leaves title-block / front-matter centered paragraphs alone.
 
-Run AFTER pandoc has produced output/book.docx. Idempotent — running it
+Run AFTER pandoc has produced output/<book>.docx. Idempotent — running it
 twice is safe (it sets exact values, not deltas).
 
+Any knob below can be overridden per book with a `polish:` block in
+books/<book>/metadata.yaml, using the lowercase knob name, e.g.
+
+    polish:
+      body_line_spacing: 1.7
+
 Usage:
-    python scripts/polish-docx.py [path/to/book.docx]
+    python scripts/polish-docx.py output/<book>.docx
 """
 from __future__ import annotations
 
@@ -51,6 +57,31 @@ HEADING_MAP = {
     "Heading 2": (H2_SPACE_BEFORE_PT, H2_SPACE_AFTER_PT),
     "Heading 3": (H3_SPACE_BEFORE_PT, H3_SPACE_AFTER_PT),
 }
+
+
+def apply_book_overrides(doc_path: Path) -> list[str]:
+    """Override the module-level knobs from books/<book>/metadata.yaml."""
+    meta = Path("books") / doc_path.stem / "metadata.yaml"
+    if not meta.exists():
+        return []
+    import yaml
+
+    knobs = (yaml.safe_load(meta.read_text(encoding="utf-8")) or {}).get("polish") or {}
+    applied = []
+    for key, value in knobs.items():
+        name = key.upper()
+        if name not in globals() or not name.endswith(("_PT", "_SPACING")):
+            print(f"WARN: unknown polish knob in {meta}: {key}")
+            continue
+        globals()[name] = value
+        applied.append(f"{key}={value}")
+    global HEADING_MAP
+    HEADING_MAP = {
+        "Heading 1": (H1_SPACE_BEFORE_PT, H1_SPACE_AFTER_PT),
+        "Heading 2": (H2_SPACE_BEFORE_PT, H2_SPACE_AFTER_PT),
+        "Heading 3": (H3_SPACE_BEFORE_PT, H3_SPACE_AFTER_PT),
+    }
+    return applied
 
 
 def set_spacing(para, *, before=None, after=None, line_mult=None):
@@ -105,10 +136,16 @@ def polish(doc_path: Path) -> dict:
 
 
 def main() -> int:
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("output/book.docx")
+    if len(sys.argv) != 2:
+        print("Usage: python scripts/polish-docx.py output/<book>.docx")
+        return 1
+    path = Path(sys.argv[1])
     if not path.exists():
         print(f"Not found: {path}")
         return 1
+    overrides = apply_book_overrides(path)
+    if overrides:
+        print("Book overrides:", ", ".join(overrides))
     counts = polish(path)
     print(f"Polished {path}:")
     for k, v in counts.items():
