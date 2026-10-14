@@ -1,0 +1,11 @@
+discourse: 002
+slug: shaar-hayichud
+title: "שער היחוד"
+status: draft
+type: voice-only          # sessions hold transcript.md, not section.md
+chapter: null
+
+# The הקדמה is a hand-polished synthesis of sessions 000–003, so those raw
+# lessons are left out of discourse.md to avoid printing the material twice.
+intro: introduction.md
+skip_sessions: ["000", "001", "002", "003"]

@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 # Compile + render. The full pipeline from sources to docx.
+# Usage: bash scripts/build-all.sh [book ...]   (no args = every book in books/)
 set -e
 
-echo "==> Compiling book.md"
-python scripts/compile.py
+PY=$(command -v python || command -v python3)
 
-echo ""
-echo "==> Rendering DOCX"
-bash scripts/build-docx.sh
+if [ $# -eq 0 ]; then
+  set -- $(ls books)
+fi
 
-echo ""
-echo "Done. See output/book.docx"
+for BOOK in "$@"; do
+  echo "==> [$BOOK] Compiling compiled/$BOOK.md"
+  "$PY" scripts/compile.py "$BOOK"
+  echo ""
+  echo "==> [$BOOK] Rendering DOCX"
+  bash scripts/build-docx.sh "$BOOK"
+  echo ""
+done
+
+echo "Done. See output/"

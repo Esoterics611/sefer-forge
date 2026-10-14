@@ -1,0 +1,14 @@
+# שער היחוד — ליקוטי ביאורים לרבי הלל מפאריטש (spoken shiurim)
+#
+# The discourse supplies its own '#' headings (הקדמה, פרק א', פרק ב', ...),
+# one per lesson, so the chapter entry has no title of its own.
+# New lessons appear automatically after:
+#   python scripts/assemble-discourse.py discourses/002-shaar-hayichud --force
+
+front_matter: []
+
+chapters:
+  - discourses:
+      - shaar-hayichud
+
+back_matter: []

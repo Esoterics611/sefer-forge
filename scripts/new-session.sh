@@ -27,6 +27,16 @@ N=$(ls -1 "$DDIR/sessions" 2>/dev/null | awk '/^[0-9]+$/ {print $0+0}' | sort -n
 NEXT=$(printf "%03d" $((${N:-0} + 1)))
 SDIR="$DDIR/sessions/$NEXT"
 
+if grep -qE '^type:[[:space:]]*voice-only' "$DDIR/meta.yaml" 2>/dev/null; then
+  mkdir -p "$SDIR/voicenotes"
+  echo "Created $SDIR  (voice-only discourse)"
+  echo "  - $SDIR/voicenotes/   drop the shiur recording (.m4a) here"
+  echo ""
+  echo "Then run: python scripts/transcribe.py $SDIR"
+  echo "and tell Claude: ingest voice session $SDIR"
+  exit 0
+fi
+
 mkdir -p "$SDIR/images" "$SDIR/voicenotes"
 
 echo "Created $SDIR"
