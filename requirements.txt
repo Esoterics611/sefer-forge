@@ -1,6 +1,5 @@
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.2.2+cpu
-numpy<2
-openai-whisper>=20231117
+# Transcription: faster-whisper runs ivrit.ai's Hebrew Whisper models locally
+# (no torch needed; works on CPU, uses an NVIDIA GPU if present).
+faster-whisper>=1.0
 pyyaml>=6.0
 python-docx>=1.0

@@ -86,5 +86,5 @@ bash scripts/build-all.sh                         # build every book
 
 - `pandoc` ≥ 3.0
 - `python` ≥ 3.10 (+ `requirements.txt`)
-- `ffmpeg` (for Whisper)
+- Transcription: `pip install -r requirements.txt` (faster-whisper + ivrit.ai Hebrew model, see TRANSCRIPTION.md)
 - `git-lfs`
