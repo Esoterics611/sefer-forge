@@ -85,6 +85,5 @@ bash scripts/build-all.sh                         # build every book
 ## Dependencies
 
 - `pandoc` ≥ 3.0
-- `python` ≥ 3.10 (+ `requirements.txt`)
-- `ffmpeg` (for Whisper)
+- `python` ≥ 3.10 (+ `requirements.txt`; Whisper setup in `TRANSCRIPTION.md`)
 - `git-lfs`

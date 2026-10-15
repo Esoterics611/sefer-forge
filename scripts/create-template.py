@@ -188,6 +188,13 @@ configure(get_or_create_style(doc, 'Block Text', 'Normal')._element,
           size_pt=12, italic=True, rtl=True, justify=True, indent_cm=1.0,
           spacing_factor=1.5, space_before_pt=4, space_after_pt=8)
 
+# Commentary — the voicenote ביאור inside its box, smaller than the source
+# text. Applied by scripts/polish-docx.py for books that set
+# `polish: commentary_box: true`.
+configure(get_or_create_style(doc, 'Commentary', 'Normal')._element,
+          size_pt=11, rtl=True, justify=True, spacing_factor=1.3,
+          space_before_pt=0, space_after_pt=4)
+
 # Footnotes
 configure(get_or_create_style(doc, 'Footnote Text')._element,
           size_pt=10.5, rtl=True, justify=True, spacing_factor=1.15,

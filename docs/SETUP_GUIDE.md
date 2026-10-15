@@ -5,11 +5,18 @@
 Install on your machine:
 
 ```bash
+# Windows
 winget install --id JohnMacFarlane.Pandoc       # pandoc 3+
-winget install Gyan.FFmpeg                      # ffmpeg (Whisper needs it)
-pip install -r requirements.txt                 # python deps (openai-whisper, pyyaml)
-git lfs install                                 # once per machine (LFS already init'd here)
+# Linux / WSL
+sudo apt install -y pandoc git-lfs python3-venv
+
+# both, from the repo root
+python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt                 # faster-whisper, pyyaml, python-docx, pyluach
+git lfs install && git lfs pull                 # once per clone: fetches the real photos and audio
 ```
+
+Transcription details (model, outputs, memory): `TRANSCRIPTION.md`.
 
 The Word reference template is generated automatically on the first build (`scripts/create-template.py`; edit that script to change typography).
 

@@ -8,6 +8,8 @@ What this does:
   - Adds generous space-before on Heading 1/2 (so sections breathe).
   - Adds space-before and space-after on tables (framed callout boxes).
   - Indents blockquotes slightly and adds spacing.
+  - Frames each ביאור (paragraphs in the Commentary style, written as
+    ::: {custom-style="Commentary"} divs) in a bordered, shaded box.
   - Leaves title-block / front-matter centered paragraphs alone.
 
 Run AFTER pandoc has produced output/<book>.docx. Idempotent — running it
@@ -30,6 +32,9 @@ from pathlib import Path
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_LINE_SPACING
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.text.paragraph import Paragraph
 
 # Spacing knobs — tune here, not in the body code.
 BODY_SPACE_AFTER_PT = 8      # gap between body paragraphs
@@ -50,6 +55,12 @@ QUOTE_LINE_SPACING = 1.3
 
 TABLE_SPACE_BEFORE_PT = 12
 TABLE_SPACE_AFTER_PT = 12
+
+# ביאור boxes. A Commentary paragraph starting with BOX_LABEL opens a box.
+BOX_LABEL = "■"
+BOX_BORDER_COLOR = "A39E93"   # warm grey, 0.75 pt
+BOX_FILL = "F7F5F0"           # light parchment
+BOX_GAP_PT = 10               # between consecutive boxes
 
 BODY_STYLES = {"Normal", "Body Text", "First Paragraph", "Compact"}
 HEADING_MAP = {
@@ -131,8 +142,94 @@ def polish(doc_path: Path) -> dict:
                     set_spacing(para, after=4, line_mult=1.3)
         counts["table"] += 1
 
+    counts["box"] = box_commentary(doc)
+
     doc.save(doc_path)
     return counts
+
+
+def _el(tag: str, **attrs) -> OxmlElement:
+    el = OxmlElement(tag)
+    for key, value in attrs.items():
+        el.set(qn(f"w:{key}"), str(value))
+    return el
+
+
+def box_commentary(doc) -> int:
+    """Wrap each ביאור in a single-cell box: full width, RTL, thin border,
+    light fill, inner padding.
+
+    Pandoc emits a ::: {custom-style="Commentary"} div as bare paragraphs in
+    the Commentary style, so the div's edges are gone; a new box starts at
+    every paragraph opening with BOX_LABEL, or after any other content.
+    Consecutive boxes get an empty paragraph between them, since Word merges
+    tables that touch. Books without Commentary paragraphs are untouched.
+    """
+    try:
+        style_id = doc.styles["Commentary"].style_id
+    except KeyError:
+        return 0
+
+    groups: list[list] = []
+    current: list = []
+    for el in list(doc.element.body):
+        style = el.find(f"{qn('w:pPr')}/{qn('w:pStyle')}") if el.tag == qn("w:p") else None
+        if style is None or style.get(qn("w:val")) != style_id:
+            if current:
+                groups.append(current)
+                current = []
+            continue
+        text = "".join(t.text or "" for t in el.iter(qn("w:t"))).strip()
+        if text.startswith(BOX_LABEL) and current:
+            groups.append(current)
+            current = []
+        current.append(el)
+    if current:
+        groups.append(current)
+
+    for paras in groups:
+        tbl = _el("w:tbl")
+        tblPr = _el("w:tblPr")
+        tblPr.append(_el("w:bidiVisual"))
+        tblPr.append(_el("w:tblW", w=5000, type="pct"))
+        borders = _el("w:tblBorders")
+        for side in ("top", "left", "bottom", "right"):
+            borders.append(_el(f"w:{side}", val="single", sz=6, space=0, color=BOX_BORDER_COLOR))
+        tblPr.append(borders)
+        margins = _el("w:tblCellMar")
+        for side, twips in (("top", 140), ("left", 260), ("bottom", 100), ("right", 260)):
+            margins.append(_el(f"w:{side}", w=twips, type="dxa"))
+        tblPr.append(margins)
+        tbl.append(tblPr)
+        grid = _el("w:tblGrid")
+        grid.append(_el("w:gridCol", w=9071))
+        tbl.append(grid)
+
+        tc = _el("w:tc")
+        tcPr = _el("w:tcPr")
+        tcPr.append(_el("w:tcW", w=5000, type="pct"))
+        tcPr.append(_el("w:shd", val="clear", color="auto", fill=BOX_FILL))
+        tc.append(tcPr)
+        paras[0].addprevious(tbl)
+        for p in paras:
+            tc.append(p)
+        tr = _el("w:tr")
+        tr.append(tc)
+        tbl.append(tr)
+
+        label = Paragraph(paras[0], None)
+        if label.text.strip().startswith(BOX_LABEL):
+            label.paragraph_format.keep_with_next = True
+            label.paragraph_format.space_after = Pt(6)
+
+        if tbl.getprevious() is not None and tbl.getprevious().tag == qn("w:tbl"):
+            gap = _el("w:p")
+            gap_pPr = _el("w:pPr")
+            gap_pPr.append(_el("w:spacing", before=0, after=0, line=int(BOX_GAP_PT * 20), lineRule="exact"))
+            gap.append(gap_pPr)
+            tbl.addprevious(gap)
+
+    return len(groups)
 
 
 def main() -> int:

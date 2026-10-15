@@ -22,6 +22,7 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - **Hand-edit freely**: `discourse.md` — this is where you polish for flow across sessions.
   **Exception — voice-only discourses:** `discourse.md` is regenerated on every build from `sessions/*/transcript.md` (+ `intro:` / `skip_sessions:` in `meta.yaml`). Edit the transcripts, never that `discourse.md`.
 - **Whisper corrections**: `glossary/whisper-fixes.yaml` (shared) — `transcribe.py` / `apply-fixes.py` turn `*.raw.txt` into `*.fixed.txt`. Add recurring mis-hearings there.
+- **Transcript cleanup** (`.fixed.txt` → `commentary.md` / `transcript.md`) follows `prompts/transcript-review-rules.md`; `python scripts/transcript-diff.py <session>` writes `<session>/review.md` listing every word changed relative to Whisper.
 - **Never hand-edit**: anything in `compiled/` or `output/`.
 
 ## Markdown conventions
@@ -30,7 +31,7 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - **`section.md` layout = three named sections:**
   1. `## הַנֹּסַח הָעִקָּרִי` — full OCR text as flowing `[...]{dir="rtl"}` paragraphs; bold key transitional words; preserve `...` snapshot markers and `<!-- UNCLEAR: ... -->` flags; no `{.underline}` markup here.
   2. `## נְקֻדּוֹת מַפְתֵּחַ` — 5–8 bold topic labels each followed by a `>` blockquote of the key source passage, both in `{dir="rtl"}`.
-  3. `## בֵּיאוּר וּפֵירוּשׁ` — sequence of single-column `+---+` grid-table boxes, one per voicenote topic, each headed `**[■ ביאור — <topic>]{dir="rtl"}**` with the cleaned voicenote commentary.
+  3. `## בֵּיאוּר וּפֵירוּשׁ` — sequence of `::: {custom-style="Commentary"}` fenced divs, one per voicenote topic, each opening with `**[■ ביאור — <topic>]{dir="rtl"}**` followed by the cleaned voicenote commentary. `scripts/polish-docx.py` renders each as a framed box in smaller type. (Sessions ingested before 2026-10-15 use single-column `+---+` grid tables; leave them as they are.)
 - **YAML frontmatter** on every `section.md`, `transcript.md` and `discourse.md` — must be valid YAML (escape `"` inside double-quoted values: `חב\"ד`).
 - **`transcript.md`** (voice-only): frontmatter `title` becomes a `#` chapter heading (new page), `subtitle` an italic line; body uses `##` sub-headings, `>` for quoted source text, `[^N]` footnotes (numbering restarts per session; the build keeps them unique).
 - Hebrew stays Hebrew — never translate unless explicitly asked.

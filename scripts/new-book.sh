@@ -14,13 +14,17 @@ if [ -d "$DIR" ]; then
   exit 1
 fi
 
+# Title-page date: today's Hebrew year (e.g. תשפ״ז) and Gregorian year.
+PY=$(command -v python || command -v python3)
+HEB_YEAR=$("$PY" -c 'from pyluach import dates; print(dates.HebrewDate.today().hebrew_year(thousands=False))')
+
 mkdir -p "$DIR/front-matter" "$DIR/back-matter" "$DIR/chapters"
 
 cat > "$DIR/metadata.yaml" <<YAML
 title: "$2"
 subtitle: ""
 author: "רני רנדל"
-date: "תשפ\"ו · 2026"
+date: "$HEB_YEAR · $(date +%Y)"
 YAML
 
 cat > "$DIR/structure.yaml" <<'YAML'

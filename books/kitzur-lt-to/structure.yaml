@@ -1,0 +1,13 @@
+# Book structure. Discourse slugs = the <slug> in discourses/NNN-<slug>/.
+# A chapter's `title` is optional (omit it when the discourse supplies its
+# own '#' headings, as voice-only discourses do).
+
+front_matter: []     # files in front-matter/
+
+chapters: []
+  # - title: "שער א"
+  #   intro: 01-intro.md   # optional, file in chapters/
+  #   discourses:
+  #     - some-slug
+
+back_matter: []      # files in back-matter/
