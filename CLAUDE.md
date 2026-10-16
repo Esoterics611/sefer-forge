@@ -38,7 +38,7 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 
 ## Hard DOs and DON'Ts
 
-- ❌ **Do NOT invoke docx/pptx/xlsx skills, and do not write per-discourse python-docx build scripts.** All rendering goes through `scripts/build-all.sh <book>` (pandoc + `templates/book-template.docx` + `scripts/polish-docx.py`). Typography changes go in `scripts/create-template.py` or a book's `polish:` block in `metadata.yaml`.
+- ❌ **Do NOT invoke docx/pptx/xlsx skills, and do not write per-discourse python-docx build scripts.** All rendering goes through `scripts/build-all.sh <book>` (pandoc + `templates/book-template.docx` + `scripts/polish-docx.py`). Typography changes go in `scripts/create-template.py` or a book's `polish:` block in `metadata.yaml`. The one exception is the Shivchei HaBesht booklets (below), which print to PDF through Chrome.
 - ❌ **Do NOT transcribe audio via chat.** Always run `python scripts/transcribe.py <session>` first; you then clean up the `.raw.txt` output.
 - ❌ **Do NOT hand-edit `compiled/` or `output/`.**
 - ❌ **Do NOT edit `*.raw.txt`.** `*.fixed.txt` is regenerated — don't edit it either.
@@ -53,4 +53,5 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - "assemble discourse" → use `prompts/03-assemble-discourse.md`.
 - "add to chapter" / "assign to chapter" → use `prompts/04-assign-to-chapter.md`.
 - "build book" / "render" → use `prompts/05-build-book.md` (`bash scripts/build-all.sh [book]`; no book = all books).
+- "build booklets" → `python scripts/build-booklets.py [N ...]`: themed A5 PDFs of `shivchei-habesht-simple.md` in `output/booklets/`. Grouping in `booklets/booklets.yaml`, glossary in `booklets/glossary.yaml`, layout in `templates/booklet.css`.
 - "new book" → `./scripts/new-book.sh <slug> "<title>"`, then fill `books/<slug>/structure.yaml`.

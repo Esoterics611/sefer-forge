@@ -1,0 +1,70 @@
+# Booklets of shivchei-habesht-simple.md, grouped by theme.
+# Built by: python scripts/build-booklets.py  ->  output/booklets/*.pdf
+#
+# `stories` are the story numbers of the original book (0 = הקדמת הכותב).
+# Every story 0-210 appears in exactly one booklet; the build fails otherwise.
+# Within a booklet the stories print in ascending order.
+
+series: "שבחי הבעל שם טוב"
+subtitle: "בעברית של ימינו"
+source: shivchei-habesht-simple.md
+
+booklets:
+  - title: "הולדתו ונעוריו"
+    stories: [0, 1, 2]
+  - title: "השנים הנסתרות וההתגלות"
+    stories: [3, 4, 5, 9, 10, 11, 12]
+  - title: "רבי גרשון מקיטוב, גיסו"
+    stories: [7, 20, 27, 66, 79, 111]
+  - title: "ארץ ישראל והדרך אליה"
+    stories: [26, 28, 29, 30, 92, 93, 155, 191, 202]
+  - title: "בתפילה"
+    stories: [15, 16, 17, 76, 95, 147, 161, 179]
+  - title: "מידותיו ומנהגיו"
+    stories: [33, 53, 63, 68, 70, 134, 149, 156, 164, 169]
+  - title: "הרב של פולנאה"
+    stories: [21, 22, 23, 65, 103, 104, 150, 162, 166, 167]
+  - title: "המוכיח מפולנאה"
+    stories: [84, 85, 96, 123, 125, 160, 197]
+  - title: "המגיד ממזריטש"
+    stories: [34, 45, 47, 130, 200]
+  - title: "בית המגיד ותלמידיו"
+    stories: [40, 41, 42, 43, 44, 46, 109]
+  - title: "רבי נחמן מהורודנקה"
+    stories: [73, 74, 75, 91, 94, 101, 102, 131, 186]
+  - title: "רבי יצחק מדרוהוביץ'"
+    stories: [36, 37, 57, 58, 59]
+  - title: "רבנים וצדיקים בדורו"
+    stories: [24, 25, 35, 61, 78, 116, 135, 144, 145, 146]
+  - title: "מתנגדים ובוחנים"
+    stories: [48, 87, 99, 170, 188, 189, 190]
+  - title: "מתנגדים שהתקרבו"
+    stories: [13, 14, 112, 113, 114, 115, 181, 185, 203]
+  - title: "רואה מרחוק"
+    stories: [18, 19, 38, 89, 118, 128, 129, 141, 143]
+  - title: "מופתים בדרכים"
+    stories: [8, 142, 148, 177, 178, 180]
+  - title: "חוכרים ואדונים"
+    stories: [67, 110, 159, 172, 173]
+  - title: "צדקה וכסף"
+    stories: [86, 120, 121, 122, 138]
+  - title: "יהודים פשוטים וצדיקים נסתרים"
+    stories: [51, 52, 60, 126, 163, 194, 196]
+  - title: "כשר ופסול"
+    stories: [39, 100, 108, 139, 140, 151, 206]
+  - title: "רפואות"
+    stories: [31, 56, 69, 80, 82, 83, 117, 192, 205]
+  - title: "בנים לחשוכי ילדים"
+    stories: [71, 132, 165, 182, 183, 184, 204]
+  - title: "שדים, מכשפים ומזיקים"
+    stories: [6, 50, 62, 88, 119, 124, 157, 158]
+  - title: "עלילות וסכנות"
+    stories: [32, 97, 133, 136, 154, 171, 174, 195, 199]
+  - title: "חטא ותשובה"
+    stories: [81, 98, 137, 187, 193, 198]
+  - title: "גן עדן וגיהנום"
+    stories: [54, 55, 64, 127, 152, 153, 168, 176, 210]
+  - title: "גלגולי נשמות"
+    stories: [49, 72, 175, 201, 209]
+  - title: "ימיו האחרונים"
+    stories: [77, 90, 105, 106, 107, 207, 208]
