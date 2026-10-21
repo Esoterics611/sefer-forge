@@ -34,6 +34,7 @@ cached in `~/.cache/huggingface/`.
 ```bash
 source .venv/bin/activate        # once per terminal
 python scripts/transcribe.py discourses/<NNN>-<slug>/sessions/<MMM>
+python scripts/transcribe.py --pending     # every session with audio and no transcript
 ```
 
 Writes next to each audio file in `voicenotes/`:
@@ -47,6 +48,14 @@ Writes next to each audio file in `voicenotes/`:
 The script skips audio that already has a `.raw.txt`; delete the `.raw.txt` and
 `.timed.txt` to retranscribe.
 
+While it runs, every segment is saved to `<audio>.partial.txt` as it is heard,
+and `<audio>.lock` names the process and the recording's length. If the run dies
+(a crash, a reboot, Ctrl-C), run the same command again: it resumes after the
+last saved segment, with the text before it given to Whisper as context. The
+`.raw.txt` is written last, so its presence means the run finished.
+`python scripts/session-status.py <session>` shows a run's progress and time
+left, or where an interrupted run stopped.
+
 The cleanup that follows (Claude, under `prompts/transcript-review-rules.md`)
 reads `.fixed.txt` and `.timed.txt`; `python scripts/transcript-diff.py <session>`
 then lists every word it changed in `<session>/review.md`.
@@ -56,7 +65,8 @@ then lists every word it changed in `<session>/review.md`.
 Measured on the WSL host (i7-10750H, 7.6 GB, 2026-10-15) with an 11.4-minute
 voicenote: 27.6 minutes, about 2.4 × the recording's length, so a one-hour
 shiur takes about 2.5 hours. The process peaks at about 6.6 GB resident and
-spills about 1 GB into swap.
+spills about 1 GB into swap, so run one transcription at a time:
+`transcribe.py` skips a recording another live process is already transcribing.
 
 ## Model choice
 

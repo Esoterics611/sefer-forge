@@ -6,7 +6,7 @@ One session = one recorded shiur → one `transcript.md` → one chapter (new pa
 **Before pasting** (on your machine, from the repo root):
 1. `./scripts/new-session.sh <slug>` → creates the next `discourses/NNN-<slug>/sessions/MMM/`
 2. Drop the `.m4a` into `sessions/MMM/voicenotes/`
-3. `python scripts/transcribe.py discourses/NNN-<slug>/sessions/MMM`
+3. `python scripts/transcribe.py discourses/NNN-<slug>/sessions/MMM` (Claude can start it in the background; an interrupted run resumes)
    → writes `.raw.txt` (Whisper) **and** `.fixed.txt` (recurring fixes from `glossary/whisper-fixes.yaml` already applied)
 4. Commit + push if you'll run Claude in the cloud.
 
@@ -36,7 +36,7 @@ Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — t
 > **Step 3 — Double read-through** (the step most often skipped and most often regretted).
 > Pass 1: every sentence — wrong words that "look right" but make no sense in context, half-cleaned phrases, missed terms.
 > Pass 2: remove meaningless leftovers, dittographies, dangling fragments. Check term consistency against earlier sessions (`מוחין` not `מוכין`, `זעיר אנפין` not `ז"א` unless spoken so). Update `note:` for both passes.
-> Then run `python scripts/transcript-diff.py <SESSION_PATH>`, read `<SESSION_PATH>/review.md`, and revert every change the rules do not allow. Re-run until it is clean.
+> Then run `python scripts/transcript-diff.py <SESSION_PATH>`, read `<SESSION_PATH>/review.md`, and revert every change the rules do not allow. Re-run until it is clean. Then `python scripts/check-session.py <SESSION_PATH>` must report no errors (frontmatter, footnotes, Added count, UNCLEAR times).
 >
 > **Step 4 — Grow the glossary.** For each correction that is a *recurring* Whisper habit (not a one-off), add it to `glossary/whisper-fixes.yaml`: under `auto:` only if the wrong form is never a real word in these shiurim, otherwise under `review:`. Discourse-specific terms can go in `discourses/NNN-<slug>/whisper-fixes.yaml`.
 >

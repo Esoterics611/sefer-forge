@@ -5,9 +5,12 @@ description: Turn one recorded shiur (voice-only session, e.g. a שער היחו
 
 Follow `prompts/02v-ingest-voice-session.md` exactly, with `<SESSION_PATH>` = `$ARGUMENTS`.
 
-If `$ARGUMENTS` is empty, find the highest-numbered session under a `type: voice-only`
-discourse that has a `voicenotes/*.raw.txt` but no `transcript.md`, and confirm it
-with the user before starting.
+If `$ARGUMENTS` is empty, run `python scripts/session-status.py` and take the voice-only
+session whose next step is not "done"; confirm it with the user before starting.
 
-If the session has audio but no `.raw.txt`, stop: the user must run
-`python scripts/transcribe.py <session>` locally first (never transcribe audio via chat).
+Begin with `python scripts/session-status.py <SESSION_PATH>` and continue from the first
+unfinished step. If the recording is not transcribed, start
+`python scripts/transcribe.py <SESSION_PATH>` with Bash `run_in_background` (never
+transcribe audio in the chat; an interrupted run resumes where it stopped) and continue
+when it finishes. Before the build, `python scripts/check-session.py <SESSION_PATH>` must
+report no errors.

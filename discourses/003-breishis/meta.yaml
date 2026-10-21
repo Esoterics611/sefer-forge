@@ -4,3 +4,9 @@ title: ""
 status: draft
 type: images+voice
 chapter: null
+
+# Cover and running header for scripts/build-pamphlet.py.
+pamphlet:
+  series: "קיצור ליקוטי תורה ותורה אור"
+  author: "רני רנדל"
+  date: "תשפ\"ז · 2026"
