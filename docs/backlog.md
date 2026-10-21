@@ -5,6 +5,14 @@ wrong, how it was found, and how to do it.
 
 ## Re-clean the old transcripts under the review rules (found 2026-10-21)
 
+**In progress (2026-10-21, branch `transcript-reclean`).** Cause found: every
+old `.raw.txt` came from openai-whisper *medium* (June 2026), with no
+`.timed.txt`. The nine recordings were re-transcribed with ivrit.ai large-v3
+on the GPU; where the new text is better it becomes `.raw.txt` /
+`.timed.txt` and the medium text stays beside it as `<audio>.medium.txt`.
+Done: Shaar HaYichud 010 and 011 (added 0, readability edits in the
+frontmatter, pamphlets proofed), Lag BaOmer 001 and 002 OCR re-read in full.
+
 `python scripts/check-session.py` flags them. The transcripts were cleaned
 before `prompts/transcript-review-rules.md` existed, from the `.raw.txt` files
 still in the repo (committed together, never regenerated), and they do not

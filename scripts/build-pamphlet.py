@@ -311,7 +311,11 @@ def rtl(text: str, cls: str = "") -> str:
 
 
 def split_paragraph(md: str, para: int) -> list[Piece]:
-    """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each."""
+    """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each.
+    A heading stays whole; a quoted passage loses its '>' marker."""
+    if md.startswith("#"):
+        return [Piece(md, para)]
+    md = re.sub(r"^>\s?", "", md, flags=re.M)
     sentences = re.split(r"(?<=[.?!:])\s+(?=\S)", inner(md))
     pieces, cur = [], []
     for s in sentences:
