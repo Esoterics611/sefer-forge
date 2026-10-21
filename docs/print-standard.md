@@ -15,7 +15,11 @@ the same words are in both), snapped to sentence or clause ends. A page whose
 explanation continues from the page before opens with a short "המשך הביאור על"
 line naming the passage. The explanation is plain text, never framed in a box.
 `scripts/build-section.py` pairs; `scripts/build-pamphlet.py` lays out the
-pages and checks that no page spills (skill `paired-layout`).
+pages and checks that no page spills (skill `paired-layout`). Voice-only
+lessons pair the same way: each topic heading and the passage read (the
+transcript's `>` quotes) on top, the explanation that follows below. In the
+Word book the pairs flow (each cut over a rule, its explanation after it);
+only the pamphlet is set page by page.
 
 ## House style: pamphlets (`templates/pamphlet.css`)
 

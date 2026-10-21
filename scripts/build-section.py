@@ -362,11 +362,11 @@ def build(session: Path, plan: dict) -> str:
           "title": plan.get("title") or "", "layout": "paired", "built_from": PLAN}
     head = ["---", yaml.safe_dump(fm, allow_unicode=True, sort_keys=False, width=1000).strip(), "---", ""]
     if plan.get("heading"):
-        head += [f"**{span(plan['heading'])}**", "", "--------- ◆ ---------", ""]
+        head += [f"**{span(plan['heading'])}**", "", span("• • •"), ""]   # David has "•", not "◆"
     for ln in plan.get("lines") or []:
         head += [span(ln), ""]
     version = plan.get("version") or "גִּרְסָה א'"
-    head += [span(DESCRIPTOR), "", f"*{span(f'{version} · סֶשְׁן {session.name} · עִם בֵּיאוּר הַקּוֹל')}*", "", "---", ""]
+    head += [span(DESCRIPTOR), "", f"*{span(f'{version} · סֶשְׁן {session.name} · עִם בֵּיאוּר הַקּוֹל')}*", ""]
 
     nusach = Nusach(plan, session)
     try:
@@ -384,7 +384,9 @@ def build(session: Path, plan: dict) -> str:
             body.append("")
     for note in nusach.notes:
         body += [note, ""]
-    body += ["---", "", "## נְקֻדּוֹת מַפְתֵּחַ", ""]
+    # No --- rules between sections: the headings part them, and Word draws
+    # a rule as a grey line outside the palette.
+    body += ["## נְקֻדּוֹת מַפְתֵּחַ", ""]
     body += key_points(plan, nusach)
     return "\n".join(head + body).rstrip() + "\n"
 

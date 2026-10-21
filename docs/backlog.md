@@ -33,3 +33,12 @@ book changes only through 010–012. For Lag BaOmer, also move the sessions to
 the paired layout (`.claude/skills/paired-layout`), which needs ocr-match on
 its OCR (107 UNCLEAR flags, English photo notes as plain text: clean those
 first), and re-assemble `discourse.md` with the user's approval.
+
+## Readability pass for voice-only lessons (found 2026-10-21)
+
+Photo sessions record the readability pass (`prompts/readability-pass.md`) as
+`edits:` in `section-plan.yaml`. Voice-only lessons print `transcript.md`
+directly and have no plan, so the pass has no home yet. When the Shaar
+HaYichud transcripts are re-cleaned (above), give the edits one: an `edits:`
+list in the transcript's frontmatter, applied by `assemble-discourse.py` and
+`build-pamphlet.py`, checked by `check-session.py`.

@@ -224,6 +224,20 @@ configure(get_or_create_style(doc, 'Commentary', 'Normal')._element,
           size_pt=11, rtl=True, justify=True, spacing_factor=1.3,
           space_before_pt=0, space_after_pt=4)
 
+# Nusach — a cut of the source text in the paired layout (section.md's
+# ::: {custom-style="Nusach"}): a little larger than the explanation under it,
+# a rule below the last paragraph of each cut (Word joins the borders of
+# consecutive paragraphs), and kept with the explanation that follows.
+nusach = get_or_create_style(doc, 'Nusach', 'Normal')._element
+configure(nusach, size_pt=BODY_PT + 1, rtl=True, justify=True, spacing_factor=1.5,
+          space_before_pt=10, space_after_pt=4)
+n_pPr = goa(nusach, 'w:pPr')
+goa(n_pPr, 'w:keepNext')
+borders = goa(n_pPr, 'w:pBdr')
+bottom = goa(borders, 'w:bottom')
+for k, v in (('w:val', 'single'), ('w:sz', '4'), ('w:space', '6'), ('w:color', '8C7A5B')):
+    bottom.set(qn(k), v)
+
 # Footnotes
 configure(get_or_create_style(doc, 'Footnote Text')._element,
           size_pt=10.5, rtl=True, justify=True, spacing_factor=1.15,

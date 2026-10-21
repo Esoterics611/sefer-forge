@@ -172,6 +172,7 @@ p.box-label .kind::after { content: " ·"; }
 .pg .nusach p:first-child, .pg .nusach p:has(> span.cont) { text-indent: 0; }
 .pg .nusach strong { font-size: 1.12em; }
 .pg .nusach:not(:has(p:not(.cont-head))) { border-bottom: 0; padding-bottom: 0; margin-bottom: 1mm; }
+.pg .nusach:only-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }   /* text with no explanation under it */
 .pg .cont-head {
   font-family: "David", "Guttman Frank";
   font-size: 9.5pt;
@@ -183,6 +184,12 @@ p.box-label .kind::after { content: " ·"; }
 .pg .cont-head .label::after { content: ":"; }
 .pg .biur p { font-size: 11.8pt; line-height: 1.55; margin: 0 0 1.6mm; text-indent: 4mm; text-align: justify; }
 section.keys { break-before: page; }
+/* Voice-only lessons in the paired layout: the topic heading and the passage
+   read sit on top, set like the text, without the quote rule. */
+.pg .nusach h3 { font-family: "Guttman Frank", "David"; font-weight: bold; font-size: 13.5pt; margin: 0 0 1.5mm; }
+.pg .nusach blockquote { border: 0; margin: 0 0 1.2mm; padding: 0; font-size: inherit; line-height: inherit; }
+/* A lesson's title shares its first page with the first passage. */
+.opener.paired + .pg { break-before: auto; }
 
 /* Transcript-style parts (voice-only sessions). */
 section.talk p { font-size: 12.3pt; line-height: 1.6; }

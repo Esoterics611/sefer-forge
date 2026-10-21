@@ -56,7 +56,8 @@ PROFILES = {
     "booklet": {"css": "templates/booklet.css", "script": "scripts/build-booklets.py", "page": "A5", "numerals": "decimal",
                 "fonts": {"David", "David-Bold"}, "heading": 17.5},
     # Word PDFs: no stylesheet; black text, and polish-docx.py's box colours.
-    "book": {"css": None, "script": "scripts/polish-docx.py", "palette": ["#000000"], "page": "A4",
+    "book": {"css": None, "script": ["scripts/polish-docx.py", "scripts/create-template.py"],
+             "palette": ["#000000"], "page": "A4",
              # Word reports line-end glyph boxes a few points into the margin.
              "margins_mm": (25, 25, 25, 25), "margin_slack": 8.0, "running_header": False,
              "numerals": "hebrew",
@@ -90,7 +91,7 @@ def hebrew_numeral(n: int) -> str:
 
 def css_palette(css: str) -> set[tuple[int, int, int]]:
     cols = {(255, 255, 255)}
-    for h in re.findall(r"#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b|\"([0-9A-F]{6})\"", css):
+    for h in re.findall(r"#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b|[\"']([0-9A-F]{6})[\"']", css):
         h = h[0] or h[1]
         h = "".join(c * 2 for c in h) if len(h) == 3 else h
         cols.add(tuple(int(h[i:i + 2], 16) for i in (0, 2, 4)))
@@ -153,7 +154,9 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
     prof = PROFILES[profile_name]
     css = Path(prof["css"]).read_text(encoding="utf-8") if prof["css"] else ""
     # The build script adds styles of its own (running header, box fill): its colours count too.
-    extra = Path(prof["script"]).read_text(encoding="utf-8") if prof.get("script") else ""
+    scripts = prof.get("script") or []
+    scripts = [scripts] if isinstance(scripts, str) else scripts
+    extra = "".join(Path(s).read_text(encoding="utf-8") for s in scripts)
     extra += " ".join(prof.get("palette", []))
     palette = css_palette(css + extra) if (css or extra) else None
     margins = css_margins(css) if css else \

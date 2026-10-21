@@ -36,7 +36,7 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
   2. `## נְקֻדּוֹת מַפְתֵּחַ` — 5–8 bold topic labels each followed by a `>` blockquote of the key source passage, both in `{dir="rtl"}`.
   3. `## בֵּיאוּר וּפֵירוּשׁ` — sequence of `::: {custom-style="Commentary"}` fenced divs, one per voicenote topic, each opening with `**[■ ביאור — <topic>]{dir="rtl"}**` followed by the cleaned voicenote commentary. `scripts/polish-docx.py` renders each as a framed box in smaller type. (Sessions ingested before 2026-10-15 use single-column `+---+` grid tables; leave them as they are.)
 - **YAML frontmatter** on every `section.md`, `transcript.md` and `discourse.md` — must be valid YAML (escape `"` inside double-quoted values: `חב\"ד`).
-- **`transcript.md`** (voice-only): frontmatter `title` becomes a `#` chapter heading (new page), `subtitle` an italic line; body uses `##` sub-headings, `>` for quoted source text, `[^N]` footnotes (numbering restarts per session; the build keeps them unique).
+- **`transcript.md`** (voice-only): frontmatter `title` becomes a `#` chapter heading (new page), `subtitle` an italic line; body uses `##` sub-headings, `>` for quoted source text, `[^N]` footnotes (numbering restarts per session; the build keeps them unique). The pamphlet pairs each heading and quoted passage (on top) with the explanation that follows (below), so quote the passage read as `>` at the point it is read.
 - Hebrew stays Hebrew — never translate unless explicitly asked.
 
 ## Hard DOs and DON'Ts

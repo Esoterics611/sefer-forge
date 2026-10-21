@@ -30,5 +30,11 @@ shows which are done):
    correct or remove the short garbled segments, as `edits:` in the plan. Rebuild
    (steps 2–3) and proof again.
 
+**Voice-only lessons** (a `transcript.md`) need no plan: `build-pamphlet.py` pairs each
+topic heading (`##`) and the passage read (`>`) on top with the explanation that follows
+them below; a lead-in line between a heading and its passage opens the explanation. A
+lesson that quotes nothing prints as running text. In a whole-discourse pamphlet each
+lesson's title shares its first page with its first passage.
+
 Report per session: the cuts and explanations paired, pages, edits (corrected /
 removed / left for the user), and the proof summary line.

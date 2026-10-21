@@ -8,8 +8,8 @@ What this does:
   - Adds generous space-before on Heading 1/2 (so sections breathe).
   - Adds space-before and space-after on tables (framed callout boxes).
   - Indents blockquotes slightly and adds spacing.
-  - Frames each ביאור (paragraphs in the Commentary style, written as
-    ::: {custom-style="Commentary"} divs) in a bordered, shaded box.
+  - Leaves the ביאור (Commentary paragraphs) unboxed, by the print standard;
+    `polish: commentary_box: true` in a book's metadata frames it.
   - Keeps every heading with its text (and a short lead-in line with what
     it introduces), so no heading ends a page.
   - Leaves title-block / front-matter centered paragraphs alone.
@@ -62,7 +62,11 @@ LEAD_IN_MAX_CHARS = 90
 TABLE_SPACE_BEFORE_PT = 12
 TABLE_SPACE_AFTER_PT = 12
 
-# ביאור boxes. A Commentary paragraph starting with BOX_LABEL opens a box.
+# ביאור boxes: off by the print standard (docs/print-standard.md: the
+# explanation is never boxed). A book may still turn them on with
+# `polish: commentary_box: true`. A Commentary paragraph starting with
+# BOX_LABEL opens a box.
+COMMENTARY_BOX = False
 BOX_LABEL = "■"
 BOX_BORDER_COLOR = "A39E93"   # warm grey, 0.75 pt
 BOX_FILL = "F7F5F0"           # light parchment
@@ -87,7 +91,7 @@ def apply_book_overrides(doc_path: Path) -> list[str]:
     applied = []
     for key, value in knobs.items():
         name = key.upper()
-        if name not in globals() or not name.endswith(("_PT", "_SPACING")):
+        if name not in globals() or not name.endswith(("_PT", "_SPACING", "_BOX")):
             print(f"WARN: unknown polish knob in {meta}: {key}")
             continue
         globals()[name] = value
@@ -148,7 +152,7 @@ def polish(doc_path: Path) -> dict:
                     set_spacing(para, after=4, line_mult=1.3)
         counts["table"] += 1
 
-    counts["box"] = box_commentary(doc)
+    counts["box"] = box_commentary(doc) if COMMENTARY_BOX else 0
     counts["kept"] = keep_headings_with_text(doc)
 
     doc.save(doc_path)

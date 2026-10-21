@@ -70,12 +70,23 @@ def main() -> int:
         return 1
     session = Path(sys.argv[1])
     fixed = sorted((session / "voicenotes").glob("*.fixed.txt"))
+    raws = sorted((session / "voicenotes").glob("*.raw.txt"))
     cleaned = next((p for p in (session / "transcript.md", session / "commentary.md") if p.exists()), None)
-    if not fixed or cleaned is None:
-        print(f"Need voicenotes/*.fixed.txt and transcript.md or commentary.md in {session}")
+    if not (fixed or raws) or cleaned is None:
+        print(f"Need voicenotes/*.raw.txt and transcript.md or commentary.md in {session}")
         return 1
 
-    before = words(" ".join(p.read_text(encoding="utf-8") for p in fixed))
+    if fixed:
+        whisper = " ".join(p.read_text(encoding="utf-8") for p in fixed)
+    else:
+        # .fixed.txt is regenerated and gitignored: apply the glossary's auto fixes here.
+        sys.path.insert(0, str(Path(__file__).parent))
+        import forgelib
+        fixes = forgelib.load_script("apply-fixes")
+        auto, _ = fixes.load_fixes(session)
+        whisper = " ".join(fixes.apply_auto(p.read_text(encoding="utf-8"), auto)[0] for p in raws)
+        fixed = raws
+    before = words(whisper)
     after = words(cleaned.read_text(encoding="utf-8"))
     d = diff(before, after)
     counts = (f"Whisper {len(before)} words · {cleaned.name} {len(after)} words · "

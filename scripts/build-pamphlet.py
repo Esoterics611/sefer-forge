@@ -131,6 +131,8 @@ def section_part(md: str) -> Part:
         elif re.fullmatch(r"\*" + SPAN + r"\*", ln):
             continue                                  # "גרסה א' · סשן 002" — working metadata
         elif m := re.fullmatch(SPAN, ln):
+            if m.group(1).replace("•", "").strip() == "":
+                continue                                  # the title block's • • • separator
             if plain(m.group(1)) == DESCRIPTOR:
                 descriptor = m.group(1)
             else:
@@ -165,8 +167,47 @@ def section_part(md: str) -> Part:
 
 
 def talk_part(title: str, subtitle: str, body: str) -> Part:
-    """transcript.md (voice-only): title, subtitle, ## topics, > quotes, footnotes."""
-    return Part(title, [subtitle] if subtitle else [], "", f"::: talk\n{body.strip()}\n:::", talk=True)
+    """transcript.md (voice-only): title, subtitle, ## topics, > quotes, footnotes.
+    A lesson that quotes the text it teaches is paired like a session: each
+    topic heading and passage read (the `>` quotes) on top, the explanation
+    that follows them below."""
+    part = Part(title, [subtitle] if subtitle else [], "", f"::: talk\n{body.strip()}\n:::", talk=True)
+    pairs, notes = talk_pairs(body)
+    if pairs:
+        part.pairs, part.tail = pairs, notes
+    return part
+
+
+def talk_pairs(body: str) -> tuple[list, str]:
+    """[(heading and quoted passage, explanation paragraphs)] of a transcript."""
+    pairs: list = []
+    notes: list[str] = []
+    pending: list[str] = []                 # explanation before anything quoted
+    for block in [b.strip() for b in re.split(r"\n\s*\n", body) if b.strip()]:
+        if block.startswith("[^"):
+            notes.append(block)
+        elif block.startswith("## "):
+            if pairs and not pairs[-1][1] and not any(x.startswith(">") for x in pairs[-1][0]):
+                pairs[-1][0].append("### " + block[3:])          # headings in a row
+            else:
+                pairs.append((["### " + block[3:]], []))
+        elif block.startswith(">"):
+            # A passage joins its topic's heading on top, even past a lead-in
+            # line ("עכשיו נראה..."), which then opens the explanation.
+            quoted = pairs and any(x.startswith(">") for x in pairs[-1][0])
+            if pairs and (not quoted or not pairs[-1][1]):
+                pairs[-1][0].append(block)
+            else:
+                pairs.append(([block], []))
+        elif pairs:
+            pairs[-1][1].append(" ".join(block.split()))
+        else:
+            pending.append(" ".join(block.split()))
+    if not any(any(x.startswith(">") for x in text) for text, _ in pairs):
+        return [], ""                       # nothing quoted: a talk, printed as it runs
+    if pending:
+        pairs[0][1][:0] = pending
+    return pairs, "\n\n".join(notes)
 
 
 def parse_part(md: str) -> Part:
@@ -285,7 +326,9 @@ def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
         for md in expl:
             pieces += split_paragraph(md, para)
             para += 1
-        words = re.sub(r"\*\*|\[\^[^\]]+\]", "", " ".join(inner(x) for x in text)).split()
+        # The continuation line quotes the passage itself (a quote, not its heading).
+        quoted = [x for x in text if x.startswith(">")] or text
+        words = re.sub(r"\*\*|\[\^[^\]]+\]|^(#+|>)\s*", "", " ".join(inner(x) for x in quoted)).split()
         lead = " ".join(words[:6]) + ("…" if len(words) > 6 else "")
         u = Unit(text, pieces, lead)
         if not pieces:                       # text with no explanation may run over pages
@@ -298,7 +341,9 @@ def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
 
 def mark(md: str, label: str) -> str:
     """Put an invisible position marker at the start of a paragraph's text."""
-    return re.sub(r"^\[", f'[<span class="mk" dir="ltr">{label}</span>', md, count=1)
+    tag = f'<span class="mk" dir="ltr">{label}</span>'
+    m = re.match(r"(#+ |> ?|\[)", md)
+    return md[:m.end()] + tag + md[m.end():] if m else tag + md
 
 
 def marked_paragraphs(pieces: list[Piece], prefix: str) -> list[str]:
@@ -354,11 +399,14 @@ def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
     return "\n".join(out)
 
 
-def measure(units: list[Unit], css: str, work: Path) -> float:
+def measure(units: list[Unit], css: str, work: Path, notes: list[str] | None = None,
+            openers: dict[str, str] | None = None) -> float:
     """Render every text cut and piece once on a tall page at the true width and
     read their heights from the marker positions. Returns the continuation
     line's height."""
-    md = []
+    notes = notes or []
+    md = [f'<div class="opener first"><span class="mk" dir="ltr">O{k}</span>{h}</div>\n'
+          f'::: {{.pg}}\n<p><span class="mk" dir="ltr">Q{k}</span></p>\n:::' for k, h in (openers or {}).items()]
     for ui, u in enumerate(units):
         body = ["::: {.pg}", "::: {.nusach}", cont_head(u).replace('<p class="cont-head">',
                 f'<p class="cont-head"><span class="mk" dir="ltr">C{ui}</span>', 1) + "\n"]
@@ -372,6 +420,7 @@ def measure(units: list[Unit], css: str, work: Path) -> float:
         body.append(":::")
         md.append("\n".join(body))
     md.append('::: {.pg}\n<p><span class="mk" dir="ltr">END</span></p>\n:::')
+    md += notes
     # The pamphlet's own width and side margins: a marker at a line's right end
     # (where a Hebrew line starts) must land in the margin, not off the page.
     extra = (f"@page {{ size: 148mm {MEASURE_MM}mm; margin: 0 16mm; "
@@ -399,7 +448,12 @@ def measure(units: list[Unit], css: str, work: Path) -> float:
         for k, pc in enumerate(u.text_pieces):
             pc.h = gap(f"X{ui}.{k}")
     cont = [y[f"T{ui}"] - y[f"C{ui}"] for ui in range(len(units)) if f"T{ui}" in y]
+    for k in (openers or {}):
+        OPENER_H[k] = y[f"Q{k}"] - y[f"O{k}"]
     return max(cont) if cont else 0.0
+
+
+OPENER_H: dict[str, float] = {}       # a part's title block, when it shares the first page
 
 
 def render_marks(doc: str, stem: Path) -> dict[str, tuple[int, float]]:
@@ -459,6 +513,11 @@ def pack(units: list[Unit], cont_h: float, budgets: dict[int, float], area: floa
                 page["pieces"].append(pc)
                 page["h"] += pc.h
         else:
+            # Text with no explanation (read past, or never read) follows the
+            # explanation on pages of its own: on top of another passage's
+            # explanation it would read as the passage explained.
+            if page["pieces"]:
+                page = new()
             for pc in u.text_pieces:
                 if pc.h > room(page) and (page["texts"] or page["pieces"] or page["text_pieces"]):
                     page = new()
@@ -486,9 +545,13 @@ def paginate(cfg: dict, parts: list[Part], whole: bool, css: str, work: Path) ->
         units, para = make_units(p, para)
         plan.append(units)
     all_units = [u for us in plan for u in us]
-    cont_h = measure(all_units, css, work)
+    notes = [ln for p in paired for ln in p.tail.splitlines() if ln.startswith("[^")]
+    openers = {str(i): opener_html(p) for i, p in enumerate(paired) if whole and p.kicker}
+    cont_h = measure(all_units, css, work, notes, openers)
     area = text_area(css)
     budgets: list[dict[int, float]] = [dict() for _ in plan]
+    for k in openers:                     # the title block takes the top of the first page
+        budgets[int(k)][0] = area - SLACK_PT - OPENER_H[k]
     for attempt in range(8):
         layouts = [pack(us, cont_h, budgets[i], area) for i, us in enumerate(plan)]
         for i, (p, units, pages) in enumerate(zip(paired, plan, layouts)):
@@ -510,7 +573,8 @@ def paginate(cfg: dict, parts: list[Part], whole: bool, css: str, work: Path) ->
                     spilled = True
                     used = pages[n]["h"]
                     last = (pages[n]["pieces"] or pages[n]["text_pieces"] or [Piece("", -1, used * 0.1)])[-1].h
-                    budgets[i][n] = min(budgets[i].get(n, area - SLACK_PT), used - last - 0.5)
+                    budgets[i][n] = min(budgets[i].get(n, area - SLACK_PT - OPENER_H.get(str(i), 0) * (n == 0)),
+                                        used - last - 0.5)
         if not spilled:
             break
     for p, units, pages in zip(paired, plan, layouts):
@@ -525,6 +589,15 @@ def css_string(s: str) -> str:
 
 def esc(s: str) -> str:
     return html.escape(s)
+
+
+def opener_html(p: Part) -> str:
+    """A part's title block in a whole-discourse pamphlet."""
+    out = [f'<div class="kicker">{esc(p.kicker)}</div>'] if p.kicker else []
+    if p.lines:
+        out.append(f'<div class="orn">{ORN}</div>')
+        out += [f'<div class="line">{esc(ln)}</div>' for ln in p.lines]
+    return "".join(out)
 
 
 def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str, str]:
@@ -571,14 +644,7 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
                 md.append(f'<div class="opener cont"><div class="orn">{ORN}</div></div>')
                 md.append(p.body)
                 continue
-            opener = [f'<div class="opener{first}">']
-            if p.kicker:
-                opener.append(f'<div class="kicker">{esc(p.kicker)}</div>')
-            if p.lines:
-                opener.append(f'<div class="orn">{ORN}</div>')
-                opener += [f'<div class="line">{esc(ln)}</div>' for ln in p.lines]
-            opener.append("</div>")
-            md.append("\n".join(opener))
+            md.append(f'<div class="opener{first}{" paired" if p.pairs else ""}">{opener_html(p)}</div>')
         md.append(p.body)
     body = to_html("\n\n".join(md))
 
