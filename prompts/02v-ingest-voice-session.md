@@ -43,6 +43,9 @@ Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — t
 > **Step 5 — Build and verify.**
 > Run `bash scripts/build-all.sh <book>` (the book whose `structure.yaml` lists this discourse; `ls books/`). It re-assembles `discourse.md` automatically. Report: pandoc warnings verbatim, output path + size, and confirm the new lesson's title appears in `compiled/<book>.md`.
 >
+>
+> **Step 6 — Readability pass.** Print the lesson (`python scripts/build-pamphlet.py <SESSION_PATH>`), proof it (skill `proof-pdf`), and read it through as its reader will, under `prompts/readability-pass.md`: each segment Whisper garbled beyond a reader is corrected or removed as an `edits:` entry in `transcript.md`'s frontmatter (the body keeps what Whisper heard). Rebuild the book and the pamphlet and proof again.
+>
 > **Hard constraints:** Hebrew stays Hebrew. Never edit `.raw.txt`, audio, `compiled/`, or `output/`. Do not invoke docx/pptx/xlsx skills. Do not hand-edit `discourse.md` of a voice-only discourse — it is regenerated; edit `transcript.md`. Don't overwrite an existing `transcript.md` that already has body content — ask first.
 >
-> End with one message: transcript path, output path, count of auto fixes / review decisions / glossary additions, the counts line from `review.md` with every Added entry and its reason, and any `UNCLEAR` spots (with times) for me to listen to.
+> End with one message: transcript path, output path, the readability edits (corrected / removed, and any left for me), count of auto fixes / review decisions / glossary additions, the counts line from `review.md` with every Added entry and its reason, and any `UNCLEAR` spots (with times) for me to listen to.

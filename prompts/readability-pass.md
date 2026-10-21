@@ -1,9 +1,10 @@
 # Readability pass
 
 Applies after a session's pamphlet is printed and proofed (prompt 02 step 5,
-the `publish-pamphlet` and `proof-pdf` skills), and earlier wherever a garbled
-segment is plain to see. It is not part of the transcript cleanup:
-`commentary.md` stays the faithful record of what Whisper heard, under
+prompt 02v step 6, the `publish-pamphlet` and `proof-pdf` skills), and earlier
+wherever a garbled segment is plain to see. It is not part of the transcript
+cleanup: `commentary.md` (or a voice-only lesson's `transcript.md`) stays the
+faithful record of what Whisper heard, under
 `prompts/transcript-review-rules.md`. This pass decides what the printed
 explanation leaves out or corrects, and records every decision.
 
@@ -41,6 +42,13 @@ A flag on the edited words goes with them. Then rebuild and recheck:
 `python scripts/build-section.py <session>` (it runs `check-session.py`,
 which compares the explanation with `commentary.md` plus these edits),
 `python scripts/build-pamphlet.py <session>`, and the proof.
+
+**Voice-only lessons** have no plan: the same `edits:` list goes in
+`transcript.md`'s frontmatter (`from` = the exact words in the transcript's
+body). The book (`assemble-discourse.py`) and the pamphlet apply them;
+`transcript-diff.py` still compares the transcript itself with Whisper;
+`python scripts/check-session.py <session>` checks that each `from` matches
+once. Then rebuild the book and the pamphlet, and proof both.
 
 Report: how many segments were corrected and how many removed, and every one
 left for the user.

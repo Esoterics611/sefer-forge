@@ -20,6 +20,7 @@ Images+voice sessions:
                 grid tables; footnote references and definitions match
 Voice-only sessions:
   transcript.md valid frontmatter with title and source, footnotes match,
+                its readability `edits:` each match once,
                 Added count, UNCLEAR times, review.md up to date
 
 Prints ✗ for errors, ! for warnings, · for notes. Exits 1 if any error.
@@ -359,6 +360,12 @@ def check(session: Path) -> Report:
         if t.exists():
             fm, body = check_frontmatter(r, t, need=("title", "source"))
             check_footnotes(r, "transcript.md", body)
+            try:
+                _, n_edits = F.edit_transcript(body, (fm or {}).get("edits") or [])
+                if n_edits:
+                    r.note(f"{n_edits} readability edit(s) in the frontmatter")
+            except F.EditError as e:
+                r.error(f"transcript.md edits: {e}")
             check_unclear_times(r, t, body)
             check_cleanup(r, t)
         return r

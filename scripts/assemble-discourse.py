@@ -8,7 +8,8 @@ Each session contributes one of:
   - section.md     (image + voicenote sessions)
   - transcript.md  (voice-only sessions). Its frontmatter `title` becomes a
                    '#' heading (a new page in the book) and `subtitle` an
-                   italic line under it.
+                   italic line under it; its `edits:` (the readability pass,
+                   prompts/readability-pass.md) are applied.
 
 Optional keys in <discourse-dir>/meta.yaml:
     intro: introduction.md       # placed before the first session; rendered
@@ -36,6 +37,8 @@ except ImportError:
     print("Missing dependency. Install with: pip install pyyaml")
     sys.exit(1)
 
+import forgelib as F
+
 FRONTMATTER_RE = re.compile(r"^---\n([\s\S]*?)\n---\s*")
 FOOTNOTE_RE = re.compile(r"\[\^([^\]\s]+)\]")
 
@@ -59,8 +62,11 @@ def namespace_footnotes(body: str, prefix: str) -> str:
 
 
 def render_transcript(text: str, label: str) -> str:
+    """A transcript as it prints: its readability edits (frontmatter `edits:`)
+    applied, footnotes namespaced, title and subtitle on top."""
     fm = parse_frontmatter(text)
-    body = namespace_footnotes(strip_frontmatter(text).strip(), f"s{label}")
+    body, _ = F.edit_transcript(strip_frontmatter(text), fm.get("edits") or [])
+    body = namespace_footnotes(body.strip(), f"s{label}")
     head = []
     if fm.get("title"):
         head.append(f"# {fm['title']}")

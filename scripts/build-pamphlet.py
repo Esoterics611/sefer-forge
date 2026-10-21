@@ -51,6 +51,8 @@ except ImportError:
     print("Missing dependency. Install with: pip install pyyaml")
     sys.exit(1)
 
+import forgelib as F
+
 CSS = Path("templates/pamphlet.css")
 OUT = Path("output/pamphlets")
 CHROME = os.environ.get("CHROME", "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe")
@@ -228,10 +230,13 @@ def session_parts(session: Path) -> list[Part]:
         f = session / name
         if f.exists():
             fm, body = frontmatter(f.read_text(encoding="utf-8"))
-            body = unflag(body)
             if name == "section.md":
-                return [section_part(body)]
-            return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), body)]
+                return [section_part(unflag(body))]
+            try:
+                body, _ = F.edit_transcript(body, fm.get("edits") or [])
+            except F.EditError as e:
+                sys.exit(f"{f}: edits: {e}")
+            return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), unflag(body))]
     sys.exit(f"{session}: no section.md or transcript.md yet")
 
 

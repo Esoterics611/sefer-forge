@@ -384,7 +384,7 @@ def edit_pattern(src: str) -> re.Pattern:
     return re.compile((flag + r"\s+").join(toks) + flag, re.S)
 
 
-def apply_edits(paras: list[str], edits: list[dict]) -> tuple[list[str], int]:
+def apply_edits(paras: list[str], edits: list[dict], where: str = "commentary.md") -> tuple[list[str], int]:
     """The readability pass (prompts/readability-pass.md): each edit replaces
     one exact stretch of the explanation (`from`) with `to` (empty: removed).
     Every `from` must occur exactly once. Returns the edited paragraphs and the
@@ -397,12 +397,20 @@ def apply_edits(paras: list[str], edits: list[dict]) -> tuple[list[str], int]:
         pat = edit_pattern(src)
         hits = [(i, m) for i, p in enumerate(out) for m in pat.finditer(p)]
         if len(hits) != 1:
-            raise EditError(f"edit “{src}” matches {len(hits)} places in commentary.md; it must match one")
+            raise EditError(f"edit “{src}” matches {len(hits)} places in {where}; it must match one")
         i, m = hits[0]
         p = out[i][:m.start()] + dst + out[i][m.end():]
-        out[i] = re.sub(r"\s+([,.:;?!])", r"\1", re.sub(r"\s{2,}", " ", p)).strip()
+        out[i] = re.sub(r"[ \t]+([,.:;?!])", r"\1", re.sub(r"[ \t]{2,}", " ", p)).strip()
         out[i] = re.sub(r"^[,;:]\s*", "", out[i])
     return [p for p in out if p], len(edits or [])
+
+
+def edit_transcript(body: str, edits: list[dict]) -> tuple[str, int]:
+    """A voice-only transcript's body with its readability edits (the
+    frontmatter's `edits:`) applied block by block: what prints. The
+    transcript itself keeps what Whisper heard."""
+    blocks, n = apply_edits(re.split(r"\n\s*\n", body.strip()), edits, "transcript.md")
+    return "\n\n".join(blocks) + "\n", n
 
 
 def plan_edits(session: Path) -> list[dict]:
