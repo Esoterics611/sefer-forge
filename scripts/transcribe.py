@@ -5,9 +5,11 @@ Usage:
     python scripts/transcribe.py discourses/001-my-slug/sessions/001 [more sessions]
     python scripts/transcribe.py --pending     # every session with audio and no transcript
 
-Model: MODEL below, run by faster-whisper on the CPU in int8. The first run
-downloads it (about 3 GB, cached in ~/.cache/huggingface). It is slow;
-transcription quality is the point. See TRANSCRIPTION.md.
+Model: MODEL below, run by faster-whisper on an NVIDIA GPU (int8_float16)
+when there is one and requirements-gpu.txt is installed, otherwise on the CPU
+(int8, about 2.7 times slower; same text). WHISPER_DEVICE=cpu forces the CPU.
+The first run downloads the model (about 3 GB, cached in
+~/.cache/huggingface). Transcription quality is the point. See TRANSCRIPTION.md.
 
 Produces next to each audio file:
   <audio>.raw.txt    Whisper's text (never edited)
@@ -32,8 +34,25 @@ import os
 import re
 import subprocess
 import sys
+import sysconfig
 from datetime import datetime
 from pathlib import Path
+
+
+def cuda_libs_on_path() -> None:
+    """The GPU needs cuBLAS and cuDNN (requirements-gpu.txt). Their wheels put
+    the libraries under site-packages/nvidia/*/lib, where the loader does not
+    look, so restart once with those folders on LD_LIBRARY_PATH."""
+    if sys.platform != "linux":
+        return
+    libs = sorted(str(d) for d in Path(sysconfig.get_paths()["purelib"]).glob("nvidia/*/lib"))
+    have = [d for d in os.environ.get("LD_LIBRARY_PATH", "").split(os.pathsep) if d]
+    if any(d not in have for d in libs):
+        os.environ["LD_LIBRARY_PATH"] = os.pathsep.join(libs + [d for d in have if d not in libs])
+        os.execv(sys.executable, [sys.executable, *sys.argv])
+
+
+cuda_libs_on_path()
 
 try:
     from faster_whisper import WhisperModel
@@ -66,7 +85,28 @@ def load_partial(path: Path) -> list[tuple[float, float, str]]:
     return segs
 
 
-def transcribe(model: WhisperModel, audio: Path) -> None:
+def load_model() -> tuple[WhisperModel, str]:
+    """The model on the GPU in int8_float16 when there is one, else on the CPU
+    in int8: the same int8 weights, so the same text (float16 was measured no
+    better and slower; TRANSCRIPTION.md). A second of silence is transcribed
+    first, because a missing CUDA library or a full GPU only shows when the
+    model runs. Returns the model and where it runs."""
+    import ctranslate2
+    import numpy as np
+    if os.environ.get("WHISPER_DEVICE", "").lower() != "cpu" and ctranslate2.get_cuda_device_count():
+        try:
+            model = WhisperModel(MODEL, device="cuda", compute_type="int8_float16")
+            list(model.transcribe(np.zeros(16000, dtype=np.float32), language="he", beam_size=5)[0])
+            return model, "cuda int8_float16"
+        except (RuntimeError, ValueError) as e:
+            model = None
+            print(f"  GPU failed ({str(e).splitlines()[0]}); using the CPU (TRANSCRIPTION.md, GPU)")
+    model = WhisperModel(MODEL, device="cpu", compute_type="int8",
+                         cpu_threads=max(1, (os.cpu_count() or 2) // 2))
+    return model, "cpu int8"
+
+
+def transcribe(model: WhisperModel, device: str, audio: Path) -> None:
     partial, lock = F.sidecar(audio, "partial.txt"), F.sidecar(audio, "lock")
     done = load_partial(partial)
     resume_at = done[-1][1] if done else 0.0
@@ -80,7 +120,8 @@ def transcribe(model: WhisperModel, audio: Path) -> None:
 
     segments, info = model.transcribe(str(audio), **kwargs)
     lock.write_text(f"pid: {os.getpid()}\nstarted: {datetime.now().isoformat(timespec='seconds')}\n"
-                    f"duration: {info.duration:.1f}\nresumed_at: {resume_at:.1f}\n", encoding="utf-8")
+                    f"duration: {info.duration:.1f}\nresumed_at: {resume_at:.1f}\ndevice: {device}\n",
+                    encoding="utf-8")
     with partial.open("a", encoding="utf-8") as out:
         for seg in segments:
             text = BIDI_MARKS.sub("", seg.text).strip()
@@ -126,7 +167,7 @@ def main(argv: list[str]) -> int:
     else:
         sessions = [Path(a.rstrip("/")) for a in argv]
 
-    model = None
+    model, device = None, ""
     status = 0
     for session in sessions:
         if not (session / "voicenotes").is_dir():
@@ -147,10 +188,10 @@ def main(argv: list[str]) -> int:
                 pending.append(audio)
         if pending and model is None:
             print(f"Loading Whisper model ({MODEL})...")
-            model = WhisperModel(MODEL, device="cpu", compute_type="int8",
-                                 cpu_threads=max(1, (os.cpu_count() or 2) // 2))
+            model, device = load_model()
+            print(f"  running on {device}")
         for audio in pending:
-            transcribe(model, audio)
+            transcribe(model, device, audio)
         print()
         fixer = Path(__file__).with_name("apply-fixes.py")
         if any(F.sidecar(a, "raw.txt").exists() for a in audios):

@@ -9,12 +9,12 @@ description: Start a new session in a discourse - make the folder, copy in the p
 2. **Files.** Copy (never move) the photos the user names into `images/` and the
    recording into `voicenotes/`. Keep their names. Ask for any that are missing.
 3. **Whisper.** Start `python scripts/transcribe.py <session>` with Bash
-   `run_in_background`. Whisper needs most of the machine's memory: if
+   `run_in_background`. Run one at a time (on the CPU Whisper needs most of the machine's memory): if
    `python scripts/session-status.py` shows another transcription running, don't start a
    second; queue this one with `python scripts/transcribe.py --pending` once that ends.
 4. **OCR meanwhile** (photo discourses): follow the `ocr-session` skill up to its step 5.
 5. When Whisper finishes, continue with the `ingest-session` skill (or
    `ingest-voice-session` for a voice-only discourse).
 
-Report the session path, the files copied, and when Whisper should finish (about 2.4×
-the recording's length).
+Report the session path, the files copied, and when Whisper should finish (`session-status.py`
+shows the estimate: about 0.9× the recording's length on the GPU, 2.4× on the CPU).

@@ -13,6 +13,7 @@ sudo apt install -y pandoc git-lfs python3-venv
 # both, from the repo root
 python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt                 # faster-whisper, pyyaml, python-docx, pyluach
+pip install -r requirements-gpu.txt             # only with an NVIDIA GPU: Whisper 2.7× faster
 git lfs install && git lfs pull                 # once per clone: fetches the real photos and audio
 ```
 

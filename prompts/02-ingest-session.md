@@ -10,7 +10,7 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 
 > Ingest session `<SESSION_PATH>`.
 >
-> **Step 0 — Where it stands.** Run `python scripts/session-status.py <SESSION_PATH>` and start at the first step that is not done. Never redo a finished step: a crash or a restart leaves finished files in place. If the voicenote is not transcribed, start Whisper now, in the background: `python scripts/transcribe.py <SESSION_PATH>` (an interrupted run resumes where it stopped). It takes about 2.4× the recording's length, so do the OCR while it runs.
+> **Step 0 — Where it stands.** Run `python scripts/session-status.py <SESSION_PATH>` and start at the first step that is not done. Never redo a finished step: a crash or a restart leaves finished files in place. If the voicenote is not transcribed, start Whisper now, in the background: `python scripts/transcribe.py <SESSION_PATH>` (an interrupted run resumes where it stopped). It takes about 0.9× the recording's length on the GPU, 2.4× on the CPU (`session-status.py` shows the estimate), so do the OCR while it runs.
 >
 > **Step 1 — OCR** (skip if `ocr.md` covers every photo). Follow `.claude/skills/ocr-session/SKILL.md`: cut the photos into strips with `scripts/ocr-strips.py`, read them strip by strip into a line-by-line draft, check the line count, write `ocr.md`, then a second pass against the strips.
 >
