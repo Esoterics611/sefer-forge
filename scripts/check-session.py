@@ -170,7 +170,7 @@ def check_ocr(r: Report) -> list[str]:
     n = len(re.findall(r"<!--\s*UNCLEAR", text))
     if n:
         r.note(f"ocr.md: {n} UNCLEAR flag(s)")
-    return F.words(F.ocr_body(r.session))
+    return F.words(F.ocr_text(r.session))
 
 
 def section_parts(body: str) -> dict[str, str]:

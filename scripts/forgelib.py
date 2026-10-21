@@ -128,18 +128,38 @@ def ocr_body(session: Path) -> str:
     return COMMENT.sub(" ", body)
 
 
-def ocr_paragraphs(session: Path) -> list[str]:
-    """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped."""
+def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
+    """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped.
+    notes=False leaves out each photo's printed footnotes too (its `[Footnotes:]`
+    block, up to the next photo): the text as it reads, across photos."""
     _, body, _ = split_frontmatter((session / "ocr.md").read_text(encoding="utf-8"))
-    paras = []
+    paras, in_notes = [], False
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
-        if not block or block.startswith("## Image:"):
+        if block.startswith("## Image:"):
+            in_notes = False
+        if block.startswith("[Footnotes:]"):
+            in_notes = True
+        if not block or block.startswith("## Image:") or (in_notes and not notes):
             continue
         if re.fullmatch(r"<!--.*?-->", block, flags=re.S):    # a note about the photo, not text
             continue
         paras.append(" ".join(block.split()))
     return paras
+
+
+def printed(paragraph: str) -> str:
+    """An OCR paragraph as the נוסח prints it: without a reader's hand underlines,
+    the print's note numbers (^15^) and its bold (the plan's `bold:` and
+    `footnotes:` set those)."""
+    p = re.sub(r"\[([^\]]*)\]\{\.underline\}", r"\1", paragraph)
+    p = re.sub(r"\^\d+\^", "", p)
+    return p.replace("**", "")
+
+
+def ocr_text(session: Path) -> str:
+    """The printed text of ocr.md (F.printed), footnotes and comments left out, across photos."""
+    return COMMENT.sub(" ", "\n\n".join(printed(p) for p in ocr_paragraphs(session, notes=False)))
 
 
 # --- words -----------------------------------------------------------------

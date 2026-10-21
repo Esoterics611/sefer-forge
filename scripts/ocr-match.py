@@ -49,7 +49,7 @@ class Tok:
 
 
 def ocr_tokens(session: Path) -> list[Tok]:
-    text = F.ocr_body(session)
+    text = F.ocr_text(session)
     text = re.sub(r"\{[^}]*\}", " ", text).replace("**", "")
     toks = []
     for raw in text.split():
