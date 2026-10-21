@@ -52,6 +52,9 @@ edits:
   - from: בלשון הרבי הרשע, בחינת הלם העצמי דחוכמה, שאין בחינת רוח הקודש ממש.
     to: ''
     why: garbled name and term, not recoverable
+  - from: בלשון העולם. ואינו כן להעמקת הדעת
+    to: ואינו כן להעמקת הדעת
+    why: the end of the previous reading, said again on going back to the text
   - from: העם השקרא מעמיק
     to: מה שנקרא מעמיק
     why: Whisper

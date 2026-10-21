@@ -685,6 +685,15 @@ def print_pdf(html_path: Path, pdf_path: Path) -> None:
         sys.exit(f"Chrome wrote no PDF for {html_path}")
 
 
+def finis_alone(pdf: Path) -> bool:
+    """Whether the last page carries nothing but the running header, the page
+    number and the closing ornament."""
+    import fitz
+    with fitz.open(pdf) as d:
+        lines = [l.strip() for l in d[-1].get_text().splitlines() if l.strip()]
+    return bool(lines) and any("◆" in l for l in lines) and len(lines) <= 3
+
+
 def main(argv: list[str]) -> int:
     args = [a for a in argv if not a.startswith("--")]
     if len(args) != 1:
@@ -716,6 +725,10 @@ def main(argv: list[str]) -> int:
     pdf = OUT / f"{name}.pdf"
     pdf.unlink(missing_ok=True)
     print_pdf(html_path, pdf)
+    if finis_alone(pdf):
+        # The closing ornament spilled onto a page of its own: leave it out.
+        html_path.write_text(doc.replace(f'<div class="finis">{ORN}</div>\n', ""), encoding="utf-8")
+        print_pdf(html_path, pdf)
     pages = re.search(r"Pages:\s+(\d+)", subprocess.run(["pdfinfo", str(pdf)], capture_output=True,
                                                          text=True).stdout)
     print(f"Built: {pdf}  ({pages.group(1) if pages else '?'} pages · {title})")
