@@ -5,66 +5,42 @@ discourse: 001-lag-baomer
 
 ## Image: 20260421_223826.jpg
 
-<!-- Page from סדר תפילות מכל השנה עם ביאור עפ"י דא"ח — שער לג בעומר, מאמר ראשון. Two visible zones: a left column with the opening of the פסוק-comment and initial framing; a center-right block with the main analytical text. Right margin carries footnote references numbered (16)–(22). -->
+<!-- Page 887 (שער הל"ג בעומר), one column: 15 lines of text, then footnotes in small type below a rule (the end of an הגהה continued from the page before, and notes 15–22; note 22 runs past the photo's left edge). A line above the first is cut off at the photo's top edge. Hand underlines by the reader; a pen mark in the right margin beside the 7th line. Letters at the right edge belong to the facing page. -->
 
-[Left column — opening passage, partially cut off at left edge:]
+... <!-- UNCLEAR: a line cut off at the photo's top edge; only the bottoms of a few letters show --> ואחר שאתה הצבת באופן פרטי כל הגבולות ארץ, ממילא קיץ וחורף אתה יצרתם להם בשינוי אופני המקומות לפי מעמדם אשר הצבת אותם בארץ, וד"ל.
 
-...אחר <!-- UNCLEAR: preceding words cut off --> שאתה הצבת כל גבולות ארץ קיץ וחורף אתה יצרתם, <!-- UNCLEAR: one phrase --> תשובה לאומות העולם <!-- UNCLEAR: rest of sentence -->.
+**והנה**^15^, זה המופת והראי' [מקיץ וחורף א"צ אלא לאוה"ע,]{.underline} שנק' [עם נבל,]{.underline} והם אשר [נאצו שמך]{.underline} לאמר עזב ה' את הארץ תחת [מקרי הטבע,]{.underline} להיות כי [שרש נפשות אוה"ע]{.underline} נמשך [מתחת הזמן]{.underline}^16^ וכח אלקי המהווה הטבע, מוסתר [ונעלם בע' שרים,]{.underline} בסוד [גלות השכינה]{.underline} כידוע^17^. אבל ישראל [עלה במחשבה]{.underline}^18^, פי', שרש נשמתם ומקור חוצבם מבחי' מחשבה עליונה [שלמעלה מן הזמן,]{.underline} ועד"מ המחשבה באדם התחתון שנובעת [בתמידות בלי הפסק]{.underline} לעולם, כך בחי' אותיות מח' עליונה האלקי' כתיב בה^19^ ונהר [יוצא מעדן,]{.underline} שהן [בחי' חו"ב]{.underline}^20^, שנק'^21^ תרין רעין דלא מתפרשין, פי', שמחדש השפע תמיד מאין ליש בבלתי הפסק כו', [והוא]{.underline} [למעלה מן הזמן,]{.underline} וכמ"ש ביאור דבר זה במ"א^22^. ולהיות כי
 
-...<!-- UNCLEAR: several lines --> שנקרא עם נבל, <!-- UNCLEAR: continuation --> והם אשר ניאצו שמך <!-- UNCLEAR: remainder of phrase -->.
+[Footnotes:]
 
-...למה ניאצו שמך <!-- UNCLEAR: phrase --> למה <!-- UNCLEAR --> עזב ה' את הארץ תחת מקרי הטבע...
+הארץ מכל צד כו', וז"ל ההגה"ה: וביאור הענין, שכמו שהארץ נחלקה לשס"ה מעלות, כמו כן השמים, ושם כל מעלה הוא שטח רב ועצום, ולא ט"ו פרסאות לבד כמו מעלות שבארץ, לכן יתכן שם שע"י ריחוק השמש בחורף כ"ב מעלות וחצי לצד דרום יהי' שם קור לצד צפון, כי ריחוק מעלות הנ"ל דשמים הוא בשטח רב ועצום, ולא כמו המעלות שבארץ, ולכן זה ג"כ גורם הקור בחורף בצפון, כי כל מעלה בארץ מקבלת ממעלה שכנגדה בשמים. ע"כ מכתי"ק נ"ע.
 
-[Center-right block — main analytical text:]
+15) בהבא לקמן (בפיסקא זו) בההפרש שבין אוה"ע ובנ"י בענין האמונה בהתחדשות השפע – ראה (נוסף למש"כ בזה לקמן ב„ביאור" תמז, ב ואילך ובנסמן שם בהערה 140) מאמרי אדה"ז נביאים ע' קלו. סה"מ עטר"ת ע' רסז ואילך (ועיי"ש ע' ער שמציין לכאן). תרפ"ב ע' קצב ואילך. ספר הערכים ערך אומות העולם ס"ב סק"א (כרך ב ע' רעג־עדר). וראה עוד בההפרש שבין בנ"י ואוה"ע בענין האמונה לעיל קצט, א. תטז, ג ובנסמן שם. סה"מ עת"ר ע' י ובנסמן שם. המשך תער"ב ח"א ע' קיד. ח"ב ע' תתקצו. א'קפב. סה"מ עזר"ת ס"ע ריח ואילך. עטר"ת ע' שס. שסו. תרפ"ב ע' קעז.
 
-...ישראל אין צריכין לראיה ומופת^(16) לחידוש<!-- UNCLEAR: one word --> מאין ליש, כי הם מרגישים זאת בשורש נשמתם שלמעלה מזמן ומקום...
+16) ראה גם בענין שרשם תחת הזמן (נוסף לנסמן בהערה הבאה בענין שרשם, והנסמן בהערה 22 בענין שרש בנ"י למעלה מהזמן) – מאמרי אדה"ז הקצרים ע' שנו. לקו"ש ח"ו ע' 54. תו"מ ח"ל ע' 114. חמ"א ע' 48. חמ"ז ע' 205 הערה 21. חנ"ב ע' 124 ואילך.
 
-...לשורש נשמת הגוים<!-- UNCLEAR: short phrase --> שאינו למעלה מזמן ומקום, <!-- UNCLEAR: several lines — appears to describe how the divine life-force is concealed within the 70 ministers and the framework of nature -->...
+17) ראה לעיל תלא, ב. וש"נ.
 
-...<!-- UNCLEAR: passage of ~4–6 lines describing the concealment of the כוח האלוקי within the שבעים שרים in the secret of the exile of the Shekhinah -->...
+18) ראה ב"ר פ"א, ד. ובכ"מ.
 
-...כי להיות כי שורש נשמות <!-- UNCLEAR: phrase --> אומות העולם נמשך מתחת לזמן <!-- UNCLEAR: remainder -->, וכוח <!-- UNCLEAR: word --> האלוקי המהווה הטבע מוסתר ונעלם בשבעים שרים, בסוד גלות <!-- UNCLEAR: phrase -->...
+19) בראשית ב, י.
 
-[Right margin — footnote references, text too small to read fully:]
+20) ראה לעיל קס, ב. וש"נ.
 
-(16) <!-- UNCLEAR: citation -->
-(17) ב"ד <!-- UNCLEAR: remainder of citation -->
-(18) ראה <!-- UNCLEAR: remainder -->
-(19) בראשית ב' <!-- UNCLEAR: remainder -->
-(20) ראה <!-- UNCLEAR: remainder -->
-(21) ראה ל"ד <!-- UNCLEAR: remainder -->
-(22) <!-- UNCLEAR: citation, appears to reference גאולה theme -->
+21) ראה זח"ב נו, א. זח"ג ד, א.
 
----
+22) באוה"ת נ"ך שם (ס"ע תתקמח) מציין לביאור ע"פ יונתי (נדפס בלקו"ת...
 
 ## Image: 20260421_223854.jpg
 
-<!-- Page 888. Closing passage of the הודאה discussion in שער לג בעומר; new chapter header at bottom. -->
+<!-- Page 888 (running head "שער הל"ג", cut off), one column continuing the page before: 28 lines of text; from the 21st line on, the page curves past the photo's right edge and the start of each line is cut off ("..."). Below a rule, the start of the footnotes, mostly cut off. Hand underlines by the reader in the upper half. -->
 
-[Main text — upper portion:]
+ישראל עלה במחשבה זו, א"צ [כלל לראי' ומופת לחידוש]{.underline} ההשפעה [מאין ליש,]{.underline} כמו בקיץ וחורף כנ"ל, כי מושגת להם בנפשם מצד שרש נפשות בנ"י בבחי' מח' עילאה וכו', וד"ל^23^. וזהו שאנו אומרים^24^ [מודים אנחנו לך שאתה ה']{.underline} אלקינו, פי', מחמת שאתה ה' אלקינו בבחי' מח', שעלו שם כנ"י בשרש מקור חוצבם כנ"ל, ע"כ ממילא אנחנו מודים בהודאה זו בלי שום מופת וראיה כלל, וד"ל.
 
-...של המדרגה הזאת <!-- UNCLEAR: transitional phrase -->, כי...
+**אך** הנה, זאת [ההודאה אינה בנפש האלקית]{.underline} אלא מצד שרשה למעלה במחשבה, אבל [בהיותה מלובשת]{.underline} [בחומר הגופני המחשיך עליה,]{.underline} לא תוכל לבא לבחי' הודאה זאת שאתה ה' אלקינו מחדש מאין ליש בתמידות כו', מפני [שחומריות הגוף מחשיך על הודאה זו,]{.underline} הנה לזאת תיקנו רז"ל מודים דרבנן. וענין מודים דרבנן הוא [ענין הודאה]{.underline} [להודאה זו, כלומר,]{.underline} מודים אנחנו לך על שאנו מודים לך כו', פי', אנו מודים שכן יאתה להודות לך כו'.
 
-כי הנה <!-- UNCLEAR: opening clause — appears to introduce two levels of הודאה -->.
+וביאור הדברים, כי הנה יש ב' מדריגות בהודאה^25^. הא' ההודאה אשר באה מצד ההשגה והדעת, כמו אדם שמשיג ומכיר בעוצם גדולת ורוממות המלך וכיוצא יודה הודאה שכן הוא מצד שמכיר ומבין כו', וכן בחכם שיודה הפלאת חכמתו מצד שיכיר וישיג אותו^26^. ואמנם יש בחי' ...דאה למטה מזו, והוא ההודאה שלמטה מן הדעת, והיינו ...שר אין ביכולת השגתו להשיג ולהכיר כלל בעוצם ...דולה או החכמה כמו שהוא, רק שיודע ומכיר שהוא ...לא בחכמה, וצריך להודות לו בהודאה ושבח גדול, ...ו שיודה גם העני בגדולת המלך אע"פ שאינו מכיר ...ות הגדולה כמו שהיא, אלא שמודה שצריך להודות ...בח בגדולה זו, הגם שאינו משיגה, וזה בא מצד ריחוק ...ה של המודה, שכל שהוא יותר מרוחק בערך יותר לא
 
-...הודאה<!-- UNCLEAR: modifier — possibly רבה or זו -->, <!-- UNCLEAR: ~3 lines describing what the deeper level of acknowledgment consists of -->...
+[Footnotes:]
 
-...<!-- UNCLEAR: passage about how even our acknowledgment (מודים אנחנו לך שאתה הוה, ה' אלוקינו) is only from the soul's root above; the body (בחינת החומר) blocks full experience of it -->...
-
-...<!-- UNCLEAR: ~2 lines about a trickle/flow (מזל) coming through from the higher level, which is all we can feel in the body -->...
-
-[Main text — lower portion:]
-
-...פרוש שורש נשמתם למקור חוצבם זה מבחינת המחשבה העליונה, שלמעלה מהזמן <!-- UNCLEAR: continuation -->.
-
-...המחשבה של האדם היא באמת למעלה מזמן ומקום. כשהאדם <!-- UNCLEAR: phrase -- appears to describe how once a thought becomes specific it descends into time/space, becoming "speech within thought" -->.
-
-...<!-- UNCLEAR: passage comparing levels — Israel's soul-root (מחשבה עליונה) vs. nations' soul-root (time/space); the way thought contains infinite experiential data while speech/action is already bounded -->...
-
-...ישראל עלו במחשבה <!-- UNCLEAR: continuation -- nations remain within time/space framework -->.
-
-...על כן <!-- UNCLEAR: concluding clause — something about what follows from this root-difference in terms of hoda'ah/acknowledgment -->...
-
-[Bottom — new chapter header:]
-
-שער הל"<!-- UNCLEAR: final letter or number — new chapter begins here -->
+...ז, סע"ג ואילך. סה"מ תקס"ו ח"א ע' ... <!-- UNCLEAR: one more footnote line, cut off at the photo's bottom edge -->
