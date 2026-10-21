@@ -1,0 +1,6 @@
+# Whisper on an NVIDIA GPU (Linux / WSL): the cuBLAS and cuDNN 9 libraries
+# CTranslate2 4.x loads. About 2.2 GB; skip it on a machine without one.
+# scripts/transcribe.py finds them itself (TRANSCRIPTION.md, GPU).
+-r requirements.txt
+nvidia-cublas-cu12
+nvidia-cudnn-cu12==9.*

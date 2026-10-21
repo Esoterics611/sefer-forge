@@ -343,7 +343,7 @@ def audio_seconds(audio: Path) -> float | None:
 
 def transcription(audio: Path, session: Path) -> dict:
     """{"state": done|running|interrupted|none, "at": seconds heard, "of": length,
-    "started": epoch, "pid": pid} for one recording."""
+    "started": epoch, "pid": pid, "device": where Whisper runs} for one recording."""
     if sidecar(audio, "raw.txt").exists():
         return {"state": "done"}
     info: dict = {"state": "none"}
@@ -356,6 +356,7 @@ def transcription(audio: Path, session: Path) -> dict:
         fields = dict(l.split(":", 1) for l in lock.read_text(encoding="utf-8").splitlines() if ":" in l)
         pid = int(fields.get("pid", "0").strip() or 0)
         info["of"] = float(fields.get("duration", "0") or 0)
+        info["device"] = fields.get("device", "cpu int8").strip()
         if _alive(pid):
             info.update(state="running", pid=pid, started=_proc_started(pid))
     if info["state"] != "running" and (pid := _old_style_run(session)):

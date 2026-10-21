@@ -54,6 +54,13 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - `python scripts/check-session.py [path]` — every rule above that a script can check; run it after changing a session. A project hook runs it after each edit of a session file and reports errors.
 - `python scripts/proof-pdf.py <pdf>` — a printed PDF against `docs/print-standard.md` (fonts, palette, leaks, margins, stranded headings, page numbers), plus spread images for the visual review. The book's PDF comes from `bash scripts/docx-to-pdf.sh output/<book>.docx`.
 
+## GitHub account
+Every commit and push in this repo is under **Esoterics611**, never rmr611 (the machine's global git identity, used by other repos). GitHub credits a commit to the account owning its author email, so this repo's local git config sets:
+- `user.email` = `192616319+Esoterics611@users.noreply.github.com` (`user.name` = `Ronnie Rendel`)
+- `origin` = `https://Esoterics611@github.com/Esoterics611/sefer-forge.git` (the `gh` credential helper then pushes with Esoterics611's token, whichever `gh` account is active)
+
+Before committing, `git config user.email` must print the Esoterics611 address; in a fresh clone or worktree, set both again. Never pass `--author` or `-c user.email=` with another address.
+
 ## When the user says...
 - "status" / "where are we" / "what's next" → skill `session-status`.
 - "new discourse" → use `prompts/01-new-discourse.md`.

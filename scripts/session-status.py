@@ -32,7 +32,8 @@ from pathlib import Path
 import forgelib as F
 
 CHECK = F.load_script("check-session")
-SPEED = 2.4            # Whisper on this CPU: minutes of work per minute of audio (TRANSCRIPTION.md)
+# Whisper's minutes of work per minute of audio, by where it runs (TRANSCRIPTION.md)
+SPEED = {"cpu": 2.4, "cuda": 0.9}
 
 
 def mtime(p: Path) -> float:
@@ -52,13 +53,14 @@ def transcribe_step(s: Path) -> tuple[str, str, str]:
     for a, st in states:
         if st["state"] == "running":
             of, at, started = st.get("of"), st.get("at"), st.get("started")
+            speed = SPEED["cuda" if st.get("device", "").startswith("cuda") else "cpu"]
             if at and of:
-                left = (of - at) * SPEED
+                left = (of - at) * speed
                 return "…", f"transcribing {a.name}: {F.stamp(at)} of {F.stamp(of)}, ~{fmt_min(left)} left", \
                     "wait for Whisper"
             if of and started:
-                left = started + of * SPEED - time.time()
-                when = time.strftime("%H:%M", time.localtime(started + of * SPEED))
+                left = started + of * speed - time.time()
+                when = time.strftime("%H:%M", time.localtime(started + of * speed))
                 if left > 0:
                     return "…", f"transcribing {a.name} (pid {st['pid']}), expected done ~{when}, " \
                                 f"~{fmt_min(left)} left", "wait for Whisper"
