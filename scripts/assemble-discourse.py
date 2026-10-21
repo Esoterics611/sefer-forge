@@ -62,10 +62,10 @@ def namespace_footnotes(body: str, prefix: str) -> str:
 
 
 def render_transcript(text: str, label: str) -> str:
-    """A transcript as it prints: its readability edits (frontmatter `edits:`)
+    """A transcript as it prints: its print edits (frontmatter `edits:`, `style:`)
     applied, footnotes namespaced, title and subtitle on top."""
     fm = parse_frontmatter(text)
-    body, _ = F.edit_transcript(strip_frontmatter(text), fm.get("edits") or [])
+    body, _ = F.edit_transcript(strip_frontmatter(text), F.print_edits(fm))
     body = namespace_footnotes(body.strip(), f"s{label}")
     head = []
     if fm.get("title"):

@@ -370,7 +370,7 @@ def build(session: Path, plan: dict) -> str:
 
     nusach = Nusach(plan, session)
     try:
-        explained, _ = F.apply_edits(commentary_paragraphs(session), plan.get("edits") or [])
+        explained, _ = F.apply_edits(commentary_paragraphs(session), F.print_edits(plan))
     except F.EditError as e:
         raise PlanError(str(e))
     body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]

@@ -233,7 +233,7 @@ def session_parts(session: Path) -> list[Part]:
             if name == "section.md":
                 return [section_part(unflag(body))]
             try:
-                body, _ = F.edit_transcript(body, fm.get("edits") or [])
+                body, _ = F.edit_transcript(body, F.print_edits(fm))
             except F.EditError as e:
                 sys.exit(f"{f}: edits: {e}")
             return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), unflag(body))]

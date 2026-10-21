@@ -52,3 +52,6 @@ once. Then rebuild the book and the pamphlet, and proof both.
 
 Report: how many segments were corrected and how many removed, and every one
 left for the user.
+
+After this pass comes the last one, the style pass (`prompts/style-pass.md`):
+the speech made into written Hebrew, as `style:` beside `edits:`.

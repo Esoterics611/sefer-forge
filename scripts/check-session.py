@@ -241,10 +241,10 @@ def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None)
         try:
             cparas, n_edits = F.apply_edits(cparas, F.plan_edits(r.session))
         except F.EditError as e:
-            r.error(f"section-plan.yaml edits: {e}")
+            r.error(f"section-plan.yaml edits/style: {e}")
             n_edits = 0
         if n_edits:
-            r.note(f"{n_edits} readability edit(s) from section-plan.yaml")
+            r.note(f"{F.edit_counts(F.load_yaml(r.session / 'section-plan.yaml'))} from section-plan.yaml")
         sd = DIFF.diff(DIFF.words("\n\n".join(cparas)), DIFF.words(expl))
         n = sum(len(sd[k]) for k in ("added", "replaced", "removed", "fillers"))
         if n:
@@ -361,11 +361,11 @@ def check(session: Path) -> Report:
             fm, body = check_frontmatter(r, t, need=("title", "source"))
             check_footnotes(r, "transcript.md", body)
             try:
-                _, n_edits = F.edit_transcript(body, (fm or {}).get("edits") or [])
+                _, n_edits = F.edit_transcript(body, F.print_edits(fm))
                 if n_edits:
-                    r.note(f"{n_edits} readability edit(s) in the frontmatter")
+                    r.note(f"{F.edit_counts(fm)} in the frontmatter")
             except F.EditError as e:
-                r.error(f"transcript.md edits: {e}")
+                r.error(f"transcript.md edits/style: {e}")
             check_unclear_times(r, t, body)
             check_cleanup(r, t)
         return r

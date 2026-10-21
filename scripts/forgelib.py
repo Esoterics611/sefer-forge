@@ -365,7 +365,7 @@ def transcription(audio: Path, session: Path) -> dict:
     return info
 
 
-# --- readability edits (section-plan.yaml `edits:`) ---------------------------------
+# --- print edits: the readability pass (`edits:`) and the style pass (`style:`) ----------
 
 class EditError(Exception):
     pass
@@ -406,15 +406,35 @@ def apply_edits(paras: list[str], edits: list[dict], where: str = "commentary.md
 
 
 def edit_transcript(body: str, edits: list[dict]) -> tuple[str, int]:
-    """A voice-only transcript's body with its readability edits (the
-    frontmatter's `edits:`) applied block by block: what prints. The
+    """A voice-only transcript's body with its print edits (the frontmatter's
+    `edits:` and `style:`, F.print_edits) applied block by block: what prints. The
     transcript itself keeps what Whisper heard."""
     blocks, n = apply_edits(re.split(r"\n\s*\n", body.strip()), edits, "transcript.md")
     return "\n\n".join(blocks) + "\n", n
+
+
+def print_edits(d: dict | None) -> list[dict]:
+    """The edits that print, in order: the readability pass (`edits:`,
+    prompts/readability-pass.md), then the style pass (`style:`,
+    prompts/style-pass.md), whose `from` is the text after the first."""
+    d = d or {}
+    return list(d.get("edits") or []) + list(d.get("style") or [])
+
+
+def edit_counts(d: dict | None) -> str:
+    """'N readability edit(s)', plus ', M style edit(s)' when there are any."""
+    d = d or {}
+    n, m = len(d.get("edits") or []), len(d.get("style") or [])
+    return f"{n} readability edit(s)" + (f", {m} style edit(s)" if m else "")
+
+
+def load_yaml(f: Path) -> dict:
+    """A YAML file as a dict; {} when it is missing or empty."""
+    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}) if f.exists() else {}
 
 
 def plan_edits(session: Path) -> list[dict]:
     f = session / "section-plan.yaml"
     if not f.exists():
         return []
-    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}).get("edits") or []
+    return print_edits(yaml.safe_load(f.read_text(encoding="utf-8")))

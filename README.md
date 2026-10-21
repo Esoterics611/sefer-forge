@@ -50,7 +50,9 @@ recording ──► Whisper (local, GPU) ──► .raw.txt / .timed.txt ──�
 7. **Print and proof.** A session prints as an A5 pamphlet; discourses gather
    into chapters and books (pandoc to DOCX). Every PDF passes
    `scripts/proof-pdf.py` and a page-by-page review against
-   `docs/print-standard.md`, then a readability pass, before it reaches you.
+   `docs/print-standard.md`, then a readability pass (garbled words) and a
+   last style pass that turns the spoken explanation into written Hebrew,
+   before it reaches you.
 
 ## Agentic development
 

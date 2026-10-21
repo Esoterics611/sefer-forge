@@ -52,6 +52,9 @@ photos + recording
                             │
                             ▼
               build-pamphlet.py ──► proof-pdf.py + visual review ──► readability pass
+                            │                                         (edits:)
+                            ▼
+                      style pass: the spoken Hebrew made written (style:)
                             │
                             ▼
                     you: acceptance
@@ -68,6 +71,7 @@ photos + recording
 | Pamphlet | "pamphlet", "publish session N" | `publish-pamphlet` | `build-pamphlet.py` | A5 PDF | at acceptance |
 | Proof | "proof", before any hand-over | `proof-pdf` | `proof-pdf.py` | proof report, spread images | at acceptance |
 | Readability pass | "words that don't make sense" | (prompt) | the plan's or transcript's `edits:` | cleaner print | a segment longer than a sentence |
+| Style pass (last) | "less conversational" | (prompt `style-pass.md`) | the plan's or transcript's `style:` | written, not spoken, Hebrew | a rewrite that would change a claim |
 | Discourse | "assemble discourse" | `assemble-discourse` | `assemble-discourse.py` | `discourse.md` | before overwriting hand edits |
 | Chapter | "add to chapter" | `assign-chapter` | `structure.yaml` | the book's order | the placement is yours |
 | Book | "build book" | `build-book` | `build-all.sh`, `docx-to-pdf.sh` | DOCX and PDF | at acceptance |
@@ -88,9 +92,10 @@ process is built so that its mistakes show up rather than hide:
   `transcript-diff.py` lists every word changed against Whisper; a word added
   without a rule is an error.
 - **Faithful record, separate print decisions.** `commentary.md` and
-  `transcript.md` keep what was said. What the printed page corrects or leaves
-  out is a list of `edits:` (in the session plan, or the transcript's
-  frontmatter), each one visible and reversible.
+  `transcript.md` keep what was said. What the printed page corrects, leaves
+  out or rewrites from speech into writing is a list of `edits:` and `style:`
+  (in the session plan, or the transcript's frontmatter), each one visible and
+  reversible; the quoted readings that place each explanation never change.
 - **Built files are never hand-edited.** `section.md` is rebuilt from its plan;
   `compiled/` and `output/` from the sources.
 - **Checks run by themselves.** The hook runs `check-session.py` after every

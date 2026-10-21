@@ -24,6 +24,8 @@ has not passed it. The standard is `docs/print-standard.md`; read it first.
 
 3. **Readability pass** (`prompts/readability-pass.md`) for a session pamphlet: the short
    garbled segments of the explanation, corrected or removed as `edits:` in the plan.
+   Then, for a new session, the **style pass** (`prompts/style-pass.md`): the spoken
+   Hebrew made written, as `style:`, readings untouched.
 
 4. **Fix, rebuild, re-proof** until steps 1–3 are clean. Write what was found and
    fixed under "Visual review" in the `.proof.md` report.
