@@ -40,14 +40,14 @@ PY=$(command -v python || command -v python3 || true)
 # The shared template is generated (not committed): (re)build it when missing
 # or when scripts/create-template.py has changed since.
 TEMPLATE=templates/book-template.docx
-if [ -n "$PY" ] && { [ ! -f "$TEMPLATE" ] || [ scripts/create-template.py -nt "$TEMPLATE" ]; }; then
+if [ -n "$PY" ] && { [ ! -s "$TEMPLATE" ] || [ scripts/create-template.py -nt "$TEMPLATE" ]; }; then   # -s: an empty file (a crash mid-write) is rebuilt too
   "$PY" scripts/create-template.py
 fi
 
 REF=""
 if [ -f "books/$BOOK/reference.docx" ]; then
   REF="--reference-doc=books/$BOOK/reference.docx"
-elif [ -f "$TEMPLATE" ]; then
+elif [ -s "$TEMPLATE" ]; then
   REF="--reference-doc=$TEMPLATE"
 else
   echo "WARN: no reference docx — using pandoc defaults."

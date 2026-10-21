@@ -35,13 +35,14 @@ contains ": " or starts with a quote mark goes on its own line under `>-`,
 as the footnote text above.
 
 Range, breaks and quotes are matched word for word against the OCR,
-ignoring punctuation and niqqud. A range that cuts into a paragraph gets the
-`...` snapshot marker. UNCLEAR flags travel with their words. ocr.md is
+ignoring punctuation and niqqud. A range that cuts into a sentence gets the
+`...` snapshot marker; one that cuts between sentences does not. UNCLEAR flags travel with their words. ocr.md is
 never changed: text outside the range stays there as the record.
 
 Writes section.md with `built_from: section-plan.yaml` in its frontmatter,
 and rebuilds such a file freely; a hand-made section.md is left alone unless
---force. Then runs check-session.py on the session. --init writes a starter
+--force. Then refreshes review.md (transcript-diff.py) and runs
+check-session.py on the session. --init writes a starter
 plan (range from ocr-match.md when present, one box per paragraph) for the
 decisions to be filled in.
 """
@@ -172,10 +173,14 @@ def nusach_paragraphs(plan: dict, session: Path) -> tuple[list[str], list[str]]:
                 cur = []
             cur.append(toks[ti][0] + marks.get((pi, ti), ""))
         out_paras.append(cur)
-    # A range that cuts into a printed paragraph is marked like a photo's edge.
-    if ta > 0 and not out_paras[0][0].startswith(SNAP):
+    # A range that cuts into a printed sentence is marked like a photo's edge;
+    # one that cuts between sentences leaves a whole text and needs no mark.
+    def ends_sentence(tok: str) -> bool:
+        return F.COMMENT.sub("", tok).rstrip().endswith((".", ":", "?"))
+
+    if ta > 0 and not ends_sentence(paras[pa][ta - 1][0]) and not out_paras[0][0].startswith(SNAP):
         out_paras[0][0] = SNAP + out_paras[0][0]
-    if tb < len(paras[pb]) - 1 and not out_paras[-1][-1].endswith(SNAP):
+    if tb < len(paras[pb]) - 1 and not ends_sentence(paras[pb][tb][0]) and not out_paras[-1][-1].endswith(SNAP):
         out_paras[-1][-1] += SNAP
 
     bold = [F.words(x) for x in (n.get("bold") or [])]
@@ -369,8 +374,11 @@ def main(argv: list[str]) -> int:
         print(f"Plan problem — {e}")
         return 1
     target.write_text(text, encoding="utf-8")
-    print(f"Wrote {target}")
-    return subprocess.call([sys.executable, str(Path(__file__).with_name("check-session.py")), str(session)])
+    print(f"Wrote {target}", flush=True)
+    # review.md records the box check too: refresh it, then check the session.
+    here = Path(__file__).parent
+    subprocess.call([sys.executable, str(here / "transcript-diff.py"), str(session)], stdout=subprocess.DEVNULL)
+    return subprocess.call([sys.executable, str(here / "check-session.py"), str(session)])
 
 
 if __name__ == "__main__":

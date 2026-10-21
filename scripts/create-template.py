@@ -56,6 +56,10 @@ def configure(s,
     rPr = goa(s, 'w:rPr')
     # Font
     rf = goa(rPr, 'w:rFonts')
+    # Theme fonts (asciiTheme, cstheme, ...) inherited from pandoc's reference
+    # styles override explicit names: headings came out in Times New Roman.
+    for attr in ('w:asciiTheme', 'w:hAnsiTheme', 'w:eastAsiaTheme', 'w:cstheme'):
+        rf.attrib.pop(qn(attr), None)
     rf.set(qn('w:ascii'), font)
     rf.set(qn('w:hAnsi'), font)
     rf.set(qn('w:cs'), font)   # Complex Script = Hebrew
@@ -83,7 +87,11 @@ def configure(s,
                 rPr.remove(elem)
     # Color
     if color_auto:
-        goa(rPr, 'w:color').set(qn('w:val'), 'auto')
+        col = goa(rPr, 'w:color')
+        col.set(qn('w:val'), 'auto')
+        # A theme colour wins over val: headings came out in Word's accent blue.
+        for attr in ('w:themeColor', 'w:themeShade', 'w:themeTint'):
+            col.attrib.pop(qn(attr), None)
     # RTL run direction
     if rtl:
         goa(rPr, 'w:rtl')
@@ -148,6 +156,27 @@ with tempfile.TemporaryDirectory() as tmp:
 
 BODY_PT = 13
 
+# Document defaults: pandoc's reference sets theme fonts here (Times New
+# Roman for Hebrew) and Arabic as the right-to-left language. Anything whose
+# style names no font, such as the table of contents Word generates, falls
+# back to these.
+defaults = doc.styles.element.find(qn('w:docDefaults'))
+d_rPr = goa(goa(defaults, 'w:rPrDefault'), 'w:rPr')
+d_fonts = goa(d_rPr, 'w:rFonts')
+for attr in ('w:asciiTheme', 'w:hAnsiTheme', 'w:eastAsiaTheme', 'w:cstheme'):
+    d_fonts.attrib.pop(qn(attr), None)
+for attr in ('w:ascii', 'w:hAnsi', 'w:cs'):
+    d_fonts.set(qn(attr), HEBREW_FONT)
+goa(d_rPr, 'w:lang').set(qn('w:bidi'), 'he-IL')
+
+# Links (table of contents entries, footnote links) print in the text colour.
+link = doc.styles['Hyperlink'].element if 'Hyperlink' in [s.name for s in doc.styles] else None
+if link is not None:
+    l_col = goa(goa(link, 'w:rPr'), 'w:color')
+    l_col.set(qn('w:val'), 'auto')
+    for attr in ('w:themeColor', 'w:themeShade', 'w:themeTint'):
+        l_col.attrib.pop(qn(attr), None)
+
 # Normal — base for everything
 configure(doc.styles['Normal']._element,
           size_pt=BODY_PT, rtl=True, justify=True, spacing_factor=1.6,
@@ -204,6 +233,16 @@ configure(get_or_create_style(doc, 'Footnote Text')._element,
 configure(get_or_create_style(doc, 'TOC Heading')._element,
           size_pt=20, bold=True, rtl=True, align='center',
           space_before_pt=12, space_after_pt=12)
+
+# Table of contents entries. Word fills the TOC field with its built-in
+# "toc N" styles (lower case); a custom "TOC N" is ignored and Word's own
+# definition, in Times New Roman, is used instead. So these must carry the
+# built-in names.
+for level in (1, 2, 3):
+    st = get_or_create_style(doc, f'TOC {level}')._element
+    goa(st, 'w:name').set(qn('w:val'), f'toc {level}')
+    st.attrib.pop(qn('w:customStyle'), None)
+    configure(st, size_pt=BODY_PT, rtl=True, space_before_pt=0, space_after_pt=4)
 
 # Page: A4, 2.5 cm margins, RTL section
 section = doc.sections[0]

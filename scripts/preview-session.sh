@@ -32,7 +32,7 @@ Path(sys.argv[2]).write_text(re.sub(r"^---[\s\S]*?---\s*\n?", "", text, count=1)
 EOF
 
 TEMPLATE=templates/book-template.docx
-if [ ! -f "$TEMPLATE" ] || [ scripts/create-template.py -nt "$TEMPLATE" ]; then
+if [ ! -s "$TEMPLATE" ] || [ scripts/create-template.py -nt "$TEMPLATE" ]; then   # -s: an empty file (a crash mid-write) is rebuilt too
   "$PY" scripts/create-template.py
 fi
 
@@ -51,20 +51,6 @@ if ! command -v powershell.exe &>/dev/null || ! command -v pdftoppm &>/dev/null;
   echo "No Word/pdftoppm here: open $DOCX to review."
   exit 0
 fi
-WINTMP=$(wslpath "$(powershell.exe -NoProfile -Command '[IO.Path]::GetTempPath()' | tr -d '\r')")
-cp "$DOCX" "$WINTMP/$NAME.docx"
-WDOCX=$(wslpath -w "$WINTMP/$NAME.docx")
-WPDF=$(wslpath -w "$WINTMP/$NAME.pdf")
-powershell.exe -NoProfile -Command "
-  \$w = New-Object -ComObject Word.Application
-  \$w.Visible = \$false
-  try {
-    \$d = \$w.Documents.Open('$WDOCX', \$false, \$true)
-    \$d.ExportAsFixedFormat('$WPDF', 17)
-    \$d.Close(\$false)
-  } finally { \$w.Quit() }
-" >/dev/null
-mv "$WINTMP/$NAME.pdf" "$OUTDIR/$NAME.pdf"
-rm -f "$WINTMP/$NAME.docx"
+bash "$(dirname "$0")/docx-to-pdf.sh" "$DOCX" "$OUTDIR/$NAME.pdf"
 pdftoppm -png -r 70 "$OUTDIR/$NAME.pdf" "$OUTDIR/$NAME"
 echo "Pages: $(ls "$OUTDIR/$NAME"-*.png | tr '\n' ' ')"

@@ -178,7 +178,15 @@ def discourse_parts(discourse: Path, meta: dict) -> list[Part]:
     return [parse_part(unflag(text)) for text in chunks[1::2]]
 
 
+SUPERSCRIPT = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹", "0123456789")
+
+
 def to_html(markdown: str) -> str:
+    # Superscript digits (note marks in older OCR) are in neither house font:
+    # set them as real superscripts.
+    markdown = re.sub(r"[⁰¹²³⁴-⁹]+", lambda m: f"^{m.group(0).translate(SUPERSCRIPT)}^", markdown)
+    # A dash belongs to the word before it: never let a line start with one.
+    markdown = re.sub(r" (?=[—–] )", "\u00a0", markdown)
     # -smart keeps the plain " and ' of the Hebrew (ה' and ע"פ are not quotes).
     return subprocess.run(
         ["pandoc", "-f", "markdown-smart", "-t", "html5", "--wrap=none", "--section-divs"],
@@ -233,6 +241,11 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
     for i, p in enumerate(parts):
         if whole:
             first = " first" if i == 0 and not front else ""
+            if not p.kicker and i > 0:
+                # No title: the session continues the one before, on the same page.
+                md.append(f'<div class="opener cont"><div class="orn">{ORN}</div></div>')
+                md.append(p.body)
+                continue
             opener = [f'<div class="opener{first}">']
             if p.kicker:
                 opener.append(f'<div class="kicker">{esc(p.kicker)}</div>')
@@ -244,7 +257,10 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
         md.append(p.body)
     body = to_html("\n\n".join(md))
 
-    header = css_string(" · ".join(x for x in (series, h1) if x))
+    parts = [x for x in (series, h1) if x]
+    if len(parts) == 2 and plain(parts[0]) == plain(parts[1]):
+        parts = parts[:1]                      # a book named like its discourse
+    header = css_string(" · ".join(parts))
     doc = f"""<!doctype html>
 <html dir="rtl" lang="he"><head><meta charset="utf-8"><title>{esc(h1)}</title>
 <style>

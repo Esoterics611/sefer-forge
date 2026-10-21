@@ -51,6 +51,7 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 ## Checking work
 - `python scripts/session-status.py [path]` — where each session stands and its next step (also after a crash: an interrupted transcription resumes by rerunning `transcribe.py`).
 - `python scripts/check-session.py [path]` — every rule above that a script can check; run it after changing a session. A project hook runs it after each edit of a session file and reports errors.
+- `python scripts/proof-pdf.py <pdf>` — a printed PDF against `docs/print-standard.md` (fonts, palette, leaks, margins, stranded headings, page numbers), plus spread images for the visual review. The book's PDF comes from `bash scripts/docx-to-pdf.sh output/<book>.docx`.
 
 ## When the user says...
 - "status" / "where are we" / "what's next" → skill `session-status`.
@@ -64,5 +65,6 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - "build book" / "render" → skill `build-book` (`prompts/05-build-book.md`; `bash scripts/build-all.sh [book]`, no book = all books).
 - "grow the glossary" / "update whisper fixes" → skill `grow-glossary` (`python scripts/glossary-candidates.py`).
 - "build booklets" → `python scripts/build-booklets.py [N ...]`: themed A5 PDFs of `shivchei-habesht-simple.md` in `output/booklets/`. Grouping in `booklets/booklets.yaml`, glossary in `booklets/glossary.yaml`, layout in `templates/booklet.css`.
+- "proof" / "review the PDF" / "check formatting", and before any PDF is called ready → skill `proof-pdf` (`docs/print-standard.md`, `python scripts/proof-pdf.py <pdf>`). No PDF goes to the user for acceptance testing without it.
 - "pamphlet" / "standalone" / "publish session N on its own" → `python scripts/build-pamphlet.py <session-or-discourse> --png` (skill: `publish-pamphlet`): an A5 PDF in `output/pamphlets/` of one session, or of a whole discourse behind a contents page. Cover text from the book listing the discourse, overridden by `pamphlet:` in its `meta.yaml`; layout in `templates/pamphlet.css`.
 - "new book" → `./scripts/new-book.sh <slug> "<title>"`, then fill `books/<slug>/structure.yaml`.

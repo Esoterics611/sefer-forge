@@ -31,14 +31,14 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > Write values unquoted; a value containing `: ` goes under `key: >-` on the next line. Run `python scripts/build-section.py <SESSION_PATH>`. It writes `section.md` and runs `scripts/check-session.py`, which must report no errors.
 >
-> **Step 5 — Read it through.** Read `section.md` from top to bottom, as its reader will: does every box label name what the box says, does each box begin where a thought begins, are the key points the passages the argument turns on, does the title say what the session is about? Fix in the plan and rebuild. Then look at it rendered: `python scripts/build-pamphlet.py <SESSION_PATH> --png` and read the page images.
+> **Step 5 — Read it through.** Read `section.md` from top to bottom, as its reader will: does every box label name what the box says, does each box begin where a thought begins, are the key points the passages the argument turns on, does the title say what the session is about? Fix in the plan and rebuild. Then print it, `python scripts/build-pamphlet.py <SESSION_PATH>`, and proof the PDF by the `proof-pdf` skill (`docs/print-standard.md`): `python scripts/proof-pdf.py output/pamphlets/<discourse>-<session>.pdf` with no errors, then every spread read and every finding fixed.
 >
 > **Step 6 — Report**, in one message:
 > - the `session-status.py` line for the session;
 > - the reading range, and every correction made to `ocr.md` from the match, each with what the photo shows;
 > - the speaker's departures from the text that were left as spoken;
 > - the counts line from `review.md`, every Added entry with its reason, and every UNCLEAR flag with its time;
-> - the `check-session.py` result and the pamphlet's path.
+> - the `check-session.py` result, the pamphlet's path and its proof summary line, and the visual findings fixed or left.
 >
 > **Rules:**
 > - Hebrew stays Hebrew — never translate.
