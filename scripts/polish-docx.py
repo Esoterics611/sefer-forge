@@ -8,8 +8,10 @@ What this does:
   - Adds generous space-before on Heading 1/2 (so sections breathe).
   - Adds space-before and space-after on tables (framed callout boxes).
   - Indents blockquotes slightly and adds spacing.
-  - Frames each ביאור (paragraphs in the Commentary style, written as
-    ::: {custom-style="Commentary"} divs) in a bordered, shaded box.
+  - Leaves the ביאור (Commentary paragraphs) unboxed, by the print standard;
+    `polish: commentary_box: true` in a book's metadata frames it.
+  - Keeps every heading with its text (and a short lead-in line with what
+    it introduces), so no heading ends a page.
   - Leaves title-block / front-matter centered paragraphs alone.
 
 Run AFTER pandoc has produced output/<book>.docx. Idempotent — running it
@@ -53,10 +55,18 @@ QUOTE_SPACE_BEFORE_PT = 6
 QUOTE_SPACE_AFTER_PT = 10
 QUOTE_LINE_SPACING = 1.3
 
+# A paragraph after a heading shorter than this is a lead-in ("ממשיך:"):
+# it is kept with what follows, so heading and lead-in never end a page alone.
+LEAD_IN_MAX_CHARS = 90
+
 TABLE_SPACE_BEFORE_PT = 12
 TABLE_SPACE_AFTER_PT = 12
 
-# ביאור boxes. A Commentary paragraph starting with BOX_LABEL opens a box.
+# ביאור boxes: off by the print standard (docs/print-standard.md: the
+# explanation is never boxed). A book may still turn them on with
+# `polish: commentary_box: true`. A Commentary paragraph starting with
+# BOX_LABEL opens a box.
+COMMENTARY_BOX = False
 BOX_LABEL = "■"
 BOX_BORDER_COLOR = "A39E93"   # warm grey, 0.75 pt
 BOX_FILL = "F7F5F0"           # light parchment
@@ -81,7 +91,7 @@ def apply_book_overrides(doc_path: Path) -> list[str]:
     applied = []
     for key, value in knobs.items():
         name = key.upper()
-        if name not in globals() or not name.endswith(("_PT", "_SPACING")):
+        if name not in globals() or not name.endswith(("_PT", "_SPACING", "_BOX")):
             print(f"WARN: unknown polish knob in {meta}: {key}")
             continue
         globals()[name] = value
@@ -142,10 +152,33 @@ def polish(doc_path: Path) -> dict:
                     set_spacing(para, after=4, line_mult=1.3)
         counts["table"] += 1
 
-    counts["box"] = box_commentary(doc)
+    counts["box"] = box_commentary(doc) if COMMENTARY_BOX else 0
+    counts["kept"] = keep_headings_with_text(doc)
 
     doc.save(doc_path)
     return counts
+
+
+def _keep_next(para) -> None:
+    pPr = para._p.get_or_add_pPr()
+    if pPr.find(qn("w:keepNext")) is None:
+        pPr.append(OxmlElement("w:keepNext"))
+
+
+def keep_headings_with_text(doc) -> int:
+    """Every heading keeps with the next paragraph; a short lead-in after a
+    heading keeps with the one after it, so a heading is never stranded at a
+    page foot with a line of text and the rest overleaf."""
+    paras = doc.paragraphs
+    kept = 0
+    for i, para in enumerate(paras):
+        if (para.style.name if para.style else "") not in HEADING_MAP:
+            continue
+        _keep_next(para)
+        kept += 1
+        if i + 1 < len(paras) and len(paras[i + 1].text.strip()) < LEAD_IN_MAX_CHARS:
+            _keep_next(paras[i + 1])
+    return kept
 
 
 def _el(tag: str, **attrs) -> OxmlElement:
