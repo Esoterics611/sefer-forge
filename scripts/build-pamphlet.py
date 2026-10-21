@@ -271,6 +271,8 @@ def to_html(markdown: str) -> str:
 
 PIECE_WORDS = 45          # explanation pieces: sentences grouped up to this many words
 MARK_COLOUR = "#fe0102"   # measuring and checking only; never in the final PDF
+MARK_ENCODE = str.maketrans("0123456789.", "qrstuvwykmz")   # no label otherwise uses these letters
+MARK_DECODE = str.maketrans("qrstuvwykmz", "0123456789.")
 MEASURE_MM = 5000         # height of the tall page the pieces are measured on
 SLACK_PT = 4              # packing margin; the page check repacks any page that still spills
 # Markers read the top of the line where their piece starts and move nothing.
@@ -468,6 +470,10 @@ OPENER_H: dict[str, float] = {}       # a part's title block, when it shares the
 def render_marks(doc: str, stem: Path) -> dict[str, tuple[int, float]]:
     """Print an HTML page and return each marker's (page, y) in points."""
     import pymupdf
+    # Labels go out in letters only: bidi can carry a label's digits off into the
+    # Hebrew beside it ("T1" printed as "T" ... "1"), and the marker is lost.
+    doc = re.sub(r'(<span class="mki?" dir="ltr">)([^<]+)(</span>)',
+                 lambda m: m.group(1) + m.group(2).translate(MARK_ENCODE) + m.group(3), doc)
     html_path, pdf = stem.with_suffix(".html"), stem.with_suffix(".pdf")
     html_path.write_text(doc, encoding="utf-8")
     pdf.unlink(missing_ok=True)
@@ -488,7 +494,8 @@ def render_marks(doc: str, stem: Path) -> dict[str, tuple[int, float]]:
                     else:
                         groups.append([s])
                 for g in groups:
-                    pos.setdefault("".join(s["text"].strip() for s in g), (pno, min(s["bbox"][1] for s in g)))
+                    label = "".join(s["text"].strip() for s in g).translate(MARK_DECODE)
+                    pos.setdefault(label, (pno, min(s["bbox"][1] for s in g)))
     return pos
 
 

@@ -375,7 +375,7 @@ def edit_pattern(src: str) -> re.Pattern:
     """`src` as written in the plan, matched in a paragraph that may carry
     <!-- --> flags between or right after its words (a flag on edited words
     goes with them)."""
-    flag = r"(?:\s*<!--.*?-->)?"
+    flag = r"(?:\s*<!--(?:(?!-->).)*-->)?"           # one comment: never runs past its own end
     toks = []
     for tok in src.split():
         m = re.match(r"(.*?)([,.:;?!]*)$", tok)          # a flag may sit before trailing punctuation

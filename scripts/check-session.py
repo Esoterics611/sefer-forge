@@ -145,7 +145,9 @@ def check_cleanup(r: Report, cleaned: Path) -> None:
 
 
 def check_footnotes(r: Report, name: str, body: str) -> None:
-    refs = set(re.findall(r"\[\^([^\]\s]+)\](?!:)", body))
+    # A reference anywhere but at a line's start (a definition), even before a colon.
+    refs = set(re.findall(r"(?<!^)\[\^([^\]\s]+)\]|^\[\^([^\]\s]+)\](?!:)", body, flags=re.M))
+    refs = {a or b for a, b in refs}
     defs = set(re.findall(r"^\[\^([^\]\s]+)\]:", body, flags=re.M))
     if refs - defs:
         r.error(f"{name}: footnote(s) used but not defined: {', '.join(sorted(refs - defs))}")
