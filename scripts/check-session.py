@@ -35,9 +35,11 @@ import forgelib as F
 
 DIFF = F.load_script("transcript-diff")
 SECTIONS = ["הנסח העקרי", "נקדות מפתח", "ביאור ופירוש"]
+PAIRED = ["הנסח והביאור", "נקדות מפתח"]          # layout: paired (docs/print-standard.md)
 BOX = re.compile(r'^::: \{custom-style="Commentary"\}\n(.*?)\n:::', re.M | re.S)
+DIV = re.compile(r'^::: \{custom-style="(Nusach|Commentary)"\}\n(.*?)\n:::', re.M | re.S)
 BOX_LABEL = re.compile(r'^\*\*\[■ ביאור — .+\]\{dir="rtl"\}\*\*$')
-RTL_END = re.compile(r'\]\{dir="rtl"\}\**\s*$')
+RTL_END = re.compile(r'\]\{dir="rtl"[^}]*\}\**\s*$')
 
 
 class Report:
@@ -200,10 +202,76 @@ def check_rtl(r: Report, where: str, text: str) -> None:
         r.warn(f"section.md {where}: {bad} paragraph(s) not wrapped in [ ]{{dir=\"rtl\"}}")
 
 
+def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None) -> None:
+    """layout: paired — cuts of the text, each followed by its explanation."""
+    found = [k for k in parts if k]
+    for s in PAIRED:
+        if s not in found:
+            r.error(f"section.md: no “## {s}” section")
+    if [s for s in found if s in PAIRED] != [s for s in PAIRED if s in found]:
+        r.error("section.md: sections out of order")
+    check_footnotes(r, "section.md", body)
+    paired = parts.get(PAIRED[0], "")
+    divs = DIV.findall(paired)
+    kinds = [k for k, _ in divs]
+    if not kinds or kinds[0] != "Nusach":
+        r.error("section.md: the paired section must open with a cut of the text (Nusach)")
+    if any(a == b == "Commentary" for a, b in zip(kinds, kinds[1:])):
+        r.error("section.md: two explanations in a row with no text between them")
+    if "■" in paired or re.search(r"^\s*(\+-{3,}|\|)", paired, flags=re.M):
+        r.error("section.md: boxes or box labels in the paired layout (the explanation is never boxed)")
+    check_rtl(r, "הנוסח והביאור", paired)
+    text = "\n".join(c for k, c in divs if k == "Nusach")
+    if "{.underline}" in text:
+        r.error("section.md נוסח: has {.underline} markup (the נוסח is plain flowing text)")
+    n_words = F.words(text)
+    if ocr_words is not None and n_words:
+        at = find_run(ocr_words, n_words)
+        if at < 0:
+            r.error("section.md נוסח: does not follow ocr.md word for word — " + divergence(ocr_words, n_words))
+        else:
+            r.note(f"נוסח = OCR words {at + 1}–{at + len(n_words)} of {len(ocr_words)}, "
+                   f"in {kinds.count('Nusach')} cuts with {kinds.count('Commentary')} explanations")
+    com = r.session / "commentary.md"
+    if com.exists():
+        expl = "\n".join(c for k, c in divs if k == "Commentary")
+        sd = DIFF.diff(DIFF.words(com.read_text(encoding="utf-8")), DIFF.words(expl))
+        n = sum(len(sd[k]) for k in ("added", "replaced", "removed", "fillers"))
+        if n:
+            sample = (sd["removed"] + sd["replaced"] + sd["added"] + sd["fillers"])[:3]
+            r.error(f"section.md: the explanations differ from commentary.md in {n} place(s) — " + "; ".join(sample))
+        else:
+            r.note("explanations carry commentary.md word for word")
+    keys = parts.get(PAIRED[1], "")
+    if keys:
+        check_keys(r, keys, n_words)
+
+
+def check_keys(r: Report, keys: str, n_words: list[str]) -> None:
+    check_rtl(r, "נקודות מפתח", keys)
+    labels = re.findall(r'^\*\*\[.+?\]\{dir="rtl"\}\*\*\s*$', keys, flags=re.M)
+    quotes = re.findall(r'^>\s*(.+)$', keys, flags=re.M)
+    if not 5 <= len(labels) <= 8:
+        r.warn(f"section.md נקודות מפתח: {len(labels)} key points (the rule is 5–8)")
+    if len(quotes) < len(labels):
+        r.error(f"section.md נקודות מפתח: {len(labels)} labels but {len(quotes)} quoted passages")
+    for q in quotes:
+        qw = [w for w in F.words(q) if w.strip(".")]
+        if qw and find_run(n_words, qw) < 0:
+            r.error(f"section.md נקודות מפתח: quote not verbatim in the נוסח — “{' '.join(qw[:6])}…”: "
+                    + divergence(n_words, qw, "נוסח"))
+
+
 def check_section(r: Report, ocr_words: list[str] | None) -> None:
     f = r.session / "section.md"
     fm, body = check_frontmatter(r, f, need=("title",))
     parts = section_parts(body)
+    if (fm or {}).get("layout") == "paired":
+        check_paired(r, body, parts, ocr_words)
+        return
+    if fm is not None and r.session.joinpath("section-plan.yaml").exists():
+        r.warn("section.md: built in the old three-section layout; rebuild it "
+               "(python scripts/build-section.py) for the paired layout")
     found = [k for k in parts if k]
     legacy = re.search(r"^\+-{3,}", body, flags=re.M) and 'custom-style="Commentary"' not in body
     order = [s for s in found if s in SECTIONS]

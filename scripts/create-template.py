@@ -252,6 +252,25 @@ for side in ('top_margin', 'bottom_margin', 'left_margin', 'right_margin'):
     setattr(section, side, Cm(2.5))
 goa(section._sectPr, 'w:bidi')
 
+# Page numbers: Hebrew letters (א, ב, ... טו, טז), centred in the footer, in
+# the running-matter style of the pamphlets; none on the title page. pandoc
+# carries the reference document's footers into every book.
+goa(section._sectPr, 'w:pgNumType').set(qn('w:fmt'), 'hebrew1')
+section.different_first_page_header_footer = True
+configure(get_or_create_style(doc, 'Footer')._element,
+          size_pt=11, rtl=True, align='center', space_before_pt=0, space_after_pt=0)
+footer_p = section.footer.paragraphs[0]
+footer_p.style = doc.styles['Footer']
+goa(goa(footer_p._p, 'w:pPr'), 'w:bidi')
+page_field = OxmlElement('w:fldSimple')
+page_field.set(qn('w:instr'), 'PAGE')
+run = OxmlElement('w:r')
+text = OxmlElement('w:t')
+text.text = '1'
+run.append(text)
+page_field.append(run)
+footer_p._p.append(page_field)
+
 # ---------------------------------------------------------------------------
 # Save
 # ---------------------------------------------------------------------------

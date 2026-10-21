@@ -57,7 +57,10 @@ PROFILES = {
                 "fonts": {"David", "David-Bold"}, "heading": 17.5},
     # Word PDFs: no stylesheet; black text, and polish-docx.py's box colours.
     "book": {"css": None, "script": "scripts/polish-docx.py", "palette": ["#000000"], "page": "A4",
-             "numerals": None, "fonts": {"David", "David-Bold"}, "heading": 15.0},
+             # Word reports line-end glyph boxes a few points into the margin.
+             "margins_mm": (25, 25, 25, 25), "margin_slack": 8.0, "running_header": False,
+             "numerals": "hebrew",
+             "fonts": {"David", "David-Bold"}, "heading": 15.0},
 }
 LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO')
 LATIN = re.compile(r"[A-Za-z]{2,}")
@@ -153,7 +156,8 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
     extra = Path(prof["script"]).read_text(encoding="utf-8") if prof.get("script") else ""
     extra += " ".join(prof.get("palette", []))
     palette = css_palette(css + extra) if (css or extra) else None
-    margins = css_margins(css) if css else None
+    margins = css_margins(css) if css else \
+        (tuple(m * MM for m in prof["margins_mm"]) if prof.get("margins_mm") else None)
     doc = pymupdf.open(pdf)
     errors: list[str] = []
     warns: list[str] = []
@@ -211,7 +215,8 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
         # Margins and bands.
         if margins:
             for y0, y1, x0, x1, size, text, _ in body_lines:
-                if x0 < left - 1.5 or x1 > W - right + 1.5:
+                slack = prof.get("margin_slack", 1.5)
+                if x0 < left - slack or x1 > W - right + slack:
                     errors.append(f"p.{pno}: line runs into the side margin — “{snippet(text)}”")
             for y0, y1, x0, x1, size, text, _ in header + footer:
                 if size > 11.5:
@@ -236,12 +241,15 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
             elif pno < doc.page_count and n < 4:
                 warns.append(f"p.{pno}: holds only {n} line(s)")
             body_top, body_bottom = (top, H - bottom) if margins else (0, H)
+            sizes = Counter(round(e[4]) for e in body_lines)
+            body_size = sizes.most_common(1)[0][0] if sizes else 0
             for i, (y0, y1, x0, x1, size, text, spans) in enumerate(body_lines):
                 is_head = size >= prof["heading"]
                 is_label = text.strip().startswith("ביאור") and any("Bold" in s["font"] for s in spans)
                 if not (is_head or is_label):
                     continue
-                after = sum(1 for e in body_lines[i + 1:] if e[0] >= y1 - 1)
+                # Footnotes and other small print below don't count as the heading's text.
+                after = sum(1 for e in body_lines[i + 1:] if e[0] >= y1 - 1 and e[4] >= 0.9 * body_size)
                 low = (y1 - body_top) / max(1, body_bottom - body_top) > 0.75
                 if low and after < 2:
                     msg = f"p.{pno}: {'heading' if is_head else 'box label'} at the foot of the page " \
@@ -254,7 +262,7 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
             want = hebrew_numeral(pno) if prof["numerals"] == "hebrew" else str(pno)
             if want not in nums:
                 warns.append(f"p.{pno}: page number should read “{want}”, found {nums or 'none'}")
-            if not header:
+            if not header and prof.get("running_header", True):
                 warns.append(f"p.{pno}: no running header")
         if pno == 1 and footer and prof["numerals"]:
             warns.append("p.1: the cover carries a page number")

@@ -167,6 +167,29 @@ def extend(ocr: list[Tok], heard: list[Tok], block: tuple, forward: bool) -> tup
     return best
 
 
+def find_reading(ocr: list[Tok], heard: list[Tok]) -> list[tuple]:
+    """The stretches where the heard text reads the OCR, in order:
+    (ocr first, ocr last, heard first, heard last, words). Used by
+    build-section.py too, with commentary.md as the heard text."""
+    seq, idx = match_seq(ocr)
+    sm = difflib.SequenceMatcher(None, seq, [t.sk for t in heard], autojunk=False)
+    blocks = [(idx[i], idx[i + n - 1], j, j + n - 1, n) for i, j, n in sm.get_matching_blocks() if n >= MIN_BLOCK]
+    # Drop short matches far from any other reading: commentary quoting the text.
+    kept = []
+    for b_i, b in enumerate(blocks):
+        prev_gap = b[0] - blocks[b_i - 1][1] if b_i else 10**6
+        next_gap = blocks[b_i + 1][0] - b[1] if b_i + 1 < len(blocks) else 10**6
+        if b[4] >= SHORT or min(prev_gap, next_gap) <= ISOLATED:
+            kept.append(b)
+    if not kept:
+        return []
+    if (edge := extend(ocr, heard, kept[0], forward=False)):
+        kept.insert(0, edge)
+    if (edge := extend(ocr, heard, kept[-1], forward=True)):
+        kept.append(edge)
+    return kept
+
+
 def ctx(toks: list[Tok], i: int, j: int, k: int = 4) -> str:
     before = " ".join(t.text for t in toks[max(0, i - k):i])
     mid = " ".join(t.text for t in toks[i:j])
@@ -187,23 +210,10 @@ def main() -> int:
         print(f"No voicenotes/*.timed.txt in {session}: run scripts/transcribe.py first")
         return 1
 
-    seq, idx = match_seq(ocr)
-    sm = difflib.SequenceMatcher(None, seq, [t.sk for t in heard], autojunk=False)
-    blocks = [(idx[i], idx[i + n - 1], j, j + n - 1, n) for i, j, n in sm.get_matching_blocks() if n >= MIN_BLOCK]
-    # Drop short matches far from any other reading: commentary quoting the text.
-    kept = []
-    for b_i, b in enumerate(blocks):
-        prev_gap = b[0] - blocks[b_i - 1][1] if b_i else 10**6
-        next_gap = blocks[b_i + 1][0] - b[1] if b_i + 1 < len(blocks) else 10**6
-        if b[4] >= SHORT or min(prev_gap, next_gap) <= ISOLATED:
-            kept.append(b)
+    kept = find_reading(ocr, heard)
     if not kept:
         print("No reading found: the voicenote never reads three OCR words in a row.")
         return 1
-    if (edge := extend(ocr, heard, kept[0], forward=False)):
-        kept.insert(0, edge)
-    if (edge := extend(ocr, heard, kept[-1], forward=True)):
-        kept.append(edge)
 
     findings: list[tuple[str, str, str]] = []      # (kind, time, text)
     minor: list[tuple[str, str]] = []

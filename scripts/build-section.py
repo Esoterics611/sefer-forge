@@ -5,9 +5,19 @@ Usage:
     python scripts/build-section.py discourses/003-breishis/sessions/002 --init   # starter plan
     python scripts/build-section.py discourses/003-breishis/sessions/002          # build
 
+The layout pairs the text with its explanation (docs/print-standard.md): the
+session's נוסח is cut where the speaker reads, and each cut is followed by
+what he says about it, so a reader always has the passage and its
+explanation together. The pairing is found, not chosen: commentary.md is lined
+up against the OCR (scripts/ocr-match.py's reading finder), every
+explanation paragraph is anchored to the furthest OCR word read by its end,
+and a new pair starts wherever the reading moves on. Explanation before the
+first reading joins the first pair; text after the last reading closes the
+section on its own.
+
 The plan holds only the decisions; the text comes from the session's files,
-so the נוסח is ocr.md word for word and the ביאור boxes are commentary.md
-word for word, by construction:
+so the נוסח is ocr.md word for word and the explanation is commentary.md word
+for word, by construction:
 
     title: פרשת בראשית — ארץ קדמה לשמים          # frontmatter title
     heading: פָּרָשַׁת בְּרֵאשִׁית                   # bold line of the title block
@@ -26,25 +36,26 @@ word for word, by construction:
     keys:                         # 5–8, each quoting the נוסח verbatim
       - label: ארץ קדמה לשמים
         quote: ארץ הוא בחי' רצוא שבתפלה
-    boxes:                        # one per topic, in order, covering every paragraph
-      - label: ארץ ושמים — רצוא ושוב
-        from: 1                   # commentary.md paragraph number, or its opening words
 
 Write values unquoted: Hebrew's ' and " are fine in plain YAML. A value that
 contains ": " or starts with a quote mark goes on its own line under `>-`,
 as the footnote text above.
 
+section.md:  title block · "## הַנֹּסַח וְהַבֵּיאוּר" as pairs of
+::: {custom-style="Nusach"} (a cut of the text) and ::: {custom-style="Commentary"}
+(its explanation, unboxed) · the print's notes · "## נְקֻדּוֹת מַפְתֵּחַ".
+
 Range, breaks and quotes are matched word for word against the OCR,
 ignoring punctuation and niqqud. A range that cuts into a sentence gets the
-`...` snapshot marker; one that cuts between sentences does not. UNCLEAR flags travel with their words. ocr.md is
-never changed: text outside the range stays there as the record.
+`...` snapshot marker; one that cuts between sentences does not. UNCLEAR
+flags travel with their words. ocr.md is never changed: text outside the
+range stays there as the record.
 
 Writes section.md with `built_from: section-plan.yaml` in its frontmatter,
 and rebuilds such a file freely; a hand-made section.md is left alone unless
 --force. Then refreshes review.md (transcript-diff.py) and runs
-check-session.py on the session. --init writes a starter
-plan (range from ocr-match.md when present, one box per paragraph) for the
-decisions to be filled in.
+check-session.py on the session. --init writes a starter plan (range from
+ocr-match.md when present).
 """
 from __future__ import annotations
 
@@ -55,6 +66,8 @@ from pathlib import Path
 
 import forgelib as F
 import yaml
+
+OM = F.load_script("ocr-match")
 
 PLAN = "section-plan.yaml"
 DESCRIPTOR = "נֹסַח עִקָּרִי עִם בֵּיאוּר וּפֵירוּשׁ"
@@ -129,96 +142,83 @@ def span(text: str) -> str:
     return f"[{text}]{{dir=\"rtl\"}}"
 
 
-def nusach_paragraphs(plan: dict, session: Path) -> tuple[list[str], list[str]]:
-    """The printed range as markdown paragraphs, and its words (for the key quotes)."""
-    paras = ocr_tokens(session)
-    words, where = flat_words(paras)
-    if not words:
-        raise PlanError("ocr.md has no text")
-    n = plan.get("nusach") or {}
-    a = locate(words, n["start"], "nusach.start") if n.get("start") else 0
-    if n.get("end"):
-        e = locate(words, n["end"], "nusach.end", lo=a)
-        b = e + len(F.words(n["end"])) - 1
-    else:
-        b = len(words) - 1
-    (pa, ta), (pb, tb) = where[a], where[b]
+class Nusach:
+    """The printed range as a flat run of tokens, each knowing whether it opens a
+    paragraph (and whether the print opened it), plus the range's words."""
 
-    # The range as (paragraph, token) runs, split again at the plan's breaks.
-    marks: dict[tuple[int, int], str] = {}
-    notes = []
-    for k, fn in enumerate(plan.get("footnotes") or [], 1):
-        i = locate(words, fn["after"], "footnotes.after", lo=a, hi=b + 1)
-        j = i + len(F.words(fn["after"])) - 1
-        label = f"{session.name}-{k}"
-        marks[where[j]] = marks.get(where[j], "") + f"[^{label}]"
-        text = fn["text"].replace("[", "\\[").replace("]", "\\]")
-        notes.append(f"[^{label}]: {span(text)}")
-    starts = set()
-    for br in n.get("breaks") or []:
-        i = locate(words, br, "nusach.breaks", lo=a, hi=b + 1)
-        starts.add(where[i])
-    out_paras: list[list[str]] = []
-    printed: list[bool] = []               # does this paragraph open a printed paragraph?
-    for pi in range(pa, pb + 1):
-        toks = paras[pi]
-        t0 = ta if pi == pa else 0
-        t1 = tb if pi == pb else len(toks) - 1
-        cur: list[str] = []
-        printed.append(t0 == 0)
-        for ti in range(t0, t1 + 1):
-            if (pi, ti) in starts and cur:
-                out_paras.append(cur)
-                printed.append(False)
-                cur = []
-            cur.append(toks[ti][0] + marks.get((pi, ti), ""))
-        out_paras.append(cur)
-    # A range that cuts into a printed sentence is marked like a photo's edge;
-    # one that cuts between sentences leaves a whole text and needs no mark.
-    def ends_sentence(tok: str) -> bool:
-        return F.COMMENT.sub("", tok).rstrip().endswith((".", ":", "?"))
+    def __init__(self, plan: dict, session: Path):
+        paras = ocr_tokens(session)
+        words, where = flat_words(paras)
+        if not words:
+            raise PlanError("ocr.md has no text")
+        n = plan.get("nusach") or {}
+        a = locate(words, n["start"], "nusach.start") if n.get("start") else 0
+        if n.get("end"):
+            e = locate(words, n["end"], "nusach.end", lo=a)
+            b = e + len(F.words(n["end"])) - 1
+        else:
+            b = len(words) - 1
+        (pa, ta), (pb, tb) = where[a], where[b]
 
-    if ta > 0 and not ends_sentence(paras[pa][ta - 1][0]) and not out_paras[0][0].startswith(SNAP):
-        out_paras[0][0] = SNAP + out_paras[0][0]
-    if tb < len(paras[pb]) - 1 and not ends_sentence(paras[pb][tb][0]) and not out_paras[-1][-1].endswith(SNAP):
-        out_paras[-1][-1] += SNAP
+        marks: dict[tuple[int, int], str] = {}
+        self.notes: list[str] = []
+        for k, fn in enumerate(plan.get("footnotes") or [], 1):
+            i = locate(words, fn["after"], "footnotes.after", lo=a, hi=b + 1)
+            j = i + len(F.words(fn["after"])) - 1
+            label = f"{session.name}-{k}"
+            marks[where[j]] = marks.get(where[j], "") + f"[^{label}]"
+            text = fn["text"].replace("[", "\\[").replace("]", "\\]")
+            self.notes.append(f"[^{label}]: {span(text)}")
+        breaks = {where[locate(words, br, "nusach.breaks", lo=a, hi=b + 1)] for br in n.get("breaks") or []}
 
-    bold = [F.words(x) for x in (n.get("bold") or [])]
-    md = []
-    for toks, opens in zip(out_paras, printed):
-        for bw in (bold if opens else []):
-            k = len(bw)
-            head = [w for t in toks[:k] for w in F.words(t)]
-            if head[:k] == bw and len(head) >= k:
-                lead = SNAP if toks[0].startswith(SNAP) else ""
-                toks = [f"{lead}**{toks[0][len(lead):]}"] + toks[1:]
-                toks[k - 1] = toks[k - 1] + "**"
-                break
-        md.append(span(" ".join(toks)))
-    return md + notes, words[a:b + 1]
+        # tokens: [text, para_start, printed_start]
+        self.tokens: list[list] = []
+        self.word_tok: list[int] = []          # range word index -> token index
+        for pi in range(pa, pb + 1):
+            toks = paras[pi]
+            t0 = ta if pi == pa else 0
+            t1 = tb if pi == pb else len(toks) - 1
+            for ti in range(t0, t1 + 1):
+                text, ws = toks[ti]
+                first = ti == t0
+                self.tokens.append([text + marks.get((pi, ti), ""), first or (pi, ti) in breaks,
+                                    first and t0 == 0])
+                self.word_tok += [len(self.tokens) - 1] * len(ws)
+        self.words = words[a:b + 1]
 
+        # A range that cuts into a printed sentence is marked like a photo's edge;
+        # one that cuts between sentences leaves a whole text and needs no mark.
+        def ends_sentence(tok: str) -> bool:
+            return F.COMMENT.sub("", tok).rstrip().endswith((".", ":", "?"))
 
-def key_points(plan: dict, nusach_words: list[str], nusach_md: list[str]) -> list[str]:
-    keys = plan.get("keys") or []
-    body = [p for p in nusach_md if not p.startswith("[^")]          # notes are not quotable
-    tokens = [t for p in body for t in re.sub(r'^\[|\]\{dir="rtl"\}$', "", p).split(" ")]
-    tok_words = [(t, F.words(t)) for t in tokens]
-    flat, owner = [], []
-    for i, (_, ws) in enumerate(tok_words):
-        for w in ws:
-            flat.append(w)
-            owner.append(i)
-    out = []
-    for k in keys:
-        if not k.get("label") or not k.get("quote"):
-            raise PlanError(f"keys: each needs a label and a quote ({k})")
-        i = locate(flat, k["quote"], f"keys “{k['label']}”")
-        j = i + len(F.words(k["quote"])) - 1
-        quote = " ".join(tokens[owner[i]:owner[j] + 1])
-        quote = F.COMMENT.sub("", quote).replace("**", "").strip().rstrip(".,:;")
-        quote = quote.strip(SNAP + " ") if quote.startswith(SNAP) or quote.endswith(SNAP) else quote
-        out += [f"**{span(k['label'])}**", "", f"> {span(quote)}", ""]
-    return out
+        if ta > 0 and not ends_sentence(paras[pa][ta - 1][0]) and not self.tokens[0][0].startswith(SNAP):
+            self.tokens[0][0] = SNAP + self.tokens[0][0]
+        if tb < len(paras[pb]) - 1 and not ends_sentence(paras[pb][tb][0]) and not self.tokens[-1][0].endswith(SNAP):
+            self.tokens[-1][0] += SNAP
+        self.bold = [F.words(x) for x in (n.get("bold") or [])]
+
+    def markdown(self, t0: int, t1: int) -> list[str]:
+        """Tokens t0..t1 as RTL paragraphs; the first always opens a paragraph."""
+        paras: list[tuple[list[str], bool, bool]] = []
+        for i in range(t0, t1 + 1):
+            text, para_start, printed = self.tokens[i]
+            if para_start or i == t0:
+                # A cut that begins inside a paragraph continues it (.cont): the
+                # pamphlet rejoins the two when they share a page.
+                paras.append(([], printed, not para_start))
+            paras[-1][0].append(text)
+        out = []
+        for toks, printed, cont in paras:
+            for bw in (self.bold if printed else []):
+                k = len(bw)
+                head = [w for tk in toks[:k] for w in F.words(tk)]
+                if head[:k] == bw:
+                    lead = SNAP if toks[0].startswith(SNAP) else ""
+                    toks = [f"{lead}**{toks[0][len(lead):]}"] + toks[1:]
+                    toks[k - 1] = toks[k - 1] + "**"
+                    break
+            out.append(span(" ".join(toks)) if not cont else f'[{" ".join(toks)}]{{dir="rtl" .cont}}')
+        return out
 
 
 def commentary_paragraphs(session: Path) -> list[str]:
@@ -231,42 +231,127 @@ def commentary_paragraphs(session: Path) -> list[str]:
     return [" ".join(p.split()) for p in re.split(r"\n\s*\n", body) if p.strip()]
 
 
-def boxes(plan: dict, session: Path) -> list[str]:
-    paras = commentary_paragraphs(session)
-    spec = plan.get("boxes") or []
-    if not spec:
-        raise PlanError("boxes: none planned")
-    starts = []
-    for b in spec:
-        f = b.get("from")
-        if isinstance(f, int):
-            if not 1 <= f <= len(paras):
-                raise PlanError(f"boxes “{b.get('label')}”: paragraph {f} — commentary.md has {len(paras)}")
-            starts.append(f - 1)
+def anchors(nusach: Nusach, paras: list[str]) -> list[int]:
+    """For each explanation paragraph, the furthest נוסח word read by its end
+    (-1 before any reading), never moving back."""
+    ocr = [OM.Tok(w, F.skeleton(w)) for w in nusach.words]
+    heard, owner = [], []
+    for k, p in enumerate(paras):
+        for w in F.words(p):
+            if F.plain(w):
+                heard.append(OM.Tok(w, F.skeleton(w), str(k)))
+                owner.append(k)
+    reach = [-1] * len(paras)
+    for o1, o2, h1, h2, _ in OM.find_reading(ocr, heard):
+        for j in range(h1, h2 + 1):           # spread the block over its paragraphs
+            o = o1 + round((j - h1) * (o2 - o1) / max(1, h2 - h1))
+            reach[owner[j]] = max(reach[owner[j]], o)
+    out, best = [], -1
+    for r in reach:
+        best = max(best, r)
+        out.append(best)
+    return out
+
+
+def pairs(nusach: Nusach, paras: list[str]) -> list[tuple[list[str], list[str]]]:
+    """[(text markdown, explanation paragraphs)] in reading order."""
+    reach = anchors(nusach, paras)
+    units: list[tuple[int, list[str]]] = []          # (last word of the text cut, paragraphs)
+    done = -1
+    pending: list[str] = []                          # explanation before the first reading
+    for p, r in zip(paras, reach):
+        if r > done:
+            units.append((r, pending + [p]))
+            pending, done = [], r
+        elif units:
+            units[-1][1].append(p)
         else:
-            want = F.words(str(f))
-            hits = [i for i, p in enumerate(paras) if F.words(p)[:len(want)] == want]
-            if len(hits) != 1:
-                raise PlanError(f"boxes “{b.get('label')}”: {len(hits)} paragraphs open with “{f}”")
-            starts.append(hits[0])
-    if starts[0] != 0:
-        raise PlanError(f"boxes: paragraphs 1–{starts[0]} of commentary.md are in no box")
-    if starts != sorted(set(starts)):
-        raise PlanError("boxes: starting paragraphs must rise, one box each")
+            pending.append(p)
+    if pending:                                      # never read: all of it with all the text
+        units.append((len(nusach.words) - 1, pending))
+    if not units or units[-1][0] < len(nusach.words) - 1:
+        units.append((len(nusach.words) - 1, []))    # text past the last reading, on its own
+    out, t_next = [], 0
+    for n, (last_word, ps) in enumerate(units):
+        t_last = nusach.word_tok[last_word]
+        if n < len(units) - 1:
+            t_last = snap(nusach, t_last, t_next)
+        if t_last < t_next:                           # nothing new to show: join the pair before
+            if out:
+                out[-1][1].extend(ps)
+            continue
+        out.append((nusach.markdown(t_next, t_last), ps))
+        t_next = t_last + 1
+    return out
+
+
+SNAP_REACH = 5        # tokens a cut may move to land on a sentence end
+CLAUSE_REACH = 3     # ... or before a clause or citation opener, or after a comma
+# Words that open a clause or a citation in this literature: a cut just before
+# one leaves both halves whole.
+OPENERS = {"אבל", "אך", "כי", "הנה", "והנה", "דהנה", "ולכן", "לכן", "וכן", "והוא", "והן", "ומה",
+           "דהיינו", "היינו", "שהרי", "ואז", "וזהו", "וזו", "וזה", "משא\"כ", "כמ\"ש", "וכמ\"ש",
+           "כמאמר", "וכמאמר", "וז\"ש", "דכתיב", "כדכתיב", "שנאמר", "פי'", "ופי'", "אלא"}
+# Words that close what came before: never the first word of a cut.
+CLOSERS = {"כו'", "וגו'", "וכו'"}
+
+
+def snap(nusach: Nusach, t_last: int, t_first: int) -> int:
+    """Move a cut to where the text breaks naturally, within reach: a sentence
+    end first; else just before a clause or citation opener, or after a comma.
+    The reading's edge is approximate (the speaker re-reads, Whisper drops
+    words); a phrase cut in half is not acceptable."""
+    def bare(i: int) -> str:
+        return re.sub(r"\[\^[^\]]+\]", "", F.COMMENT.sub("", nusach.tokens[i][0])).strip().strip("*")
+
+    last = len(nusach.tokens) - 2                 # never swallow the whole remainder
+
+    def ok(i: int) -> bool:
+        return t_first <= i <= last and bare(i + 1).rstrip(".:,;") not in CLOSERS
+
+    def sentence_end(i: int) -> bool:
+        return bare(i).endswith((".", ":", ";", "?")) and not bare(i).endswith(SNAP)
+
+    def clause_break(i: int) -> bool:
+        return bare(i).endswith(",") or bare(i + 1) in OPENERS
+
+    for test, reach in ((sentence_end, SNAP_REACH), (clause_break, CLAUSE_REACH)):
+        for d in range(0, reach + 1):
+            for i in (t_last + d, t_last - d):
+                if ok(i) and test(i):
+                    return i
+    while t_last < last and not ok(t_last):       # at least don't strand a closer
+        t_last += 1
+    return t_last
+
+
+def key_points(plan: dict, nusach: Nusach) -> list[str]:
+    keys = plan.get("keys") or []
+    tokens = [tk[0] for tk in nusach.tokens]
+    flat, owner = [], []
+    for i, tk in enumerate(tokens):
+        for w in F.words(tk):
+            flat.append(w)
+            owner.append(i)
     out = []
-    for n, (b, s) in enumerate(zip(spec, starts)):
-        e = starts[n + 1] if n + 1 < len(starts) else len(paras)
-        out += ['::: {custom-style="Commentary"}', f"**{span('■ ביאור — ' + b['label'])}**", ""]
-        for p in paras[s:e]:
-            out += [span(p), ""]
-        out[-1] = ":::"
-        out.append("")
+    for k in keys:
+        if not k.get("label") or not k.get("quote"):
+            raise PlanError(f"keys: each needs a label and a quote ({k})")
+        i = locate(flat, k["quote"], f"keys “{k['label']}”")
+        j = i + len(F.words(k["quote"])) - 1
+        quote = " ".join(tokens[owner[i]:owner[j] + 1])
+        quote = F.COMMENT.sub("", quote).replace("**", "")
+        quote = re.sub(r"\[\^[^\]]+\]", "", quote).strip().rstrip(".,:;")
+        quote = quote.strip(SNAP + " ") if quote.startswith(SNAP) or quote.endswith(SNAP) else quote
+        out += [f"**{span(k['label'])}**", "", f"> {span(quote)}", ""]
     return out
 
 
 def build(session: Path, plan: dict) -> str:
+    if plan.get("boxes"):
+        print("  note: the plan's boxes are no longer used — text and explanation are paired by the reading")
     fm = {"session": session.name, "discourse": F.discourse_of(session).name,
-          "title": plan.get("title") or "", "built_from": PLAN}
+          "title": plan.get("title") or "", "layout": "paired", "built_from": PLAN}
     head = ["---", yaml.safe_dump(fm, allow_unicode=True, sort_keys=False, width=1000).strip(), "---", ""]
     if plan.get("heading"):
         head += [f"**{span(plan['heading'])}**", "", "--------- ◆ ---------", ""]
@@ -275,14 +360,20 @@ def build(session: Path, plan: dict) -> str:
     version = plan.get("version") or "גִּרְסָה א'"
     head += [span(DESCRIPTOR), "", f"*{span(f'{version} · סֶשְׁן {session.name} · עִם בֵּיאוּר הַקּוֹל')}*", "", "---", ""]
 
-    nusach_md, nusach_words = nusach_paragraphs(plan, session)
-    body = ["## הַנֹּסַח הָעִקָּרִי", ""]
-    for p in nusach_md:
-        body += [p, ""]
+    nusach = Nusach(plan, session)
+    body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]
+    for text, explanation in pairs(nusach, commentary_paragraphs(session)):
+        body += ['::: {custom-style="Nusach"}'] + [ln for p in text for ln in (p, "")]
+        body[-1] = ":::"
+        body.append("")
+        if explanation:
+            body += ['::: {custom-style="Commentary"}'] + [ln for p in explanation for ln in (span(p), "")]
+            body[-1] = ":::"
+            body.append("")
+    for note in nusach.notes:
+        body += [note, ""]
     body += ["---", "", "## נְקֻדּוֹת מַפְתֵּחַ", ""]
-    body += key_points(plan, nusach_words, nusach_md)
-    body += ["---", "", "## בֵּיאוּר וּפֵירוּשׁ", ""]
-    body += boxes(plan, session)
+    body += key_points(plan, nusach)
     return "\n".join(head + body).rstrip() + "\n"
 
 
@@ -311,10 +402,6 @@ def init(session: Path) -> int:
             start = " ".join(s.group(1).split()[:5])
         if e := re.search(r"\*\*Ends\*\*.*?: “…(.+?)”", t):
             end = " ".join(e.group(1).split()[-5:])
-    try:
-        paras = commentary_paragraphs(session)
-    except PlanError:
-        paras = []
     sec = session / "section.md"
     title = ""
     if sec.exists():
@@ -332,14 +419,9 @@ def init(session: Path) -> int:
         "  breaks: []",
         "  bold: [והנה]",
         "keys: []",
-        "boxes:",
     ]
-    for i, p in enumerate(paras, 1):
-        opening = " ".join(F.strip_marks(F.COMMENT.sub("", p)).split()[:6])
-        lines += [f"  - label: TODO   # {i}: {opening}…", f"    from: {i}"]
     target.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Wrote {target}: fill in the title, heading, lines, breaks, keys and box labels; "
-          "merge boxes by deleting entries")
+    print(f"Wrote {target}: fill in the title, heading, lines, breaks and keys")
     return 0
 
 

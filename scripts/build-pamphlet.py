@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import html
 import os
+from dataclasses import dataclass, field
 import re
 import subprocess
 import sys
@@ -101,10 +102,21 @@ def config(discourse: Path) -> dict:
 
 
 class Part:
-    """One session's text: a title (kicker + lines) and a markdown body."""
+    """One session's text: a title (kicker + lines) and a markdown body. A
+    session in the paired layout carries its pairs instead, and its body is
+    made by the page engine (paginate)."""
 
-    def __init__(self, kicker: str, lines: list[str], descriptor: str, body: str, talk: bool):
+    def __init__(self, kicker: str, lines: list[str], descriptor: str, body: str, talk: bool,
+                 pairs: list | None = None, tail: str = ""):
         self.kicker, self.lines, self.descriptor, self.body, self.talk = kicker, lines, descriptor, body, talk
+        self.pairs, self.tail = pairs, tail
+
+
+DIV = re.compile(r'^::: \{custom-style="(Nusach|Commentary)"\}\n(.*?)\n:::', re.M | re.S)
+
+
+def paragraphs(md: str) -> list[str]:
+    return [" ".join(x.split()) for x in re.split(r"\n\s*\n", md) if x.strip()]
 
 
 def section_part(md: str) -> Part:
@@ -124,6 +136,21 @@ def section_part(md: str) -> Part:
             else:
                 lines.append(m.group(1))
     body = re.sub(r"^---\s*$", "", body, flags=re.M)  # the headings already separate the parts
+
+    sections = re.split(r"^## (.+)$", body, flags=re.M)        # ['', name, text, name, text...]
+    named = {plain(n): s for n, s in zip(sections[1::2], sections[2::2])}
+    if "הנסח והביאור" in named:                                # the paired layout
+        paired = named["הנסח והביאור"]
+        pairs: list = []
+        for kind, content in DIV.findall(paired):
+            if kind == "Nusach":
+                pairs.append((paragraphs(content), []))
+            elif pairs:
+                pairs[-1][1].extend(paragraphs(content))
+        notes = "\n\n".join(ln for ln in paired.splitlines() if ln.startswith("[^"))
+        keys = named.get("נקדות מפתח", "")
+        tail = notes + (f"\n\n## [◆]{{.orn}}נְקֻדּוֹת מַפְתֵּחַ[◆]{{.orn}} {{.part .keys}}\n\n{keys}" if keys else "")
+        return Part(kicker, lines, descriptor, "", talk=False, pairs=pairs, tail=tail)
 
     def heading(m: re.Match) -> str:
         cls = PARTS.get(plain(m.group(1)))
@@ -192,6 +219,304 @@ def to_html(markdown: str) -> str:
         ["pandoc", "-f", "markdown-smart", "-t", "html5", "--wrap=none", "--section-divs"],
         input=markdown, capture_output=True, text=True, check=True,
     ).stdout
+
+
+# --- the page engine: each page holds a cut of the text and its explanation ---------------
+
+PIECE_WORDS = 45          # explanation pieces: sentences grouped up to this many words
+MARK_COLOUR = "#fe0102"   # measuring and checking only; never in the final PDF
+MEASURE_MM = 5000         # height of the tall page the pieces are measured on
+SLACK_PT = 4              # packing margin; the page check repacks any page that still spills
+# Markers read the top of the line where their piece starts and move nothing.
+# At a paragraph's start: out of the flow (.mk, absolute in its place). Inside a
+# paragraph: a box of no width or height whose text overflows it (.mki), since
+# Chrome drops an absolute marker that falls on a line break. Each kind fails
+# where the other works.
+MARK_CSS = (f"\n.mk, .mki {{ font-size: 2pt; color: {MARK_COLOUR}; unicode-bidi: isolate; white-space: nowrap; }}"
+            "\n.mk { position: absolute; }"
+            "\n.mki { display: inline-block; width: 0; height: 0; overflow: visible; vertical-align: top; "
+            "line-height: 0; }\n")
+TEXT_SHARE = 0.5          # the text at a page's top stays under this share
+
+
+@dataclass
+class Piece:
+    md: str               # RTL markdown of a whole paragraph, or of sentences of one
+    para: int             # paragraph id: pieces of one paragraph merge on a page
+    h: float = 0.0
+
+
+@dataclass
+class Unit:
+    text: list[str]       # the text cut's paragraphs (RTL markdown)
+    pieces: list[Piece]   # its explanation, in pieces
+    lead: str = ""        # its first words, for the continuation line
+    text_h: float = 0.0
+    text_pieces: list[Piece] = field(default_factory=list)   # a cut with no explanation, split
+
+
+def inner(md: str) -> str:
+    m = re.fullmatch(r'\[(.*)\]\{dir="rtl"[^}]*\}', md.strip(), flags=re.S)
+    return m.group(1) if m else md
+
+
+def rtl(text: str, cls: str = "") -> str:
+    return f'[{text}]{{dir="rtl"{" ." + cls if cls else ""}}}'
+
+
+def split_paragraph(md: str, para: int) -> list[Piece]:
+    """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each."""
+    sentences = re.split(r"(?<=[.?!:])\s+(?=\S)", inner(md))
+    pieces, cur = [], []
+    for s in sentences:
+        if cur and len(" ".join(cur + [s]).split()) > PIECE_WORDS:
+            pieces.append(" ".join(cur))
+            cur = []
+        cur.append(s)
+    if cur:
+        pieces.append(" ".join(cur))
+    return [Piece(rtl(x), para) for x in pieces]
+
+
+def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
+    units, para = [], start_para
+    for text, expl in part.pairs:
+        pieces = []
+        for md in expl:
+            pieces += split_paragraph(md, para)
+            para += 1
+        words = re.sub(r"\*\*|\[\^[^\]]+\]", "", " ".join(inner(x) for x in text)).split()
+        lead = " ".join(words[:6]) + ("…" if len(words) > 6 else "")
+        u = Unit(text, pieces, lead)
+        if not pieces:                       # text with no explanation may run over pages
+            for md in text:
+                u.text_pieces += split_paragraph(md, para)
+                para += 1
+        units.append(u)
+    return units, para
+
+
+def mark(md: str, label: str) -> str:
+    """Put an invisible position marker at the start of a paragraph's text."""
+    return re.sub(r"^\[", f'[<span class="mk" dir="ltr">{label}</span>', md, count=1)
+
+
+def marked_paragraphs(pieces: list[Piece], prefix: str) -> list[str]:
+    """Pieces joined back into their paragraphs, as the page sets them, with a
+    marker where each piece starts: piece heights then add up exactly."""
+    out, last = [], None
+    for k, pc in enumerate(pieces):
+        cls = "mki" if pc.para == last else "mk"
+        bit = f'<span class="{cls}" dir="ltr">{prefix}{k}</span>' + inner(pc.md)
+        if pc.para == last:
+            out[-1] = rtl(inner(out[-1]) + " " + bit)
+        else:
+            out.append(rtl(bit))
+        last = pc.para
+    return out
+
+
+def cont_head(u: Unit) -> str:
+    return (f'<p class="cont-head"><span class="label">המשך הביאור על</span> '
+            f'“{esc(re.sub(r"<[^>]+>", "", u.lead))}”</p>')
+
+
+def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
+    """One page group: the text cut(s) on top, the explanation below."""
+    top: list[str] = []
+    if page["cont"] is not None:
+        top.append(cont_head(units[page["cont"]]))
+    for ui in page["texts"]:
+        for md in units[ui].text:
+            if ".cont" in md.split("]{")[-1] and top and not top[-1].startswith("<"):
+                top[-1] = rtl(inner(top[-1]) + " " + inner(md))          # one printed paragraph
+            else:
+                top.append(md)
+    for pc in page["text_pieces"]:
+        top.append(pc.md)
+    if markers:
+        if top and top[0].startswith("<p"):
+            top[0] = top[0].replace("<p class=\"cont-head\">", f'<p class="cont-head"><span class="mk" dir="ltr">{label}</span>', 1)
+        elif top:
+            top[0] = mark(top[0], label)
+    expl: list[str] = []
+    last_para = None
+    for pc in page["pieces"]:
+        if pc.para == last_para:
+            expl[-1] = rtl(inner(expl[-1]) + " " + inner(pc.md))
+        else:
+            expl.append(pc.md)
+        last_para = pc.para
+    out = ["::: {.pg}", "::: {.nusach}", *[x + "\n" for x in top], ":::"]
+    if expl:
+        out += ["::: {.biur}", *[x + "\n" for x in expl], ":::"]
+    out.append(":::")
+    return "\n".join(out)
+
+
+def measure(units: list[Unit], css: str, work: Path) -> float:
+    """Render every text cut and piece once on a tall page at the true width and
+    read their heights from the marker positions. Returns the continuation
+    line's height."""
+    md = []
+    for ui, u in enumerate(units):
+        body = ["::: {.pg}", "::: {.nusach}", cont_head(u).replace('<p class="cont-head">',
+                f'<p class="cont-head"><span class="mk" dir="ltr">C{ui}</span>', 1) + "\n"]
+        if u.text_pieces:
+            body += [x + "\n" for x in marked_paragraphs(u.text_pieces, f"X{ui}.")]
+        else:
+            body += [(mark(x, f"T{ui}") if i == 0 else x) + "\n" for i, x in enumerate(u.text)]
+        body.append(":::")
+        if u.pieces:
+            body += ["::: {.biur}"] + [x + "\n" for x in marked_paragraphs(u.pieces, f"P{ui}.")] + [":::"]
+        body.append(":::")
+        md.append("\n".join(body))
+    md.append('::: {.pg}\n<p><span class="mk" dir="ltr">END</span></p>\n:::')
+    # The pamphlet's own width and side margins: a marker at a line's right end
+    # (where a Hebrew line starts) must land in the margin, not off the page.
+    extra = (f"@page {{ size: 148mm {MEASURE_MM}mm; margin: 0 16mm; "
+             "@top-center { content: none; } @bottom-center { content: none; } }\n"
+             ".pg { break-before: auto !important; break-inside: avoid; }\n"
+             + MARK_CSS)
+    doc = f"""<!doctype html><html dir="rtl" lang="he"><head><meta charset="utf-8">
+<style>{css}\n{extra}</style></head><body>{to_html(chr(10).join(md))}</body></html>"""
+    pos = render_marks(doc, work / "measure")
+    page_h = MEASURE_MM * 72 / 25.4
+    y = {k: pg * page_h + yy for k, (pg, yy) in pos.items()}
+    order = sorted(y, key=y.get)
+    nxt = {a: b for a, b in zip(order, order[1:])}
+
+    def gap(label: str) -> float:
+        return y[nxt[label]] - y[label] if label in nxt else 0.0
+
+    for ui, u in enumerate(units):
+        # The text block: from its first line to the first explanation piece, which
+        # takes in the block's rule and the space under it. (C, the continuation line
+        # measured above it, is not part of it.)
+        u.text_h = y[f"P{ui}.0"] - y[f"T{ui}"] if u.pieces else 0.0
+        for k, pc in enumerate(u.pieces):
+            pc.h = gap(f"P{ui}.{k}")
+        for k, pc in enumerate(u.text_pieces):
+            pc.h = gap(f"X{ui}.{k}")
+    cont = [y[f"T{ui}"] - y[f"C{ui}"] for ui in range(len(units)) if f"T{ui}" in y]
+    return max(cont) if cont else 0.0
+
+
+def render_marks(doc: str, stem: Path) -> dict[str, tuple[int, float]]:
+    """Print an HTML page and return each marker's (page, y) in points."""
+    import pymupdf
+    html_path, pdf = stem.with_suffix(".html"), stem.with_suffix(".pdf")
+    html_path.write_text(doc, encoding="utf-8")
+    pdf.unlink(missing_ok=True)
+    print_pdf(html_path, pdf)
+    want = int(MARK_COLOUR[1:], 16)
+    pos: dict[str, tuple[int, float]] = {}
+    for pno, page in enumerate(pymupdf.open(pdf)):
+        for b in page.get_text("dict")["blocks"]:
+            for l in b.get("lines", []):
+                # Bidi can cut one marker into touching runs ("T", "0"); a line can also
+                # hold two markers. Join runs that touch, keep the others apart.
+                bits = sorted((s for s in l["spans"] if s["color"] == want and s["text"].strip()),
+                              key=lambda s: s["bbox"][0])
+                groups: list[list] = []
+                for s in bits:
+                    if groups and s["bbox"][0] - groups[-1][-1]["bbox"][2] < 0.6:
+                        groups[-1].append(s)
+                    else:
+                        groups.append([s])
+                for g in groups:
+                    pos.setdefault("".join(s["text"].strip() for s in g), (pno, min(s["bbox"][1] for s in g)))
+    return pos
+
+
+def pack(units: list[Unit], cont_h: float, budgets: dict[int, float], area: float) -> list[dict]:
+    """Fill pages: each opens with the text its explanation needs, then the explanation.
+    budgets[n] narrows page n after a spill."""
+    pages: list[dict] = []
+
+    def new(cont: int | None = None) -> dict:
+        p = {"texts": [], "text_pieces": [], "pieces": [], "cont": cont, "h": cont_h if cont is not None else 0.0,
+             "text_h": 0.0}
+        pages.append(p)
+        return p
+
+    def room(p: dict) -> float:
+        return budgets.get(pages.index(p), area - SLACK_PT) - p["h"]
+
+    page = new()
+    for ui, u in enumerate(units):
+        if u.pieces:
+            need = u.text_h + u.pieces[0].h
+            crowded = page["text_h"] and page["text_h"] + u.text_h > area * TEXT_SHARE
+            if (page["texts"] or page["pieces"] or page["text_pieces"]) and (need > room(page) or crowded):
+                page = new()
+            page["texts"].append(ui)
+            page["h"] += u.text_h
+            page["text_h"] += u.text_h
+            for pc in u.pieces:
+                if pc.h > room(page) and page["pieces"]:
+                    page = new(cont=ui)
+                page["pieces"].append(pc)
+                page["h"] += pc.h
+        else:
+            for pc in u.text_pieces:
+                if pc.h > room(page) and (page["texts"] or page["pieces"] or page["text_pieces"]):
+                    page = new()
+                page["text_pieces"].append(pc)
+                page["h"] += pc.h
+                page["text_h"] += pc.h
+    return [p for p in pages if p["texts"] or p["pieces"] or p["text_pieces"] or p["cont"] is not None]
+
+
+def text_area(css: str) -> float:
+    """Height of the page's text area in points, from the stylesheet's @page margins."""
+    m = re.search(r"@page\s*\{[^}]*?margin:\s*([\d.]+)mm\s+[\d.]+mm\s+([\d.]+)mm", css, re.S)
+    top, bottom = (float(m.group(1)), float(m.group(2))) if m else (18.0, 19.0)
+    return (210 - top - bottom) * 72 / 25.4
+
+
+def paginate(cfg: dict, parts: list[Part], whole: bool, css: str, work: Path) -> int:
+    """Lay out every paired part page by page, verify that no page group spills,
+    and set each part's body. Returns the number of paired pages."""
+    paired = [p for p in parts if p.pairs]
+    if not paired:
+        return 0
+    para, plan = 0, []
+    for p in paired:
+        units, para = make_units(p, para)
+        plan.append(units)
+    all_units = [u for us in plan for u in us]
+    cont_h = measure(all_units, css, work)
+    area = text_area(css)
+    budgets: list[dict[int, float]] = [dict() for _ in plan]
+    for attempt in range(8):
+        layouts = [pack(us, cont_h, budgets[i], area) for i, us in enumerate(plan)]
+        for i, (p, units, pages) in enumerate(zip(paired, plan, layouts)):
+            p.body = "\n\n".join(page_md(units, pg, True, f"G{i}.{n}") for n, pg in enumerate(pages)) \
+                + f'\n\n<p><span class="mk" dir="ltr">G{i}.end</span></p>\n\n' + p.tail
+        doc, _ = build_html(cfg, parts, whole, css + MARK_CSS)
+        pos = render_marks(doc, work / "verify")
+        if not pos:
+            sys.exit("page check found no markers: the layout cannot be verified")
+        spilled = False
+        for i, pages in enumerate(layouts):
+            starts = [pos.get(f"G{i}.{n}", (None, 0))[0] for n in range(len(pages))] + [pos.get(f"G{i}.end", (None, 0))[0]]
+            for n in range(len(pages)):
+                a, b = starts[n], starts[n + 1]
+                if a is None or b is None:
+                    continue
+                last_group = n + 1 == len(pages)
+                if (b > a) if last_group else (b - a != 1):
+                    spilled = True
+                    used = pages[n]["h"]
+                    last = (pages[n]["pieces"] or pages[n]["text_pieces"] or [Piece("", -1, used * 0.1)])[-1].h
+                    budgets[i][n] = min(budgets[i].get(n, area - SLACK_PT), used - last - 0.5)
+        if not spilled:
+            break
+    for p, units, pages in zip(paired, plan, layouts):
+        p.body = "\n\n".join(page_md(units, pg, False, "") for pg in pages) + "\n\n" + p.tail
+    print(f"  page check: {attempt + 1} render(s)" + (", a page group still spills: check the pages" if spilled else ", every page holds its text and explanation"))
+    return sum(len(x) for x in layouts)
 
 
 def css_string(s: str) -> str:
@@ -301,14 +626,20 @@ def main(argv: list[str]) -> int:
     parts = discourse_parts(discourse, cfg["meta"]) if whole else session_parts(target)
 
     # Preflight: what a printed product should not carry unnoticed.
-    if not whole and not parts[0].talk and 'custom-style="Commentary"' not in parts[0].body:
-        print("  note: no ביאור boxes yet; the session is not fully ingested")
+    if not whole and not parts[0].talk and not parts[0].pairs and 'custom-style="Commentary"' not in parts[0].body:
+        print("  note: no explanation in section.md yet; the session is not fully ingested")
     if UNCLEAR_COUNT:
         print(f"  note: {UNCLEAR_COUNT} UNCLEAR flag(s) in the text (not printed); resolve before publishing")
 
-    doc, title = build_html(cfg, parts, whole, CSS.read_text(encoding="utf-8"))
+    css = CSS.read_text(encoding="utf-8")
     name = discourse.name if whole else f"{discourse.name}-{target.name}"
     (OUT / "html").mkdir(parents=True, exist_ok=True)
+    work = OUT / "html" / f".{name}"
+    work.mkdir(exist_ok=True)
+    paired_pages = paginate(cfg, parts, whole, css, work)
+    if paired_pages:
+        print(f"  paired layout: {paired_pages} pages of text with its explanation")
+    doc, title = build_html(cfg, parts, whole, css)
     html_path = OUT / "html" / f"{name}.html"
     html_path.write_text(doc, encoding="utf-8")
     pdf = OUT / f"{name}.pdf"

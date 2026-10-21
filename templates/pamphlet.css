@@ -146,31 +146,43 @@ blockquote {
 }
 blockquote p { margin-bottom: 1.2mm; }
 
-/* ביאור boxes. */
-div[data-custom-style="Commentary"] {
-  margin: 0 0 5mm;
-  padding: 3.5mm 4.5mm 2mm;
-  border: 1px solid var(--box-edge);
-  border-radius: 1.5mm;
-  background: var(--box-fill);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  font-size: 11.3pt;
-  line-height: 1.52;
-}
-div[data-custom-style="Commentary"] p { margin-bottom: 1.8mm; }
-p.box-label {
-  font-family: "David", "Guttman Frank";
-  font-weight: bold;
-  font-size: 11.5pt;
-  margin: 0 0 2mm;
-  padding-bottom: 1.2mm;
-  border-bottom: 1px solid var(--box-edge);
-  text-align: right;
-  break-after: avoid;
-}
+/* Older section layout: the explanation as plain text (never boxed), and its
+   topic labels as quiet run-in lines. */
+div[data-custom-style="Commentary"] { font-size: 11.8pt; line-height: 1.55; margin: 0 0 4mm; }
+div[data-custom-style="Commentary"] p { margin-bottom: 1.6mm; text-indent: 4mm; }
+p.box-label { font-family: "David", "Guttman Frank"; font-weight: bold; font-size: 11.5pt; margin: 4mm 0 1.5mm;
+  text-indent: 0; break-after: avoid; }
 p.box-label .kind { color: var(--soft); margin-left: 2mm; }
 p.box-label .kind::after { content: " ·"; }
+
+/* The paired layout: every page opens with a cut of the text, set like a sefer,
+   and below a rule carries what the speaker says about it. A page whose
+   explanation continues from the page before opens with a short line naming
+   the passage it explains. scripts/build-pamphlet.py fills the pages. */
+.pg { break-before: page; }
+.pg .nusach {
+  font-family: "Guttman Frank", "David";
+  font-size: 13pt;
+  line-height: 1.6;
+  padding-bottom: 2.5mm;
+  margin-bottom: 3.5mm;
+  border-bottom: 1px solid var(--rule);
+}
+.pg .nusach p { margin: 0 0 1.2mm; text-align: justify; text-indent: 5mm; }
+.pg .nusach p:first-child, .pg .nusach p:has(> span.cont) { text-indent: 0; }
+.pg .nusach strong { font-size: 1.12em; }
+.pg .nusach:not(:has(p:not(.cont-head))) { border-bottom: 0; padding-bottom: 0; margin-bottom: 1mm; }
+.pg .cont-head {
+  font-family: "David", "Guttman Frank";
+  font-size: 9.5pt;
+  line-height: 1.4;
+  color: var(--soft);
+  text-indent: 0 !important;
+  margin: 0 0 1.5mm;
+}
+.pg .cont-head .label::after { content: ":"; }
+.pg .biur p { font-size: 11.8pt; line-height: 1.55; margin: 0 0 1.6mm; text-indent: 4mm; text-align: justify; }
+section.keys { break-before: page; }
 
 /* Transcript-style parts (voice-only sessions). */
 section.talk p { font-size: 12.3pt; line-height: 1.6; }
