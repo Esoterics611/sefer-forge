@@ -10,8 +10,10 @@ old `.raw.txt` came from openai-whisper *medium* (June 2026), with no
 `.timed.txt`. The nine recordings were re-transcribed with ivrit.ai large-v3
 on the GPU; where the new text is better it becomes `.raw.txt` /
 `.timed.txt` and the medium text stays beside it as `<audio>.medium.txt`.
-Done: Shaar HaYichud 010 and 011 (added 0, readability edits in the
-frontmatter, pamphlets proofed), Lag BaOmer 001 and 002 OCR re-read in full.
+Done: Shaar HaYichud 000–002 and 010–012 (added 0, readability edits in the
+frontmatter, pamphlets proofed; the book and the whole-discourse pamphlet
+rebuilt and proofed), Lag BaOmer 001 and 002 OCR re-read in full. Old
+sessions get no style pass (prompts/style-pass.md) unless the user asks.
 
 `python scripts/check-session.py` flags them. The transcripts were cleaned
 before `prompts/transcript-review-rules.md` existed, from the `.raw.txt` files
