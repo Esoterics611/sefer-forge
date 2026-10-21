@@ -10,10 +10,19 @@ old `.raw.txt` came from openai-whisper *medium* (June 2026), with no
 `.timed.txt`. The nine recordings were re-transcribed with ivrit.ai large-v3
 on the GPU; where the new text is better it becomes `.raw.txt` /
 `.timed.txt` and the medium text stays beside it as `<audio>.medium.txt`.
-Done: Shaar HaYichud 000–002 and 010–012 (added 0, readability edits in the
-frontmatter, pamphlets proofed; the book and the whole-discourse pamphlet
-rebuilt and proofed), Lag BaOmer 001 and 002 OCR re-read in full. Old
-sessions get no style pass (prompts/style-pass.md) unless the user asks.
+Done (2026-10-22): Shaar HaYichud 000–003 and 010–012 re-cleaned (added 0,
+readability edits in the frontmatter); 010–012 printed and proofed, the book
+and the whole-discourse pamphlet rebuilt and proofed; 000–003 left unprinted
+at the user's word. Lag BaOmer 001 and 002: OCR re-read in full, commentary
+re-cleaned from the new transcripts (1,533 and 1,773 words, added 0), paired
+sections with readability edits, pamphlets 11 and 17 pages, proofs clean.
+Old sessions get no style pass (prompts/style-pass.md) unless the user asks.
+
+**Still open:** Lag BaOmer's `discourse.md` (printed in the siddur book) is
+the old hand-edited one, built from the summarized commentary. Re-assembling
+it from the new sessions overwrites those hand edits, so it waits for the
+user's approval (`python scripts/assemble-discourse.py
+discourses/001-lag-baomer --force`, then `build-all.sh siddur` and the proof).
 
 `python scripts/check-session.py` flags them. The transcripts were cleaned
 before `prompts/transcript-review-rules.md` existed, from the `.raw.txt` files
@@ -45,6 +54,9 @@ its OCR (107 UNCLEAR flags, English photo notes as plain text: clean those
 first), and re-assemble `discourse.md` with the user's approval.
 
 ## Readability pass for voice-only lessons (found 2026-10-21)
+
+**Done (2026-10-21):** `edits:` (and now `style:`) in `transcript.md`'s frontmatter,
+applied by assemble-discourse and build-pamphlet, checked by check-session.
 
 Photo sessions record the readability pass (`prompts/readability-pass.md`) as
 `edits:` in `section-plan.yaml`. Voice-only lessons print `transcript.md`

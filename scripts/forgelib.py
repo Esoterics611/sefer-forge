@@ -131,20 +131,26 @@ def ocr_body(session: Path) -> str:
 def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
     """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped.
     notes=False leaves out each photo's printed footnotes too (its `[Footnotes:]`
-    block, up to the next photo): the text as it reads, across photos."""
+    block, up to the next photo): the text as it reads, across photos, where a
+    paragraph a photo leaves mid-sentence goes on in the next photo's first."""
     _, body, _ = split_frontmatter((session / "ocr.md").read_text(encoding="utf-8"))
-    paras, in_notes = [], False
+    paras, in_notes, new_photo = [], False, False
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
         if block.startswith("## Image:"):
-            in_notes = False
+            in_notes, new_photo = False, bool(paras)
         if block.startswith("[Footnotes:]"):
             in_notes = True
         if not block or block.startswith("## Image:") or (in_notes and not notes):
             continue
         if re.fullmatch(r"<!--.*?-->", block, flags=re.S):    # a note about the photo, not text
             continue
-        paras.append(" ".join(block.split()))
+        text = " ".join(block.split())
+        if new_photo and not notes and not re.search(r"[.:?!][\"'״׳)\]]*$", COMMENT.sub("", paras[-1]).strip()):
+            paras[-1] += " " + text
+        else:
+            paras.append(text)
+        new_photo = False
     return paras
 
 
