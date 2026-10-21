@@ -14,8 +14,12 @@ sudo apt install -y pandoc git-lfs python3-venv
 python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt                 # faster-whisper, pyyaml, python-docx, pyluach
 pip install -r requirements-gpu.txt             # only with an NVIDIA GPU: Whisper 2.7× faster
-git lfs install && git lfs pull                 # once per clone: fetches the real photos and audio
+git lfs install && git lfs pull                 # once per clone: fetches the .docx files kept in LFS
 ```
+
+Photos and recordings stay on the machine that has them: `.gitignore` keeps every session's
+`images/` and its audio out of git, so a new clone holds the transcripts, OCR and sections but
+not the sources. Copy those over by hand to work on a session elsewhere.
 
 Transcription details (model, outputs, memory): `TRANSCRIPTION.md`.
 

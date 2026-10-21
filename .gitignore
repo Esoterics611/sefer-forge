@@ -19,3 +19,18 @@ templates/book-template.docx
 
 # Regenerated from *.raw.txt by scripts/apply-fixes.py
 *.fixed.txt
+
+# Source photos and recordings stay on this machine: never committed or pushed.
+# The transcripts beside them (*.raw.txt, *.timed.txt, *.medium.txt) are kept.
+discourses/*/sessions/*/images/
+discourses/*/sessions/*/voicenotes/*.m4a
+discourses/*/sessions/*/voicenotes/*.mp3
+discourses/*/sessions/*/voicenotes/*.wav
+discourses/*/sessions/*/voicenotes/*.ogg
+discourses/*/sessions/*/voicenotes/*.opus
+discourses/*/sessions/*/voicenotes/*.aac
+discourses/*/sessions/*/voicenotes/*.flac
+discourses/*/sessions/*/voicenotes/*.amr
+# transcribe.py's run state
+discourses/*/sessions/*/voicenotes/*.partial.txt
+discourses/*/sessions/*/voicenotes/*.lock

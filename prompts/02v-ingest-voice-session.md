@@ -8,7 +8,7 @@ One session = one recorded shiur → one `transcript.md` → one chapter (new pa
 2. Drop the `.m4a` into `sessions/MMM/voicenotes/`
 3. `python scripts/transcribe.py discourses/NNN-<slug>/sessions/MMM` (Claude can start it in the background; an interrupted run resumes)
    → writes `.raw.txt` (Whisper) **and** `.fixed.txt` (recurring fixes from `glossary/whisper-fixes.yaml` already applied)
-4. Commit + push if you'll run Claude in the cloud.
+4. Commit + push the transcripts if you'll run Claude in the cloud (the recording itself is gitignored and stays on this machine).
 
 Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — the `ingest-voice-session` skill loads this prompt.
 
