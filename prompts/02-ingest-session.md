@@ -27,17 +27,18 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 > - `nusach.start` / `end`: the reading range from Step 2. `breaks`: split the print's long paragraphs at sentence boundaries where the argument turns, every 3–8 printed lines. `bold`: the print's large opening words.
 > - `footnotes`: the print's notes, if `ocr.md` has a `[Footnotes:]` block.
 > - `keys`: 5–8 passages that carry the session's argument, each a verbatim stretch of the נוסח, with a short Hebrew label.
-> - `boxes`: one per topic of the voicenote, in order, each with a plain-Hebrew label. A new box where the speaker turns to a new subject, usually at a commentary stretch.
+> - No pairing to decide: the build cuts the text where the speaker reads and pairs each cut with the explanation that follows it (`docs/print-standard.md`).
 >
 > Write values unquoted; a value containing `: ` goes under `key: >-` on the next line. Run `python scripts/build-section.py <SESSION_PATH>`. It writes `section.md` and runs `scripts/check-session.py`, which must report no errors.
 >
-> **Step 5 — Read it through.** Read `section.md` from top to bottom, as its reader will: does every box label name what the box says, does each box begin where a thought begins, are the key points the passages the argument turns on, does the title say what the session is about? Fix in the plan and rebuild. Then print it, `python scripts/build-pamphlet.py <SESSION_PATH>`, and proof the PDF by the `proof-pdf` skill (`docs/print-standard.md`): `python scripts/proof-pdf.py output/pamphlets/<discourse>-<session>.pdf` with no errors, then every spread read and every finding fixed.
+> **Step 5 — Read it through.** Read `section.md` from top to bottom, as its reader will: does each explanation follow the passage it explains, are the key points the passages the argument turns on, does the title say what the session is about? Fix in the plan and rebuild. Then print it, `python scripts/build-pamphlet.py <SESSION_PATH>`, and proof the PDF by the `proof-pdf` skill (`docs/print-standard.md`): `python scripts/proof-pdf.py output/pamphlets/<discourse>-<session>.pdf` with no errors, then every spread read and every finding fixed. Then the **readability pass** (`prompts/readability-pass.md`): correct or remove the short segments Whisper garbled, as `edits:` in the plan; rebuild and proof again.
 >
 > **Step 6 — Report**, in one message:
 > - the `session-status.py` line for the session;
 > - the reading range, and every correction made to `ocr.md` from the match, each with what the photo shows;
 > - the speaker's departures from the text that were left as spoken;
 > - the counts line from `review.md`, every Added entry with its reason, and every UNCLEAR flag with its time;
+> - the readability edits (corrected / removed / left for the user);
 > - the `check-session.py` result, the pamphlet's path and its proof summary line, and the visual findings fixed or left.
 >
 > **Rules:**

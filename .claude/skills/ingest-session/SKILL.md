@@ -10,6 +10,10 @@ session whose next step is not "done"; confirm it with the user before starting.
 
 For a `type: voice-only` discourse, use the `ingest-voice-session` skill instead.
 
+The session is laid out in the paired standard (text on top, its explanation below,
+no boxes; skill `paired-layout`) and finishes with the readability pass
+(`prompts/readability-pass.md`) after the proof.
+
 Always begin with `python scripts/session-status.py <SESSION_PATH>` and continue from the
 first unfinished step. Start Whisper in the background (Bash `run_in_background`) if it
 has not run, and do the OCR meanwhile; you are notified when it finishes.

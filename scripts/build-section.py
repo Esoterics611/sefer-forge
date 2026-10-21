@@ -36,10 +36,18 @@ for word, by construction:
     keys:                         # 5–8, each quoting the נוסח verbatim
       - label: ארץ קדמה לשמים
         quote: ארץ הוא בחי' רצוא שבתפלה
+    edits:                        # the readability pass (prompts/readability-pass.md)
+      - from: נשע בהמית           # exact words of commentary.md, found once
+        to: נפש הבהמית            # empty: the words are removed
+        why: Whisper; the term is plain from the context
 
 Write values unquoted: Hebrew's ' and " are fine in plain YAML. A value that
 contains ": " or starts with a quote mark goes on its own line under `>-`,
 as the footnote text above.
+
+commentary.md stays the faithful transcript; the plan's `edits` (a short garbled
+segment corrected or removed, each with its reason) apply on the way into
+section.md, and the checks compare the explanation with commentary.md plus them.
 
 section.md:  title block · "## הַנֹּסַח וְהַבֵּיאוּר" as pairs of
 ::: {custom-style="Nusach"} (a cut of the text) and ::: {custom-style="Commentary"}
@@ -361,8 +369,12 @@ def build(session: Path, plan: dict) -> str:
     head += [span(DESCRIPTOR), "", f"*{span(f'{version} · סֶשְׁן {session.name} · עִם בֵּיאוּר הַקּוֹל')}*", "", "---", ""]
 
     nusach = Nusach(plan, session)
+    try:
+        explained, _ = F.apply_edits(commentary_paragraphs(session), plan.get("edits") or [])
+    except F.EditError as e:
+        raise PlanError(str(e))
     body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]
-    for text, explanation in pairs(nusach, commentary_paragraphs(session)):
+    for text, explanation in pairs(nusach, explained):
         body += ['::: {custom-style="Nusach"}'] + [ln for p in text for ln in (p, "")]
         body[-1] = ":::"
         body.append("")

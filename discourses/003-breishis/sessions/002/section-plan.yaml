@@ -38,3 +38,134 @@ keys:
   - label: שמים חדשים וארץ חדשה
     quote: וגילוי זה נקרא שמים חדשים וארץ חדשה אשר אני עושה
 
+
+# Readability pass (prompts/readability-pass.md): garbled segments corrected
+# where the intended words are clear, removed where not. commentary.md keeps
+# what Whisper heard.
+edits:
+  - from: נשע בהמית
+    to: נפש הבהמית
+    why: Whisper; the term is plain
+  - from: שבבן לחי מזנת כולם רוויחי בגשמס
+    to: שבבני, חיי ומזוני, כולם רויחי בגשמיות
+    why: Whisper; the known phrase "בני חיי ומזוני ... רויחי"
+  - from: בזמן ומקום בגשמס,
+    to: בזמן ומקום בגשמיות,
+    why: Whisper
+  - from: שעל סוף מעשה המחשבה תחילה
+    to: שסוף מעשה במחשבה תחילה
+    why: the quoted saying (לכה דודי)
+  - from: רומן שאמר,
+    to: ''
+    why: garbled, not recoverable
+  - from: השפעה מעולמות העליונים התחתונים.
+    to: השפעה מעולמות העליונים לתחתונים.
+    why: a dropped letter
+  - from: השלב השני זה הערת, אבל זה נקרא
+    to: השלב השני, זה נקרא
+    why: garbled word removed
+  - from: שהידי, שההשפעה מלמעלה, זה מברר
+    to: שעל ידי ההשפעה מלמעלה זה מברר
+    why: Whisper split "על ידי"
+  - from: ובחוכמה התברירו אותה.
+    to: ובחוכמה אתבררו.
+    why: the quoted Zohar, "בחכמה אתבררו"
+  - from: ושכך כבר בירור המ"ן. בירור המ"ן זה כבר גילוי מלמעלה.
+    to: ואחר כך כבר בירור המ"ד. בירור המ"ד זה כבר גילוי מלמעלה.
+    why: the argument (the second בירור is המ"ד, from above)
+  - from: אז כל הזמן נסתיימה
+    to: אז כבר נסתיימה
+    why: Whisper
+  - from: הבעד לא יורד
+    to: המ"ד לא יורד
+    why: Whisper; the sentence before names המ"ד
+  - from: כל החליט, גם מבחינה פרטית,
+    to: גם מבחינה פרטית,
+    why: garbled, not recoverable
+  - from: ואז את הפועלים מלמטה למעלה ביחד.
+    to: ''
+    why: garbled, not recoverable
+  - from: זה עניין, ובמשל זה עניין הגאולה.
+    to: ובמשל זה עניין הגאולה.
+    why: false start
+  - from: זה יירוד וייחוד והתכללות למטה.
+    to: זה ייחוד והתכללות למטה.
+    why: garbled word removed
+  - from: והדעות הכותבות,
+    to: והדעות הכוזבות,
+    why: Whisper
+  - from: כמו שאין עוד ידוע
+    to: כמו שכבר ידוע
+    why: Whisper
+  - from: ומלכות רומי הראשי
+    to: ומלכות רומי הרשעה
+    why: the known phrase
+  - from: הבשם טוב הקדוש
+    to: הבעל שם טוב הקדוש
+    why: Whisper
+  - from: >-
+      "איהו וחיוהי וגרמוהי", כול אחד באום שהוא, והאורות והכלים שלו כולה אחד בהם.
+    to: >-
+      "איהו וחיוהי וגרמוהי חד", והאורות והכלים שלו כולם אחד.
+    why: the quoted Tikkunei Zohar; the rest garbled
+  - from: המשיח, זה רוח הוואי, מה שנקרא, ונחל עבור החוואי.
+    to: המשיח.
+    why: garbled, not recoverable
+  - from: זה עולם התיקון, אמר.
+    to: זה עולם התיקון.
+    why: stray word
+  - from: ועד עולם הזיעה התחתון. עדיין נסתיימה
+    to: ועד עולם הזה התחתון, עד שנסתיימה
+    why: Whisper
+  - from: צריכים לשלוח של הרבי,
+    to: של הרבי,
+    why: garbled words removed
+  - from: לידי שלמה המלך
+    to: בימי שלמה המלך
+    why: Whisper
+  - from: שמתגלה באינסוף שברדלת אמה.
+    to: שמתגלה באינסוף.
+    why: garbled, not recoverable
+  - from: תפילה למשה ופגע בשלום נפשי במלוכת ו׳ ה׳ במלוכת ה׳ במלוכת ו׳.
+    to: >-
+      "תפילה למשה" ו"פדה בשלום נפשי".
+    why: the maamar titles; the garbled years removed
+  - from: זה כאילו שמלאים את המכסה,
+    to: זה כאילו שמסירים את המסכה,
+    why: Whisper
+  - from: וזה אחרי שנגמר הסרט, המסכה שהתגלה.
+    to: ''
+    why: garbled, not recoverable
+  - from: אז תמיד הנשמות ירדו, זה היו, שנכללו
+    to: אז תמיד הנשמות ירדו, שנכללו
+    why: false start
+  - from: באריך, ומבין לאריך מסתיר את העתיק
+    to: באריך, ואריך מסתיר את העתיק
+    why: garbled; the sentence goes on פרצוף by פרצוף
+  - from: שהנשמה שלו רואה מסוף כולם באדם הראשון.
+    to: שהנשמה שלו רואה מסוף העולם ועד סופו, כאדם הראשון.
+    why: the known saying about the אור הגנוז
+  - from: מה שאין כמובן בנשמות של הכסף של השתלשלות שמסתיער,
+    to: מה שאין כן, כמובן, בנשמות של סדר השתלשלות שמסתתר,
+    why: Whisper
+  - from: ותאיר זה מבחינת כמעט תורה,
+    to: ותאיר זה מבחינת התורה,
+    why: garbled word
+  - from: יחידה שבתואר
+    to: יחידה שבתורה
+    why: Whisper
+  - from: יש מה, זה כל הסוד של הספירות,
+    to: זה כל הסוד של הספירות,
+    why: stray words
+  - from: רק שמתקהלים ביחד
+    to: רק שמתכללים ביחד
+    why: Whisper; התכללות is the passage's word
+  - from: שבתוכה מוסתרת בעליהם, בעומק, גם החוכמה היא לה.
+    to: שבתוכה מוסתרת, בעומק, גם החוכמה.
+    why: garbled words removed
+  - from: ובבחינת סאלטים דאורייתא, פנימיות התורה,
+    to: ובבחינת פנימיות התורה,
+    why: garbled, not recoverable
+  - from: האינסוף שברזל״א?
+    to: האינסוף?
+    why: garbled, not recoverable

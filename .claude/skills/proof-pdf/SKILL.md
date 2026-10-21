@@ -22,9 +22,12 @@ has not passed it. The standard is `docs/print-standard.md`; read it first.
    niqqud, split abbreviations), boxes, pages, running matter, readability. Note each
    finding with its page.
 
-3. **Fix, rebuild, re-proof** until steps 1 and 2 are clean. Write what was found and
+3. **Readability pass** (`prompts/readability-pass.md`) for a session pamphlet: the short
+   garbled segments of the explanation, corrected or removed as `edits:` in the plan.
+
+4. **Fix, rebuild, re-proof** until steps 1–3 are clean. Write what was found and
    fixed under "Visual review" in the `.proof.md` report.
 
-4. **Hand over** for acceptance testing, in one message: the PDF path and page count, the
+5. **Hand over** for acceptance testing, in one message: the PDF path and page count, the
    proof summary line, the visual findings fixed, and anything left with its reason.
    Say plainly that it is ready for the user's acceptance test, and nothing more.

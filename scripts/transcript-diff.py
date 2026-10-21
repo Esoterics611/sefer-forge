@@ -7,7 +7,8 @@ Usage:
 Compares voicenotes/*.fixed.txt (Whisper + glossary fixes) with the cleaned
 text — transcript.md for voice-only sessions, else commentary.md — word by
 word, ignoring punctuation, niqqud and markdown. For photo sessions it also
-checks that the ביאור boxes in section.md carry commentary.md unchanged.
+checks that the explanation in section.md is commentary.md with exactly the
+readability edits listed in section-plan.yaml (prompts/readability-pass.md).
 
 Writes <session>/review.md: a counts line, then every Added, Replaced and
 Removed passage with a few words of context. Added entries (words with
@@ -92,7 +93,17 @@ def main() -> int:
         boxes = BOX.findall(section.read_text(encoding="utf-8"))
         if boxes:
             body = "\n".join(ln for b in boxes for ln in b.splitlines() if "■" not in ln)
-            sd = diff(words(cleaned.read_text(encoding="utf-8")), words(body))
+            # The plan's readability edits (prompts/readability-pass.md) are part of the section.
+            sys.path.insert(0, str(Path(__file__).parent))
+            import forgelib
+            text = cleaned.read_text(encoding="utf-8")
+            text = re.sub(r"\A---\n.*?\n---\n", "", text, flags=re.S)
+            paras = [" ".join(x.split()) for x in re.split(r"\n\s*\n", text) if x.strip()]
+            try:
+                paras, _ = forgelib.apply_edits(paras, forgelib.plan_edits(session))
+            except forgelib.EditError as e:
+                print(f"section-plan.yaml edits: {e}")
+            sd = diff(words("\n\n".join(paras)), words(body))
             changed = sum(len(sd[k]) for k in ("added", "replaced", "removed", "fillers"))
             lines += ["## section.md boxes vs commentary.md", ""]
             if changed:

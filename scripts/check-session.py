@@ -235,13 +235,23 @@ def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None)
     com = r.session / "commentary.md"
     if com.exists():
         expl = "\n".join(c for k, c in divs if k == "Commentary")
-        sd = DIFF.diff(DIFF.words(com.read_text(encoding="utf-8")), DIFF.words(expl))
+        _, cbody, _ = F.split_frontmatter(com.read_text(encoding="utf-8"))
+        cparas = [" ".join(x.split()) for x in re.split(r"\n\s*\n", cbody) if x.strip()]
+        try:
+            cparas, n_edits = F.apply_edits(cparas, F.plan_edits(r.session))
+        except F.EditError as e:
+            r.error(f"section-plan.yaml edits: {e}")
+            n_edits = 0
+        if n_edits:
+            r.note(f"{n_edits} readability edit(s) from section-plan.yaml")
+        sd = DIFF.diff(DIFF.words("\n\n".join(cparas)), DIFF.words(expl))
         n = sum(len(sd[k]) for k in ("added", "replaced", "removed", "fillers"))
         if n:
             sample = (sd["removed"] + sd["replaced"] + sd["added"] + sd["fillers"])[:3]
-            r.error(f"section.md: the explanations differ from commentary.md in {n} place(s) — " + "; ".join(sample))
+            r.error(f"section.md: the explanations differ from commentary.md (with the plan's edits) in {n} place(s) — "
+                    + "; ".join(sample))
         else:
-            r.note("explanations carry commentary.md word for word")
+            r.note("explanations carry commentary.md word for word" + (", with the plan's edits" if n_edits else ""))
     keys = parts.get(PAIRED[1], "")
     if keys:
         check_keys(r, keys, n_words)

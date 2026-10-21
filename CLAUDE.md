@@ -30,7 +30,8 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 ## Markdown conventions
 - **Snapshot marker**: leading/trailing `...` on text that was cut off in the photo.
 - **RTL wrapping**: every Hebrew paragraph is wrapped in `[text]{dir="rtl"}`.
-- **`section.md` layout = three named sections:**
+- **`section.md` layout — paired (the standard, `layout: paired` in its frontmatter, built by `scripts/build-section.py`):** the title block; `## הַנֹּסַח וְהַבֵּיאוּר` as cuts of the text (`::: {custom-style="Nusach"}`), each followed by the explanation of it (`::: {custom-style="Commentary"}`, unboxed, no labels); the print's notes; `## נְקֻדּוֹת מַפְתֵּחַ`. Pages print text on top, explanation below (`docs/print-standard.md`). The plan's `edits:` hold the readability pass (`prompts/readability-pass.md`).
+- **Older `section.md` layout = three named sections** (sessions not yet moved; skill `paired-layout` moves them):
   1. `## הַנֹּסַח הָעִקָּרִי` — full OCR text as flowing `[...]{dir="rtl"}` paragraphs; bold key transitional words; preserve `...` snapshot markers and `<!-- UNCLEAR: ... -->` flags; no `{.underline}` markup here.
   2. `## נְקֻדּוֹת מַפְתֵּחַ` — 5–8 bold topic labels each followed by a `>` blockquote of the key source passage, both in `{dir="rtl"}`.
   3. `## בֵּיאוּר וּפֵירוּשׁ` — sequence of `::: {custom-style="Commentary"}` fenced divs, one per voicenote topic, each opening with `**[■ ביאור — <topic>]{dir="rtl"}**` followed by the cleaned voicenote commentary. `scripts/polish-docx.py` renders each as a framed box in smaller type. (Sessions ingested before 2026-10-15 use single-column `+---+` grid tables; leave them as they are.)
@@ -65,6 +66,8 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - "build book" / "render" → skill `build-book` (`prompts/05-build-book.md`; `bash scripts/build-all.sh [book]`, no book = all books).
 - "grow the glossary" / "update whisper fixes" → skill `grow-glossary` (`python scripts/glossary-candidates.py`).
 - "build booklets" → `python scripts/build-booklets.py [N ...]`: themed A5 PDFs of `shivchei-habesht-simple.md` in `output/booklets/`. Grouping in `booklets/booklets.yaml`, glossary in `booklets/glossary.yaml`, layout in `templates/booklet.css`.
+- "text on top, explanation below" / "pair the layout" / an older section → skill `paired-layout`.
+- "words that don't make sense" / "clean up the explanation" → the readability pass, `prompts/readability-pass.md` (also a step of every proof).
 - "proof" / "review the PDF" / "check formatting", and before any PDF is called ready → skill `proof-pdf` (`docs/print-standard.md`, `python scripts/proof-pdf.py <pdf>`). No PDF goes to the user for acceptance testing without it.
 - "pamphlet" / "standalone" / "publish session N on its own" → `python scripts/build-pamphlet.py <session-or-discourse> --png` (skill: `publish-pamphlet`): an A5 PDF in `output/pamphlets/` of one session, or of a whole discourse behind a contents page. Cover text from the book listing the discourse, overridden by `pamphlet:` in its `meta.yaml`; layout in `templates/pamphlet.css`.
 - "new book" → `./scripts/new-book.sh <slug> "<title>"`, then fill `books/<slug>/structure.yaml`.

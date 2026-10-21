@@ -362,3 +362,50 @@ def transcription(audio: Path, session: Path) -> dict:
         info.update(state="running", pid=pid, started=_proc_started(pid))
         info.setdefault("of", audio_seconds(audio))
     return info
+
+
+# --- readability edits (section-plan.yaml `edits:`) ---------------------------------
+
+class EditError(Exception):
+    pass
+
+
+def edit_pattern(src: str) -> re.Pattern:
+    """`src` as written in the plan, matched in a paragraph that may carry
+    <!-- --> flags between or right after its words (a flag on edited words
+    goes with them)."""
+    flag = r"(?:\s*<!--.*?-->)?"
+    toks = []
+    for tok in src.split():
+        m = re.match(r"(.*?)([,.:;?!]*)$", tok)          # a flag may sit before trailing punctuation
+        core, punct = m.group(1), m.group(2)
+        toks.append(re.escape(core) + (flag + re.escape(punct) if punct else ""))
+    return re.compile((flag + r"\s+").join(toks) + flag, re.S)
+
+
+def apply_edits(paras: list[str], edits: list[dict]) -> tuple[list[str], int]:
+    """The readability pass (prompts/readability-pass.md): each edit replaces
+    one exact stretch of the explanation (`from`) with `to` (empty: removed).
+    Every `from` must occur exactly once. Returns the edited paragraphs and the
+    number of edits applied."""
+    out = list(paras)
+    for e in edits or []:
+        src, dst = str(e.get("from") or "").strip(), str(e.get("to") or "").strip()
+        if not src:
+            raise EditError(f"edit with no `from`: {e}")
+        pat = edit_pattern(src)
+        hits = [(i, m) for i, p in enumerate(out) for m in pat.finditer(p)]
+        if len(hits) != 1:
+            raise EditError(f"edit “{src}” matches {len(hits)} places in commentary.md; it must match one")
+        i, m = hits[0]
+        p = out[i][:m.start()] + dst + out[i][m.end():]
+        out[i] = re.sub(r"\s+([,.:;?!])", r"\1", re.sub(r"\s{2,}", " ", p)).strip()
+        out[i] = re.sub(r"^[,;:]\s*", "", out[i])
+    return [p for p in out if p], len(edits or [])
+
+
+def plan_edits(session: Path) -> list[dict]:
+    f = session / "section-plan.yaml"
+    if not f.exists():
+        return []
+    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}).get("edits") or []
