@@ -128,18 +128,44 @@ def ocr_body(session: Path) -> str:
     return COMMENT.sub(" ", body)
 
 
-def ocr_paragraphs(session: Path) -> list[str]:
-    """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped."""
+def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
+    """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped.
+    notes=False leaves out each photo's printed footnotes too (its `[Footnotes:]`
+    block, up to the next photo): the text as it reads, across photos, where a
+    paragraph a photo leaves mid-sentence goes on in the next photo's first."""
     _, body, _ = split_frontmatter((session / "ocr.md").read_text(encoding="utf-8"))
-    paras = []
+    paras, in_notes, new_photo = [], False, False
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
-        if not block or block.startswith("## Image:"):
+        if block.startswith("## Image:"):
+            in_notes, new_photo = False, bool(paras)
+        if block.startswith("[Footnotes:]"):
+            in_notes = True
+        if not block or block.startswith("## Image:") or (in_notes and not notes):
             continue
         if re.fullmatch(r"<!--.*?-->", block, flags=re.S):    # a note about the photo, not text
             continue
-        paras.append(" ".join(block.split()))
+        text = " ".join(block.split())
+        if new_photo and not notes and not re.search(r"[.:?!][\"'״׳)\]]*$", COMMENT.sub("", paras[-1]).strip()):
+            paras[-1] += " " + text
+        else:
+            paras.append(text)
+        new_photo = False
     return paras
+
+
+def printed(paragraph: str) -> str:
+    """An OCR paragraph as the נוסח prints it: without a reader's hand underlines,
+    the print's note numbers (^15^) and its bold (the plan's `bold:` and
+    `footnotes:` set those)."""
+    p = re.sub(r"\[([^\]]*)\]\{\.underline\}", r"\1", paragraph)
+    p = re.sub(r"\^\d+\^", "", p)
+    return p.replace("**", "")
+
+
+def ocr_text(session: Path) -> str:
+    """The printed text of ocr.md (F.printed), footnotes and comments left out, across photos."""
+    return COMMENT.sub(" ", "\n\n".join(printed(p) for p in ocr_paragraphs(session, notes=False)))
 
 
 # --- words -----------------------------------------------------------------
@@ -365,7 +391,7 @@ def transcription(audio: Path, session: Path) -> dict:
     return info
 
 
-# --- readability edits (section-plan.yaml `edits:`) ---------------------------------
+# --- print edits: the readability pass (`edits:`) and the style pass (`style:`) ----------
 
 class EditError(Exception):
     pass
@@ -375,7 +401,7 @@ def edit_pattern(src: str) -> re.Pattern:
     """`src` as written in the plan, matched in a paragraph that may carry
     <!-- --> flags between or right after its words (a flag on edited words
     goes with them)."""
-    flag = r"(?:\s*<!--.*?-->)?"
+    flag = r"(?:\s*<!--(?:(?!-->).)*-->)?"           # one comment: never runs past its own end
     toks = []
     for tok in src.split():
         m = re.match(r"(.*?)([,.:;?!]*)$", tok)          # a flag may sit before trailing punctuation
@@ -384,7 +410,7 @@ def edit_pattern(src: str) -> re.Pattern:
     return re.compile((flag + r"\s+").join(toks) + flag, re.S)
 
 
-def apply_edits(paras: list[str], edits: list[dict]) -> tuple[list[str], int]:
+def apply_edits(paras: list[str], edits: list[dict], where: str = "commentary.md") -> tuple[list[str], int]:
     """The readability pass (prompts/readability-pass.md): each edit replaces
     one exact stretch of the explanation (`from`) with `to` (empty: removed).
     Every `from` must occur exactly once. Returns the edited paragraphs and the
@@ -397,16 +423,44 @@ def apply_edits(paras: list[str], edits: list[dict]) -> tuple[list[str], int]:
         pat = edit_pattern(src)
         hits = [(i, m) for i, p in enumerate(out) for m in pat.finditer(p)]
         if len(hits) != 1:
-            raise EditError(f"edit “{src}” matches {len(hits)} places in commentary.md; it must match one")
+            raise EditError(f"edit “{src}” matches {len(hits)} places in {where}; it must match one")
         i, m = hits[0]
         p = out[i][:m.start()] + dst + out[i][m.end():]
-        out[i] = re.sub(r"\s+([,.:;?!])", r"\1", re.sub(r"\s{2,}", " ", p)).strip()
+        out[i] = re.sub(r"[ \t]+([,.:;?!])", r"\1", re.sub(r"[ \t]{2,}", " ", p)).strip()
         out[i] = re.sub(r"^[,;:]\s*", "", out[i])
     return [p for p in out if p], len(edits or [])
+
+
+def edit_transcript(body: str, edits: list[dict]) -> tuple[str, int]:
+    """A voice-only transcript's body with its print edits (the frontmatter's
+    `edits:` and `style:`, F.print_edits) applied block by block: what prints. The
+    transcript itself keeps what Whisper heard."""
+    blocks, n = apply_edits(re.split(r"\n\s*\n", body.strip()), edits, "transcript.md")
+    return "\n\n".join(blocks) + "\n", n
+
+
+def print_edits(d: dict | None) -> list[dict]:
+    """The edits that print, in order: the readability pass (`edits:`,
+    prompts/readability-pass.md), then the style pass (`style:`,
+    prompts/style-pass.md), whose `from` is the text after the first."""
+    d = d or {}
+    return list(d.get("edits") or []) + list(d.get("style") or [])
+
+
+def edit_counts(d: dict | None) -> str:
+    """'N readability edit(s)', plus ', M style edit(s)' when there are any."""
+    d = d or {}
+    n, m = len(d.get("edits") or []), len(d.get("style") or [])
+    return f"{n} readability edit(s)" + (f", {m} style edit(s)" if m else "")
+
+
+def load_yaml(f: Path) -> dict:
+    """A YAML file as a dict; {} when it is missing or empty."""
+    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}) if f.exists() else {}
 
 
 def plan_edits(session: Path) -> list[dict]:
     f = session / "section-plan.yaml"
     if not f.exists():
         return []
-    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}).get("edits") or []
+    return print_edits(yaml.safe_load(f.read_text(encoding="utf-8")))

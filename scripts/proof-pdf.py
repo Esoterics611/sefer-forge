@@ -16,7 +16,7 @@ stands. Page by page it checks:
                    back to it (a glyph missing from the house fonts); Type 3
                    fonts (bitmap-like, poor in print)
   colours          every text and drawing colour in the stylesheet's palette
-  markup leaks     {dir=  ]{  :::  **  [^  <!--  -->  \\[  UNCLEAR  TODO in the text
+  markup leaks     {dir=  ]{  :::  **  [^  <!--  -->  \\[  >  #  UNCLEAR  TODO in the text
   margins          body text running past the side margins; body-size text in
                    the header or footer band
   stranded heads   a heading or ביאור label in the lowest quarter of a page
@@ -63,7 +63,8 @@ PROFILES = {
              "numerals": "hebrew",
              "fonts": {"David", "David-Bold"}, "heading": 15.0},
 }
-LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO')
+LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO'
+                   r'|(?:^|\s)(?:>|#{1,4})(?:\s|$)')        # a blockquote or heading marker printed
 LATIN = re.compile(r"[A-Za-z]{2,}")
 HEB_ONES = "אבגדהוזחט"
 HEB_TENS = "יכלמנסעפצ"

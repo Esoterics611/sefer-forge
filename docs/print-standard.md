@@ -85,8 +85,15 @@ defect, fixed in the stylesheet's font stacks.
 
    **Readability pass** (`prompts/readability-pass.md`): read the explanation
    through as its reader will; correct or remove each short segment Whisper
-   garbled, as `edits:` in the session plan (the transcript keeps what was
+   garbled, as `edits:` in the session plan, or in `transcript.md`'s
+   frontmatter for a voice-only lesson (the transcript keeps what was
    heard), then rebuild and proof again.
+
+   **Style pass** (`prompts/style-pass.md`), last: the explanation read once
+   more and its spoken Hebrew made written (speech markers, self-corrections,
+   false starts and restatements out; meaning, sources, order and the
+   readings untouched), as `style:` beside `edits:`; rebuild, proof, read
+   every spread.
 
 4. **Hand over** for acceptance testing with: the PDF path and page count,
    the proof summary line, the visual findings fixed, and anything left as it

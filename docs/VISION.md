@@ -21,7 +21,7 @@ N discourses → compile.py + pandoc → book.docx
 ```
 
 ### Whisper
-[Whisper](https://github.com/openai/whisper) is OpenAI's open-source speech-to-text model, running **fully locally** on your machine — no API call, no data leaves the room. We use the `medium` model, which handles Hebrew well. First run downloads ~1.4 GB; subsequent runs are instant. It produces a `.raw.txt` that Claude then cleans against the OCR'd source text (proper nouns, technical terms, diacritics).
+[Whisper](https://github.com/openai/whisper) is OpenAI's open-source speech-to-text model, running **fully locally** on your machine — no API call, no data leaves the room. We use ivrit.ai's Hebrew fine-tune of Whisper large-v3, on the GPU when there is one (see `TRANSCRIPTION.md`). The first run downloads about 3 GB. It produces a `.raw.txt` that Claude then cleans against the OCR'd source text (proper nouns, technical terms, diacritics).
 
 ### Claude (via Claude Code)
 Claude Code drives the session: it reads images, OCRs the Hebrew, cleans the Whisper transcript, and assembles `section.md`. All outputs are plain markdown — the session is reviewable and editable by the author at every stage.

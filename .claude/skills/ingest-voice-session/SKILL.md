@@ -14,3 +14,6 @@ unfinished step. If the recording is not transcribed, start
 transcribe audio in the chat; an interrupted run resumes where it stopped) and continue
 when it finishes. Before the build, `python scripts/check-session.py <SESSION_PATH>` must
 report no errors.
+
+The lesson finishes, after its pamphlet is proofed, with the readability pass and then the
+style pass (`prompts/style-pass.md`): both as lists in `transcript.md`'s frontmatter.

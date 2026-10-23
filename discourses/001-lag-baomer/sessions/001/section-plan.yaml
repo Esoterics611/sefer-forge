@@ -1,0 +1,79 @@
+# Decisions for section.md. Text comes from ocr.md and commentary.md;
+# rebuild with: python scripts/build-section.py discourses/001-lag-baomer/sessions/001
+title: שער לג בעומר — מאמר ראשון
+heading: שַׁעַר הַל"ג
+lines:
+  - בְּעִנְיַן הוֹדָאַת יִשְׂרָאֵל
+  - שֹׁרֶשׁ הַנְּשָׁמוֹת וּמַהוּת הַחִידּוּשׁ הַתָּמִידִי
+
+# The speaker skips the opening example ("נדלג על הדוגמה הראשונה") and
+# paraphrases from "והנה, זה המופת"; he reads from "והם אשר נאצו שמך" (03:09)
+# to "יאתה להודות לך" (10:57). Page 888 goes on in session 002 ("וביאור
+# הדברים"). The print's notes 15–26 (references) are not reprinted.
+nusach:
+  start: והנה, זה המופת והראי'
+  end: מודים שכן יאתה להודות לך
+  breaks:
+    - אבל ישראל עלה במחשבה
+    - וזהו שאנו
+    - הנה לזאת תיקנו רז"ל
+  bold: [והנה, אך]
+
+keys:
+  - label: עם נבל — עזב ה' את הארץ
+    quote: והם אשר נאצו שמך לאמר עזב ה' את הארץ תחת מקרי הטבע
+  - label: שרש אומות העולם מתחת הזמן
+    quote: וכח אלקי המהווה הטבע, מוסתר ונעלם בע' שרים, בסוד גלות השכינה
+  - label: ישראל עלה במחשבה
+    quote: פי', שרש נשמתם ומקור חוצבם מבחי' מחשבה עליונה שלמעלה מן הזמן
+  - label: חידוש השפע מאין ליש
+    quote: שמחדש השפע תמיד מאין ליש בבלתי הפסק כו', והוא למעלה מן הזמן
+  - label: מודים אנחנו לך
+    quote: מודים אנחנו לך שאתה ה' אלקינו, פי', מחמת שאתה ה' אלקינו בבחי' מח'
+  - label: החומר המחשיך
+    quote: בהיותה מלובשת בחומר הגופני המחשיך עליה, לא תוכל לבא לבחי' הודאה זאת
+  - label: מודים דרבנן — הודאה להודאה
+    quote: וענין מודים דרבנן הוא ענין הודאה להודאה זו
+
+# Readability pass (prompts/readability-pass.md). commentary.md keeps what
+# Whisper heard. No style pass on this older session.
+edits:
+  - from: שוקעים את הקדוש ברוך הוא, שהוא שם את הגבולות
+    to: שהקדוש ברוך הוא שם את הגבולות
+    why: garbled word removed
+  - from: וגם להבין את מה שעבר הנמשל, ובאמת
+    to: וגם להבין את הנמשל, ובאמת
+    why: garbled words removed
+  - from: כמו שאנחנו יודעים, שאתמול הזה, כן, מי שכתב פה
+    to: כמו שאנחנו יודעים, מי שכתב פה
+    why: garbled words removed
+  - from: אבל למה זה עם נבל? גם למה הוא נובע עם שכוננו נבילה?
+    to: אבל למה זה עם נבל?
+    why: garbled, not recoverable
+  - from: מה שלא בחומר, זה נקרא materialism, נקרא deductionism.
+    to: מה שלא בחומר, זה נקרא מטריאליזם, רדוקציוניזם.
+    why: the English terms in Hebrew letters
+  - from: ולמעלה מהטבע, מילים אחרות, זה לזמן ומזמן ומקום.
+    to: ולמעלה מהטבע, במילים אחרות, זה למעלה מזמן ומקום.
+    why: Whisper
+  - from: והיניקה הרוחנית, מאסרים הרוחניים, שם עיקר המאבק
+    to: והיניקה הרוחנית, שם עיקר המאבק
+    why: garbled word removed
+  - from: לזמן ומקום בעצמם, שלא יכול להיוועק חומר, כי הם
+    to: לזמן ומקום בעצמם, כי הם
+    why: garbled words removed
+  - from: זה בחינה מה שכתוב ברבי נחמן בישיבה בטלרס, שהמעט התופסת המרובה, האדם
+    to: 'זה בחינה של מעט התופסת המרובה: האדם'
+    why: garbled reference removed
+  - from: הכל, בן אדם הולך, נשמע בריאה בגוף בריא
+    to: הכל, בן אדם הולך, נשמה בריאה בגוף בריא
+    why: Whisper
+  - from: לשמור על שורש נשמת הגויים, שלא למעלה מזמן ומקום, יכולה להתעסק רק עם החומר.
+    to: מה שאין כן שורש נשמת הגויים, שאינו למעלה מזמן ומקום, יכול להתעסק רק עם החומר.
+    why: Whisper; the contrast the text makes
+  - from: שם אנחנו לא מרגישים את ההערה הזאת.
+    to: שם אנחנו לא מרגישים את ההודאה הזאת.
+    why: Whisper
+  - from: זה הוד שבהוד, וזה הדרגה של אגבורמה.
+    to: זה הוד שבהוד.
+    why: garbled word removed

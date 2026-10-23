@@ -110,13 +110,11 @@ def tokenize(paragraph: str) -> list[tuple[str, list[str]]]:
 
 
 def ocr_tokens(session: Path) -> list[list[tuple[str, list[str]]]]:
-    """ocr.md's paragraphs as token lists; the printed footnotes block is left out."""
-    paras = []
-    for p in F.ocr_paragraphs(session):
-        if p.startswith("[Footnotes:]"):
-            break
-        paras.append(tokenize(p))
-    return paras
+    """ocr.md's paragraphs as token lists; each photo's printed footnotes are left out,
+    and so is what the OCR records but the נוסח does not print: a reader's hand
+    underlines, the print's note numbers (^15^) and its bold (the plan's `bold:`
+    and `footnotes:` set those)."""
+    return [tokenize(F.printed(p)) for p in F.ocr_paragraphs(session, notes=False)]
 
 
 def flat_words(paras) -> tuple[list[str], list[tuple[int, int]]]:
@@ -370,7 +368,7 @@ def build(session: Path, plan: dict) -> str:
 
     nusach = Nusach(plan, session)
     try:
-        explained, _ = F.apply_edits(commentary_paragraphs(session), plan.get("edits") or [])
+        explained, _ = F.apply_edits(commentary_paragraphs(session), F.print_edits(plan))
     except F.EditError as e:
         raise PlanError(str(e))
     body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]

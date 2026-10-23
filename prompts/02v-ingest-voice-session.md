@@ -8,7 +8,7 @@ One session = one recorded shiur → one `transcript.md` → one chapter (new pa
 2. Drop the `.m4a` into `sessions/MMM/voicenotes/`
 3. `python scripts/transcribe.py discourses/NNN-<slug>/sessions/MMM` (Claude can start it in the background; an interrupted run resumes)
    → writes `.raw.txt` (Whisper) **and** `.fixed.txt` (recurring fixes from `glossary/whisper-fixes.yaml` already applied)
-4. Commit + push if you'll run Claude in the cloud.
+4. Commit + push the transcripts if you'll run Claude in the cloud (the recording itself is gitignored and stays on this machine).
 
 Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — the `ingest-voice-session` skill loads this prompt.
 
@@ -43,6 +43,11 @@ Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — t
 > **Step 5 — Build and verify.**
 > Run `bash scripts/build-all.sh <book>` (the book whose `structure.yaml` lists this discourse; `ls books/`). It re-assembles `discourse.md` automatically. Report: pandoc warnings verbatim, output path + size, and confirm the new lesson's title appears in `compiled/<book>.md`.
 >
+>
+> **Step 6 — Readability pass.** Print the lesson (`python scripts/build-pamphlet.py <SESSION_PATH>`), proof it (skill `proof-pdf`), and read it through as its reader will, under `prompts/readability-pass.md`: each segment Whisper garbled beyond a reader is corrected or removed as an `edits:` entry in `transcript.md`'s frontmatter (the body keeps what Whisper heard). Rebuild the book and the pamphlet and proof again.
+>
+> **Step 7 — Style pass** (the last step; `prompts/style-pass.md`): read the lesson through once more and turn the spoken Hebrew into written Hebrew, as a `style:` list in `transcript.md`'s frontmatter (headings, `>` readings and footnotes untouched). Check, rebuild the book and the pamphlet, proof, and read every spread.
+>
 > **Hard constraints:** Hebrew stays Hebrew. Never edit `.raw.txt`, audio, `compiled/`, or `output/`. Do not invoke docx/pptx/xlsx skills. Do not hand-edit `discourse.md` of a voice-only discourse — it is regenerated; edit `transcript.md`. Don't overwrite an existing `transcript.md` that already has body content — ask first.
 >
-> End with one message: transcript path, output path, count of auto fixes / review decisions / glossary additions, the counts line from `review.md` with every Added entry and its reason, and any `UNCLEAR` spots (with times) for me to listen to.
+> End with one message: transcript path, output path, the readability edits (corrected / removed, and any left for me), the style edits with a short before/after sample, count of auto fixes / review decisions / glossary additions, the counts line from `review.md` with every Added entry and its reason, and any `UNCLEAR` spots (with times) for me to listen to.

@@ -29,6 +29,10 @@ shows which are done):
    (`prompts/readability-pass.md`): read the explanation as its reader will, and
    correct or remove the short garbled segments, as `edits:` in the plan. Rebuild
    (steps 2–3) and proof again.
+5. **Style pass** (`prompts/style-pass.md`), for a new session (older sessions only when
+   the user asks): read the explanation once more and make its spoken Hebrew written,
+   as `style:` in the plan, leaving the quoted readings exactly as they are. Rebuild,
+   confirm the cuts did not move, proof again.
 
 **Voice-only lessons** (a `transcript.md`) need no plan: `build-pamphlet.py` pairs each
 topic heading (`##`) and the passage read (`>`) on top with the explanation that follows

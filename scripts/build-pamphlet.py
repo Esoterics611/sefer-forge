@@ -51,6 +51,8 @@ except ImportError:
     print("Missing dependency. Install with: pip install pyyaml")
     sys.exit(1)
 
+import forgelib as F
+
 CSS = Path("templates/pamphlet.css")
 OUT = Path("output/pamphlets")
 CHROME = os.environ.get("CHROME", "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe")
@@ -228,10 +230,13 @@ def session_parts(session: Path) -> list[Part]:
         f = session / name
         if f.exists():
             fm, body = frontmatter(f.read_text(encoding="utf-8"))
-            body = unflag(body)
             if name == "section.md":
-                return [section_part(body)]
-            return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), body)]
+                return [section_part(unflag(body))]
+            try:
+                body, _ = F.edit_transcript(body, F.print_edits(fm))
+            except F.EditError as e:
+                sys.exit(f"{f}: edits: {e}")
+            return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), unflag(body))]
     sys.exit(f"{session}: no section.md or transcript.md yet")
 
 
@@ -266,6 +271,8 @@ def to_html(markdown: str) -> str:
 
 PIECE_WORDS = 45          # explanation pieces: sentences grouped up to this many words
 MARK_COLOUR = "#fe0102"   # measuring and checking only; never in the final PDF
+MARK_ENCODE = str.maketrans("0123456789.", "qrstuvwykmz")   # no label otherwise uses these letters
+MARK_DECODE = str.maketrans("qrstuvwykmz", "0123456789.")
 MEASURE_MM = 5000         # height of the tall page the pieces are measured on
 SLACK_PT = 4              # packing margin; the page check repacks any page that still spills
 # Markers read the top of the line where their piece starts and move nothing.
@@ -306,7 +313,11 @@ def rtl(text: str, cls: str = "") -> str:
 
 
 def split_paragraph(md: str, para: int) -> list[Piece]:
-    """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each."""
+    """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each.
+    A heading stays whole; a quoted passage loses its '>' marker."""
+    if md.startswith("#"):
+        return [Piece(md, para)]
+    md = re.sub(r"^>\s?", "", md, flags=re.M)
     sentences = re.split(r"(?<=[.?!:])\s+(?=\S)", inner(md))
     pieces, cur = [], []
     for s in sentences:
@@ -459,6 +470,10 @@ OPENER_H: dict[str, float] = {}       # a part's title block, when it shares the
 def render_marks(doc: str, stem: Path) -> dict[str, tuple[int, float]]:
     """Print an HTML page and return each marker's (page, y) in points."""
     import pymupdf
+    # Labels go out in letters only: bidi can carry a label's digits off into the
+    # Hebrew beside it ("T1" printed as "T" ... "1"), and the marker is lost.
+    doc = re.sub(r'(<span class="mki?" dir="ltr">)([^<]+)(</span>)',
+                 lambda m: m.group(1) + m.group(2).translate(MARK_ENCODE) + m.group(3), doc)
     html_path, pdf = stem.with_suffix(".html"), stem.with_suffix(".pdf")
     html_path.write_text(doc, encoding="utf-8")
     pdf.unlink(missing_ok=True)
@@ -479,7 +494,8 @@ def render_marks(doc: str, stem: Path) -> dict[str, tuple[int, float]]:
                     else:
                         groups.append([s])
                 for g in groups:
-                    pos.setdefault("".join(s["text"].strip() for s in g), (pno, min(s["bbox"][1] for s in g)))
+                    label = "".join(s["text"].strip() for s in g).translate(MARK_DECODE)
+                    pos.setdefault(label, (pno, min(s["bbox"][1] for s in g)))
     return pos
 
 
@@ -680,6 +696,15 @@ def print_pdf(html_path: Path, pdf_path: Path) -> None:
         sys.exit(f"Chrome wrote no PDF for {html_path}")
 
 
+def finis_alone(pdf: Path) -> bool:
+    """Whether the last page carries nothing but the running header, the page
+    number and the closing ornament."""
+    import fitz
+    with fitz.open(pdf) as d:
+        lines = [l.strip() for l in d[-1].get_text().splitlines() if l.strip()]
+    return bool(lines) and any("◆" in l for l in lines) and len(lines) <= 3
+
+
 def main(argv: list[str]) -> int:
     args = [a for a in argv if not a.startswith("--")]
     if len(args) != 1:
@@ -711,6 +736,10 @@ def main(argv: list[str]) -> int:
     pdf = OUT / f"{name}.pdf"
     pdf.unlink(missing_ok=True)
     print_pdf(html_path, pdf)
+    if finis_alone(pdf):
+        # The closing ornament spilled onto a page of its own: leave it out.
+        html_path.write_text(doc.replace(f'<div class="finis">{ORN}</div>\n', ""), encoding="utf-8")
+        print_pdf(html_path, pdf)
     pages = re.search(r"Pages:\s+(\d+)", subprocess.run(["pdfinfo", str(pdf)], capture_output=True,
                                                          text=True).stdout)
     print(f"Built: {pdf}  ({pages.group(1) if pages else '?'} pages · {title})")

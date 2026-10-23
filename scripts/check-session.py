@@ -20,6 +20,7 @@ Images+voice sessions:
                 grid tables; footnote references and definitions match
 Voice-only sessions:
   transcript.md valid frontmatter with title and source, footnotes match,
+                its readability `edits:` each match once,
                 Added count, UNCLEAR times, review.md up to date
 
 Prints ✗ for errors, ! for warnings, · for notes. Exits 1 if any error.
@@ -144,7 +145,9 @@ def check_cleanup(r: Report, cleaned: Path) -> None:
 
 
 def check_footnotes(r: Report, name: str, body: str) -> None:
-    refs = set(re.findall(r"\[\^([^\]\s]+)\](?!:)", body))
+    # A reference anywhere but at a line's start (a definition), even before a colon.
+    refs = set(re.findall(r"(?<!^)\[\^([^\]\s]+)\]|^\[\^([^\]\s]+)\](?!:)", body, flags=re.M))
+    refs = {a or b for a, b in refs}
     defs = set(re.findall(r"^\[\^([^\]\s]+)\]:", body, flags=re.M))
     if refs - defs:
         r.error(f"{name}: footnote(s) used but not defined: {', '.join(sorted(refs - defs))}")
@@ -167,7 +170,7 @@ def check_ocr(r: Report) -> list[str]:
     n = len(re.findall(r"<!--\s*UNCLEAR", text))
     if n:
         r.note(f"ocr.md: {n} UNCLEAR flag(s)")
-    return F.words(F.ocr_body(r.session))
+    return F.words(F.ocr_text(r.session))
 
 
 def section_parts(body: str) -> dict[str, str]:
@@ -240,10 +243,10 @@ def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None)
         try:
             cparas, n_edits = F.apply_edits(cparas, F.plan_edits(r.session))
         except F.EditError as e:
-            r.error(f"section-plan.yaml edits: {e}")
+            r.error(f"section-plan.yaml edits/style: {e}")
             n_edits = 0
         if n_edits:
-            r.note(f"{n_edits} readability edit(s) from section-plan.yaml")
+            r.note(f"{F.edit_counts(F.load_yaml(r.session / 'section-plan.yaml'))} from section-plan.yaml")
         sd = DIFF.diff(DIFF.words("\n\n".join(cparas)), DIFF.words(expl))
         n = sum(len(sd[k]) for k in ("added", "replaced", "removed", "fillers"))
         if n:
@@ -359,6 +362,12 @@ def check(session: Path) -> Report:
         if t.exists():
             fm, body = check_frontmatter(r, t, need=("title", "source"))
             check_footnotes(r, "transcript.md", body)
+            try:
+                _, n_edits = F.edit_transcript(body, F.print_edits(fm))
+                if n_edits:
+                    r.note(f"{F.edit_counts(fm)} in the frontmatter")
+            except F.EditError as e:
+                r.error(f"transcript.md edits/style: {e}")
             check_unclear_times(r, t, body)
             check_cleanup(r, t)
         return r

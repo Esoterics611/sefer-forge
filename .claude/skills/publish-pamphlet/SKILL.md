@@ -11,7 +11,8 @@ description: Print one session, or a whole discourse, as a standalone A5 pamphle
    with no errors, then every spread read against `docs/print-standard.md`. Layout
    changes go in `templates/pamphlet.css`, never in the HTML or the PDF. Rebuild and
    re-proof until clean. Then the readability pass (`prompts/readability-pass.md`) on
-   the explanation, as `edits:` in the session plan; rebuild and proof again.
+   the explanation, as `edits:` in the session plan, and for a new session the style
+   pass (`prompts/style-pass.md`), as `style:`; rebuild and proof again.
    A session still in the older section layout moves to the paired layout first
    (skill `paired-layout`).
 3. Cover text comes from the book that lists the discourse, overridden by the
