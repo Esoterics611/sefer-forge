@@ -306,8 +306,9 @@ def print_pdf(html_path: Path, pdf_path: Path) -> None:
 
 
 def thin_last_page(pdf_path: Path) -> bool:
-    """True if the PDF's last page holds only a line or two of text (between
-    the running header and the page number)."""
+    """True if the PDF's last page holds only a few lines of text (between
+    the running header and the page number): a glossary entry or two carried
+    over."""
     try:
         import pymupdf
     except ImportError:
@@ -316,7 +317,7 @@ def thin_last_page(pdf_path: Path) -> bool:
     top, bottom = 17 * 72 / 25.4, page.rect.height - 18 * 72 / 25.4
     lines = [l for b in page.get_text("dict")["blocks"] for l in b.get("lines", [])
              if top < l["bbox"][1] and l["bbox"][3] < bottom and "".join(s["text"] for s in l["spans"]).strip()]
-    return len(lines) <= 2
+    return len(lines) <= 5
 
 
 def safe_name(s: str, lang: str) -> str:
@@ -356,8 +357,8 @@ def main(argv: list[str]) -> None:
         b = booklets[n - 1]
         html_path = out / "html" / f"{n:02d}.html"
         tmp = out / f"{n:02d}.pdf"                 # ASCII name for Chrome, renamed below
-        # English and French: when the last page would hold only a line or two
-        # (a glossary entry carried over), print again with a tighter glossary.
+        # English and French: when the last page would hold only a few lines
+        # (glossary entries carried over), print again with a tighter glossary.
         for fit in (GLOSSARY_FIT if L["latin"] else [""]):
             html_path.write_text(build_html(n, len(booklets), cfg, b, sections, glossary, css, colophon, L, lang,
                                             fit), encoding="utf-8")

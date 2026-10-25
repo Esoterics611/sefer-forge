@@ -54,8 +54,8 @@ blockquote { font-size: 12pt; }
 .glossary.after-colophon { break-before: auto; margin-top: 12mm; }
 .glossary dl { font-size: 11pt; line-height: 1.35; columns: 2; column-gap: 7mm; column-fill: balance; }
 .glossary dt { font-weight: 600; break-after: avoid; }
-.glossary dd { margin-bottom: 2mm; text-align: left; hyphens: auto; break-before: avoid; }
-/* Tried by the build when the last page would hold only a line or two. */
+.glossary dd { margin-bottom: 2mm; text-align: left; hyphens: auto; break-before: avoid; break-inside: avoid; }
+/* Tried by the build when the last page would hold only a few lines. */
 .glossary.tight dl { font-size: 10.5pt; line-height: 1.3; }
 .glossary.tight dd { margin-bottom: 1.5mm; }
 .glossary.tighter dl { font-size: 10pt; line-height: 1.25; }

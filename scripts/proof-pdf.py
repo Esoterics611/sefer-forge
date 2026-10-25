@@ -316,8 +316,11 @@ def spreads(pdf: Path, rtl: bool = True) -> list[Path]:
     for g in groups:
         w, h = pages[0].size
         sheet = Image.new("RGB", (w * 2 + 12, h), (120, 120, 120))
-        # Right-to-left: the lower page number on the right; left to right, on the left.
+        # Right-to-left: the lower page number on the right; left to right, on the
+        # left, and a page alone on its own side (odd pages on the right).
         first, second = ((w + 12, 0), (0, 0)) if rtl else ((0, 0), (w + 12, 0))
+        if not rtl and len(g) == 1 and g[0] % 2 == 0:
+            first = (w + 12, 0)
         sheet.paste(pages[g[0]], first)
         if len(g) > 1:
             sheet.paste(pages[g[1]], second)
