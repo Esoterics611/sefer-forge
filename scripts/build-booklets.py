@@ -337,7 +337,7 @@ def print_pdf(html_path: Path, pdf_path: Path) -> None:
 
 def thin_last_page(pdf_path: Path) -> bool:
     """True if the PDF's last page holds only a few lines of text (between
-    the running header and the page number): a glossary entry or two carried
+    the running header and the page number): a few glossary entries carried
     over."""
     try:
         import pymupdf
@@ -347,7 +347,15 @@ def thin_last_page(pdf_path: Path) -> bool:
     top, bottom = 17 * 72 / 25.4, page.rect.height - 18 * 72 / 25.4
     lines = [l for b in page.get_text("dict")["blocks"] for l in b.get("lines", [])
              if top < l["bbox"][1] and l["bbox"][3] < bottom and "".join(s["text"] for s in l["spans"]).strip()]
-    return len(lines) <= 5
+    return len(lines) <= 12
+
+
+def page_count(pdf_path: Path) -> int:
+    try:
+        import pymupdf
+    except ImportError:
+        return 0
+    return len(pymupdf.open(pdf_path))
 
 
 def safe_name(s: str, lang: str) -> str:
@@ -388,14 +396,23 @@ def main(argv: list[str]) -> None:
         html_path = out / "html" / f"{n:02d}.html"
         tmp = out / f"{n:02d}.pdf"                 # ASCII name for Chrome, renamed below
         # English and French: when the last page would hold only a few lines
-        # (glossary entries carried over), print again with a tighter glossary.
-        for fit in (GLOSSARY_FIT if L["latin"] else [""]):
+        # (glossary entries carried over), print again with a tighter glossary,
+        # and keep it only if it saves that page.
+        def render(fit: str) -> None:
             html_path.write_text(build_html(n, len(booklets), cfg, b, sections, glossary, css, colophon, L, lang,
                                             fit), encoding="utf-8")
             tmp.unlink(missing_ok=True)
             print_pdf(html_path, tmp)
-            if not thin_last_page(tmp):
-                break
+
+        render("")
+        if L["latin"] and thin_last_page(tmp):
+            pages = page_count(tmp)
+            for fit in GLOSSARY_FIT[1:]:
+                render(fit)
+                if page_count(tmp) < pages:
+                    break
+            else:
+                render("")
         final = out / f"{n:02d} - {safe_name(b['title'] if lang == 'he' else b[lang], lang)}.pdf"
         tmp.replace(final)
         print(f"  {final}")
