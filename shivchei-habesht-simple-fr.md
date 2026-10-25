@@ -1363,3 +1363,145 @@ Un jour, le Baal Chem Tov fut très malade, au point de n'avoir plus la force de
 Et le rav dit que le Baal Chem Tov vit que les portes étaient fermées, et qu'on ne voulait pas laisser entrer son beau-frère, Rabbi Guershon. Et il prit un grand bâton, frappa les portes jusqu'à ce qu'elles s'ouvrent, entra, et cria avec colère au tribunal : « Pour une si petite chose, vous le condamneriez à mort, à Dieu ne plaise ? » Et c'est ce qu'on a dit dans les *Tikounei haZohar* : il y a une mitsva qu'on appelle « Matronita » (la Dame), et elle prend l'homme sous ses ailes, et ne le livre pas à l'accusateur, comme la mitsva des téfilines.
 
 **Résumé :** Un jour, le Baal Chem Tov fut très malade et perdit la parole, et il fit signe à ses gens de lui mettre les téfilines. Quand il guérit, il raconta qu'il y avait contre lui une grande accusation pour une faute de son enfance ; son maître lui avait dit de mettre les téfilines, et l'accusateur était venu sous l'apparence d'un non-Juif avec un fer pour lui couper la tête, et n'avait pas pu s'approcher à cause des téfilines. Selon une autre version, il vit des portes verrouillées qui ne laissaient pas entrer Rabbi Guershon, et quelqu'un les força et discuta avec le tribunal ; et dans le Zohar il est écrit que la mitsva des téfilines protège l'homme contre l'accusateur.
+
+## 135 — Le juge qui perdit sa Torah
+
+J'ai entendu du rav de notre communauté que le Baal Chem Tov conduisit le rav Rabbi Ye'hiel Mikhel à son rabbinat dans la ville de Horodna. La nuit du jeudi au vendredi, ils s'égarèrent en chemin. Il faisait très, très sombre ; vraiment, on ne voyait pas son prochain. Le Baal Chem Tov descendit de la charrette pour chercher le chemin, et ensuite le rav Rabbi Ye'hiel Mikhel descendit aussi, et trouva le Baal Chem Tov couché à terre, les bras et les jambes étendus, pleurant de grands pleurs, s'arrachant les cheveux de la tête, et disant : « On va profaner le Chabbat, à Dieu ne plaise ! » Et le rav dit : « Même si nous n'avions vu en lui que cette chose-là, qu'il pleura de grands pleurs à cause de la profanation du Chabbat, cela suffirait. »
+
+Ensuite ils arrivèrent à Horodna, et le rav prêcha le Chabbat, et il y eut une grande discussion subtile à la synagogue pendant le sermon. Il y avait là un grand érudit, qu'on appelait Rabbi Mikhel le juge ; il était très vif, et il souleva des objections contre le rav. Le rav lui demanda : « Au troisième repas, je répondrai à toutes vos objections. » La communauté avait une grande maison, dont on ne se servait que quand on recevait un nouveau rav : on fait un troisième repas pour tous les gens de la ville, et on fait asseoir chacun selon son rang. Le juge Rabbi Mikhel était assis à côté du rav, et Rabbi Zeev Koutses était assis au bout de la table. Le Baal Chem Tov le rabroua, et dit ainsi : « Je déteste l'humble ! Viens t'asseoir ici. »
+
+Le rav commença à répéter le sermon, et Rabbi Mikhel souleva des objections, et Rabbi Zeev discuta avec lui, jusqu'à ce qu'il le vainque. Et Rabbi Mikhel eut honte, et resta sur son avis, bien qu'il fût tordu, et ne voulut pas reconnaître la vérité. Le Baal Chem Tov commença à les prier et dit : « Ne troublez pas ma table », jusqu'à ce qu'ils se calment. Après le Chabbat, le Baal Chem Tov et le rav partirent pour une circoncision dans un village, et Rabbi Mikhel insista pour s'asseoir avec eux, et ils le prirent. En chemin, il commença à parler d'astronomie, et Rabbi Zeev Koutses lui répondit, et il vit que Rabbi Zeev était aussi savant que lui, même en astronomie. Il s'étonna et dit : « Comment de telles choses sont-elles venues à un 'hassid ? »
+
+Quand le Baal Chem Tov voulut reprendre sa route, il eut peur que Rabbi Mikhel ne fasse souffrir le rav, et il lui prit sa Torah, et il devint un ignorant. La coutume de Rabbi Mikhel était de se lever à minuit pour étudier la Guemara, les décisionnaires et Maïmonide. Quand il ouvrit le livre, il ne savait rien. Il pensa que son esprit n'était pas clair parce qu'il avait bu beaucoup d'hydromel. Il ferma le livre, fuma la pipe, dormit un peu, et resta couché jusqu'au matin. Le matin, après la prière, il alla étudier sa leçon, prit le livre et l'ouvrit, et il ne savait rien. Et il comprit que c'était le Baal Chem Tov qui lui avait fait cela. Il vint chez le Baal Chem Tov, et dit : « Rabbi, rends-moi ma Torah ! » Et le Baal Chem Tov lui fit des reproches et dit : « Est-ce pour la victoire et la querelle qu'on étudie la Torah ? » Et il lui fit des reproches, et Rabbi Mikhel devint un tsaddik parfait.
+
+**Résumé :** Quand le Baal Chem Tov conduisit Rabbi Ye'hiel Mikhel à son rabbinat, il pleura et s'arracha les cheveux en chemin, de peur qu'on ne profane le Chabbat. À Horodna, un juge à l'esprit vif, Rabbi Mikhel, souleva des objections contre le sermon du nouveau rav, et Rabbi Zeev Koutses, que le Baal Chem Tov avait fait monter du bout de la table, le vainquit ; mais le juge ne le reconnut pas. Pour qu'il ne fasse pas souffrir le rav, le Baal Chem Tov lui prit tout son savoir, et quand le juge vint le redemander, le Baal Chem Tov lui reprocha qu'on n'étudie pas la Torah pour la victoire, et le juge devint un tsaddik parfait.
+
+## 136 — Les deux princes en guerre
+
+J'ai entendu du rav de Polonné : quand il y eut de son temps une guerre entre la Grèce (la Russie) et Ismaël (les Turcs), le Baal Chem Tov dit : « J'ai vu deux princes (des anges) qui combattaient, et le prince d'Ismaël l'emportait. Et j'ai vu le prince de la Grèce revenir avec fureur, et il en sortira un grand malheur pour le peuple d'Israël, à Dieu ne plaise. Et j'ai prié pour que ce soit le contraire, que le prince de la Grèce l'emporte. Seulement deux Juifs, je n'ai pas pu les sauver de leurs mains. »
+
+**Résumé :** Pendant une guerre entre la Russie et la Turquie, le Baal Chem Tov vit au Ciel le prince de la Turquie vaincre le prince de la Russie, et comprit qu'il en viendrait un grand malheur pour les Juifs. Il pria pour que la Russie l'emporte, et grâce à cela tous furent sauvés, sauf deux Juifs qu'il ne put sauver.
+
+## 137 — La bougie qui révéla
+
+J'ai entendu que le Baal Chem Tov passa le Chabbat chez un tsaddik, et la bougie commença à vaciller. Le Baal Chem Tov dit : « La bougie me dit que tu as été avec ta femme pendant que la bougie brûlait. » Et c'était la vérité, mais le tsaddik n'était pas coupable de cette chose, car la bougie s'était éteinte, et il avait cru qu'elle s'était éteinte complètement, et ensuite la bougie avait recommencé à éclairer, comme une bougie à sa fin. <!-- MATURE: marital relations by candlelight -->
+
+**Résumé :** Chez un tsaddik, la bougie commença à vaciller, et le Baal Chem Tov dit que la bougie lui révélait que le tsaddik avait transgressé une règle de pudeur à la lumière de la bougie. C'était vrai, mais le tsaddik n'était pas coupable, car il croyait que la bougie s'était déjà complètement éteinte.
+
+## 138 — Le dernier ducat à Brody
+
+J'ai entendu de Rabbi Zelig de Letitchev, qui était en voyage, et arriva à la ville d'Ispali, qui était alors encore un village, et logea chez un cho'het. On apprit qu'était venu le rav Rabbi Meïr, le rav de toute la région, et j'allai le saluer. Le rav demanda à Rabbi Zelig de rester là quelques jours, jusqu'à ce que tous les gens des villages se rassemblent pour les jugements, et de lui tenir compagnie. Rabbi Zelig resta chez le rav, et le rav lui raconta :
+
+« Un jour, le Baal Chem Tov partit pour Brody, et passa par Horodenka, et s'arrêta devant ma maison, et m'envoya appeler pour que je sorte. Je n'étais pas encore alors président du tribunal rabbinique. Il dit : “Meïr, assieds-toi avec moi dans la charrette, et viens avec moi à Brody.” J'ai pris mon sac de talith et de téfilines et mon manteau, et je suis parti. Quand nous sommes arrivés à Brody, le Baal Chem Tov s'est arrêté à l'auberge, comme un marchand. Personne n'est venu chez lui, sauf deux hommes, l'un des riches, et l'autre qui n'était pas riche. C'étaient des hommes importants ; ils l'ont salué, et ils venaient chez lui tout le temps. Et moi, j'ai vu que l'argent était épuisé dans la main du Baal Chem Tov, et qu'il n'avait même pas une seule pièce, et j'en étais peiné : pourquoi n'avais-je pas pris mon argent de la maison ?
+
+« J'ai entendu le Baal Chem Tov dire au cocher : “Prépare-toi pour la route.” Je suis allé prévenir ces deux hommes que le Baal Chem Tov reprenait sa route, et ils sont venus. Quand ils ont vu que le départ tardait, ils ont dit : “Allons à la maison d'étude, et quand il sera prêt à partir, Rabbi Meïr nous préviendra et nous viendrons.” Et c'est ce qui est arrivé : je les ai prévenus, et ils sont venus. Le riche a donné au Baal Chem Tov, la première fois, un ducat d'or. Et quand il est venu la deuxième fois, le Baal Chem Tov a pris ce ducat, l'a donné au riche, et a dit : “Douze zlotys, vous les donnerez aux gens du kloyz” — car ils étaient importants aux yeux du Baal Chem Tov, qui disait avoir vu la Chekhina reposer sur le kloyz — “et ce qui restera au-delà des douze zlotys, vous le distribuerez aux pauvres.” Et nous sommes partis de la ville.
+
+« Quand j'ai vu qu'il dépensait ce ducat, mon cœur a fondu en moi, car je savais qu'il n'avait même pas une seule pièce. Je lui ai demandé : “Pourquoi fais-tu ainsi ? Votre Honneur n'a même pas une pièce pour les dépenses !” Il m'a répondu en langage clair : “Sache avec certitude : tant que Dieu est vivant, nous n'avons pas à nous inquiéter.” » Et c'est ce qui arriva : quand ils arrivèrent à la ville de Radvil, les gens de la ville commencèrent à venir chez lui demander des remèdes, et de même partout, jusqu'à ce qu'il rapporte de l'argent à la maison.
+
+**Résumé :** Le rav Rabbi Meïr raconta qu'il avait voyagé un jour avec le Baal Chem Tov jusqu'à Brody, et que là, bien qu'il ne restât pas une pièce au Baal Chem Tov, celui-ci distribua au kloyz et aux pauvres l'unique ducat qu'un riche lui avait donné. Quand Rabbi Meïr lui demanda avec chagrin ce qu'ils feraient sans argent pour la route, le Baal Chem Tov répondit que, tant que Dieu est vivant, il n'y a pas à s'inquiéter. Et en effet, dans la ville suivante, des gens commencèrent à venir lui demander des remèdes, jusqu'à ce qu'il rentre chez lui avec de l'argent.
+
+## 139 — Le cho'het de la secte de Chabbetaï Tsvi
+
+J'ai entendu du rav de notre communauté que le Baal Chem Tov fit savoir au rav de Bitchov que son cho'het était de la secte de Chabbetaï Tsvi, que son nom soit effacé, et qu'il lui faisait manger de la viande impropre : après avoir montré le couteau au rav, il frappait le couteau sur un marteau, pour l'ébrécher. Le rav le surveilla, et c'était bien ainsi.
+
+**Résumé :** Le Baal Chem Tov fit savoir au rav de Bitchov que son cho'het appartenait à la secte de Chabbetaï Tsvi, et qu'après avoir montré au rav un couteau valide, il l'ébréchait exprès et lui faisait manger de la viande impropre. Le rav vérifia, et il apparut que c'était la vérité.
+
+## 140 — Les volailles à Konstantin
+
+Voici ce qui arriva : Rabbi David Pourkes vint avec le Baal Chem Tov dans la ville de Konstantin. Le Baal Chem Tov ordonna que le cho'het vienne lui montrer le couteau. Le cho'het ne vint pas tout de suite, et le Baal Chem Tov se leva pour prier. Le cho'het vint, ne voulut pas attendre, et rabroua la femme du maître de maison pour qu'elle lui donne à abattre. Elle les lui donna, et il abattit et s'en alla. Après la prière, le Baal Chem Tov dit : « Le cho'het n'est pas encore venu ? » On lui répondit : « Il est déjà venu, et il a abattu les volailles. » Et les volailles étaient encore posées dans le sel. Le Baal Chem Tov les regarda, et dit qu'on pouvait en manger. Et Rabbi David ne voulut pas en manger, et le Baal Chem Tov ne s'en offusqua pas.
+
+**Résumé :** À Konstantin, le cho'het abattit des volailles sans attendre de montrer son couteau au Baal Chem Tov, qui priait à ce moment-là. Le Baal Chem Tov regarda les volailles et dit qu'on pouvait les manger. Rabbi David Pourkes ne voulut pas en manger, et le Baal Chem Tov ne lui en tint pas rigueur.
+
+## 141 — L'ascension de l'âme d'un tsaddik
+
+J'ai entendu du rav de notre communauté : un jour, le Baal Chem Tov était dans la région de Paberezye, et il dit qu'un tsaddik était mort près de l'endroit où il était. « Et il me semble que c'est le décisionnaire de Konstantin, car j'ai vu l'ascension de son âme, et j'ai reconnu ses mouvements. »
+
+**Résumé :** Quand le Baal Chem Tov était dans la région de Paberezye, il dit qu'un tsaddik était mort près de là, et qu'il lui semblait que c'était le décisionnaire de Konstantin, car il avait vu son âme monter et avait reconnu ses mouvements.
+
+## 142 — Le seigneur qui ne vit pas le Baal Chem Tov
+
+J'ai entendu du rav de notre communauté qu'un seigneur haïssait le Baal Chem Tov, et disait que quand il verrait le Baal Chem Tov, il le tuerait d'un coup de fusil. Un jour, le Baal Chem Tov était au château, et marchait dans la cour du château avec le commissaire. Ce seigneur ennemi vint au château. Le commissaire quitta le Baal Chem Tov, alla parler avec le seigneur, et le fit entrer dans sa maison. Le Baal Chem Tov aussi entra dans la maison, prit congé du commissaire, et rentra chez lui. Le commissaire s'en étonna, car il savait que le seigneur était très en colère contre le Baal Chem Tov. Pendant le repas, le commissaire parla avec le seigneur du Baal Chem Tov, et le seigneur se fâcha contre lui, et dit de nouveau qu'il le tuerait. Le commissaire lui dit : « Mais il était ici quand Monseigneur est arrivé, et il est même entré dans cette maison et a pris congé de moi ! » Le seigneur dit : « Je ne l'ai pas vu. » Et il dit : « Si c'est un homme tel que, quand il veut, on ne le voit pas, je l'apaiserai. »
+
+**Résumé :** Un seigneur qui avait menacé de tuer le Baal Chem Tov vint au château pendant que le Baal Chem Tov y était avec le commissaire. Le Baal Chem Tov entra dans la maison où ils étaient assis, prit congé du commissaire et s'en alla, et le seigneur ne le vit pas du tout. Quand il comprit que le Baal Chem Tov pouvait être invisible quand il le voulait, il décida de l'apaiser.
+
+## 143 — Les tsitsit qui se salirent
+
+J'ai entendu du rav de notre communauté qu'un jour un des tsitsit du talith du Baal Chem Tov se salit dans la boue. Il dit : « Rabbi Moché de Chatanov est mort. » Et il dit : « Je ne pensais pas qu'il était important au point qu'on l'inscrive dans mes tsitsit. »
+
+**Résumé :** Quand un tsitsit du Baal Chem Tov se salit dans la boue, il en comprit que Rabbi Moché de Chatanov était mort. Il dit qu'il ne pensait pas que Rabbi Moché était important au point que sa mort soit inscrite dans ses tsitsit.
+
+## 144 — La femme du riche à Kovel
+
+Et à ce propos j'écrirai ce que j'ai entendu du rav Rabbi Ye'hiel, président du tribunal rabbinique de Kovel : dans cette ville, il y avait un homme nommé Rabbi Zousman, qui était très riche, et il était tout-puissant dans la ville. Un jour, la nuit du Chabbat, le rav sortit de sa prière pour rentrer chez lui, et entendit qu'on accueillait encore le Chabbat à la synagogue. Il envoya appeler le bedeau à la synagogue, et lui demanda : « Pourquoi avez-vous tardé à la synagogue pour l'accueil du Chabbat ? » Le bedeau répondit : « Rabbi Zousman était au château, et on l'a attendu. » Le rav dit : « Et si Rabbi Zousman n'était pas revenu avant demain, on n'aurait pas accueilli le Chabbat avant demain ? » La femme de Rabbi Zousman l'entendit, et dit : « Si le rav prie à la synagogue et qu'on n'attend pas mon mari pour la Kedoucha, le Barkhou et l'amen, je vous fermerai votre maison d'étude ! » (Car le rav priait dans une petite pièce particulière de la maison d'étude, et entendait de là la Kedoucha, le Barkhou et l'amen.) Le matin, quand elle se leva, elle alla au lavabo, se lava le visage et les mains, et alla à la serviette pour les essuyer, et resta debout comme une pierre muette. On courut chez le rav ; le rav priait, et il disait « Et tu as conclu l'alliance » (dans les versets de louange), et il fit un geste de la main, et elle mourut.
+
+**Résumé :** À Kovel, on retarda l'accueil du Chabbat jusqu'au retour du riche Rabbi Zousman, et le rav, Rabbi Ye'hiel, dit qu'on ne pouvait pas repousser le Chabbat pour lui. La femme du riche menaça de fermer la maison d'étude où priait le rav, et le matin, en s'essuyant le visage, elle se figea comme une pierre. Quand on courut chez le rav, il priait, dit « Et tu as conclu l'alliance », fit un geste de la main, et elle mourut.
+
+## 145 — Le péager qui ne vint pas en ville pour Pessa'h
+
+Encore une histoire (de Rabbi Ye'hiel) : il ordonnait aux gens des villages d'être en ville pour la fête de Pessa'h. Et la coutume était qu'il désignait deux érudits en Torah, pour aller de maison en maison ; on cachérisait les ustensiles devant eux, et de même on cuisait les matsot devant eux. Dans un village, il y avait un péager érudit, qui ne prêta pas attention au décret du rav, et ne vint pas en ville pour Pessa'h, et son cabaretier non plus ne vint pas en ville. Pendant les jours intermédiaires de la fête, le péager vint en ville, et le rav l'envoya chercher, et il vint. Le rav lui dit : « Puisque tu n'as pas célébré Pessa'h en ville les premiers jours, tu seras en ville pour Pessa'h les derniers jours. » Et c'est ce qui arriva : le péager retourna au village, et trouva que sa femme était morte. Il amena sa femme en ville le sixième jour de Pessa'h, et le temps qu'on l'enterre, il se fit nuit, et il dut passer le dernier jour de fête en ville. Et le cabaretier aussi mourut à l'heure du Kiddouch du dernier jour de fête.
+
+**Résumé :** Rabbi Ye'hiel de Kovel ordonna aux gens des villages de venir en ville pour Pessa'h, pour qu'ils soient attentifs à la cacheroute, et un péager ne l'écouta pas. Le rav lui dit qu'à cause de cela il serait en ville les derniers jours de Pessa'h ; et en effet la femme du péager mourut, et il dut l'amener pour l'enterrer et passer le dernier jour de fête en ville. Son cabaretier aussi, qui n'était pas venu, mourut à l'heure du Kiddouch.
+
+## 146 — Le sandak qui refusa
+
+Voici ce qui arriva : il y avait un président du tribunal rabbinique dans la ville de Horodna. Il y eut une circoncision, et il ne voulut pas être sandak. On le pressa beaucoup, jusqu'à ce qu'il dise que l'enfant était un mamzer. Le père de l'enfant était d'une grande famille, et quand la famille entendit ses paroles, ils se mirent à crier, et il y eut un grand cri dans la synagogue. Le rav dit au bedeau : « Va, prends à la main mon bâton, va chez l'accouchée, montre-lui le bâton, et aussitôt elle avouera. Sinon, elle mourra. » Et elle avoua, et dit qu'elle avait été violentée : elle était allée à la cave chercher du vin, et un seigneur avait couru après elle et l'avait violentée. Et toute sa famille se tut. <!-- MATURE: rape; a child declared a mamzer -->
+
+**Résumé :** Le président du tribunal rabbinique de Horodna refusa d'être sandak à une circoncision, et quand on le pressa, il révéla que l'enfant était né d'un péché ; la famille du père se souleva. Le rav envoya le bedeau montrer son bâton à l'accouchée, et elle avoua qu'un seigneur l'avait prise de force à la cave ; alors la famille se tut.
+
+## 147 — « Le cheval est un vain espoir de salut »
+
+J'ai entendu au nom de Rabbi Éliyahou de Sokolovka : quand il était encore jeune, il habitait à Mejibij, et il entendit un jour le Baal Chem Tov dire : « Celui qui veut que sa prière monte au ciel, qu'il prie avec moi mot à mot. » Et Rabbi Éliyahou fit ainsi : quand le Baal Chem Tov disait « Maître », il le disait aussi, et quand il disait « du monde », il disait aussi « du monde », jusqu'à ce qu'il eût fini toute la prière. Et il fit ainsi longtemps.
+
+Un jour, dans les versets de louange, le Baal Chem Tov arriva au verset « Le cheval est un vain espoir de salut », et il le répéta de très nombreuses fois, très longtemps. La première fois, Rabbi Éliyahou le dit avec lui, et ensuite il se demanda : quelle intention met-il dans ce verset ? Il regarda dans le livre *Michnat 'Hassidim*, et il n'y avait pas d'intentions mystiques sur ce verset, et il cessa de prier avec lui. Un jour, il vint à la maison du Baal Chem Tov. Le Baal Chem Tov le vit, et lui dit : « Éliyahou, tu as cessé de prier avec moi. » Rabbi Éliyahou lui raconta ce qui s'était passé : c'était parce que le Baal Chem Tov avait dit le verset de nombreuses fois. Le Baal Chem Tov répondit : « Un Juif a été surpris en chemin un vendredi, et n'a pas pu atteindre un lieu habité avant le Chabbat, et il a passé le Chabbat dans un champ. Un brigand a appris qu'un Juif passait le Chabbat dans un champ, et il est monté à cheval pour le trouver et le tuer. Et par ces récitations, je lui ai embrouillé le chemin, pour qu'il ne puisse pas le trouver. »
+
+**Résumé :** Rabbi Éliyahou priait avec le Baal Chem Tov mot à mot, pour que sa prière monte, jusqu'au jour où le Baal Chem Tov répéta de nombreuses fois le verset « Le cheval est un vain espoir de salut » ; et Rabbi Éliyahou, qui ne trouva pas d'intention pour cela dans les livres, s'arrêta. Le Baal Chem Tov lui expliqua que par ces récitations il avait égaré un brigand qui allait à cheval tuer un Juif qui passait le Chabbat dans un champ, si bien qu'il ne le trouva pas.
+
+## 148 — Il n'y a pas de hasard
+
+Un jour, le Baal Chem Tov était à Nemirov, et il allait de la grande maison à la petite maison, quand il s'égara et entra dans la cave. Et il ordonna de vérifier les mezouzot. Un homme lui demanda : « Et si quelqu'un s'égare, doit-il aussitôt l'attribuer à quelque chose ? Peut-être est-ce un hasard ? » Le Baal Chem Tov lui répondit : « Chez moi, il n'y a pas de hasard. » Et que tout homme en tire la foi que toute chose vient de la Providence, et qu'il ne l'attribue pas au hasard, à Dieu ne plaise.
+
+**Résumé :** Quand le Baal Chem Tov s'égara et entra par erreur dans une cave, il ordonna de vérifier les mezouzot. Quand un homme lui demanda si ce n'était pas peut-être un simple hasard, il répondit que chez lui il n'y a pas de hasard ; et on en apprend que toute chose vient de la Providence divine.
+
+## 149 — L'amulette de Rabbi Naftali
+
+Le rav de Polonné avait une amulette du rav Rabbi Naftali, et il montra l'amulette au Baal Chem Tov. Le Baal Chem Tov reconnut qu'elle avait été écrite pendant que celui qui l'écrivait était au mikvé et à jeun, et dit : « Moi, j'écrirai une telle amulette après le repas, assis sur le lit. »
+
+**Résumé :** Le Baal Chem Tov vit une amulette écrite par Rabbi Naftali, et reconnut qu'elle avait été écrite dans l'immersion et le jeûne. Il dit que lui-même pouvait écrire une telle amulette après le repas, assis sur le lit.
+
+## 150 — Les tsitsit de Kalisz
+
+Voici ce que j'ai entendu du rav de Polonné : le rav s'était choisi une vieille femme, et il lui donnait toujours une pièce d'or pour quatre fils de tsitsit, doublés en huit, à condition qu'elle ne s'interrompe par aucune parole du début du filage jusqu'à la fin. Quand on apporta pour la première fois des tsitsit de la ville de Kalisz, il les acheta, car ils étaient très beaux. Mais il eut peur de les mettre à son talith, de peur qu'ils n'aient pas été filés pour la mitsva. Il les montra au Baal Chem Tov, et le Baal Chem Tov lui dit : « Si tu as peur de les mettre à ton talith, donne-les-moi, et je les mettrai à mon talith. » Et il reconnut en eux qu'ils avaient été filés pour la mitsva.
+
+**Résumé :** Le rav de Polonné veillait à ce que ses tsitsit soient filés pour la mitsva, sans interruption de parole. Quand il acheta de beaux tsitsit de Kalisz et eut peur qu'ils n'aient pas été filés pour la mitsva, le Baal Chem Tov reconnut en eux qu'ils étaient valides, et dit qu'il était prêt à les mettre à son propre talith.
+
+## 151 — Le navet du cimetière
+
+J'ai entendu : un jour, on mit un navet sur la table du Baal Chem Tov, et le Baal Chem Tov ne voulut pas en manger. On lui demanda pourquoi, et il dit : « Ce navet a poussé dans un cimetière de non-Juifs. » Et eux non plus ne voulurent pas en manger, et il le posa au bout de la table.
+
+**Résumé :** Le Baal Chem Tov refusa de manger un navet qu'on lui avait servi, car il sentit qu'il avait poussé dans un cimetière de non-Juifs. Les autres non plus n'en mangèrent pas.
+
+## 152 — Les deux Rabbi David de Mikolaïv
+
+J'ai entendu du rav de notre communauté que dans la ville de Mikolaïv il y avait deux 'hassidim, et tous deux s'appelaient Rabbi David. L'un était vieux, et nous l'avons connu, et l'autre mourut jeune. Un jour, ils voyageaient avec le Baal Chem Tov, et ils lui demandèrent : « Notre maître, dis-nous ce que nous devons réparer. » Il ordonna à chacun d'eux de lui lire dans un livre. L'un lui lut (et je ne sais pas si c'était la Michna, l'*Ein Yaakov* ou le Zohar). Ensuite il ordonna au second de lire, et le Baal Chem Tov dit : « Je sais. » À l'un, il dit son péché devant son compagnon. Et au second, il ordonna de descendre de la charrette, descendit avec lui, et le lui dit en secret, car il y avait dans la chose un peu de honte.
+
+Après que l'un d'eux fut mort, le second Rabbi David porta son deuil très longtemps, car ils s'aimaient. Un jour, il vint chez le Baal Chem Tov, et le Baal Chem Tov voulut le consoler, et dit : « Ne t'inquiète pas pour ton compagnon, car j'étais dans le palais du roi David, et j'y ai vu ton compagnon, et je lui ai demandé s'il avait réparé ce qu'il devait réparer, et il a dit qu'il l'avait déjà réparé de son vivant. Et j'ai vu que le maître de la Michna, Rabbi Akiva, montait la garde, vêtu de rouge, une lance à la main. »
+
+**Résumé :** Deux 'hassidim, tous deux appelés Rabbi David, demandèrent au Baal Chem Tov ce qu'ils devaient réparer, et il dit à chacun son péché, à l'un devant son compagnon et à l'autre en secret. Quand l'un d'eux mourut jeune et que l'autre porta longtemps son deuil, le Baal Chem Tov le consola : il avait vu son compagnon dans le palais du roi David, et le compagnon lui avait dit qu'il avait déjà réparé de son vivant ce qu'il devait réparer.
+
+## 153 — L'ange Hadarniel
+
+J'ai aussi entendu de ce même rav que le Baal Chem Tov vit l'ange Hadarniel, qui est le deuxième ange que rencontra Moïse notre maître quand il monta au mont Sinaï, comme il est écrit dans le saint Zohar.
+
+**Résumé :** Le Baal Chem Tov vit l'ange Hadarniel, que selon le Zohar Moïse notre maître rencontra quand il monta au mont Sinaï.
+
+## 154 — Le jeune homme tué pour la sanctification du Nom
+
+J'ai entendu du rav de notre communauté qu'un jour un jeune homme de Polonné fut tué pour la sanctification du Nom, après qu'on eut porté contre lui de fausses accusations, et il sanctifia grandement le Nom. Un jour, le Baal Chem Tov vint à Polonné, se tint près de la maison de la mère du jeune homme, et l'envoya appeler. Elle sortit, et il la consola, et lui dit : « Sache qu'à l'heure de sa mort se sont ouverts tous les mondes qui se sont ouverts pour Isaac lors de la ligature. » Et dans la maison, il eut peur d'entrer, car la maison avait été auparavant une demeure de non-Juifs, et il dit que c'était à cause de cette maison que le jeune homme avait été tué.
+
+**Résumé :** Un jeune homme de Polonné fut tué pour la sanctification du Nom après une fausse accusation. Le Baal Chem Tov consola sa mère, et lui dit qu'à l'heure de sa mort s'étaient ouverts tous les mondes qui s'étaient ouverts pour Isaac lors de la ligature. Il ne voulut pas entrer dans sa maison, car il dit que c'était à cause de la maison, qui avait appartenu auparavant à des non-Juifs, que le jeune homme avait été tué.
+
+## 155 — Rabbi Guershon à Acre
+
+J'ai entendu de ce même rav qu'un jour le Baal Chem Tov dit : « Je m'étonne : la nuit du Chabbat, pendant la prière, j'ai cherché Rabbi Guershon, et je ne l'ai pas trouvé en terre d'Israël. Et le Chabbat matin, pendant la prière, je l'ai vu en terre d'Israël. Et je ne sais que penser de cela, à moins qu'il ne soit sorti des limites permises le Chabbat. » Quelques années après, Rabbi Guershon vint chez lui, et le Baal Chem Tov l'interrogea sur cette chose, et Rabbi Guershon ne s'en souvenait pas. Ensuite il se souvint : on lui avait donné la mitsva d'une circoncision à Acre, et il y avait passé le Chabbat. « Et à Acre il y a deux synagogues, l'une hors de la terre d'Israël et l'autre en terre d'Israël. Je suis allé prier la nuit du Chabbat à la synagogue qui est hors de la Terre, et ensuite mon cœur en a souffert : pourquoi n'ai-je pas prié en terre d'Israël ? Et le lendemain, je suis allé prier à la synagogue qui est en terre d'Israël. »
+
+**Résumé :** Le Baal Chem Tov s'étonna de n'avoir pas trouvé Rabbi Guershon en terre d'Israël la nuit du Chabbat, et de l'y avoir trouvé le matin. Des années après, Rabbi Guershon se souvint que ce Chabbat-là il était à Acre pour une circoncision, que la nuit du Chabbat il avait prié dans une synagogue considérée comme hors de la terre d'Israël, et que le matin il était passé à la synagogue située en terre d'Israël.
