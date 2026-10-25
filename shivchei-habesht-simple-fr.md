@@ -192,7 +192,7 @@ Aussitôt arriva en pleurs la femme du meunier, une non-Juive, qui dit au péage
 
 **Résumé :** Un péager dont on avait ensorcelé la maison, si bien que chaque nuit disparaissait la moitié de tout ce qu'il avait, demanda l'aide du Baal Chem Tov. Le Baal Chem Tov vint chez lui avec des protections, et le mauvais esprit tourbillonna et sortit de la maison ; et une silhouette de cosaque géant, qui se tenait au portail, rapetissa jusqu'à disparaître. Aussitôt après, la femme du meunier, une non-Juive, arriva en pleurs, et dit que l'esprit était venu chez elle plein de colère.
 
-## 7 — Le péager derrière qui dansait l'ange de la mort
+## 7 — Le péager derrière lequel dansait l'ange de la mort
 
 Un autre péager vint encore chez le Baal Chem Tov ; sa chance avait beaucoup tourné. Le Baal Chem Tov vit que l'ange de la mort dansait derrière lui, et lui dit des paroles dures, pour qu'il se repente : « Pourquoi courir après les biens de ce monde ? Mieux vaut que tu te repentes et que tu corriges ta conduite. » Le péager pensa que le Baal Chem Tov voulait de l'argent, et voulut lui en donner, mais le Baal Chem Tov n'accepta pas. Quand le péager fut sorti, le Baal Chem Tov dit : « Quel sot ! Aujourd'hui ou demain il mourra, et il se soucie de sa chance ! » Son beau-frère, Rabbi Guershon, le rabroua et dit : « Pourquoi fais-tu sortir de ta bouche des paroles mauvaises sur un Juif ? » Il lui répondit : « Que puis-je pour vous, si vous êtes aveugles et n'avez pas vu que l'ange de la mort marche derrière lui ? » Et le péager rentra chez lui.
 

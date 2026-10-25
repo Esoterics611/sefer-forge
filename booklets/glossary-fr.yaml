@@ -30,10 +30,14 @@
   def: "Le voilement de la mariée avant le mariage."
 - term: Beit Yossef
   def: "Le grand commentaire de Rabbi Yossef Caro (XVIe siècle) sur les codes de la loi juive ; on appelle aussi son auteur du nom du livre."
+- term: biliye
+  def: "Une étoffe de l'époque ; l'original la désigne par son nom local."
 - term: bima
   def: "L'estrade de la synagogue où l'on lit la Torah."
 - term: Chabbat
   def: "Le septième jour de la semaine, jour de repos, du vendredi soir au samedi soir."
+- term: "Chabbat 'Hazon"
+  def: "Le Chabbat qui précède Tichea Beav, nommé d'après la lecture du prophète Isaïe (« 'Hazon », la vision)."
 - term: Chabbetaï Tsvi
   def: "Le faux messie (1626–1676). Après sa mort, des groupes secrets continuèrent à croire en lui ; on les appelait « la secte de Chabbetaï Tsvi »."
 - term: Chavouot
@@ -48,6 +52,8 @@
   def: "Un miracle par lequel on arrive en très peu de temps à un endroit lointain."
 - term: chofar
   def: "La corne de bélier dont on sonne à Roch Hachana."
+- term: "Choul'han Aroukh"
+  def: "Le code de la loi juive, de Rabbi Yossef Caro (XVIe siècle)."
 - term: cho'het
   forms: ["cho'het", "cho'hetim"]
   def: "Un homme qui abat les bêtes et les volailles selon la loi juive. Son couteau doit être parfaitement lisse."
@@ -93,13 +99,16 @@
   def: "La fête des Lumières, en hiver."
 - term: "'hassid, 'hassidim"
   forms: ["'hassid", "'hassidim", "'hassidique", "'hassidisme"]
-  def: "Les disciples de la voie du Baal Chem Tov. Devant un nom : “le pieux”."
+  def: "Les disciples de la voie du Baal Chem Tov. Devant un nom : « le pieux »."
 - term: Havdala
   def: "La bénédiction sur le vin, les aromates et le feu, à la sortie du Chabbat."
 - term: "'hazan"
+  forms: ["'hazan", "'hazanim"]
   def: "Le chantre qui conduit la prière à la synagogue."
 - term: "'héder"
   def: "L'école d'une seule pièce où les jeunes garçons apprenaient la Torah."
+- term: "'Houmach"
+  def: "Les cinq livres de la Torah, imprimés en un volume pour l'étude."
 - term: ibour
   def: "Dans la Kabbale, l'âme d'un juste qui entre pour un temps dans un vivant, pour l'aider."
 - term: impropre
@@ -159,7 +168,7 @@
   def: "La dernière prière de Yom Kippour."
 - term: noms saints
   forms: [noms saints, nom saint]
-  def: "Les noms de Dieu et des anges. Un “Baal Chem” s'en servait pour guérir et pour protéger."
+  def: "Les noms de Dieu et des anges. Un « Baal Chem » s'en servait pour guérir et pour protéger."
 - term: parnass
   def: "Un dirigeant de la communauté. « Le parnass du mois » était le dirigeant en charge ce mois-là."
 - term: parsa
@@ -193,6 +202,7 @@
 - term: sandak
   def: "L'homme qui tient le bébé sur ses genoux pendant la circoncision. C'est un grand honneur."
 - term: "Seli'hot"
+  forms: ["Seli'hot", "seli'ha"]
   def: "Des prières pour demander pardon."
 - term: "Sim'hat Torah"
   def: "La fête de la joie de la Torah, à la fin de Souccot."

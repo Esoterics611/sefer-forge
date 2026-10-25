@@ -181,7 +181,7 @@ def story_heading(num: str, title: str, mature: bool, first: bool, L: dict) -> s
     parts = [f'<h2 class="{cls}">']
     if num:
         parts.append(f'<span class="num">{html.escape(L["story"].format(num))}</span>')
-    parts.append(f'<span class="title">{smart(title, L)}</span>')
+    parts.append(f'<span class="title">{smart(keep_hyphenated(title, L), L)}</span>')
     if mature:
         parts.append(f'<span class="mature">{html.escape(L["mature"])}</span>')
     parts.append("</h2>")
@@ -197,6 +197,14 @@ def to_html(markdown: str, L: dict) -> str:
         ["pandoc", "-f", fmt, "-t", "html5", "--wrap=none"],
         input=markdown, capture_output=True, text=True, check=True,
     ).stdout
+
+
+def keep_hyphenated(title: str, L: dict) -> str:
+    """A title's hyphenated words (après-midi, Brother-in-Law) stay on one
+    line: a heading broken at après-/midi strands half the word."""
+    if not L["latin"]:
+        return title
+    return re.sub(r"(?<![\w'’])([\w'’]+(?:-[\w'’]+)+)", r"[\1]{.nw}", title)
 
 
 def smart(text: str, L: dict) -> str:
@@ -248,7 +256,7 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
     numbered = sum(1 for num, *_ in stories if num)
 
     toc = "".join(
-        f'<li><span class="tnum">{html.escape(num)}</span>{smart(title, L)}'
+        f'<li><span class="tnum">{html.escape(num)}</span>{smart(keep_hyphenated(title, L), L)}'
         + (f' <span class="mature">{html.escape(L["mature"])}</span>' if mature else "")
         + "</li>"
         for num, title, _, mature in stories
@@ -298,7 +306,7 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
   <div class="subtitle">{html.escape(subtitle)}</div>
   <div class="rule"></div>
   <div class="no">{html.escape(L["booklet_no"].format(n, total))}</div>
-  <h1>{smart(btitle, L)}</h1>
+  <h1>{smart(keep_hyphenated(btitle, L), L)}</h1>
   <div class="count">{smart(count, L)}</div>
 </section>
 <section class="front">
