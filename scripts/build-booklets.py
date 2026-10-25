@@ -42,6 +42,7 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 try:
@@ -122,9 +123,18 @@ LANGS = {
 
 def french_spacing(s: str) -> str:
     """No-break spaces where French typography wants them: before ; : ! ? and
-    inside « ». (EB Garamond has no narrow no-break space, so U+00A0.)"""
+    inside « ». (EB Garamond has no narrow no-break space, so U+00A0.) And the
+    typographic apostrophe for every ': French quotes with « » and “ ”, never
+    with ', and pandoc would take the ' of 'hassid after a space for an
+    opening quote."""
     s = re.sub(r" ([;:!?»])", " \\1", s)
-    return s.replace("« ", "« ")
+    return s.replace("« ", "« ").replace("'", "’")
+
+
+def english_apostrophes(s: str) -> str:
+    """The typographic apostrophe inside words, for the English lines pandoc
+    does not set (the cover lines and the running header)."""
+    return re.sub(r"(?<=\w)'", "’", s)
 
 
 def load_sections(path: Path) -> list[str]:
@@ -200,6 +210,8 @@ def smart(text: str, L: dict) -> str:
 
 def glossary_entries(entries: list[dict], text: str, L: dict) -> list[dict]:
     found = []
+    if L["latin"]:
+        text = text.replace("’", "'")    # the French text carries ’; the forms are typed with '
     for e in entries:
         for form in e.get("forms", [e["term"]]):
             if L["latin"]:
@@ -210,7 +222,14 @@ def glossary_entries(entries: list[dict], text: str, L: dict) -> list[dict]:
             if hit:
                 found.append(e)
                 break
-    return sorted(found, key=lambda e: e["term"].casefold())
+    return sorted(found, key=lambda e: sort_key(e["term"]) if L["latin"] else e["term"].casefold())
+
+
+def sort_key(term: str) -> str:
+    """Alphabetical order for a Latin glossary: accents, the leading apostrophe
+    of 'hassid and the ligature of Œuvre do not move a term."""
+    s = unicodedata.normalize("NFD", term.casefold().replace("œ", "oe"))
+    return "".join(c for c in s if not unicodedata.combining(c)).lstrip("'’")
 
 
 def css_string(s: str) -> str:
@@ -223,6 +242,8 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
     btitle = booklet["title"] if lang == "he" else booklet[lang]
     if lang == "fr":
         series, subtitle, btitle = french_spacing(series), french_spacing(subtitle), french_spacing(btitle)
+    elif lang == "en":
+        series, subtitle, btitle = english_apostrophes(series), english_apostrophes(subtitle), english_apostrophes(btitle)
     stories = [parse_section(sections[s], L) for s in sorted(booklet["stories"])]
     numbered = sum(1 for num, *_ in stories if num)
 
@@ -242,7 +263,8 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
     terms = glossary_entries(glossary, plain, L)
     gloss_html = ""
     if terms:
-        items = "".join(f"<dt>{smart(e['term'], L)}</dt><dd>{smart(e['def'], L)}</dd>" for e in terms)
+        fix = french_spacing if lang == "fr" else (lambda t: t)
+        items = "".join(f"<dt>{smart(fix(e['term']), L)}</dt><dd>{smart(fix(e['def']), L)}</dd>" for e in terms)
         # After the book's closing line (the last booklet) the glossary may share its page.
         cls = " ".join(c for c in ("glossary", "after-colophon" if n == total else "", fit) if c)
         gloss_html = (f'<section class="{cls}"><h2 class="front-title">{html.escape(L["glossary_title"])}'
