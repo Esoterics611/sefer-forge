@@ -43,7 +43,11 @@ Palette (the stylesheet's `:root` tokens; nothing else appears on the page):
 | `--box-fill` | `#f6f2e9` | (older layouts only) |
 | `--box-edge` | `#b9a77f` | (older layouts only) |
 
-Booklets follow `templates/booklet.css` (David only, black and greys).
+Booklets follow `templates/booklet.css` (David only, black and greys); the
+English and French booklets add `templates/booklet-latin.css` (EB Garamond
+Regular, SemiBold and their italics, shipped in `templates/fonts/`; left to
+right; glossary in two columns) and are proofed with the `booklet-latin`
+profile.
 Typography changes go in the stylesheet, never in a PDF or the generated HTML.
 A glyph missing from both fonts makes Chrome pull in a third font; that is a
 defect, fixed in the stylesheet's font stacks.

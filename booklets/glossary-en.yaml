@@ -1,0 +1,219 @@
+# Short glossary printed at the back of each English booklet
+# (build-booklets.py --lang en). An entry is printed only if one of its
+# `forms` occurs in that booklet's text as a whole word (any case).
+# `forms` defaults to [term]. Terms follow prompts/translate-stories-rules.md.
+
+- term: accuser, accusation
+  forms: [accuser, accusers, accusation, accusations]
+  def: An accusation is a claim raised in Heaven against a person or against the Jewish people. The accuser is the one who raises it.
+- term: agunah
+  def: A woman whose husband has disappeared, who cannot marry again because there is no testimony that he has died.
+- term: Amidah
+  def: The central prayer, said standing three times a day; also called the Eighteen Blessings.
+- term: amulet
+  forms: [amulet, amulets]
+  def: A note with holy names written on it, for protection or healing.
+- term: arenda
+  def: A lease a Jew took from the nobleman for a fixed payment, for example to keep an inn, sell drinks or collect tolls.
+- term: Arizal
+  def: Rabbi Isaac Luria (1534–1572), the great Kabbalist of Safed.
+- term: ascent of the soul
+  forms: [ascent of the soul, ascents of the soul]
+  def: When a tzaddik's soul rises to the upper worlds while his body stays here.
+- term: badeken
+  def: The veiling of the bride before the wedding.
+- term: Baal Shem
+  def: '"Master of the Name": a man who used holy names for healing and protection.'
+- term: bimah
+  def: The raised platform in the synagogue where the Torah is read.
+- term: blood libel
+  def: A false accusation that Jews had murdered a Christian for ritual purposes.
+- term: Chacham
+  def: '"Sage": the title of a rabbi among the Jews of the Land of Israel and the East.'
+- term: chametz
+  def: Leavened grain, which may not be eaten or kept on Passover.
+- term: cheder
+  def: The one-room school where young boys learned Torah.
+- term: commissar
+  def: An official of the nobleman, who ran the town or the estate in his name.
+- term: confession
+  def: Saying one's sins before God, in prayer or before death.
+- term: Council of Four Lands
+  def: The highest body of Polish Jewry, where representatives of the communities met.
+- term: Days of Awe
+  def: Rosh Hashanah, Yom Kippur and the days between them.
+- term: dream question
+  def: A request to Heaven to answer a question in a dream.
+- term: ducat
+  forms: [ducat, ducats]
+  def: A gold coin, worth many zlotys.
+- term: Ein Yaakov
+  def: A book that collects the stories and sayings of the Talmud.
+- term: engagement contract
+  def: The agreement written before a wedding, fixing the dowry and the date of the wedding.
+- term: gabbai
+  def: The man who looks after the affairs of a synagogue.
+- term: Gehinnom
+  def: The place where souls are punished and cleansed after death.
+- term: Gemara
+  def: The Talmud's discussion of the Mishnah.
+- term: gematria
+  def: Reckoning the numerical value of the letters of a Hebrew word.
+- term: Haidamaks
+  def: Bands of rebel Cossacks and peasants who attacked Poles and Jews in Ukraine in the 18th century.
+- term: Hallel
+  def: Psalms of praise said on festivals and on Rosh Chodesh.
+- term: harmful spirit
+  forms: [harmful spirit, harmful spirits]
+  def: A demon; an evil force that harms people.
+- term: Hasid, Hasidim
+  forms: [Hasid, Hasidim, Hasidic, Hasidism]
+  def: Followers of the way of the Baal Shem Tov. Before a name, "the pious."
+- term: Havdalah
+  def: The blessing over wine, spices and fire at the end of the Sabbath.
+- term: holy names
+  forms: [holy names, holy name]
+  def: Names of God and of angels. A "Baal Shem" used them for healing and protection.
+- term: Kabbalah
+  def: The mystical teaching of the Torah.
+- term: Kaddish
+  def: A prayer praising God, said by the prayer leader and by mourners.
+- term: Kedushah
+  def: The prayer "Holy, holy, holy" in the cantor's repetition of the Amidah.
+- term: kelipah
+  forms: [kelipah, kelipot]
+  def: In the Kabbalah, a force of evil that covers holiness as a husk covers a fruit.
+- term: Kiddush
+  def: The blessing over wine that begins the Sabbath or festival meal.
+- term: kittel
+  def: A white robe worn on the Days of Awe.
+- term: kloyz
+  def: A small study house where men study and pray.
+- term: Kol Nidrei
+  def: The prayer that opens Yom Kippur in the evening.
+- term: leaseholder
+  forms: [leaseholder, leaseholders]
+  def: A Jew who held an arenda (a lease) from the nobleman.
+- term: Maggid
+  def: A community preacher. "The Maggid of Mezritch" is Rabbi Dov Ber, the Baal Shem Tov's disciple who led his followers after him.
+- term: mamzer
+  def: A child born of a union the Torah forbids, such as adultery.
+- term: metzitzah
+  def: Drawing the blood from the wound at a circumcision.
+- term: mezuzah
+  forms: [mezuzah, mezuzot]
+  def: A parchment with verses of the Torah, fixed to the doorpost.
+- term: Midrash
+  def: The Sages' interpretations and stories on the verses of the Bible.
+- term: mikveh
+  def: A pool for ritual immersion. Hasidim immerse in it before prayer too.
+- term: minyan
+  def: The ten men needed for prayer with a congregation.
+- term: Mishnah
+  def: The first written collection of the Oral Torah.
+- term: mohel
+  def: The man who performs the circumcision.
+- term: Mokhiach
+  def: A preacher of moral reproof. "The Mokhiach of Polonne" is Rabbi Aryeh Leib, a disciple of the Baal Shem Tov.
+- term: Musaf
+  def: The additional prayer of the Sabbath and festivals.
+- term: mystical intentions
+  forms: [mystical intention, mystical intentions]
+  def: Thoughts that, according to the Kabbalah, one concentrates on during prayer or a mitzvah.
+- term: Ne'ilah
+  def: The last prayer of Yom Kippur.
+- term: Oral Torah
+  def: The teaching handed down alongside the written Torah, gathered in the Mishnah and the Talmud.
+- term: parnas
+  def: A leader of the community. "The parnas of the month" was the leader in charge that month.
+- term: parsah
+  forms: [parsah, parsahs]
+  def: A measure of distance of a few kilometers.
+- term: Prince of the Torah
+  def: The angel in charge of the Torah.
+- term: proclamation
+  forms: [proclamation, proclamations]
+  def: An announcement in Heaven of something decreed. A tzaddik can hear it.
+- term: Rabbeinu Tam tefillin
+  forms: [Rabbeinu Tam]
+  def: A second pair of tefillin, with the passages in the order taught by Rabbeinu Tam.
+- term: rabbanit
+  def: A rabbi's wife.
+- term: Rebbe
+  def: A Hasidic master; also how a disciple addresses his teacher.
+- term: redemption of the firstborn
+  def: The mitzvah of redeeming a firstborn son from a kohen with five shekels, on his thirty-first day.
+- term: Rosh Chodesh
+  def: The first day of the Hebrew month.
+- term: Rosh Hashanah
+  def: The Jewish New Year, a day of judgment.
+- term: sandek
+  def: The man who holds the baby on his knees during the circumcision. It is a great honor.
+- term: Selichot
+  def: Prayers asking forgiveness.
+- term: Shabbetai Tzvi
+  def: The false messiah (1626–1676). After his death secret groups went on believing in him, and they were called "the sect of Shabbetai Tzvi."
+- term: shammes
+  def: The caretaker of a synagogue or study house.
+- term: Shavuot
+  def: The festival of the giving of the Torah, in early summer.
+- term: Shechinah
+  def: The presence of God in the world.
+- term: Shema
+  def: The verse "Hear, O Israel" and the passages after it, said morning and evening.
+- term: Shemini Atzeret
+  def: The festival day at the end of Sukkot.
+- term: shochet
+  forms: [shochet, shochetim]
+  def: A man who slaughters animals and fowl according to Jewish law. His knife must be perfectly smooth.
+- term: shortening of the road
+  def: A miracle in which a person reaches a distant place in a very short time.
+- term: Simchat Torah
+  def: The festival of rejoicing with the Torah, at the end of Sukkot.
+- term: sparks
+  def: In the Kabbalah, sparks of holiness that fell into the world. The tzaddik raises them and repairs them.
+- term: Sukkot
+  def: The autumn festival of Booths.
+- term: tallit
+  def: The prayer shawl, with tzitzit at its four corners.
+- term: Tashlich
+  def: A prayer said by water on Rosh Hashanah.
+- term: tefillin
+  def: Small leather boxes holding passages of the Torah, bound on the arm and the head for the morning prayer.
+- term: thaler
+  forms: [thaler, thalers]
+  def: A large silver coin.
+- term: tikkun
+  def: In the Kabbalah, the repair of a soul or a spark that sin has damaged, and its raising to its place.
+- term: Tisha B'Av
+  def: The fast day for the destruction of the Temple.
+- term: Toldot
+  forms: [Toldot]
+  def: The book *Toldot Yaakov Yosef* by Rabbi Yaakov Yosef, the Rabbi of Polonne, a disciple of the Baal Shem Tov.
+- term: tollkeeper
+  forms: [tollkeeper, tollkeepers]
+  def: A Jew who leased the tolls from the nobleman, and sometimes also the inn and the sale of drinks in the village.
+- term: Tosafot
+  forms: [Tosafot, Tosafists]
+  def: Medieval commentaries printed beside the Gemara.
+- term: tzaddik, tzaddikim
+  forms: [tzaddik, tzaddikim]
+  def: A righteous man; a holy leader.
+- term: tzitzit
+  def: The fringes at the four corners of the tallit.
+- term: unifications
+  forms: [unification, unifications]
+  def: In the Kabbalah, meditations that join names of God.
+- term: unfit
+  def: Not fit for use under Jewish law; of an animal, forbidden to eat because of a defect.
+- term: Ya'aleh VeYavo
+  def: The prayer added on Rosh Chodesh and festivals.
+- term: Yom Kippur
+  def: The Day of Atonement, a day of fasting and prayer.
+- term: Work of the Chariot
+  def: The deepest secrets of the Torah.
+- term: Zohar
+  def: The central book of the Kabbalah.
+- term: zloty
+  forms: [zloty, zlotys]
+  def: A Polish coin.

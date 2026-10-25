@@ -1,7 +1,11 @@
 /* Print stylesheet for the Shivchei HaBesht booklets (scripts/build-booklets.py).
    A5 pages, printed to PDF by Chrome. Fonts are the Windows Hebrew faces:
    David throughout (regular and its real bold face). The running header
-   is added per booklet by the build script. */
+   is added per booklet by the build script. Sides are logical (inline
+   start/end), so the English and French booklets use these rules left to
+   right, with the font and size overrides in booklet-latin.css. */
+
+:root { --font: "David"; }
 
 @page {
   size: A5;
@@ -16,7 +20,7 @@
 html { direction: rtl; }
 body {
   margin: 0;
-  font-family: "David", serif;
+  font-family: var(--font), serif;
   font-size: 14pt;
   line-height: 1.6;
   color: #000;
@@ -33,25 +37,25 @@ body {
   text-align: center;
   break-after: page;
 }
-.cover .series { font-family: "David"; font-weight: bold; font-size: 26pt; line-height: 1.2; }
+.cover .series { font-family: var(--font); font-weight: bold; font-size: 26pt; line-height: 1.2; }
 .cover .subtitle { font-size: 15pt; margin-top: 2mm; }
 .cover .rule { width: 40mm; border-top: 1.5px solid #000; margin: 12mm 0; }
 .cover .no { font-size: 13pt; }
-.cover h1 { font-family: "David"; font-weight: bold; font-size: 28pt; line-height: 1.25; margin: 3mm 0 4mm; }
+.cover h1 { font-family: var(--font); font-weight: bold; font-size: 28pt; line-height: 1.25; margin: 3mm 0 4mm; }
 .cover .count { font-size: 13pt; }
 
 /* Contents and about-this-series page. */
 .front { break-after: page; }
-.front-title { font-family: "David"; font-weight: bold; font-size: 19pt; margin: 0 0 4mm; }
+.front-title { font-family: var(--font); font-weight: bold; font-size: 19pt; margin: 0 0 4mm; }
 .toc { list-style: none; margin: 0 0 6mm; padding: 0; line-height: 1.45; }
-.toc li { margin: 0 0 1mm; padding-right: 13mm; text-indent: -13mm; }
+.toc li { margin: 0 0 1mm; padding-inline-start: 13mm; text-indent: -13mm; }
 .toc .tnum { display: inline-block; width: 13mm; text-indent: 0; font-weight: bold; }
 .about { border-top: 1px solid #000; padding-top: 4mm; font-size: 13pt; line-height: 1.5; }
 .about p { margin: 0 0 2.5mm; text-align: justify; }
 
 /* Stories. */
 h2.story {
-  font-family: "David";
+  font-family: var(--font);
   font-weight: bold;
   font-size: 19pt;
   line-height: 1.3;
@@ -62,14 +66,14 @@ h2.story {
    need room for about three lines of text, then gives that space back. */
 h2.story::after { content: ""; display: block; height: 30mm; margin-bottom: -30mm; }
 h2.story.first { margin-top: 0; }
-h2.story .num { display: block; font-family: "David"; font-weight: bold; font-size: 13pt; margin-bottom: 1mm; }
+h2.story .num { display: block; font-family: var(--font); font-weight: bold; font-size: 13pt; margin-bottom: 1mm; }
 h2.story .title { display: block; }
 .mature {
   display: inline-block;
   margin-top: 2mm;
   padding: 0.3mm 2.5mm;
   border: 1px solid #000;
-  font-family: "David";
+  font-family: var(--font);
   font-weight: bold;
   font-size: 11pt;
   line-height: 1.4;
@@ -81,8 +85,8 @@ p { margin: 0 0 2.6mm; text-align: justify; hyphens: none; orphans: 2; widows: 2
 
 blockquote {
   margin: 3mm 0;
-  padding-right: 4mm;
-  border-right: 2.5px solid #666;
+  padding-inline-start: 4mm;
+  border-inline-start: 2.5px solid #666;
   font-size: 13.5pt;
 }
 blockquote p { margin-bottom: 2mm; }
@@ -97,13 +101,13 @@ blockquote p { margin-bottom: 2mm; }
   line-height: 1.5;
   break-inside: avoid;
 }
-.summary p:first-child { font-family: "David"; font-weight: bold; margin-bottom: 1mm; }
+.summary p:first-child { font-family: var(--font); font-weight: bold; margin-bottom: 1mm; }
 
 .colophon { margin-top: 10mm; text-align: center; font-weight: bold; }
 
 /* Glossary at the back. */
 .glossary { break-before: page; }
 .glossary dl { margin: 0; font-size: 13pt; line-height: 1.5; }
-.glossary dt { font-family: "David"; font-weight: bold; break-inside: avoid; }
+.glossary dt { font-family: var(--font); font-weight: bold; break-inside: avoid; }
 .glossary dt::after { content: ""; display: block; height: 12mm; margin-bottom: -12mm; }
 .glossary dd { margin: 0 0 2.5mm; text-align: justify; }

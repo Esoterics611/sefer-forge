@@ -3,11 +3,12 @@
 
 Usage:
     python scripts/proof-pdf.py output/pamphlets/003-breishis-002.pdf
-    python scripts/proof-pdf.py <pdf> --profile booklet      # pamphlet | booklet | book
+    python scripts/proof-pdf.py <pdf> --profile booklet      # pamphlet | booklet | booklet-latin | book
     python scripts/proof-pdf.py <pdf> --no-images            # skip the spread images
 
 The profile follows the PDF's folder (output/pamphlets → pamphlet,
-output/booklets → booklet, otherwise book). Fonts, palette and margins come
+output/booklets → booklet, output/booklets/en|fr → booklet-latin, the English
+and French booklets, left to right; otherwise book). Fonts, palette and margins come
 from the profile's stylesheet, so the proof always checks the design as it
 stands. Page by page it checks:
 
@@ -27,12 +28,13 @@ stands. Page by page it checks:
                    sequence (Hebrew letters for pamphlets)
   line starts      a line beginning with a dash, comma, full stop, colon or
                    semicolon
-  Latin words      in the Hebrew text
+  Latin words      in the Hebrew text (not for booklet-latin)
 
 Writes <pdf without .pdf>.proof.md (findings, fonts, sizes and colours used,
 and a "Visual review" section for step 2 of the proof) and, unless
 --no-images, two-page spreads at proof resolution under <pdf folder>/proof/,
-right page first as the printed pamphlet opens. Prints the summary; exits 1
+as the printed pamphlet opens: right page first, or left page first for a
+left-to-right booklet. Prints the summary; exits 1
 on any error.
 """
 from __future__ import annotations
@@ -55,6 +57,13 @@ PROFILES = {
                  "fonts": {"David", "David-Bold", "GuttmanFrank", "GuttmanFrank-Bold"}, "heading": 15.5},
     "booklet": {"css": "templates/booklet.css", "script": "scripts/build-booklets.py", "page": "A5", "numerals": "decimal",
                 "fonts": {"David", "David-Bold"}, "heading": 17.5},
+    # The English and French booklets: booklet.css plus booklet-latin.css, EB Garamond.
+    "booklet-latin": {"css": "templates/booklet.css",
+                      "script": ["scripts/build-booklets.py", "templates/booklet-latin.css"],
+                      "page": "A5", "numerals": "decimal", "rtl": False,
+                      "fonts": {"EBGaramond-Regular", "EBGaramond-SemiBold",
+                                "EBGaramond-Italic", "EBGaramond-SemiBoldIt"},
+                      "heading": 16.5},
     # Word PDFs: no stylesheet; black text, and polish-docx.py's box colours.
     "book": {"css": None, "script": ["scripts/polish-docx.py", "scripts/create-template.py"],
              "palette": ["#000000"], "page": "A4",
@@ -130,11 +139,12 @@ def snippet(s: str, n: int = 40) -> str:
     return s if len(s) <= n else s[:n] + "…"
 
 
-def line_starts(page, top: float, bottom: float) -> list[tuple[str, str]]:
+def line_starts(page, top: float, bottom: float, rtl: bool = True) -> list[tuple[str, str]]:
     """(first glyph, line text) for each body line, where "first" is the
     rightmost glyph: a right-to-left line starts at its right edge. (Text
     order from the PDF puts a line-final full stop first, so it can't be used.)
-    A "..." snapshot marker is not punctuation out of place."""
+    For a left-to-right booklet, the leftmost glyph of a line with Latin
+    letters. A "..." snapshot marker is not punctuation out of place."""
     out = []
     for block in page.get_text("rawdict")["blocks"]:
         for line in block.get("lines", []):
@@ -142,8 +152,9 @@ def line_starts(page, top: float, bottom: float) -> list[tuple[str, str]]:
             if not chars or line["bbox"][1] < top or line["bbox"][3] > bottom:
                 continue
             text = "".join(c["c"] for s in line["spans"] for c in s["chars"])
-            right = sorted(chars, key=lambda c: -c["bbox"][2])
-            if not re.search("[א-ת]", text):
+            right = sorted(chars, key=lambda c: -c["bbox"][2]) if rtl else \
+                sorted(chars, key=lambda c: c["bbox"][0])
+            if not re.search("[א-ת]" if rtl else "[A-Za-z]", text):
                 continue
             if "".join(c["c"] for c in right[:3]) == "...":
                 continue
@@ -228,10 +239,12 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
                                   f"band — “{snippet(text)}”")
         body_lines.sort()
         # Chrome PDFs only: Word places punctuation after a footnote mark at odd positions.
-        for first, text in (line_starts(page, top, H - bottom if margins else H) if css else []):
+        for first, text in (line_starts(page, top, H - bottom if margins else H, prof.get("rtl", True))
+                            if css else []):
             if first in "—–,.:;":
                 warns.append(f"p.{pno}: a line starts with “{first}” — “{snippet(text, 30)}”")
-        latin = sorted({w for *_, text, _ in body_lines for w in LATIN.findall(text)})
+        latin = sorted({w for *_, text, _ in body_lines for w in LATIN.findall(text)}) \
+            if prof.get("rtl", True) else []
         if latin:
             warns.append(f"p.{pno}: Latin words in the text — {', '.join(latin[:8])}")
 
@@ -284,9 +297,10 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
     return errors, warns, stats
 
 
-def spreads(pdf: Path) -> list[Path]:
-    """Two-page spreads, right page first, as a right-to-left pamphlet opens:
-    the cover alone, then (2,3), (4,5), ..."""
+def spreads(pdf: Path, rtl: bool = True) -> list[Path]:
+    """Two-page spreads, right page first, as a right-to-left pamphlet opens
+    (left page first for a left-to-right booklet): the cover alone, then
+    (2,3), (4,5), ..."""
     from PIL import Image
     doc = pymupdf.open(pdf)
     out = pdf.parent / "proof"
@@ -302,10 +316,14 @@ def spreads(pdf: Path) -> list[Path]:
     for g in groups:
         w, h = pages[0].size
         sheet = Image.new("RGB", (w * 2 + 12, h), (120, 120, 120))
-        # Right-to-left: the lower page number on the right.
-        sheet.paste(pages[g[0]], (w + 12, 0))
+        # Right-to-left: the lower page number on the right; left to right, on the
+        # left, and a page alone on its own side (odd pages on the right).
+        first, second = ((w + 12, 0), (0, 0)) if rtl else ((0, 0), (w + 12, 0))
+        if not rtl and len(g) == 1 and g[0] % 2 == 0:
+            first = (w + 12, 0)
+        sheet.paste(pages[g[0]], first)
         if len(g) > 1:
-            sheet.paste(pages[g[1]], (0, 0))
+            sheet.paste(pages[g[1]], second)
         name = out / (f"{pdf.stem}-{g[0] + 1:02d}" + (f"-{g[1] + 1:02d}" if len(g) > 1 else "") + ".png")
         sheet.save(name)
         files.append(name)
@@ -320,16 +338,17 @@ def main(argv: list[str]) -> int:
     else:
         profile = None
     if len(args) != 1:
-        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|book] [--no-images]")
+        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|book] [--no-images]")
         return 1
     pdf = Path(args[0])
     if not pdf.exists():
         print(f"No such PDF: {pdf}")
         return 1
     profile = profile or ("pamphlet" if "pamphlets" in pdf.parts else
+                          "booklet-latin" if "booklets" in pdf.parts and pdf.parent.name in ("en", "fr") else
                           "booklet" if "booklets" in pdf.parts else "book")
     errors, warns, stats = proof(pdf, profile)
-    images = [] if "--no-images" in argv else spreads(pdf)
+    images = [] if "--no-images" in argv else spreads(pdf, PROFILES[profile].get("rtl", True))
 
     summary = (f"{pdf.name}: {stats['pages']} pages · profile {profile} · "
                f"{len(errors)} error(s) · {len(warns)} warning(s)")
