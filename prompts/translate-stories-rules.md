@@ -175,6 +175,12 @@ French only, for the terms the table leaves out:
 | ארון הקודש, בימה, קיטל | l'arche sainte, la bima, le kittel |
 | מי דבש, טאלער, אדומים | hydromel, thaler, ducats |
 | חיידמקים, ממזר, גימטריה | les Haïdamaks, mamzer, guématria |
+| גוי, גויה | un non-Juif, une non-Juive |
+| בית התבודדות | un ermitage |
+| תלמיד חכם, ראש בית הדין, מחותן | un érudit en Torah, le président du tribunal rabbinique, un parent par alliance |
+| מגיד (של קהילה), שוחט ובודק | le prédicateur, cho'het et inspecteur des viandes |
+| שדה לבן, קריבוש, טלוסט, קולומיה, פרוט | Sdé Lavan, Krivouch, Tlousté, Kolomea, le Prout |
+| רבי גדליה, רבי אלכסנדר, רבי משה, חנה | Rabbi Guedalia, Rabbi Alexandre, Rabbi Moché, 'Hanna |
 
 The booklet glossaries (`booklets/glossary-en.yaml`, `glossary-fr.yaml`)
 explain the kept terms; a term that stays untranslated in the text has an
