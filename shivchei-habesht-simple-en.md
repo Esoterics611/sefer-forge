@@ -1405,3 +1405,139 @@ I heard from Rabbi Zelig of Letichev, who was traveling, and came to the town of
 I heard from the rabbi of our community that the Baal Shem Tov sent word to the rabbi of Bitchov that his shochet was of the sect of Shabbetai Tzvi, may his name be blotted out, and that he was feeding him unfit meat: after he showed the rabbi the knife, he struck the knife on a hammer, to damage it. The rabbi checked on him, and it was so.
 
 **Summary:** The Baal Shem Tov told the rabbi of Bitchov that his shochet belonged to the sect of Shabbetai Tzvi, and that after showing the rabbi a fit knife, he damaged it on purpose and fed him unfit meat. The rabbi checked, and it turned out to be the truth.
+
+## 140 — The Fowl in Konstantin
+
+A story: Rabbi David Purkes came with the Baal Shem Tov to the town of Konstantin. The Baal Shem Tov ordered that the shochet come to show him his knife. The shochet did not come at once, and the Baal Shem Tov stood up to pray. The shochet came, and did not want to wait, and scolded the mistress of the house to give him the birds to slaughter. She gave them, and he slaughtered and left. After the prayer the Baal Shem Tov said: "Has the shochet not come yet?" They answered him: "He already came, and slaughtered the fowl." And the fowl were still lying in the salting. The Baal Shem Tov looked at them, and said that they could be eaten. And Rabbi David did not want to eat, and the Baal Shem Tov did not hold it against him.
+
+**Summary:** In Konstantin the shochet slaughtered fowl without waiting to show his knife to the Baal Shem Tov, who was praying at the time. The Baal Shem Tov looked at the fowl and said that they could be eaten. Rabbi David Purkes did not want to eat, and the Baal Shem Tov did not hold it against him.
+
+## 141 — The Ascent of a Tzaddik's Soul
+
+I heard from the rabbi of our community: once the Baal Shem Tov was in the region of Paberezye, and said that a tzaddik had passed away near where he was. "And it seems to me that he is the authority on Jewish law of Konstantin, for I saw the ascent of his soul, and I recognized his movements."
+
+**Summary:** When the Baal Shem Tov was in the region of Paberezye, he said that a tzaddik had passed away near where he was, and that it seemed to him to be the authority on Jewish law of Konstantin, for he had seen his soul going up and recognized his movements.
+
+## 142 — The Nobleman Who Did Not See the Baal Shem Tov
+
+I heard from the rabbi of our community that a certain nobleman hated the Baal Shem Tov, and said that when he saw the Baal Shem Tov, he would kill him with his gun. Once the Baal Shem Tov was at the castle, and was walking in the castle courtyard with the commissar. That hostile nobleman came to the castle. The commissar left the Baal Shem Tov, went to speak with the nobleman, and brought him into his house. The Baal Shem Tov too went into the house, took leave of the commissar, and went home. The commissar was amazed at this, for he knew that the nobleman was very angry with the Baal Shem Tov. At the meal the commissar spoke with the nobleman about the Baal Shem Tov, and the nobleman grew angry with him, and said again that he would kill him. The commissar said to him: "But he was here when my lord came, and he even came into this house and took leave of me!" The nobleman said: "I did not see him." And he said: "If he is such a man that when he wishes he is not seen, I will make peace with him."
+
+**Summary:** A nobleman who had threatened to kill the Baal Shem Tov came to the castle while the Baal Shem Tov was there with the commissar. The Baal Shem Tov came into the house where they were sitting, took leave of the commissar and left, and the nobleman did not see him at all. When he understood that the Baal Shem Tov could be invisible when he wished, he decided to make peace with him.
+
+## 143 — The Tzitzit That Got Dirty
+
+I heard from the rabbi of our community that once a tzitzit of the Baal Shem Tov's tallit got dirty in the mud. He said: "Rabbi Moshe of Shatanov has died." And he said: "I did not think he was so important that they would record him in my tzitzit."
+
+**Summary:** When a tzitzit of the Baal Shem Tov got dirty in the mud, he understood from it that Rabbi Moshe of Shatanov had passed away. He said that he had not thought Rabbi Moshe was so important that his death would be recorded in his tzitzit.
+
+## 144 — The Rich Man's Wife in Kovel
+
+And by the way I will write what I heard from Rabbi Yechiel the rabbi, head of the rabbinical court of Kovel: in that town there was a man named Rabbi Zusman, and he was very rich, and he was all-powerful in the town. Once on Friday night the rabbi came out from his prayer to go home, and heard that they were still welcoming the Sabbath in the synagogue. He sent to the synagogue to call the shammes, and asked him: "Why are you so late in the synagogue with the welcoming of the Sabbath?" The shammes answered: "Rabbi Zusman was at the castle, and they waited for him." The rabbi said: "And if Rabbi Zusman did not come back until tomorrow, would they not welcome the Sabbath until tomorrow?" Rabbi Zusman's wife heard, and said: "If the rabbi prays in the synagogue, and they do not wait for my husband, for the Kedushah, the Barchu and the Amen, I will close your study house to you!" (For the rabbi prayed in a small special room in the study house, and heard the Kedushah, Barchu and Amen from there.) In the morning, when she got up, she went to the washbasin, washed her face and hands, and went to the towel to dry them, and stood like a silent stone. They ran to the rabbi, and the rabbi was praying, and said "and made the covenant" (in the Verses of Song), and moved his hand, and she died.
+
+**Summary:** In Kovel they delayed the welcoming of the Sabbath until the rich Rabbi Zusman came back, and the rabbi, Rabbi Yechiel, said that the Sabbath cannot be put off for him. The rich man's wife threatened to close the study house where the rabbi prayed, and in the morning, as she was drying her face, she froze like a stone. When they ran to the rabbi, he was praying and said "and made the covenant," and moved his hand, and she died.
+
+## 145 — The Tollkeeper Who Did Not Come to Town for Passover
+
+Another story (of Rabbi Yechiel): he used to decree that the village people should be in the town for the festival of Passover. And the custom was that he appointed two Torah scholars to go from house to house, and the vessels were kashered in front of them, and so too the matzot were baked in front of them. In one village there was a learned tollkeeper, who paid no attention to the rabbi's decree, and did not come to town for Passover, and his barkeeper did not come to town either. On the intermediate days of the festival the tollkeeper came to town, and the rabbi sent for him, and he came. The rabbi said to him: "Because you did not celebrate Passover in the town on the first days, you will be in the town for Passover on the last days." And so it was: the tollkeeper came to the village, and found that his wife had died. He brought his wife to town on the sixth day of Passover, and until they buried her the time stretched until night, and he had to spend the last day of the festival in the town. And the barkeeper too died at the time of Kiddush on the last day of the festival.
+
+**Summary:** Rabbi Yechiel of Kovel ordered the village people to come to town for Passover, so that they would be careful about the dietary laws, and one tollkeeper did not listen to him. The rabbi told him that because of this he would be in the town on the last days of Passover, and indeed the tollkeeper's wife died, and he had to bring her for burial and spend the last day of the festival in the town. His barkeeper, who had not come either, died at the time of Kiddush.
+
+## 146 — The Sandek Who Refused
+
+A story: there was a head of a rabbinical court in the town of Horodna. There was a circumcision, and he did not want to be sandek. They urged him very much, until he said that the child was a mamzer. The child's father was from a great family, and when the family heard his words, they began to shout, and there was a great outcry in the synagogue. The rabbi said to the shammes: "Go, take my stick in your hand, and go to the mother, and show her the stick, and at once she will confess. And if not, she will die." And she confessed, and said that she had been forced: she went down to the cellar to bring wine, and a nobleman ran after her and raped her. And all of her family fell silent. <!-- MATURE: rape; a child declared a mamzer -->
+
+**Summary:** The head of the rabbinical court of Horodna refused to be sandek at a circumcision, and when they urged him, he revealed that the child had been born of sin, and the father's family rose up against him. The rabbi sent the shammes to show the mother his stick, and she confessed that a nobleman had attacked her by force in the cellar, and then the family fell silent.
+
+## 147 — "A Horse Is a False Hope for Victory"
+
+I heard in the name of Rabbi Eliyahu of Sokolovka: when he was still young, he lived in Mezhibuzh, and once he heard the Baal Shem Tov say: "Whoever wants his prayer to rise to Heaven, let him pray with me word by word." And Rabbi Eliyahu did so: when the Baal Shem Tov said "Lord," he said it too, and when he said "of the world," he too said "of the world," until he finished the whole prayer. And he did so for a long time.
+
+Once, in the Verses of Song, the Baal Shem Tov reached the verse "A horse is a false hope for victory," and he repeated it many, many times, for a very long time. The first time Rabbi Eliyahu said it with him, and afterward he wondered: what is he intending in this verse? He looked in the book *Mishnat Chasidim*, and there were no mystical intentions for it, and he stopped praying with him. Once he came to the Baal Shem Tov's house. The Baal Shem Tov saw him, and said to him: "Eliyahu, you have stopped praying with me." Rabbi Eliyahu told him what had happened, that it was because the Baal Shem Tov had said the verse many times. The Baal Shem Tov answered: "A Jew was caught on the road on a Friday, and could not reach a settlement before the Sabbath, and spent the Sabbath in a field. A robber found out that a Jew was spending the Sabbath in the field, and rode on a horse to find him and kill him. And with those sayings I spoiled his way for him, so that he could not find him."
+
+**Summary:** Rabbi Eliyahu prayed with the Baal Shem Tov word by word, so that his prayer would rise, until once the Baal Shem Tov repeated many times the verse "A horse is a false hope for victory," and Rabbi Eliyahu, who found no mystical intention for it in the books, stopped. The Baal Shem Tov explained to him that with those sayings he had confused a robber who was riding a horse to kill a Jew spending the Sabbath in a field, until he could not find him.
+
+## 148 — There Is No Chance
+
+Once the Baal Shem Tov was in Nemirov, and was walking from the big house to the small house, until he lost his way and went into the cellar. And he ordered the mezuzot to be checked. A man asked him: "And if a person loses his way, must he at once blame it on something? Perhaps it is chance?" The Baal Shem Tov answered him: "With me there is no chance." And from this let every person believe that everything comes by Providence, and let him not put it down to chance, Heaven forbid.
+
+**Summary:** When the Baal Shem Tov lost his way and went into a cellar by mistake, he ordered the mezuzot to be checked. When a man asked him whether perhaps it was only chance, he answered that with him there is no chance, and from this one learns that everything comes by God's Providence.
+
+## 149 — Rabbi Naftali's Amulet
+
+The Rabbi of Polonne had an amulet from Rabbi Naftali the rabbi, and he showed the amulet to the Baal Shem Tov. The Baal Shem Tov recognized in it that it had been written while the writer was in the mikveh and fasting, and said: "I will write an amulet like this after a meal, while I am sitting on the bed."
+
+**Summary:** The Baal Shem Tov saw an amulet that Rabbi Naftali had written, and recognized that it had been written with immersion and fasting. He said that he himself could write such an amulet after a meal, sitting on the bed.
+
+## 150 — The Tzitzit from Kalisz
+
+This is what I heard from the Rabbi of Polonne: the rabbi chose an old woman for himself, and always gave her a gold coin for four tzitzit threads, doubled to eight, on condition that she would not stop for any speech from the beginning of the spinning to its end. When they first brought tzitzit from the town of Kalisz, he bought them, for they were very beautiful. But he was afraid to put them on his tallit, in case they had not been spun for the sake of the mitzvah. He showed them to the Baal Shem Tov, and the Baal Shem Tov said to him: "If you are afraid to put them on your tallit, give them to me, and I will put them on my tallit." And he recognized in them that they had been spun for the sake of the mitzvah.
+
+**Summary:** The Rabbi of Polonne was careful that his tzitzit be spun for the sake of the mitzvah, without a break for speech. When he bought beautiful tzitzit from Kalisz and was afraid they had not been spun for the sake of the mitzvah, the Baal Shem Tov recognized in them that they were fit, and said that he was ready to put them on his own tallit.
+
+## 151 — The Turnip from the Cemetery
+
+I heard: once they put a turnip on the Baal Shem Tov's table, and the Baal Shem Tov did not want to eat. They asked him why, and he said: "This turnip grew in a gentile cemetery." And they did not want to eat it either, and he put it at the end of the table.
+
+**Summary:** The Baal Shem Tov refused to eat a turnip that was served to him, for he sensed that it had grown in a gentile cemetery. The others did not eat it either.
+
+## 152 — The Two Rabbi Davids of Mikolayev
+
+I heard from the rabbi of our community that in the town of Mikolayev there were two Hasidim, and both of them were named Rabbi David. One was old, and we knew him, and one died in his youth. Once they were traveling with the Baal Shem Tov, and they asked him: "Our master, tell us what we need to repair." He told each of them to read before him from a book. One read before him (and I do not know whether Mishnah, *Ein Yaakov* or Zohar). Afterward he told the second to read, and the Baal Shem Tov said: "I know." To one he told his sin in front of his friend. And the second he told to get down from the wagon, and got down with him, and told him in secret, for there was some shame in the matter.
+
+After one of them died, the other Rabbi David mourned for him greatly for many days, for they had loved each other. Once he came to the Baal Shem Tov, and the Baal Shem Tov wanted to comfort him, and said: "Do not worry about your friend, for I was in the palace of King David, and I saw your friend there, and I asked him whether he had repaired the thing he needed to repair, and he said that he had already repaired it in his lifetime. And I saw the sage Rabbi Akiva standing on guard, in red garments, with a spear in his hand."
+
+**Summary:** Two Hasidim both named Rabbi David asked the Baal Shem Tov to know what they needed to repair, and he told each of them his sin, one in front of his friend and the other in secret. When one of them died young and the other mourned for him greatly, the Baal Shem Tov comforted him: he had seen his friend in the palace of King David, and the friend had told him that he had already repaired what he needed in his lifetime.
+
+## 153 — The Angel Hadarniel
+
+I also heard from that rabbi that the Baal Shem Tov saw the angel Hadarniel, who is the second angel Moses our teacher met when he went up Mount Sinai, as is written in the holy Zohar.
+
+**Summary:** The Baal Shem Tov saw the angel Hadarniel, whom, according to the Zohar, Moses our teacher met when he went up Mount Sinai.
+
+## 154 — The Young Man Killed for the Sanctification of God's Name
+
+I heard from the rabbi of our community that once a young man in Polonne was killed for the sanctification of God's name, after false accusations were made against him, and he sanctified God's name greatly. Once the Baal Shem Tov came to Polonne, and stood by the house of the young man's mother, and sent for her. She came out, and he comforted her, and said to her: "Know that at the hour of his killing all the worlds were opened that were opened to Isaac at the Binding." And he was afraid to go into the house, for the house had earlier been a gentile dwelling, and he said that because of this house the young man had been killed.
+
+**Summary:** A young man from Polonne was killed for the sanctification of God's name after a false accusation. The Baal Shem Tov comforted his mother, and told her that at the hour of his death all the worlds were opened that were opened to Isaac at the Binding. He did not want to go into her house, for he said that because of the house, which had earlier belonged to gentiles, the young man had been killed.
+
+## 155 — Rabbi Gershon in Acre
+
+I heard from that rabbi that once the Baal Shem Tov said: "I wonder: on Friday night, during the prayer, I looked for Rabbi Gershon, and did not find him in the Land of Israel. And on Sabbath morning, during the prayer, I saw him in the Land of Israel. And I do not know what to think of it, unless he went beyond the Sabbath boundary." Some years later Rabbi Gershon came to him, and the Baal Shem Tov asked him about this, and Rabbi Gershon did not remember. Afterward he remembered: they had given him the honor of a circumcision in Acre, and he spent the Sabbath there. "And in Acre there are two synagogues, one outside the Land of Israel and one in the Land of Israel. I went and prayed on Friday night in the synagogue outside the Land, and afterward my heart ached over it: why had I not prayed in the Land of Israel? And the next day I went and prayed in the synagogue in the Land of Israel."
+
+**Summary:** The Baal Shem Tov wondered that on Friday night he did not find Rabbi Gershon in the Land of Israel, and in the morning he did find him there. Years later Rabbi Gershon remembered that on that Sabbath he had been in Acre for a circumcision, and on Friday night he had prayed in a synagogue that counts as outside the Land of Israel, and in the morning he had moved to the synagogue inside the Land of Israel.
+
+## 156 — Telling the Praises of the Tzaddikim
+
+(And a story that happened with the head of the rabbinical court of Horodna, at a circumcision.)
+
+I heard from the Rabbi of Polonne and from the rabbi of our community that the Baal Shem Tov said: "Whoever tells the praises of the tzaddikim, it is as if he were engaged in the Work of the Chariot." I also heard that in whatever world a person is, it is as if the worlds go before him.
+
+**Summary:** The Baal Shem Tov said that whoever tells praises of tzaddikim, it is as if he were engaged in the highest secrets of the Torah, the "Work of the Chariot."
+
+## 157 — The Angels and the Demons, and the Demon That Was Sent
+
+I was once in Tulchin with a man named Rabbi David. At that time the match was made between the pious Rabbi Baruch and the pious Rabbi Yosef, the son of Rabbi Yechiel Michel. And Rabbi David heard from Rabbi Yosef, in the name of the Baal Shem Tov, on the verse "And Jacob sent angels before him" (the Hebrew word means both messengers and angels): these are the angels who go before him. And he said that before Jacob our father there always go angels on his right and demons on his left. And before the Baal Shem Tov too there go angels on his right and demons on his left. And he did not want to make use of the angels, because they are holy, nor of the demons, because they are liars.
+
+Once a widow lived in a village, and a man came to take the *arenda* (the lease) from her. He went to the nobleman to lease the arenda. One of the demons said to the Baal Shem Tov: "Send me to him." And the Baal Shem Tov did not want to. The demon begged him very much to send it, and promised him that it would do as he commanded it. The Baal Shem Tov sent it, and commanded it: "Take care, do him no harm. Only when he wants to speak before the nobleman, stop his mouth with your hand." And the demon let him say all he wanted, and waited until he had taken the arenda and received the contract. And when he came back, and reached the bridge, it harmed him, and he fell on the bridge. The Baal Shem Tov ran and came, and decreed on the demon that it come out of him at once without any harm in the world. The demon answered and said: "See, my master, that I obeyed you as you commanded me." And I do not remember, and it seems to me that the man got up healthy and strong.
+
+**Summary:** The Baal Shem Tov said that, as before Jacob our father, so before him angels go on the right and demons on the left, but he did not make use of them, for the angels are holy and the demons are liars. Once, when a man came to take a lease from a widow, the Baal Shem Tov agreed to send a demon to stop his mouth before the nobleman, but the demon waited until the man had received the contract, and only then threw him down on a bridge. The Baal Shem Tov drove the demon out of him, and the demon claimed that it had done exactly as it was commanded.
+
+## 158 — The Man Who Took the Village from the Widow
+
+And from my father-in-law, Rabbi Alexander, I heard a similar story: there was a man who wanted to take a village from a widow. The Baal Shem Tov reproved him, and he did not listen to him. He rode on a horse past the Baal Shem Tov's house, knocked on the window and said: "See, I am going to lease the village, and I will see what God will do to me!" And the Baal Shem Tov shed tears. When the man came to the village, he leased the arenda at a large increase, and the nobleman meant to write him the contract. Meanwhile his head began to ache, and he said to the nobleman: "My head aches very much!" He said to him: "Sit down, I will not be long writing the contract." And he waited a little. And he said again: "My head aches very much!" The nobleman said to him: "Lie down on the bed." And foam began to come out of his mouth, and the nobleman ordered his servant to throw him among the pigs, as they say: "They draw a man near only when they benefit from him, and do not stand by him in his hour of need." They brought him home, and his hands and feet were paralyzed, and his tongue too was taken from him. They called the Baal Shem Tov to heal him, and he began to speak a little. Meanwhile the Baal Shem Tov sensed that his household were seeking help from gentile witches to heal him, and from then on he did not want to go to him, and the man could speak only a few words.
+
+**Summary:** A man who wanted to take a village from a widow did not listen to the Baal Shem Tov's reproof, and even knocked on his window mockingly, and the Baal Shem Tov wept. At the nobleman's, just before the contract was signed, he got a headache and a stroke, and the nobleman threw him among the pigs. The Baal Shem Tov began to heal him, but when he found out that his household were also seeking help from witches, he stopped, and the man was left almost without speech.
+
+## 159 — Rabbi Israel Shapir
+
+I heard from the rabbi of our community: there was a man in Mohilev named Rabbi Israel Shapir, and they informed against him to the lord. He traveled to the lord, and turned off the road to the Baal Shem Tov, to tell him his affair and ask him for help. The Baal Shem Tov said to him: "Do not be afraid of it. But every person must be held (in prison) some time." He traveled to the lord in fear, and when he came to him, he found favor in his eyes, and the lord even lent him more money. On the way back from the lord he passed through the town of Bar, and the lord of the town took him into prison over some matter. The people of the town said to the lord: "Leave him, for he is a man who can pursue you." And the lord released him to go home in peace.
+
+**Summary:** Rabbi Israel Shapir, who had been informed against, came to the Baal Shem Tov before traveling to the lord, and the Baal Shem Tov told him not to be afraid, but that every person must be in prison once. The lord received him well, and on the way back he was imprisoned for a short time by the lord of the town of Bar, and released.
+
+## 160 — The Mokhiach and the Rabbi of Bar
+
+A story: there was a head of a rabbinical court in the town of Bar, and one of the people of the town quarreled with him, and traveled to the lord to complain about him (I do not know whether over the rabbinate or over something else). He turned off the road to the Baal Shem Tov, so that he would pray for him to get what he wanted from the lord, and the Baal Shem Tov promised him, and he went on his way. The Mokhiach was in Mezhibuzh at that time, and knew that the rabbi was in the right against the people of the town, and that the opponent was a scoundrel, and he was afraid to tell this to the Baal Shem Tov. What did the Mokhiach do? He gathered a minyan to himself in secret, took a Torah scroll, and canceled the judgments over the rabbi, so that they could not do him harm.
+
+Once (it seems to me it was Rosh Chodesh) the Mokhiach was sitting with his relative by marriage, and it seems to me it was Rabbi Zev Kutzes, at the Baal Shem Tov's table. In the middle of the meal the Baal Shem Tov said: "I do not know what to think of one thing: I prayed for a man from Bar, and it is as if they answer me, and do not answer me." The Mokhiach began to laugh a little. His relative said to him: "What was it that I saw, that they called a minyan of ten to you?" And the Mokhiach evaded and did not answer. The Baal Shem Tov pressed him to tell the story, and the Mokhiach answered: "I will not hide it from our master: that man from Bar spoke well before your honor, and I know the inside of the matter, that the rabbi is in the right against the people of the town. And I gathered a minyan, and took a Torah scroll, and canceled the judgments from him." The Baal Shem Tov said to him: "May blessing rest on your head! You did well!"
+
+**Summary:** A man from Bar asked the Baal Shem Tov to pray for his success before the lord against the town rabbi, and the Baal Shem Tov promised. The Mokhiach, who knew that the rabbi was right and the man was wicked, gathered a minyan in secret with a Torah scroll and canceled the judgments over the rabbi. When the Baal Shem Tov wondered that his prayer was not being accepted, the Mokhiach admitted what he had done, and the Baal Shem Tov blessed him and said he had done well.
