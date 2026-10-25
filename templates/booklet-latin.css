@@ -1,0 +1,62 @@
+/* Overrides for the English and French booklets, appended to booklet.css by
+   scripts/build-booklets.py --lang en|fr. Left to right, set in EB Garamond
+   (SIL Open Font License, templates/fonts/), which ships with the repo so the
+   PDF is the same on every machine: static Regular, SemiBold and their
+   italics, cut from the variable font and subset to Latin (Chrome prints a
+   variable font as Type 3 glyphs). Bold in these booklets is SemiBold (600).
+   FONTS_DIR is replaced by the build with the path from the printed HTML to
+   templates/fonts. The running header is added per booklet by the build
+   script. */
+
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: normal;
+             src: url("FONTS_DIR/EBGaramond-Regular.ttf") format("truetype"); }
+@font-face { font-family: "EB Garamond"; font-weight: 600; font-style: normal;
+             src: url("FONTS_DIR/EBGaramond-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: italic;
+             src: url("FONTS_DIR/EBGaramond-Italic.ttf") format("truetype"); }
+@font-face { font-family: "EB Garamond"; font-weight: 600; font-style: italic;
+             src: url("FONTS_DIR/EBGaramond-SemiBoldItalic.ttf") format("truetype"); }
+
+:root { --font: "EB Garamond"; }
+
+@page {
+  @bottom-center { content: counter(page); font-family: "EB Garamond"; font-size: 10.5pt; color: #000; }
+}
+
+html { direction: ltr; }
+body { font-size: 12.5pt; line-height: 1.45; font-kerning: normal; font-variant-ligatures: common-ligatures; }
+
+.cover .series { font-size: 24pt; font-weight: 600; }
+.cover .subtitle { font-size: 13.5pt; font-style: italic; }
+.cover .no { font-size: 12pt; }
+.cover h1 { font-size: 26pt; font-weight: 600; }
+.cover .count { font-size: 12pt; }
+
+.front-title { font-size: 17pt; font-weight: 600; }
+.toc li { line-height: 1.35; }
+.about { font-size: 11.5pt; line-height: 1.45; }
+
+h2.story { font-size: 17pt; font-weight: 600; line-height: 1.25; }
+h2.story .num { font-size: 11.5pt; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.mature { font-size: 9.5pt; font-weight: 600; letter-spacing: 0.03em; }
+
+p { hyphens: auto; }
+blockquote { font-size: 12pt; }
+
+.summary { font-size: 11.5pt; line-height: 1.4; }
+.summary p:first-child { font-weight: 600; }
+
+.colophon { font-weight: 600; font-style: italic; }
+
+/* The glossary in two balanced columns: short entries, and no entry left
+   alone on a last page. After the closing line of the last booklet it
+   follows on the same page. */
+.glossary.after-colophon { break-before: auto; margin-top: 12mm; }
+.glossary dl { font-size: 11pt; line-height: 1.35; columns: 2; column-gap: 7mm; column-fill: balance; }
+.glossary dt { font-weight: 600; break-after: avoid; }
+.glossary dd { margin-bottom: 2mm; text-align: left; hyphens: auto; break-before: avoid; }
+/* Tried by the build when the last page would hold only a line or two. */
+.glossary.tight dl { font-size: 10.5pt; line-height: 1.3; }
+.glossary.tight dd { margin-bottom: 1.5mm; }
+.glossary.tighter dl { font-size: 10pt; line-height: 1.25; }
+.glossary.tighter dd { margin-bottom: 1mm; }
