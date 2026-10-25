@@ -61,8 +61,9 @@ high-school student reads it unaided.
 - English: American spelling; straight quotes `"` `'` in the source (the
   build makes them curly); `—` for a dash; titles in title case.
 - French: guillemets `« … »` with a space inside, a space before `: ; ! ?`
-  (the build turns these spaces into narrow no-break spaces); `—` for a dash
-  inside a sentence; titles in sentence case; `Rabbi` written out.
+  (the build turns these spaces into no-break spaces); `“ ”` for a quotation
+  inside a quotation; `—` for a dash inside a sentence; titles in sentence
+  case; `Rabbi` written out. Narration in the passé simple, speech as spoken.
 - Transliterated terms in italics the first time they occur in a story only
   when the reader could take them for an English/French word; names never.
 
@@ -119,7 +120,7 @@ table the first time it is used.
 | אדון | the nobleman | le seigneur |
 | שר | the minister / the official / the nobleman, by context | le ministre / le dignitaire / le seigneur |
 | המשנה למלך | the viceroy | le vice-roi |
-| מוכסן | tollkeeper | fermier des péages |
+| מוכסן | tollkeeper | péager |
 | חוכר, חכירה (ארענדע) | leaseholder, lease (*arenda*) | fermier, bail (*arenda*) |
 | קומיסר | commissar | commissaire |
 | זהוב | zloty (pl. zlotys) | zloty(s) |
@@ -157,6 +158,23 @@ table the first time it is used.
 | ועד ארבע ארצות | the Council of Four Lands | le Conseil des Quatre Pays |
 | ספר התולדות | the *Toldot* | les *Toldot* |
 | הספר הזוהר | the Zohar | le Zohar |
+
+French only, for the terms the table leaves out:
+
+| Hebrew | French |
+|---|---|
+| שבת, ערב שבת, מוצאי שבת, סעודה שלישית | le Chabbat, la veille du Chabbat, la sortie du Chabbat, le troisième repas du Chabbat |
+| ראש השנה, יום כיפור, סוכות, שבועות, פסח | Roch Hachana, Yom Kippour, Souccot, Chavouot, Pessa'h |
+| שמחת תורה, שמיני עצרת, חול המועד, תשעה באב | Sim'hat Torah, Chemini Atséret, les jours intermédiaires de la fête, Tichea Beav |
+| ראש חודש, ימים נוראים | Roch 'Hodech, les Jours redoutables |
+| קדיש, קדושה, ברכו, הלל, מוסף, נעילה, כל נדרי | le Kaddich, la Kedoucha, Barkhou, le Hallel, Moussaf, Neïla, Kol Nidré |
+| סליחות, קידוש, הבדלה, תשליך | les Seli'hot, le Kiddouch, la Havdala, Tachlikh |
+| גמרא, משנה, תוספות, רש"י, רמב"ם | la Guemara, la Michna, les Tossafot, Rachi, Maïmonide |
+| מצווה, מניין, חמץ, מצה, סוכה | mitsva, minyan, 'hamets, matsa, souccah |
+| שמש, גבאי, פרנס (החודש), בעל הבית | le bedeau, le gabbaï, le parnass (du mois), le maître de maison |
+| ארון הקודש, בימה, קיטל | l'arche sainte, la bima, le kittel |
+| מי דבש, טאלער, אדומים | hydromel, thaler, ducats |
+| חיידמקים, ממזר, גימטריה | les Haïdamaks, mamzer, guématria |
 
 The booklet glossaries (`booklets/glossary-en.yaml`, `glossary-fr.yaml`)
 explain the kept terms; a term that stays untranslated in the text has an
