@@ -267,7 +267,8 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
         md.append(body)
     stories_html = to_html("\n\n".join(md), L)
 
-    plain = " ".join(body for _, _, body, _ in stories)
+    # The glossary explains words of the titles too (English and French).
+    plain = " ".join((title + " " if L["latin"] else "") + body for _, title, body, _ in stories)
     terms = glossary_entries(glossary, plain, L)
     gloss_html = ""
     if terms:
