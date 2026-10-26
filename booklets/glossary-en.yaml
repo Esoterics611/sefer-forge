@@ -24,6 +24,8 @@
   def: The veiling of the bride before the wedding.
 - term: Baal Shem
   def: '"Master of the Name": a man who used holy names for healing and protection.'
+- term: biliye
+  def: A cloth of the time; the original calls it by its local name.
 - term: bimah
   def: The raised platform in the synagogue where the Torah is read.
 - term: blood libel
@@ -151,10 +153,15 @@
   def: The man who holds the baby on his knees during the circumcision. It is a great honor.
 - term: Selichot
   def: Prayers asking forgiveness.
+- term: Sabbath of Chazon
+  forms: [Chazon]
+  def: The Sabbath before Tisha B'Av, named after the reading from the prophet Isaiah ("Chazon," the vision).
 - term: Shabbetai Tzvi
   def: The false messiah (1626–1676). After his death secret groups went on believing in him, and they were called "the sect of Shabbetai Tzvi."
 - term: shammes
   def: The caretaker of a synagogue or study house.
+- term: Shulchan Aruch
+  def: The code of Jewish law, by Rabbi Yosef Karo (16th century).
 - term: Shavuot
   def: The festival of the giving of the Torah, in early summer.
 - term: Shechinah

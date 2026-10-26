@@ -1,0 +1,256 @@
+# Petit glossaire imprimé à la fin de chaque livret français
+# (build-booklets.py --lang fr). An entry is printed only if one of its
+# `forms` occurs in that booklet's text as a whole word (any case).
+# `forms` defaults to [term]. Terms follow prompts/translate-stories-rules.md;
+# the entries mirror booklets/glossary-en.yaml, plus the terms French keeps
+# where English has a plain word (Chabbat, Pessa'h, mitsva, rav...).
+
+- term: accusateur, accusation
+  forms: [accusateur, accusateurs, accusation, accusations]
+  def: "Une accusation est une plainte portée au Ciel contre un homme ou contre le peuple juif. L'accusateur est celui qui la porte."
+- term: accusation de meurtre rituel
+  def: "Une fausse accusation selon laquelle des Juifs auraient tué un chrétien pour un rite."
+- term: agouna
+  def: "Une femme dont le mari a disparu, et qui ne peut pas se remarier faute de témoignage sur sa mort."
+- term: Amida
+  def: "La prière centrale, dite debout trois fois par jour ; on l'appelle aussi les Dix-Huit Bénédictions."
+- term: amulette
+  forms: [amulette, amulettes]
+  def: "Un papier où sont écrits des noms saints, pour protéger ou pour guérir."
+- term: arenda
+  def: "Un bail qu'un Juif prenait au seigneur contre un paiement fixe, par exemple pour tenir une auberge, vendre des boissons ou percevoir un péage."
+- term: Arizal
+  def: "Rabbi Its'hak Louria (1534–1572), le grand maître de la Kabbale à Safed."
+- term: ascension de l'âme
+  forms: ["ascension de l'âme", "ascensions de l'âme"]
+  def: "Quand l'âme d'un tsaddik monte aux mondes d'en haut, tandis que son corps reste ici-bas."
+- term: Baal Chem
+  def: "« Maître du Nom » : un homme qui se servait des noms saints pour guérir et pour protéger."
+- term: badeken
+  def: "Le voilement de la mariée avant le mariage."
+- term: Beit Yossef
+  def: "Le grand commentaire de Rabbi Yossef Caro (XVIe siècle) sur les codes de la loi juive ; on appelle aussi son auteur du nom du livre."
+- term: biliye
+  def: "Une étoffe de l'époque ; l'original la désigne par son nom local."
+- term: bima
+  def: "L'estrade de la synagogue où l'on lit la Torah."
+- term: Chabbat
+  def: "Le septième jour de la semaine, jour de repos, du vendredi soir au samedi soir."
+- term: "Chabbat 'Hazon"
+  def: "Le Chabbat qui précède Tichea Beav, nommé d'après la lecture du prophète Isaïe (« 'Hazon », la vision)."
+- term: Chabbetaï Tsvi
+  def: "Le faux messie (1626–1676). Après sa mort, des groupes secrets continuèrent à croire en lui ; on les appelait « la secte de Chabbetaï Tsvi »."
+- term: Chavouot
+  def: "La fête du don de la Torah, au début de l'été."
+- term: Chekhina
+  def: "La présence de Dieu dans le monde."
+- term: Chema
+  def: "Le verset « Écoute, Israël » et les passages qui le suivent, dits le matin et le soir."
+- term: Chemini Atséret
+  def: "Le jour de fête à la fin de Souccot."
+- term: chemin raccourci
+  def: "Un miracle par lequel on arrive en très peu de temps à un endroit lointain."
+- term: chofar
+  def: "La corne de bélier dont on sonne à Roch Hachana."
+- term: "Choul'han Aroukh"
+  def: "Le code de la loi juive, de Rabbi Yossef Caro (XVIe siècle)."
+- term: cho'het
+  forms: ["cho'het", "cho'hetim"]
+  def: "Un homme qui abat les bêtes et les volailles selon la loi juive. Son couteau doit être parfaitement lisse."
+- term: commissaire
+  forms: [commissaire, commissaires]
+  def: "Un fonctionnaire du seigneur, qui administrait la ville ou le domaine en son nom."
+- term: confession
+  def: "Le fait de dire ses péchés devant Dieu, dans la prière ou avant la mort."
+- term: Conseil des Quatre Pays
+  def: "L'autorité suprême des Juifs de Pologne, où se réunissaient les représentants des communautés."
+- term: contrat de fiançailles
+  def: "L'accord écrit avant le mariage, qui fixe la dot et la date du mariage."
+- term: ducat
+  forms: [ducat, ducats]
+  def: "Une pièce d'or, qui valait beaucoup de zlotys."
+- term: Ein Yaakov
+  def: "Un livre qui rassemble les récits et les paroles du Talmud."
+- term: esprit malfaisant
+  forms: [esprit malfaisant, esprits malfaisants]
+  def: "Un démon ; une force mauvaise qui fait du mal aux hommes."
+- term: étincelles
+  def: "Dans la Kabbale, des étincelles de sainteté tombées dans le monde. Le tsaddik les élève et les répare."
+- term: fermier
+  forms: [fermier, fermiers]
+  def: "Ici, un Juif qui tenait du seigneur une arenda (un bail)."
+- term: gabbaï
+  def: "L'homme qui s'occupe des affaires d'une synagogue."
+- term: Géhenne
+  def: "Le lieu où les âmes sont punies et purifiées après la mort."
+- term: Guemara
+  def: "La discussion du Talmud sur la Michna."
+- term: guématria
+  def: "Le calcul de la valeur numérique des lettres d'un mot hébreu."
+- term: Haïdamaks
+  def: "Bandes de Cosaques et de paysans révoltés qui attaquèrent les Polonais et les Juifs en Ukraine au XVIIIe siècle."
+- term: "'Hakham"
+  def: "« Sage » : le titre d'un rabbin chez les Juifs de la terre d'Israël et d'Orient."
+- term: Hallel
+  def: "Des psaumes de louange, dits les jours de fête et à Roch 'Hodech."
+- term: "'hamets"
+  def: "Les céréales levées, qu'il est interdit de manger ou de garder à Pessa'h."
+- term: "'Hanouka"
+  def: "La fête des Lumières, en hiver."
+- term: "'hassid, 'hassidim"
+  forms: ["'hassid", "'hassidim", "'hassidique", "'hassidisme"]
+  def: "Les disciples de la voie du Baal Chem Tov. Devant un nom : « le pieux »."
+- term: Havdala
+  def: "La bénédiction sur le vin, les aromates et le feu, à la sortie du Chabbat."
+- term: "'hazan"
+  forms: ["'hazan", "'hazanim"]
+  def: "Le chantre qui conduit la prière à la synagogue."
+- term: "'héder"
+  def: "L'école d'une seule pièce où les jeunes garçons apprenaient la Torah."
+- term: "'Houmach"
+  def: "Les cinq livres de la Torah, imprimés en un volume pour l'étude."
+- term: ibour
+  def: "Dans la Kabbale, l'âme d'un juste qui entre pour un temps dans un vivant, pour l'aider."
+- term: impropre
+  def: "Inutilisable selon la loi juive ; pour une bête, interdite à la consommation à cause d'un défaut."
+- term: intentions mystiques
+  forms: [intention mystique, intentions mystiques]
+  def: "Des pensées sur lesquelles, selon la Kabbale, on se concentre pendant la prière ou une mitsva."
+- term: Jours redoutables
+  def: "Roch Hachana, Yom Kippour et les jours qui les séparent."
+- term: Kabbale
+  def: "L'enseignement mystique de la Torah."
+- term: Kaddich
+  def: "Une prière de louange à Dieu, dite par l'officiant et par les endeuillés."
+- term: Kedoucha
+  def: "La prière « Saint, saint, saint » dans la répétition de la Amida par l'officiant."
+- term: kelipa
+  forms: [kelipa, kelipot]
+  def: "Dans la Kabbale, une force du mal qui recouvre la sainteté comme une écorce recouvre le fruit."
+- term: Kiddouch
+  def: "La bénédiction sur le vin qui ouvre le repas du Chabbat ou de la fête."
+- term: kittel
+  def: "Une robe blanche portée pendant les Jours redoutables."
+- term: kloyz
+  def: "Une petite maison d'étude où l'on étudie et où l'on prie."
+- term: Kol Nidré
+  def: "La prière qui ouvre Yom Kippour, le soir."
+- term: Maguid
+  def: "« Prédicateur ». Le Maguid de Mezritch est Rabbi Dov Ber, le disciple du Baal Chem Tov qui guida ses fidèles après lui."
+- term: mamzer
+  def: "Un enfant né d'une union que la Torah interdit, comme l'adultère."
+- term: matsa
+  forms: [matsa, matsot]
+  def: "Le pain non levé que l'on mange à Pessa'h."
+- term: metsitsa
+  def: "L'aspiration du sang de la plaie lors de la circoncision."
+- term: mezouza
+  forms: [mezouza, mezouzot]
+  def: "Un parchemin portant des versets de la Torah, fixé au montant de la porte."
+- term: Michna
+  def: "Le premier recueil écrit de la Torah orale."
+- term: Midrash
+  def: "Les interprétations et les récits des Sages sur les versets de la Bible."
+- term: mikvé
+  def: "Un bain pour l'immersion rituelle. Les 'hassidim s'y immergent aussi avant la prière."
+- term: minyan
+  def: "Les dix hommes nécessaires pour prier en communauté."
+- term: mitsva
+  forms: [mitsva, mitsvot]
+  def: "Un commandement de la Torah ; aussi, une bonne action."
+- term: mohel
+  def: "L'homme qui pratique la circoncision."
+- term: "Mokhia'h"
+  def: "Un prédicateur qui réprimande pour ramener au bien. Le Mokhia'h de Polonné est Rabbi Arié Leib, un disciple du Baal Chem Tov."
+- term: Moussaf
+  def: "La prière supplémentaire du Chabbat et des fêtes."
+- term: Neïla
+  def: "La dernière prière de Yom Kippour."
+- term: noms saints
+  forms: [noms saints, nom saint]
+  def: "Les noms de Dieu et des anges. Un « Baal Chem » s'en servait pour guérir et pour protéger."
+- term: parnass
+  def: "Un dirigeant de la communauté. « Le parnass du mois » était le dirigeant en charge ce mois-là."
+- term: parsa
+  forms: [parsa, parsas]
+  def: "Une mesure de distance de quelques kilomètres."
+- term: péager
+  forms: [péager, péagers]
+  def: "Un Juif qui avait pris à bail le péage du seigneur, et parfois aussi l'auberge et la vente des boissons du village."
+- term: Perek Chira
+  def: "Un ancien recueil qui donne, pour chaque créature, le verset qu'elle chante."
+- term: "Pessa'h"
+  def: "La fête de la sortie d'Égypte, au printemps (la Pâque juive)."
+- term: Prince de la Torah
+  def: "L'ange chargé de la Torah."
+- term: proclamation
+  forms: [proclamation, proclamations]
+  def: "Une annonce au Ciel de ce qui a été décrété. Un tsaddik peut l'entendre."
+- term: rabbanit
+  def: "La femme d'un rabbin."
+- term: rachat du premier-né
+  def: "Le commandement de racheter un fils premier-né auprès d'un cohen pour cinq sicles, à son trente et unième jour."
+- term: rav
+  def: "Un rabbin ; le maître et le décisionnaire d'une communauté."
+- term: Rif, Roch
+  forms: [Rif]
+  def: "Rabbi Its'hak Alfassi (le Rif) et Rabbénou Acher (le Roch), deux grands décisionnaires du Moyen Âge."
+- term: "Roch 'Hodech"
+  def: "Le premier jour du mois hébraïque."
+- term: Roch Hachana
+  def: "Le Nouvel An juif, jour du jugement."
+- term: sandak
+  def: "L'homme qui tient le bébé sur ses genoux pendant la circoncision. C'est un grand honneur."
+- term: "Seli'hot"
+  forms: ["Seli'hot", "seli'ha"]
+  def: "Des prières pour demander pardon."
+- term: "Sim'hat Torah"
+  def: "La fête de la joie de la Torah, à la fin de Souccot."
+- term: souccah
+  def: "La cabane où l'on habite pendant la fête de Souccot."
+- term: Souccot
+  def: "La fête des Cabanes, à l'automne."
+- term: Tachlikh
+  def: "Une prière dite au bord de l'eau à Roch Hachana."
+- term: talith
+  def: "Le châle de prière, avec des tsitsit à ses quatre coins."
+- term: téfilines
+  def: "De petits boîtiers de cuir contenant des passages de la Torah, attachés au bras et à la tête pour la prière du matin."
+- term: téfilines de Rabbénou Tam
+  forms: [Rabbénou Tam]
+  def: "Une seconde paire de téfilines, avec les passages dans l'ordre enseigné par Rabbénou Tam."
+- term: thaler
+  forms: [thaler, thalers]
+  def: "Une grosse pièce d'argent."
+- term: Tichea Beav
+  def: "Le jour de jeûne pour la destruction du Temple."
+- term: tikoun
+  def: "Dans la Kabbale, la réparation d'une âme ou d'une étincelle abîmée par le péché, et son élévation à sa place."
+- term: Tikounei haZohar
+  forms: [Tikounei haZohar, Tikounim]
+  def: "Un livre de la Kabbale, de l'école du Zohar."
+- term: Toldot
+  def: "Le livre *Toldot Yaakov Yossef* de Rabbi Yaakov Yossef, le rav de Polonné, disciple du Baal Chem Tov."
+- term: Torah orale
+  def: "L'enseignement transmis à côté de la Torah écrite, rassemblé dans la Michna et le Talmud."
+- term: Tossafot
+  def: "Des commentaires du Moyen Âge, imprimés à côté de la Guemara."
+- term: tsaddik, tsaddikim
+  forms: [tsaddik, tsaddikim]
+  def: "Un juste ; un guide saint."
+- term: tsitsit
+  def: "Les franges aux quatre coins du talith."
+- term: unifications
+  forms: [unification, unifications]
+  def: "Dans la Kabbale, des méditations qui unissent des noms de Dieu."
+- term: Yaalé véyavo
+  def: "La prière ajoutée à Roch 'Hodech et aux fêtes."
+- term: Yom Kippour
+  def: "Le jour du Grand Pardon, jour de jeûne et de prière."
+- term: zloty
+  forms: [zloty, zlotys]
+  def: "Une pièce de monnaie polonaise."
+- term: Zohar
+  def: "Le livre central de la Kabbale."
+- term: Œuvre du Char
+  def: "Les secrets les plus profonds de la Torah."

@@ -42,6 +42,7 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 try:
@@ -122,9 +123,18 @@ LANGS = {
 
 def french_spacing(s: str) -> str:
     """No-break spaces where French typography wants them: before ; : ! ? and
-    inside « ». (EB Garamond has no narrow no-break space, so U+00A0.)"""
+    inside « ». (EB Garamond has no narrow no-break space, so U+00A0.) And the
+    typographic apostrophe for every ': French quotes with « » and “ ”, never
+    with ', and pandoc would take the ' of 'hassid after a space for an
+    opening quote."""
     s = re.sub(r" ([;:!?»])", " \\1", s)
-    return s.replace("« ", "« ")
+    return s.replace("« ", "« ").replace("'", "’")
+
+
+def english_apostrophes(s: str) -> str:
+    """The typographic apostrophe inside words, for the English lines pandoc
+    does not set (the cover lines and the running header)."""
+    return re.sub(r"(?<=\w)'", "’", s)
 
 
 def load_sections(path: Path) -> list[str]:
@@ -171,7 +181,7 @@ def story_heading(num: str, title: str, mature: bool, first: bool, L: dict) -> s
     parts = [f'<h2 class="{cls}">']
     if num:
         parts.append(f'<span class="num">{html.escape(L["story"].format(num))}</span>')
-    parts.append(f'<span class="title">{smart(title, L)}</span>')
+    parts.append(f'<span class="title">{smart(keep_hyphenated(title, L), L)}</span>')
     if mature:
         parts.append(f'<span class="mature">{html.escape(L["mature"])}</span>')
     parts.append("</h2>")
@@ -189,6 +199,14 @@ def to_html(markdown: str, L: dict) -> str:
     ).stdout
 
 
+def keep_hyphenated(title: str, L: dict) -> str:
+    """A title's hyphenated words (après-midi, Brother-in-Law) stay on one
+    line: a heading broken at après-/midi strands half the word."""
+    if not L["latin"]:
+        return title
+    return re.sub(r"(?<![\w'’])([\w'’]+(?:-[\w'’]+)+)", r"[\1]{.nw}", title)
+
+
 def smart(text: str, L: dict) -> str:
     """Inline text (a title, a line of the contents) as HTML, with curly quotes
     in English and French."""
@@ -200,6 +218,8 @@ def smart(text: str, L: dict) -> str:
 
 def glossary_entries(entries: list[dict], text: str, L: dict) -> list[dict]:
     found = []
+    if L["latin"]:
+        text = text.replace("’", "'")    # the French text carries ’; the forms are typed with '
     for e in entries:
         for form in e.get("forms", [e["term"]]):
             if L["latin"]:
@@ -210,7 +230,14 @@ def glossary_entries(entries: list[dict], text: str, L: dict) -> list[dict]:
             if hit:
                 found.append(e)
                 break
-    return sorted(found, key=lambda e: e["term"].casefold())
+    return sorted(found, key=lambda e: sort_key(e["term"]) if L["latin"] else e["term"].casefold())
+
+
+def sort_key(term: str) -> str:
+    """Alphabetical order for a Latin glossary: accents, the leading apostrophe
+    of 'hassid and the ligature of Œuvre do not move a term."""
+    s = unicodedata.normalize("NFD", term.casefold().replace("œ", "oe"))
+    return "".join(c for c in s if not unicodedata.combining(c)).lstrip("'’")
 
 
 def css_string(s: str) -> str:
@@ -223,11 +250,13 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
     btitle = booklet["title"] if lang == "he" else booklet[lang]
     if lang == "fr":
         series, subtitle, btitle = french_spacing(series), french_spacing(subtitle), french_spacing(btitle)
+    elif lang == "en":
+        series, subtitle, btitle = english_apostrophes(series), english_apostrophes(subtitle), english_apostrophes(btitle)
     stories = [parse_section(sections[s], L) for s in sorted(booklet["stories"])]
     numbered = sum(1 for num, *_ in stories if num)
 
     toc = "".join(
-        f'<li><span class="tnum">{html.escape(num)}</span>{smart(title, L)}'
+        f'<li><span class="tnum">{html.escape(num)}</span>{smart(keep_hyphenated(title, L), L)}'
         + (f' <span class="mature">{html.escape(L["mature"])}</span>' if mature else "")
         + "</li>"
         for num, title, _, mature in stories
@@ -242,7 +271,8 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
     terms = glossary_entries(glossary, plain, L)
     gloss_html = ""
     if terms:
-        items = "".join(f"<dt>{smart(e['term'], L)}</dt><dd>{smart(e['def'], L)}</dd>" for e in terms)
+        fix = french_spacing if lang == "fr" else (lambda t: t)
+        items = "".join(f"<dt>{smart(fix(e['term']), L)}</dt><dd>{smart(fix(e['def']), L)}</dd>" for e in terms)
         # After the book's closing line (the last booklet) the glossary may share its page.
         cls = " ".join(c for c in ("glossary", "after-colophon" if n == total else "", fit) if c)
         gloss_html = (f'<section class="{cls}"><h2 class="front-title">{html.escape(L["glossary_title"])}'
@@ -276,7 +306,7 @@ def build_html(n: int, total: int, cfg: dict, booklet: dict, sections: list[str]
   <div class="subtitle">{html.escape(subtitle)}</div>
   <div class="rule"></div>
   <div class="no">{html.escape(L["booklet_no"].format(n, total))}</div>
-  <h1>{smart(btitle, L)}</h1>
+  <h1>{smart(keep_hyphenated(btitle, L), L)}</h1>
   <div class="count">{smart(count, L)}</div>
 </section>
 <section class="front">
@@ -307,7 +337,7 @@ def print_pdf(html_path: Path, pdf_path: Path) -> None:
 
 def thin_last_page(pdf_path: Path) -> bool:
     """True if the PDF's last page holds only a few lines of text (between
-    the running header and the page number): a glossary entry or two carried
+    the running header and the page number): a few glossary entries carried
     over."""
     try:
         import pymupdf
@@ -317,7 +347,15 @@ def thin_last_page(pdf_path: Path) -> bool:
     top, bottom = 17 * 72 / 25.4, page.rect.height - 18 * 72 / 25.4
     lines = [l for b in page.get_text("dict")["blocks"] for l in b.get("lines", [])
              if top < l["bbox"][1] and l["bbox"][3] < bottom and "".join(s["text"] for s in l["spans"]).strip()]
-    return len(lines) <= 5
+    return len(lines) <= 12
+
+
+def page_count(pdf_path: Path) -> int:
+    try:
+        import pymupdf
+    except ImportError:
+        return 0
+    return len(pymupdf.open(pdf_path))
 
 
 def safe_name(s: str, lang: str) -> str:
@@ -358,14 +396,23 @@ def main(argv: list[str]) -> None:
         html_path = out / "html" / f"{n:02d}.html"
         tmp = out / f"{n:02d}.pdf"                 # ASCII name for Chrome, renamed below
         # English and French: when the last page would hold only a few lines
-        # (glossary entries carried over), print again with a tighter glossary.
-        for fit in (GLOSSARY_FIT if L["latin"] else [""]):
+        # (glossary entries carried over), print again with a tighter glossary,
+        # and keep it only if it saves that page.
+        def render(fit: str) -> None:
             html_path.write_text(build_html(n, len(booklets), cfg, b, sections, glossary, css, colophon, L, lang,
                                             fit), encoding="utf-8")
             tmp.unlink(missing_ok=True)
             print_pdf(html_path, tmp)
-            if not thin_last_page(tmp):
-                break
+
+        render("")
+        if L["latin"] and thin_last_page(tmp):
+            pages = page_count(tmp)
+            for fit in GLOSSARY_FIT[1:]:
+                render(fit)
+                if page_count(tmp) < pages:
+                    break
+            else:
+                render("")
         final = out / f"{n:02d} - {safe_name(b['title'] if lang == 'he' else b[lang], lang)}.pdf"
         tmp.replace(final)
         print(f"  {final}")

@@ -175,6 +175,20 @@ French only, for the terms the table leaves out:
 | ארון הקודש, בימה, קיטל | l'arche sainte, la bima, le kittel |
 | מי דבש, טאלער, אדומים | hydromel, thaler, ducats |
 | חיידמקים, ממזר, גימטריה | les Haïdamaks, mamzer, guématria |
+| גוי, גויה | un non-Juif, une non-Juive |
+| בית התבודדות | un ermitage |
+| תלמיד חכם, ראש בית הדין, מחותן | un érudit en Torah, le président du tribunal rabbinique, un parent par alliance |
+| מגיד (של קהילה), שוחט ובודק | le prédicateur, cho'het et inspecteur des viandes |
+| שדה לבן, קריבוש, טלוסט, קולומיה, פרוט | Sdé Lavan, Krivouch, Tlousté, Kolomea, le Prout |
+| רבי גדליה, רבי אלכסנדר, רבי משה, חנה | Rabbi Guedalia, Rabbi Alexandre, Rabbi Moché, 'Hanna |
+| רבי מנחם נחום מצ'רנוביל, רבי מנחם מנדל, רבי לוי יצחק מברדיצ'ב | Rabbi Mena'hem Na'houm de Tchernobyl, Rabbi Mena'hem Mendel, Rabbi Lévi Its'hak de Berditchev |
+| רבי יחיאל מיכל מזלוטשוב, רבי דוד פורקעס, רבי לייב קעסלער, רבי יעקב ממז'יבוז' | Rabbi Ye'hiel Mikhel de Zlotchov, Rabbi David Pourkes, Rabbi Leib Kessler, Rabbi Yaakov de Mejibij |
+| רבי חיים צאנזער מברודי, רבי חיים ויטאל, רבי יצחק לוריא, הערשל | Rabbi 'Haïm Tsanzer de Brody, Rabbi 'Haïm Vital, Rabbi Its'hak Louria, Herchel |
+| יונה בן אמיתי, שאול, הלל ושמאי, רבי חנינא בן דוסא, רבן יוחנן בן זכאי | Jonas fils d'Amitaï, Saül, Hillel et Chammaï, Rabbi 'Hanina ben Dossa, Rabban Yo'hanan ben Zakaï |
+| הרי"ף, הרא"ש, בעלי התוספות, בית יוסף | le Rif, le Roch, les auteurs des Tossafot, le *Beit Yossef* |
+| לייפציג, מירופול, קמינקה, ווהלין, טוראווע | Leipzig, Miropol, Kaminka, la Volhynie, Tourov |
+| שופר, עיבור, פרק שירה, תיקוני הזוהר, קבלה, חברא קדישא | le chofar, l'*ibour*, le *Perek Chira*, les *Tikounei haZohar* (les *Tikounim*), la Kabbale, la confrérie funéraire |
+| שם הוי"ה, עד כאן, מעשה: | le Nom de quatre lettres, Jusqu'ici., Voici ce qui arriva : |
 
 The booklet glossaries (`booklets/glossary-en.yaml`, `glossary-fr.yaml`)
 explain the kept terms; a term that stays untranslated in the text has an
