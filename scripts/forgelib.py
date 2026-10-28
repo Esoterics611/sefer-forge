@@ -447,6 +447,105 @@ def print_edits(d: dict | None) -> list[dict]:
     return list(d.get("edits") or []) + list(d.get("style") or [])
 
 
+SENTENCE_END = re.compile(r'[.?!:;]["”\'׳״)]*$')
+
+
+def _sentences(toks: list[str]) -> list[tuple[int, int]]:
+    """[(start, end)] token spans of the sentences of one paragraph."""
+    out, s = [], 0
+    for i, t in enumerate(toks):
+        if SENTENCE_END.search(t) or t == "—":
+            out.append((s, i + 1))
+            s = i + 1
+    return out + ([(s, len(toks))] if s < len(toks) else [])
+
+
+def style_list(before: list[str], after: list[str], where: str = "the explanation") -> list[dict]:
+    """The style pass (prompts/style-pass.md) as `style:` entries: the exact
+    replacements, one per run of changed sentences, that turn `before` (the
+    text after `edits:`) into `after` (the text as it should print), paragraph
+    for paragraph. Each `from` is widened by a sentence until it occurs once.
+    Checked by applying it: the result is `after` or EditError."""
+    import difflib
+    if len(before) != len(after):
+        raise EditError(f"{where}: {len(before)} paragraphs before, {len(after)} after — "
+                        "the style pass never merges, splits or removes a paragraph")
+    cur, entries = list(before), []
+    for k, (b, a) in enumerate(zip(before, after)):
+        bt, at = b.split(), a.split()
+        if bt == at:
+            continue
+        ops = difflib.SequenceMatcher(a=bt, b=at, autojunk=False).get_opcodes()
+        sents = _sentences(bt)
+        spans: list[list[int]] = []                     # sentence index ranges [first, last]
+        for tag, i1, i2, _, _ in ops:
+            if tag == "equal":
+                continue
+            lo, hi = (i1, i2) if i2 > i1 else (max(0, i1 - 1), min(len(bt), i1 + 1))
+            hit = [n for n, (s, e) in enumerate(sents) if s < max(hi, lo + 1) and e > lo]
+            if spans and hit[0] <= spans[-1][1]:
+                spans[-1][1] = max(spans[-1][1], hit[-1])
+            else:
+                spans.append([hit[0], hit[-1]])
+
+        def at_after(i: int, end: bool) -> int:          # a token boundary of `b`, in `a`
+            for tag, i1, i2, j1, j2 in (reversed(ops) if end else ops):
+                if tag == "equal" and i1 <= i <= i2:
+                    return j1 + i - i1
+                if tag != "equal" and i == (i2 if end else i1):
+                    return j2 if end else j1
+            raise AssertionError(i)
+
+        n = 0
+        while n < len(spans):
+            first, last = spans[n]
+            s, e = sents[first][0], sents[last][1]
+            src = " ".join(bt[s:e])
+            hits = sum(len(edit_pattern(src).findall(p)) for p in cur)
+            if hits != 1:
+                if first == 0 and last == len(sents) - 1:
+                    raise EditError(f"{where} paragraph {k + 1}: “{src[:60]}…” occurs {hits} times")
+                spans[n] = [max(0, first - 1), min(len(sents) - 1, last + (first == 0))]
+                while n + 1 < len(spans) and spans[n + 1][0] <= spans[n][1]:
+                    spans[n][1] = max(spans[n][1], spans.pop(n + 1)[1])
+                continue
+            entry = {"from": src, "to": " ".join(at[at_after(s, False):at_after(e, True)])}
+            cur, _ = apply_edits(cur, [entry], where)
+            entries.append(entry)
+            n += 1
+    flat = lambda ps: [" ".join(p.split()) for p in ps]
+    if flat(cur) != flat(after):
+        bad = next(i for i, (x, y) in enumerate(zip(flat(cur), flat(after))) if x != y)
+        raise EditError(f"{where} paragraph {bad + 1}: the entries give “{cur[bad][:80]}…”, not the text asked for "
+                        "(spaces before punctuation, or a leading comma?)")
+    return entries
+
+
+# Speech a style pass leaves out: whole words and phrases; also עכשיו but in
+# "של עכשיו", and אז opening a sentence.
+SPOKEN = ("כאילו", "וכולי", "סתם", "נגיד", "אמרנו", "שאמרנו", "כשאמרנו", "בקצרה", "בפרטים",
+          "בוא נגיד", "דרך אגב", "עוד פעם", "זאת אומרת", "מה שנקרא", "בן אדם")
+
+
+def spoken_left(paras: list[str]) -> list[str]:
+    """Each stretch of speech still in the printed explanation, with a word of
+    context either side (prompts/style-pass.md)."""
+    out = []
+    for p in paras:
+        toks = re.sub(r"<!--.*?-->", " ", p).split()
+        bare = [t.strip(".,:;?!\"'()—״׳“”") for t in toks]
+        for i in range(len(toks)):
+            for phrase in SPOKEN:
+                w = phrase.split()
+                if bare[i:i + len(w)] == w:
+                    out.append(" ".join(toks[max(0, i - 1):i + len(w) + 1]))
+            if bare[i] == "עכשיו" and (i == 0 or bare[i - 1] != "של"):
+                out.append(" ".join(toks[max(0, i - 1):i + 2]))
+            if bare[i] == "אז" and (i == 0 or re.search(r'[.?!]["”\'׳״)]*$', toks[i - 1])):
+                out.append(" ".join(toks[i:i + 3]))
+    return out
+
+
 def edit_counts(d: dict | None) -> str:
     """'N readability edit(s)', plus ', M style edit(s)' when there are any."""
     d = d or {}
