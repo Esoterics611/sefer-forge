@@ -8,22 +8,29 @@ turns it into written Hebrew, factual and direct, without touching what is
 said.
 
 It is a reading pass, done by reading the printed explanation through,
-paragraph by paragraph, never by search and replace. Most of the text is
-already good and stays as it is; change only what reads as talk.
+paragraph by paragraph, never by search and replace. What already reads as
+writing stays; everything that reads as talk changes. The bar: a reader of the
+pamphlet cannot tell the explanation was spoken. Removing the obvious markers
+is not enough (Breishis 002's first pass did only that and still read as a
+transcript).
 
 ## Change
 
 - Speech markers and tics: אז, עכשיו, כן?, בוא נגיד ככה, זאת אומרת (as
-  filler), עוד פעם, דרך אגב, כאילו, ממש (as filler), "נגיד".
+  filler), עוד פעם, דרך אגב, כאילו, ממש (as filler), "נגיד", וכולי, סתם.
 - The speaker running the lesson: "אני קופץ קצת וממשיך", "נמשיך עוד קצת",
-  "בדיוק כמו שאמרנו", "תסתכלו ב..." (→ "ראה ...").
+  "בדיוק כמו שאמרנו", "תסתכלו ב..." (→ "ראה ..."); openers that announce
+  what comes ("בקצרה,", "בפרטים:", "והנקודה כאן היא", "כאן הוא אומר ש" →
+  "כאן מבואר ש"); back-references to the lesson ("שאמרנו", "כמו שאמרנו
+  למעלה" → "לעיל", "כנזכר", or nothing when the point is plain).
 - Self-corrections: keep what he corrected to and drop what he took back
   ("סליחה, זה העניין: ..." keeps only the corrected statement).
 - False starts and restatements that say again, in other words, what the
   sentence before or after says in full: remove the weaker copy.
-- Spoken syntax: "זה עניין של" → "זהו עניין", "שזה" chains → a clear
-  subject and verb, a rhetorical question → the statement it asks for,
-  "בן אדם" → "אדם", "פה" → "כאן".
+- Spoken syntax: "זה עניין של" → "זהו עניין", "שזה" chains and "זה" as a
+  copula ("זה הבירור הראשון", "וזה עניין הגאולה") → a clear subject and
+  verb ("זהו", "הוא"), a rhetorical question → the statement it asks for,
+  "בן אדם" → "אדם", "פה" → "כאן", "עניינים של ניסים" → "ניסים".
 
 ## Keep
 
