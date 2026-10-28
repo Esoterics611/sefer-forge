@@ -291,6 +291,28 @@ def pairs(nusach: Nusach, paras: list[str]) -> list[tuple[list[str], list[str]]]
     return out
 
 
+def readings(nusach: Nusach, paras: list[str]) -> list[str]:
+    """The stretches of the explanation that read the text aloud, as heard."""
+    ocr = [OM.Tok(w, F.skeleton(w)) for w in nusach.words]
+    heard = [OM.Tok(w, F.skeleton(w)) for p in paras for w in F.words(p) if F.plain(w)]
+    return [" ".join(t.text for t in heard[h1:h2 + 1]) for _, _, h1, h2, _ in OM.find_reading(ocr, heard)]
+
+
+def style_kept(nusach: Nusach, plan: dict, session: Path, styled: list[str]) -> None:
+    """The style pass changes how the explanation reads, never the readings
+    or the pairing (prompts/style-pass.md): both must be as they are with
+    `edits:` alone."""
+    plain, _ = F.apply_edits(commentary_paragraphs(session), plan.get("edits") or [])
+    was, now = readings(nusach, plain), readings(nusach, styled)
+    if was != now:
+        a, b = next((a, b) for a, b in zip(was + [""], now + [""]) if a != b)
+        raise PlanError(f"style: changes a reading — “{a[:70]}” now reads “{b[:70]}”")
+    shape = lambda paras: [(text, len(ps)) for text, ps in pairs(nusach, paras)]
+    if shape(plain) != shape(styled):
+        raise PlanError("style: moves the pairing — the cuts or the paragraphs under them differ "
+                        "from the text with `edits:` alone")
+
+
 SNAP_REACH = 5        # tokens a cut may move to land on a sentence end
 CLAUSE_REACH = 3     # ... or before a clause or citation opener, or after a comma
 # Words that open a clause or a citation in this literature: a cut just before
@@ -371,6 +393,8 @@ def build(session: Path, plan: dict) -> str:
         explained, _ = F.apply_edits(commentary_paragraphs(session), F.print_edits(plan))
     except F.EditError as e:
         raise PlanError(str(e))
+    if plan.get("style"):
+        style_kept(nusach, plan, session, explained)
     body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]
     for text, explanation in pairs(nusach, explained):
         body += ['::: {custom-style="Nusach"}'] + [ln for p in text for ln in (p, "")]

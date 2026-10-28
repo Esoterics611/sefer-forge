@@ -46,7 +46,7 @@ Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — t
 >
 > **Step 6 — Readability pass.** Print the lesson (`python scripts/build-pamphlet.py <SESSION_PATH>`), proof it (skill `proof-pdf`), and read it through as its reader will, under `prompts/readability-pass.md`: each segment Whisper garbled beyond a reader is corrected or removed as an `edits:` entry in `transcript.md`'s frontmatter (the body keeps what Whisper heard). Rebuild the book and the pamphlet and proof again.
 >
-> **Step 7 — Style pass** (the last step; `prompts/style-pass.md`): read the lesson through once more and turn the spoken Hebrew into written Hebrew, as a `style:` list in `transcript.md`'s frontmatter (headings, `>` readings and footnotes untouched). Check, rebuild the book and the pamphlet, proof, and read every spread.
+> **Step 7 — Style pass** (the last step; `prompts/style-pass.md`): read the lesson through once more and turn the spoken Hebrew into written Hebrew, as a `style:` list in `transcript.md`'s frontmatter, drafted and recorded with `python scripts/style-pass.py <SESSION_PATH> --draft <scratch>/draft.txt` and then `python scripts/style-pass.py <SESSION_PATH> <scratch>/draft.txt` (headings, `>` readings and footnotes untouched: the check fails otherwise). Rebuild the book and the pamphlet, proof, and read every spread.
 >
 > **Hard constraints:** Hebrew stays Hebrew. Never edit `.raw.txt`, audio, `compiled/`, or `output/`. Do not invoke docx/pptx/xlsx skills. Do not hand-edit `discourse.md` of a voice-only discourse — it is regenerated; edit `transcript.md`. Don't overwrite an existing `transcript.md` that already has body content — ask first.
 >

@@ -31,6 +31,13 @@ transcript).
   copula ("זה הבירור הראשון", "וזה עניין הגאולה") → a clear subject and
   verb ("זהו", "הוא"), a rhetorical question → the statement it asks for,
   "בן אדם" → "אדם", "פה" → "כאן", "עניינים של ניסים" → "ניסים".
+- A sentence a reader has to read twice: a chain of appositions ("שהיא…,
+  שזה…, שהיא…") split into sentences; the subject named where "he" or "it" is
+  unclear ("כשמדבר" → "המאמר"); a vague word made exact from its own context
+  ("קודמת בעניין, שהעניינים שבשמיים הם בשביל הארץ" → "קודמת בתכלית"); the
+  connector his logic already has (כי, לכן, שהרי, ואילו) where speech left it
+  out. The test is the whole page: read straight through, every sentence
+  follows from the one before.
 
 ## Keep
 
@@ -45,10 +52,12 @@ transcript).
 
 ## Never
 
-Add an idea, a source, a conclusion or a transition he did not make; correct
-what he said (a slip in a reference stays); merge, split or reorder
-paragraphs; summarize. When a rewrite would change what a sentence claims,
-leave the sentence as it is.
+Add an idea, a source, a conclusion or a step of argument he did not make
+(a connector that states the logic he gave is not one); correct what he
+said (a slip in a reference stays); merge, split or reorder paragraphs;
+summarize. When a rewrite would change what a sentence claims, leave the
+sentence as it is. A reading Whisper garbled is the readability pass's to
+correct (`edits:`), never this pass's.
 
 ## How
 
@@ -60,17 +69,26 @@ faithful record of what was said:
       - from: אז זה העניין של התפילה, שעל זה מתפללים, שזה העניינים הארציים,
         to: על העניינים הארציים האלה מתפללים,
 
-`from` is the text as it reads after the readability edits (and after the
-style edits above it), and must occur once. A voice-only lesson puts the same
-`style:` list in `transcript.md`'s frontmatter. Then:
+`from` is the text as it reads after the readability edits, and must occur
+once. A voice-only lesson keeps the list in `transcript.md`'s frontmatter.
+The list is not written by hand: write the text, and the script derives it.
 
-1. `python scripts/build-section.py <session>` (its check compares the
-   explanation with `commentary.md` plus `edits:` and `style:`), or for a
-   voice-only lesson `python scripts/check-session.py <session>`;
-2. confirm the pairing did not move: the cuts and their explanations are the
-   same as before the pass;
-3. `python scripts/build-pamphlet.py <session>`, the proof
-   (`proof-pdf`), and a last read of every spread.
+1. `python scripts/style-pass.py <session> --draft <scratch>/draft.txt`
+   writes the explanation as it prints now, one paragraph per block (a
+   voice-only lesson: its whole body).
+2. Rewrite the draft in place, paragraph by paragraph, under the rules
+   above; read it straight through at the end.
+3. `python scripts/style-pass.py <session> <scratch>/draft.txt` rebuilds
+   `style:` from the text after `edits:` to the draft (one entry per run of
+   changed sentences, so a sentence changes in one step however many rounds
+   the pass takes), writes it, and rebuilds and checks the session:
+   `build-section.py` fails if the list changes a reading or moves the
+   pairing; `check-session.py` fails if it changes a voice-only lesson's
+   headings, `>` readings or footnotes, and warns of speech left behind
+   (שאמרנו, בקצרה, עכשיו, אז opening a sentence…): fix each, or say why it
+   stays. Another round is steps 1–3 again.
+4. `python scripts/build-pamphlet.py <session>`, the proof (`proof-pdf`),
+   and a last read of every spread.
 
-Report the number of style edits and a short before/after sample, and list any
-sentence left conversational on purpose.
+Report the number of style edits, the words before and after, a short
+before/after sample, and any sentence left conversational on purpose.

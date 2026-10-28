@@ -246,7 +246,10 @@ def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None)
             r.error(f"section-plan.yaml edits/style: {e}")
             n_edits = 0
         if n_edits:
-            r.note(f"{F.edit_counts(F.load_yaml(r.session / 'section-plan.yaml'))} from section-plan.yaml")
+            plan = F.load_yaml(r.session / "section-plan.yaml")
+            r.note(f"{F.edit_counts(plan)} from section-plan.yaml")
+            if plan.get("style"):
+                warn_spoken(r, "section.md explanation", cparas)
         sd = DIFF.diff(DIFF.words("\n\n".join(cparas)), DIFF.words(expl))
         n = sum(len(sd[k]) for k in ("added", "replaced", "removed", "fillers"))
         if n:
@@ -353,6 +356,25 @@ def check_section(r: Report, ocr_words: list[str] | None) -> None:
                 r.note(f"ביאור: {len(boxes)} boxes carry commentary.md word for word")
 
 
+def warn_spoken(r: Report, where: str, paras: list[str]) -> None:
+    left = F.spoken_left(paras)
+    if left:
+        r.warn(f"{where}: {len(left)} stretch(es) still read as speech after the style pass — "
+               + "; ".join(f"“{x}”" for x in left[:5]))
+
+
+def check_style_transcript(r: Report, body: str, fm: dict, printed: str) -> None:
+    """A voice-only lesson's style pass leaves its headings, its readings (`>`)
+    and its footnotes as they are (prompts/style-pass.md)."""
+    plain, _ = F.edit_transcript(body, fm.get("edits") or [])
+    blocks = lambda t: re.split(r"\n\s*\n", t.strip())
+    fixed = lambda t: [b for b in blocks(t) if b.lstrip().startswith(("#", ">", "[^"))]
+    marks = lambda t: re.findall(r"\[\^[^\]]+\](?!:)", t)
+    if fixed(plain) != fixed(printed) or marks(plain) != marks(printed):
+        r.error("transcript.md style: changes a heading, a reading (>) or a footnote — the style pass leaves them as they are")
+    warn_spoken(r, "transcript.md", [b for b in blocks(printed) if b not in fixed(printed)])
+
+
 def check(session: Path) -> Report:
     r = Report(session)
     if F.voice_only(session):
@@ -363,9 +385,11 @@ def check(session: Path) -> Report:
             fm, body = check_frontmatter(r, t, need=("title", "source"))
             check_footnotes(r, "transcript.md", body)
             try:
-                _, n_edits = F.edit_transcript(body, F.print_edits(fm))
+                printed, n_edits = F.edit_transcript(body, F.print_edits(fm))
                 if n_edits:
                     r.note(f"{F.edit_counts(fm)} in the frontmatter")
+                if fm.get("style"):
+                    check_style_transcript(r, body, fm, printed)
             except F.EditError as e:
                 r.error(f"transcript.md edits/style: {e}")
             check_unclear_times(r, t, body)

@@ -71,7 +71,7 @@ photos + recording
 | Pamphlet | "pamphlet", "publish session N" | `publish-pamphlet` | `build-pamphlet.py` | A5 PDF | at acceptance |
 | Proof | "proof", before any hand-over | `proof-pdf` | `proof-pdf.py` | proof report, spread images | at acceptance |
 | Readability pass | "words that don't make sense" | (prompt) | the plan's or transcript's `edits:` | cleaner print | a segment longer than a sentence |
-| Style pass (last) | "less conversational" | (prompt `style-pass.md`) | the plan's or transcript's `style:` | written, not spoken, Hebrew | a rewrite that would change a claim |
+| Style pass (last) | "less conversational" | (prompt `style-pass.md`) | `style-pass.py` → the plan's or transcript's `style:` | written, not spoken, Hebrew | a rewrite that would change a claim |
 | Discourse | "assemble discourse" | `assemble-discourse` | `assemble-discourse.py` | `discourse.md` | before overwriting hand edits |
 | Chapter | "add to chapter" | `assign-chapter` | `structure.yaml` | the book's order | the placement is yours |
 | Book | "build book" | `build-book` | `build-all.sh`, `docx-to-pdf.sh` | DOCX and PDF | at acceptance |
