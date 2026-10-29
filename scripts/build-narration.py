@@ -11,9 +11,11 @@ Usage:
 A plan (booklets/narration/*.yaml) names the stories, in the order they are
 read, from the English or French booklet text (shivchei-habesht-simple-en.md /
 -fr.md), with the paragraphs left out (`cut:`), the changes that make the text
-read aloud well (`edits:`, mostly brackets turned into spoken phrases) and how
-the voice says the names (`say:`). The build stops when a cut or an edit no
-longer matches the story, or a bracket is left in what is read.
+read aloud well (`edits:`: the booklet's bracketed explanations of words left
+out, its other brackets turned into spoken phrases) and how the voice says the
+names (`say:`). Nothing of the booklet's contents or glossary is read: only the
+plan's short `intro:`, the stories and its `outro:`. The build stops when a cut
+or an edit no longer matches the story, or a bracket is left in what is read.
 
 Writes output/narration/<name>/:
     script.txt     what is read, paragraph by paragraph
@@ -104,7 +106,7 @@ def build_blocks(plan: dict, sections: list[str]) -> list[dict]:
     lang = plan["lang"]
     blocks = []
     if plan.get("intro"):
-        blocks.append({"text": plain(plan["intro"]), "pause": PAUSE["story"], "chapter": "Introduction"})
+        blocks.append({"text": plain(plan["intro"]), "pause": PAUSE["story"], "chapter": None})
     for entry in plan["stories"]:
         title, paras = story_paragraphs(sections[entry["n"]], entry, lang)
         blocks.append({"text": title.rstrip(".") + ".", "pause": PAUSE["title"], "chapter": title})
@@ -114,7 +116,7 @@ def build_blocks(plan: dict, sections: list[str]) -> list[dict]:
         blocks.append({"text": plain(plan["outro"]), "pause": 0.0, "chapter": None})
     left = [b["text"] for b in blocks if re.search(r"[()\[\]{}<>]", b["text"])]
     if left:
-        sys.exit("brackets left in what is read; turn them into words with an edit:\n  "
+        sys.exit("brackets left in what is read; with an edit, drop the explanation or reword the aside:\n  "
                  + "\n  ".join(t[:100] for t in left))
     return blocks
 
@@ -236,7 +238,7 @@ def write_srt(cues: list[tuple[float, float, str]], path: Path) -> None:
 def write_script(blocks: list[dict], path: Path) -> None:
     lines = []
     for b in blocks:
-        if b["chapter"] and b["chapter"] != "Introduction":
+        if b["chapter"]:
             lines.append(f"# {b['text']}")
         else:
             lines.append(textwrap.fill(b["text"], 90, break_on_hyphens=False))
@@ -274,7 +276,7 @@ def main(argv: list[str]) -> None:
 
     model = load_model()
     if samples_for:
-        first = next(i for i, b in enumerate(blocks) if b["chapter"] not in (None, "Introduction"))
+        first = next(i for i, b in enumerate(blocks) if b["chapter"])
         for v in samples_for:
             audio, rate, _ = synthesize(model, blocks[:first + 2], v, plan.get("speed", 1.0), say)
             print(f"  {write_audio(audio, rate, out / f'sample-{v}.wav')}")
@@ -284,8 +286,10 @@ def main(argv: list[str]) -> None:
     print(f"  {write_audio(audio, rate, out / 'narration.wav')}  ({len(audio) / rate / 60:.1f} minutes, voice {voice})")
     write_srt(cues, out / "narration.srt")
     print(f"  {out / 'narration.srt'}")
-    chapters = [f"{stamp(b['start'], srt=False)} {b['chapter']}" for b in blocks if b["chapter"]]
-    (out / "chapters.txt").write_text("\n".join(chapters) + "\n", encoding="utf-8")
+    # A video's chapters start at 0:00, so the intro belongs to the first story.
+    chapters = [(b["start"], b["chapter"]) for b in blocks if b["chapter"]]
+    chapters[0] = (0.0, chapters[0][1])
+    (out / "chapters.txt").write_text("".join(f"{stamp(t, srt=False)} {c}\n" for t, c in chapters), encoding="utf-8")
     print(f"  {out / 'chapters.txt'}")
 
 
