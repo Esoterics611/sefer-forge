@@ -25,6 +25,11 @@ lang: en
 voice: am_michael
 speed: 1.0
 
+# The picture for the whole video: a moonlit forest, the boy with his
+# stick on the path. An original drawing
+# (vector art), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-boy-who-was-not-afraid.svg
+
 intro: >
   In Praise of the Baal Shem Tov, retold in modern English.
 

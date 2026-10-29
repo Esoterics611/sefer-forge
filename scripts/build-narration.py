@@ -5,6 +5,7 @@ Usage:
     python scripts/build-narration.py booklets/narration/<name>.yaml
     python scripts/build-narration.py <plan> --script            # script.txt only, no audio
     python scripts/build-narration.py <plan> --voice bm_george   # another voice than the plan's
+    python scripts/build-narration.py <plan> --video             # the video again, from the reading made
     python scripts/build-narration.py <plan> --sample am_michael,bm_george,af_heart
     python scripts/build-narration.py --say Gershon Ghershon     # how the voice says words
 
@@ -22,6 +23,13 @@ Writes output/narration/<name>/:
     narration.wav  the reading; narration.mp3 as well (levelled for online video) when ffmpeg is installed
     narration.srt  subtitles, a cue per sentence (long ones split), timed to the reading
     chapters.txt   the start of each story, for a video description
+    video.mp4      for YouTube: one picture (frame.png) for the whole reading
+    thumbnail.jpg  the picture at 1280x720, for the video's thumbnail
+The picture is the plan's `image:` (a JPG/PNG, or an SVG drawing, which headless
+Chrome renders: CHROME names the browser, by default Windows Chrome reached from
+WSL or the container's Chromium), darkened below for the series and the
+narration's title; without an image, a title card in the booklets' colours and
+EB Garamond (templates/fonts).
 --sample writes sample-<voice>.wav/.mp3 (the intro and the first paragraph) for
 each voice named, to choose one by ear.
 
@@ -62,6 +70,15 @@ VOICE_LANG = {"a": "en-us", "b": "en-gb", "f": "fr-fr"}   # by the voice name's 
 # Silence, in seconds, after a sentence, a paragraph, a story's title, a story.
 PAUSE = {"sentence": 0.3, "paragraph": 0.8, "title": 1.0, "story": 2.0}
 SUB_LINE = 42              # characters per subtitle line, two lines per cue
+# -16 LUFS, the usual loudness for spoken audio online.
+LOUDNORM = "loudnorm=I=-16:TP=-1.5:LRA=11"
+SERIES = Path("booklets/booklets.yaml")    # the series title and subtitle per language
+FONTS = Path("templates/fonts")
+CHROME = os.environ.get("CHROME") or next(
+    (c for c in ("/mnt/c/Program Files/Google/Chrome/Application/chrome.exe", "/opt/pw-browsers/chromium")
+     if Path(c).exists()), "google-chrome")
+VIDEO = (1920, 1080)
+GOLD, CREAM, DARK = (201, 164, 92), (239, 230, 210), (14, 11, 8)
 
 
 def load_sections(path: Path) -> list[str]:
@@ -183,10 +200,115 @@ def write_audio(samples, rate: int, wav: Path) -> Path:
     if not shutil.which("ffmpeg"):
         return wav
     mp3 = wav.with_suffix(".mp3")
-    # Levelled to -16 LUFS, the usual loudness for spoken audio online; the WAV is left as read.
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
+    # The MP3 and the video are levelled; the WAV is left as read.
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-af", LOUDNORM,
                     "-ar", "44100", "-codec:a", "libmp3lame", "-b:a", "160k", str(mp3)], check=True)
     return mp3
+
+
+def cover(img, size: tuple[int, int]):
+    """Scale and crop a picture to fill `size`."""
+    w, h = size
+    scale = max(w / img.width, h / img.height)
+    img = img.resize((round(img.width * scale), round(img.height * scale)))
+    left, top = (img.width - w) // 2, (img.height - h) // 2
+    return img.crop((left, top, left + w, top + h))
+
+
+def render_svg(svg: Path, png: Path) -> None:
+    """An SVG drawing to a PNG at the video's size, by headless Chrome."""
+    src, dst = svg.resolve(), png.resolve()
+    if CHROME.endswith(".exe"):       # Windows Chrome from WSL needs Windows paths
+        src, dst = (subprocess.run(["wslpath", "-w", str(p)], capture_output=True, text=True,
+                                   check=True).stdout.strip() for p in (src, dst))
+    # Linux Chrome refuses to run as root (a container) without --no-sandbox.
+    sandbox = ["--no-sandbox"] if hasattr(os, "geteuid") and os.geteuid() == 0 else []
+    png.unlink(missing_ok=True)
+    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", *sandbox,
+                    f"--window-size={VIDEO[0]},{VIDEO[1]}", f"--screenshot={dst}", str(src)],
+                   check=True, capture_output=True)
+    if not png.exists():
+        sys.exit(f"Chrome wrote no picture for {svg}")
+
+
+def make_frame(plan: dict, out: Path) -> Path:
+    """The picture shown for the whole video, and its thumbnail."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        sys.exit("Missing dependency. Install with: pip install pillow")
+    series = yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][plan["lang"]]
+    W, H = VIDEO
+    if plan.get("image"):
+        picture = Path(plan["image"])
+        if picture.suffix == ".svg":
+            render_svg(picture, out / "picture.png")
+            picture = out / "picture.png"
+        frame = cover(Image.open(picture).convert("RGB"), VIDEO)
+        # Darken the lower part, where the titles go.
+        shade = Image.linear_gradient("L").resize(VIDEO).point(lambda v: min(235, int(max(0, v - 60) * 1.6)))
+        frame = Image.composite(Image.new("RGB", VIDEO, DARK), frame, shade)
+    else:
+        frame = Image.composite(Image.new("RGB", VIDEO, DARK), Image.new("RGB", VIDEO, (52, 40, 28)),
+                                Image.radial_gradient("L").resize(VIDEO))
+    draw = ImageDraw.Draw(frame)
+    font = lambda name, size: ImageFont.truetype(str(FONTS / f"EBGaramond-{name}.ttf"), size)
+    small, sub = font("Regular", 40), font("Italic", 46)
+    size = 116
+    while True:
+        big = font("SemiBold", size)
+        lines, line = [], ""
+        for word in plan["title"].split():
+            test = f"{line} {word}".strip()
+            if line and draw.textlength(test, font=big) > W - 420:
+                lines.append(line)
+                test = word
+            line = test
+        lines.append(line)
+        if len(lines) <= 2 or size <= 72:
+            break
+        size -= 8
+
+    def centred(y: float, text: str, f, fill, tracking: int = 0) -> None:
+        widths = [draw.textlength(c, font=f) for c in text] if tracking else [draw.textlength(text, font=f)]
+        x = (W - sum(widths) - tracking * (len(widths) - 1)) / 2
+        for c, w in zip(text if tracking else [text], widths):
+            draw.text((x, y), c, font=f, fill=fill)
+            x += w + tracking
+
+    gap = size * 1.18
+    block = 40 + 70 + gap * len(lines) + 30 + 46
+    y = H - 110 - block if plan.get("image") else (H - block) / 2
+    centred(y, series["series"].upper(), small, GOLD, tracking=6)
+    cx, oy = W / 2, y + 40 + 35
+    draw.line([(cx - 170, oy), (cx - 22, oy)], fill=GOLD, width=2)
+    draw.line([(cx + 22, oy), (cx + 170, oy)], fill=GOLD, width=2)
+    draw.polygon([(cx, oy - 9), (cx + 9, oy), (cx, oy + 9), (cx - 9, oy)], fill=GOLD)
+    y += 40 + 70
+    for line in lines:
+        centred(y, line, big, CREAM)
+        y += gap
+    centred(y + 30, series["subtitle"], sub, GOLD)
+    if not plan.get("image"):
+        draw.rectangle([48, 48, W - 49, H - 49], outline=GOLD, width=2)
+        draw.rectangle([62, 62, W - 63, H - 63], outline=GOLD, width=1)
+    path = out / "frame.png"
+    frame.save(path)
+    frame.resize((1280, 720), Image.LANCZOS).save(out / "thumbnail.jpg", quality=90)
+    return path
+
+
+def make_video(out: Path) -> Path:
+    """One picture for the whole reading, as an MP4 for YouTube."""
+    if not shutil.which("ffmpeg"):
+        sys.exit("ffmpeg is needed for the video")
+    video = out / "video.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "24",
+                    "-i", str(out / "frame.png"), "-i", str(out / "narration.wav"),
+                    "-c:v", "libx264", "-tune", "stillimage", "-preset", "veryfast", "-crf", "20",
+                    "-pix_fmt", "yuv420p", "-af", LOUDNORM, "-ar", "48000", "-c:a", "aac", "-b:a", "192k",
+                    "-shortest", "-movflags", "+faststart", str(video)], check=True)
+    return video
 
 
 def fits(text: str) -> bool:
@@ -273,6 +395,12 @@ def main(argv: list[str]) -> None:
     print(f"  {out / 'script.txt'}  ({words} words, about {words / 150:.0f} minutes)")
     if "--script" in argv:
         return
+    if "--video" in argv:
+        if not (out / "narration.wav").exists():
+            sys.exit(f"{out / 'narration.wav'}: no reading yet; build without --video first")
+        make_frame(plan, out)
+        print(f"  {make_video(out)}")
+        return
 
     model = load_model()
     if samples_for:
@@ -291,6 +419,8 @@ def main(argv: list[str]) -> None:
     chapters[0] = (0.0, chapters[0][1])
     (out / "chapters.txt").write_text("".join(f"{stamp(t, srt=False)} {c}\n" for t, c in chapters), encoding="utf-8")
     print(f"  {out / 'chapters.txt'}")
+    make_frame(plan, out)
+    print(f"  {make_video(out)}")
 
 
 if __name__ == "__main__":
