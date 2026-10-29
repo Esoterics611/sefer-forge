@@ -135,7 +135,7 @@ Books today (`ls books/`): `shaar-hayichud` (שער היחוד shiurim), `siddur
 | `templates/` | Word reference template (`create-template.py`), pamphlet and booklet CSS |
 | `docs/` | Setup, print standard, agentic development, backlog |
 | `compiled/` | Assembled `<book>.md` (generated; never edit) |
-| `output/` | DOCX, PDFs, pamphlets (gitignored) |
+| `output/` | DOCX, PDFs, pamphlets, narrations (gitignored) |
 
 ## Dependencies
 
@@ -143,4 +143,5 @@ Books today (`ls books/`): `shaar-hayichud` (שער היחוד shiurim), `siddur
 - `python` ≥ 3.10 with `requirements.txt` (and `requirements-gpu.txt` with an
   NVIDIA GPU); Whisper setup in `TRANSCRIPTION.md`
 - Google Chrome (prints the pamphlets and booklets)
+- `requirements-narration.txt` (Kokoro voice for `build-narration.py`; the model downloads on first use)
 - `git-lfs` (the repo's Word files)

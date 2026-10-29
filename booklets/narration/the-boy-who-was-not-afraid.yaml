@@ -1,0 +1,83 @@
+# A narration for video: four stories from the English booklets
+# (shivchei-habesht-simple-en.md), read aloud by the Kokoro voice.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-boy-who-was-not-afraid.yaml
+#   -> output/narration/the-boy-who-was-not-afraid/
+#        script.txt     what the voice reads, paragraph by paragraph
+#        narration.mp3  the reading (and narration.wav)
+#        narration.srt  subtitles, timed to the reading
+#
+# The stories are read as they stand in the booklet text, apart from:
+#   cut:    paragraphs left out (by their opening words): asides and
+#           alternative versions that stop the story when heard
+#   edits:  `from` -> `to`, each `from` found exactly once in the story;
+#           mostly brackets turned into spoken phrases (the build stops
+#           on any bracket left in what is read)
+#   say:    (top level) how the voice says a word; script and subtitles
+#           keep the spelling
+# Each story ends at its last paragraph: the printed summary is not read.
+
+title: "The Boy Who Was Not Afraid"
+lang: en
+voice: am_michael
+speed: 1.0
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+  Four stories: the Baal Shem Tov's father, and the boy who was not afraid;
+  the light under the stove; the tree that burned in the forest;
+  and the fire around the dancers.
+
+outro: >
+  Here end these four stories from In Praise of the Baal Shem Tov.
+
+# Respellings checked with: python scripts/build-narration.py --say <word> ...
+say:
+  Eliezer: Eli-ezer
+  Gershon: Ghershon
+  Gedaliah: Gedda-lyah
+  Baruch: Bahrookh
+  cheder: hayder
+  vukilak: vookilahk
+  Kedushah: Kedoosha
+  Kolomea: Kolo-meeya
+  Chanukah: Hanukkah
+  Chana: Hahna
+  Pesach: Pesakh
+  Simchat Torah: Simhat Torah
+  Havdalah: Havdahla
+
+stories:
+  - n: 1
+    cut:
+      - "The printer says:"
+      - "> (In the manuscripts"
+    edits:
+      - from: "with the viceroy (the king's chief adviser), and"
+        to: "with the viceroy, the king's chief adviser, and"
+      - from: 'He asked a "dream question" (he asked Heaven to answer him in a dream), and they answered him'
+        to: 'He asked a "dream question": he asked Heaven to answer him in a dream. And they answered him'
+      - from: "(The Baal Shem Tov said that his soul could not be brought down into the world until desire had come completely to an end.)"
+        to: "The Baal Shem Tov said that his soul could not be brought down into the world until desire had come completely to an end."
+      - from: " (In the name of our master I heard a natural explanation of why these words were engraved in his heart: our Sages said that what a child says, he heard from his father or his mother, and especially a \"child of old age,\" born to his parents when they were old. Jacob loved Joseph because he was the child of his old age, and so the bond between them was very great, as is written in the holy Zohar. And so it was here too: because of the great and true bond between them, the words were engraved in the heart of the Baal Shem Tov, even though he was still a very small child.)"
+        to: ""
+      - from: "a *vukilak* (a kind of werewolf), and attacked them"
+        to: "a *vukilak*, a kind of werewolf, and attacked them"
+
+  - n: 12
+    edits:
+      - from: "At midnight the Baal Shem Tov got up (I heard that he slept only two hours), and sat quietly"
+        to: "At midnight the Baal Shem Tov got up; I heard that he slept only two hours. He sat quietly"
+      - from: "(And the rabbi told in confidence that the light stood above him like a rainbow.)"
+        to: "And the rabbi told in confidence that the light stood above him like a rainbow."
+      - from: "(For the Baal Shem Tov had decreed that Rabbi David must not reveal it.)"
+        to: "For the Baal Shem Tov had decreed that Rabbi David must not reveal it."
+
+  - n: 70
+    edits:
+      - from: "Rabbi Pesach also told me:"
+        to: "Rabbi Pesach told me:"
+      - from: "That place was several parsahs away, and"
+        to: "That place was several parsahs away, many kilometers off, and"
+
+  - n: 33
