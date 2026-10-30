@@ -191,7 +191,7 @@ once it is built.
 | `the-hidden-years-and-the-revelation` | 4, 5, 9 | — | the rock like a small house on the mountain across the river Prut, at dawn, a lone figure on the way |
 | `rabbi-gershon-of-kitov` | 7, 20, 66, 79, 111 | 12:11 | a wooden synagogue at dusk, the souls coming to it like a great flock of lights |
 | `the-land-of-israel-and-the-way-there` | 28, 29, 30, 92, 93, 155, 191, 202 | 17:14 | a sailing ship at dusk off the coast of the Land of Israel, a walled city on the hills |
-| `in-prayer` | 15, 16, 76, 95, 147 | — | a man wrapped in his prayer shawl, seen from behind, before the holy ark, its lamps and the light |
+| `in-prayer` | 15, 16, 76, 95, 147 | 12:02 | a man wrapped in his prayer shawl, seen from behind, before the holy ark, its lamps and the light |
 | `his-ways-and-customs` | 53, 63, 68, 134, 149, 156, 164, 169 | — | a pipe and a cup of wine on a table by the window, the Sabbath candles lit |
 | `the-rabbi-of-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | — | the Rabbi of Polonne's study by night, a letter with its seal on the table, rain at the window |
 | `the-mokhiach-of-polonne-part-one` | 84, 85, 96 | — | the great synagogue of Lvov, the preacher in borrowed silk at its door |

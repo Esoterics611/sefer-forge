@@ -69,8 +69,9 @@ list in the transcript's frontmatter, applied by `assemble-discourse.py` and
 
 The narration workflow (skill `narrate-video`, rules
 `prompts/narration-rules.md`, `scripts/build-narration.py`) makes a YouTube
-episode from the English booklet stories with free tools only. Five episodes
-are made (the rules' table). Left for later, with how:
+episode from the English or French booklet stories with free tools only.
+Every story not flagged MATURE has an English and a French episode planned
+(the rules' tables: 39 each, 2026-10-30). Left for later, with how:
 
 - **A better voice.** Kokoro says "Tov" as "tahv", which the user dislikes,
   and it has no Hebrew. Swap the engine in `load_model()` and the
@@ -85,7 +86,7 @@ are made (the rules' table). Left for later, with how:
   A paid service needs its API key in the cloud environment (Network
   secrets, or an environment variable such as `ELEVENLABS_API_KEY`) and its
   host under Allowed domains. Never paste a key into the chat. Until then,
-  `say-en.yaml` can try `Baal Shem Tov: Bahl Shem Tohv` if the user wants it.
+  `say-en.yaml` respells it `Bahl Shem Tohv`, the user's choice of the options heard.
 - **Hebrew episodes** from `shivchei-habesht-simple.md`, once a Hebrew voice
   is in. The text has no vowel points, so names need checking the way
   `say-en.yaml` does for English.
@@ -103,23 +104,8 @@ are made (the rules' table). Left for later, with how:
   - a `description.txt` holding the series line, the chapters and the stories' numbers;
   - faster encoding: 24 fps at `veryfast` takes 3–4 minutes for 15 minutes of
     video; 6–12 fps or `ultrafast` would be quicker, but check YouTube plays it.
-- **French episodes**: done for the first two episodes (`lang: fr`, voice
-  `ff_siwis`, `say-fr.yaml`); the rest follow once the English is complete.
-- **Next episodes.** Unused stories, none MATURE (word counts from the
-  English). Read each whole before choosing:
-  - children: 183 the boy who was meant to drown (654), 204 the child who
-    came back to life at his circumcision (449), 168 the boy from the
-    slaughterhouse (250);
-  - the Land of Israel and Rabbi Gershon: 28 the fast for rain in Jerusalem
-    (457), 29 Rabbi Gershon's purse (976), 155 Rabbi Gershon in Acre (263),
-    191 the blind son in Istanbul (515);
-  - the Maggid of Mezritch: 34 how the Maggid drew close (1,266), 200 the
-    shofar blasts at the Maggid's (257), 130 the springs of wisdom (172), 40
-    Rabbi Avraham, the Maggid's son (833);
-  - Jonah: 184 the merchant and Jonah (1,764), 189 the fish from the pond (481);
-  - Gehinnom and the Garden of Eden: 54 the dream of Gehinnom (748), 112 the
-    sick disciple and the Garden of Eden (889), 127 the servant who hauled
-    wood in Gehinnom (481);
-  - prayer: 15 the trembling in prayer (1,196), 16 the barrels that danced (579);
-  - the Mokhiach of Polonne: 96 the Mokhiach in Lvov (1,792), 123 the jester
-    in the house in Kitov (734).
+- **The MATURE stories** (2, 27, 44, 50, 60, 81, 98, 132, 137, 146, 170,
+  174, 181, 187, 195, 198, 199, 206, 208) have no episode: the build refuses
+  them. Ask the user before planning any.
+- **Uploading 78 episodes**: YouTube's description takes `chapters.txt` as
+  is; a playlist per language keeps the booklet order (the rules' tables).
