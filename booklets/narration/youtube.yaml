@@ -1,0 +1,102 @@
+# What is on YouTube: written by scripts/youtube-publish.py after every video.
+# Commit it and get it into main after each publishing session: the next
+# session starts from it. Workflow: docs/youtube-publishing.md.
+#
+# settings: privacy is private, unlisted or public (an unverified Google API
+#   project's uploads stay private whatever it says); made_for_kids is
+#   YouTube's question, asked of every video; per_day the videos a day;
+#   daily_units the project's quota; category 27 is Education.
+# queue: the order of publishing (English, then French, in the rules' table
+#   order). A new episode is added at the end.
+# uploaded: plan -> YouTube id, the day it went up, whether it is in its
+#   language's playlist.
+# days: units spent and videos put up, per Pacific day (the quota's day).
+
+settings:
+  privacy: private
+  made_for_kids: false
+  per_day: 6
+  daily_units: 10000
+  category: '27'
+queue:
+- the-boy-who-was-not-afraid
+- the-locked-gate
+- the-frog-in-the-wilderness
+- the-speech-of-the-birds
+- the-passing-of-the-baal-shem-tov
+- the-authors-introduction
+- the-hidden-years-and-the-revelation
+- rabbi-gershon-of-kitov
+- the-land-of-israel-and-the-way-there
+- in-prayer
+- his-ways-and-customs
+- the-rabbi-of-polonne
+- the-mokhiach-of-polonne-part-one
+- the-mokhiach-of-polonne-part-two
+- the-maggid-of-mezritch
+- the-maggids-household-and-disciples
+- rabbi-nachman-of-horodenka
+- rabbi-yitzchak-of-drohobych
+- tzaddikim-of-his-generation-part-one
+- tzaddikim-of-his-generation-part-two
+- opponents-and-testers
+- opponents-who-drew-close-part-one
+- opponents-who-drew-close-part-two
+- seeing-from-afar
+- wonders-on-the-road
+- leaseholders-and-noblemen-part-one
+- leaseholders-and-noblemen-part-two
+- charity-and-money
+- simple-jews-and-hidden-tzaddikim
+- fit-and-unfit
+- healings-part-one
+- healings-part-two
+- sons-for-the-childless-part-one
+- sons-for-the-childless-part-two
+- demons-sorcerers-and-harmful-spirits
+- false-accusations-and-dangers
+- the-garden-of-eden-and-gehinnom
+- sin-repentance-and-reincarnation
+- his-last-days
+- le-garcon-qui-n-avait-pas-peur
+- la-porte-verrouillee
+- la-grenouille-dans-le-desert
+- le-langage-des-oiseaux
+- la-mort-du-baal-chem-tov
+- l-introduction-de-l-auteur
+- les-annees-cachees-et-la-revelation
+- rabbi-guershon-de-kitov
+- la-terre-d-israel-et-le-chemin-qui-y-mene
+- dans-la-priere
+- ses-vertus-et-ses-coutumes
+- le-rav-de-polonne
+- le-mokhiah-de-polonne-premiere-partie
+- le-mokhiah-de-polonne-deuxieme-partie
+- le-maguid-de-mezritch
+- la-maison-du-maguid-et-ses-disciples
+- rabbi-nahman-de-horodenka
+- rabbi-itshak-de-drohobytch
+- les-tsaddikim-de-sa-generation-premiere-partie
+- les-tsaddikim-de-sa-generation-deuxieme-partie
+- opposants-et-examinateurs
+- des-opposants-qui-se-sont-rapproches-premiere-partie
+- des-opposants-qui-se-sont-rapproches-deuxieme-partie
+- voir-de-loin
+- prodiges-en-chemin
+- fermiers-et-seigneurs-premiere-partie
+- fermiers-et-seigneurs-deuxieme-partie
+- charite-et-argent
+- juifs-simples-et-tsaddikim-caches
+- valide-et-invalide
+- guerisons-premiere-partie
+- guerisons-deuxieme-partie
+- des-fils-pour-les-sans-enfants-premiere-partie
+- des-fils-pour-les-sans-enfants-deuxieme-partie
+- demons-sorciers-et-esprits-malfaisants
+- fausses-accusations-et-dangers
+- le-jardin-d-eden-et-la-gehenne
+- faute-repentir-et-reincarnation
+- ses-derniers-jours
+playlists: {}
+uploaded: {}
+days: {}
