@@ -109,8 +109,9 @@ HEAD = """\
 #   project's uploads stay private whatever it says); made_for_kids is
 #   YouTube's question, asked of every video; per_day the videos a day;
 #   daily_units the project's quota; category 27 is Education.
-# queue: the order of publishing (English, then French, in the rules' table
-#   order). A new episode is added at the end.
+# queue: the order of publishing, one English episode then one French (each
+#   in the rules' table order), with the day each is planned for; a run that
+#   misses a day moves the plan on. A new episode is added at the end.
 # uploaded: plan -> YouTube id, the day it went up, whether it is in its
 #   language's playlist.
 # days: units spent and videos put up, per Pacific day (the quota's day).
@@ -129,9 +130,24 @@ def load() -> dict:
 
 
 def save(rec: dict) -> None:
-    body = {k: rec[k] for k in ("settings", "queue", "playlists", "uploaded", "days", "drive") if k in rec}
-    RECORD.write_text(HEAD + "\n" + yaml.safe_dump(body, allow_unicode=True, sort_keys=False, width=100),
-                      encoding="utf-8")
+    body = {k: rec[k] for k in ("settings", "playlists", "uploaded", "days", "drive") if k in rec}
+    text = yaml.safe_dump(body, allow_unicode=True, sort_keys=False, width=100)
+    # The queue, with the day each video not yet up is planned for: what the next sessions upload.
+    lines, (_, n_left) = ["queue:"], left(rec)
+    day, slot, last = dt.date.fromisoformat(today()), rec["settings"]["per_day"] - max(0, n_left), None
+    for name in rec["queue"]:
+        if name in rec["uploaded"]:
+            lines.append(f"- {name}    # up {rec['uploaded'][name]['date']}")
+            continue
+        if slot >= rec["settings"]["per_day"]:
+            day, slot = day + dt.timedelta(days=1), 0
+        slot += 1
+        if day != last:
+            lines.append(f"  # planned for {day}")
+            last = day
+        lines.append(f"- {name}")
+    head, _, rest = text.partition("playlists:")
+    RECORD.write_text(HEAD + "\n" + head + "\n".join(lines) + "\nplaylists:" + rest, encoding="utf-8")
 
 
 def today() -> str:

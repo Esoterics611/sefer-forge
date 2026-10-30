@@ -6,8 +6,9 @@
 #   project's uploads stay private whatever it says); made_for_kids is
 #   YouTube's question, asked of every video; per_day the videos a day;
 #   daily_units the project's quota; category 27 is Education.
-# queue: the order of publishing (English, then French, in the rules' table
-#   order). A new episode is added at the end.
+# queue: the order of publishing, one English episode then one French (each
+#   in the rules' table order), with the day each is planned for; a run that
+#   misses a day moves the plan on. A new episode is added at the end.
 # uploaded: plan -> YouTube id, the day it went up, whether it is in its
 #   language's playlist.
 # days: units spent and videos put up, per Pacific day (the quota's day).
@@ -19,83 +20,96 @@ settings:
   daily_units: 10000
   category: '27'
 queue:
+  # planned for 2026-10-30
 - the-boy-who-was-not-afraid
-- the-locked-gate
-- the-frog-in-the-wilderness
-- the-speech-of-the-birds
-- the-passing-of-the-baal-shem-tov
-- the-authors-introduction
-- the-hidden-years-and-the-revelation
-- rabbi-gershon-of-kitov
-- the-land-of-israel-and-the-way-there
-- in-prayer
-- his-ways-and-customs
-- the-rabbi-of-polonne
-- the-mokhiach-of-polonne-part-one
-- the-mokhiach-of-polonne-part-two
-- the-maggid-of-mezritch
-- the-maggids-household-and-disciples
-- rabbi-nachman-of-horodenka
-- rabbi-yitzchak-of-drohobych
-- tzaddikim-of-his-generation-part-one
-- tzaddikim-of-his-generation-part-two
-- opponents-and-testers
-- opponents-who-drew-close-part-one
-- opponents-who-drew-close-part-two
-- seeing-from-afar
-- wonders-on-the-road
-- leaseholders-and-noblemen-part-one
-- leaseholders-and-noblemen-part-two
-- charity-and-money
-- simple-jews-and-hidden-tzaddikim
-- fit-and-unfit
-- healings-part-one
-- healings-part-two
-- sons-for-the-childless-part-one
-- sons-for-the-childless-part-two
-- demons-sorcerers-and-harmful-spirits
-- false-accusations-and-dangers
-- the-garden-of-eden-and-gehinnom
-- sin-repentance-and-reincarnation
-- his-last-days
 - le-garcon-qui-n-avait-pas-peur
+- the-locked-gate
 - la-porte-verrouillee
+- the-frog-in-the-wilderness
 - la-grenouille-dans-le-desert
+  # planned for 2026-10-31
+- the-speech-of-the-birds
 - le-langage-des-oiseaux
+- the-passing-of-the-baal-shem-tov
 - la-mort-du-baal-chem-tov
+- the-authors-introduction
 - l-introduction-de-l-auteur
+  # planned for 2026-11-01
+- the-hidden-years-and-the-revelation
 - les-annees-cachees-et-la-revelation
+- rabbi-gershon-of-kitov
 - rabbi-guershon-de-kitov
+- the-land-of-israel-and-the-way-there
 - la-terre-d-israel-et-le-chemin-qui-y-mene
+  # planned for 2026-11-02
+- in-prayer
 - dans-la-priere
+- his-ways-and-customs
 - ses-vertus-et-ses-coutumes
+- the-rabbi-of-polonne
 - le-rav-de-polonne
+  # planned for 2026-11-03
+- the-mokhiach-of-polonne-part-one
 - le-mokhiah-de-polonne-premiere-partie
+- the-mokhiach-of-polonne-part-two
 - le-mokhiah-de-polonne-deuxieme-partie
+- the-maggid-of-mezritch
 - le-maguid-de-mezritch
+  # planned for 2026-11-04
+- the-maggids-household-and-disciples
 - la-maison-du-maguid-et-ses-disciples
+- rabbi-nachman-of-horodenka
 - rabbi-nahman-de-horodenka
+- rabbi-yitzchak-of-drohobych
 - rabbi-itshak-de-drohobytch
+  # planned for 2026-11-05
+- tzaddikim-of-his-generation-part-one
 - les-tsaddikim-de-sa-generation-premiere-partie
+- tzaddikim-of-his-generation-part-two
 - les-tsaddikim-de-sa-generation-deuxieme-partie
+- opponents-and-testers
 - opposants-et-examinateurs
+  # planned for 2026-11-06
+- opponents-who-drew-close-part-one
 - des-opposants-qui-se-sont-rapproches-premiere-partie
+- opponents-who-drew-close-part-two
 - des-opposants-qui-se-sont-rapproches-deuxieme-partie
+- seeing-from-afar
 - voir-de-loin
+  # planned for 2026-11-07
+- wonders-on-the-road
 - prodiges-en-chemin
+- leaseholders-and-noblemen-part-one
 - fermiers-et-seigneurs-premiere-partie
+- leaseholders-and-noblemen-part-two
 - fermiers-et-seigneurs-deuxieme-partie
+  # planned for 2026-11-08
+- charity-and-money
 - charite-et-argent
+- simple-jews-and-hidden-tzaddikim
 - juifs-simples-et-tsaddikim-caches
+- fit-and-unfit
 - valide-et-invalide
+  # planned for 2026-11-09
+- healings-part-one
 - guerisons-premiere-partie
+- healings-part-two
 - guerisons-deuxieme-partie
+- sons-for-the-childless-part-one
 - des-fils-pour-les-sans-enfants-premiere-partie
+  # planned for 2026-11-10
+- sons-for-the-childless-part-two
 - des-fils-pour-les-sans-enfants-deuxieme-partie
+- demons-sorcerers-and-harmful-spirits
 - demons-sorciers-et-esprits-malfaisants
+- false-accusations-and-dangers
 - fausses-accusations-et-dangers
+  # planned for 2026-11-11
+- the-garden-of-eden-and-gehinnom
 - le-jardin-d-eden-et-la-gehenne
+- sin-repentance-and-reincarnation
 - faute-repentir-et-reincarnation
+- his-last-days
 - ses-derniers-jours
 playlists: {}
 uploaded: {}
