@@ -50,6 +50,16 @@ recording and 3–4 of video on four CPUs.
 7. **Hand over**: send `video.mp4`, `thumbnail.jpg`, `narration.srt` and
    `chapters.txt`, with the episode's length and a line on what was cut. In a
    cloud session these files exist only in that session.
-8. **Record**: add the episode to the rules' table (stories, length, picture).
-   Commit the plan, `say-<lang>.yaml`, `draw.py` and the SVG. Never commit `output/`.
+8. **Publish** (`docs/youtube-publishing.md`):
+   `python scripts/youtube-publish.py publish <name>` adds the episode to the
+   end of the YouTube queue and uploads it, private, if the day still has
+   room (six a day). Sign in first with `auth` (a code for the user to enter
+   at google.com/device), once per session. Without `YOUTUBE_CLIENT_ID` and
+   `YOUTUBE_CLIENT_SECRET` in the environment, add the episode to `queue:`
+   in `booklets/narration/youtube.yaml` by hand, and tell the user it is
+   queued.
+9. **Record**: add the episode to the rules' table (stories, length, picture).
+   Commit the plan, `say-<lang>.yaml`, `draw.py`, the SVG and
+   `booklets/narration/youtube.yaml`, and get them into `main`: the next
+   session starts from it. Never commit `output/`.
    An idea left for later goes in `docs/backlog.md`.

@@ -107,5 +107,4 @@ Every story not flagged MATURE has an English and a French episode planned
 - **The MATURE stories** (2, 27, 44, 50, 60, 81, 98, 132, 137, 146, 170,
   174, 181, 187, 195, 198, 199, 206, 208) have no episode: the build refuses
   them. Ask the user before planning any.
-- **Uploading 78 episodes**: YouTube's description takes `chapters.txt` as
-  is; a playlist per language keeps the booklet order (the rules' tables).
+- **Publishing to YouTube**: `scripts/youtube-publish.py`, `docs/youtube-publishing.md` (its upgrades: the audit for public videos and more quota, captions, a stored sign-in, scheduled publishing).
