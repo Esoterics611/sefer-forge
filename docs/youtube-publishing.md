@@ -2,12 +2,14 @@
 
 The narrated episodes (skill `narrate-video`, `prompts/narration-rules.md`) go
 up on the user's YouTube channel through `scripts/youtube-publish.py`: six a
-day, private, in the order of the rules' tables (the English episodes, then
-the French). The record of what is up, and of what goes up next, is
+day, private, one English episode then one French, each language in the
+order of the rules' tables. The record lists every video not yet up under
+the day it is planned for (`# planned for <date>`), so a session knows what
+to upload; a missed day moves the plan on. The record of what is up, and of what goes up next, is
 `booklets/narration/youtube.yaml`. A session picks up from it, so it is
 committed and merged into `main` after every publishing session.
 
-Settled with the user on 2026-10-30: private for now (they make videos public
+Settled with the user on 2026-10-30: English and French alternating; private for now (they make videos public
 by hand in YouTube Studio), six a day, every new episode published as part of
 making it. The workflow grows in small steps; upgrades are at the end.
 
