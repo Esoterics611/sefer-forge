@@ -198,24 +198,24 @@ once it is built.
 | `the-mokhiach-of-polonne-part-two` | 123, 125, 160 | 6:43 | the house in Kitov at night, the jester's dark shape at the window, one candle |
 | `the-maggid-of-mezritch` | 34, 45, 47, 130, 200 | 14:47 | a night of thunder and lightning over a small house, one window lit |
 | `the-maggids-household-and-disciples` | 40, 41, 42, 43, 46, 109 | 17:56 | a sukkah at night, its lamp lit, the stars through its roof of branches |
-| `rabbi-nachman-of-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | — | a study house on the water at dawn, the mikveh beside it, one window lit |
-| `rabbi-yitzchak-of-drohobych` | 36, 37, 57, 58, 59 | — | a pair of tefillin and their open box on a table, a thaler beside them, lamplight |
-| `tzaddikim-of-his-generation-part-one` | 24, 25, 35 | — | the schoolchildren's psalms rising over Nemirov by night, the Tatars' fires far off on the plain |
-| `tzaddikim-of-his-generation-part-two` | 61, 78, 116, 135, 144, 145 | — | a wagon stopped on a dark road on Friday night, the stars, the first Sabbath candles in a far window |
-| `opponents-and-testers` | 48, 87, 99, 188, 189, 190 | — | two wagons facing each other in a forest clearing, the robbers' shadows fleeing among the trees |
-| `opponents-who-drew-close-part-one` | 13, 14, 112 | — | a splendid palace in a dream, its windows lit, a man looking in from the dark |
-| `opponents-who-drew-close-part-two` | 113, 114, 115, 185, 203 | — | an open Gemara in the moonlight at a window, the night outside |
-| `seeing-from-afar` | 18, 19, 38, 89, 118, 128, 129, 141, 143 | — | a man on a hilltop at dusk looking out over a wide plain, a covered wagon on the road far below, a town on the horizon |
-| `wonders-on-the-road` | 8, 142, 148, 177, 178, 180 | — | a wagon on a snowy road under the moon, a long pipe stem trailing smoke from it |
-| `leaseholders-and-noblemen-part-one` | 67, 110, 159 | — | a nobleman's castle on a hill above a village, its tower lit, a river below |
-| `leaseholders-and-noblemen-part-two` | 172, 173 | — | a covered wagon under a low gateway, the lintel lifted above its hood, a lamp in the yard |
-| `charity-and-money` | 86, 120, 121, 122, 138 | — | an empty purse and a last gold coin on a table by a candle, the door open to the night |
-| `simple-jews-and-hidden-tzaddikim` | 51, 52, 126, 163, 194, 196 | — | a craftsman's small house at dawn, wool stockings drying on a line, the synagogue beyond |
-| `fit-and-unfit` | 39, 100, 108, 139, 140, 151 | — | a shochet's long knife on its cloth by a whetstone, a turnip set aside at the end of the table, lamplight |
-| `healings-part-one` | 31, 56, 69 | — | a sickroom at night, a bed by the window, a small bottle of medicine and a candle on the sill |
-| `healings-part-two` | 80, 82, 83, 117, 192, 205 | — | a tavern in a snowstorm at night, its door shut fast, a rider coming through the snow |
-| `sons-for-the-childless-part-one` | 71, 165, 182, 183 | — | a cradle by the window at dawn, a pair of small shoes beside it |
-| `sons-for-the-childless-part-two` | 184, 204 | — | a small house alone in a dark forest, candles burning in its window, a loaded wagon on the road |
+| `rabbi-nachman-of-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | 9:35 | a study house on the water at dawn, the mikveh beside it, one window lit |
+| `rabbi-yitzchak-of-drohobych` | 36, 37, 57, 58, 59 | 10:12 | a pair of tefillin and their open box on a table, a thaler beside them, lamplight |
+| `tzaddikim-of-his-generation-part-one` | 24, 25, 35 | 9:54 | the schoolchildren's psalms rising over Nemirov by night, the Tatars' fires far off on the plain |
+| `tzaddikim-of-his-generation-part-two` | 61, 78, 116, 135, 144, 145 | 10:04 | a wagon stopped on a dark road on Friday night, the stars, the first Sabbath candles in a far window |
+| `opponents-and-testers` | 48, 87, 99, 188, 189, 190 | 17:09 | two wagons facing each other in a forest clearing, the robbers' shadows fleeing among the trees |
+| `opponents-who-drew-close-part-one` | 13, 14, 112 | 10:58 | a splendid palace in a dream, its windows lit, a man looking in from the dark |
+| `opponents-who-drew-close-part-two` | 113, 114, 115, 185, 203 | 8:15 | an open Gemara in the moonlight at a window, the night outside |
+| `seeing-from-afar` | 18, 19, 38, 89, 118, 128, 129, 141, 143 | 11:13 | a man on a hilltop at dusk looking out over a wide plain, a covered wagon on the road far below, a town on the horizon |
+| `wonders-on-the-road` | 8, 142, 148, 177, 178, 180 | 10:54 | a wagon on a snowy road under the moon, a long pipe stem trailing smoke from it |
+| `leaseholders-and-noblemen-part-one` | 67, 110, 159 | 7:29 | a nobleman's castle on a hill above a village, its tower lit, a river below |
+| `leaseholders-and-noblemen-part-two` | 172, 173 | 12:39 | a covered wagon under a low gateway, the lintel lifted above its hood, a lamp in the yard |
+| `charity-and-money` | 86, 120, 121, 122, 138 | 9:23 | an empty purse and a last gold coin on a table by a candle, the door open to the night |
+| `simple-jews-and-hidden-tzaddikim` | 51, 52, 126, 163, 194, 196 | 7:46 | a craftsman's small house at dawn, wool stockings drying on a line, the synagogue beyond |
+| `fit-and-unfit` | 39, 100, 108, 139, 140, 151 | 5:35 | a shochet's long knife on its cloth by a whetstone, a turnip set aside at the end of the table, lamplight |
+| `healings-part-one` | 31, 56, 69 | 9:11 | a sickroom at night, a bed by the window, a small bottle of medicine and a candle on the sill |
+| `healings-part-two` | 80, 82, 83, 117, 192, 205 | 11:13 | a tavern in a snowstorm at night, its door shut fast, a rider coming through the snow |
+| `sons-for-the-childless-part-one` | 71, 165, 182, 183 | 8:21 | a cradle by the window at dawn, a pair of small shoes beside it |
+| `sons-for-the-childless-part-two` | 184, 204 | 10:48 | a small house alone in a dark forest, candles burning in its window, a loaded wagon on the road |
 | `demons-sorcerers-and-harmful-spirits` | 6, 62, 88, 119, 124, 157, 158 | — | a dark spirit rolling like a whirlwind out of a tollkeeper's house at night, amulets on the table inside |
 | `false-accusations-and-dangers` | 32, 97, 133, 136, 154, 171 | — | a ford across a wide river at sunset, people crossing with their bundles before the Sabbath |
 | `the-garden-of-eden-and-gehinnom` | 54, 55, 64, 127, 152, 153, 168, 176 | — | a pillar of fire standing over a grave in a cemetery at night, the road passing by |
