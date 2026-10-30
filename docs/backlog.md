@@ -85,10 +85,10 @@ are made (the rules' table). Left for later, with how:
   A paid service needs its API key in the cloud environment (Network
   secrets, or an environment variable such as `ELEVENLABS_API_KEY`) and its
   host under Allowed domains. Never paste a key into the chat. Until then,
-  `say.yaml` can try `Baal Shem Tov: Bahl Shem Tohv` if the user wants it.
+  `say-en.yaml` can try `Baal Shem Tov: Bahl Shem Tohv` if the user wants it.
 - **Hebrew episodes** from `shivchei-habesht-simple.md`, once a Hebrew voice
   is in. The text has no vowel points, so names need checking the way
-  `say.yaml` does for English.
+  `say-en.yaml` does for English.
 - **AI pictures** (Gemini's "Nano Banana", OpenAI images). An
   `image_prompt:` in the plan would call the API (`GEMINI_API_KEY` and
   `generativelanguage.googleapis.com`, or `OPENAI_API_KEY` and
@@ -103,8 +103,8 @@ are made (the rules' table). Left for later, with how:
   - a `description.txt` holding the series line, the chapters and the stories' numbers;
   - faster encoding: 24 fps at `veryfast` takes 3–4 minutes for 15 minutes of
     video; 6–12 fps or `ultrafast` would be quicker, but check YouTube plays it.
-- **French episodes**: `lang: fr` and the French voice `ff_siwis`. Not tried
-  yet: start with `--sample ff_siwis` and a French `say.yaml` section.
+- **French episodes**: done for the first two episodes (`lang: fr`, voice
+  `ff_siwis`, `say-fr.yaml`); the rest follow once the English is complete.
 - **Next episodes.** Unused stories, none MATURE (word counts from the
   English). Read each whole before choosing:
   - children: 183 the boy who was meant to drown (654), 204 the child who

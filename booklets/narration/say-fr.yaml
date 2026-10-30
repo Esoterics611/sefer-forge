@@ -1,0 +1,20 @@
+# How the French narration voice says a word: shared by every French plan
+# (a plan's own `say:` adds to it). Applied to what is read only; the script
+# and the subtitles keep the spelling. The build already reads 'h (Na'hman,
+# Pessa'h) as the French r. Check a word first:
+#   python scripts/build-narration.py --say --lang fr "Na'hman"
+# and a whole plan: python scripts/build-narration.py <plan> --names
+
+# People
+Falk: Falque
+Koutses: Koutsesse
+
+# Places
+Kolomea: Kolomia
+Kamenets: Kaménètse
+
+# Words, prayers, festivals
+Michna: Michena
+"Sim'hat": Simmratt
+Tachlikh: Tachelikh
+Chabbat: Chabbate

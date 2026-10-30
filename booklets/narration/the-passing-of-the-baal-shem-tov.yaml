@@ -9,7 +9,7 @@
 # cut: paragraphs left out, by their opening words. edits: `from` -> `to`,
 # each `from` found once in the story; a bracket that explains a word is
 # dropped, any other bracket becomes part of the sentence. Respellings for
-# the voice: booklets/narration/say.yaml. Summaries are not read; the book's
+# the voice: booklets/narration/say-en.yaml. Summaries are not read; the book's
 # closing line (after 210) is not read either.
 
 title: "The Passing of the Baal Shem Tov"

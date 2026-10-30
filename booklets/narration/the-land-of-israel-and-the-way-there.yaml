@@ -1,0 +1,68 @@
+# A narration for video: booklet 4, the Land of Israel and the way there (stories 28, 29, 30, 92, 93, 155, 191, 202; 26 is in another episode), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-land-of-israel-and-the-way-there.yaml
+#   -> output/narration/the-land-of-israel-and-the-way-there/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Land of Israel and the Way There"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a sailing ship at dusk off the coast of the Land of Israel, a walled city on the hills. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-land-of-israel-and-the-way-there.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 28
+    drop:
+      - "(Morocco)"
+    edits:
+      - from: "I heard from that preacher:"
+        to: "I heard from a preacher:"
+
+  - n: 29
+    drop:
+      - "(as is the custom of one under a ban)"
+    edits:
+      - from: "I also heard from Rabbi Pinchas the teacher, who had earlier been a preacher (and it seems to me that the story took place in the city of Safed):"
+        to: "I heard from Rabbi Pinchas the teacher, who had earlier been a preacher, and it seems to me that the story took place in the city of Safed:"
+      - from: "(For in the Baal Shem Tov's letter it was written on what day it was written.)"
+        to: "For in the Baal Shem Tov's letter it was written on what day it was written."
+
+  - n: 30
+    edits:
+      - from: "I also heard from Rabbi Pinchas:"
+        to: "I heard from Rabbi Pinchas:"
+
+  - n: 92
+    edits:
+      - from: "the rabbi (of Nemirov) praised"
+        to: "the rabbi of Nemirov praised"
+      - from: "before his journey (to the Land of Israel),"
+        to: "before his journey to the Land of Israel,"
+      - from: "I heard from him (from Rabbi Pinchas) that"
+        to: "I heard from Rabbi Pinchas that"
+
+  - n: 93
+
+  - n: 155
+    edits:
+      - from: "I heard from that rabbi that once"
+        to: "I heard that once"
+
+  - n: 191
+
+  - n: 202

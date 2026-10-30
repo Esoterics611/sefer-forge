@@ -1,0 +1,39 @@
+# A narration for video: the author's introduction to the book (booklet 1, His Birth and Youth; its stories 1 and 2 are narrated elsewhere or MATURE), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-authors-introduction.yaml
+#   -> output/narration/the-authors-introduction/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Author's Introduction"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: an open book on a lectern by lamplight, a quill in the inkwell. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-authors-introduction.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 0
+    drop:
+      - "(a punishment in which the soul is hurled"
+      - "(a holy angel came down from heaven"
+      - "(in the Gate of the Sabbath, chapter 8)"
+    edits:
+      - from: 'So it is told in the Gemara too ("I saw a clear world"), and in other stories'
+        to: 'So it is told in the Gemara too, "I saw a clear world," and in other stories'
+      # "later in the book" points into the book
+      - from: "from the story told later in the book, with his brother-in-law Rabbi Gershon of Kitov:"
+        to: "from the story of his brother-in-law Rabbi Gershon of Kitov:"

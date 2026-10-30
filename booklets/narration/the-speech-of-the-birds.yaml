@@ -8,7 +8,7 @@
 # cut: paragraphs left out, by their opening words. edits: `from` -> `to`,
 # each `from` found once in the story; a bracket that explains a word is
 # dropped, any other bracket becomes part of the sentence. Respellings for
-# the voice: booklets/narration/say.yaml. Summaries are not read.
+# the voice: booklets/narration/say-en.yaml. Summaries are not read.
 # Read in the order below: the short story first, the teaching on the road last.
 
 title: "The Speech of the Birds"

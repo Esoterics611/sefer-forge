@@ -1,0 +1,51 @@
+# A narration for video: booklet 3, Rabbi Gershon of Kitov, his brother-in-law (stories 7, 20, 66, 79, 111; 27 is MATURE), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/rabbi-gershon-of-kitov.yaml
+#   -> output/narration/rabbi-gershon-of-kitov/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Rabbi Gershon of Kitov"   # the booklet's title, shortened to one line
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a wooden synagogue at dusk, the souls coming to it like a great flock of lights. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/rabbi-gershon-of-kitov.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 7
+    edits:
+      - from: "Another time a tollkeeper came"
+        to: "Once a tollkeeper came"
+
+  - n: 20
+    drop:
+      # a note on the wording, inside the Baal Shem Tov's words
+      - "(Rabbi Falk was not sure whether"
+    edits:
+      - from: "(He wanted to draw things out of him.)"
+        to: "He wanted to draw things out of him."
+
+  - n: 66
+    edits:
+      - from: "(And they told me that at that time there was a rubbish heap in that place, and they said that Rabbi Shimshon's study house had stood in that place.)"
+        to: "And they told me that at that time there was a rubbish heap in that place, and they said that Rabbi Shimshon's study house had stood in that place."
+
+  - n: 79
+    drop:
+      - "(a force of impurity)"
+
+  - n: 111

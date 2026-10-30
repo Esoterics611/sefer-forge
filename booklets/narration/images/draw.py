@@ -400,12 +400,222 @@ def candle() -> str:
     return svg(defs, "".join(b))
 
 
+def lectern() -> str:
+    """The author's introduction: an open book on a lectern by lamplight, a quill in the inkwell."""
+    rnd = random.Random(53)
+    defs = """
+    <radialGradient id="room" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#4a3626"/><stop offset="0.55" stop-color="#1e1610"/><stop offset="1" stop-color="#0a0806"/>
+    </radialGradient>
+    <radialGradient id="lamp" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe7b0" stop-opacity="0.7"/><stop offset="0.35" stop-color="#ffc870" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#ffb060" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d9c79f"/><stop offset="0.5" stop-color="#f6ead0"/><stop offset="1" stop-color="#d9c79f"/>
+    </linearGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>']
+    # shelves of books along the back wall
+    for row, y in enumerate((120, 300, 480)):
+        b.append(f'<rect x="80" y="{y + 150}" width="1760" height="12" fill="#2a1d12"/>')
+        x = 90
+        while x < 1830:
+            w, h = rnd.uniform(18, 42), rnd.uniform(100, 148)
+            if not (640 < x < 1280 and row > 0):
+                col = rnd.choice(["#3b2418", "#2c2a3a", "#3a3020", "#24301f", "#43261f"])
+                b.append(f'<rect x="{x:.0f}" y="{y + 150 - h:.0f}" width="{w:.0f}" height="{h:.0f}" fill="{col}" opacity="0.85"/>'
+                         f'<rect x="{x:.0f}" y="{y + 150 - h + 14:.0f}" width="{w:.0f}" height="3" fill="#8f7146" opacity="0.5"/>')
+            x += w + rnd.uniform(1, 4)
+    b.append('<circle cx="960" cy="330" r="520" fill="url(#lamp)"/>')
+    # the lectern and the open book
+    b.append('<path d="M760,600 L1160,600 L1110,640 L810,640 Z" fill="#2c1e12"/><rect x="935" y="640" width="50" height="440" fill="#221710"/>')
+    b.append('<path d="M700,600 L960,560 L960,420 L720,450 Z" fill="url(#page)"/>'
+             '<path d="M1220,600 L960,560 L960,420 L1200,450 Z" fill="url(#page)"/>'
+             '<path d="M960,420 L960,560" stroke="#a8936e" stroke-width="3"/>')
+    for k in range(9):
+        y = 468 + k * 13
+        b.append(f'<path d="M{744 + k * 2},{y - k * 0.8 + 6} L{940},{y - 22 + k * 0.4}" stroke="#7a6748" stroke-width="2" opacity="0.6"/>'
+                 f'<path d="M{980},{y - 22 + k * 0.4} L{1176 - k * 2},{y - k * 0.8 + 6}" stroke="#7a6748" stroke-width="2" opacity="0.6"/>')
+    # the inkwell and the quill
+    b.append('<ellipse cx="1260" cy="596" rx="34" ry="9" fill="#141010"/><rect x="1236" y="566" width="48" height="30" rx="6" fill="#1a1414"/>'
+             '<path d="M1258,570 C1290,470 1330,400 1380,330 C1350,420 1310,490 1266,572 Z" fill="#e8dcc0"/>'
+             '<path d="M1258,570 L1380,330" stroke="#8f7f60" stroke-width="2"/>')
+    # the oil lamp and its flame
+    b.append('<ellipse cx="560" cy="598" rx="70" ry="12" fill="#8f7146"/><path d="M500,596 C510,560 610,560 620,596 Z" fill="#c9a45c"/>'
+             '<path d="M612,570 L650,560 L640,576 Z" fill="#c9a45c"/>'
+             '<path d="M648,540 C660,556 658,566 648,572 C638,566 636,556 648,540 Z" fill="#fff2c0"/>'
+             '<circle cx="648" cy="560" r="40" fill="#ffd890" opacity="0.35" filter="url(#blur3)"/>')
+    return svg(defs, "".join(b))
+
+
+def prut() -> str:
+    """The hidden years: the rock like a small house on the mountain across the river Prut, at dawn."""
+    rnd = random.Random(61)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e2a4a"/><stop offset="0.35" stop-color="#5a6a8e"/>
+      <stop offset="0.52" stop-color="#d9a07c"/><stop offset="0.6" stop-color="#f3cf94"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9c08c"/><stop offset="1" stop-color="#5a6a8e"/>
+    </linearGradient>
+    <filter id="blur20"><feGaussianBlur stdDeviation="20"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 40, 0, 200)]
+    b.append(f'<path d="{ridge(rnd, 430, 30, 50)}" fill="#7a6a86"/>')
+    # the mountain, and on it the rock like a small house
+    b.append('<path d="M1000,560 C1150,420 1260,300 1380,250 C1480,300 1600,400 1920,520 L1920,1080 L1000,1080 Z" fill="#3e3a4e"/>')
+    b.append('<path d="M1330,262 L1420,262 L1430,300 L1324,300 Z" fill="#1c1a26"/><path d="M1316,268 L1375,226 L1440,268 Z" fill="#1c1a26"/>')
+    b.append('<rect x="1366" y="276" width="14" height="22" fill="#f3cf94" opacity="0.8"/>')
+    b.append(f'<path d="{hills(rnd, 520, 18, 1.3)}" fill="#4c4a5c"/>')
+    # the river Prut, catching the dawn
+    b.append('<path d="M0,600 C300,570 700,585 1000,560 C1300,540 1600,575 1920,560 L1920,640 C1600,650 1300,630 1000,650 C700,668 300,640 0,660 Z" fill="url(#river)"/>')
+    b.append('<ellipse cx="900" cy="600" rx="700" ry="20" fill="#fff0d0" opacity="0.15" filter="url(#blur20)"/>')
+    # the near bank, and the young man walking toward the river with his loaf
+    b.append(f'<path d="{hills(rnd, 650, 10, 0.8)}" fill="#14121c"/>')
+    b.append('<g transform="translate(620,652)" fill="#14121c" stroke="#14121c" stroke-linecap="round">'
+             '<ellipse cx="0" cy="-90" rx="14" ry="3.5" stroke="none"/><rect x="-8" y="-101" width="16" height="11" rx="2" stroke="none"/>'
+             '<circle cx="0" cy="-82" r="9" stroke="none"/>'
+             '<path d="M-11,-70 L11,-70 L17,-14 L-15,-14 Z" stroke="none"/>'
+             '<path d="M-5,-15 L-10,0 M5,-15 L11,0" stroke-width="5" fill="none"/>'
+             '<path d="M10,-60 L24,-44" stroke-width="4" fill="none"/><ellipse cx="27" cy="-42" rx="9" ry="6" stroke="none"/>'
+             '</g>')
+    return svg(defs, "".join(b))
+
+
+def synagogue() -> str:
+    """Rabbi Gershon of Kitov: a wooden synagogue at dusk, the souls coming like a great flock of lights."""
+    rnd = random.Random(67)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1028"/><stop offset="0.5" stop-color="#2c2850"/><stop offset="0.75" stop-color="#6a4a6a"/>
+    </linearGradient>
+    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="blur14"><feGaussianBlur stdDeviation="14"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 140, 0, 420)]
+    b.append(f'<path d="{hills(rnd, 600, 14, 1.2)}" fill="#1c1830"/>')
+    # the wooden synagogue: a tiered roof over a broad hall
+    x0, base = 760, 610
+    b.append(f'<rect x="{x0}" y="{base - 170}" width="400" height="170" fill="#120e18"/>')
+    for i, (w, h, y) in enumerate([(470, 70, base - 170), (330, 60, base - 240), (200, 50, base - 300)]):
+        cx = x0 + 200
+        b.append(f'<path d="M{cx - w / 2},{y} L{cx - w / 2 + 40},{y - h} L{cx + w / 2 - 40},{y - h} L{cx + w / 2},{y} Z" fill="#120e18"/>')
+        if i < 2:
+            b.append(f'<rect x="{cx - w / 2 + 70}" y="{y - h - 10}" width="{w - 140}" height="12" fill="#120e18"/>')
+    for k in range(4):
+        b.append(f'<path d="M{x0 + 50 + k * 90},{base - 40} L{x0 + 50 + k * 90},{base - 110} '
+                 f'A22,22 0 0 1 {x0 + 94 + k * 90},{base - 110} L{x0 + 94 + k * 90},{base - 40} Z" fill="#f5c871" opacity="0.85"/>')
+    b.append(f'<ellipse cx="{x0 + 200}" cy="{base - 80}" rx="320" ry="90" fill="#f5c871" opacity="0.12" filter="url(#blur14)"/>')
+    # the souls, a great flock of small lights streaming to the windows
+    for _ in range(260):
+        t = rnd.random()
+        side = rnd.choice((-1, 1))
+        x = 960 + side * (200 + t * 820) + rnd.gauss(0, 50)
+        y = 470 - t * 330 + rnd.gauss(0, 45) + 120 * math.sin(t * 3)
+        r = rnd.uniform(1.2, 3.4) * (1.2 - t * 0.6)
+        b.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r * 3:.1f}" fill="#cfd8ff" opacity="0.18" filter="url(#blur4)"/>'
+                 f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r:.1f}" fill="#eef1ff" opacity="{rnd.uniform(0.45, 0.9):.2f}"/>')
+    b.append(f'<path d="{hills(rnd, 650, 8, 0.7)}" fill="#0c0a14"/>')
+    return svg(defs, "".join(b))
+
+
+def ship() -> str:
+    """The Land of Israel and the way there: a sailing ship at dusk off the coast, a walled city on the hills."""
+    rnd = random.Random(71)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2246"/><stop offset="0.35" stop-color="#5b4a78"/>
+      <stop offset="0.5" stop-color="#e08a6a"/><stop offset="0.56" stop-color="#f6c27a"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d98a6e"/><stop offset="0.3" stop-color="#5b4a78"/><stop offset="1" stop-color="#151a34"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff0c8" stop-opacity="0.9"/><stop offset="0.3" stop-color="#ffd090" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#ffb070" stop-opacity="0"/>
+    </radialGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 60, 0, 230)]
+    b.append('<circle cx="560" cy="560" r="320" fill="url(#sun)"/><circle cx="560" cy="560" r="58" fill="#fff0c8"/>')
+    b.append('<rect x="0" y="560" width="1920" height="520" fill="url(#sea)"/>')
+    for _ in range(70):
+        x, y = rnd.uniform(200, 900), rnd.uniform(570, 760)
+        b.append(f'<rect x="{x:.0f}" y="{y:.0f}" width="{rnd.uniform(20, 90):.0f}" height="2" fill="#ffe2b0" opacity="{rnd.uniform(0.15, 0.5):.2f}"/>')
+    # the coast: hills, and a walled city with its towers
+    b.append('<path d="M1180,560 C1300,500 1420,470 1560,455 C1700,440 1820,460 1920,470 L1920,560 Z" fill="#3a2c4a"/>')
+    b.append('<path d="M1440,470 L1440,440 L1460,440 L1460,428 L1480,428 L1480,440 L1560,440 L1560,420 L1580,420 L1580,440 L1660,440 '
+             'L1660,430 L1690,430 L1690,445 L1740,445 L1740,470 Z" fill="#261c32"/>')
+    # the ship, sails full, heading for the coast
+    b.append('<g transform="translate(900,560)" fill="#14101e">'
+             '<path d="M-150,0 L150,0 L120,40 L-120,40 Z"/>'
+             '<path d="M-150,0 L-170,-14 L-140,-6 Z"/>'
+             '<rect x="-6" y="-250" width="8" height="250"/><rect x="-96" y="-190" width="6" height="190"/><rect x="84" y="-170" width="6" height="170"/>'
+             '<path d="M-2,-240 C50,-200 50,-110 -2,-60 Z" fill="#e9d9b8"/><path d="M-92,-180 C-50,-150 -50,-80 -92,-40 Z" fill="#e9d9b8"/>'
+             '<path d="M88,-160 C126,-130 126,-70 88,-40 Z" fill="#e9d9b8"/>'
+             '<path d="M2,-250 L30,-262 L2,-270 Z" fill="#e9d9b8"/>'
+             '</g>')
+    b.append('<ellipse cx="900" cy="606" rx="190" ry="8" fill="#14101e" opacity="0.5"/>')
+    return svg(defs, "".join(b))
+
+
+def prayer() -> str:
+    """In prayer: a man wrapped in his prayer shawl, from behind, before the holy ark, its lamps and the light."""
+    rnd = random.Random(79)
+    defs = """
+    <radialGradient id="hall" cx="0.5" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#5a4430"/><stop offset="0.5" stop-color="#231a12"/><stop offset="1" stop-color="#0a0806"/>
+    </radialGradient>
+    <linearGradient id="curtain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a1a24"/><stop offset="1" stop-color="#2e0c14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff2c8" stop-opacity="0.6"/><stop offset="0.4" stop-color="#ffd890" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ffd890" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tallit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#14120e"/>
+    </linearGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#hall)"/>']
+    b.append('<circle cx="960" cy="300" r="560" fill="url(#glow)"/>')
+    # the ark: a carved frame, the curtain, the tablets above
+    b.append('<path d="M760,620 L760,230 Q960,120 1160,230 L1160,620 Z" fill="#6e5530"/>'
+             '<path d="M790,620 L790,250 Q960,160 1130,250 L1130,620 Z" fill="url(#curtain)"/>')
+    b.append('<path d="M900,300 L900,250 Q920,228 940,250 L940,300 Z" fill="#c9a45c"/><path d="M980,300 L980,250 Q1000,228 1020,250 L1020,300 Z" fill="#c9a45c"/>')
+    b.append('<path d="M840,600 L840,340 M1080,600 L1080,340" stroke="#c9a45c" stroke-width="3" opacity="0.6"/>')
+    # the lamps hanging on either side
+    for x in (640, 1280):
+        b.append(f'<line x1="{x}" y1="0" x2="{x}" y2="300" stroke="#8f7146" stroke-width="3"/>'
+                 f'<path d="M{x - 26},300 L{x + 26},300 L{x + 12},336 L{x - 12},336 Z" fill="#c9a45c"/>'
+                 f'<circle cx="{x}" cy="290" r="30" fill="#ffe0a0" opacity="0.45" filter="url(#blur3)"/>'
+                 f'<path d="M{x},270 C{x + 8},282 {x + 7},292 {x},298 C{x - 7},292 {x - 8},282 {x},270 Z" fill="#fff4cc"/>')
+    # the man praying, wrapped in the prayer shawl, its stripes and fringes
+    b.append('<g transform="translate(960,650) scale(0.85)">'
+             '<path d="M-170,0 C-168,-90 -150,-140 -96,-162 C-70,-172 -58,-190 -56,-214 C-54,-262 -30,-286 0,-286 '
+             'C30,-286 54,-262 56,-214 C58,-190 70,-172 96,-162 C150,-140 168,-90 170,0 Z" fill="url(#tallit)"/>'
+             '<path d="M-58,-206 C-30,-222 30,-222 58,-206 L56,-190 C28,-204 -28,-204 -56,-190 Z" fill="#e6dcc4"/>'
+             '<path d="M-166,-56 C-60,-80 60,-80 166,-56" stroke="#e6dcc4" stroke-width="10" fill="none"/>'
+             '<path d="M-168,-34 C-60,-58 60,-58 168,-34" stroke="#e6dcc4" stroke-width="5" fill="none"/>'
+             '</g>')
+    b.append(f'<rect x="0" y="640" width="{W}" height="{H - 640}" fill="#120d09"/>')
+    return svg(defs, "".join(b))
+
+
 DRAWINGS = {
     "the-boy-who-was-not-afraid": forest,
     "the-locked-gate": gate,
     "the-frog-in-the-wilderness": frog,
     "the-speech-of-the-birds": road,
     "the-passing-of-the-baal-shem-tov": candle,
+    "the-authors-introduction": lectern,
+    "the-hidden-years-and-the-revelation": prut,
+    "rabbi-gershon-of-kitov": synagogue,
+    "the-land-of-israel-and-the-way-there": ship,
+    "in-prayer": prayer,
 }
 
 

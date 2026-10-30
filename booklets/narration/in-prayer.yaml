@@ -1,0 +1,55 @@
+# A narration for video: booklet 5, in prayer (stories 15, 16, 76, 95, 147; 17, 161 and 179 are in The Locked Gate), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/in-prayer.yaml
+#   -> output/narration/in-prayer/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "In Prayer"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a man wrapped in his prayer shawl, seen from behind, before the holy ark, its lamps and the light. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/in-prayer.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 15
+    drop:
+      # notes on which day, inside the Maggid's words
+      - "(I do not know whether it was the first day of Passover"
+    edits:
+      - from: "once they had to say Hallel (it was Rosh Chodesh, or the intermediate days of Passover)."
+        to: "once they had to say Hallel; it was Rosh Chodesh, or the intermediate days of Passover."
+      - from: "as was his custom always to tremble in prayer (whoever saw him at prayer saw his trembling)."
+        to: "as was his custom always to tremble in prayer; whoever saw him at prayer saw his trembling."
+      - from: "(So I heard many times from his choice disciples: he was taller than all of them, and prayed with a great cry.)"
+        to: "So I heard many times from his choice disciples: he was taller than all of them, and prayed with a great cry."
+      - from: "(The Maggid said that he recognized that the Shechinah was resting on him, and when he saw him, he recognized that he was not in this world.)"
+        to: "The Maggid said that he recognized that the Shechinah was resting on him, and when he saw him, he recognized that he was not in this world."
+
+  - n: 16
+    edits:
+      - from: "I also heard from the pious rabbi Rabbi Gedaliah:"
+        to: "I heard from the pious rabbi Rabbi Gedaliah:"
+
+  - n: 76
+
+  - n: 95
+    edits:
+      - from: "And I heard from Rabbi Mendel of Bar,"
+        to: "I heard from Rabbi Mendel of Bar,"
+
+  - n: 147

@@ -9,13 +9,16 @@ Usage:
     python scripts/build-narration.py <plan> --frame             # only the picture with its titles, to look at
     python scripts/build-narration.py <plan> --sample am_michael,bm_george,af_heart
     python scripts/build-narration.py --say Gershon Ghershon     # how the voice says words
+    python scripts/build-narration.py --say --lang fr "Na'hman"  # ... in French
+    python scripts/build-narration.py <plan> --names             # how it says every name in the plan
 
 A plan (booklets/narration/*.yaml) names the stories, in the order they are
 read, from the English or French booklet text (shivchei-habesht-simple-en.md /
--fr.md), with the paragraphs left out (`cut:`), the changes that make the text
+-fr.md), with the paragraphs left out (`cut:`), the brackets that explain a word left
+out (`drop:`, by their opening words), the changes that make the text
 read aloud well (`edits:`: the booklet's bracketed explanations of words left
 out, its other brackets turned into spoken phrases) and how the voice says the
-names (`say:`, over the shared booklets/narration/say.yaml). Nothing of the booklet's contents or glossary is read: only the
+names (`say:`, over the shared booklets/narration/say-<lang>.yaml). Nothing of the booklet's contents or glossary is read: only the
 plan's short `intro:`, the stories and its `outro:`. The build stops when a cut
 or an edit no longer matches the story, or a bracket is left in what is read.
 
@@ -74,7 +77,7 @@ SUB_LINE = 42              # characters per subtitle line, two lines per cue
 # -16 LUFS, the usual loudness for spoken audio online.
 LOUDNORM = "loudnorm=I=-16:TP=-1.5:LRA=11"
 SERIES = Path("booklets/booklets.yaml")    # the series title and subtitle per language
-SAY = Path("booklets/narration/say.yaml")   # respellings shared by every plan
+SAY = "booklets/narration/say-{}.yaml"      # respellings shared by every plan, per language
 FONTS = Path("templates/fonts")
 CHROME = os.environ.get("CHROME") or next(
     (c for c in ("/mnt/c/Program Files/Google/Chrome/Application/chrome.exe", "/opt/pw-browsers/chromium")
@@ -94,7 +97,9 @@ def load_sections(path: Path) -> list[str]:
 def plain(s: str) -> str:
     """Markdown to the words read: no blockquote marks, emphasis or line breaks."""
     s = re.sub(r"^>\s?", "", s, flags=re.M)
-    return " ".join(s.replace("*", "").split())
+    s = " ".join(s.replace("*", "").split())
+    # French puts a space before » : ; ? ! and after «: keep the mark with its word.
+    return re.sub(r" ([»:;?!])", "\u00a0\\1", s).replace("« ", "«\u00a0")
 
 
 def story_paragraphs(section: str, entry: dict, lang: str) -> tuple[str, list[str]]:
@@ -112,6 +117,17 @@ def story_paragraphs(section: str, entry: dict, lang: str) -> tuple[str, list[st
             sys.exit(f"story {n}: cut {cut!r} opens {len(hits)} paragraphs, not 1")
         paras.remove(hits[0])
     text = "\n\n".join(paras)
+    for opening in entry.get("drop") or []:
+        # A bracket that explains, named by its opening words: dropped to its closing bracket.
+        found = text.count(opening)
+        if found != 1 or not opening.startswith("("):
+            sys.exit(f"story {n}: drop {opening[:60]!r} found {found} times, not 1 (it starts with its bracket)")
+        start, depth = text.index(opening), 0
+        for end in range(start, len(text)):
+            depth += {"(": 1, ")": -1}.get(text[end], 0)
+            if depth == 0:
+                break
+        text = text[:start].rstrip(" ") + text[end + 1:]
     for e in entry.get("edits") or []:
         found = text.count(e["from"])
         if found != 1:
@@ -143,12 +159,17 @@ def build_blocks(plan: dict, sections: list[str]) -> list[dict]:
 
 
 def sentences(paragraph: str) -> list[str]:
-    return [s for s in re.split(r'(?<=[.!?])\s+|(?<=[.!?]["»])\s+', paragraph) if s]
+    return [s for s in re.split(r'(?<=[.!?]) |(?<=[.!?]["”»]) |(?<=[.!?]\u00a0») ', paragraph) if s]
 
 
-def spoken(text: str, say: dict) -> str:
+def spoken(text: str, say: dict, lang: str) -> str:
     for word in sorted(say, key=len, reverse=True):
         text = re.sub(rf"(?<!\w){re.escape(word)}(?!\w)", say[word], text)
+    if lang.startswith("fr"):
+        # 'h writes the Hebrew ח (Na'hman, Pessa'h, 'hazan): the French r is the
+        # nearest sound. Not after an elided l' d' t' m' n' j' s' c' (l'homme).
+        text = re.sub(r"(?<!\b[lLdDtTmMnNjJsScC])(?<!ujourd)'([hH])",
+                      lambda m: "r" if m.group(1) == "h" else "R", text)
     return text
 
 
@@ -185,7 +206,7 @@ def synthesize(model, blocks: list[dict], voice: str, speed: float, say: dict):
         b["start"] = t
         parts = sentences(b["text"])
         for j, s in enumerate(parts):
-            samples, rate = model.create(spoken(s, say), voice=voice, speed=speed, lang=lang)
+            samples, rate = model.create(spoken(s, say, lang), voice=voice, speed=speed, lang=lang)
             cues.append((t, t + len(samples) / rate, s))
             gap = np.zeros(int((b["pause"] if j == len(parts) - 1 else PAUSE["sentence"]) * rate), np.float32)
             audio += [samples, gap]
@@ -242,6 +263,9 @@ def make_frame(plan: dict, out: Path) -> Path:
     except ImportError:
         sys.exit("Missing dependency. Install with: pip install pillow")
     series = yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][plan["lang"]]
+    # Typographic apostrophes, as the booklets print them.
+    series = {k: re.sub(r"(?<=\w)'", "\u2019", v) for k, v in series.items()}
+    plan = {**plan, "title": re.sub(r"(?<=\w)'", "\u2019", plan["title"])}
     W, H = VIDEO
     if plan.get("image"):
         picture = Path(plan["image"])
@@ -326,7 +350,7 @@ def fits(text: str) -> bool:
 def cue_pieces(text: str) -> list[str]:
     """Split a sentence into subtitle cues of at most two lines, of even length,
     at a comma where one is near."""
-    pieces, words = [], text.split()
+    pieces, words = [], text.split(" ")
     while not fits(" ".join(words)):
         rest = " ".join(words)
         target = len(rest) / max(2, math.ceil(len(rest) / (2 * SUB_LINE - 6)))
@@ -377,9 +401,12 @@ def write_script(blocks: list[dict], path: Path) -> None:
 
 def main(argv: list[str]) -> None:
     if argv[:1] == ["--say"]:
+        lang, words = "en-us", argv[1:]
+        if words[:1] == ["--lang"]:
+            lang, words = {"en": "en-us", "fr": "fr-fr"}.get(words[1], words[1]), words[2:]
         model = load_model()
-        for w in argv[1:]:
-            print(f"{w:20} {model.tokenizer.phonemize(w, 'en-us')}")
+        for w in words:
+            print(f"{w:20} {model.tokenizer.phonemize(spoken(w, {}, lang), lang)}")
         return
     if not argv or argv[0].startswith("--"):
         sys.exit(__doc__)
@@ -392,7 +419,9 @@ def main(argv: list[str]) -> None:
         voice = argv[argv.index("--voice") + 1]
     if "--sample" in argv:
         samples_for = argv[argv.index("--sample") + 1].split(",")
-    say = {**(yaml.safe_load(SAY.read_text(encoding="utf-8")) or {}), **(plan.get("say") or {})}
+    shared = Path(SAY.format(plan["lang"]))
+    say = {**(yaml.safe_load(shared.read_text(encoding="utf-8")) or {} if shared.exists() else {}),
+           **(plan.get("say") or {})}
 
     sections = load_sections(Path(SOURCES[plan["lang"]]))
     blocks = build_blocks(plan, sections)
@@ -402,6 +431,14 @@ def main(argv: list[str]) -> None:
     words = sum(len(b["text"].split()) for b in blocks)
     print(f"  {out / 'script.txt'}  ({words} words, about {words / 175:.0f} minutes)")
     if "--script" in argv:
+        return
+    if "--names" in argv:
+        model, lang = load_model(), voice_lang(voice)
+        names = sorted({w for b in blocks for w in re.findall(r"(?<![\w'])(?:[A-ZÀ-Ý]|'[hH])[\w'-]*", b["text"])})
+        for w in names:
+            ph = model.tokenizer.phonemize(spoken(w, say, lang), lang)
+            flag = "  <- read as another language" if "(" in ph else ""
+            print(f"  {w:22} {spoken(w, say, lang):22} {ph}{flag}")
         return
     if "--frame" in argv:
         print(f"  {make_frame(plan, out)}")

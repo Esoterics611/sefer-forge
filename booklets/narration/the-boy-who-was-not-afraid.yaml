@@ -14,7 +14,7 @@
 #           a bracket that explains a word (the booklet's glossing) is
 #           dropped, any other bracket becomes part of the sentence (the
 #           build stops on any bracket left in what is read)
-#   say:    respellings for the voice: booklets/narration/say.yaml, shared
+#   say:    respellings for the voice: booklets/narration/say-en.yaml, shared
 #           by every plan (a plan's own `say:` adds to it)
 # Each story ends at its last paragraph: the printed summary is not read.
 # Nothing of the booklet's contents or glossary is read; the intro is the

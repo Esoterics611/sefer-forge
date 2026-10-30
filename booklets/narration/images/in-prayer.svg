@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs>
+    <radialGradient id="hall" cx="0.5" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#5a4430"/><stop offset="0.5" stop-color="#231a12"/><stop offset="1" stop-color="#0a0806"/>
+    </radialGradient>
+    <linearGradient id="curtain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a1a24"/><stop offset="1" stop-color="#2e0c14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff2c8" stop-opacity="0.6"/><stop offset="0.4" stop-color="#ffd890" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ffd890" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tallit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#14120e"/>
+    </linearGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    </defs><rect width="1920" height="1080" fill="url(#hall)"/><circle cx="960" cy="300" r="560" fill="url(#glow)"/><path d="M760,620 L760,230 Q960,120 1160,230 L1160,620 Z" fill="#6e5530"/><path d="M790,620 L790,250 Q960,160 1130,250 L1130,620 Z" fill="url(#curtain)"/><path d="M900,300 L900,250 Q920,228 940,250 L940,300 Z" fill="#c9a45c"/><path d="M980,300 L980,250 Q1000,228 1020,250 L1020,300 Z" fill="#c9a45c"/><path d="M840,600 L840,340 M1080,600 L1080,340" stroke="#c9a45c" stroke-width="3" opacity="0.6"/><line x1="640" y1="0" x2="640" y2="300" stroke="#8f7146" stroke-width="3"/><path d="M614,300 L666,300 L652,336 L628,336 Z" fill="#c9a45c"/><circle cx="640" cy="290" r="30" fill="#ffe0a0" opacity="0.45" filter="url(#blur3)"/><path d="M640,270 C648,282 647,292 640,298 C633,292 632,282 640,270 Z" fill="#fff4cc"/><line x1="1280" y1="0" x2="1280" y2="300" stroke="#8f7146" stroke-width="3"/><path d="M1254,300 L1306,300 L1292,336 L1268,336 Z" fill="#c9a45c"/><circle cx="1280" cy="290" r="30" fill="#ffe0a0" opacity="0.45" filter="url(#blur3)"/><path d="M1280,270 C1288,282 1287,292 1280,298 C1273,292 1272,282 1280,270 Z" fill="#fff4cc"/><g transform="translate(960,650) scale(0.85)"><path d="M-170,0 C-168,-90 -150,-140 -96,-162 C-70,-172 -58,-190 -56,-214 C-54,-262 -30,-286 0,-286 C30,-286 54,-262 56,-214 C58,-190 70,-172 96,-162 C150,-140 168,-90 170,0 Z" fill="url(#tallit)"/><path d="M-58,-206 C-30,-222 30,-222 58,-206 L56,-190 C28,-204 -28,-204 -56,-190 Z" fill="#e6dcc4"/><path d="M-166,-56 C-60,-80 60,-80 166,-56" stroke="#e6dcc4" stroke-width="10" fill="none"/><path d="M-168,-34 C-60,-58 60,-58 168,-34" stroke="#e6dcc4" stroke-width="5" fill="none"/></g><rect x="0" y="640" width="1920" height="440" fill="#120d09"/></svg>

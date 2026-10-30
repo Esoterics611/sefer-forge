@@ -1,0 +1,57 @@
+# A narration for video, in French: the same four stories as
+# the-boy-who-was-not-afraid.yaml, from the French booklets
+# (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/le-garcon-qui-n-avait-pas-peur.yaml
+#   -> output/narration/le-garcon-qui-n-avait-pas-peur/  (video.mp4, thumbnail.jpg,
+#      narration.mp3/.wav, narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: "Le garçon qui n'avait pas peur"
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/the-boy-who-was-not-afraid.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 1
+    cut:
+      - "L'imprimeur dit"
+      - "> (Dans les écrits"
+    drop:
+      - "(le conseiller principal du roi)"
+      - "(il demanda au Ciel de lui répondre dans un rêve)"
+      - "(Au nom de notre maître"
+      - "(une sorte de loup-garou)"
+    edits:
+      - from: "(Le Baal Chem Tov disait qu'on ne pouvait faire descendre son âme dans le monde qu'une fois le désir complètement éteint.)"
+        to: "Le Baal Chem Tov disait qu'on ne pouvait faire descendre son âme dans le monde qu'une fois le désir complètement éteint."
+
+  - n: 12
+    edits:
+      - from: "se leva (j'ai entendu qu'il ne dormait que deux heures), s'assit"
+        to: "se leva ; j'ai entendu qu'il ne dormait que deux heures. Il s'assit"
+      - from: "(Et le rav raconta de bouche à oreille que la lumière se tenait au-dessus de lui comme un arc.)"
+        to: "Et le rav raconta de bouche à oreille que la lumière se tenait au-dessus de lui comme un arc."
+      - from: "(Car le Baal Chem Tov avait ordonné à Rabbi David de ne pas le révéler.)"
+        to: "Car le Baal Chem Tov avait ordonné à Rabbi David de ne pas le révéler."
+
+  - n: 70
+    edits:
+      - from: "Rabbi Pessa'h me raconta encore :"
+        to: "Rabbi Pessa'h me raconta :"
+
+  - n: 33
