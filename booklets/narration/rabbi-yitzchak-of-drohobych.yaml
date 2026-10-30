@@ -1,0 +1,47 @@
+# A narration for video: booklet 12, Rabbi Yitzchak of Drohobych (stories 36, 37, 57, 58, 59), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/rabbi-yitzchak-of-drohobych.yaml
+#   -> output/narration/rabbi-yitzchak-of-drohobych/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Rabbi Yitzchak of Drohobych"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a pair of tefillin and their open box on a table, a thaler beside them, lamplight. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/rabbi-yitzchak-of-drohobych.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 36
+    drop:
+      - "(the man who leased the tax on meat)"
+    edits:
+      - from: "This story too I heard from Rabbi Yoel:"
+        to: "I heard from Rabbi Yoel:"
+
+  - n: 37
+
+  - n: 57
+    drop:
+      - "(a coin)"
+
+  - n: 58
+    edits:
+      - from: "I also heard from the rabbi of our community:"
+        to: "I heard from the rabbi of our community:"
+
+  - n: 59

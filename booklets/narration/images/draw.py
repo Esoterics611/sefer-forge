@@ -791,6 +791,217 @@ def sukkah() -> str:
     return svg(defs, "".join(b))
 
 
+def wagon(x: float, y: float, scale: float = 1.0, fill: str = "#14101a", people: int = 2) -> str:
+    """A horse and wagon, the horse facing left, its wheels on y."""
+    heads = "".join(f'<rect x="{28 + 36 * k}" y="-80" width="16" height="36" rx="5" stroke="none"/><circle cx="{36 + 36 * k}" cy="-86" r="8" stroke="none"/>'
+                    f'<ellipse cx="{36 + 36 * k}" cy="-93" rx="12" ry="3" stroke="none"/>' for k in range(people))
+    return (f'<g transform="translate({x},{y}) scale({scale})" fill="{fill}" stroke="{fill}" stroke-linecap="round">'
+            '<rect x="0" y="-46" width="112" height="30" rx="3" stroke="none"/>'
+            '<circle cx="22" cy="-10" r="17" fill="none" stroke-width="4"/><circle cx="92" cy="-10" r="17" fill="none" stroke-width="4"/>'
+            '<path d="M22,-27 L22,7 M5,-10 L39,-10 M92,-27 L92,7 M75,-10 L109,-10" stroke-width="2" fill="none"/>' + heads +
+            '<path d="M2,-30 L-48,-36" stroke-width="3" fill="none"/><ellipse cx="-88" cy="-40" rx="42" ry="17" stroke="none"/>'
+            '<path d="M-116,-46 L-134,-76 L-122,-82 L-104,-50 Z" stroke="none"/>'
+            '<ellipse cx="-140" cy="-80" rx="15" ry="8" transform="rotate(25 -140 -80)" stroke="none"/>'
+            '<path d="M-114,-28 L-118,-2 M-102,-28 L-98,-2 M-74,-28 L-78,-2 M-60,-28 L-54,-2" stroke-width="5" fill="none"/>'
+            '<path d="M-47,-44 Q-36,-34 -42,-16" stroke-width="5" fill="none"/></g>')
+
+
+def lake_study_house() -> str:
+    """Rabbi Nachman of Horodenka: the study house built on the water at dawn, the bathhouse beside it."""
+    rnd = random.Random(109)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3a64"/><stop offset="0.5" stop-color="#a88aa0"/><stop offset="0.58" stop-color="#f2cf9a"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6c49a"/><stop offset="1" stop-color="#2a3a64"/>
+    </linearGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 30, 0, 160)]
+    b.append(f'<path d="{ridge(rnd, 470, 18, 60)}" fill="#6a5a7a"/>')
+    b.append('<rect x="0" y="520" width="1920" height="560" fill="url(#water)"/>')
+    for _ in range(60):
+        x, y = rnd.uniform(0, W), rnd.uniform(530, 640)
+        b.append(f'<rect x="{x:.0f}" y="{y:.0f}" width="{rnd.uniform(30, 120):.0f}" height="2" fill="#fff0d0" opacity="{rnd.uniform(0.15, 0.45):.2f}"/>')
+    # the study house on its piles over the water, the bathhouse beside it
+    house = ('<rect x="760" y="380" width="300" height="120" fill="#1e1a2a"/><path d="M730,386 L910,300 L1090,386 Z" fill="#181424"/>'
+             '<rect x="800" y="420" width="50" height="50" fill="#f5c871"/><rect x="960" y="420" width="50" height="50" fill="#f5c871" opacity="0.4"/>'
+             '<rect x="1100" y="430" width="140" height="70" fill="#1e1a2a"/><path d="M1086,434 L1170,392 L1254,434 Z" fill="#181424"/>'
+             '<path d="M1190,392 L1190,360" stroke="#181424" stroke-width="12"/>')
+    piles = "".join(f'<rect x="{x}" y="500" width="10" height="22" fill="#181424"/>' for x in range(770, 1240, 46))
+    b.append(house + piles)
+    b.append(f'<g transform="translate(0,1022) scale(1,-1)" opacity="0.25">{house}</g>')
+    b.append('<path d="M1240,500 L1700,500 L1760,520 L1240,520 Z" fill="#181424"/>')
+    b.append(f'<rect x="0" y="640" width="{W}" height="{H - 640}" fill="#141a30" opacity="0.6"/>')
+    return svg(defs, "".join(b))
+
+
+def tefillin() -> str:
+    """Rabbi Yitzchak of Drohobych: tefillin and their open bag on the table, a thaler beside them, lamplight."""
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>', '<circle cx="960" cy="420" r="460" fill="url(#warm)"/>']
+    b.append(f'<rect x="0" y="600" width="{W}" height="{H - 600}" fill="#1a120b"/><rect x="0" y="592" width="{W}" height="14" fill="#3a2a1a"/>')
+    b.append('<path d="M560,592 C560,520 600,470 690,462 C780,470 820,520 820,592 Z" fill="#4a1a24"/>'      # the velvet bag
+             '<path d="M600,500 C640,480 740,480 780,500" stroke="#c9a45c" stroke-width="4" fill="none"/>')
+    # the head tefillin: a black box on its base, the strap looping on the table
+    b.append('<rect x="900" y="470" width="110" height="110" fill="#0c0b0b"/><rect x="886" y="574" width="138" height="18" fill="#0c0b0b"/>'
+             '<path d="M906,480 L1004,480 M906,525 L1004,525" stroke="#2a2828" stroke-width="2"/>'
+             '<path d="M1024,584 C1120,600 1180,560 1150,520 C1120,480 1060,500 1090,540 C1120,580 1240,590 1300,572" '
+             'stroke="#0c0b0b" stroke-width="9" fill="none"/>')
+    # the hand tefillin
+    b.append('<rect x="1150" y="500" width="80" height="72" fill="#0c0b0b"/><rect x="1140" y="568" width="100" height="16" fill="#0c0b0b"/>'
+             '<path d="M1240,580 C1320,560 1380,600 1440,586" stroke="#0c0b0b" stroke-width="8" fill="none"/>')
+    b.append('<ellipse cx="1500" cy="586" rx="38" ry="10" fill="#d6d0c4"/><ellipse cx="1500" cy="582" rx="38" ry="10" fill="#c8c0b0"/>')  # the thaler
+    b.append('<ellipse cx="420" cy="590" rx="60" ry="11" fill="#8f7146"/><path d="M370,588 C380,556 460,556 470,588 Z" fill="#c9a45c"/>'
+             + flame(452, 520, 34))
+    return svg(ROOM_DEFS, "".join(b))
+
+
+def nemirov_psalms() -> str:
+    """Tzaddikim of his generation, part one: the psalms rising over Nemirov by night, the Tatars' fires far off."""
+    rnd = random.Random(113)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0c20"/><stop offset="1" stop-color="#2c2a4e"/>
+    </linearGradient>
+    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 140, 0, 400)]
+    b.append(f'<path d="{hills(rnd, 560, 6, 0.6)}" fill="#1c1a30"/>')
+    for _ in range(14):                                                    # the Tatars' fires on the far plain
+        x = rnd.uniform(1350, 1880)
+        b.append(f'<circle cx="{x:.0f}" cy="{rnd.uniform(552, 566):.0f}" r="{rnd.uniform(2, 4):.1f}" fill="#ff8a40" opacity="0.9"/>'
+                 f'<circle cx="{x:.0f}" cy="560" r="12" fill="#ff8a40" opacity="0.18" filter="url(#blur4)"/>')
+    # the town: roofs, the synagogue, lit windows
+    town = []
+    x = 260
+    while x < 1240:
+        w, h = rnd.uniform(60, 120), rnd.uniform(50, 110)
+        town.append(f'<rect x="{x:.0f}" y="{600 - h:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#100e1c"/>'
+                    f'<path d="M{x - 8:.0f},{600 - h + 2:.0f} L{x + w / 2:.0f},{600 - h - 34:.0f} L{x + w + 8:.0f},{600 - h + 2:.0f} Z" fill="#0c0a16"/>')
+        if rnd.random() < 0.6:
+            town.append(f'<rect x="{x + w / 2 - 9:.0f}" y="{600 - h * 0.6:.0f}" width="18" height="18" fill="#f5c871" opacity="0.85"/>')
+        x += w + rnd.uniform(4, 16)
+    b.append("".join(town))
+    b.append('<rect x="660" y="430" width="200" height="170" fill="#100e1c"/><path d="M640,434 L760,370 L880,434 Z" fill="#0c0a16"/>'
+             + "".join(f'<path d="M{690 + k * 50},560 L{690 + k * 50},480 A14,14 0 0 1 {718 + k * 50},480 L{718 + k * 50},560 Z" fill="#f5c871"/>' for k in range(3)))
+    # the psalms rising from the synagogue, small lights going up
+    for _ in range(120):
+        t = rnd.random()
+        x = 760 + rnd.gauss(0, 60 + t * 260)
+        y = 420 - t * 380
+        b.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{rnd.uniform(1.2, 3):.1f}" fill="#ffe7b0" opacity="{0.9 - t * 0.6:.2f}"/>')
+    b.append(f'<rect x="0" y="600" width="{W}" height="{H - 600}" fill="#0c0b16"/>')
+    return svg(defs, "".join(b))
+
+
+def friday_road() -> str:
+    """Tzaddikim of his generation, part two: the wagon stopped on a dark road on Friday night, far candles in a window."""
+    rnd = random.Random(127)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0c1e"/><stop offset="0.7" stop-color="#2c3058"/><stop offset="1" stop-color="#4a4a72"/>
+    </linearGradient>
+    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 220, 0, 460)]
+    b.append(f'<path d="{hills(rnd, 540, 16, 1.4)}" fill="#2a2c46"/>')
+    b.append('<rect x="1400" y="470" width="150" height="80" fill="#0a0a14"/><path d="M1384,474 L1475,420 L1566,474 Z" fill="#0a0a14"/>'
+             '<rect x="1440" y="492" width="34" height="30" fill="#f5c871"/><rect x="1490" y="492" width="34" height="30" fill="#f5c871"/>'
+             '<circle cx="1482" cy="507" r="44" fill="#f5c871" opacity="0.25" filter="url(#blur4)"/>')
+    b.append('<path d="M300,1080 C500,820 900,640 1440,556 L1480,556 C960,650 640,830 520,1080 Z" fill="#5a5a7a" opacity="0.7"/>')
+    b.append(wagon(760, 612, 1.25, "#060610", people=2))
+    b.append('<path d="M640,612 C600,600 590,596 560,598" stroke="#060610" stroke-width="3"/>')
+    return svg(defs, "".join(b))
+
+
+def forest_clearing() -> str:
+    """Opponents and testers: the two wagons facing each other in the forest, the Zohar open between them, the robbers fleeing."""
+    rnd = random.Random(131)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a2440"/><stop offset="1" stop-color="#5a6a7a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe7b0" stop-opacity="0.6"/><stop offset="1" stop-color="#ffd890" stop-opacity="0"/>
+    </radialGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>']
+    for base, (lo, hi), col, n in [(520, (120, 220), "#2a3444", 60), (600, (220, 380), "#141a26", 34)]:
+        trees = [pine(rnd.choice([rnd.uniform(-40, 640), rnd.uniform(1280, W + 40)]), base + rnd.uniform(-10, 10), rnd.uniform(lo, hi), rnd)
+                 for _ in range(n)]
+        b.append(f'<path d="{" ".join(trees)}" fill="{col}"/>')
+    b.append(f'<path d="{hills(rnd, 600, 6, 0.8)}" fill="#1c2230"/>')
+    b.append('<circle cx="960" cy="540" r="240" fill="url(#glow)"/>')
+    b.append(wagon(800, 604, 1.0, "#0c0e16", people=1))
+    b.append('<g transform="translate(1120,604) scale(-1,1)">' + wagon(0, 0, 1.0, "#0c0e16", people=1) + '</g>')
+    b.append('<path d="M930,560 L960,552 L990,560 L990,570 L960,562 L930,570 Z" fill="#f3ead2"/>')       # the open Zohar
+    for x in (420, 470, 1500, 1560):                                                                   # the robbers fleeing
+        b.append(f'<g transform="translate({x},600) scale({0.9 if x < 960 else -0.9},0.9)" fill="#0a0c12">'
+                 '<circle cx="0" cy="-70" r="8"/><path d="M-8,-62 L10,-60 L14,-30 L-6,-30 Z"/>'
+                 '<path d="M-4,-30 L-18,0 M6,-30 L16,-2 M10,-56 L28,-44" stroke="#0a0c12" stroke-width="5" stroke-linecap="round"/></g>')
+    b.append(f'<rect x="0" y="604" width="{W}" height="{H - 604}" fill="#0e121c"/>')
+    return svg(defs, "".join(b))
+
+
+def dream_palace() -> str:
+    """Opponents who drew close, part one: the splendid palace of the dream, its windows lit, a man looking in."""
+    rnd = random.Random(137)
+    defs = """
+    <radialGradient id="sky" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#4a3a6a"/><stop offset="0.6" stop-color="#1a1834"/><stop offset="1" stop-color="#08081a"/>
+    </radialGradient>
+    <linearGradient id="marble" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8dcc0"/><stop offset="1" stop-color="#9a8a70"/>
+    </linearGradient>
+    <filter id="blur20"><feGaussianBlur stdDeviation="20"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 160, 0, 500)]
+    b.append('<ellipse cx="960" cy="420" rx="620" ry="260" fill="#f5c871" opacity="0.12" filter="url(#blur20)"/>')
+    b.append('<rect x="520" y="300" width="880" height="300" fill="url(#marble)"/>'
+             '<path d="M480,306 L960,170 L1440,306 Z" fill="#d6c8a8"/><rect x="480" y="300" width="960" height="16" fill="#b8a88a"/>')
+    for k in range(9):                                                     # columns and lit arched windows
+        x = 560 + k * 100
+        b.append(f'<rect x="{x - 8}" y="330" width="16" height="270" fill="#c8b898"/>')
+        if k < 8:
+            b.append(f'<path d="M{x + 22},560 L{x + 22},400 A28,28 0 0 1 {x + 78},400 L{x + 78},560 Z" fill="#ffd37a"/>')
+    b.append('<rect x="500" y="596" width="920" height="10" fill="#b8a88a"/>')
+    b.append('<g transform="translate(1530,606)" fill="#08081a">'                                      # the teacher, looking in
+             '<circle cx="0" cy="-84" r="9"/><ellipse cx="0" cy="-92" rx="14" ry="3.5"/><rect x="-8" y="-104" width="16" height="12" rx="2"/>'
+             '<path d="M-12,-72 L12,-72 L18,-8 L-18,-8 Z"/><path d="M-6,-8 L-8,0 L-2,0 L0,-8 Z M2,-8 L4,0 L9,0 L7,-8 Z"/></g>')
+    b.append(f'<rect x="0" y="606" width="{W}" height="{H - 606}" fill="#0a0a18"/>')
+    return svg(defs, "".join(b))
+
+
+def moonlit_gemara() -> str:
+    """Opponents who drew close, part two: the Gemara open in the moonlight at a window, the night outside."""
+    rnd = random.Random(139)
+    defs = """
+    <radialGradient id="room" cx="0.6" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#2a3048"/><stop offset="0.6" stop-color="#121420"/><stop offset="1" stop-color="#06070c"/>
+    </radialGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1430"/><stop offset="1" stop-color="#3a4a78"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfdcff" stop-opacity="0.22"/><stop offset="1" stop-color="#cfdcff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b8c0d0"/><stop offset="0.5" stop-color="#e8ecf4"/><stop offset="1" stop-color="#b8c0d0"/>
+    </linearGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>', window(1080, 110, 400, 480, "url(#night)", "#141624")]
+    b.append('<circle cx="1180" cy="230" r="46" fill="#eef0f8"/>')
+    b.append("".join(f'<circle cx="{rnd.uniform(1100, 1460):.0f}" cy="{rnd.uniform(130, 420):.0f}" r="{rnd.choice([0.8, 1.2])}" fill="#fff" opacity="0.7"/>' for _ in range(20)))
+    b.append('<path d="M1080,590 L1480,590 L1180,600 L520,640 Z" fill="url(#beam)"/>')
+    b.append(f'<rect x="0" y="600" width="{W}" height="{H - 600}" fill="#0c0d16"/><rect x="0" y="592" width="{W}" height="12" fill="#1c1e2c"/>')
+    b.append('<path d="M640,598 L900,560 L900,450 L660,476 Z" fill="url(#page)"/><path d="M1160,598 L900,560 L900,450 L1140,476 Z" fill="url(#page)"/>')
+    b.append('<rect x="860" y="490" width="80" height="56" fill="none" stroke="#5a6070" stroke-width="2"/>')       # the Gemara's page
+    for k in range(7):
+        b.append(f'<path d="M{690 + k * 2},{500 + k * 12} L{850},{482 + k * 11}" stroke="#5a6070" stroke-width="2" opacity="0.6"/>'
+                 f'<path d="M{950},{482 + k * 11} L{1110 - k * 2},{500 + k * 12}" stroke="#5a6070" stroke-width="2" opacity="0.6"/>')
+    return svg(defs, "".join(b))
+
+
 DRAWINGS = {
     "the-boy-who-was-not-afraid": forest,
     "the-locked-gate": gate,
@@ -808,6 +1019,13 @@ DRAWINGS = {
     "the-mokhiach-of-polonne-part-two": kitov_house,
     "the-maggid-of-mezritch": thunder,
     "the-maggids-household-and-disciples": sukkah,
+    "rabbi-nachman-of-horodenka": lake_study_house,
+    "rabbi-yitzchak-of-drohobych": tefillin,
+    "tzaddikim-of-his-generation-part-one": nemirov_psalms,
+    "tzaddikim-of-his-generation-part-two": friday_road,
+    "opponents-and-testers": forest_clearing,
+    "opponents-who-drew-close-part-one": dream_palace,
+    "opponents-who-drew-close-part-two": moonlit_gemara,
 }
 
 

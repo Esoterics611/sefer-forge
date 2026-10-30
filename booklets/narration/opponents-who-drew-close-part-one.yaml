@@ -1,0 +1,33 @@
+# A narration for video: booklet 15, opponents who drew close, part one (stories 13, 14, 112; part two has 113, 114, 115, 185, 203), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/opponents-who-drew-close-part-one.yaml
+#   -> output/narration/opponents-who-drew-close-part-one/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Opponents Who Drew Close, Part One"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a splendid palace in a dream, its windows lit, a man looking in from the dark. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/opponents-who-drew-close-part-one.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 13
+
+  - n: 14
+
+  - n: 112

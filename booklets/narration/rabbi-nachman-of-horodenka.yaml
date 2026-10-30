@@ -1,0 +1,56 @@
+# A narration for video: booklet 11, Rabbi Nachman of Horodenka (stories 73, 74, 75, 91, 94, 102, 131, 186; 101 is in The Speech of the Birds), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/rabbi-nachman-of-horodenka.yaml
+#   -> output/narration/rabbi-nachman-of-horodenka/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Rabbi Nachman of Horodenka"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a study house on the water at dawn, the mikveh beside it, one window lit. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/rabbi-nachman-of-horodenka.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 73
+
+  - n: 74
+
+  - n: 75
+    edits:
+      # points to the next story in the book
+      - from: " And since we have come to this, let us hear another thing on this matter."
+        to: ""
+
+  - n: 91
+
+  - n: 94
+
+  - n: 102
+    edits:
+      - from: "And from the rabbi of our community I heard:"
+        to: "From the rabbi of our community I heard:"
+
+  - n: 131
+    edits:
+      - from: "I heard from that rabbi that Rabbi Eliezer"
+        to: "I heard that Rabbi Eliezer"
+
+  - n: 186
+    cut:
+      # a second version
+      - "And in another version I heard"
