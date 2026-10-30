@@ -1,0 +1,45 @@
+# A narration for video: his passing, and the child he saved afterward in the
+# heavenly court, from the English booklets (shivchei-habesht-simple-en.md).
+# Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-passing-of-the-baal-shem-tov.yaml
+#   -> output/narration/the-passing-of-the-baal-shem-tov/  (video.mp4, thumbnail.jpg,
+#      narration.mp3/.wav, narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. edits: `from` -> `to`,
+# each `from` found once in the story; a bracket that explains a word is
+# dropped, any other bracket becomes part of the sentence. Respellings for
+# the voice: booklets/narration/say.yaml. Summaries are not read; the book's
+# closing line (after 210) is not read either.
+
+title: "The Passing of the Baal Shem Tov"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a candle burning down at dawn, its flame
+# rising blue toward an open window. An original drawing (vector art),
+# rendered by headless Chrome at build time.
+image: booklets/narration/images/the-passing-of-the-baal-shem-tov.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 207
+    edits:
+      # "above" points into the book; in the video it is another episode
+      - from: "as is explained above in the story of Yom Kippur,"
+        to: "as is told in the story of Yom Kippur,"
+      - from: "and another man (whose name I have forgotten) to see"
+        to: "and another man, whose name I have forgotten, to see"
+      - from: ' (that he was ready to die in his place)'
+        to: ""
+
+  - n: 210
+    edits:
+      - from: " (what is called in Yiddish *hinerplet*)"
+        to: ""

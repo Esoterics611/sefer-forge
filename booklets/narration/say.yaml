@@ -1,0 +1,53 @@
+# How the narration voice says a word: shared by every plan in this folder
+# (a plan's own `say:` adds to it, or overrides an entry). Applied to what
+# is read only; the script and the subtitles keep the spelling.
+#
+# Check a respelling before adding it:
+#   python scripts/build-narration.py --say Gershon Ghershon
+# The voice reads espeak-ng's English phonemes: a hyphen splits syllables
+# ("Eli-ezer"), "kh" comes out as k, "ch" as in "church", so the Hebrew ח/כ
+# is written h or k. Add a name the first time a story uses it.
+
+# People
+Eliezer: Eli-ezer
+Gershon: Ghershon
+Gedaliah: Gedda-lyah
+Baruch: Bahrookh
+Chana: Hahna
+Pesach: Pesakh
+Yakil: Yah-kil
+Tzvi: Tsuh-vee
+Menachem: Meh-nah-khem
+Nachum: Nahum
+Moshe: Mo-sheh
+Nachman: Nahman
+Pinchas: Pin-hahs
+Michel: Mee-hel
+Arizal: Ah-ree-zahl
+Acher: Ah-her
+Mokhiach: Mo-khee-akh
+
+# Places
+Kolomea: Kolo-meeya
+Kamenets: Ka-meh-nets
+Polonne: Po-lonneh
+
+# Words, prayers, books, festivals
+cheder: hayder
+vukilak: vookilahk
+Kedushah: Kedoosha
+Chanukah: Hanukkah
+Simchat Torah: Simhat Torah
+Havdalah: Havdahla
+"Ne'ilah": Neh-eela
+Mishnah: Meeshnah
+Gemara: Ghemara
+Shechinah: She-kheenah
+Musaf: Moosaf
+Tashlich: Tashlikh
+Shavuot: Shavoo-ot
+shammes: Shah-mes
+Tikkunim: Tee-koo-neem
+Perek Shirah: Pereck Sheerah
+biliye: Bil-ee-yeh
+chametz: Hah-metz

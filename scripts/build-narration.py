@@ -6,6 +6,7 @@ Usage:
     python scripts/build-narration.py <plan> --script            # script.txt only, no audio
     python scripts/build-narration.py <plan> --voice bm_george   # another voice than the plan's
     python scripts/build-narration.py <plan> --video             # the video again, from the reading made
+    python scripts/build-narration.py <plan> --frame             # only the picture with its titles, to look at
     python scripts/build-narration.py <plan> --sample am_michael,bm_george,af_heart
     python scripts/build-narration.py --say Gershon Ghershon     # how the voice says words
 
@@ -14,7 +15,7 @@ read, from the English or French booklet text (shivchei-habesht-simple-en.md /
 -fr.md), with the paragraphs left out (`cut:`), the changes that make the text
 read aloud well (`edits:`: the booklet's bracketed explanations of words left
 out, its other brackets turned into spoken phrases) and how the voice says the
-names (`say:`). Nothing of the booklet's contents or glossary is read: only the
+names (`say:`, over the shared booklets/narration/say.yaml). Nothing of the booklet's contents or glossary is read: only the
 plan's short `intro:`, the stories and its `outro:`. The build stops when a cut
 or an edit no longer matches the story, or a bracket is left in what is read.
 
@@ -73,6 +74,7 @@ SUB_LINE = 42              # characters per subtitle line, two lines per cue
 # -16 LUFS, the usual loudness for spoken audio online.
 LOUDNORM = "loudnorm=I=-16:TP=-1.5:LRA=11"
 SERIES = Path("booklets/booklets.yaml")    # the series title and subtitle per language
+SAY = Path("booklets/narration/say.yaml")   # respellings shared by every plan
 FONTS = Path("templates/fonts")
 CHROME = os.environ.get("CHROME") or next(
     (c for c in ("/mnt/c/Program Files/Google/Chrome/Application/chrome.exe", "/opt/pw-browsers/chromium")
@@ -125,6 +127,8 @@ def build_blocks(plan: dict, sections: list[str]) -> list[dict]:
     if plan.get("intro"):
         blocks.append({"text": plain(plan["intro"]), "pause": PAUSE["story"], "chapter": None})
     for entry in plan["stories"]:
+        if "MATURE:" in sections[entry["n"]]:
+            sys.exit(f"story {entry['n']} is flagged MATURE: not for narration (prompts/narration-rules.md)")
         title, paras = story_paragraphs(sections[entry["n"]], entry, lang)
         blocks.append({"text": title.rstrip(".") + ".", "pause": PAUSE["title"], "chapter": title})
         blocks += [{"text": p, "pause": PAUSE["paragraph"], "chapter": None} for p in paras]
@@ -254,20 +258,24 @@ def make_frame(plan: dict, out: Path) -> Path:
     draw = ImageDraw.Draw(frame)
     font = lambda name, size: ImageFont.truetype(str(FONTS / f"EBGaramond-{name}.ttf"), size)
     small, sub = font("Regular", 40), font("Italic", 46)
-    size = 116
-    while True:
+    # The title on one line, a little smaller if need be; else two even lines.
+    words = plan["title"].split()
+    for size in range(116, 91, -4):
         big = font("SemiBold", size)
-        lines, line = [], ""
-        for word in plan["title"].split():
-            test = f"{line} {word}".strip()
-            if line and draw.textlength(test, font=big) > W - 420:
-                lines.append(line)
-                test = word
-            line = test
-        lines.append(line)
-        if len(lines) <= 2 or size <= 72:
+        if draw.textlength(plan["title"], font=big) <= W - 300:
+            lines = [plan["title"]]
             break
-        size -= 8
+    else:
+        size = 116
+        while True:
+            big = font("SemiBold", size)
+            width = lambda k: max(draw.textlength(" ".join(words[:k]), font=big),
+                                  draw.textlength(" ".join(words[k:]), font=big))
+            k = min(range(1, len(words)), key=width)
+            if width(k) <= W - 300 or size <= 72:
+                lines = [" ".join(words[:k]), " ".join(words[k:])]
+                break
+            size -= 8
 
     def centred(y: float, text: str, f, fill, tracking: int = 0) -> None:
         widths = [draw.textlength(c, font=f) for c in text] if tracking else [draw.textlength(text, font=f)]
@@ -384,7 +392,7 @@ def main(argv: list[str]) -> None:
         voice = argv[argv.index("--voice") + 1]
     if "--sample" in argv:
         samples_for = argv[argv.index("--sample") + 1].split(",")
-    say = plan.get("say") or {}
+    say = {**(yaml.safe_load(SAY.read_text(encoding="utf-8")) or {}), **(plan.get("say") or {})}
 
     sections = load_sections(Path(SOURCES[plan["lang"]]))
     blocks = build_blocks(plan, sections)
@@ -392,8 +400,11 @@ def main(argv: list[str]) -> None:
     out.mkdir(parents=True, exist_ok=True)
     write_script(blocks, out / "script.txt")
     words = sum(len(b["text"].split()) for b in blocks)
-    print(f"  {out / 'script.txt'}  ({words} words, about {words / 150:.0f} minutes)")
+    print(f"  {out / 'script.txt'}  ({words} words, about {words / 175:.0f} minutes)")
     if "--script" in argv:
+        return
+    if "--frame" in argv:
+        print(f"  {make_frame(plan, out)}")
         return
     if "--video" in argv:
         if not (out / "narration.wav").exists():

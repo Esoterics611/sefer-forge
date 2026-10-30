@@ -67,7 +67,7 @@ you. The repo holds what makes this repeatable:
   workflow: `new-session`, `ocr-session`, `ingest-session`,
   `ingest-voice-session`, `paired-layout`, `publish-pamphlet`, `proof-pdf`,
   `assemble-discourse`, `assign-chapter`, `build-book`, `grow-glossary`,
-  `session-status`).
+  `session-status`, `translate-booklets`, `narrate-video`).
 - **Checks**: `check-session.py` runs after every edit (a project hook),
   `transcript-diff.py` after every cleanup, `proof-pdf.py` before every
   hand-over.

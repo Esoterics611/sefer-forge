@@ -11,8 +11,8 @@
 #           a bracket that explains a word (the booklet's glossing) is
 #           dropped, any other bracket becomes part of the sentence (the
 #           build stops on any bracket left in what is read)
-#   say:    (top level) how the voice says a word; script and subtitles
-#           keep the spelling
+#   say:    respellings for the voice: booklets/narration/say.yaml, shared
+#           by every plan (a plan's own `say:` adds to it)
 # Each story ends at its last paragraph: the printed summary is not read.
 # Nothing of the booklet's contents or glossary is read; the intro is the
 # series title only. The stories are read in the order below: 161 recalls
@@ -34,20 +34,6 @@ intro: >
 outro: >
   Here end these stories from In Praise of the Baal Shem Tov.
 
-# Respellings checked with: python scripts/build-narration.py --say <word> ...
-say:
-  Yakil: Yah-kil
-  "Ne'ilah": Neh-eela
-  Mishnah: Meeshnah
-  Gemara: Ghemara
-  Tzvi: Tsuh-vee
-  Kamenets: Ka-meh-nets
-  Menachem: Meh-nah-khem
-  Nachum: Nahum
-  Shechinah: She-kheenah
-  Moshe: Mo-sheh
-  Musaf: Moosaf
-  Tashlich: Tashlikh
 
 stories:
   - n: 17

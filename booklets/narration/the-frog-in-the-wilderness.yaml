@@ -1,0 +1,45 @@
+# A narration for video: three stories of the hidden years, from the English
+# booklets (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-frog-in-the-wilderness.yaml
+#   -> output/narration/the-frog-in-the-wilderness/  (video.mp4, thumbnail.jpg,
+#      narration.mp3/.wav, narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. edits: `from` -> `to`,
+# each `from` found once in the story; a bracket that explains a word is
+# dropped, any other bracket becomes part of the sentence. Respellings for
+# the voice: booklets/narration/say.yaml. Summaries are not read.
+
+title: "The Frog in the Wilderness"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the great frog in the wilderness at
+# dusk, before the lone figure. An original drawing (vector art), rendered
+# by headless Chrome at build time.
+image: booklets/narration/images/the-frog-in-the-wilderness.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 10
+    edits:
+      - from: "(In the winter the Baal Shem Tov had a house of seclusion in the village, with a gentile from whom he rented a house there.)"
+        to: "In the winter the Baal Shem Tov had a house of seclusion in the village, with a gentile from whom he rented a house there."
+
+  - n: 11
+
+  - n: 3
+    cut:
+      # another telling of how he came to the frog (the robbers' short way)
+      - "(Once the robbers came to the Baal Shem Tov"
+    edits:
+      - from: '(The Baal Shem Tov said to him: "A Torah scholar you are!" and with these words he raised him up a great deal.)'
+        to: 'The Baal Shem Tov said to him: "A Torah scholar you are!" and with these words he raised him up a great deal.'
+      - from: ' (Elisha ben Abuyah)'
+        to: ""
