@@ -122,7 +122,12 @@ user what was cut.
   j'h s'h c'h (l'homme, d'habitude, aujourd'hui) alone. `--names` marks a word
   that espeak reads as English (Falk, Kolomea); respell it the French way
   (Falque). Silent final letters need respelling too: Chabbat → Chabbate,
-  Kamenets → Kaménètse.
+  Kamenets → Kaménètse, Eliézer → Eliézère, Souccot → Souccote.
+  - A Hebrew or Yiddish -an, -on, -in or -en- becomes a French nasal vowel
+    (Guershon like *garçon*, Na'hman, Mendel): Guershone, Na'hmane, Mèndel.
+  - A final -ach or -ech is read k ('Houmach, 'Hodech): 'Houmache, 'Hodèche.
+  - Chn and chr are read kn and kr (Chnéour, Achré): Chenéour, Acheré.
+  - Ei and eï are read è (Leib, Meïr, Neïla): Leïb, Méïr, Néïla.
 - The English voice says "Tov" as "tahv". The user does not like it, but
   accepted it until there is a better voice (`docs/backlog.md`). The French
   voice says it right.
@@ -134,7 +139,12 @@ far. To change it, give the user samples first:
 `--sample am_michael,am_fenrir,bm_george,bm_fable,af_heart`.
 French: `ff_siwis` (a woman), Kokoro's only French voice. The French episodes
 reuse the English episode's drawing, with the French titles (series and
-subtitle from `booklets.yaml`).
+subtitle from `booklets.yaml`). Every English episode has a French one, with
+the same stories, cuts and dropped brackets, written from the English plan by
+`scripts/narration-french-plan.py` and finished by hand. Its title is the
+booklet's French title, made to fit on one line: "…, partie 1" rather than
+"première partie", and shorter wording where that is not enough ("Des fils
+aux couples sans enfants").
 
 ## The picture
 
@@ -212,11 +222,48 @@ once it is built.
 | `sin-repentance-and-reincarnation` | 193, 49, 72, 175, 201, 209 | — | a dog swimming in a dark river at dusk, a fisherman's boat with its net, the far bank |
 | `his-last-days` | 77, 90, 105, 106, 107 | — | a bell on a string in a quiet house at dusk, the string running out through the door to a small house |
 
-French, `lang: fr` (the English episode's stories and drawing):
+French, `lang: fr` (the English episode's stories and drawing), in the English table's order:
 
 | Plan | Stories | Length | As |
 |---|---|---|---|
 | `le-garcon-qui-n-avait-pas-peur` | 1, 12, 70, 33 | — | the-boy-who-was-not-afraid |
 | `la-porte-verrouillee` | 17, 161, 179 | — | the-locked-gate |
+| `la-grenouille-dans-le-desert` | 10, 11, 3 | — | the-frog-in-the-wilderness |
+| `le-langage-des-oiseaux` | 101, 26, 197 | — | the-speech-of-the-birds |
+| `la-mort-du-baal-chem-tov` | 207, 210 | — | the-passing-of-the-baal-shem-tov |
+| `l-introduction-de-l-auteur` | 0 | — | the-authors-introduction |
+| `les-annees-cachees-et-la-revelation` | 4, 5, 9 | — | the-hidden-years-and-the-revelation |
+| `rabbi-guershon-de-kitov` | 7, 20, 66, 79, 111 | — | rabbi-gershon-of-kitov |
+| `la-terre-d-israel-et-le-chemin-qui-y-mene` | 28, 29, 30, 92, 93, 155, 191, 202 | — | the-land-of-israel-and-the-way-there |
+| `dans-la-priere` | 15, 16, 76, 95, 147 | — | in-prayer |
+| `ses-vertus-et-ses-coutumes` | 53, 63, 68, 134, 149, 156, 164, 169 | — | his-ways-and-customs |
+| `le-rav-de-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | — | the-rabbi-of-polonne |
+| `le-mokhiah-de-polonne-premiere-partie` | 84, 85, 96 | — | the-mokhiach-of-polonne-part-one |
+| `le-mokhiah-de-polonne-deuxieme-partie` | 123, 125, 160 | — | the-mokhiach-of-polonne-part-two |
+| `le-maguid-de-mezritch` | 34, 45, 47, 130, 200 | — | the-maggid-of-mezritch |
+| `la-maison-du-maguid-et-ses-disciples` | 40, 41, 42, 43, 46, 109 | — | the-maggids-household-and-disciples |
+| `rabbi-nahman-de-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | — | rabbi-nachman-of-horodenka |
+| `rabbi-itshak-de-drohobytch` | 36, 37, 57, 58, 59 | — | rabbi-yitzchak-of-drohobych |
+| `les-tsaddikim-de-sa-generation-premiere-partie` | 24, 25, 35 | — | tzaddikim-of-his-generation-part-one |
+| `les-tsaddikim-de-sa-generation-deuxieme-partie` | 61, 78, 116, 135, 144, 145 | — | tzaddikim-of-his-generation-part-two |
+| `opposants-et-examinateurs` | 48, 87, 99, 188, 189, 190 | — | opponents-and-testers |
+| `des-opposants-qui-se-sont-rapproches-premiere-partie` | 13, 14, 112 | — | opponents-who-drew-close-part-one |
+| `des-opposants-qui-se-sont-rapproches-deuxieme-partie` | 113, 114, 115, 185, 203 | — | opponents-who-drew-close-part-two |
+| `voir-de-loin` | 18, 19, 38, 89, 118, 128, 129, 141, 143 | — | seeing-from-afar |
+| `prodiges-en-chemin` | 8, 142, 148, 177, 178, 180 | — | wonders-on-the-road |
+| `fermiers-et-seigneurs-premiere-partie` | 67, 110, 159 | — | leaseholders-and-noblemen-part-one |
+| `fermiers-et-seigneurs-deuxieme-partie` | 172, 173 | — | leaseholders-and-noblemen-part-two |
+| `charite-et-argent` | 86, 120, 121, 122, 138 | — | charity-and-money |
+| `juifs-simples-et-tsaddikim-caches` | 51, 52, 126, 163, 194, 196 | — | simple-jews-and-hidden-tzaddikim |
+| `valide-et-invalide` | 39, 100, 108, 139, 140, 151 | — | fit-and-unfit |
+| `guerisons-premiere-partie` | 31, 56, 69 | — | healings-part-one |
+| `guerisons-deuxieme-partie` | 80, 82, 83, 117, 192, 205 | — | healings-part-two |
+| `des-fils-pour-les-sans-enfants-premiere-partie` | 71, 165, 182, 183 | — | sons-for-the-childless-part-one |
+| `des-fils-pour-les-sans-enfants-deuxieme-partie` | 184, 204 | — | sons-for-the-childless-part-two |
+| `demons-sorciers-et-esprits-malfaisants` | 6, 62, 88, 119, 124, 157, 158 | — | demons-sorcerers-and-harmful-spirits |
+| `fausses-accusations-et-dangers` | 32, 97, 133, 136, 154, 171 | — | false-accusations-and-dangers |
+| `le-jardin-d-eden-et-la-gehenne` | 54, 55, 64, 127, 152, 153, 168, 176 | — | the-garden-of-eden-and-gehinnom |
+| `faute-repentir-et-reincarnation` | 193, 49, 72, 175, 201, 209 | — | sin-repentance-and-reincarnation |
+| `ses-derniers-jours` | 77, 90, 105, 106, 107 | — | his-last-days |
 
 Ideas for the next episodes are in `docs/backlog.md`.

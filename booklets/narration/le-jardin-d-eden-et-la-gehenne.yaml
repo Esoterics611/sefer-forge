@@ -1,0 +1,55 @@
+# A narration for video, in French: the stories of the-garden-of-eden-and-gehinnom.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/le-jardin-d-eden-et-la-gehenne.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Le jardin d'Éden et la Géhenne
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/the-garden-of-eden-and-gehinnom.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 54
+
+  - n: 55
+    drop:
+      - (*T.Y.A.Y.*)
+
+  - n: 64
+    drop:
+      - (l'Allemand)
+    edits:
+      - from: (Car il disait qu'une seule bougie fait du mal aux yeux, et trois aussi, mais que deux sont bonnes pour les yeux.)
+        to: Car il disait qu'une seule bougie fait du mal aux yeux, et trois aussi, mais que deux sont bonnes pour les yeux.
+
+  - n: 127
+
+  - n: 152
+    edits:
+      - from: ' (et je ne sais pas si c''était la Michna, l''*Ein Yaakov* ou le Zohar).'
+        to: ', et je ne sais pas si c''était la Michna, l''*Ein Yaakov* ou le Zohar.'
+
+  - n: 153
+
+  - n: 168
+    edits:
+      - from: ' (après sa mort) '
+        to: ', après sa mort, '
+
+  - n: 176

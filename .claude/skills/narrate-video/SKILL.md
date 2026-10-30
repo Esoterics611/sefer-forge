@@ -22,6 +22,13 @@ recording and 3–4 of video on four CPUs.
    sentence if it tells). Then run
    `python scripts/build-narration.py booklets/narration/<name>.yaml --script`
    and read `output/narration/<name>/script.txt` whole.
+   **A French episode of an English one** starts from the English plan:
+   `python scripts/narration-french-plan.py booklets/narration/<english>.yaml <french-name> "<French title>"`
+   carries its cuts, dropped brackets and unbracketed asides over by position,
+   and writes a `# TODO` for whatever it cannot (a reworded opening such as
+   "I also heard" → "I heard", or a story whose French brackets differ from
+   the English). Write each TODO in French by hand, delete it, and build
+   `--script`, which stops on any bracket left.
 3. **Names**: `python scripts/build-narration.py <plan> --names` prints every
    capitalised word as the voice will say it, after the shared respellings
    (`booklets/narration/say-en.yaml` / `say-fr.yaml`). Add a respelling where

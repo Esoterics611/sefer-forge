@@ -1,0 +1,60 @@
+# A narration for video, in French: the stories of the-rabbi-of-polonne.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/le-rav-de-polonne.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Le rav de Polonné
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/the-rabbi-of-polonne.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 21
+
+  - n: 22
+    edits:
+      - from: son talith du Chabbat (en gage),
+        to: son talith du Chabbat en gage,
+      - from: lui serre la main (en signe d'engagement) qu'il
+        to: lui serre la main en signe d'engagement qu'il
+
+  - n: 23
+    edits:
+      - from: (La lettre continue :)
+        to: 'La lettre continue :'
+
+  - n: 65
+    edits:
+      - from: ' (et je ne suis pas sûr si l''histoire se passa à Nemirov ou à Chargorod).'
+        to: ', et je ne suis pas sûr si l''histoire se passa à Nemirov ou à Chargorod.'
+
+  - n: 103
+
+  - n: 104
+
+  - n: 150
+
+  - n: 162
+
+  - n: 166
+
+  - n: 167
+    edits:
+      - from: J'ai encore entendu de lui que
+        to: J'ai entendu du rav de Polonné que
