@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs>
+    <radialGradient id="room" cx="0.5" cy="0.42" r="0.8">
+      <stop offset="0" stop-color="#46321f"/><stop offset="0.55" stop-color="#1d150e"/><stop offset="1" stop-color="#0a0806"/>
+    </radialGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1430"/><stop offset="1" stop-color="#2c3660"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe0a0" stop-opacity="0.45"/><stop offset="1" stop-color="#ffc070" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    </defs><rect width="1920" height="1080" fill="url(#room)"/><circle cx="960" cy="380" r="520" fill="url(#warm)"/><path d="M180,620 L420,380 L1500,380 L1740,620 Z" fill="#4a3220"/><path d="M180,620 L1740,620 L1740,640 L180,640 Z" fill="#2a1d12"/><path d="M560,470 L1300,470 L1340,560 L520,560 Z" fill="#efe6d0"/><path d="M720,500 L1200,488 C1222,488 1230,500 1214,510 L720,522 Z" fill="#dfe3ea"/><path d="M720,500 L1200,488" stroke="#ffffff" stroke-width="3"/><rect x="590" y="496" width="136" height="28" rx="8" fill="#3b2414"/><path d="M1380,440 L1560,440 L1580,480 L1400,480 Z" fill="#7a7a82"/><path d="M1380,440 L1560,440 L1566,452 L1384,452 Z" fill="#9a9aa2"/><ellipse cx="1600" cy="580" rx="46" ry="40" fill="#c8a8d0"/><ellipse cx="1590" cy="566" rx="16" ry="10" fill="#e8d8ec" opacity="0.6"/><path d="M1600,542 C1588,512 1574,496 1560,488 M1602,542 C1608,510 1620,496 1636,488 M1601,542 L1600,494" stroke="#4a6a3a" stroke-width="7" fill="none"/><ellipse cx="400" cy="520" rx="70" ry="13" fill="#8f7146"/><path d="M342,518 C354,480 446,480 458,518 Z" fill="#c9a45c"/><path d="M450,500 L490,486 L478,504 Z" fill="#c9a45c"/><circle cx="488" cy="464.0" r="64.0" fill="#ffd890" opacity="0.28" filter="url(#blur3)"/><path d="M488,440 C500.8,458.0 500.0,472.0 488,480 C476.0,472.0 475.2,458.0 488,440 Z" fill="#fff2c4"/></svg>

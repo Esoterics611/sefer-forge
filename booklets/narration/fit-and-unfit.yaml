@@ -1,0 +1,39 @@
+# A narration for video: booklet 21, fit and unfit (stories 39, 100, 108, 139, 140, 151; 206 is MATURE): a short booklet standing alone, as neither neighbour shares its theme, from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/fit-and-unfit.yaml
+#   -> output/narration/fit-and-unfit/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Fit and Unfit"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a shochet's long knife on its cloth by a whetstone, a turnip set aside at the end of the table, lamplight. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/fit-and-unfit.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 39
+
+  - n: 100
+
+  - n: 108
+
+  - n: 139
+
+  - n: 140
+
+  - n: 151

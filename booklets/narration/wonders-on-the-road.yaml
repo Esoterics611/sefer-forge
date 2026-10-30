@@ -1,0 +1,43 @@
+# A narration for video: booklet 17, wonders on the road (stories 8, 142, 148, 177, 178, 180; 70 is in The Boy Who Was Not Afraid), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/wonders-on-the-road.yaml
+#   -> output/narration/wonders-on-the-road/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Wonders on the Road"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a wagon on a snowy road under the moon, a long pipe stem trailing smoke from it. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/wonders-on-the-road.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 8
+    drop:
+      - "(a few kilometers)"
+      - "(a weekday blessing)"
+      - "(a tablet with a picture of a menorah and verses)"
+
+  - n: 142
+
+  - n: 148
+
+  - n: 177
+
+  - n: 178
+
+  - n: 180

@@ -1,0 +1,53 @@
+# A narration for video: booklet 16, seeing from afar (stories 18, 19, 38, 89, 118, 128, 129, 141, 143; 14 and 99 are in other episodes), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/seeing-from-afar.yaml
+#   -> output/narration/seeing-from-afar/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Seeing from Afar"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a man on a hilltop at dusk looking out over a wide plain, a covered wagon on the road far below, a town on the horizon. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/seeing-from-afar.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 18
+    drop:
+      - "(a great Jewish city)"
+
+  - n: 19
+
+  - n: 38
+    edits:
+      - from: "(The horses were harnessed to the wagon, so as to leave right after the blessing of the new moon.)"
+        to: "The horses were harnessed to the wagon, so as to leave right after the blessing of the new moon."
+
+  - n: 89
+    edits:
+      - from: "This too I heard from him, and afterward I heard it from the rabbi of our community:"
+        to: "I heard it from the rabbi of our community:"
+
+  - n: 118
+
+  - n: 128
+
+  - n: 129
+
+  - n: 141
+
+  - n: 143

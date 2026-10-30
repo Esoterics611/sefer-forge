@@ -1,0 +1,41 @@
+# A narration for video: booklet 18, leaseholders and noblemen, part two: the leaseholders of Slutsk (stories 172, 173; part one has 67, 110, 159), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/leaseholders-and-noblemen-part-two.yaml
+#   -> output/narration/leaseholders-and-noblemen-part-two/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Leaseholders and Noblemen, Part Two"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a covered wagon under a low gateway, the lintel lifted above its hood, a lamp in the yard. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/leaseholders-and-noblemen-part-two.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 172
+    drop:
+      - "(the *derzhavtses*)"
+    edits:
+      - from: "in one thing (and I have forgotten what the thing was)."
+        to: "in one thing, and I have forgotten what the thing was."
+
+  - n: 173
+    drop:
+      - "(the *derzhavtses*)"
+      - "(dragoons)"
+      - "(a major)"
+      - "(confiscate)"

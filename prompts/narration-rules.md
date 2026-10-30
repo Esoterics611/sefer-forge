@@ -14,7 +14,8 @@ episodes follow the themed booklets (`booklets/booklets.yaml`), in order:
   fit on one line.
 - **Length:** a booklet over about 3,100 words splits into parts ("…, Part
   One"); one under about 1,000 words joins a neighbouring booklet of a like
-  theme.
+  theme, or stands alone when neither neighbour shares its theme (Fit and
+  Unfit, 5 minutes).
 - **Coverage:** the table at the end shows which booklets are done.
 
 ## An episode
@@ -103,7 +104,10 @@ user what was cut.
   wrong, checking the respelling with
   `python scripts/build-narration.py --say Gershon Ghershon` (French:
   `--say --lang fr …`), and add it the first time a story uses the word. A
-  plan's own `say:` is for a one-off.
+  lowercase entry (tzaddik) also covers the capitalised word (Tzaddik), but
+  not the other way round. A plan's own `say:` is for a one-off.
+- Check the glossary too (`booklets/glossary-en.yaml`, and the italic words
+  in the stories): `--names` only lists capitalised words.
 - English traps found so far:
   - "ch" reads as in "church": Chana, Nachman and Pinchas are respelled with h.
   - G before e or i reads as j: Gershon, Gedaliah and Gemara are respelled with "Gh".
@@ -111,7 +115,8 @@ user what was cut.
   - "Mishnah" loses its "sh".
   - "kh" comes out as plain k.
   - Many names starting with two consonants are spelled out letter by letter:
-    Chmielnik, Shmeril, Sde, Tluste.
+    Chmielnik, Shmeril, Sde, Tluste, Shmuel, Shneur.
+  - Listen for English words a name sounds like (Bitchov → Bee-chov).
 - French: the build reads `'h` (Na'hman, Pessa'h, 'hazan, the Hebrew ח) as the
   French r, the nearest sound, but leaves the elisions l'h d'h t'h m'h n'h
   j'h s'h c'h (l'homme, d'habitude, aujourd'hui) alone. `--names` marks a word

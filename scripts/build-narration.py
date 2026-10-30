@@ -164,6 +164,8 @@ def sentences(paragraph: str) -> list[str]:
 
 
 def spoken(text: str, say: dict, lang: str) -> str:
+    # A lowercase entry (tzaddik) also covers the word opening a sentence or a title (Tzaddik).
+    say = {**{w[0].upper() + w[1:]: v[0].upper() + v[1:] for w, v in say.items() if w[:1].islower()}, **say}
     for word in sorted(say, key=len, reverse=True):
         text = re.sub(rf"(?<!\w){re.escape(word)}(?!\w)", say[word], text)
     if lang.startswith("fr"):
