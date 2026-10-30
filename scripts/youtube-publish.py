@@ -9,6 +9,7 @@ Usage:
     python scripts/youtube-publish.py publish <name> ...    # these plans (added to the end of the queue if new)
     python scripts/youtube-publish.py publish --dry-run     # print the titles and descriptions, upload nothing
     python scripts/youtube-publish.py sync                  # rebuild the record from the channel itself
+    python scripts/youtube-publish.py drive [--build] <name> ...   # copy episodes to Google Drive
 
 Workflow, setup and limits: docs/youtube-publishing.md.
 
@@ -24,6 +25,11 @@ It joins a playlist per language, made on the first upload. Not uploaded: the
 thumbnail (the video is one picture, so YouTube's own is the same) and the
 subtitles (captions.insert needs the youtube.force-ssl scope, which the
 sign-in by code does not grant): add narration.srt in YouTube Studio.
+
+`drive` copies an episode's video.mp4, thumbnail.jpg, narration.srt and
+chapters.txt to Google Drive, in a folder per episode under "Shivchei HaBesht
+narration" in My Drive (the sign-in's drive.file scope: it sees only the files
+it made). The Google Drive API must be enabled in the same Cloud project.
 
 Quota: YouTube gives a project 10,000 units a day, reset at midnight Pacific
 time; an upload costs 1,600, a playlist entry 50. The script counts what it
@@ -60,11 +66,16 @@ OUT = ROOT / "output/narration"
 SERIES = ROOT / "booklets/booklets.yaml"
 TOKEN = Path.home() / ".config/sefer-forge/youtube-token.json"
 
-SCOPE = "https://www.googleapis.com/auth/youtube"
+SCOPE = "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/drive.file"
 DEVICE_URL = "https://oauth2.googleapis.com/device/code"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 API = "https://www.googleapis.com/youtube/v3"
 UPLOAD = "https://www.googleapis.com/upload/youtube/v3/videos"
+DRIVE = "https://www.googleapis.com/drive/v3/files"
+DRIVE_UPLOAD = "https://www.googleapis.com/upload/drive/v3/files"
+DRIVE_FOLDER = "Shivchei HaBesht narration"     # in the user's My Drive
+DRIVE_FILES = {"video.mp4": "video/mp4", "thumbnail.jpg": "image/jpeg",
+               "narration.srt": "application/x-subrip", "chapters.txt": "text/plain"}
 COST = {"upload": 1600, "playlist": 50, "entry": 50, "list": 1}
 PACIFIC = ZoneInfo("America/Los_Angeles")
 CHUNK = 16 * 1024 * 1024            # a multiple of 256 KiB, as resumable uploads require
@@ -118,7 +129,7 @@ def load() -> dict:
 
 
 def save(rec: dict) -> None:
-    body = {k: rec[k] for k in ("settings", "queue", "playlists", "uploaded", "days")}
+    body = {k: rec[k] for k in ("settings", "queue", "playlists", "uploaded", "days", "drive") if k in rec}
     RECORD.write_text(HEAD + "\n" + yaml.safe_dump(body, allow_unicode=True, sort_keys=False, width=100),
                       encoding="utf-8")
 
@@ -256,19 +267,20 @@ def api(method: str, path: str, **kw) -> dict:
 
 # ---------- YouTube calls
 
-def upload(name: str, meta: dict) -> str:
-    video = OUT / name / "video.mp4"
-    size = video.stat().st_size
-    body = {"snippet": meta["snippet"], "status": meta["status"]}
-    r = requests.post(UPLOAD, params={"uploadType": "resumable", "part": "snippet,status"}, json=body, timeout=60,
-                      headers={"Authorization": f"Bearer {access_token()}", "X-Upload-Content-Type": "video/mp4",
+def resumable(url: str, params: dict, body: dict, path: Path, mime: str) -> dict:
+    """A resumable upload (YouTube and Drive take the same protocol); the finished upload's JSON."""
+    size = path.stat().st_size
+    r = requests.post(url, params={"uploadType": "resumable", **params}, json=body, timeout=60,
+                      headers={"Authorization": f"Bearer {access_token()}", "X-Upload-Content-Type": mime,
                                "X-Upload-Content-Length": str(size)})
     if r.status_code == 403 and "quota" in r.text.lower():
         raise QuotaSpent(r.json()["error"]["message"])
+    if r.status_code == 403 and "insufficient" in r.text.lower():
+        sys.exit("The sign-in does not allow this (Drive was added to it later): run auth again.")
     if not r.ok:
         raise RuntimeError(f"upload start: {r.status_code} {r.text[:500]}")
     session, start = r.headers["Location"], 0
-    with video.open("rb") as f:
+    with path.open("rb") as f:
         while True:
             f.seek(start)
             chunk = f.read(CHUNK)
@@ -282,13 +294,19 @@ def upload(name: str, meta: dict) -> str:
                 p = requests.put(session, headers={"Authorization": f"Bearer {access_token()}",
                                                    "Content-Range": f"bytes */{size}"}, timeout=60)
             if p.status_code in (200, 201):
-                return p.json()["id"]
+                return p.json()
             if p.status_code == 308:
                 got = p.headers.get("Range")
                 start = int(got.split("-")[1]) + 1 if got else 0
-                print(f"    {start * 100 // size}%", flush=True)
+                if size > CHUNK:
+                    print(f"    {start * 100 // size}%", flush=True)
                 continue
             raise RuntimeError(f"upload: {p.status_code} {p.text[:500]}")
+
+
+def upload(name: str, meta: dict) -> str:
+    body = {"snippet": meta["snippet"], "status": meta["status"]}
+    return resumable(UPLOAD, {"part": "snippet,status"}, body, OUT / name / "video.mp4", "video/mp4")["id"]
 
 
 def playlist(rec: dict, lang: str, series: str) -> str:
@@ -324,6 +342,54 @@ def add_to_playlist(rec: dict, name: str) -> bool:
     rec["uploaded"][name]["playlist"] = True
     save(rec)
     return True
+
+
+def drive_api(method: str, url: str, **kw) -> dict:
+    r = requests.request(method, url, headers={"Authorization": f"Bearer {access_token()}"}, timeout=60, **kw)
+    if r.status_code == 403 and "insufficient" in r.text.lower():
+        sys.exit("The sign-in does not allow Drive (it was made before Drive was added): run auth again.")
+    if not r.ok:
+        raise RuntimeError(f"{method} {url}: {r.status_code} {r.text[:500]}")
+    return r.json()
+
+
+def drive_folder(rec: dict, name: str, parent: str | None) -> str:
+    """The id of the folder `name` (in `parent`, or My Drive), made if it is not there."""
+    q = f"name = '{name.replace(chr(39), chr(92) + chr(39))}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+    q += f" and '{parent}' in parents" if parent else " and 'root' in parents"
+    found = drive_api("GET", DRIVE, params={"q": q, "fields": "files(id)"}).get("files", [])
+    if found:
+        return found[0]["id"]
+    made = drive_api("POST", DRIVE, json={"name": name, "mimeType": "application/vnd.google-apps.folder",
+                                          **({"parents": [parent]} if parent else {})})
+    return made["id"]
+
+
+def drive(rec: dict, names: list[str], build: bool) -> None:
+    """Copy each episode's video, thumbnail, subtitles and chapters to Drive, a folder per episode."""
+    access_token()
+    root = rec.setdefault("drive", {}).get("folder") or drive_folder(rec, DRIVE_FOLDER, None)
+    rec["drive"]["folder"] = root
+    copied = rec["drive"].setdefault("copied", [])
+    save(rec)
+    for name in names or [n for n in rec["queue"] if built(n)]:
+        if name in copied:
+            print(f"  {name}: already in Drive")
+            continue
+        if not built(name):
+            if not build:
+                print(f"  {name}: not built; --build builds it first")
+                continue
+            subprocess.run([sys.executable, str(ROOT / "scripts/build-narration.py"), str(PLANS / f"{name}.yaml")],
+                           check=True)
+        folder = drive_folder(rec, name, root)
+        for file, mime in DRIVE_FILES.items():
+            path = OUT / name / file
+            if path.exists():
+                resumable(DRIVE_UPLOAD, {"fields": "id"}, {"name": file, "parents": [folder]}, path, mime)
+        copied.append(name)
+        save(rec)
+        print(f"  {name}: in Drive, {DRIVE_FOLDER}/{name}/")
 
 
 # ---------- commands
@@ -426,7 +492,7 @@ def sync(rec: dict) -> None:
 
 
 def main(argv: list[str]) -> None:
-    if not argv or argv[0] not in ("queue", "auth", "publish", "sync"):
+    if not argv or argv[0] not in ("queue", "auth", "publish", "sync", "drive"):
         sys.exit(__doc__)
     rec = load()
     RECORD_SETTINGS.update(rec["settings"])
@@ -437,6 +503,12 @@ def main(argv: list[str]) -> None:
         auth()
     elif cmd == "sync":
         sync(rec)
+    elif cmd == "drive":
+        names = [a for a in rest if not a.startswith("--")]
+        for n in names:
+            if not (PLANS / f"{n}.yaml").exists():
+                sys.exit(f"No plan booklets/narration/{n}.yaml")
+        drive(rec, names, "--build" in rest)
     else:
         flags = {a for a in rest if a.startswith("--")}
         names = [a for a in rest if not a.startswith("--")]
