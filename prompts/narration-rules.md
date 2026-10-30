@@ -182,22 +182,22 @@ once it is built.
 
 | Plan | Stories | Length | Picture |
 |---|---|---|---|
-| `the-boy-who-was-not-afraid` | 1, 12, 70, 33 | — | a moonlit forest, the boy with his stick on the path |
-| `the-locked-gate` | 17, 161, 179 | — | the gate in the heavens, locked, with the prayers rising |
-| `the-frog-in-the-wilderness` | 10, 11, 3 | — | the great frog in the wilderness at dusk, before the lone figure |
-| `the-speech-of-the-birds` | 101, 26, 197 | — | a wagon on a road at dawn, birds rising over the fields |
-| `the-passing-of-the-baal-shem-tov` | 207, 210 | — | a candle burning down at dawn, its flame rising blue toward an open window |
-| `the-authors-introduction` | 0 | — | an open book on a lectern by lamplight, a quill in the inkwell |
+| `the-boy-who-was-not-afraid` | 1, 12, 70, 33 | 14:29 | a moonlit forest, the boy with his stick on the path |
+| `the-locked-gate` | 17, 161, 179 | 10:37 | the gate in the heavens, locked, with the prayers rising |
+| `the-frog-in-the-wilderness` | 10, 11, 3 | 7:24 | the great frog in the wilderness at dusk, before the lone figure |
+| `the-speech-of-the-birds` | 101, 26, 197 | 10:08 | a wagon on a road at dawn, birds rising over the fields |
+| `the-passing-of-the-baal-shem-tov` | 207, 210 | 10:27 | a candle burning down at dawn, its flame rising blue toward an open window |
+| `the-authors-introduction` | 0 | 6:27 | an open book on a lectern by lamplight, a quill in the inkwell |
 | `the-hidden-years-and-the-revelation` | 4, 5, 9 | — | the rock like a small house on the mountain across the river Prut, at dawn, a lone figure on the way |
 | `rabbi-gershon-of-kitov` | 7, 20, 66, 79, 111 | 12:11 | a wooden synagogue at dusk, the souls coming to it like a great flock of lights |
 | `the-land-of-israel-and-the-way-there` | 28, 29, 30, 92, 93, 155, 191, 202 | 17:14 | a sailing ship at dusk off the coast of the Land of Israel, a walled city on the hills |
 | `in-prayer` | 15, 16, 76, 95, 147 | 12:02 | a man wrapped in his prayer shawl, seen from behind, before the holy ark, its lamps and the light |
-| `his-ways-and-customs` | 53, 63, 68, 134, 149, 156, 164, 169 | — | a pipe and a cup of wine on a table by the window, the Sabbath candles lit |
-| `the-rabbi-of-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | — | the Rabbi of Polonne's study by night, a letter with its seal on the table, rain at the window |
-| `the-mokhiach-of-polonne-part-one` | 84, 85, 96 | — | the great synagogue of Lvov, the preacher in borrowed silk at its door |
-| `the-mokhiach-of-polonne-part-two` | 123, 125, 160 | — | the house in Kitov at night, the jester's dark shape at the window, one candle |
-| `the-maggid-of-mezritch` | 34, 45, 47, 130, 200 | — | a night of thunder and lightning over a small house, one window lit |
-| `the-maggids-household-and-disciples` | 40, 41, 42, 43, 46, 109 | — | a sukkah at night, its lamp lit, the stars through its roof of branches |
+| `his-ways-and-customs` | 53, 63, 68, 134, 149, 156, 164, 169 | 7:35 | a pipe and a cup of wine on a table by the window, the Sabbath candles lit |
+| `the-rabbi-of-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | 17:07 | the Rabbi of Polonne's study by night, a letter with its seal on the table, rain at the window |
+| `the-mokhiach-of-polonne-part-one` | 84, 85, 96 | 14:56 | the great synagogue of Lvov, the preacher in borrowed silk at its door |
+| `the-mokhiach-of-polonne-part-two` | 123, 125, 160 | 6:43 | the house in Kitov at night, the jester's dark shape at the window, one candle |
+| `the-maggid-of-mezritch` | 34, 45, 47, 130, 200 | 14:47 | a night of thunder and lightning over a small house, one window lit |
+| `the-maggids-household-and-disciples` | 40, 41, 42, 43, 46, 109 | 17:56 | a sukkah at night, its lamp lit, the stars through its roof of branches |
 | `rabbi-nachman-of-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | — | a study house on the water at dawn, the mikveh beside it, one window lit |
 | `rabbi-yitzchak-of-drohobych` | 36, 37, 57, 58, 59 | — | a pair of tefillin and their open box on a table, a thaler beside them, lamplight |
 | `tzaddikim-of-his-generation-part-one` | 24, 25, 35 | — | the schoolchildren's psalms rising over Nemirov by night, the Tatars' fires far off on the plain |
