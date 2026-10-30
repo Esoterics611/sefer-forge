@@ -605,6 +605,192 @@ def prayer() -> str:
     return svg(defs, "".join(b))
 
 
+def flame(x: float, y: float, h: float = 30) -> str:
+    """A small candle flame with its glow, its tip at (x, y)."""
+    return (f'<circle cx="{x}" cy="{y + h * 0.6}" r="{h * 1.6}" fill="#ffd890" opacity="0.28" filter="url(#blur3)"/>'
+            f'<path d="M{x},{y} C{x + h * 0.32},{y + h * 0.45} {x + h * 0.3},{y + h * 0.8} {x},{y + h} '
+            f'C{x - h * 0.3},{y + h * 0.8} {x - h * 0.32},{y + h * 0.45} {x},{y} Z" fill="#fff2c4"/>')
+
+
+def window(x: float, y: float, w: float, h: float, sky: str, frame: str = "#1e1610") -> str:
+    """An arched window onto `sky` (a fill), with its frame and cross bars."""
+    arch = f"M{x},{y + h} L{x},{y + w / 2} A{w / 2},{w / 2} 0 0 1 {x + w},{y + w / 2} L{x + w},{y + h} Z"
+    return (f'<path d="M{x - 22},{y + h + 16} L{x - 22},{y + w / 2} A{w / 2 + 22},{w / 2 + 22} 0 0 1 {x + w + 22},{y + w / 2} '
+            f'L{x + w + 22},{y + h + 16} Z" fill="{frame}"/><path d="{arch}" fill="{sky}"/>'
+            f'<path d="M{x + w / 2},{y} L{x + w / 2},{y + h} M{x},{y + h * 0.55} L{x + w},{y + h * 0.55}" stroke="{frame}" stroke-width="12"/>')
+
+
+ROOM_DEFS = """
+    <radialGradient id="room" cx="0.5" cy="0.42" r="0.8">
+      <stop offset="0" stop-color="#46321f"/><stop offset="0.55" stop-color="#1d150e"/><stop offset="1" stop-color="#0a0806"/>
+    </radialGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1430"/><stop offset="1" stop-color="#2c3660"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe0a0" stop-opacity="0.45"/><stop offset="1" stop-color="#ffc070" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    """
+
+
+def sabbath_table() -> str:
+    """His ways and customs: the Sabbath candles lit, the cup of wine and his pipe on the table by the window."""
+    rnd = random.Random(83)
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>', window(1240, 120, 360, 480, "url(#night)")]
+    b.append("".join(f'<circle cx="{rnd.uniform(1260, 1580):.0f}" cy="{rnd.uniform(140, 420):.0f}" r="{rnd.choice([0.8, 1.2, 1.6])}" '
+                     f'fill="#fff" opacity="{rnd.uniform(0.3, 0.9):.2f}"/>' for _ in range(24)))
+    b.append('<circle cx="860" cy="430" r="420" fill="url(#warm)"/>')
+    b.append(f'<rect x="0" y="600" width="{W}" height="{H - 600}" fill="#1a120b"/><rect x="0" y="592" width="{W}" height="14" fill="#3a2a1a"/>')
+    b.append('<path d="M300,600 L1700,600 L1740,640 L260,640 Z" fill="#e8dcc0" opacity="0.9"/>')     # the white cloth
+    for x in (700, 860):                                                                                # the two candlesticks
+        b.append(f'<ellipse cx="{x}" cy="596" rx="44" ry="10" fill="#c9a45c"/><rect x="{x - 8}" y="470" width="16" height="126" fill="#c9a45c"/>'
+                 f'<ellipse cx="{x}" cy="470" rx="26" ry="7" fill="#c9a45c"/><rect x="{x - 11}" y="380" width="22" height="90" fill="#f3ead2"/>'
+                 + flame(x, 336, 40))
+    b.append('<path d="M1030,596 L1090,596 L1076,560 L1068,520 L1100,470 L1020,470 L1052,520 L1044,560 Z" fill="#c9a45c"/>'   # the cup
+             '<ellipse cx="1060" cy="472" rx="40" ry="7" fill="#7a1c24"/>')
+    b.append('<path d="M1160,590 L1420,520" stroke="#3b2414" stroke-width="7" stroke-linecap="round"/>'                     # the pipe
+             '<path d="M1408,524 C1404,496 1446,488 1452,512 L1446,540 C1436,548 1416,546 1412,534 Z" fill="#4a2c18"/>')
+    return svg(ROOM_DEFS, "".join(b))
+
+
+def letter_rain() -> str:
+    """The Rabbi of Polonne: his study by night, the Baal Shem Tov's letter with its seal, rain at the window."""
+    rnd = random.Random(89)
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>', window(1220, 110, 380, 500, "url(#night)")]
+    rain = " ".join(f"M{x:.0f},{y:.0f} l-6,26" for x, y in ((rnd.uniform(1230, 1590), rnd.uniform(120, 600)) for _ in range(140)))
+    b.append(f'<path d="{rain}" stroke="#9fb0d8" stroke-width="2" opacity="0.6"/>')
+    b.append('<circle cx="780" cy="440" r="440" fill="url(#warm)"/>')
+    b.append(f'<rect x="0" y="600" width="{W}" height="{H - 600}" fill="#1a120b"/><rect x="0" y="592" width="{W}" height="14" fill="#3a2a1a"/>')
+    for x, h, c in ((260, 220, "#3b2418"), (300, 260, "#2c2a3a"), (346, 200, "#43261f"), (382, 240, "#24301f")):  # books
+        b.append(f'<rect x="{x}" y="{592 - h}" width="{38}" height="{h}" fill="{c}"/><rect x="{x}" y="{592 - h + 18}" width="38" height="4" fill="#8f7146" opacity="0.6"/>')
+    b.append('<ellipse cx="560" cy="590" rx="40" ry="9" fill="#c9a45c"/><rect x="552" y="500" width="16" height="90" fill="#c9a45c"/>'
+             '<rect x="549" y="430" width="22" height="70" fill="#f3ead2"/>' + flame(560, 388, 40))
+    b.append('<path d="M760,590 L1100,560 L1130,598 L790,620 Z" fill="#efe3c6"/>'                         # the letter
+             + "".join(f'<path d="M{800 + k * 4},{590 - k * 2 + 10} L{1080},{566 + k * 0.4}" stroke="#7a6748" stroke-width="2" opacity="0.5"/>'
+                       for k in range(0)))
+    for k in range(5):
+        b.append(f'<path d="M{805},{596 - k * 6} L{1090},{570 - k * 5}" stroke="#7a6748" stroke-width="2" opacity="0.45"/>')
+    b.append('<circle cx="1000" cy="600" r="18" fill="#8a1c22"/><circle cx="1000" cy="600" r="10" fill="#a8282e"/>')   # the seal
+    b.append('<path d="M1150,590 C1190,520 1240,470 1300,420 C1270,480 1220,540 1160,594 Z" fill="#e8dcc0"/>')            # the quill
+    return svg(ROOM_DEFS, "".join(b))
+
+
+def lvov_synagogue() -> str:
+    """The Mokhiach of Polonne, part one: the great synagogue of Lvov, the preacher at its door."""
+    rnd = random.Random(97)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#20284e"/><stop offset="0.6" stop-color="#7a6a8a"/><stop offset="1" stop-color="#d8a88a"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a7a6a"/><stop offset="1" stop-color="#4a3e36"/>
+    </linearGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 50, 0, 200)]
+    b.append('<path d="M0,620 L0,470 L180,470 L180,420 L260,420 L260,500 L420,500 L420,440 L520,440 L520,620 Z" fill="#3a3040"/>'
+             '<path d="M1400,620 L1400,450 L1520,450 L1520,400 L1600,400 L1600,480 L1760,480 L1760,430 L1920,430 L1920,620 Z" fill="#3a3040"/>')
+    b.append('<path d="M620,620 L620,300 L700,300 L700,250 L1220,250 L1220,300 L1300,300 L1300,620 Z" fill="url(#stone)"/>')
+    for k in range(12):                                                    # the parapet
+        b.append(f'<rect x="{700 + k * 44}" y="226" width="26" height="26" fill="#5a4e44"/>')
+    for x in (700, 840, 1040, 1180):                                       # tall windows
+        b.append(f'<path d="M{x},540 L{x},380 A30,30 0 0 1 {x + 60},380 L{x + 60},540 Z" fill="#f5c871" opacity="0.8"/>')
+    b.append('<path d="M920,620 L920,450 A40,40 0 0 1 1000,450 L1000,620 Z" fill="#f5c871" opacity="0.9"/>')  # the open door, lit
+    b.append('<g transform="translate(960,620)" fill="#0f0c10">'                                        # the preacher
+             '<ellipse cx="0" cy="-92" rx="14" ry="3.5"/><rect x="-8" y="-104" width="16" height="12" rx="2"/>'
+             '<circle cx="0" cy="-84" r="9"/><path d="M-12,-72 L12,-72 L19,-6 L-19,-6 Z"/>'
+             '<path d="M-6,-8 L-7,0 L-2,0 L-1,-8 Z M2,-8 L3,0 L8,0 L6,-8 Z"/></g>')
+    b.append(f'<rect x="0" y="620" width="{W}" height="{H - 620}" fill="#1a1620"/>')
+    return svg(defs, "".join(b))
+
+
+def kitov_house() -> str:
+    """The Mokhiach of Polonne, part two: the house in Kitov at night, the jester at the attic window, one candle below."""
+    rnd = random.Random(101)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#080a18"/><stop offset="1" stop-color="#22264a"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e8e2c8" stop-opacity="0.6"/><stop offset="1" stop-color="#9fb0d8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 120, 0, 380)]
+    b.append('<circle cx="420" cy="200" r="260" fill="url(#moon)"/><circle cx="420" cy="200" r="54" fill="#e8e2c8"/>'
+             '<circle cx="440" cy="190" r="50" fill="#141832"/>')
+    b.append(f'<path d="{hills(rnd, 610, 10, 1)}" fill="#141228"/>')
+    b.append('<path d="M760,620 L760,430 L1160,430 L1160,620 Z" fill="#1a1622"/><path d="M720,436 L960,270 L1200,436 Z" fill="#120f18"/>')
+    b.append('<rect x="930" y="330" width="60" height="56" fill="#2a2440"/>')                          # the attic window
+    b.append('<path d="M940,384 C930,350 950,330 960,334 C972,330 990,350 980,384 Z" fill="#05040a" filter="url(#blur6)"/>'
+             '<circle cx="952" cy="352" r="3" fill="#c94a3a"/><circle cx="968" cy="352" r="3" fill="#c94a3a"/>')
+    b.append('<rect x="830" y="500" width="80" height="70" fill="#f5c871" opacity="0.85"/>'             # the lit window
+             '<path d="M870,500 L870,570 M830,535 L910,535" stroke="#1a1622" stroke-width="6"/>'
+             '<rect x="1020" y="500" width="80" height="70" fill="#0c0a12"/>')
+    b.append(f'<rect x="0" y="620" width="{W}" height="{H - 620}" fill="#0c0a14"/>')
+    return svg(defs, "".join(b))
+
+
+def thunder() -> str:
+    """The Maggid of Mezritch: a night of thunder and lightning over the small house, one window lit."""
+    rnd = random.Random(103)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c0e1c"/><stop offset="1" stop-color="#2a2e4a"/>
+    </linearGradient>
+    <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>']
+    for _ in range(30):                                                   # storm clouds
+        b.append(f'<ellipse cx="{rnd.uniform(-100, W + 100):.0f}" cy="{rnd.uniform(40, 300):.0f}" rx="{rnd.uniform(160, 360):.0f}" '
+                 f'ry="{rnd.uniform(50, 110):.0f}" fill="#3a3e5a" opacity="0.55" filter="url(#blur30)"/>')
+    bolt = "M1180,60 L1120,230 L1170,230 L1080,420 L1140,410 L1050,560"
+    b.append(f'<path d="{bolt}" stroke="#e6ecff" stroke-width="16" fill="none" opacity="0.35" filter="url(#blur8)"/>'
+             f'<path d="{bolt}" stroke="#ffffff" stroke-width="4" fill="none"/>')
+    b.append('<path d="M700,60 L660,170 L690,170 L640,280" stroke="#e6ecff" stroke-width="3" fill="none" opacity="0.6"/>')
+    b.append('<ellipse cx="1120" cy="300" rx="380" ry="260" fill="#c8d2ff" opacity="0.08" filter="url(#blur30)"/>')
+    b.append(f'<path d="{hills(rnd, 600, 12, 1.1)}" fill="#14162a"/>')
+    b.append('<path d="M780,612 L780,480 L1000,480 L1000,612 Z" fill="#100f1a"/><path d="M750,486 L890,390 L1030,486 Z" fill="#0c0b14"/>'
+             '<rect x="830" y="520" width="60" height="50" fill="#f5c871" opacity="0.9"/>'
+             '<path d="M860,520 L860,570 M830,545 L890,545" stroke="#100f1a" stroke-width="5"/>')
+    b.append(f'<rect x="0" y="618" width="{W}" height="{H - 618}" fill="#0c0d18"/>')
+    return svg(defs, "".join(b))
+
+
+def sukkah() -> str:
+    """The Maggid's household and disciples: a sukkah at night, its lamp lit, the stars through its roof of branches."""
+    rnd = random.Random(107)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0e22"/><stop offset="1" stop-color="#262c52"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe0a0" stop-opacity="0.55"/><stop offset="1" stop-color="#ffc070" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 160, 0, 420)]
+    b.append(f'<path d="{hills(rnd, 610, 8, 1.2)}" fill="#141830"/>')
+    b.append('<circle cx="960" cy="470" r="330" fill="url(#warm)"/>')
+    b.append('<path d="M640,620 L640,300 L1280,300 L1280,620 Z" fill="#3a2a1c" opacity="0.35"/>')     # the booth's light
+    for x in (640, 1280):
+        b.append(f'<rect x="{x - 10}" y="290" width="20" height="330" fill="#2a1d12"/>')
+    b.append('<rect x="630" y="290" width="660" height="16" fill="#2a1d12"/>')
+    for k in range(40):                                                   # the roof of branches
+        x = 630 + k * 17 + rnd.uniform(-6, 6)
+        b.append(f'<path d="M{x:.0f},{292 + rnd.uniform(-6, 4):.0f} q{rnd.uniform(-30, 30):.0f},-{rnd.uniform(20, 50):.0f} '
+                 f'{rnd.uniform(-50, 50):.0f},-{rnd.uniform(30, 70):.0f}" stroke="#1c2a18" stroke-width="{rnd.uniform(4, 8):.1f}" fill="none"/>')
+    b.append('<path d="M650,330 C760,350 860,340 960,330 C1060,340 1160,350 1270,330 L1270,620 L650,620 Z" fill="#c9b48e" opacity="0.18"/>')  # the cloth walls
+    b.append('<line x1="960" y1="306" x2="960" y2="400" stroke="#8f7146" stroke-width="3"/>'
+             '<path d="M936,400 L984,400 L972,436 L948,436 Z" fill="#c9a45c"/>' + flame(960, 376, 28))
+    b.append('<rect x="760" y="520" width="400" height="16" fill="#2a1d12"/><rect x="780" y="536" width="12" height="84" fill="#2a1d12"/>'
+             '<rect x="1128" y="536" width="12" height="84" fill="#2a1d12"/>')
+    b.append(f'<rect x="0" y="620" width="{W}" height="{H - 620}" fill="#0e1020"/>')
+    return svg(defs, "".join(b))
+
+
 DRAWINGS = {
     "the-boy-who-was-not-afraid": forest,
     "the-locked-gate": gate,
@@ -616,6 +802,12 @@ DRAWINGS = {
     "rabbi-gershon-of-kitov": synagogue,
     "the-land-of-israel-and-the-way-there": ship,
     "in-prayer": prayer,
+    "his-ways-and-customs": sabbath_table,
+    "the-rabbi-of-polonne": letter_rain,
+    "the-mokhiach-of-polonne-part-one": lvov_synagogue,
+    "the-mokhiach-of-polonne-part-two": kitov_house,
+    "the-maggid-of-mezritch": thunder,
+    "the-maggids-household-and-disciples": sukkah,
 }
 
 

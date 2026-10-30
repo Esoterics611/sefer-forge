@@ -1,0 +1,61 @@
+# A narration for video: booklet 10, the Maggid's household and disciples (stories 40, 41, 42, 43, 46, 109), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-maggids-household-and-disciples.yaml
+#   -> output/narration/the-maggids-household-and-disciples/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Maggid's Household and Disciples"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a sukkah at night, its lamp lit, the stars through its roof of branches. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-maggids-household-and-disciples.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 40
+    drop:
+      - "(Sukkot)"
+      # a gloss inside Rabbi Nachum's words
+      - "(the Maggid, who had already passed away)"
+    edits:
+      - from: "(Rabbi Yoel did not want to make this rich man's name public.)"
+        to: "Rabbi Yoel did not want to make this rich man's name public."
+
+  - n: 41
+    edits:
+      - from: "When he came to the synagogue (and his walking was a run), the rabbi"
+        to: "When he came to the synagogue, and his walking was a run, the rabbi"
+
+  - n: 42
+    edits:
+      # the whole story is in brackets: another telling of the knife in 41
+      - from: "(And in the name of our master, the Rebbe, we heard that"
+        to: "And in the name of our master, the Rebbe, we heard that"
+      - from: 'such a question.")'
+        to: 'such a question."'
+
+  - n: 43
+    drop:
+      - "(his daughter's husband)"
+      - "(the tzaddik passed away)"
+
+  - n: 46
+
+  - n: 109
+    edits:
+      - from: "And a story like this I heard from Rabbi Elimelech:"
+        to: "I heard from Rabbi Elimelech:"

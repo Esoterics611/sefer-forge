@@ -1,0 +1,46 @@
+# A narration for video: booklet 8, the Mokhiach of Polonne, part one (stories 84, 85, 96; part two has 123, 125, 160; 197 is in The Speech of the Birds), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-mokhiach-of-polonne-part-one.yaml
+#   -> output/narration/the-mokhiach-of-polonne-part-one/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Mokhiach of Polonne, Part One"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the great synagogue of Lvov, the preacher in borrowed silk at its door. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-mokhiach-of-polonne-part-one.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 84
+    edits:
+      - from: "I also heard from that rabbi: in the days"
+        to: "I heard: in the days"
+      - from: 'One day this dog died" (and the Mokhiach pointed with his hand at the dead man) "and there was'
+        to: 'One day this dog died," and the Mokhiach pointed with his hand at the dead man, "and there was'
+
+  - n: 85
+    edits:
+      - from: "And I heard from that rabbi that after a time,"
+        to: "I heard that after a time,"
+
+  - n: 96
+    drop:
+      - "(a small study house)"
+    edits:
+      - from: "the greatest man of the generation (and it seems to me that his name was Rabbi Avraham, but I have forgotten his name):"
+        to: "the greatest man of the generation, and it seems to me that his name was Rabbi Avraham, but I have forgotten his name:"

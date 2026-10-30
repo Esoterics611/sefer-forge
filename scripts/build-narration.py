@@ -159,7 +159,8 @@ def build_blocks(plan: dict, sections: list[str]) -> list[dict]:
 
 
 def sentences(paragraph: str) -> list[str]:
-    return [s for s in re.split(r'(?<=[.!?]) |(?<=[.!?]["”»]) |(?<=[.!?]\u00a0») ', paragraph) if s]
+    # A sentence ends at . ! ? (and a closing quote), never before a lowercase word ('K.Z." is mentioned').
+    return [s for s in re.split(r'(?:(?<=[.!?])|(?<=[.!?]["”»])|(?<=[.!?]\u00a0»)) (?![a-zà-ÿ])', paragraph) if s]
 
 
 def spoken(text: str, say: dict, lang: str) -> str:

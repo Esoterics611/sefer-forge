@@ -1,0 +1,43 @@
+# A narration for video: booklet 8, the Mokhiach of Polonne, part two (stories 123, 125, 160; part one has 84, 85, 96), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-mokhiach-of-polonne-part-two.yaml
+#   -> output/narration/the-mokhiach-of-polonne-part-two/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Mokhiach of Polonne, Part Two"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the house in Kitov at night, the jester's dark shape at the window, one candle. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-mokhiach-of-polonne-part-two.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 123
+    drop:
+      - "(her children died)"
+      - "(a harmful spirit)"
+
+  - n: 125
+    drop:
+      - "(a house with a harmful spirit in it)"
+
+  - n: 160
+    edits:
+      - from: "to complain about him (I do not know whether over the rabbinate or over something else)."
+        to: "to complain about him; I do not know whether over the rabbinate or over something else."
+      - from: "Once (it seems to me it was Rosh Chodesh) the Mokhiach"
+        to: "Once, it seems to me it was Rosh Chodesh, the Mokhiach"
