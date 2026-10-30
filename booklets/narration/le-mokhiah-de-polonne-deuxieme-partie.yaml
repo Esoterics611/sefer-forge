@@ -1,0 +1,42 @@
+# A narration for video, in French: the stories of the-mokhiach-of-polonne-part-two.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/le-mokhiah-de-polonne-deuxieme-partie.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Le Mokhia'h de Polonné, partie 2
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/the-mokhiach-of-polonne-part-two.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 123
+    drop:
+      - (ses enfants
+      - (un esprit m
+
+  - n: 125
+    drop:
+      - (où il y ava
+
+  - n: 160
+    edits:
+      - from: ' (je ne sais pas si c''était au sujet du rabbinat ou d''autre chose).'
+        to: ', je ne sais pas si c''était au sujet du rabbinat ou d''autre chose.'
+      - from: ' (il me semble que c''était Roch ''Hodech),'
+        to: ', il me semble que c''était Roch ''Hodech,'

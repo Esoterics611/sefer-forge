@@ -1,0 +1,57 @@
+# A narration for video, in French: the stories of opponents-and-testers.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/opposants-et-examinateurs.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Opposants et examinateurs
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/opponents-and-testers.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 48
+    drop:
+      - (le mettre à
+
+  - n: 87
+    drop:
+      - (un Lituanie
+
+  - n: 99
+    drop:
+      - (le coupeur de drap)
+    edits:
+      - from: un chapeau de “Daïtch” (d'Allemand)
+        to: un chapeau d'Allemand
+      - from: '(C''était la coutume là-bas : quand on concluait une affaire, on échangeait les chapeaux, et c''était le signe que l''affaire était conclue.)'
+        to: 'C''était la coutume là-bas : quand on concluait une affaire, on échangeait les chapeaux, et c''était le signe que l''affaire était conclue.'
+
+  - n: 188
+    drop:
+      - (comme on le
+    edits:
+      - from: (Et j'ai entendu que le Baal Chem Tov était de l'âme du roi David, et Rabbi Na'hman de l'âme du roi Saül, et c'est pourquoi il fut l'ennemi de David tous les jours.)
+        to: Et j'ai entendu que le Baal Chem Tov était de l'âme du roi David, et Rabbi Na'hman de l'âme du roi Saül, et c'est pourquoi il fut l'ennemi de David tous les jours.
+
+  - n: 189
+
+  - n: 190
+    edits:
+      - from: Rabbi Na'hman (de Kossov) entendit
+        to: Rabbi Na'hman de Kossov entendit

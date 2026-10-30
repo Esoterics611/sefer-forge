@@ -1,0 +1,46 @@
+# A narration for video: booklet 13, rabbis and tzaddikim of his generation, part one (stories 24, 25, 35; part two has 61, 78, 116, 135, 144, 145), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/tzaddikim-of-his-generation-part-one.yaml
+#   -> output/narration/tzaddikim-of-his-generation-part-one/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Tzaddikim of His Generation, Part One"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the schoolchildren's psalms rising over Nemirov by night, the Tatars' fires far off on the plain. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/tzaddikim-of-his-generation-part-one.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 24
+    drop:
+      # glosses, the first inside the rabbi's words
+      - "(circumcision)"
+      - "(Psalm 119)"
+      - "(tear up the Satan)"
+    edits:
+      - from: "(They prayed in the room next to the small house, and only the rabbi's attendant was in the house, and sometimes the attendant went to the market to buy things for the house.)"
+        to: "They prayed in the room next to the small house, and only the rabbi's attendant was in the house, and sometimes the attendant went to the market to buy things for the house."
+      - from: "He began to put on tefillin (Rabbeinu Tam tefillin)."
+        to: "He began to put on Rabbeinu Tam tefillin."
+
+  - n: 25
+
+  - n: 35
+    edits:
+      - from: "(Rabbi Yoel did not want to give their names.)"
+        to: "Rabbi Yoel did not want to give their names."

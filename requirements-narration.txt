@@ -1,0 +1,2 @@
+# Narration for video (scripts/build-narration.py): the Kokoro voice, run on the CPU.
+kokoro-onnx>=0.6

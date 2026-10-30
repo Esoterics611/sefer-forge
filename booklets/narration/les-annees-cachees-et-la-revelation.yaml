@@ -1,0 +1,49 @@
+# A narration for video, in French: the stories of the-hidden-years-and-the-revelation.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/les-annees-cachees-et-la-revelation.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Les années cachées et la révélation
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/the-hidden-years-and-the-revelation.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 4
+    drop:
+      - (ce qui le c
+    edits:
+      - from: (Et le Baal Chem Tov avait l'habitude de prier justement près du mur oriental.)
+        to: Et le Baal Chem Tov avait l'habitude de prier justement près du mur oriental.
+      - from: '(Car on tenait le Baal Chem Tov pour un homme craignant Dieu, seulement « l''ignorant ne craint pas le péché » : celui qui n''a pas étudié ne sait pas se garder du péché.)'
+        to: 'Car on tenait le Baal Chem Tov pour un homme craignant Dieu, seulement « l''ignorant ne craint pas le péché » : celui qui n''a pas étudié ne sait pas se garder du péché.'
+      - from: Ensuite Rabbi Guershon prit à bail
+        to: Rabbi Guershon prit à bail
+
+  - n: 5
+    drop:
+      - (faire sorti
+      - (les esprits
+    edits:
+      - from: ' (c''est ainsi que mon beau-père le racontait) '
+        to: ', c''est ainsi que mon beau-père le racontait, '
+      - from: (car il était encore jeune alors)
+        to: car il était encore jeune alors
+
+  - n: 9

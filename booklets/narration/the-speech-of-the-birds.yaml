@@ -1,0 +1,41 @@
+# A narration for video: three journeys, from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-speech-of-the-birds.yaml
+#   -> output/narration/the-speech-of-the-birds/  (video.mp4, thumbnail.jpg,
+#      narration.mp3/.wav, narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. edits: `from` -> `to`,
+# each `from` found once in the story; a bracket that explains a word is
+# dropped, any other bracket becomes part of the sentence. Respellings for
+# the voice: booklets/narration/say-en.yaml. Summaries are not read.
+# Read in the order below: the short story first, the teaching on the road last.
+
+title: "The Speech of the Birds"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a wagon on a road at dawn, birds rising
+# over the fields. An original drawing (vector art), rendered by headless
+# Chrome at build time.
+image: booklets/narration/images/the-speech-of-the-birds.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 101
+
+  - n: 26
+    edits:
+      - from: " (as in the stories of the Gemara in which Elijah the Prophet appears in the form of an Arab)"
+        to: ""
+
+  - n: 197
+    edits:
+      - from: " (for his sermons)"
+        to: ""

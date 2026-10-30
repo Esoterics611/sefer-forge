@@ -1,0 +1,59 @@
+# A narration for video: booklet 7, the Rabbi of Polonne (stories 21, 22, 23, 65, 103, 104, 150, 162, 166, 167), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-rabbi-of-polonne.yaml
+#   -> output/narration/the-rabbi-of-polonne/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Rabbi of Polonne"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the Rabbi of Polonne's study by night, a letter with its seal on the table, rain at the window. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-rabbi-of-polonne.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 21
+
+  - n: 22
+    drop:
+      - "(as a pledge)"
+
+  - n: 23
+    edits:
+      # 23 goes on with the letter that ends 22, read just before it
+      - from: '(The letter continues:) "And much peace'
+        to: 'The letter continues: "And much peace'
+
+  - n: 65
+    edits:
+      - from: "the Rabbi of Polonne (and I am not sure whether the story took place in Nemirov or in Shargorod). He came"
+        to: "the Rabbi of Polonne; I am not sure whether the story took place in Nemirov or in Shargorod. He came"
+
+  - n: 103
+
+  - n: 104
+
+  - n: 150
+
+  - n: 162
+
+  - n: 166
+
+  - n: 167
+    edits:
+      - from: "I also heard from him that"
+        to: "I heard from the Rabbi of Polonne that"

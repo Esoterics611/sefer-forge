@@ -1,0 +1,46 @@
+# A narration for video: booklet 19, charity and money (stories 86, 120, 121, 122, 138; 57 and 61 are in other episodes), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/charity-and-money.yaml
+#   -> output/narration/charity-and-money/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Charity and Money"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: an empty purse and a last gold coin on a table by a candle, the door open to the night. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/charity-and-money.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 86
+    drop:
+      - "(the veiling of the bride)"
+      - "(large gold coins)"
+    edits:
+      - from: "(And he acted like one of the wedding jesters.)"
+        to: "And he acted like one of the wedding jesters."
+
+  - n: 120
+
+  - n: 121
+    edits:
+      - from: "And I heard from the rabbi that money"
+        to: "I heard from the rabbi that money"
+
+  - n: 122
+
+  - n: 138

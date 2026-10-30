@@ -1,0 +1,167 @@
+# How the narration voice says a word: shared by every plan in this folder
+# (a plan's own `say:` adds to it, or overrides an entry). Applied to what
+# is read only; the script and the subtitles keep the spelling.
+#
+# Check a respelling before adding it:
+#   python scripts/build-narration.py --say Gershon Ghershon
+# The voice reads espeak-ng's English phonemes: a hyphen splits syllables
+# ("Eli-ezer"), "kh" comes out as k, "ch" as in "church", so the Hebrew ח/כ
+# is written h or k. Add a name the first time a story uses it.
+
+# People
+Eliezer: Eli-ezer
+Gershon: Ghershon
+Gedaliah: Gedda-lyah
+Baruch: Bahrookh
+Chana: Hahna
+Pesach: Pesakh
+Yakil: Yah-kil
+Tzvi: Tsuh-vee
+Menachem: Meh-nah-khem
+Nachum: Nahum
+Moshe: Mo-sheh
+Nachman: Nahman
+Pinchas: Pin-hahs
+Michel: Mee-hel
+Arizal: Ah-ree-zahl
+Acher: Ah-her
+Mokhiach: Mo-khee-akh
+
+# Places
+Kolomea: Kolo-meeya
+Kamenets: Ka-meh-nets
+Polonne: Po-lonneh
+
+# Words, prayers, books, festivals
+cheder: hayder
+vukilak: vookilahk
+Kedushah: Kedoosha
+Chanukah: Hanukkah
+Simchat Torah: Simhat Torah
+Havdalah: Havdahla
+"Ne'ilah": Neh-eela
+Mishnah: Meeshnah
+Gemara: Ghemara
+Shechinah: She-kheenah
+Musaf: Moosaf
+Tashlich: Tashlikh
+Shavuot: Shavoo-ot
+shammes: Shah-mes
+Tikkunim: Tee-koo-neem
+Perek Shirah: Pereck Sheerah
+biliye: Bil-ee-yeh
+chametz: Hah-metz
+
+# Added with the booklet episodes (booklets 1-5)
+Chacham: Hah-hahm
+Chadash: Hah-dahsh
+Chaim: Hah-yeem
+Chasidim: Hah-see-deem
+Chodesh: Hodesh
+Elimelech: Eli-meh-lek
+Gehinnom: Gheh-hee-nom
+Mishnat: Meesh-nat
+Sde: Sedeh
+Shmeril: Shemeril
+Selichot: Slee-hot
+Tluste: Toloosteh
+Mezuzah: Meh-zoo-zah
+mezuzah: meh-zoo-zah
+Zusya: Zoos-yah
+Yochai: Yo-hai
+Shimon: Shee-mon
+Safed: Sah-fed
+Shalom: Shah-lom
+Mendele: Men-deh-leh
+Chmielnik: Kemyel-nik
+
+# Added with booklets 6-10
+Chachamim: Hah-hah-meem
+Chaikel: Hai-kel
+Charif: Hah-reef
+Chasid: Hah-seed
+Chesed: Hessid
+Tzaddikim: Tsah-dee-keem
+tzaddikim: tsah-dee-keem
+tzaddik: tsah-deek
+Tzitzit: Tsee-tseet
+tzitzit: tsee-tseet
+shochet: sho-het
+Yitzchak: Yits-hahk
+Yechiel: Yeh-hee-el
+Shmelke: Shemelkeh
+Tikkunei: Tee-koo-nay
+Meir: Meh-eer
+Mohilev: Mo-hee-lev
+Milkes: Mil-kes
+Pohrebishtch: Poh-reh-beesh
+Filet: Fee-let
+Kalisz: Kah-leesh
+Rebbe: Reb-beh
+Yehudah: Yeh-hoo-dah
+Uman: Oo-mahn
+# the letter, in story 169 ("the Ch is Chaikel"): the voice says its Hebrew name
+Ch: Het
+
+# The user's choice (2026-10-30): "Bahl Shem Tohv", Tov with the o of "tone"
+Baal Shem Tov: Bahl Shem Tohv
+
+# Glossary terms found wrong in a check of every term (2026-10-30)
+chaver: hah-ver
+Chazon: Hah-zon
+Chemdat HaYamim: Hem-dat Ha-yah-meem
+ducat: duck-it
+ducats: duck-its
+gematria: gheh-mat-ree-ah
+ibbur: ee-boor
+shochetim: sho-heh-teem
+Shulchan Aruch: Shool-hahn Ah-rook
+shvil: shuh-veel
+Tisha B'Av: Tisha Beh-Av
+Ya'aleh VeYavo: Yah-ah-leh Veh-yah-vo
+Sha'arei: Shah-ah-ray
+mezuzot: meh-zoo-zot
+pulsa denura: pool-sah deh-noo-rah
+gelt: ghelt
+agunah: ah-goo-nah
+badeken: bah-deck-en
+
+# Added with booklets 11-15
+Barchu: Bar-hoo
+Berakhot: Beh-rah-hot
+Berech: Beh-rek
+Horochov: Ho-ro-hov
+Mordechai: Mor-deh-hai
+Shmuel: Shemoo-el
+Shneur: Sheneur
+Yechezkel: Yeh-hez-kel
+Katzin: Kah-tseen
+Bunim: Boo-neem
+Bereishit: Beh-ray-sheet
+Shevuot: Sheh-voo-ot
+She'amar: Sheh-ah-mar
+Uva Letziyon: Oo-vah Leh-tsee-yon
+Kera: Keh-rah
+Ludmir: Lood-meer
+Zusman: Zooss-man
+gevant: gheh-vahnt
+Premishlan: Preh-meesh-lahn
+Shverdlik: Shevverd-lik
+shnayder: sheh-nai-der
+
+# Added with booklets 16-21
+Atah Chonen: Ah-tah Ho-nen
+Shochet: Sho-het
+Tzaddik: Tsah-deek
+Tovele: Toh-veh-leh
+Bitchov: Bee-chov
+
+# Added with booklets 22-29
+Chudnov: Hood-nov
+Yochanan: Yo-hah-nahn
+Vital: Vee-tahl
+Tseres: Tseh-res
+Ir Chadash: Eer Hah-dahsh
+Gaon: Gah-on
+# the miller's wife's Russian, in story 6
+Ya mudra, ale ty mudrishe: Yah moo-drah, ah-leh tih moo-dree-sheh

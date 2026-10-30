@@ -64,3 +64,48 @@ directly and have no plan, so the pass has no home yet. When the Shaar
 HaYichud transcripts are re-cleaned (above), give the edits one: an `edits:`
 list in the transcript's frontmatter, applied by `assemble-discourse.py` and
 `build-pamphlet.py`, checked by `check-session.py`.
+
+## Narration videos: upgrades and next episodes (found 2026-10-30)
+
+The narration workflow (skill `narrate-video`, rules
+`prompts/narration-rules.md`, `scripts/build-narration.py`) makes a YouTube
+episode from the English or French booklet stories with free tools only.
+Every story not flagged MATURE has an English and a French episode planned
+(the rules' tables: 39 each, 2026-10-30). Left for later, with how:
+
+- **A better voice.** Kokoro says "Tov" as "tahv", which the user dislikes,
+  and it has no Hebrew. Swap the engine in `load_model()` and the
+  `model.create(...)` call in `synthesize()`, behind an `engine:` field in the
+  plan. Everything else keeps working, because the subtitles are timed from
+  the audio each sentence returns. Choices:
+  - paid: ElevenLabs (the most natural, can copy a voice); Azure or Google
+    Cloud, which have Hebrew voices (`he-IL`) and SSML phoneme control for
+    names;
+  - open models, better with a GPU (`requirements-gpu.txt`). Check each
+    licence before publishing: some forbid commercial use.
+  A paid service needs its API key in the cloud environment (Network
+  secrets, or an environment variable such as `ELEVENLABS_API_KEY`) and its
+  host under Allowed domains. Never paste a key into the chat. Until then,
+  `say-en.yaml` respells it `Bahl Shem Tohv`, the user's choice of the options heard.
+- **Hebrew episodes** from `shivchei-habesht-simple.md`, once a Hebrew voice
+  is in. The text has no vowel points, so names need checking the way
+  `say-en.yaml` does for English.
+- **AI pictures** (Gemini's "Nano Banana", OpenAI images). An
+  `image_prompt:` in the plan would call the API (`GEMINI_API_KEY` and
+  `generativelanguage.googleapis.com`, or `OPENAI_API_KEY` and
+  `api.openai.com`) and write the picture. JPG and PNG go through Git LFS,
+  and `lfs.github.com` refuses uploads from a cloud session. So commit them
+  from the user's computer, or keep them outside git and name them in
+  `image:`.
+- **Video**, all possible with the current ffmpeg:
+  - a slow zoom across the picture (`zoompan`);
+  - a picture per story, switching at each chapter (`image:` per story entry);
+  - an option to burn in the subtitles (`subtitles=` filter);
+  - a `description.txt` holding the series line, the chapters and the stories' numbers;
+  - faster encoding: 24 fps at `veryfast` takes 3–4 minutes for 15 minutes of
+    video; 6–12 fps or `ultrafast` would be quicker, but check YouTube plays it.
+- **The MATURE stories** (2, 27, 44, 50, 60, 81, 98, 132, 137, 146, 170,
+  174, 181, 187, 195, 198, 199, 206, 208) have no episode: the build refuses
+  them. Ask the user before planning any.
+- **Uploading 78 episodes**: YouTube's description takes `chapters.txt` as
+  is; a playlist per language keeps the booklet order (the rules' tables).

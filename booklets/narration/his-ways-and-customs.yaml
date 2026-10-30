@@ -1,0 +1,56 @@
+# A narration for video: booklet 6, his ways and customs (stories 53, 63, 68, 134, 149, 156, 164, 169; 33 and 70 are in The Boy Who Was Not Afraid), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/his-ways-and-customs.yaml
+#   -> output/narration/his-ways-and-customs/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "His Ways and Customs"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a pipe and a cup of wine on a table by the window, the Sabbath candles lit. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/his-ways-and-customs.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 53
+
+  - n: 63
+    drop:
+      # a narrator's note inside the proclamation's words
+      - "(and he had a sum of two hundred zlotys with him)"
+    edits:
+      - from: "(And the third choice I have forgotten.)"
+        to: "And the third choice I have forgotten."
+
+  - n: 68
+
+  - n: 134
+    drop:
+      - "(a queen)"
+
+  - n: 149
+
+  - n: 156
+    cut:
+      # a stray note about a story the book does not tell
+      - "(And a story that happened"
+
+  - n: 164
+
+  - n: 169
+    drop:
+      - "(a companion)"

@@ -1,0 +1,56 @@
+# A narration for video: three Days of Awe stories from the English booklets
+# (shivchei-habesht-simple-en.md), read aloud by the Kokoro voice.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-locked-gate.yaml
+#   -> output/narration/the-locked-gate/  (script.txt, narration.mp3/.wav,
+#      narration.srt, chapters.txt)
+#
+# The stories are read as they stand in the booklet text, apart from:
+#   cut:    paragraphs left out (by their opening words)
+#   edits:  `from` -> `to`, each `from` found exactly once in the story:
+#           a bracket that explains a word (the booklet's glossing) is
+#           dropped, any other bracket becomes part of the sentence (the
+#           build stops on any bracket left in what is read)
+#   say:    respellings for the voice: booklets/narration/say-en.yaml, shared
+#           by every plan (a plan's own `say:` adds to it)
+# Each story ends at its last paragraph: the printed summary is not read.
+# Nothing of the booklet's contents or glossary is read; the intro is the
+# series title only. The stories are read in the order below: 161 recalls
+# the Baal Shem Tov falling on the ark, told in 17.
+
+title: "The Locked Gate"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the gate in the heavens, locked,
+# with the prayers rising. An original drawing
+# (vector art), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-locked-gate.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+
+stories:
+  - n: 17
+    cut:
+      # an afterword: his anger with the guests after Yom Kippur
+      - "And from the words of the rabbi of our community it seems"
+    edits:
+      - from: "I also heard from him (from Rabbi Falk): once,"
+        to: "I heard from Rabbi Falk: once,"
+      - from: 'And the gate was open." (And to the people of his town he said that the gate was as big as the whole world.)'
+        to: 'And the gate was open." And to the people of his town he said that the gate was as big as the whole world.'
+      - from: 'hung a lock on the gate." (And he told them that the lock was as big as the whole of Mezhibuzh.) "I began'
+        to: 'hung a lock on the gate." And he told them that the lock was as big as the whole of Mezhibuzh. "I began'
+
+  - n: 161
+    edits:
+      - from: "on Rosh Hashanah in the study house (I do not know whether the morning prayer or Musaf of the second day). And there was"
+        to: "on Rosh Hashanah in the study house; I do not know whether it was the morning prayer or Musaf of the second day. And there was"
+
+  - n: 179

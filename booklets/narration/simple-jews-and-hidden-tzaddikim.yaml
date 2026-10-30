@@ -1,0 +1,53 @@
+# A narration for video: booklet 20, simple Jews and hidden tzaddikim (stories 51, 52, 126, 163, 194, 196; 60 is MATURE), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/simple-jews-and-hidden-tzaddikim.yaml
+#   -> output/narration/simple-jews-and-hidden-tzaddikim/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Simple Jews and Hidden Tzaddikim"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a craftsman's small house at dawn, wool stockings drying on a line, the synagogue beyond. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/simple-jews-and-hidden-tzaddikim.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 51
+    drop:
+      - "(a church)"
+    edits:
+      - from: "lived in a certain town (I have forgotten the name of the town), and"
+        to: "lived in a certain town, and I have forgotten the name of the town, and"
+
+  - n: 52
+
+  - n: 126
+    drop:
+      # a gloss inside the Baal Shem Tov's words
+      - "(the angels)"
+
+  - n: 163
+    edits:
+      - from: "that his brother (Rabbi Moshe's) was a shochet"
+        to: "that Rabbi Moshe's brother was a shochet"
+
+  - n: 194
+    edits:
+      - from: "That rabbi also told:"
+        to: "I heard:"
+
+  - n: 196

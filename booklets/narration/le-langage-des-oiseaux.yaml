@@ -1,0 +1,38 @@
+# A narration for video, in French: the stories of the-speech-of-the-birds.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/le-langage-des-oiseaux.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Le langage des oiseaux
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/the-speech-of-the-birds.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 101
+
+  - n: 26
+    edits:
+      - from: ' (comme dans les récits de la Guemara où le prophète Élie apparaît sous l''apparence d''un Arabe)'
+        to: ''
+
+  - n: 197
+    edits:
+      - from: ' (pour ses sermons)'
+        to: ''

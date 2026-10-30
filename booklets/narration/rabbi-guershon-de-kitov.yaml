@@ -1,0 +1,49 @@
+# A narration for video, in French: the stories of rabbi-gershon-of-kitov.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/rabbi-guershon-de-kitov.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Rabbi Guershon de Kitov
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/rabbi-gershon-of-kitov.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 7
+    edits:
+      - from: Un autre péager vint encore chez
+        to: Un jour, un péager vint chez
+
+  - n: 20
+    drop:
+      - '(Rabbi Falk '
+    edits:
+      - from: (Il voulait le faire parler.)
+        to: Il voulait le faire parler.
+
+  - n: 66
+    edits:
+      - from: (Et on m'a dit qu'à cette époque il y avait à cet endroit un dépotoir, et on disait que la maison d'étude de Rabbi Chimchon avait été à cet endroit.)
+        to: Et on m'a dit qu'à cette époque il y avait à cet endroit un dépotoir, et on disait que la maison d'étude de Rabbi Chimchon avait été à cet endroit.
+
+  - n: 79
+    drop:
+      - (une force d
+
+  - n: 111

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs>
+    <radialGradient id="room" cx="0.5" cy="0.42" r="0.8">
+      <stop offset="0" stop-color="#46321f"/><stop offset="0.55" stop-color="#1d150e"/><stop offset="1" stop-color="#0a0806"/>
+    </radialGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1430"/><stop offset="1" stop-color="#2c3660"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe0a0" stop-opacity="0.45"/><stop offset="1" stop-color="#ffc070" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    </defs><rect width="1920" height="1080" fill="url(#room)"/><circle cx="960" cy="420" r="460" fill="url(#warm)"/><rect x="0" y="600" width="1920" height="480" fill="#1a120b"/><rect x="0" y="592" width="1920" height="14" fill="#3a2a1a"/><path d="M560,592 C560,520 600,470 690,462 C780,470 820,520 820,592 Z" fill="#4a1a24"/><path d="M600,500 C640,480 740,480 780,500" stroke="#c9a45c" stroke-width="4" fill="none"/><rect x="900" y="470" width="110" height="110" fill="#0c0b0b"/><rect x="886" y="574" width="138" height="18" fill="#0c0b0b"/><path d="M906,480 L1004,480 M906,525 L1004,525" stroke="#2a2828" stroke-width="2"/><path d="M1024,584 C1120,600 1180,560 1150,520 C1120,480 1060,500 1090,540 C1120,580 1240,590 1300,572" stroke="#0c0b0b" stroke-width="9" fill="none"/><rect x="1150" y="500" width="80" height="72" fill="#0c0b0b"/><rect x="1140" y="568" width="100" height="16" fill="#0c0b0b"/><path d="M1240,580 C1320,560 1380,600 1440,586" stroke="#0c0b0b" stroke-width="8" fill="none"/><ellipse cx="1500" cy="586" rx="38" ry="10" fill="#d6d0c4"/><ellipse cx="1500" cy="582" rx="38" ry="10" fill="#c8c0b0"/><ellipse cx="420" cy="590" rx="60" ry="11" fill="#8f7146"/><path d="M370,588 C380,556 460,556 470,588 Z" fill="#c9a45c"/><circle cx="452" cy="540.4" r="54.400000000000006" fill="#ffd890" opacity="0.28" filter="url(#blur3)"/><path d="M452,520 C462.88,535.3 462.2,547.2 452,554 C441.8,547.2 441.12,535.3 452,520 Z" fill="#fff2c4"/></svg>

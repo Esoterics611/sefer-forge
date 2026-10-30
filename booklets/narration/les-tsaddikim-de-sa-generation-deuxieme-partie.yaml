@@ -1,0 +1,56 @@
+# A narration for video, in French: the stories of tzaddikim-of-his-generation-part-two.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/les-tsaddikim-de-sa-generation-deuxieme-partie.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Les tsaddikim de sa génération, partie 2
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/tzaddikim-of-his-generation-part-two.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 61
+
+  - n: 78
+    edits:
+      - from: (Car sa coutume était d'entendre la « Kedoucha » et le « Barkhou » dans toutes les synagogues.)
+        to: Car sa coutume était d'entendre la « Kedoucha » et le « Barkhou » dans toutes les synagogues.
+      - from: Et j'ai entendu du rav, qui dit
+        to: J'ai entendu du rav, qui dit
+
+  - n: 116
+    edits:
+      - from: (Moi, j'ai entendu l'explication du rav de Polonné et je l'ai oubliée, mais elle est sûrement écrite dans ses livres ; qu'on y regarde.)
+        to: Moi, j'ai entendu l'explication du rav de Polonné et je l'ai oubliée, mais elle est sûrement écrite dans ses livres ; qu'on y regarde.
+
+  - n: 135
+
+  - n: 144
+    drop:
+      - (dans les ve
+    edits:
+      - from: (Car le rav priait dans une petite pièce particulière de la maison d'étude, et entendait de là la Kedoucha, le Barkhou et l'amen.)
+        to: Car le rav priait dans une petite pièce particulière de la maison d'étude, et entendait de là la Kedoucha, le Barkhou et l'amen.
+      - from: Et à ce propos j'écrirai ce que j'ai entendu du rav Rabbi Ye'hiel
+        to: J'ai entendu du rav Rabbi Ye'hiel
+
+  - n: 145
+    edits:
+      - from: 'Encore une histoire (de Rabbi Ye''hiel) :'
+        to: 'Encore une histoire de Rabbi Ye''hiel :'

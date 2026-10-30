@@ -1,0 +1,46 @@
+# A narration for video, in French: the stories of rabbi-yitzchak-of-drohobych.yaml, from the French
+# booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py from the English plan, then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/rabbi-itshak-de-drohobytch.yaml
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-fr.yaml; 'h is read as
+# the French r. Summaries are not read.
+
+title: Rabbi Its'hak de Drohobytch
+lang: fr
+voice: ff_siwis
+speed: 1.0
+
+# The same drawing as the English episode.
+image: booklets/narration/images/rabbi-yitzchak-of-drohobych.svg
+
+intro: >
+  Les louanges du Baal Chem Tov, racontées en français d'aujourd'hui.
+
+outro: >
+  Ici s'achèvent ces récits des Louanges du Baal Chem Tov.
+
+stories:
+  - n: 36
+    drop:
+      - (celui qui avait pris à ferme
+    edits:
+      - from: 'Cette histoire aussi, je l''ai entendue de Rabbi Yoël :'
+        to: 'J''ai entendu de Rabbi Yoël :'
+      - from: sur sa civière (en route vers l'enterrement) à
+        to: sur sa civière, en route vers l'enterrement, à
+
+  - n: 37
+
+  - n: 57
+
+  - n: 58
+    edits:
+      - from: 'J''ai encore entendu du rav de notre communauté :'
+        to: 'J''ai entendu du rav de notre communauté :'
+
+  - n: 59

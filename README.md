@@ -67,7 +67,7 @@ you. The repo holds what makes this repeatable:
   workflow: `new-session`, `ocr-session`, `ingest-session`,
   `ingest-voice-session`, `paired-layout`, `publish-pamphlet`, `proof-pdf`,
   `assemble-discourse`, `assign-chapter`, `build-book`, `grow-glossary`,
-  `session-status`).
+  `session-status`, `translate-booklets`, `narrate-video`).
 - **Checks**: `check-session.py` runs after every edit (a project hook),
   `transcript-diff.py` after every cleanup, `proof-pdf.py` before every
   hand-over.
@@ -135,7 +135,7 @@ Books today (`ls books/`): `shaar-hayichud` (שער היחוד shiurim), `siddur
 | `templates/` | Word reference template (`create-template.py`), pamphlet and booklet CSS |
 | `docs/` | Setup, print standard, agentic development, backlog |
 | `compiled/` | Assembled `<book>.md` (generated; never edit) |
-| `output/` | DOCX, PDFs, pamphlets (gitignored) |
+| `output/` | DOCX, PDFs, pamphlets, narrations (gitignored) |
 
 ## Dependencies
 
@@ -143,4 +143,5 @@ Books today (`ls books/`): `shaar-hayichud` (שער היחוד shiurim), `siddur
 - `python` ≥ 3.10 with `requirements.txt` (and `requirements-gpu.txt` with an
   NVIDIA GPU); Whisper setup in `TRANSCRIPTION.md`
 - Google Chrome (prints the pamphlets and booklets)
+- `requirements-narration.txt` (Kokoro voice for `build-narration.py`; the model downloads on first use)
 - `git-lfs` (the repo's Word files)

@@ -1,0 +1,50 @@
+# A narration for video: booklet 2, the hidden years and how he became known (stories 4, 5, 9; 3 and 10-12 are in other episodes), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-hidden-years-and-the-revelation.yaml
+#   -> output/narration/the-hidden-years-and-the-revelation/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Hidden Years and the Revelation"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: the rock like a small house on the mountain across the river Prut, at dawn, a lone figure on the way. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-hidden-years-and-the-revelation.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 4
+    drop:
+      - "(his concealment)"
+    edits:
+      - from: "Afterward Rabbi Gershon leased a village"
+        to: "Rabbi Gershon leased a village"
+      - from: "(The Baal Shem Tov used to pray precisely by the eastern wall.)"
+        to: "The Baal Shem Tov used to pray precisely by the eastern wall."
+      - from: '(For they held the Baal Shem Tov to be God-fearing, only "an ignorant man cannot fear sin": someone who has not studied does not know how to guard himself against sin.)'
+        to: 'For they held the Baal Shem Tov to be God-fearing, only "an ignorant man cannot fear sin": someone who has not studied does not know how to guard himself against sin.'
+
+  - n: 5
+    drop:
+      - "(to drive a spirit out of him)"
+      - "(the harmful spirits)"
+    edits:
+      - from: 'said to him (so my father-in-law told): "Were you'
+        to: 'said to him, so my father-in-law told: "Were you'
+      - from: '"Welcome, Rabbi Israel" (for he was still young then). And'
+        to: '"Welcome, Rabbi Israel," for he was still young then. And'
+
+  - n: 9
