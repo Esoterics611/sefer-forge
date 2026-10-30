@@ -166,18 +166,51 @@ subtitle from `booklets.yaml`).
 
 ## Episodes made
 
+English, `lang: en`, in the order they were made: the first five chosen by hand, then the
+booklets in order (192 stories, every one not flagged MATURE). Length: of the video, filled in
+once it is built.
+
 | Plan | Stories | Length | Picture |
 |---|---|---|---|
-| `the-boy-who-was-not-afraid` | 1, 12, 70, 33 | 14:31 | moonlit forest, the boy with his stick on the path |
-| `the-locked-gate` | 17, 161, 179 | 10:38 | the gate in the heavens, locked, the prayers rising |
-| `the-frog-in-the-wilderness` | 10, 11, 3 | 7:26 | the great frog at dusk, the Baal Shem Tov before it |
-| `the-speech-of-the-birds` | 101, 26, 197 | 10:09 | a wagon on the road at dawn, birds rising |
-| `the-passing-of-the-baal-shem-tov` | 207, 210 | 10:29 | a candle with a blue flame, the stopped clock, dawn in the window |
-| `the-authors-introduction` (booklet 1) | 0 | — | an open book on a lectern by lamplight, a quill in the inkwell |
-| `the-hidden-years-and-the-revelation` (booklet 2) | 4, 5, 9 | — | the rock like a small house on the mountain across the Prut, at dawn |
-| `rabbi-gershon-of-kitov` (booklet 3) | 7, 20, 66, 79, 111 | — | a wooden synagogue at dusk, the souls coming like a flock of lights |
-| `the-land-of-israel-and-the-way-there` (booklet 4) | 28, 29, 30, 92, 93, 155, 191, 202 | — | a sailing ship off the coast, a walled city on the hills |
-| `in-prayer` (booklet 5) | 15, 16, 76, 95, 147 | — | a man in his prayer shawl, from behind, before the holy ark |
+| `the-boy-who-was-not-afraid` | 1, 12, 70, 33 | — | a moonlit forest, the boy with his stick on the path |
+| `the-locked-gate` | 17, 161, 179 | — | the gate in the heavens, locked, with the prayers rising |
+| `the-frog-in-the-wilderness` | 10, 11, 3 | — | the great frog in the wilderness at dusk, before the lone figure |
+| `the-speech-of-the-birds` | 101, 26, 197 | — | a wagon on a road at dawn, birds rising over the fields |
+| `the-passing-of-the-baal-shem-tov` | 207, 210 | — | a candle burning down at dawn, its flame rising blue toward an open window |
+| `the-authors-introduction` | 0 | — | an open book on a lectern by lamplight, a quill in the inkwell |
+| `the-hidden-years-and-the-revelation` | 4, 5, 9 | — | the rock like a small house on the mountain across the river Prut, at dawn, a lone figure on the way |
+| `rabbi-gershon-of-kitov` | 7, 20, 66, 79, 111 | — | a wooden synagogue at dusk, the souls coming to it like a great flock of lights |
+| `the-land-of-israel-and-the-way-there` | 28, 29, 30, 92, 93, 155, 191, 202 | — | a sailing ship at dusk off the coast of the Land of Israel, a walled city on the hills |
+| `in-prayer` | 15, 16, 76, 95, 147 | — | a man wrapped in his prayer shawl, seen from behind, before the holy ark, its lamps and the light |
+| `his-ways-and-customs` | 53, 63, 68, 134, 149, 156, 164, 169 | — | a pipe and a cup of wine on a table by the window, the Sabbath candles lit |
+| `the-rabbi-of-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | — | the Rabbi of Polonne's study by night, a letter with its seal on the table, rain at the window |
+| `the-mokhiach-of-polonne-part-one` | 84, 85, 96 | — | the great synagogue of Lvov, the preacher in borrowed silk at its door |
+| `the-mokhiach-of-polonne-part-two` | 123, 125, 160 | — | the house in Kitov at night, the jester's dark shape at the window, one candle |
+| `the-maggid-of-mezritch` | 34, 45, 47, 130, 200 | — | a night of thunder and lightning over a small house, one window lit |
+| `the-maggids-household-and-disciples` | 40, 41, 42, 43, 46, 109 | — | a sukkah at night, its lamp lit, the stars through its roof of branches |
+| `rabbi-nachman-of-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | — | a study house on the water at dawn, the mikveh beside it, one window lit |
+| `rabbi-yitzchak-of-drohobych` | 36, 37, 57, 58, 59 | — | a pair of tefillin and their open box on a table, a thaler beside them, lamplight |
+| `tzaddikim-of-his-generation-part-one` | 24, 25, 35 | — | the schoolchildren's psalms rising over Nemirov by night, the Tatars' fires far off on the plain |
+| `tzaddikim-of-his-generation-part-two` | 61, 78, 116, 135, 144, 145 | — | a wagon stopped on a dark road on Friday night, the stars, the first Sabbath candles in a far window |
+| `opponents-and-testers` | 48, 87, 99, 188, 189, 190 | — | two wagons facing each other in a forest clearing, the robbers' shadows fleeing among the trees |
+| `opponents-who-drew-close-part-one` | 13, 14, 112 | — | a splendid palace in a dream, its windows lit, a man looking in from the dark |
+| `opponents-who-drew-close-part-two` | 113, 114, 115, 185, 203 | — | an open Gemara in the moonlight at a window, the night outside |
+| `seeing-from-afar` | 18, 19, 38, 89, 118, 128, 129, 141, 143 | — | a man on a hilltop at dusk looking out over a wide plain, a covered wagon on the road far below, a town on the horizon |
+| `wonders-on-the-road` | 8, 142, 148, 177, 178, 180 | — | a wagon on a snowy road under the moon, a long pipe stem trailing smoke from it |
+| `leaseholders-and-noblemen-part-one` | 67, 110, 159 | — | a nobleman's castle on a hill above a village, its tower lit, a river below |
+| `leaseholders-and-noblemen-part-two` | 172, 173 | — | a covered wagon under a low gateway, the lintel lifted above its hood, a lamp in the yard |
+| `charity-and-money` | 86, 120, 121, 122, 138 | — | an empty purse and a last gold coin on a table by a candle, the door open to the night |
+| `simple-jews-and-hidden-tzaddikim` | 51, 52, 126, 163, 194, 196 | — | a craftsman's small house at dawn, wool stockings drying on a line, the synagogue beyond |
+| `fit-and-unfit` | 39, 100, 108, 139, 140, 151 | — | a shochet's long knife on its cloth by a whetstone, a turnip set aside at the end of the table, lamplight |
+| `healings-part-one` | 31, 56, 69 | — | a sickroom at night, a bed by the window, a small bottle of medicine and a candle on the sill |
+| `healings-part-two` | 80, 82, 83, 117, 192, 205 | — | a tavern in a snowstorm at night, its door shut fast, a rider coming through the snow |
+| `sons-for-the-childless-part-one` | 71, 165, 182, 183 | — | a cradle by the window at dawn, a pair of small shoes beside it |
+| `sons-for-the-childless-part-two` | 184, 204 | — | a small house alone in a dark forest, candles burning in its window, a loaded wagon on the road |
+| `demons-sorcerers-and-harmful-spirits` | 6, 62, 88, 119, 124, 157, 158 | — | a dark spirit rolling like a whirlwind out of a tollkeeper's house at night, amulets on the table inside |
+| `false-accusations-and-dangers` | 32, 97, 133, 136, 154, 171 | — | a ford across a wide river at sunset, people crossing with their bundles before the Sabbath |
+| `the-garden-of-eden-and-gehinnom` | 54, 55, 64, 127, 152, 153, 168, 176 | — | a pillar of fire standing over a grave in a cemetery at night, the road passing by |
+| `sin-repentance-and-reincarnation` | 193, 49, 72, 175, 201, 209 | — | a dog swimming in a dark river at dusk, a fisherman's boat with its net, the far bank |
+| `his-last-days` | 77, 90, 105, 106, 107 | — | a bell on a string in a quiet house at dusk, the string running out through the door to a small house |
 
 French, `lang: fr` (the English episode's stories and drawing):
 
