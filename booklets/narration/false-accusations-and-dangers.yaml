@@ -1,0 +1,61 @@
+# A narration for video: booklet 25, false accusations and dangers (stories 32, 97, 133, 136, 154, 171; 174, 195 and 199 are MATURE), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/false-accusations-and-dangers.yaml
+#   -> output/narration/false-accusations-and-dangers/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "False Accusations and Dangers"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a ford across a wide river at sunset, people crossing with their bundles before the Sabbath. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/false-accusations-and-dangers.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 32
+    drop:
+      # glosses, the first inside the Baal Shem Tov's words
+      - "(of the duchess)"
+      - "(the men who spoke for the Jews with the authorities)"
+    edits:
+      - from: "Another story: the Baal Shem Tov"
+        to: "A story: the Baal Shem Tov"
+
+  - n: 97
+    drop:
+      # glosses inside the martyrs' words and the Baal Shem Tov's
+      - "(the enemy's)"
+      - "(to be killed for the sanctification of God's name)"
+
+  - n: 133
+    drop:
+      - "(the Song at the Sea)"
+    edits:
+      - from: "the rabbi (of Polonne) to pray"
+        to: "the Rabbi of Polonne to pray"
+
+  - n: 136
+    drop:
+      - "(Russia)"
+      - "(the Turks)"
+      - "(angels)"
+
+  - n: 154
+
+  - n: 171
+    drop:
+      - "(which was before the flight that happened in our days)"

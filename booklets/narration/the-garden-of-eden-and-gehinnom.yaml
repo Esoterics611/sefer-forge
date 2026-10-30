@@ -1,0 +1,57 @@
+# A narration for video: booklet 27, the Garden of Eden and Gehinnom (stories 54, 55, 64, 127, 152, 153, 168, 176; 112 is in Opponents Who Drew Close), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-garden-of-eden-and-gehinnom.yaml
+#   -> output/narration/the-garden-of-eden-and-gehinnom/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "The Garden of Eden and Gehinnom"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a pillar of fire standing over a grave in a cemetery at night, the road passing by. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/the-garden-of-eden-and-gehinnom.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 54
+
+  - n: 55
+    drop:
+      - "(*T.Y.A.Y.*)"
+
+  - n: 64
+    drop:
+      # a gloss inside the Baal Shem Tov's words
+      - "(German)"
+    edits:
+      - from: "(For he used to say that one candle is harmful to the eyes, and so are three, but two are good for the eyes.)"
+        to: "For he used to say that one candle is harmful to the eyes, and so are three, but two are good for the eyes."
+
+  - n: 127
+
+  - n: 152
+    edits:
+      - from: "One read before him (and I do not know whether Mishnah, *Ein Yaakov* or Zohar)."
+        to: "One read before him, and I do not know whether Mishnah, *Ein Yaakov* or Zohar."
+
+  - n: 153
+
+  - n: 168
+    edits:
+      - from: "The preacher came (after his death) to the Baal Shem Tov,"
+        to: "The preacher came, after his death, to the Baal Shem Tov,"
+
+  - n: 176

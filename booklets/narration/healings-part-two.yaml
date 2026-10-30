@@ -1,0 +1,42 @@
+# A narration for video: booklet 22, healings, part two (stories 80, 82, 83, 117, 192, 205; part one has 31, 56, 69), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/healings-part-two.yaml
+#   -> output/narration/healings-part-two/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Healings, Part Two"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a tavern in a snowstorm at night, its door shut fast, a rider coming through the snow. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/healings-part-two.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 80
+
+  - n: 82
+
+  - n: 83
+
+  - n: 117
+
+  - n: 192
+
+  - n: 205
+    cut:
+      # an explanation in the Kabbalah of the word "pulse" and its number
+      - "(And the explanation according to the Kabbalah"

@@ -1164,6 +1164,219 @@ def knife() -> str:
     return svg(ROOM_DEFS, "".join(b))
 
 
+def sickroom() -> str:
+    """Healings, part one: a sickroom at night, the bed by the window, a bottle of medicine and a candle on the sill."""
+    rnd = random.Random(173)
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>', window(1100, 110, 360, 470, "url(#night)")]
+    b.append("".join(f'<circle cx="{rnd.uniform(1120, 1440):.0f}" cy="{rnd.uniform(130, 400):.0f}" r="{rnd.choice([0.8, 1.2, 1.6])}" fill="#fff" opacity="{rnd.uniform(0.3, 0.9):.2f}"/>' for _ in range(22)))
+    b.append('<circle cx="1220" cy="560" r="300" fill="url(#warm)"/>')
+    b.append('<rect x="1080" y="586" width="400" height="20" fill="#3a2a1a"/>')                          # the sill
+    b.append('<rect x="1150" y="526" width="34" height="60" rx="4" fill="#4a6a5a" opacity="0.9"/><rect x="1158" y="510" width="18" height="18" fill="#3a2414"/>')
+    b.append('<ellipse cx="1380" cy="584" rx="30" ry="7" fill="#c9a45c"/><rect x="1372" y="520" width="16" height="64" fill="#f3ead2"/>' + flame(1380, 482, 34))
+    b.append('<path d="M240,620 L240,420 L300,420 L300,500 L920,500 L920,460 L980,460 L980,620 Z" fill="#2a1d12"/>'   # the bed
+             '<path d="M300,500 L920,500 L920,560 L300,560 Z" fill="#d8ccb0"/><ellipse cx="380" cy="490" rx="70" ry="26" fill="#efe6d0"/>'
+             '<path d="M440,500 C560,470 760,470 900,500 L900,520 L440,520 Z" fill="#b8a890"/>')
+    b.append(f'<rect x="0" y="620" width="{W}" height="{H - 620}" fill="#120c08"/>')
+    return svg(ROOM_DEFS, "".join(b))
+
+
+def snowstorm_tavern() -> str:
+    """Healings, part two: the tavern in a snowstorm at night, its door shut fast, a rider coming through the snow."""
+    rnd = random.Random(179)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3048"/><stop offset="1" stop-color="#7a8298"/>
+    </linearGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>']
+    b.append(f'<path d="{hills(rnd, 560, 10, 0.9)}" fill="#c8ccd8"/>')
+    b.append('<rect x="980" y="400" width="420" height="190" fill="#2a2430"/><path d="M950,406 L1190,300 L1430,406 Z" fill="#221c28"/>'
+             '<path d="M1000,404 L1190,320 L1380,404" stroke="#e8ecf4" stroke-width="10" fill="none"/>'
+             '<rect x="1060" y="470" width="60" height="50" fill="#f5c871"/><rect x="1290" y="470" width="60" height="50" fill="#f5c871" opacity="0.8"/>'
+             '<rect x="1170" y="480" width="60" height="110" fill="#14101a"/>')
+    b.append('<g transform="translate(560,600) scale(1.2)" fill="#14121c">'                           # the rider
+             '<ellipse cx="0" cy="-44" rx="46" ry="18"/><path d="M-36,-50 L-58,-84 L-46,-90 L-24,-56 Z"/>'
+             '<ellipse cx="-62" cy="-88" rx="16" ry="8" transform="rotate(25 -62 -88)"/>'
+             '<path d="M-30,-30 L-34,0 M-16,-30 L-12,0 M18,-30 L14,0 M32,-30 L38,0" stroke="#14121c" stroke-width="5"/>'
+             '<circle cx="4" cy="-96" r="8"/><path d="M-6,-88 L14,-88 L18,-56 L-10,-56 Z"/></g>')
+    flakes = "".join(f'<circle cx="{rnd.uniform(0, W):.0f}" cy="{rnd.uniform(0, 640):.0f}" r="{rnd.uniform(1.2, 3.5):.1f}" fill="#ffffff" opacity="{rnd.uniform(0.4, 0.9):.2f}"/>' for _ in range(420))
+    b.append(flakes)
+    b.append(f'<rect x="0" y="610" width="{W}" height="{H - 610}" fill="#9aa0b4"/>')
+    return svg(defs, "".join(b))
+
+
+def cradle() -> str:
+    """Sons for the childless, part one: a cradle by the window at dawn, a pair of small shoes beside it."""
+    rnd = random.Random(181)
+    defs = ROOM_DEFS.replace('<stop offset="0" stop-color="#0e1430"/><stop offset="1" stop-color="#2c3660"/>',
+                             '<stop offset="0" stop-color="#4a5a8a"/><stop offset="1" stop-color="#f2cf9a"/>')
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>', window(1180, 110, 380, 480, "url(#night)")]
+    b.append('<path d="M1180,590 L700,620 L1560,620 Z" fill="#f2cf9a" opacity="0.12"/>')
+    b.append(f'<rect x="0" y="606" width="{W}" height="{H - 606}" fill="#1a120b"/>')
+    b.append('<path d="M620,600 C620,480 1000,480 1000,600" stroke="#3a2a1a" stroke-width="14" fill="none"/>'     # the rockers
+             '<path d="M640,540 L980,540 L960,470 L660,470 Z" fill="#5a3a22"/><path d="M660,470 L960,470 L950,450 L670,450 Z" fill="#6a4a2a"/>'
+             '<path d="M960,470 C1000,420 980,380 940,370 L930,450 Z" fill="#5a3a22"/>'
+             '<path d="M680,470 C760,440 860,440 940,468" fill="#efe6d0"/>')
+    b.append('<path d="M1080,600 C1080,580 1100,570 1120,574 L1140,600 Z M1150,600 C1150,580 1170,570 1190,574 L1210,600 Z" fill="#8a5a3a"/>')
+    return svg(defs, "".join(b))
+
+
+def forest_house() -> str:
+    """Sons for the childless, part two: a small house alone in a dark forest, candles in its window, the loaded wagon on the road."""
+    rnd = random.Random(191)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#080a18"/><stop offset="1" stop-color="#262c4a"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe0a0" stop-opacity="0.5"/><stop offset="1" stop-color="#ffc070" stop-opacity="0"/>
+    </radialGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 120, 0, 300)]
+    for base, (lo, hi), col, n in [(540, (140, 240), "#141a2a", 70), (620, (260, 420), "#0a0e18", 30)]:
+        trees = []
+        for _ in range(n):
+            x = rnd.uniform(-40, W + 40)
+            if 760 < x < 1240:
+                continue
+            trees.append(pine(x, base + rnd.uniform(-10, 10), rnd.uniform(lo, hi), rnd))
+        b.append(f'<path d="{" ".join(trees)}" fill="{col}"/>')
+    b.append('<circle cx="1000" cy="500" r="220" fill="url(#warm)"/>')
+    b.append('<rect x="900" y="450" width="200" height="140" fill="#14101a"/><path d="M880,454 L1000,380 L1120,454 Z" fill="#0e0a14"/>'
+             '<rect x="940" y="490" width="56" height="46" fill="#f5c871"/><rect x="1010" y="490" width="56" height="46" fill="#f5c871"/>')
+    b.append(wagon(650, 616, 1.0, "#080a12", people=0))
+    b.append('<path d="M650,570 L762,570 L762,560 C740,540 680,540 650,560 Z" fill="#080a12"/>')
+    b.append(f'<rect x="0" y="616" width="{W}" height="{H - 616}" fill="#0a0c14"/>')
+    return svg(defs, "".join(b))
+
+
+def whirlwind() -> str:
+    """Demons, sorcerers and harmful spirits: a dark spirit rolling like a whirlwind out of the tollkeeper's house at night."""
+    rnd = random.Random(193)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c0e20"/><stop offset="1" stop-color="#3a3858"/>
+    </linearGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 100, 0, 360)]
+    b.append(f'<path d="{hills(rnd, 600, 8, 1)}" fill="#1c1a2c"/>')
+    b.append('<rect x="560" y="420" width="380" height="180" fill="#1a1622"/><path d="M530,426 L750,320 L970,426 Z" fill="#141018"/>'
+             '<rect x="610" y="470" width="60" height="54" fill="#f5c871"/><rect x="820" y="470" width="60" height="54" fill="#f5c871" opacity="0.7"/>'
+             '<rect x="720" y="490" width="60" height="110" fill="#2a2030"/>')
+    spiral = []
+    for k in range(260):                                                   # the whirlwind leaving through the door
+        t = k / 260
+        a = t * 22
+        r = 20 + t * 150
+        x = 800 + t * 620 + r * math.cos(a)
+        y = 560 - t * 220 + r * 0.45 * math.sin(a)
+        spiral.append(f"{x:.0f},{y:.0f}")
+    b.append(f'<polyline points="{" ".join(spiral)}" stroke="#05040a" stroke-width="16" fill="none" opacity="0.7" filter="url(#blur3)"/>'
+             f'<polyline points="{" ".join(spiral)}" stroke="#2a2440" stroke-width="3" fill="none" opacity="0.6"/>')
+    b.append(f'<rect x="0" y="606" width="{W}" height="{H - 606}" fill="#0e0c18"/>')
+    return svg(defs, "".join(b))
+
+
+def river_crossing() -> str:
+    """False accusations and dangers: a ford across the wide river at sunset, people crossing with their bundles before the Sabbath."""
+    rnd = random.Random(197)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2a54"/><stop offset="0.5" stop-color="#c8786a"/><stop offset="0.58" stop-color="#f4c07a"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0b878"/><stop offset="1" stop-color="#3a3a64"/>
+    </linearGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 20, 0, 160)]
+    b.append('<circle cx="1440" cy="510" r="60" fill="#ffe8b8"/>')
+    b.append(f'<path d="{ridge(rnd, 500, 14, 60)}" fill="#5a4060"/>')
+    b.append('<rect x="0" y="520" width="1920" height="560" fill="url(#water)"/>')
+    for _ in range(50):
+        x, y = rnd.uniform(0, W), rnd.uniform(530, 620)
+        b.append(f'<rect x="{x:.0f}" y="{y:.0f}" width="{rnd.uniform(30, 120):.0f}" height="2" fill="#fff0d0" opacity="{rnd.uniform(0.15, 0.4):.2f}"/>')
+    for k, x in enumerate(range(620, 1300, 90)):                            # the people wading across
+        y = 586 - k * 3
+        b.append(f'<g transform="translate({x},{y})" fill="#1a1424"><circle cx="0" cy="-58" r="7"/>'
+                 '<path d="M-9,-50 L9,-50 L12,-8 L-12,-8 Z"/>'
+                 f'<ellipse cx="{12 if k % 2 else -12}" cy="-56" rx="12" ry="9"/></g>'
+                 f'<ellipse cx="{x}" cy="{y - 6}" rx="22" ry="3" fill="#fff0d0" opacity="0.35"/>')
+    b.append(f'<rect x="0" y="608" width="{W}" height="{H - 608}" fill="#1a1a34"/>')
+    return svg(defs, "".join(b))
+
+
+def pillar_of_fire() -> str:
+    """The Garden of Eden and Gehinnom: a pillar of fire over a grave in the cemetery at night, the road passing by."""
+    rnd = random.Random(199)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#06070f"/><stop offset="1" stop-color="#1e1c30"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#fff4c8"/><stop offset="0.3" stop-color="#ffb24a"/><stop offset="1" stop-color="#ff7a30" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 160, 0, 420)]
+    b.append(f'<path d="{hills(rnd, 570, 10, 1)}" fill="#14121e"/>')
+    b.append('<ellipse cx="960" cy="380" rx="200" ry="320" fill="#ffb24a" opacity="0.18" filter="url(#blur30)"/>'
+             '<path d="M920,580 C900,420 940,260 960,80 C980,260 1020,420 1000,580 Z" fill="url(#fire)" filter="url(#blur8)"/>'
+             '<path d="M940,580 C930,450 950,330 960,200 C970,330 990,450 980,580 Z" fill="url(#fire)"/>')
+    for x, h in ((520, 60), (640, 48), (760, 56), (930, 70), (1140, 52), (1260, 62), (1380, 46)):      # gravestones
+        b.append(f'<path d="M{x - 22},{600} L{x - 22},{600 - h} A22,22 0 0 1 {x + 22},{600 - h} L{x + 22},{600} Z" fill="#2a2638"/>')
+    b.append('<path d="M0,640 C600,610 1300,610 1920,600 L1920,620 C1300,630 600,632 0,660 Z" fill="#3a3650" opacity="0.6"/>')
+    b.append(f'<rect x="0" y="600" width="{W}" height="{H - 600}" fill="#0e0c16"/>')
+    return svg(defs, "".join(b))
+
+
+def dog_river() -> str:
+    """Sin, repentance and reincarnation: a dog swimming in the dark river at dusk, a fisherman's boat with its net."""
+    rnd = random.Random(211)
+    defs = """
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e2244"/><stop offset="0.55" stop-color="#8a6a80"/><stop offset="0.62" stop-color="#d8a080"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b8889a"/><stop offset="1" stop-color="#1e2244"/>
+    </linearGradient>
+    """
+    b = [f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd, 40, 0, 200)]
+    b.append(f'<path d="{ridge(rnd, 470, 12, 60)}" fill="#3a3050"/>')
+    trees = [pine(rnd.uniform(1200, 1920), 500, rnd.uniform(60, 120), rnd) for _ in range(30)]
+    b.append(f'<path d="{" ".join(trees)}" fill="#2a2440"/>')
+    b.append('<rect x="0" y="500" width="1920" height="580" fill="url(#water)"/>')
+    b.append('<g transform="translate(1200,560)" fill="#14101e"><path d="M-120,0 L120,0 L90,26 L-90,26 Z"/>'           # the boat
+             '<circle cx="-40" cy="-28" r="9"/><path d="M-50,-20 L-30,-20 L-26,0 L-54,0 Z"/>'
+             '<path d="M20,0 L60,-60 L64,-58 L26,0 Z"/></g>'
+             '<path d="M1260,500 C1300,520 1340,540 1380,560" stroke="#14101e" stroke-width="2" fill="none"/>'
+             + "".join(f'<path d="M{1300 + k * 10},{520 + k * 6} l-6,30" stroke="#14101e" stroke-width="1.5"/>' for k in range(8)))
+    b.append('<g transform="translate(720,580)" fill="#100c18"><ellipse cx="0" cy="0" rx="34" ry="10"/>'                     # the dog's head in the water
+             '<ellipse cx="-30" cy="-12" rx="16" ry="12"/><path d="M-36,-22 L-30,-38 L-22,-22 Z"/><ellipse cx="-46" cy="-8" rx="9" ry="6"/></g>'
+             '<ellipse cx="720" cy="586" rx="70" ry="6" fill="#ffffff" opacity="0.2"/><ellipse cx="720" cy="596" rx="110" ry="5" fill="#ffffff" opacity="0.12"/>')
+    b.append(f'<rect x="0" y="620" width="{W}" height="{H - 620}" fill="#141632"/>')
+    return svg(defs, "".join(b))
+
+
+def bell() -> str:
+    """His last days: the bell on its string in the big house at dusk, the string running out through the door to the small house."""
+    defs = ROOM_DEFS.replace('<stop offset="0" stop-color="#0e1430"/><stop offset="1" stop-color="#2c3660"/>',
+                             '<stop offset="0" stop-color="#2a2a52"/><stop offset="1" stop-color="#c8907a"/>')
+    b = [f'<rect width="{W}" height="{H}" fill="url(#room)"/>']
+    b.append('<rect x="1240" y="200" width="280" height="420" fill="url(#night)"/><rect x="1226" y="190" width="308" height="14" fill="#1e1610"/>'
+             '<rect x="1226" y="190" width="14" height="430" fill="#1e1610"/><rect x="1520" y="190" width="14" height="430" fill="#1e1610"/>')
+    b.append('<rect x="1340" y="470" width="120" height="100" fill="#14101a"/><path d="M1326,474 L1400,428 L1474,474 Z" fill="#100c14"/>'
+             '<rect x="1380" y="500" width="30" height="28" fill="#f5c871"/>')
+    b.append('<path d="M760,120 L760,250" stroke="#8f7146" stroke-width="3"/>'
+             '<path d="M720,320 C720,260 740,240 760,240 C780,240 800,260 800,320 L812,334 L708,334 Z" fill="#c9a45c"/>'
+             '<circle cx="760" cy="342" r="10" fill="#a8874e"/>')
+    b.append('<path d="M760,250 C900,280 1100,300 1240,330 C1300,345 1360,400 1400,500" stroke="#c8b898" stroke-width="2.5" fill="none"/>')
+    b.append('<circle cx="760" cy="300" r="220" fill="url(#warm)"/>')
+    b.append(f'<rect x="0" y="620" width="{W}" height="{H - 620}" fill="#120c08"/>')
+    return svg(defs, "".join(b))
+
+
 DRAWINGS = {
     "the-boy-who-was-not-afraid": forest,
     "the-locked-gate": gate,
@@ -1195,6 +1408,15 @@ DRAWINGS = {
     "charity-and-money": purse,
     "simple-jews-and-hidden-tzaddikim": stockings_line,
     "fit-and-unfit": knife,
+    "healings-part-one": sickroom,
+    "healings-part-two": snowstorm_tavern,
+    "sons-for-the-childless-part-one": cradle,
+    "sons-for-the-childless-part-two": forest_house,
+    "demons-sorcerers-and-harmful-spirits": whirlwind,
+    "false-accusations-and-dangers": river_crossing,
+    "the-garden-of-eden-and-gehinnom": pillar_of_fire,
+    "sin-repentance-and-reincarnation": dog_river,
+    "his-last-days": bell,
 }
 
 

@@ -1,0 +1,55 @@
+# A narration for video: booklet 26, sin and repentance (story 193), joined to booklet 28, reincarnations of souls (stories 49, 72, 175, 201, 209), as a story of one alone, on the same theme: sin and the repair of souls, from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/sin-repentance-and-reincarnation.yaml
+#   -> output/narration/sin-repentance-and-reincarnation/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Sin, Repentance and Reincarnation"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a dog swimming in a dark river at dusk, a fisherman's boat with its net, the far bank. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/sin-repentance-and-reincarnation.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 193
+    drop:
+      - "(a repair)"
+
+  - n: 49
+    drop:
+      # inside the Baal Shem Tov's words
+      - "(but for the honor of my father's house and my mother's house)"
+
+  - n: 72
+    drop:
+      - "(an iron-mining village)"
+    edits:
+      - from: "near that rudnia (the road went through the water channel, for the water was not deep, but now there had been heavy rains, or it was the time of the melting of the snows, and the channel had filled up), they did not realize it, and wanted"
+        to: "near that rudnia. The road went through the water channel, for the water was not deep, but now there had been heavy rains, or it was the time of the melting of the snows, and the channel had filled up. They did not realize it, and wanted"
+
+  - n: 175
+
+  - n: 201
+    drop:
+      # a gloss inside the Maggid's words
+      - "(the Arizal)"
+
+  - n: 209
+    drop:
+      # a gloss inside the rabbi's words
+      - "(to enter you)"

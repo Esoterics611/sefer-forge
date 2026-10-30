@@ -1,0 +1,34 @@
+# A narration for video: booklet 23, sons for the childless, part two: the merchant and Jonah, and the child at his circumcision (stories 184, 204; part one has 71, 165, 182, 183), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/sons-for-the-childless-part-two.yaml
+#   -> output/narration/sons-for-the-childless-part-two/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Sons for the Childless, Part Two"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a small house alone in a dark forest, candles burning in its window, a loaded wagon on the road. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/sons-for-the-childless-part-two.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 184
+    edits:
+      - from: 'greeted the guest (for on the Sabbath one does not say "Shalom" in the usual way).'
+        to: 'greeted the guest, for on the Sabbath one does not say "Shalom" in the usual way.'
+
+  - n: 204

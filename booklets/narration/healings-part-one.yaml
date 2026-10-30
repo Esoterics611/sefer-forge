@@ -1,0 +1,42 @@
+# A narration for video: booklet 22, healings, part one (stories 31, 56, 69; part two has 80, 82, 83, 117, 192, 205), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/healings-part-one.yaml
+#   -> output/narration/healings-part-one/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Healings, Part One"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a sickroom at night, a bed by the window, a small bottle of medicine and a candle on the sill. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/healings-part-one.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 31
+    drop:
+      - "(they changed her name)"
+    edits:
+      - from: "(And Rabbi Isaac was the brother-in-law of Rabbi Hirtz, the son of this rabbi.)"
+        to: "And Rabbi Isaac was the brother-in-law of Rabbi Hirtz, the son of this rabbi."
+      - from: "(And the letter the Baal Shem Tov sent was in the handwriting of Rabbi Yaakov of Yampol.)"
+        to: "And the letter the Baal Shem Tov sent was in the handwriting of Rabbi Yaakov of Yampol."
+
+  - n: 56
+
+  - n: 69
+    drop:
+      - "(lashes of fire in Heaven)"

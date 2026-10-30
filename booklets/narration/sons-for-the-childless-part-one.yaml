@@ -1,0 +1,35 @@
+# A narration for video: booklet 23, sons for the childless, part one (stories 71, 165, 182, 183; part two has 184, 204; 132 is MATURE), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/sons-for-the-childless-part-one.yaml
+#   -> output/narration/sons-for-the-childless-part-one/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Sons for the Childless, Part One"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a cradle by the window at dawn, a pair of small shoes beside it. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/sons-for-the-childless-part-one.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 71
+
+  - n: 165
+
+  - n: 182
+
+  - n: 183

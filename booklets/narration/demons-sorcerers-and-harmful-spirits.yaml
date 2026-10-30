@@ -1,0 +1,51 @@
+# A narration for video: booklet 24, demons, sorcerers and harmful spirits (stories 6, 62, 88, 119, 124, 157, 158; 50 is MATURE), from the English booklets
+# (shivchei-habesht-simple-en.md). Rules: prompts/narration-rules.md.
+#
+# Built by: python scripts/build-narration.py booklets/narration/demons-sorcerers-and-harmful-spirits.yaml
+#   -> output/narration/demons-sorcerers-and-harmful-spirits/  (video.mp4, thumbnail.jpg, narration.mp3/.wav,
+#      narration.srt, chapters.txt, script.txt)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# Respellings for the voice: booklets/narration/say-en.yaml. Summaries are not read.
+
+title: "Demons, Sorcerers and Harmful Spirits"
+lang: en
+voice: am_michael
+speed: 1.0
+
+# The picture for the whole video: a dark spirit rolling like a whirlwind out of a tollkeeper's house at night, amulets on the table inside. An original drawing
+# (booklets/narration/images/draw.py), rendered by headless Chrome at build time.
+image: booklets/narration/images/demons-sorcerers-and-harmful-spirits.svg
+
+intro: >
+  In Praise of the Baal Shem Tov, retold in modern English.
+
+outro: >
+  Here end these stories from In Praise of the Baal Shem Tov.
+
+stories:
+  - n: 6
+    drop:
+      - "(the force of impurity)"
+      # the Russian's translation, a gloss
+      - '(probably: "I am clever, but you are cleverer")'
+
+  - n: 62
+
+  - n: 88
+    cut:
+      # another version, from another teller
+      - "And from Rabbi Leib of Sinami I heard another version"
+
+  - n: 119
+
+  - n: 124
+
+  - n: 157
+    drop:
+      - "(the Hebrew word means both messengers and angels)"
+      - "(the lease)"
+
+  - n: 158
