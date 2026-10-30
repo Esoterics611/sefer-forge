@@ -188,7 +188,7 @@ once it is built.
 | `the-speech-of-the-birds` | 101, 26, 197 | 10:08 | a wagon on a road at dawn, birds rising over the fields |
 | `the-passing-of-the-baal-shem-tov` | 207, 210 | 10:27 | a candle burning down at dawn, its flame rising blue toward an open window |
 | `the-authors-introduction` | 0 | 6:27 | an open book on a lectern by lamplight, a quill in the inkwell |
-| `the-hidden-years-and-the-revelation` | 4, 5, 9 | — | the rock like a small house on the mountain across the river Prut, at dawn, a lone figure on the way |
+| `the-hidden-years-and-the-revelation` | 4, 5, 9 | 12:17 | the rock like a small house on the mountain across the river Prut, at dawn, a lone figure on the way |
 | `rabbi-gershon-of-kitov` | 7, 20, 66, 79, 111 | 12:11 | a wooden synagogue at dusk, the souls coming to it like a great flock of lights |
 | `the-land-of-israel-and-the-way-there` | 28, 29, 30, 92, 93, 155, 191, 202 | 17:14 | a sailing ship at dusk off the coast of the Land of Israel, a walled city on the hills |
 | `in-prayer` | 15, 16, 76, 95, 147 | 12:02 | a man wrapped in his prayer shawl, seen from behind, before the holy ark, its lamps and the light |
@@ -216,54 +216,54 @@ once it is built.
 | `healings-part-two` | 80, 82, 83, 117, 192, 205 | 11:13 | a tavern in a snowstorm at night, its door shut fast, a rider coming through the snow |
 | `sons-for-the-childless-part-one` | 71, 165, 182, 183 | 8:21 | a cradle by the window at dawn, a pair of small shoes beside it |
 | `sons-for-the-childless-part-two` | 184, 204 | 10:48 | a small house alone in a dark forest, candles burning in its window, a loaded wagon on the road |
-| `demons-sorcerers-and-harmful-spirits` | 6, 62, 88, 119, 124, 157, 158 | — | a dark spirit rolling like a whirlwind out of a tollkeeper's house at night, amulets on the table inside |
-| `false-accusations-and-dangers` | 32, 97, 133, 136, 154, 171 | — | a ford across a wide river at sunset, people crossing with their bundles before the Sabbath |
-| `the-garden-of-eden-and-gehinnom` | 54, 55, 64, 127, 152, 153, 168, 176 | — | a pillar of fire standing over a grave in a cemetery at night, the road passing by |
-| `sin-repentance-and-reincarnation` | 193, 49, 72, 175, 201, 209 | — | a dog swimming in a dark river at dusk, a fisherman's boat with its net, the far bank |
-| `his-last-days` | 77, 90, 105, 106, 107 | — | a bell on a string in a quiet house at dusk, the string running out through the door to a small house |
+| `demons-sorcerers-and-harmful-spirits` | 6, 62, 88, 119, 124, 157, 158 | 9:59 | a dark spirit rolling like a whirlwind out of a tollkeeper's house at night, amulets on the table inside |
+| `false-accusations-and-dangers` | 32, 97, 133, 136, 154, 171 | 13:21 | a ford across a wide river at sunset, people crossing with their bundles before the Sabbath |
+| `the-garden-of-eden-and-gehinnom` | 54, 55, 64, 127, 152, 153, 168, 176 | 16:00 | a pillar of fire standing over a grave in a cemetery at night, the road passing by |
+| `sin-repentance-and-reincarnation` | 193, 49, 72, 175, 201, 209 | 11:26 | a dog swimming in a dark river at dusk, a fisherman's boat with its net, the far bank |
+| `his-last-days` | 77, 90, 105, 106, 107 | 4:09 | a bell on a string in a quiet house at dusk, the string running out through the door to a small house |
 
 French, `lang: fr` (the English episode's stories and drawing), in the English table's order:
 
 | Plan | Stories | Length | As |
 |---|---|---|---|
-| `le-garcon-qui-n-avait-pas-peur` | 1, 12, 70, 33 | — | the-boy-who-was-not-afraid |
-| `la-porte-verrouillee` | 17, 161, 179 | — | the-locked-gate |
-| `la-grenouille-dans-le-desert` | 10, 11, 3 | — | the-frog-in-the-wilderness |
-| `le-langage-des-oiseaux` | 101, 26, 197 | — | the-speech-of-the-birds |
-| `la-mort-du-baal-chem-tov` | 207, 210 | — | the-passing-of-the-baal-shem-tov |
-| `l-introduction-de-l-auteur` | 0 | — | the-authors-introduction |
-| `les-annees-cachees-et-la-revelation` | 4, 5, 9 | — | the-hidden-years-and-the-revelation |
-| `rabbi-guershon-de-kitov` | 7, 20, 66, 79, 111 | — | rabbi-gershon-of-kitov |
-| `la-terre-d-israel-et-le-chemin-qui-y-mene` | 28, 29, 30, 92, 93, 155, 191, 202 | — | the-land-of-israel-and-the-way-there |
-| `dans-la-priere` | 15, 16, 76, 95, 147 | — | in-prayer |
-| `ses-vertus-et-ses-coutumes` | 53, 63, 68, 134, 149, 156, 164, 169 | — | his-ways-and-customs |
-| `le-rav-de-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | — | the-rabbi-of-polonne |
-| `le-mokhiah-de-polonne-premiere-partie` | 84, 85, 96 | — | the-mokhiach-of-polonne-part-one |
-| `le-mokhiah-de-polonne-deuxieme-partie` | 123, 125, 160 | — | the-mokhiach-of-polonne-part-two |
-| `le-maguid-de-mezritch` | 34, 45, 47, 130, 200 | — | the-maggid-of-mezritch |
-| `la-maison-du-maguid-et-ses-disciples` | 40, 41, 42, 43, 46, 109 | — | the-maggids-household-and-disciples |
-| `rabbi-nahman-de-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | — | rabbi-nachman-of-horodenka |
-| `rabbi-itshak-de-drohobytch` | 36, 37, 57, 58, 59 | — | rabbi-yitzchak-of-drohobych |
-| `les-tsaddikim-de-sa-generation-premiere-partie` | 24, 25, 35 | — | tzaddikim-of-his-generation-part-one |
-| `les-tsaddikim-de-sa-generation-deuxieme-partie` | 61, 78, 116, 135, 144, 145 | — | tzaddikim-of-his-generation-part-two |
-| `opposants-et-examinateurs` | 48, 87, 99, 188, 189, 190 | — | opponents-and-testers |
-| `des-opposants-qui-se-sont-rapproches-premiere-partie` | 13, 14, 112 | — | opponents-who-drew-close-part-one |
-| `des-opposants-qui-se-sont-rapproches-deuxieme-partie` | 113, 114, 115, 185, 203 | — | opponents-who-drew-close-part-two |
-| `voir-de-loin` | 18, 19, 38, 89, 118, 128, 129, 141, 143 | — | seeing-from-afar |
-| `prodiges-en-chemin` | 8, 142, 148, 177, 178, 180 | — | wonders-on-the-road |
-| `fermiers-et-seigneurs-premiere-partie` | 67, 110, 159 | — | leaseholders-and-noblemen-part-one |
-| `fermiers-et-seigneurs-deuxieme-partie` | 172, 173 | — | leaseholders-and-noblemen-part-two |
-| `charite-et-argent` | 86, 120, 121, 122, 138 | — | charity-and-money |
-| `juifs-simples-et-tsaddikim-caches` | 51, 52, 126, 163, 194, 196 | — | simple-jews-and-hidden-tzaddikim |
-| `valide-et-invalide` | 39, 100, 108, 139, 140, 151 | — | fit-and-unfit |
-| `guerisons-premiere-partie` | 31, 56, 69 | — | healings-part-one |
-| `guerisons-deuxieme-partie` | 80, 82, 83, 117, 192, 205 | — | healings-part-two |
-| `des-fils-pour-les-sans-enfants-premiere-partie` | 71, 165, 182, 183 | — | sons-for-the-childless-part-one |
-| `des-fils-pour-les-sans-enfants-deuxieme-partie` | 184, 204 | — | sons-for-the-childless-part-two |
-| `demons-sorciers-et-esprits-malfaisants` | 6, 62, 88, 119, 124, 157, 158 | — | demons-sorcerers-and-harmful-spirits |
-| `fausses-accusations-et-dangers` | 32, 97, 133, 136, 154, 171 | — | false-accusations-and-dangers |
-| `le-jardin-d-eden-et-la-gehenne` | 54, 55, 64, 127, 152, 153, 168, 176 | — | the-garden-of-eden-and-gehinnom |
-| `faute-repentir-et-reincarnation` | 193, 49, 72, 175, 201, 209 | — | sin-repentance-and-reincarnation |
-| `ses-derniers-jours` | 77, 90, 105, 106, 107 | — | his-last-days |
+| `le-garcon-qui-n-avait-pas-peur` | 1, 12, 70, 33 | 12:57 | the-boy-who-was-not-afraid |
+| `la-porte-verrouillee` | 17, 161, 179 | 9:33 | the-locked-gate |
+| `la-grenouille-dans-le-desert` | 10, 11, 3 | 6:37 | the-frog-in-the-wilderness |
+| `le-langage-des-oiseaux` | 101, 26, 197 | 9:07 | the-speech-of-the-birds |
+| `la-mort-du-baal-chem-tov` | 207, 210 | 9:11 | the-passing-of-the-baal-shem-tov |
+| `l-introduction-de-l-auteur` | 0 | 5:35 | the-authors-introduction |
+| `les-annees-cachees-et-la-revelation` | 4, 5, 9 | 10:59 | the-hidden-years-and-the-revelation |
+| `rabbi-guershon-de-kitov` | 7, 20, 66, 79, 111 | 11:02 | rabbi-gershon-of-kitov |
+| `la-terre-d-israel-et-le-chemin-qui-y-mene` | 28, 29, 30, 92, 93, 155, 191, 202 | 15:13 | the-land-of-israel-and-the-way-there |
+| `dans-la-priere` | 15, 16, 76, 95, 147 | 10:45 | in-prayer |
+| `ses-vertus-et-ses-coutumes` | 53, 63, 68, 134, 149, 156, 164, 169 | 6:44 | his-ways-and-customs |
+| `le-rav-de-polonne` | 21, 22, 23, 65, 103, 104, 150, 162, 166, 167 | 15:19 | the-rabbi-of-polonne |
+| `le-mokhiah-de-polonne-premiere-partie` | 84, 85, 96 | 13:07 | the-mokhiach-of-polonne-part-one |
+| `le-mokhiah-de-polonne-deuxieme-partie` | 123, 125, 160 | 5:56 | the-mokhiach-of-polonne-part-two |
+| `le-maguid-de-mezritch` | 34, 45, 47, 130, 200 | 13:12 | the-maggid-of-mezritch |
+| `la-maison-du-maguid-et-ses-disciples` | 40, 41, 42, 43, 46, 109 | 16:05 | the-maggids-household-and-disciples |
+| `rabbi-nahman-de-horodenka` | 73, 74, 75, 91, 94, 102, 131, 186 | 8:34 | rabbi-nachman-of-horodenka |
+| `rabbi-itshak-de-drohobytch` | 36, 37, 57, 58, 59 | 9:11 | rabbi-yitzchak-of-drohobych |
+| `les-tsaddikim-de-sa-generation-premiere-partie` | 24, 25, 35 | 8:42 | tzaddikim-of-his-generation-part-one |
+| `les-tsaddikim-de-sa-generation-deuxieme-partie` | 61, 78, 116, 135, 144, 145 | 8:48 | tzaddikim-of-his-generation-part-two |
+| `opposants-et-examinateurs` | 48, 87, 99, 188, 189, 190 | 15:29 | opponents-and-testers |
+| `des-opposants-qui-se-sont-rapproches-premiere-partie` | 13, 14, 112 | 10:00 | opponents-who-drew-close-part-one |
+| `des-opposants-qui-se-sont-rapproches-deuxieme-partie` | 113, 114, 115, 185, 203 | 7:16 | opponents-who-drew-close-part-two |
+| `voir-de-loin` | 18, 19, 38, 89, 118, 128, 129, 141, 143 | 10:01 | seeing-from-afar |
+| `prodiges-en-chemin` | 8, 142, 148, 177, 178, 180 | 9:51 | wonders-on-the-road |
+| `fermiers-et-seigneurs-premiere-partie` | 67, 110, 159 | 6:40 | leaseholders-and-noblemen-part-one |
+| `fermiers-et-seigneurs-deuxieme-partie` | 172, 173 | 11:23 | leaseholders-and-noblemen-part-two |
+| `charite-et-argent` | 86, 120, 121, 122, 138 | 8:37 | charity-and-money |
+| `juifs-simples-et-tsaddikim-caches` | 51, 52, 126, 163, 194, 196 | 7:06 | simple-jews-and-hidden-tzaddikim |
+| `valide-et-invalide` | 39, 100, 108, 139, 140, 151 | 4:59 | fit-and-unfit |
+| `guerisons-premiere-partie` | 31, 56, 69 | 8:25 | healings-part-one |
+| `guerisons-deuxieme-partie` | 80, 82, 83, 117, 192, 205 | 10:09 | healings-part-two |
+| `des-fils-pour-les-sans-enfants-premiere-partie` | 71, 165, 182, 183 | 7:31 | sons-for-the-childless-part-one |
+| `des-fils-pour-les-sans-enfants-deuxieme-partie` | 184, 204 | 9:48 | sons-for-the-childless-part-two |
+| `demons-sorciers-et-esprits-malfaisants` | 6, 62, 88, 119, 124, 157, 158 | 9:02 | demons-sorcerers-and-harmful-spirits |
+| `fausses-accusations-et-dangers` | 32, 97, 133, 136, 154, 171 | 11:56 | false-accusations-and-dangers |
+| `le-jardin-d-eden-et-la-gehenne` | 54, 55, 64, 127, 152, 153, 168, 176 | 14:18 | the-garden-of-eden-and-gehinnom |
+| `faute-repentir-et-reincarnation` | 193, 49, 72, 175, 201, 209 | 10:26 | sin-repentance-and-reincarnation |
+| `ses-derniers-jours` | 77, 90, 105, 106, 107 | 3:47 | his-last-days |
 
 Ideas for the next episodes are in `docs/backlog.md`.
