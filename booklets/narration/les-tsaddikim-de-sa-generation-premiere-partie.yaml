@@ -33,8 +33,8 @@ stories:
     edits:
       - from: (Ils priaient dans la pièce à côté de la petite maison, et seul le gabbaï du rav était dans la maison, et parfois le gabbaï allait au marché acheter des provisions.)
         to: Ils priaient dans la pièce à côté de la petite maison, et seul le gabbaï du rav était dans la maison, et parfois le gabbaï allait au marché acheter des provisions.
-      - from: ' (de Rabbénou Tam).'
-        to: ', de Rabbénou Tam.'
+      - from: les téfilines (de Rabbénou Tam).
+        to: les téfilines de Rabbénou Tam.
 
   - n: 25
 

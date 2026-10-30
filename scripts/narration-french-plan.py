@@ -118,9 +118,15 @@ def main(argv: list[str]) -> None:
             frm = ed["from"]
             pos = e.index(frm)
             inside = [k for k, (a, b) in enumerate(eb) if pos <= a and b <= pos + len(frm)]
-            if same and len(inside) == 1:
+            folded = ed["to"] == re.sub(r"[()]", "", frm)      # "the rabbi (of Polonne)" -> "the rabbi of Polonne"
+            commas = ed["to"].count(",") > frm.count(",")        # "came (after his death) to" -> "came, after his death, to"
+            if same and len(inside) == 1 and (folded or commas or not ed["to"].strip()):
                 a, b = fb[inside[0]]
-                if ed["to"].strip():
+                if folded:
+                    ff, ft = f[a:b], f[a + 1:b - 1]
+                    if f.count(ff) > 1:
+                        ff, ft = f[a - 20:b], f[a - 20:a] + f[a + 1:b - 1]
+                elif commas:
                     ff, ft = unbracket(f, a, b)
                 else:                                       # the bracket left out
                     ff, ft = (" " if f[a - 1:a] == " " else "") + f[a:b], ""

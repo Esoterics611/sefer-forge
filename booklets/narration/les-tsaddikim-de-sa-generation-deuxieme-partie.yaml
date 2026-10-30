@@ -52,5 +52,5 @@ stories:
 
   - n: 145
     edits:
-      - from: ' (de Rabbi Ye''hiel) '
-        to: ', de Rabbi Ye''hiel, '
+      - from: 'Encore une histoire (de Rabbi Ye''hiel) :'
+        to: 'Encore une histoire de Rabbi Ye''hiel :'

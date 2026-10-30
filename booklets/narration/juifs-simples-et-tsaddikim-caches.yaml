@@ -40,8 +40,8 @@ stories:
 
   - n: 163
     edits:
-      - from: ' (de Rabbi Moché) '
-        to: ', de Rabbi Moché, '
+      - from: que son frère (de Rabbi Moché) était
+        to: que le frère de Rabbi Moché était
 
   - n: 194
     edits:

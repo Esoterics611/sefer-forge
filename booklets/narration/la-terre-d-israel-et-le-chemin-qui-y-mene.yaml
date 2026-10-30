@@ -48,12 +48,12 @@ stories:
 
   - n: 92
     edits:
-      - from: ' (de Nemirov) '
-        to: ', de Nemirov, '
-      - from: ' (vers la terre d''Israël),'
-        to: ', vers la terre d''Israël,'
-      - from: ' (de Rabbi Pin''has) '
-        to: ', de Rabbi Pin''has, '
+      - from: le rav (de Nemirov) louait
+        to: le rav de Nemirov louait
+      - from: son voyage (vers la terre d'Israël),
+        to: son voyage vers la terre d'Israël,
+      - from: J'ai entendu de lui (de Rabbi Pin'has) qu'il
+        to: J'ai entendu de Rabbi Pin'has qu'il
 
   - n: 93
 
