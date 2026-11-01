@@ -7,6 +7,7 @@ Usage:
     python scripts/build-narration.py <plan> --voice bm_george   # another voice than the plan's
     python scripts/build-narration.py <plan> --video             # the video again, from the reading made
     python scripts/build-narration.py <plan> --frame             # only the picture with its titles, to look at
+    python scripts/build-narration.py <plan> --thumbnail         # only the thumbnail
     python scripts/build-narration.py <plan> --sample am_michael,bm_george,af_heart
     python scripts/build-narration.py --say Gershon Ghershon     # how the voice says words
     python scripts/build-narration.py --say --lang fr "Na'hman"  # ... in French
@@ -28,7 +29,8 @@ Writes output/narration/<name>/:
     narration.srt  subtitles, a cue per sentence (long ones split), timed to the reading
     chapters.txt   the start of each story, for a video description
     video.mp4      for YouTube: one picture (frame.png) for the whole reading
-    thumbnail.jpg  the picture at 1280x720, for the video's thumbnail
+    thumbnail.jpg  1280x720, the same plain card for every episode: בס"ד, the series,
+                   the title in large letters, the subtitle (no picture)
 The picture is the plan's `image:` (a JPG/PNG, or an SVG drawing, which headless
 Chrome renders: CHROME names the browser, by default Windows Chrome reached from
 WSL or the container's Chromium), darkened below for the series and the
@@ -329,7 +331,67 @@ def make_frame(plan: dict, out: Path) -> Path:
         draw.rectangle([62, 62, W - 63, H - 63], outline=GOLD, width=1)
     path = out / "frame.png"
     frame.save(path)
-    frame.resize((1280, 720), Image.LANCZOS).save(out / "thumbnail.jpg", quality=90)
+    make_thumbnail(plan, series, out)
+    return path
+
+
+# The thumbnail: the same plain card for every episode, letters only, read at a
+# glance in a list of small pictures: בס"ד, the series, the title large, the series' subtitle.
+THUMB = (1280, 720)
+NAVY = (21, 33, 58)
+HEBREW_FONTS = ["templates/fonts/FrankRuehl.ttf", "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
+                "/mnt/c/Windows/Fonts/davidbd.ttf", "C:/Windows/Fonts/davidbd.ttf",
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]
+
+
+def make_thumbnail(plan: dict, series: dict, out: Path) -> Path:
+    from PIL import Image, ImageDraw, ImageFont
+    W, H = THUMB
+    img = Image.new("RGB", THUMB, NAVY)
+    draw = ImageDraw.Draw(img)
+    font = lambda name, size: ImageFont.truetype(str(FONTS / f"EBGaramond-{name}.ttf"), size)
+    hebrew = next((f for f in HEBREW_FONTS if Path(f).exists()), None)
+    if not hebrew:
+        sys.exit("No Hebrew font for בס\"ד on the thumbnail: " + ", ".join(HEBREW_FONTS))
+    # בס"ד, top right; Pillow without raqm lays out no right-to-left text, so the letters go in reversed.
+    from PIL import features
+    bsd = 'בס"ד' if features.check("raqm") else 'בס"ד'[::-1]
+    draw.text((W - 56, 40), bsd, font=ImageFont.truetype(hebrew, 40), fill=GOLD, anchor="ra")
+
+    def centred(y: float, text: str, f, fill, tracking: int = 0) -> None:
+        widths = [draw.textlength(c, font=f) for c in text] if tracking else [draw.textlength(text, font=f)]
+        x = (W - sum(widths) - tracking * (len(widths) - 1)) / 2
+        for c, w in zip(text if tracking else [text], widths):
+            draw.text((x, y), c, font=f, fill=fill)
+            x += w + tracking
+
+    # The title: one line as large as fits, else two even lines.
+    words, room = plan["title"].split(), W - 160
+    for size in range(150, 111, -6):
+        big = font("SemiBold", size)
+        if draw.textlength(plan["title"], font=big) <= room:
+            lines = [plan["title"]]
+            break
+    else:
+        for size in range(140, 71, -6):
+            big = font("SemiBold", size)
+            width = lambda k: max(draw.textlength(" ".join(words[:k]), font=big),
+                                  draw.textlength(" ".join(words[k:]), font=big))
+            k = min(range(1, len(words)), key=width)
+            if width(k) <= room:
+                break
+        lines = [" ".join(words[:k]), " ".join(words[k:])]
+    gap = size * 1.12
+    title_h = gap * (len(lines) - 1) + size
+    y = (H - title_h) / 2 + 10
+    centred(y - 120, series["series"].upper(), font("Regular", 38), GOLD, tracking=5)
+    draw.line([(W / 2 - 90, y - 52), (W / 2 + 90, y - 52)], fill=GOLD, width=2)
+    for line in lines:
+        centred(y - size * 0.18, line, big, CREAM)
+        y += gap
+    centred(y - gap + size + 40, series["subtitle"], font("Italic", 44), GOLD)
+    path = out / "thumbnail.jpg"
+    img.save(path, quality=92)
     return path
 
 
@@ -445,6 +507,12 @@ def main(argv: list[str]) -> None:
         return
     if "--frame" in argv:
         print(f"  {make_frame(plan, out)}")
+        return
+    if "--thumbnail" in argv:
+        series = yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][plan["lang"]]
+        series = {k: re.sub(r"(?<=\w)'", "\u2019", v) for k, v in series.items()}
+        plan = {**plan, "title": re.sub(r"(?<=\w)'", "\u2019", plan["title"])}
+        print(f"  {make_thumbnail(plan, series, out)}")
         return
     if "--video" in argv:
         if not (out / "narration.wav").exists():
