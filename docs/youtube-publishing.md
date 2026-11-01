@@ -36,10 +36,13 @@ The channel's Google account is the one the user signs in to Claude with.
    picks them up.
 6. **Home page and privacy policy** (asked for by the consent screen's
    Branding page, and needed to publish the app out of Testing):
-   `site/` holds them, served by GitHub Pages from the `gh-pages` branch at
-   https://esoterics611.github.io/sefer-forge/ (`privacy.html`,
-   `terms.html`). After a change to `site/`, run `bash scripts/deploy-site.sh`.
-   Authorized domain: `esoterics611.github.io`.
+   `site/` holds them, served by GitHub Pages from the repo
+   Esoterics611/Esoterics611.github.io at https://esoterics611.github.io/
+   (`privacy.html`, `terms.html`). After a change to `site/`, run
+   `bash scripts/deploy-site.sh`. Authorized domain: `esoterics611.github.io`,
+   verified in Search Console as the URL prefix `https://esoterics611.github.io/`
+   by the tag in `site/index.html`. The old `/sefer-forge/` addresses (the
+   `gh-pages` branch here) redirect to it.
 
 ## A publishing session (each day)
 
