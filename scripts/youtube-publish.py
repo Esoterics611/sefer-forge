@@ -284,11 +284,19 @@ class QuotaSpent(Exception):
 
 
 def api(method: str, path: str, **kw) -> dict:
-    for attempt in (0, 1):
-        r = requests.request(method, f"{API}/{path}", headers={"Authorization": f"Bearer {access_token(attempt > 0)}"},
+    renew = False
+    for attempt in range(5):
+        r = requests.request(method, f"{API}/{path}", headers={"Authorization": f"Bearer {access_token(renew)}"},
                              timeout=60, **kw)
-        if r.status_code != 401:
-            break
+        renew = r.status_code == 401
+        if r.status_code == 401 and attempt == 0:
+            continue
+        # YouTube's passing failures (409 ABORTED / SERVICE_UNAVAILABLE, e.g. on a playlist made a second
+        # before, and 5xx): wait and try again.
+        if r.status_code in (409, 500, 502, 503, 504) and attempt < 4:
+            time.sleep(5 * (attempt + 1))
+            continue
+        break
     if r.status_code == 403 and any(e.get("reason") in ("quotaExceeded", "uploadLimitExceeded", "dailyLimitExceeded")
                                     for e in r.json().get("error", {}).get("errors", [])):
         raise QuotaSpent(r.json()["error"]["message"])

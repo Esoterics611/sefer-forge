@@ -23,9 +23,8 @@ queue:
 - the-boy-who-was-not-afraid    # up 2026-11-01
 - the-locked-gate    # up 2026-11-01
 - the-frog-in-the-wilderness    # up 2026-11-01
-  # planned for 2026-11-01
-- the-speech-of-the-birds
-- le-garcon-qui-n-avait-pas-peur
+- the-speech-of-the-birds    # up 2026-11-01
+- le-garcon-qui-n-avait-pas-peur    # up 2026-11-01
   # planned for 2026-11-02
 - la-porte-verrouillee
 - the-passing-of-the-baal-shem-tov
@@ -116,6 +115,7 @@ queue:
 - ses-derniers-jours
 playlists:
   en: PLHmoqTnaBo-E
+  fr: PLC9BzDyQnm5U
 uploaded:
   the-boy-who-was-not-afraid:
     id: dNmZPXKALk4
@@ -129,7 +129,15 @@ uploaded:
     id: IzUOMXp3q1k
     date: '2026-11-01'
     playlist: true
+  the-speech-of-the-birds:
+    id: 9XDAhmKB7G8
+    date: '2026-11-01'
+    playlist: true
+  le-garcon-qui-n-avait-pas-peur:
+    id: LN-_wQ3XcAw
+    date: '2026-11-01'
+    playlist: true
 days:
   '2026-11-01':
-    units: 5301
-    uploads: 3
+    units: 8752
+    uploads: 5
