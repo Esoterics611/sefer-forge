@@ -21,9 +21,9 @@ settings:
   category: '27'
 queue:
 - the-boy-who-was-not-afraid    # up 2026-11-01
+- the-locked-gate    # up 2026-11-01
+- the-frog-in-the-wilderness    # up 2026-11-01
   # planned for 2026-11-01
-- the-locked-gate
-- the-frog-in-the-wilderness
 - the-speech-of-the-birds
 - le-garcon-qui-n-avait-pas-peur
   # planned for 2026-11-02
@@ -121,7 +121,15 @@ uploaded:
     id: dNmZPXKALk4
     date: '2026-11-01'
     playlist: true
+  the-locked-gate:
+    id: OOPQ_lxY5zg
+    date: '2026-11-01'
+    playlist: true
+  the-frog-in-the-wilderness:
+    id: IzUOMXp3q1k
+    date: '2026-11-01'
+    playlist: true
 days:
   '2026-11-01':
-    units: 1901
-    uploads: 1
+    units: 5301
+    uploads: 3
