@@ -28,8 +28,8 @@ sign-in by code does not grant): add narration.srt in YouTube Studio.
 
 `drive` copies an episode's video.mp4, thumbnail.jpg, narration.srt and
 chapters.txt to Google Drive, in a folder per episode under "Shivchei HaBesht
-narration" in My Drive (the sign-in's drive.file scope: it sees only the files
-it made). The Google Drive API must be enabled in the same Cloud project.
+narration" in My Drive. Out of use for now: the sign-in asks for YouTube only,
+because Google refuses the sign-in by code that asks for Drive with it.
 
 Quota: YouTube gives a project 10,000 units a day, reset at midnight Pacific
 time; an upload costs 1,600, a playlist entry 50. The script counts what it
@@ -66,7 +66,10 @@ OUT = ROOT / "output/narration"
 SERIES = ROOT / "booklets/booklets.yaml"
 TOKEN = Path.home() / ".config/sefer-forge/youtube-token.json"
 
-SCOPE = "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/drive.file"
+# YouTube only: Google blocks the sign-in by code ("Access blocked: Authorization
+# Error", 400 invalid_request) when drive.file is asked for with it, so `drive`
+# is out of use until it has a sign-in of its own.
+SCOPE = "https://www.googleapis.com/auth/youtube"
 DEVICE_URL = "https://oauth2.googleapis.com/device/code"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 API = "https://www.googleapis.com/youtube/v3"
