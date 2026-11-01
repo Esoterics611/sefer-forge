@@ -20,7 +20,8 @@ The channel's Google account is the one the user signs in to Claude with.
 1. **Google Cloud project.** At console.cloud.google.com, signed in with that
    account, make a new project, e.g. `sefer-forge`.
 2. **The APIs.** APIs & Services → Library → "YouTube Data API v3" → Enable,
-   and "Google Drive API" → Enable (for the copies in Drive).
+   (and "Google Drive API", for the Drive copies once they have a sign-in of
+   their own).
 3. **Consent screen.** Google Auth Platform (OAuth consent screen):
    - user type External, an app name, your email;
    - Audience → Test users: add the channel's Gmail address;
@@ -61,13 +62,14 @@ Say "publish to YouTube" or "next uploads". Then:
      timing" → that episode's `narration.srt`, from the files Claude sends;
    - changes the visibility when ready.
 
-**Copies in Google Drive.** `python scripts/youtube-publish.py drive <name> ...`
-(`--build` builds what is missing first) copies each episode's video,
-thumbnail, subtitles and chapters to Drive: My Drive → "Shivchei HaBesht
-narration" → a folder per episode. The record notes what is copied. The same
-sign-in covers it (its `drive.file` permission sees only the files it made); a
-sign-in from before Drive was added must be done again. This is the backup the
-user keeps instead of downloading the files.
+**Copies in Google Drive: off for now.** `python scripts/youtube-publish.py drive
+<name> ...` copies each episode's video, thumbnail, subtitles and chapters to
+My Drive → "Shivchei HaBesht narration" → a folder per episode. But Google
+refuses the sign-in by code (400 invalid_request, "Access blocked") when it
+asks for Drive and YouTube together, so since 2026-11-01 the sign-in asks for
+YouTube only and `drive` has no permission. To bring it back, give Drive a
+sign-in of its own (a second token with `drive.file` alone), not a wider
+YouTube one.
 
 If the record is lost, or a session ended before it was merged,
 `python scripts/youtube-publish.py sync` rebuilds it from the channel: every

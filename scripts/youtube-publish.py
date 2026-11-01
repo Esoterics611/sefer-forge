@@ -28,8 +28,8 @@ sign-in by code does not grant): add narration.srt in YouTube Studio.
 
 `drive` copies an episode's video.mp4, thumbnail.jpg, narration.srt and
 chapters.txt to Google Drive, in a folder per episode under "Shivchei HaBesht
-narration" in My Drive (the sign-in's drive.file scope: it sees only the files
-it made). The Google Drive API must be enabled in the same Cloud project.
+narration" in My Drive. Out of use for now: the sign-in asks for YouTube only,
+because Google refuses the sign-in by code that asks for Drive with it.
 
 Quota: YouTube gives a project 10,000 units a day, reset at midnight Pacific
 time; an upload costs 1,600, a playlist entry 50. The script counts what it
