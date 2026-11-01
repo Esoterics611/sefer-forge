@@ -34,6 +34,12 @@ The channel's Google account is the one the user signs in to Claude with.
    Network secrets (or as environment variables) as `YOUTUBE_CLIENT_ID` and
    `YOUTUBE_CLIENT_SECRET`. Never paste them into a chat. A new session
    picks them up.
+6. **Home page and privacy policy** (asked for by the consent screen's
+   Branding page, and needed to publish the app out of Testing):
+   `site/` holds them, served by GitHub Pages from the `gh-pages` branch at
+   https://esoterics611.github.io/sefer-forge/ (`privacy.html`,
+   `terms.html`). After a change to `site/`, run `bash scripts/deploy-site.sh`.
+   Authorized domain: `esoterics611.github.io`.
 
 ## A publishing session (each day)
 
