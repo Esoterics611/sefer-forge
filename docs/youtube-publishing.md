@@ -35,6 +35,15 @@ The channel's Google account is the one the user signs in to Claude with.
    Network secrets (or as environment variables) as `YOUTUBE_CLIENT_ID` and
    `YOUTUBE_CLIENT_SECRET`. Never paste them into a chat. A new session
    picks them up.
+6. **Home page and privacy policy** (asked for by the consent screen's
+   Branding page, and needed to publish the app out of Testing):
+   `site/` holds them, served by GitHub Pages from the repo
+   Esoterics611/Esoterics611.github.io at https://esoterics611.github.io/
+   (`privacy.html`, `terms.html`). After a change to `site/`, run
+   `bash scripts/deploy-site.sh`. Authorized domain: `esoterics611.github.io`,
+   verified in Search Console as the URL prefix `https://esoterics611.github.io/`
+   by the tag in `site/index.html`. The old `/sefer-forge/` addresses (the
+   `gh-pages` branch here) redirect to it.
 
 ## A publishing session (each day)
 
@@ -86,8 +95,15 @@ without signing in or uploading anything.
   - a line on the series;
   - the chapters (`chapters.txt`), which YouTube turns into chapters when
     there are three or more;
-  - the story numbers;
-  - the credits (a synthetic voice, an original drawing).
+  - the story numbers, and what the book is;
+  - the credits (a synthetic voice, an original drawing);
+  - the link to the Sefer Forge site, https://esoterics611.github.io/ (how
+    the videos are made);
+  - three hashtags (YouTube shows them above the title).
+- **Thumbnail:** the episode's `thumbnail.jpg`, the plain title card with
+  בס"ד, the same for every video (`prompts/narration-rules.md`, The
+  thumbnail). `publish` sets it after the upload; `update [<name> ...]`
+  puts the current description and thumbnail on videos already up.
 - **Tags, language and playlist:** the series' tags, the episode's language,
   category Education, and the playlist "In Praise of the Baal Shem Tov
   (English)" or "Les louanges du Baal Chem Tov (en français)".
@@ -107,17 +123,18 @@ without signing in or uploading anything.
     in the record to `public` or `unlisted`.
   - **Videos already locked** may have to be uploaded again: delete them in
     Studio, remove them from `uploaded:`, and run `publish`.
-- **Six a day.** A project has 10,000 quota units a day, reset at midnight
-  Pacific time. An upload costs 1,600 and a playlist entry 50, so six a day
-  spends 9,900. The audit form also asks for more quota; raise `per_day` and
+- **Five a day.** A project has 10,000 quota units a day, reset at midnight
+  Pacific time. An upload costs 1,600, the thumbnail 50 and the playlist
+  entry 50: 1,700 a video, so five a day (8,500); a sixth does not fit. The audit form also asks for more quota; raise `per_day` and
   `daily_units` in the record when it is granted.
 - **Subtitles by hand.** Uploading captions needs the `youtube.force-ssl`
   scope, which the sign-in by code does not grant. Later: a "Desktop app"
   OAuth client, signed in once in a browser on the user's computer, and a
   `captions.insert` step in the script.
-- **No custom thumbnail.** The video is one picture with its titles, so
-  YouTube's automatic thumbnail is the same picture. Custom thumbnails also
-  need a phone-verified channel.
+- **YouTube only, no Drive.** Google refuses the sign-in by code ("Access
+  blocked: Authorization Error", Error 400 invalid_request) when it asks for
+  `drive.file` together with `youtube`, so it asks for YouTube alone and
+  `drive` is out of use.
 - **Sign-in each session.** The token stays in the container
   (`~/.config/sefer-forge/youtube-token.json`), so each new session signs in
   again with a new code. Later: keep the refresh token as the environment

@@ -16,109 +16,128 @@
 settings:
   privacy: private
   made_for_kids: false
-  per_day: 6
+  per_day: 5
   daily_units: 10000
   category: '27'
 queue:
 - the-boy-who-was-not-afraid    # up 2026-11-01
-  # planned for 2026-11-01
-- le-garcon-qui-n-avait-pas-peur
-- the-locked-gate
-- la-porte-verrouillee
-- the-frog-in-the-wilderness
-- la-grenouille-dans-le-desert
+- the-locked-gate    # up 2026-11-01
+- the-frog-in-the-wilderness    # up 2026-11-01
+- the-speech-of-the-birds    # up 2026-11-01
+- le-garcon-qui-n-avait-pas-peur    # up 2026-11-01
   # planned for 2026-11-02
-- the-speech-of-the-birds
-- le-langage-des-oiseaux
+- la-porte-verrouillee
 - the-passing-of-the-baal-shem-tov
-- la-mort-du-baal-chem-tov
 - the-authors-introduction
-- l-introduction-de-l-auteur
-  # planned for 2026-11-03
 - the-hidden-years-and-the-revelation
-- les-annees-cachees-et-la-revelation
+- la-grenouille-dans-le-desert
+  # planned for 2026-11-03
+- le-langage-des-oiseaux
 - rabbi-gershon-of-kitov
-- rabbi-guershon-de-kitov
 - the-land-of-israel-and-the-way-there
-- la-terre-d-israel-et-le-chemin-qui-y-mene
-  # planned for 2026-11-04
 - in-prayer
-- dans-la-priere
+- la-mort-du-baal-chem-tov
+  # planned for 2026-11-04
+- l-introduction-de-l-auteur
 - his-ways-and-customs
-- ses-vertus-et-ses-coutumes
 - the-rabbi-of-polonne
-- le-rav-de-polonne
-  # planned for 2026-11-05
 - the-mokhiach-of-polonne-part-one
-- le-mokhiah-de-polonne-premiere-partie
+- les-annees-cachees-et-la-revelation
+  # planned for 2026-11-05
+- rabbi-guershon-de-kitov
 - the-mokhiach-of-polonne-part-two
-- le-mokhiah-de-polonne-deuxieme-partie
 - the-maggid-of-mezritch
-- le-maguid-de-mezritch
-  # planned for 2026-11-06
 - the-maggids-household-and-disciples
-- la-maison-du-maguid-et-ses-disciples
+- la-terre-d-israel-et-le-chemin-qui-y-mene
+  # planned for 2026-11-06
+- dans-la-priere
 - rabbi-nachman-of-horodenka
-- rabbi-nahman-de-horodenka
 - rabbi-yitzchak-of-drohobych
-- rabbi-itshak-de-drohobytch
-  # planned for 2026-11-07
 - tzaddikim-of-his-generation-part-one
-- les-tsaddikim-de-sa-generation-premiere-partie
+- ses-vertus-et-ses-coutumes
+  # planned for 2026-11-07
+- le-rav-de-polonne
 - tzaddikim-of-his-generation-part-two
-- les-tsaddikim-de-sa-generation-deuxieme-partie
 - opponents-and-testers
-- opposants-et-examinateurs
-  # planned for 2026-11-08
 - opponents-who-drew-close-part-one
-- des-opposants-qui-se-sont-rapproches-premiere-partie
+- le-mokhiah-de-polonne-premiere-partie
+  # planned for 2026-11-08
+- le-mokhiah-de-polonne-deuxieme-partie
 - opponents-who-drew-close-part-two
-- des-opposants-qui-se-sont-rapproches-deuxieme-partie
 - seeing-from-afar
-- voir-de-loin
-  # planned for 2026-11-09
 - wonders-on-the-road
-- prodiges-en-chemin
+- le-maguid-de-mezritch
+  # planned for 2026-11-09
+- la-maison-du-maguid-et-ses-disciples
 - leaseholders-and-noblemen-part-one
-- fermiers-et-seigneurs-premiere-partie
 - leaseholders-and-noblemen-part-two
-- fermiers-et-seigneurs-deuxieme-partie
-  # planned for 2026-11-10
 - charity-and-money
-- charite-et-argent
+- rabbi-nahman-de-horodenka
+  # planned for 2026-11-10
+- rabbi-itshak-de-drohobytch
 - simple-jews-and-hidden-tzaddikim
-- juifs-simples-et-tsaddikim-caches
 - fit-and-unfit
-- valide-et-invalide
-  # planned for 2026-11-11
 - healings-part-one
-- guerisons-premiere-partie
+- les-tsaddikim-de-sa-generation-premiere-partie
+  # planned for 2026-11-11
+- les-tsaddikim-de-sa-generation-deuxieme-partie
 - healings-part-two
-- guerisons-deuxieme-partie
 - sons-for-the-childless-part-one
-- des-fils-pour-les-sans-enfants-premiere-partie
-  # planned for 2026-11-12
 - sons-for-the-childless-part-two
-- des-fils-pour-les-sans-enfants-deuxieme-partie
+- opposants-et-examinateurs
+  # planned for 2026-11-12
+- des-opposants-qui-se-sont-rapproches-premiere-partie
 - demons-sorcerers-and-harmful-spirits
-- demons-sorciers-et-esprits-malfaisants
 - false-accusations-and-dangers
-- fausses-accusations-et-dangers
-  # planned for 2026-11-13
 - the-garden-of-eden-and-gehinnom
-- le-jardin-d-eden-et-la-gehenne
+- des-opposants-qui-se-sont-rapproches-deuxieme-partie
+  # planned for 2026-11-13
+- voir-de-loin
 - sin-repentance-and-reincarnation
-- faute-repentir-et-reincarnation
 - his-last-days
+- prodiges-en-chemin
+- fermiers-et-seigneurs-premiere-partie
+  # planned for 2026-11-14
+- fermiers-et-seigneurs-deuxieme-partie
+- charite-et-argent
+- juifs-simples-et-tsaddikim-caches
+- valide-et-invalide
+- guerisons-premiere-partie
+  # planned for 2026-11-15
+- guerisons-deuxieme-partie
+- des-fils-pour-les-sans-enfants-premiere-partie
+- des-fils-pour-les-sans-enfants-deuxieme-partie
+- demons-sorciers-et-esprits-malfaisants
+- fausses-accusations-et-dangers
+  # planned for 2026-11-16
+- le-jardin-d-eden-et-la-gehenne
+- faute-repentir-et-reincarnation
 - ses-derniers-jours
 playlists:
   en: PLHmoqTnaBo-E
+  fr: PLC9BzDyQnm5U
 uploaded:
   the-boy-who-was-not-afraid:
     id: dNmZPXKALk4
     date: '2026-11-01'
     playlist: true
+  the-locked-gate:
+    id: OOPQ_lxY5zg
+    date: '2026-11-01'
+    playlist: true
+  the-frog-in-the-wilderness:
+    id: IzUOMXp3q1k
+    date: '2026-11-01'
+    playlist: true
+  the-speech-of-the-birds:
+    id: 9XDAhmKB7G8
+    date: '2026-11-01'
+    playlist: true
+  le-garcon-qui-n-avait-pas-peur:
+    id: LN-_wQ3XcAw
+    date: '2026-11-01'
+    playlist: true
 days:
   '2026-11-01':
-    units: 1701
-    uploads: 1
+    units: 8752
+    uploads: 5

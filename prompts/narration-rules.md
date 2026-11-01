@@ -161,6 +161,19 @@ aux couples sans enfants").
   `image:`. Such a JPG or PNG goes into Git LFS (`.gitattributes`), which a
   cloud session cannot push: commit it from the user's computer.
 
+## The thumbnail
+
+- **Not the picture.** `thumbnail.jpg` is the same plain title card for every
+  episode, so the channel's videos look alike in a list: navy ground, בס"ד
+  top right, the series line in gold capitals over a short gold rule, the
+  title in large cream EB Garamond (one line, or two even lines), the
+  series' subtitle in gold italic. No drawing, no border.
+- Made by every build (`make_thumbnail()` in `scripts/build-narration.py`);
+  `--thumbnail` makes it alone. Look at it before publishing: the title
+  readable at a glance, בס"ד reading right to left.
+- `youtube-publish.py` uploads it with each video; `update <name>` puts it
+  on a video already up.
+
 ## Before handing over
 
 - `--script`, then read `script.txt` whole: each story starts and ends where
@@ -169,7 +182,7 @@ aux couples sans enfants").
   - The last subtitle cue ends with the audio.
   - `chapters.txt` starts at 0:00, with every chapter at least 10 seconds.
   - The audio is levelled (mean volume about −18 dB, peak below −1 dB, by ffmpeg's volumedetect).
-  - `frame.png` has been looked at.
+  - `frame.png` and `thumbnail.jpg` have been looked at.
 - Hand over `video.mp4`, `thumbnail.jpg`, `narration.srt` and `chapters.txt`.
   In a cloud session, send them as files: `output/` is not in git, so they
   are gone when the session ends. Each one rebuilds with one command.

@@ -8,6 +8,7 @@ Usage:
     python scripts/youtube-publish.py publish --build       # ... building first any video not in output/
     python scripts/youtube-publish.py publish <name> ...    # these plans (added to the end of the queue if new)
     python scripts/youtube-publish.py publish --dry-run     # print the titles and descriptions, upload nothing
+    python scripts/youtube-publish.py update [<name> ...]   # put the current description and thumbnail on videos up
     python scripts/youtube-publish.py sync                  # rebuild the record from the channel itself
     python scripts/youtube-publish.py drive [--build] <name> ...   # copy episodes to Google Drive
 
@@ -19,10 +20,12 @@ kids, videos a day), the queue (the order of publishing), and each video put up
 commit it and get it into main, because the next session starts from it.
 
 Each video goes up with its plan's title and the series, a description holding
-the chapters (output/narration/<name>/chapters.txt), the story numbers and the
-credits, its language, and a tag `sefer-forge-<name>` that `sync` finds it by.
-It joins a playlist per language, made on the first upload. Not uploaded: the
-thumbnail (the video is one picture, so YouTube's own is the same) and the
+the chapters (output/narration/<name>/chapters.txt), the story numbers, the
+credits, the link to the Sefer Forge site (how the videos are made) and three
+hashtags, its language, and a tag `sefer-forge-<name>` that `sync` finds it by;
+then its thumbnail.jpg (the plain title card, build-narration.py --thumbnail).
+It joins a playlist per language, made on the first upload. `update` puts the
+current description and thumbnail on videos already up. Not uploaded: the
 subtitles (captions.insert needs the youtube.force-ssl scope, which the
 sign-in by code does not grant): add narration.srt in YouTube Studio.
 
@@ -74,12 +77,13 @@ DEVICE_URL = "https://oauth2.googleapis.com/device/code"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 API = "https://www.googleapis.com/youtube/v3"
 UPLOAD = "https://www.googleapis.com/upload/youtube/v3/videos"
+THUMBNAIL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
 DRIVE = "https://www.googleapis.com/drive/v3/files"
 DRIVE_UPLOAD = "https://www.googleapis.com/upload/drive/v3/files"
 DRIVE_FOLDER = "Shivchei HaBesht narration"     # in the user's My Drive
 DRIVE_FILES = {"video.mp4": "video/mp4", "thumbnail.jpg": "image/jpeg",
                "narration.srt": "application/x-subrip", "chapters.txt": "text/plain"}
-COST = {"upload": 1600, "playlist": 50, "entry": 50, "list": 1}
+COST = {"upload": 1600, "playlist": 50, "entry": 50, "list": 1, "thumbnail": 50, "update": 50}
 PACIFIC = ZoneInfo("America/Los_Angeles")
 CHUNK = 16 * 1024 * 1024            # a multiple of 256 KiB, as resumable uploads require
 RECORD_SETTINGS: dict = {}          # the record's settings, read by main()
@@ -87,16 +91,24 @@ RECORD_SETTINGS: dict = {}          # the record's settings, read by main()
 TEXT = {
     "en": {
         "about": "Stories of the Baal Shem Tov from Shivchei HaBesht, retold in modern English and read aloud.",
-        "stories": "Stories {} of the book.",
+        "chapters": "In this episode:",
+        "stories": "Stories {} of Shivchei HaBesht (In Praise of the Baal Shem Tov), the first collection of "
+                   "stories about Rabbi Israel Baal Shem Tov, founder of Chassidus, printed in 1814.",
         "credits": "Narration: a synthetic voice (Kokoro). Picture: an original drawing.",
+        "site": "How these videos are made: Sefer Forge, https://esoterics611.github.io/",
+        "hashtags": "#BaalShemTov #Chassidus #JewishStories",
         "playlist": "{} (English)",
         "tags": ["Baal Shem Tov", "Shivchei HaBesht", "In Praise of the Baal Shem Tov", "Hasidic stories",
                  "Chassidus", "Jewish stories", "Besht"],
     },
     "fr": {
         "about": "Des récits du Baal Chem Tov tirés du Chivhei HaBecht, racontés en français d’aujourd’hui et lus à voix haute.",
-        "stories": "Récits {} du livre.",
+        "chapters": "Dans cet épisode :",
+        "stories": "Récits {} du Chivhei HaBecht (Les louanges du Baal Chem Tov), le premier recueil de récits "
+                   "sur Rabbi Israël Baal Chem Tov, fondateur du hassidisme, imprimé en 1814.",
         "credits": "Narration : une voix de synthèse (Kokoro). Image : un dessin original.",
+        "site": "Comment ces vidéos sont faites : Sefer Forge, https://esoterics611.github.io/",
+        "hashtags": "#BaalChemTov #Hassidisme #RécitsJuifs",
         "playlist": "{} (en français)",
         "tags": ["Baal Chem Tov", "Chivhei HaBecht", "Les louanges du Baal Chem Tov", "histoires hassidiques",
                  "hassidisme", "récits juifs", "Besht"],
@@ -185,8 +197,9 @@ def metadata(name: str) -> dict:
     if len(f"{title} | {series}") <= 100:
         title = f"{title} | {series}"
     chapters = (OUT / name / "chapters.txt").read_text(encoding="utf-8").strip()
-    numbers = ", ".join(str(s["n"]) for s in plan["stories"])
-    description = "\n\n".join([t["about"], chapters, t["stories"].format(numbers), t["credits"]])
+    numbers = ", ".join(str(n) for n in sorted(s["n"] for s in plan["stories"]))
+    description = "\n\n".join([t["about"], f"{t['chapters']}\n{chapters}", t["stories"].format(numbers),
+                                t["credits"], t["site"], t["hashtags"]])
     description = description.replace("<", "‹").replace(">", "›")      # YouTube refuses angle brackets
     return {
         "snippet": {"title": title, "description": description, "tags": t["tags"] + [f"sefer-forge-{name}"],
@@ -271,11 +284,19 @@ class QuotaSpent(Exception):
 
 
 def api(method: str, path: str, **kw) -> dict:
-    for attempt in (0, 1):
-        r = requests.request(method, f"{API}/{path}", headers={"Authorization": f"Bearer {access_token(attempt > 0)}"},
+    renew = False
+    for attempt in range(5):
+        r = requests.request(method, f"{API}/{path}", headers={"Authorization": f"Bearer {access_token(renew)}"},
                              timeout=60, **kw)
-        if r.status_code != 401:
-            break
+        renew = r.status_code == 401
+        if r.status_code == 401 and attempt == 0:
+            continue
+        # YouTube's passing failures (409 ABORTED / SERVICE_UNAVAILABLE, e.g. on a playlist made a second
+        # before, and 5xx): wait and try again.
+        if r.status_code in (409, 500, 502, 503, 504) and attempt < 4:
+            time.sleep(5 * (attempt + 1))
+            continue
+        break
     if r.status_code == 403 and any(e.get("reason") in ("quotaExceeded", "uploadLimitExceeded", "dailyLimitExceeded")
                                     for e in r.json().get("error", {}).get("errors", [])):
         raise QuotaSpent(r.json()["error"]["message"])
@@ -326,6 +347,29 @@ def resumable(url: str, params: dict, body: dict, path: Path, mime: str) -> dict
 def upload(name: str, meta: dict) -> str:
     body = {"snippet": meta["snippet"], "status": meta["status"]}
     return resumable(UPLOAD, {"part": "snippet,status"}, body, OUT / name / "video.mp4", "video/mp4")["id"]
+
+
+def set_thumbnail(rec: dict, name: str, vid: str) -> None:
+    """The episode's thumbnail.jpg as the video's thumbnail (a channel must be phone-verified for custom ones)."""
+    r = requests.post(THUMBNAIL, params={"videoId": vid}, data=(OUT / name / "thumbnail.jpg").read_bytes(),
+                      headers={"Authorization": f"Bearer {access_token()}", "Content-Type": "image/jpeg"}, timeout=120)
+    spend(rec, COST["thumbnail"])
+    if r.ok:
+        print("    thumbnail set")
+    else:
+        print(f"    thumbnail NOT set: {r.status_code} {r.text[:300]}\n"
+              f"    (custom thumbnails need a verified channel: youtube.com/verify)")
+
+
+def update(rec: dict, names: list[str]) -> None:
+    """Put the current title, description, tags and thumbnail on videos already up."""
+    for name in names or list(rec["uploaded"]):
+        vid = rec["uploaded"][name]["id"]
+        meta = metadata(name)
+        api("PUT", "videos", params={"part": "snippet"}, json={"id": vid, "snippet": meta["snippet"]})
+        spend(rec, COST["update"])
+        print(f"  {name}: details updated (https://youtu.be/{vid})")
+        set_thumbnail(rec, name, vid)
 
 
 def playlist(rec: dict, lang: str, series: str) -> str:
@@ -473,6 +517,7 @@ def publish(rec: dict, names: list[str], build: bool, dry: bool) -> None:
         rec["uploaded"][name] = {"id": vid, "date": today(), "playlist": False}
         spend(rec, COST["upload"], upload=True)
         print(f"    up: https://youtu.be/{vid}")
+        set_thumbnail(rec, name, vid)
         try:
             add_to_playlist(rec, name)
         except QuotaSpent:
@@ -511,7 +556,7 @@ def sync(rec: dict) -> None:
 
 
 def main(argv: list[str]) -> None:
-    if not argv or argv[0] not in ("queue", "auth", "publish", "sync", "drive"):
+    if not argv or argv[0] not in ("queue", "auth", "publish", "update", "sync", "drive"):
         sys.exit(__doc__)
     rec = load()
     RECORD_SETTINGS.update(rec["settings"])
@@ -522,6 +567,8 @@ def main(argv: list[str]) -> None:
         auth()
     elif cmd == "sync":
         sync(rec)
+    elif cmd == "update":
+        update(rec, rest)
     elif cmd == "drive":
         names = [a for a in rest if not a.startswith("--")]
         for n in names:
