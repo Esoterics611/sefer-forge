@@ -66,7 +66,10 @@ OUT = ROOT / "output/narration"
 SERIES = ROOT / "booklets/booklets.yaml"
 TOKEN = Path.home() / ".config/sefer-forge/youtube-token.json"
 
-SCOPE = "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/drive.file"
+# YouTube only: Google blocks the sign-in by code ("Access blocked: Authorization
+# Error", 400 invalid_request) when drive.file is asked for with it, so `drive`
+# is out of use until it has a sign-in of its own.
+SCOPE = "https://www.googleapis.com/auth/youtube"
 DEVICE_URL = "https://oauth2.googleapis.com/device/code"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 API = "https://www.googleapis.com/youtube/v3"
