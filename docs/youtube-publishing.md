@@ -58,6 +58,31 @@ The channel's Google account is the one the user signs in to Claude with.
    Until then the Hebrew episodes stay in the queue and each day's run skips
    them for the next videos.
 
+8. **A sign-in that lasts** (recommended; without it every new session, and
+   the daily run once its machine is recycled, needs a new code). On your
+   own computer, once:
+   - Google Auth Platform → Audience → **Publish app** (In production). An
+     app in Testing has its sign-ins expire after 7 days. Your own unverified
+     app is fine: Google warns at sign-in, and you continue.
+   - Credentials → Create credentials → OAuth client ID → application type
+     **Desktop app** → Create → **Download JSON**.
+   - Enable "Google Drive API" too (APIs & Services → Library) if the Drive
+     copies are wanted.
+   - Run `python scripts/youtube-signin-local.py client_secret_XXXX.json`
+     (Python 3.8 or newer, nothing to install; take the file from the repo if
+     there is no clone). It opens Google's sign-in in the browser, asks for
+     YouTube, the subtitles permission (`youtube.force-ssl`) and Drive
+     (`drive.file`; `--youtube-only` leaves those two out), names the channel
+     it reached, and prints three lines.
+   - Put the three lines in the environment's settings under Environment
+     variables, in place of the old `YOUTUBE_CLIENT_ID` and
+     `YOUTUBE_CLIENT_SECRET` (the Desktop client replaces the TV one):
+     `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_REFRESH_TOKEN`.
+     Never in a chat. A new session picks them up and signs itself in;
+     `auth` is then not needed (it works only with the TV client).
+   If Google later says the sign-in was revoked or expired, run the script
+   again and replace `YOUTUBE_REFRESH_TOKEN`.
+
 ## A publishing session (each day)
 
 Say "publish to YouTube" or "next uploads". Then:
@@ -84,14 +109,13 @@ Say "publish to YouTube" or "next uploads". Then:
      timing" → that episode's `narration.srt`, from the files Claude sends;
    - changes the visibility when ready.
 
-**Copies in Google Drive: off for now.** `python scripts/youtube-publish.py drive
-<name> ...` copies each episode's video, thumbnail, subtitles and chapters to
-My Drive → "Shivchei HaBesht narration" → a folder per episode. But Google
-refuses the sign-in by code (400 invalid_request, "Access blocked") when it
-asks for Drive and YouTube together, so since 2026-11-01 the sign-in asks for
-YouTube only and `drive` has no permission. To bring it back, give Drive a
-sign-in of its own (a second token with `drive.file` alone), not a wider
-YouTube one.
+**Copies in Google Drive.** `python scripts/youtube-publish.py drive <name> ...`
+copies each episode's video, thumbnail, subtitles and chapters to My Drive →
+"Shivchei HaBesht narration" → a folder per episode. It needs the lasting
+sign-in of setup step 8 with Drive granted: Google refuses the sign-in by
+code (400 invalid_request, "Access blocked") when it asks for Drive and
+YouTube together, so that one asks for YouTube only and `drive` has no
+permission under it.
 
 If the record is lost, or a session ended before it was merged,
 `python scripts/youtube-publish.py sync` rebuilds it from the channel: every
@@ -142,19 +166,19 @@ without signing in or uploading anything.
   entry 50: 1,700 a video, so five a day (8,500); a sixth does not fit. The audit form also asks for more quota; raise `per_day` and
   `daily_units` in the record when it is granted.
 - **Subtitles by hand.** Uploading captions needs the `youtube.force-ssl`
-  scope, which the sign-in by code does not grant. Later: a "Desktop app"
-  OAuth client, signed in once in a browser on the user's computer, and a
-  `captions.insert` step in the script.
-- **YouTube only, no Drive.** Google refuses the sign-in by code ("Access
-  blocked: Authorization Error", Error 400 invalid_request) when it asks for
-  `drive.file` together with `youtube`, so it asks for YouTube alone and
-  `drive` is out of use.
-- **Sign-in each session.** The token stays in the container
-  (`~/.config/sefer-forge/youtube-token.json`), so each new session signs in
-  again with a new code. Later: keep the refresh token as the environment
-  secret `YOUTUBE_REFRESH_TOKEN`, which the script reads first. The
-  consent screen must then be "In production", because tokens of an app
-  in Testing expire after 7 days.
+  scope, which the sign-in by code does not grant. The lasting sign-in of
+  setup step 8 asks for it; what is left is a `captions.insert` step in the
+  script (400 units a video, so four a day instead of five).
+- **YouTube only, no Drive, with the sign-in by code.** Google refuses it
+  ("Access blocked: Authorization Error", Error 400 invalid_request) when it
+  asks for `drive.file` together with `youtube`, so it asks for YouTube alone.
+  The lasting sign-in (setup step 8) has no such limit.
+- **Sign-in each session, with the sign-in by code.** Its token stays in the
+  container (`~/.config/sefer-forge/youtube-token.json`), so each new session
+  signs in again with a new code. The lasting sign-in (setup step 8) puts the
+  refresh token in the environment as `YOUTUBE_REFRESH_TOKEN`, which the
+  script reads first; the consent screen must then be "In production",
+  because tokens of an app in Testing expire after 7 days.
 - **Scheduled publishing.** Once uploads may be public, YouTube's
   `publishAt` can space them out, e.g. one a day at a set hour, uploaded in
   advance.
