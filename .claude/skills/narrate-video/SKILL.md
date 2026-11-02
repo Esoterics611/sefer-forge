@@ -33,16 +33,13 @@ recording and 3–4 of video on four CPUs.
    capitalised word as the voice will say it, after the shared respellings
    (`booklets/narration/say-en.yaml` / `say-fr.yaml`). Add a respelling where
    the phonemes are wrong, checked first with `--say` (French: `--say --lang fr`).
-4. **Picture**: add a drawing function to `booklets/narration/images/draw.py`
-   (its own seed, a `DRAWINGS` entry named after the plan) and run
-   `python booklets/narration/images/draw.py <name>`. Check that `git diff`
-   leaves the other drawings unchanged. Then run `--frame`, which builds only
-   `frame.png` (the picture with the titles on it) and `thumbnail.jpg`. Look
-   at it, and redraw until nothing that matters sits under the titles.
-   A picture the user supplies goes in `image:` instead, and that file is
-   committed from their computer (Git LFS).
+4. **Picture**: none to make. Every episode's picture and thumbnail is the
+   same plain title card (בס"ד, the series, the title, the subtitle; dark ink
+   on warm off-white), drawn by the build (`prompts/narration-rules.md`, The
+   picture and the thumbnail). Run `--frame` and look at `frame.png`: the
+   title readable at a glance, in one line or two even lines.
 5. **Build**: `python scripts/build-narration.py booklets/narration/<name>.yaml`
-   for each plan, one after another, in the background. A changed picture
+   for each plan, one after another, in the background. A changed title card
    needs only `--video`, without recording again.
 6. **Check** each episode by the rules' list: the subtitles end with the audio
    (`ffprobe` the MP3 against the last `.srt` cue), the chapters start at 0:00,
@@ -53,13 +50,13 @@ recording and 3–4 of video on four CPUs.
 8. **Publish** (`docs/youtube-publishing.md`):
    `python scripts/youtube-publish.py publish <name>` adds the episode to the
    end of the YouTube queue and uploads it, private, if the day still has
-   room (six a day). Sign in first with `auth` (a code for the user to enter
+   room (five a day), with its thumbnail. Sign in first with `auth` (a code for the user to enter
    at google.com/device), once per session. Without `YOUTUBE_CLIENT_ID` and
    `YOUTUBE_CLIENT_SECRET` in the environment, add the episode to `queue:`
    in `booklets/narration/youtube.yaml` by hand, and tell the user it is
    queued.
-9. **Record**: add the episode to the rules' table (stories, length, picture).
-   Commit the plan, `say-<lang>.yaml`, `draw.py`, the SVG and
+9. **Record**: add the episode to the rules' table (stories, length).
+   Commit the plan, `say-<lang>.yaml` and
    `booklets/narration/youtube.yaml`, and get them into `main`: the next
    session starts from it. Never commit `output/`.
    An idea left for later goes in `docs/backlog.md`.

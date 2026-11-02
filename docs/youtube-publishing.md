@@ -101,7 +101,8 @@ without signing in or uploading anything.
     the videos are made);
   - three hashtags (YouTube shows them above the title).
 - **Thumbnail:** the episode's `thumbnail.jpg`, the plain title card with
-  בס"ד, the same for every video (`prompts/narration-rules.md`, The
+  בס"ד (dark ink on warm off-white), the same for every video and the same
+  as the picture in the video (`prompts/narration-rules.md`, The
   thumbnail). `publish` sets it after the upload; `update [<name> ...]`
   puts the current description and thumbnail on videos already up.
 - **Tags, language and playlist:** the series' tags, the episode's language,

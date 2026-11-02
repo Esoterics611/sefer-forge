@@ -24,9 +24,9 @@ episodes follow the themed booklets (`booklets/booklets.yaml`), in order:
   youth, the hidden years, his passing) or a theme (the Days of Awe,
   journeys). 7–15 minutes: 1,300–2,600 words read, at about 175 a minute.
 - Read in English or French by the free Kokoro voice. Kokoro has no Hebrew.
-- The video is one picture for the whole reading, with the series line, the
-  episode's title and "Retold in Modern English" over its lower part. The
-  subtitles go up beside it as `narration.srt`, not burned in. No music.
+- The video is one picture for the whole reading: the plain title card
+  (series line, the episode's title, "Retold in Modern English"; below, The
+  picture and the thumbnail). The subtitles go up beside it as `narration.srt`, not burned in. No music.
 
 ## Choosing the stories
 
@@ -146,33 +146,30 @@ booklet's French title, made to fit on one line: "…, partie 1" rather than
 "première partie", and shorter wording where that is not enough ("Des fils
 aux couples sans enfants").
 
-## The picture
+## The picture and the thumbnail
 
-- **An original drawing for each episode**: a function in
-  `booklets/narration/images/draw.py`, written to `<name>.svg`. The style is
-  flat vector art, silhouettes against a lit sky or room, with one detail
-  from the stories: the boy's stick, the lock on the heavenly gate, the
-  frog's eye, the stopped clock and the blue flame.
-- People appear as small silhouettes, never faces, as in every drawing so far.
-- **What matters stays above y ≈ 620** (of 1080). The build darkens the lower
-  part and lays the series line, title and subtitle there. View `frame.png`
-  before building the video.
-- **A picture the user brings** (ChatGPT, Nano Banana) works too, as
-  `image:`. Such a JPG or PNG goes into Git LFS (`.gitattributes`), which a
-  cloud session cannot push: commit it from the user's computer.
-
-## The thumbnail
-
-- **Not the picture.** `thumbnail.jpg` is the same plain title card for every
-  episode, so the channel's videos look alike in a list: navy ground, בס"ד
-  top right, the series line in gold capitals over a short gold rule, the
-  title in large cream EB Garamond (one line, or two even lines), the
-  series' subtitle in gold italic. No drawing, no border.
-- Made by every build (`make_thumbnail()` in `scripts/build-narration.py`);
-  `--thumbnail` makes it alone. Look at it before publishing: the title
-  readable at a glance, בס"ד reading right to left.
-- `youtube-publish.py` uploads it with each video; `update <name>` puts it
-  on a video already up.
+- **One plain title card, the same for every episode**, as the picture shown
+  for the whole video (`frame.png`) and as its thumbnail (`thumbnail.jpg`):
+  - warm off-white paper (239, 232, 218), the title in dark brown ink
+    (47, 42, 36), the rest in a muted bronze (128, 100, 62);
+  - בס"ד top right; the series in spaced capitals over a short rule; the
+    title in large EB Garamond SemiBold, one line or two even lines; the
+    series' subtitle in italic;
+  - no drawing, no border, no gradient, nothing that moves.
+- **Why these colours** (the user asked for something easy on the eyes,
+  clear and not distracting): dark letters on a light ground read best;
+  neither pure black nor pure white, which glare; light letters on a dark
+  ground blur for many eyes. The title is 11.7:1 against the paper, the
+  bronze 4.5:1. Chosen 2026-11-02 over a soft slate and a pale sage.
+- Made by every build (`title_card()` in `scripts/build-narration.py`);
+  `--frame` or `--thumbnail` makes it alone, `--video` remakes the video
+  from the reading made. Look at it before publishing: the title readable at
+  a glance, בס"ד reading right to left.
+- `youtube-publish.py` uploads the thumbnail with each video; `update
+  <name>` puts it on a video already up. A video's own picture cannot be
+  changed after the upload.
+- The plans' `image:` drawings (`booklets/narration/images/`) are no longer
+  used.
 
 ## Before handing over
 
@@ -182,7 +179,7 @@ aux couples sans enfants").
   - The last subtitle cue ends with the audio.
   - `chapters.txt` starts at 0:00, with every chapter at least 10 seconds.
   - The audio is levelled (mean volume about −18 dB, peak below −1 dB, by ffmpeg's volumedetect).
-  - `frame.png` and `thumbnail.jpg` have been looked at.
+  - `frame.png` (the title card) has been looked at.
 - Hand over `video.mp4`, `thumbnail.jpg`, `narration.srt` and `chapters.txt`.
   In a cloud session, send them as files: `output/` is not in git, so they
   are gone when the session ends. Each one rebuilds with one command.
