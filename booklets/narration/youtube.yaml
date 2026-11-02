@@ -25,8 +25,8 @@ queue:
 - the-frog-in-the-wilderness    # up 2026-11-01
 - the-speech-of-the-birds    # up 2026-11-01
 - le-garcon-qui-n-avait-pas-peur    # up 2026-11-01
+- la-porte-verrouillee    # up 2026-11-02
   # planned for 2026-11-02
-- la-porte-verrouillee
 - the-passing-of-the-baal-shem-tov
 - the-authors-introduction
 - the-hidden-years-and-the-revelation
@@ -137,7 +137,14 @@ uploaded:
     id: LN-_wQ3XcAw
     date: '2026-11-01'
     playlist: true
+  la-porte-verrouillee:
+    id: QYZccSf1GE8
+    date: '2026-11-02'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
     uploads: 5
+  '2026-11-02':
+    units: 2300
+    uploads: 1
