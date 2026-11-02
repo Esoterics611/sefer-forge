@@ -246,6 +246,10 @@ def client() -> tuple[str, str]:
 def auth() -> None:
     cid, secret = client()
     r = requests.post(DEVICE_URL, data={"client_id": cid, "scope": SCOPE}, timeout=30)
+    if r.status_code in (400, 401):
+        sys.exit(f"Google refused the sign-in by code ({r.json().get('error')}). If the client in the environment is "
+                 "a Desktop app one, sign in on your computer instead: scripts/youtube-signin-local.py "
+                 "(docs/youtube-publishing.md, setup step 8).")
     r.raise_for_status()
     d = r.json()
     print(f"\n  On your phone or computer, open {d['verification_url']}\n  and enter the code:  {d['user_code']}\n"
@@ -283,11 +287,13 @@ def access_token(renew: bool = False) -> str:
     if not refresh and TOKEN.exists():
         refresh = json.loads(TOKEN.read_text(encoding="utf-8"))["refresh_token"]
     if not refresh:
-        sys.exit("Not signed in: run  python scripts/youtube-publish.py auth")
+        sys.exit("Not signed in: set YOUTUBE_REFRESH_TOKEN (scripts/youtube-signin-local.py on your computer), "
+                 "or run  python scripts/youtube-publish.py auth")
     r = requests.post(TOKEN_URL, data={"client_id": cid, "client_secret": secret, "refresh_token": refresh,
                                        "grant_type": "refresh_token"}, timeout=30)
     if not r.ok:
-        sys.exit(f"The sign-in has expired or was revoked ({r.json().get('error')}): run auth again.")
+        sys.exit(f"The sign-in has expired or was revoked ({r.json().get('error')}): sign in again, with "
+                 "scripts/youtube-signin-local.py on your computer (then update YOUTUBE_REFRESH_TOKEN) or auth.")
     _access.update(token=r.json()["access_token"], until=time.time() + r.json()["expires_in"] - 60)
     return _access["token"]
 
