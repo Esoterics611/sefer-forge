@@ -1,0 +1,31 @@
+# A narration for video, in Hebrew: the stories of sons-for-the-childless-part-two.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/banim-lachasuchei-yeladim-chelek-bet.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: בנים לחשוכי ילדים, חלק ב
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 184
+    # TODO: brackets differ (English 1, Hebrew 2): map them by hand; Hebrew brackets: (כי בשבת לא אומרים "שלום" כרגיל) | (צעטיל)
+    # TODO: the English edit 'greeted the guest (for on the Sabbath one does not say "Shalom" in the usual way).' -> 'greeted the guest, for on the Sabbath one does not say "Shalom" in the usual way.': write it in Hebrew
+
+  - n: 204

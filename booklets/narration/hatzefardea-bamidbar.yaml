@@ -1,0 +1,49 @@
+# A narration for video, in Hebrew: the stories of the-frog-in-the-wilderness.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/hatzefardea-bamidbar.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: הצפרדע במדבר
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 10
+    drop:
+      - (זעקסער)
+      - (זופיצא)
+    edits:
+      - from: עורות של מארדער (סוג של חיית פרווה)
+        to: עורות של מארדער, סוג של חיית פרווה
+      - from: (בחורף היה לבעל שם טוב בית התבודדות בכפר, אצל גוי ששכר ממנו שם בית.)
+        to: בחורף היה לבעל שם טוב בית התבודדות בכפר, אצל גוי ששכר ממנו שם בית.
+
+
+  - n: 11
+    drop:
+      - (לולקע)
+
+  - n: 3
+    cut:
+      - (פעם אחת באו
+    edits:
+      - from: '(אמר לו הבעל שם טוב: "תלמיד חכם אתה!", ובדיבור הזה העלה אותו הרבה.)'
+        to: 'אמר לו הבעל שם טוב: "תלמיד חכם אתה!", ובדיבור הזה העלה אותו הרבה.'
+      - from: ' (אלישע בן אבויה)'
+        to: ''

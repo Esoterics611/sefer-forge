@@ -1,0 +1,51 @@
+# A narration for video, in Hebrew: the stories of opponents-and-testers.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/mitnagdim-uvochanim.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: מתנגדים ובוחנים
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 48
+    drop:
+      - (לבחון אותו)
+
+  - n: 87
+    drop:
+      - (ליטאי)
+
+  - n: 99
+    # TODO: brackets differ (English 2, Hebrew 3): map them by hand; Hebrew brackets: (חותך בדים) | (גרמני) | (כך היה המנהג שם: כשגומרים עסקה, מחליפים את הכובעי
+    # TODO: the English edit '(That was the custom there: when a deal is closed, they exchange hats, and that is the sign that the deal is closed.)' -> 'That was the custom there: when a deal is closed, they exchange hats, and that is the sign that the deal is closed.': write it in Hebrew
+
+  - n: 188
+    drop:
+      - (כידוע, יש כ
+    edits:
+      - from: (ושמעתי שהבעל שם טוב היה מנשמתו של דוד המלך, ורבי נחמן מנשמתו של שאול המלך, ולכן היה אויב לדוד כל הימים.)
+        to: ושמעתי שהבעל שם טוב היה מנשמתו של דוד המלך, ורבי נחמן מנשמתו של שאול המלך, ולכן היה אויב לדוד כל הימים.
+
+  - n: 189
+
+  - n: 190
+    edits:
+      - from: (מקוסוב)
+        to: מקוסוב

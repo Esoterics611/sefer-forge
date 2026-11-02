@@ -1,0 +1,46 @@
+# A narration for video, in Hebrew: the stories of rabbi-nachman-of-horodenka.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/rabbi-nachman-mehorodenka.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: רבי נחמן מהורודנקה
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 73
+
+  - n: 74
+
+  - n: 75
+    # TODO: the English edit ' And since we have come to this, let us hear another thing on this matter.' -> '': write it in Hebrew
+
+  - n: 91
+
+  - n: 94
+
+  - n: 102
+    # TODO: the English edit 'And from the rabbi of our community I heard:' -> 'From the rabbi of our community I heard:': write it in Hebrew
+
+  - n: 131
+    # TODO: the English edit 'I heard from that rabbi that Rabbi Eliezer' -> 'I heard that Rabbi Eliezer': write it in Hebrew
+
+  - n: 186
+    cut:
+      - ובגרסה אחרת שמעתי

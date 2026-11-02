@@ -23,7 +23,8 @@ episodes follow the themed booklets (`booklets/booklets.yaml`), in order:
 - Two to four stories that belong together: a stretch of his life (birth and
   youth, the hidden years, his passing) or a theme (the Days of Awe,
   journeys). 7–15 minutes: 1,300–2,600 words read, at about 175 a minute.
-- Read in English or French by the free Kokoro voice. Kokoro has no Hebrew.
+- Read in English or French by the free Kokoro voice, in Hebrew by a Google
+  Cloud voice kept inside its free allowance (Voice, below).
 - The video is one picture for the whole reading: the plain title card
   (series line, the episode's title, "Retold in Modern English"; below, The
   picture and the thumbnail). The subtitles go up beside it as `narration.srt`, not burned in. No music.
@@ -137,14 +138,34 @@ user what was cut.
 English: `am_michael` (an American man), speed 1.0, in every episode so
 far. To change it, give the user samples first:
 `--sample am_michael,am_fenrir,bm_george,bm_fable,af_heart`.
-French: `ff_siwis` (a woman), Kokoro's only French voice. The French episodes
-reuse the English episode's drawing, with the French titles (series and
-subtitle from `booklets.yaml`). Every English episode has a French one, with
+French: `ff_siwis` (a woman), Kokoro's only French voice, with the French
+titles (series and subtitle from `booklets.yaml`). Every English episode has a French one, with
 the same stories, cuts and dropped brackets, written from the English plan by
 `scripts/narration-french-plan.py` and finished by hand. Its title is the
 booklet's French title, made to fit on one line: "…, partie 1" rather than
 "première partie", and shorter wording where that is not enough ("Des fils
 aux couples sans enfants").
+
+Hebrew: Google Cloud Text-to-Speech, Chirp 3 HD (`he-IL-Chirp3-HD-Charon`, a
+man, until the user picks another from samples), read from the Hebrew booklet
+text (`shivchei-habesht-simple.md`). Chosen 2026-11-02, at no cost: Kokoro has
+no Hebrew; the free Edge voices are not licensed for published videos; the
+open Phonikud voices are non-commercial only. Chirp 3 HD is free up to 1
+million characters a month, the whole Hebrew book is about 626,000: the build
+counts each month in `booklets/narration/tts-usage.yaml` and refuses an
+episode past 900,000 (`TTS_MONTHLY_LIMIT`). Needs `GOOGLE_TTS_API_KEY`
+(docs/youtube-publishing.md, setup 7).
+- Every English episode has a Hebrew one, the same stories, cuts and brackets,
+  written from the English plan by `scripts/narration-french-plan.py <english
+  plan> <name> "<כותרת>" --lang he` (names transliterated, `hayeled-shelo-pachad`).
+  The Hebrew text has glosses of Yiddish words the English leaves out
+  (`(שפענער)`, `(סטיוול)`): drop them, or keep a gloss the listener needs as
+  part of the sentence (`מארדער, סוג של חיית פרווה`). A plan with a `# TODO`
+  left does not build; `--script` stops on any bracket left.
+- Titles: the booklet's Hebrew title, "…, חלק א / ב" for parts.
+- `booklets/narration/say-he.yaml` says the abbreviations (ה' → השם, ר' →
+  רבי, חז״ל); the subtitles keep the written form.
+- The title card is set in Frank Ruhl Libre (`templates/fonts`, OFL).
 
 ## The picture and the thumbnail
 

@@ -20,6 +20,9 @@ languages:
   fr:
     series: "Les louanges du Baal Chem Tov"
     subtitle: "Racontées en français d'aujourd'hui"
+  he:                                 # the narration's title card and video titles
+    series: "שבחי הבעל שם טוב"
+    subtitle: "בעברית של ימינו"
 
 booklets:
   - title: "הולדתו ונעוריו"

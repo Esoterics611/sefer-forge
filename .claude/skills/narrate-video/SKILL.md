@@ -1,6 +1,6 @@
 ---
 name: narrate-video
-description: Make a narrated YouTube video (an episode) from the Shivchei HaBesht booklet stories in English or French. It chooses the stories, writes the plan, fixes how names are said, draws an original picture, records, builds video.mp4 with subtitles and chapters, checks and hands over. Use when the user says "narration", "make a video", "YouTube", "read the stories aloud", "another episode", "more videos". Argument - optional story numbers, a theme, or an existing plan name.
+description: Make a narrated YouTube video (an episode) from the Shivchei HaBesht booklet stories in English, French or Hebrew. It chooses the stories, writes the plan, fixes how names are said, draws an original picture, records, builds video.mp4 with subtitles and chapters, checks and hands over. Use when the user says "narration", "make a video", "YouTube", "read the stories aloud", "another episode", "more videos". Argument - optional story numbers, a theme, or an existing plan name.
 ---
 
 Rules (what is read, cut, dropped, respelled, drawn): `prompts/narration-rules.md`;
@@ -12,7 +12,9 @@ recording and 3–4 of video on four CPUs.
 1. **Choose the stories** by the rules: the next booklet in `booklets.yaml`
    (its stories not yet narrated and not MATURE; the rules' tables say which
    booklets are done), split or joined by length. Read each story whole in
-   `shivchei-habesht-simple-en.md` (or `-fr.md`) before choosing. Tell the user
+   `shivchei-habesht-simple-en.md` (or `-fr.md`) before choosing. Every English
+   episode gets a French and a Hebrew one, written from its plan by
+   `scripts/narration-french-plan.py ... [--lang he]` and finished by hand. Tell the user
    the choice in a line per episode.
 2. **Write the plan**: copy the layout of an existing plan (English
    `in-prayer.yaml`, French `la-porte-verrouillee.yaml`), with `title`, `lang`,

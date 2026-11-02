@@ -1,0 +1,39 @@
+# A narration for video, in Hebrew: the stories of his-last-days.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/yamav-haachronim.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: ימיו האחרונים
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 77
+    # TODO: brackets differ (English 2, Hebrew 1): map them by hand; Hebrew brackets: (מאדם אחד מבר שמעתי שהשאלה הייתה איך להתפלל בשביל 
+    # TODO: the English edit '(From a man from Bar I heard that the question was how to pray for a sick person, with stories.)' -> 'From a man from Bar I heard that the question was how to pray for a sick person, with stories.': write it in Hebrew
+
+  - n: 90
+
+  - n: 105
+    # TODO: brackets differ (English 1, Hebrew 2): map them by hand; Hebrew brackets: (המחשבות הקדושות) | (חצי גוף, כי אשתי נפטרה)
+
+  - n: 106
+
+  - n: 107
+    # TODO: the English edit 'And the rabbi of our community said' -> 'The rabbi of our community said': write it in Hebrew

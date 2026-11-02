@@ -14,8 +14,8 @@ Usage:
     python scripts/build-narration.py <plan> --names             # how it says every name in the plan
 
 A plan (booklets/narration/*.yaml) names the stories, in the order they are
-read, from the English or French booklet text (shivchei-habesht-simple-en.md /
--fr.md), with the paragraphs left out (`cut:`), the brackets that explain a word left
+read, from the English, French or Hebrew booklet text (shivchei-habesht-simple-en.md /
+-fr.md / shivchei-habesht-simple.md), with the paragraphs left out (`cut:`), the brackets that explain a word left
 out (`drop:`, by their opening words), the changes that make the text
 read aloud well (`edits:`: the booklet's bracketed explanations of words left
 out, its other brackets turned into spoken phrases) and how the voice says the
@@ -41,6 +41,13 @@ CPU through kokoro-onnx: pip install -r requirements-narration.txt. The model
 files (about 350 MB) are downloaded on first use into KOKORO_DIR, by default
 ~/.cache/sefer-forge/kokoro. Voices: am_* American and bm_* British men,
 af_* / bf_* women, ff_siwis French. Kokoro has no Hebrew voice.
+
+Hebrew (`lang: he`) is read by Google Cloud Text-to-Speech, a Chirp 3 HD voice
+(`voice: he-IL-Chirp3-HD-<name>`), with the API key GOOGLE_TTS_API_KEY (an
+environment secret: a key of the sefer-forge Google Cloud project, limited to
+the Text-to-Speech API). Free up to 1 million characters a month; the build
+counts what it sends in booklets/narration/tts-usage.yaml and refuses an
+episode that would pass TTS_MONTHLY_LIMIT, so it never costs money.
 """
 from __future__ import annotations
 
@@ -61,15 +68,19 @@ except ImportError:
     print("Missing dependency. Install with: pip install pyyaml")
     sys.exit(1)
 
-SOURCES = {"en": "shivchei-habesht-simple-en.md", "fr": "shivchei-habesht-simple-fr.md"}
-SUMMARY = {"en": r"\*\*Summary:\*\*", "fr": r"\*\*Résumé :\*\*"}
-COLOPHON = {"en": r"Finished and complete\.", "fr": r"Fin\. Louange"}
+SOURCES = {"en": "shivchei-habesht-simple-en.md", "fr": "shivchei-habesht-simple-fr.md",
+           "he": "shivchei-habesht-simple.md"}
+SUMMARY = {"en": r"\*\*Summary:\*\*", "fr": r"\*\*Résumé :\*\*", "he": r"\*\*סיכום:\*\*"}
+COLOPHON = {"en": r"Finished and complete\.", "fr": r"Fin\. Louange", "he": r"תם ונשלם"}
 STORY_COUNT = 211          # the author's introduction + stories 1-210
 OUT = Path("output/narration")
 MODEL_DIR = Path(os.environ.get("KOKORO_DIR", Path.home() / ".cache" / "sefer-forge" / "kokoro"))
 MODEL_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/"
 MODEL_FILES = ("kokoro-v1.0.onnx", "voices-v1.0.bin")
 VOICE_LANG = {"a": "en-us", "b": "en-gb", "f": "fr-fr"}   # by the voice name's first letter
+GOOGLE_TTS = "https://texttospeech.googleapis.com/v1/text:synthesize"
+TTS_USAGE = Path("booklets/narration/tts-usage.yaml")      # characters sent to Google, per month
+TTS_MONTHLY_LIMIT = 900_000  # Chirp 3 HD is free up to 1,000,000 characters a month
 # Silence, in seconds, after a sentence, a paragraph, a story's title, a story.
 PAUSE = {"sentence": 0.3, "paragraph": 0.8, "title": 1.0, "story": 2.0}
 SUB_LINE = 42              # characters per subtitle line, two lines per cue
@@ -171,7 +182,70 @@ def spoken(text: str, say: dict, lang: str) -> str:
     return text
 
 
-def load_model():
+class GoogleVoice:
+    """Google Cloud Text-to-Speech, with the same create() as Kokoro."""
+
+    def __init__(self) -> None:
+        self.key = os.environ.get("GOOGLE_TTS_API_KEY")
+        if not self.key:
+            sys.exit("GOOGLE_TTS_API_KEY is not set: the Hebrew voice is Google Cloud Text-to-Speech "
+                     "(docs/youtube-publishing.md, Hebrew voice)")
+        self.sent = 0
+
+    def create(self, text: str, voice: str, speed: float, lang: str):
+        import json
+        import time
+        import numpy as np
+        body = json.dumps({"input": {"text": text},
+                           "voice": {"languageCode": voice[:5], "name": voice},
+                           "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": 24000,
+                                           "speakingRate": speed}}).encode()
+        for attempt in range(6):
+            req = urllib.request.Request(f"{GOOGLE_TTS}?key={self.key}", data=body,
+                                         headers={"Content-Type": "application/json"})
+            try:
+                with urllib.request.urlopen(req, timeout=120) as r:
+                    audio = json.load(r)["audioContent"]
+                break
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 500, 503) and attempt < 5:
+                    time.sleep(5 * (attempt + 1))
+                    continue
+                sys.exit(f"Google Text-to-Speech: {e.code} {e.read().decode()[:400]}")
+        import base64
+        import io
+        self.sent += len(text)
+        with wave.open(io.BytesIO(base64.b64decode(audio))) as w:
+            rate = w.getframerate()
+            pcm = np.frombuffer(w.readframes(w.getnframes()), "<i2")
+        return pcm.astype(np.float32) / 32768, rate
+
+
+def tts_budget(blocks: list[dict], say: dict) -> int:
+    """The characters this episode sends to Google; stop if the month's free allowance would be passed."""
+    import datetime as dt
+    month = dt.date.today().strftime("%Y-%m")
+    used = (yaml.safe_load(TTS_USAGE.read_text(encoding="utf-8")) or {}) if TTS_USAGE.exists() else {}
+    need = sum(len(spoken(s, say, "he")) for b in blocks for s in sentences(b["text"]))
+    if used.get(month, 0) + need > TTS_MONTHLY_LIMIT:
+        sys.exit(f"Google Text-to-Speech: {used.get(month, 0):,} characters used in {month}, this episode needs "
+                 f"{need:,}: over the {TTS_MONTHLY_LIMIT:,} kept free. It waits for next month.")
+    return need
+
+
+def count_tts(sent: int) -> None:
+    import datetime as dt
+    month = dt.date.today().strftime("%Y-%m")
+    used = (yaml.safe_load(TTS_USAGE.read_text(encoding="utf-8")) or {}) if TTS_USAGE.exists() else {}
+    used[month] = used.get(month, 0) + sent
+    TTS_USAGE.write_text("# Characters sent to Google Text-to-Speech (the Hebrew voice), per month; written by\n"
+                         "# build-narration.py, which stops before TTS_MONTHLY_LIMIT. Commit it with the record.\n"
+                         + yaml.safe_dump(used, sort_keys=True), encoding="utf-8")
+
+
+def load_model(lang: str = "en"):
+    if lang == "he":
+        return GoogleVoice()
     try:
         from kokoro_onnx import Kokoro
     except ImportError:
@@ -188,6 +262,8 @@ def load_model():
 
 
 def voice_lang(voice: str) -> str:
+    if voice.startswith("he-IL-"):
+        return "he"
     if voice[:1] not in VOICE_LANG:
         sys.exit(f"voice {voice!r}: expected a Kokoro voice name such as am_michael or bm_george")
     return VOICE_LANG[voice[0]]
@@ -254,7 +330,7 @@ def make_frame(plan: dict, out: Path) -> Path:
 # the series' subtitle in italic. No picture, no border, nothing that moves.
 THUMB = (1280, 720)
 PAPER, INK, BRONZE = (239, 232, 218), (47, 42, 36), (128, 100, 62)
-HEBREW_FONTS = ["templates/fonts/FrankRuehl.ttf", "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
+HEBREW_FONTS = ["templates/fonts/FrankRuhlLibre.ttf", "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
                 "/mnt/c/Windows/Fonts/davidbd.ttf", "C:/Windows/Fonts/davidbd.ttf",
                 "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]
 
@@ -265,13 +341,21 @@ def title_card(plan: dict, series: dict, size: tuple[int, int]):
     k = W / THUMB[0]                                    # laid out at 1280x720, scaled
     img = Image.new("RGB", size, PAPER)
     draw = ImageDraw.Draw(img)
-    font = lambda name, pt: ImageFont.truetype(str(FONTS / f"EBGaramond-{name}.ttf"), round(pt * k))
+    def font(name: str, pt: float):
+        if plan["lang"] != "he":
+            return ImageFont.truetype(str(FONTS / f"EBGaramond-{name}.ttf"), round(pt * k))
+        # Hebrew: Frank Ruhl Libre (no italic; its weights by name), a little larger for the same weight.
+        f = ImageFont.truetype(str(FONTS / "FrankRuhlLibre.ttf"), round(pt * k * 1.05))
+        f.set_variation_by_name({"SemiBold": "Bold", "Italic": "Regular"}.get(name, name))
+        return f
     hebrew = next((f for f in HEBREW_FONTS if Path(f).exists()), None)
     if not hebrew:
         sys.exit("No Hebrew font for בס\"ד on the title card: " + ", ".join(HEBREW_FONTS))
     # בס"ד, top right; Pillow without raqm lays out no right-to-left text, so the letters go in reversed.
     bsd = 'בס"ד' if features.check("raqm") else 'בס"ד'[::-1]
-    draw.text((W - 56 * k, 40 * k), bsd, font=ImageFont.truetype(hebrew, round(40 * k)), fill=BRONZE, anchor="ra")
+    bsd_font = font("SemiBold", 38) if plan["lang"] == "he" else ImageFont.truetype(hebrew, round(40 * k))
+    draw.text((W - 56 * k, 40 * k), bsd, font=bsd_font, fill=BRONZE, anchor="ra")
+
 
     def centred(y: float, text: str, f, fill, tracking: float = 0) -> None:
         widths = [draw.textlength(c, font=f) for c in text] if tracking else [draw.textlength(text, font=f)]
@@ -299,7 +383,8 @@ def title_card(plan: dict, series: dict, size: tuple[int, int]):
     size_px = pt * k
     gap = size_px * 1.12
     y = (H - (gap * (len(lines) - 1) + size_px)) / 2 + 10 * k
-    centred(y - 120 * k, series["series"].upper(), font("Regular", 38), BRONZE, tracking=5 * k)
+    centred(y - 120 * k, series["series"].upper(), font("Regular", 38), BRONZE,
+            tracking=0 if plan["lang"] == "he" else 5 * k)        # spaced letters break Hebrew
     draw.line([(W / 2 - 90 * k, y - 52 * k), (W / 2 + 90 * k, y - 52 * k)], fill=BRONZE, width=max(2, round(2 * k)))
     for line in lines:
         centred(y - size_px * 0.18, line, big, INK)
@@ -389,9 +474,11 @@ def main(argv: list[str]) -> None:
     if not argv or argv[0].startswith("--"):
         sys.exit(__doc__)
     plan_path = Path(argv[0])
+    if "# TODO" in plan_path.read_text(encoding="utf-8"):
+        sys.exit(f"{plan_path}: finish its TODOs first (prompts/narration-rules.md)")
     plan = yaml.safe_load(plan_path.read_text(encoding="utf-8"))
     if plan["lang"] not in SOURCES:
-        sys.exit(f"{plan_path}: lang must be one of {', '.join(SOURCES)} (Kokoro has no Hebrew voice)")
+        sys.exit(f"{plan_path}: lang must be one of {', '.join(SOURCES)}")
     voice, samples_for = plan["voice"], []
     if "--voice" in argv:
         voice = argv[argv.index("--voice") + 1]
@@ -411,6 +498,8 @@ def main(argv: list[str]) -> None:
     if "--script" in argv:
         return
     if "--names" in argv:
+        if plan["lang"] == "he":
+            sys.exit("--names: Kokoro only (English, French); listen to a Hebrew --sample instead")
         model, lang = load_model(), voice_lang(voice)
         names = sorted({w for b in blocks for w in re.findall(r"(?<![\w'])(?:[A-ZÀ-Ý]|'[hH])[\w'-]*", b["text"])})
         for w in names:
@@ -432,15 +521,23 @@ def main(argv: list[str]) -> None:
         print(f"  {make_video(out)}")
         return
 
-    model = load_model()
+    model = load_model(plan["lang"])
     if samples_for:
         first = next(i for i, b in enumerate(blocks) if b["chapter"])
+        if plan["lang"] == "he":
+            tts_budget(blocks[:first + 2], say)
         for v in samples_for:
             audio, rate, _ = synthesize(model, blocks[:first + 2], v, plan.get("speed", 1.0), say)
             print(f"  {write_audio(audio, rate, out / f'sample-{v}.wav')}")
+        if plan["lang"] == "he":
+            count_tts(model.sent)
         return
 
+    if plan["lang"] == "he":
+        print(f"  Google Text-to-Speech: {tts_budget(blocks, say):,} characters")
     audio, rate, cues = synthesize(model, blocks, voice, plan.get("speed", 1.0), say)
+    if plan["lang"] == "he":
+        count_tts(model.sent)
     print(f"  {write_audio(audio, rate, out / 'narration.wav')}  ({len(audio) / rate / 60:.1f} minutes, voice {voice})")
     write_srt(cues, out / "narration.srt")
     print(f"  {out / 'narration.srt'}")

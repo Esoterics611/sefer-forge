@@ -86,7 +86,8 @@ DRIVE_FILES = {"video.mp4": "video/mp4", "thumbnail.jpg": "image/jpeg",
 COST = {"upload": 1600, "playlist": 50, "entry": 50, "list": 1, "thumbnail": 50, "update": 50}
 PACIFIC = ZoneInfo("America/Los_Angeles")
 CHUNK = 16 * 1024 * 1024            # a multiple of 256 KiB, as resumable uploads require
-RECORD_SETTINGS: dict = {}          # the record's settings, read by main()
+RECORD_SETTINGS: dict = {}
+YT_LANG = {"he": "iw"}              # YouTube's code for Hebrew          # the record's settings, read by main()
 
 TEXT = {
     "en": {
@@ -94,7 +95,7 @@ TEXT = {
         "chapters": "In this episode:",
         "stories": "Stories {} of Shivchei HaBesht (In Praise of the Baal Shem Tov), the first collection of "
                    "stories about Rabbi Israel Baal Shem Tov, founder of Chassidus, printed in 1814.",
-        "credits": "Narration: a synthetic voice (Kokoro). Picture: an original drawing.",
+        "credits": "Narration: a synthetic voice (Kokoro).",
         "site": "How these videos are made: Sefer Forge, https://esoterics611.github.io/",
         "hashtags": "#BaalShemTov #Chassidus #JewishStories",
         "playlist": "{} (English)",
@@ -106,12 +107,24 @@ TEXT = {
         "chapters": "Dans cet épisode :",
         "stories": "Récits {} du Chivhei HaBecht (Les louanges du Baal Chem Tov), le premier recueil de récits "
                    "sur Rabbi Israël Baal Chem Tov, fondateur du hassidisme, imprimé en 1814.",
-        "credits": "Narration : une voix de synthèse (Kokoro). Image : un dessin original.",
+        "credits": "Narration : une voix de synthèse (Kokoro).",
         "site": "Comment ces vidéos sont faites : Sefer Forge, https://esoterics611.github.io/",
         "hashtags": "#BaalChemTov #Hassidisme #RécitsJuifs",
         "playlist": "{} (en français)",
         "tags": ["Baal Chem Tov", "Chivhei HaBecht", "Les louanges du Baal Chem Tov", "histoires hassidiques",
                  "hassidisme", "récits juifs", "Besht"],
+    },
+    "he": {
+        "about": "סיפורי הבעל שם טוב מתוך ספר שבחי הבעל שם טוב, בעברית של ימינו, בקריאה בקול.",
+        "chapters": "בפרק הזה:",
+        "stories": "סיפורים {} מתוך שבחי הבעל שם טוב, הקובץ הראשון של סיפורים על רבי ישראל בעל שם טוב, "
+                   "מייסד החסידות, שנדפס בשנת תקע״ה (1814).",
+        "credits": "קריינות: קול סינתטי (Google).",
+        "site": "איך נעשים הסרטונים האלה: Sefer Forge, https://esoterics611.github.io/",
+        "hashtags": "#הבעלשםטוב #חסידות #סיפוריצדיקים",
+        "playlist": "{} (בעברית)",
+        "tags": ["הבעל שם טוב", "שבחי הבעל שם טוב", "בעל שם טוב", "סיפורי חסידים", "חסידות",
+                 "סיפורי צדיקים", "Baal Shem Tov", "Shivchei HaBesht"],
     },
 }
 
@@ -203,8 +216,8 @@ def metadata(name: str) -> dict:
     description = description.replace("<", "‹").replace(">", "›")      # YouTube refuses angle brackets
     return {
         "snippet": {"title": title, "description": description, "tags": t["tags"] + [f"sefer-forge-{name}"],
-                    "categoryId": str(RECORD_SETTINGS["category"]), "defaultLanguage": lang,
-                    "defaultAudioLanguage": lang},
+                    "categoryId": str(RECORD_SETTINGS["category"]), "defaultLanguage": YT_LANG.get(lang, lang),
+                    "defaultAudioLanguage": YT_LANG.get(lang, lang)},
         "status": {"privacyStatus": RECORD_SETTINGS["privacy"],
                    "selfDeclaredMadeForKids": bool(RECORD_SETTINGS["made_for_kids"]), "embeddable": True},
         "lang": lang, "series": series,
@@ -499,8 +512,10 @@ def publish(rec: dict, names: list[str], build: bool, dry: bool) -> None:
                 print(f"  {name}: not built (output/narration/{name}/video.mp4); --build builds it first")
                 continue
             print(f"  {name}: building ...", flush=True)
-            subprocess.run([sys.executable, str(ROOT / "scripts/build-narration.py"), str(PLANS / f"{name}.yaml")],
-                           check=True)
+            if subprocess.run([sys.executable, str(ROOT / "scripts/build-narration.py"),
+                               str(PLANS / f"{name}.yaml")]).returncode:
+                print(f"  {name}: the build failed (above); it stays in the queue, the next video goes up")
+                continue
         meta = metadata(name)
         if dry:
             print(f"\n=== {name}\n{meta['snippet']['title']}\n{meta['status']}\n\n{meta['snippet']['description']}\n")

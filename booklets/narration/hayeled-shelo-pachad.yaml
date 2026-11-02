@@ -1,0 +1,61 @@
+# A narration for video, in Hebrew: the stories of the-boy-who-was-not-afraid.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/hayeled-shelo-pachad.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: הילד שלא פחד
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 1
+    cut:
+      - 'אמר המדפיס: בכתבים'
+      - '> (בכתבים הסיפור'
+    edits:
+      - from: ' (היועץ הראשי של המלך)'
+        to: ''
+      - from: ' (ביקש מן השמים שיענו לו בחלום)'
+        to: ''
+      - from: (הבעל שם טוב אמר שאי אפשר היה להוריד את נשמתו לעולם, אלא אחרי שהתאווה כבר נגמרה לגמרי.)
+        to: הבעל שם טוב אמר שאי אפשר היה להוריד את נשמתו לעולם, אלא אחרי שהתאווה כבר נגמרה לגמרי.
+      - from: ' (בשם רבנו שמעתי הסבר טבעי לכך שהדברים נחקקו בלבו: חז״ל אמרו שמה שילד אומר, שמע מאביו או מאמו, ובפרט "בן זקונים", שנולד להוריו בזקנתם. יעקב אהב את יוסף כי היה בן זקונים, ולכן הקשר ביניהם היה גדול מאוד, כמו שכתוב בזוהר הקדוש. וכך גם כאן: בגלל הקשר הגדול והאמיתי ביניהם, הדברים נחקקו בלבו של הבעל שם טוב, אף שהיה עדיין ילד קטן מאוד.)'
+        to: ''
+      - from: ' (מין זאב-אדם)'
+        to: ''
+
+  - n: 12
+    drop:
+      - (שפענער)
+    edits:
+      - from: "קם הבעל שם טוב (שמעתי שהוא ישן רק שעתיים), וישב בשקט"
+        to: "קם הבעל שם טוב. שמעתי שהוא ישן רק שעתיים. הוא ישב בשקט"
+      - from: "(והרב סיפר מפה לאוזן שהאור עמד מעליו כמו קשת.)"
+        to: "והרב סיפר מפה לאוזן שהאור עמד מעליו כמו קשת."
+      - from: "(כי הבעל שם טוב גזר על רבי דוד שלא יגלה.)"
+        to: "כי הבעל שם טוב גזר על רבי דוד שלא יגלה."
+
+  - n: 70
+    drop:
+      - (סטיוול)
+    edits:
+      - from: "עוד סיפר לי רבי פסח:"
+        to: "סיפר לי רבי פסח:"
+
+  - n: 33

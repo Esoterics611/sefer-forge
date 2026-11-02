@@ -1,0 +1,52 @@
+# A narration for video, in Hebrew: the stories of the-rabbi-of-polonne.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/harav-shel-polnaa.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: הרב של פולנאה
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 21
+
+  - n: 22
+    # TODO: brackets differ (English 1, Hebrew 2): map them by hand; Hebrew brackets: (כמשכון) | (תקיעת כף)
+
+  - n: 23
+    edits:
+      - from: (המכתב ממשיך:)
+        to: 'המכתב ממשיך:'
+
+  - n: 65
+    # TODO: brackets differ (English 1, Hebrew 2): map them by hand; Hebrew brackets: (ואני לא בטוח אם המעשה היה בנמירוב או בשרגורוד) | (קפוטות)
+    # TODO: the English edit 'the Rabbi of Polonne (and I am not sure whether the story took place in Nemirov or in Shargorod). He came' -> 'the Rabbi of Polonne; I am not sure whether the story took place in Nemirov or in Shargorod. He came': write it in Hebrew
+
+  - n: 103
+
+  - n: 104
+
+  - n: 150
+
+  - n: 162
+
+  - n: 166
+
+  - n: 167
+    # TODO: the English edit 'I also heard from him that' -> 'I heard from the Rabbi of Polonne that': write it in Hebrew
