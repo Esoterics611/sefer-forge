@@ -1,0 +1,51 @@
+# A narration for video, in Hebrew: the stories of tzaddikim-of-his-generation-part-two.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/tzaddikim-bedoro-chelek-bet.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: צדיקים בדורו, חלק ב
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 61
+
+  - n: 78
+    edits:
+      - from: (כי המנהג שלו היה לשמוע "קדושה" ו"ברכו" בכל בתי הכנסת.)
+        to: כי המנהג שלו היה לשמוע "קדושה" ו"ברכו" בכל בתי הכנסת.
+    # TODO: the English edit 'And I heard from the rabbi, who said' -> 'I heard from the rabbi, who said': write it in Hebrew
+
+  - n: 116
+    # TODO: brackets differ (English 1, Hebrew 2): map them by hand; Hebrew brackets: (שקארפעטקעס) | (אני שמעתי את הפירוש מהרב של פולנאה ושכחתי, אבל בו
+    # TODO: the English edit '(I heard the explanation from the Rabbi of Polonne and forgot it, but surely it is written in his books, and see there.)' -> 'I heard the explanation from the Rabbi of Polonne and forgot it, but surely it is written in his books, and see there.': write it in Hebrew
+
+  - n: 135
+
+  - n: 144
+    drop:
+      - (בפסוקי דזמר
+    edits:
+      - from: (כי הרב התפלל בחדר קטן מיוחד בבית המדרש, ושמע משם קדושה, ברכו ואמן.)
+        to: כי הרב התפלל בחדר קטן מיוחד בבית המדרש, ושמע משם קדושה, ברכו ואמן.
+    # TODO: the English edit 'And by the way I will write what I heard from Rabbi Yechiel' -> 'I heard from Rabbi Yechiel': write it in Hebrew
+
+  - n: 145
+    # TODO: brackets differ (English 1, Hebrew 2): map them by hand; Hebrew brackets: (של רבי יחיאל) | (השיינקער)
+    # TODO: the English edit 'Another story (of Rabbi Yechiel):' -> 'Another story of Rabbi Yechiel:': write it in Hebrew

@@ -1,0 +1,51 @@
+# A narration for video, in Hebrew: the stories of the-garden-of-eden-and-gehinnom.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/gan-eden-vegehinom.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: גן עדן וגיהנום
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 54
+
+  - n: 55
+    drop:
+      - (ת"יעי)
+
+  - n: 64
+    # TODO: brackets differ (English 2, Hebrew 3): map them by hand; Hebrew brackets: (הוט) | (כי היה אומר שנר אחד מזיק לעיניים, וכך גם שלושה, א | (אשכנזי)
+    # TODO: the English edit '(For he used to say that one candle is harmful to the eyes, and so are three, but two are good for the eyes.)' -> 'For he used to say that one candle is harmful to the eyes, and so are three, but two are good for the eyes.': write it in Hebrew
+
+  - n: 127
+
+  - n: 152
+    edits:
+      - from: ' (ואני לא יודע אם משניות, עין יעקב או זוהר).'
+        to: ', ואני לא יודע אם משניות, עין יעקב או זוהר.'
+
+  - n: 153
+
+  - n: 168
+    edits:
+      - from: ' (אחרי מותו) '
+        to: ', אחרי מותו, '
+
+  - n: 176

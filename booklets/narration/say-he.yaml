@@ -1,0 +1,21 @@
+# How the Hebrew voice (Google, he-IL) reads abbreviations: written -> read.
+# Shared by every Hebrew plan (a plan's own `say:` adds to it). The subtitles
+# keep the written form. Found in shivchei-habesht-simple.md; add what a
+# listen shows misread.
+"ה'": השם
+"לה'": להשם
+"בה'": בהשם
+"שה'": שהשם
+"מה'": מהשם
+"וה'": והשם
+"כה'": כהשם
+"ר'": רבי
+"לר'": לרבי
+חז״ל: חזל
+אדמו״ר: אדמור
+רש״י: רשי
+האר״י: האריי
+שהאר״י: שהאריי
+ז״ל: זכרונו לברכה
+זצ״ל: זכר צדיק לברכה
+ע״ה: עליו השלום

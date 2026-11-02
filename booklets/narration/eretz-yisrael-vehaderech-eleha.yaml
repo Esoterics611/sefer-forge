@@ -1,0 +1,55 @@
+# A narration for video, in Hebrew: the stories of the-land-of-israel-and-the-way-there.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/eretz-yisrael-vehaderech-eleha.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: ארץ ישראל והדרך אליה
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 28
+    drop:
+      - (מרוקו)
+    # TODO: the English edit 'I heard from that preacher:' -> 'I heard from a preacher:': write it in Hebrew
+
+  - n: 29
+    # TODO: brackets differ (English 3, Hebrew 6): map them by hand; Hebrew brackets: (ונדמה לי שהמעשה היה בעיר צפת) | (ברוסלק) | (ארנק עם מנעול) | (כמנהג מי שבחרם) | (כלי בשמים) | (כי במכתב של הבעל שם טוב היה כתוב באיזה יום נכתב.)
+    # TODO: the English edit 'I also heard from Rabbi Pinchas the teacher, who had earlier been a preacher (and it seems to me that the story took place in the city of Safed):' -> 'I heard from Rabbi Pinchas the teacher, who had earlier been a preacher, and it seems to me that the story took place in the city of Safed:': write it in Hebrew
+    # TODO: the English edit "(For in the Baal Shem Tov's letter it was written on what day it was written.)" -> "For in the Baal Shem Tov's letter it was written on what day it was written.": write it in Hebrew
+
+  - n: 30
+    # TODO: the English edit 'I also heard from Rabbi Pinchas:' -> 'I heard from Rabbi Pinchas:': write it in Hebrew
+
+  - n: 92
+    edits:
+      - from: (של נמירוב)
+        to: של נמירוב
+      - from: (לארץ ישראל)
+        to: לארץ ישראל
+    # TODO: the English edit 'I heard from him (from Rabbi Pinchas) that' -> 'I heard from Rabbi Pinchas that': write it in Hebrew
+
+  - n: 93
+
+  - n: 155
+    # TODO: the English edit 'I heard from that rabbi that once' -> 'I heard that once': write it in Hebrew
+
+  - n: 191
+
+  - n: 202

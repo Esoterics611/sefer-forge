@@ -1,0 +1,38 @@
+# A narration for video, in Hebrew: the stories of charity-and-money.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/tzedaka-vechesef.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: צדקה וכסף
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 86
+    # TODO: brackets differ (English 3, Hebrew 4): map them by hand; Hebrew brackets: (כיסוי הכלה) | (קרעטשמע) | (זהובים גדולים) | (ועשה כאחד הבדחנים.)
+    # TODO: the English edit '(And he acted like one of the wedding jesters.)' -> 'And he acted like one of the wedding jesters.': write it in Hebrew
+
+  - n: 120
+
+  - n: 121
+    # TODO: the English edit 'And I heard from the rabbi that money' -> 'I heard from the rabbi that money': write it in Hebrew
+
+  - n: 122
+
+  - n: 138

@@ -23,10 +23,11 @@ episodes follow the themed booklets (`booklets/booklets.yaml`), in order:
 - Two to four stories that belong together: a stretch of his life (birth and
   youth, the hidden years, his passing) or a theme (the Days of Awe,
   journeys). 7–15 minutes: 1,300–2,600 words read, at about 175 a minute.
-- Read in English or French by the free Kokoro voice. Kokoro has no Hebrew.
-- The video is one picture for the whole reading, with the series line, the
-  episode's title and "Retold in Modern English" over its lower part. The
-  subtitles go up beside it as `narration.srt`, not burned in. No music.
+- Read in English or French by the free Kokoro voice, in Hebrew by a Google
+  Cloud voice kept inside its free allowance (Voice, below).
+- The video is one picture for the whole reading: the plain title card
+  (series line, the episode's title, "Retold in Modern English"; below, The
+  picture and the thumbnail). The subtitles go up beside it as `narration.srt`, not burned in. No music.
 
 ## Choosing the stories
 
@@ -137,42 +138,59 @@ user what was cut.
 English: `am_michael` (an American man), speed 1.0, in every episode so
 far. To change it, give the user samples first:
 `--sample am_michael,am_fenrir,bm_george,bm_fable,af_heart`.
-French: `ff_siwis` (a woman), Kokoro's only French voice. The French episodes
-reuse the English episode's drawing, with the French titles (series and
-subtitle from `booklets.yaml`). Every English episode has a French one, with
+French: `ff_siwis` (a woman), Kokoro's only French voice, with the French
+titles (series and subtitle from `booklets.yaml`). Every English episode has a French one, with
 the same stories, cuts and dropped brackets, written from the English plan by
 `scripts/narration-french-plan.py` and finished by hand. Its title is the
 booklet's French title, made to fit on one line: "…, partie 1" rather than
 "première partie", and shorter wording where that is not enough ("Des fils
 aux couples sans enfants").
 
-## The picture
+Hebrew: Google Cloud Text-to-Speech, Chirp 3 HD (`he-IL-Chirp3-HD-Charon`, a
+man, until the user picks another from samples), read from the Hebrew booklet
+text (`shivchei-habesht-simple.md`). Chosen 2026-11-02, at no cost: Kokoro has
+no Hebrew; the free Edge voices are not licensed for published videos; the
+open Phonikud voices are non-commercial only. Chirp 3 HD is free up to 1
+million characters a month, the whole Hebrew book is about 626,000: the build
+counts each month in `booklets/narration/tts-usage.yaml` and refuses an
+episode past 900,000 (`TTS_MONTHLY_LIMIT`). Needs `GOOGLE_TTS_API_KEY`
+(docs/youtube-publishing.md, setup 7).
+- Every English episode has a Hebrew one, the same stories, cuts and brackets,
+  written from the English plan by `scripts/narration-french-plan.py <english
+  plan> <name> "<כותרת>" --lang he` (names transliterated, `hayeled-shelo-pachad`).
+  The Hebrew text has glosses of Yiddish words the English leaves out
+  (`(שפענער)`, `(סטיוול)`): drop them, or keep a gloss the listener needs as
+  part of the sentence (`מארדער, סוג של חיית פרווה`). A plan with a `# TODO`
+  left does not build; `--script` stops on any bracket left.
+- Titles: the booklet's Hebrew title, "…, חלק א / ב" for parts.
+- `booklets/narration/say-he.yaml` says the abbreviations (ה' → השם, ר' →
+  רבי, חז״ל); the subtitles keep the written form.
+- The title card is set in Frank Ruhl Libre (`templates/fonts`, OFL).
 
-- **An original drawing for each episode**: a function in
-  `booklets/narration/images/draw.py`, written to `<name>.svg`. The style is
-  flat vector art, silhouettes against a lit sky or room, with one detail
-  from the stories: the boy's stick, the lock on the heavenly gate, the
-  frog's eye, the stopped clock and the blue flame.
-- People appear as small silhouettes, never faces, as in every drawing so far.
-- **What matters stays above y ≈ 620** (of 1080). The build darkens the lower
-  part and lays the series line, title and subtitle there. View `frame.png`
-  before building the video.
-- **A picture the user brings** (ChatGPT, Nano Banana) works too, as
-  `image:`. Such a JPG or PNG goes into Git LFS (`.gitattributes`), which a
-  cloud session cannot push: commit it from the user's computer.
+## The picture and the thumbnail
 
-## The thumbnail
-
-- **Not the picture.** `thumbnail.jpg` is the same plain title card for every
-  episode, so the channel's videos look alike in a list: navy ground, בס"ד
-  top right, the series line in gold capitals over a short gold rule, the
-  title in large cream EB Garamond (one line, or two even lines), the
-  series' subtitle in gold italic. No drawing, no border.
-- Made by every build (`make_thumbnail()` in `scripts/build-narration.py`);
-  `--thumbnail` makes it alone. Look at it before publishing: the title
-  readable at a glance, בס"ד reading right to left.
-- `youtube-publish.py` uploads it with each video; `update <name>` puts it
-  on a video already up.
+- **One plain title card, the same for every episode**, as the picture shown
+  for the whole video (`frame.png`) and as its thumbnail (`thumbnail.jpg`):
+  - warm off-white paper (239, 232, 218), the title in dark brown ink
+    (47, 42, 36), the rest in a muted bronze (128, 100, 62);
+  - בס"ד top right; the series in spaced capitals over a short rule; the
+    title in large EB Garamond SemiBold, one line or two even lines; the
+    series' subtitle in italic;
+  - no drawing, no border, no gradient, nothing that moves.
+- **Why these colours** (the user asked for something easy on the eyes,
+  clear and not distracting): dark letters on a light ground read best;
+  neither pure black nor pure white, which glare; light letters on a dark
+  ground blur for many eyes. The title is 11.7:1 against the paper, the
+  bronze 4.5:1. Chosen 2026-11-02 over a soft slate and a pale sage.
+- Made by every build (`title_card()` in `scripts/build-narration.py`);
+  `--frame` or `--thumbnail` makes it alone, `--video` remakes the video
+  from the reading made. Look at it before publishing: the title readable at
+  a glance, בס"ד reading right to left.
+- `youtube-publish.py` uploads the thumbnail with each video; `update
+  <name>` puts it on a video already up. A video's own picture cannot be
+  changed after the upload.
+- The plans' `image:` drawings (`booklets/narration/images/`) are no longer
+  used.
 
 ## Before handing over
 
@@ -182,7 +200,7 @@ aux couples sans enfants").
   - The last subtitle cue ends with the audio.
   - `chapters.txt` starts at 0:00, with every chapter at least 10 seconds.
   - The audio is levelled (mean volume about −18 dB, peak below −1 dB, by ffmpeg's volumedetect).
-  - `frame.png` and `thumbnail.jpg` have been looked at.
+  - `frame.png` (the title card) has been looked at.
 - Hand over `video.mp4`, `thumbnail.jpg`, `narration.srt` and `chapters.txt`.
   In a cloud session, send them as files: `output/` is not in git, so they
   are gone when the session ends. Each one rebuilds with one command.

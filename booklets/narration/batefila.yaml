@@ -1,0 +1,43 @@
+# A narration for video, in Hebrew: the stories of in-prayer.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/batefila.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: בתפילה
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 15
+    # TODO: brackets differ (English 5, Hebrew 6): map them by hand; Hebrew brackets: (זה היה ראש חודש, או חול המועד פסח) | (מי שראה אותו בשעת התפילה ראה את הרעד שלו) | (אני לא יודע אם זה היה היום הראשון של פסח או שמיני | (כך שמעתי הרבה פעמים מהתלמידים המובחרים שלו: הוא ה | (המגיד אמר שהכיר שהשכינה שורה עליו, וכשראה אותו, ה | (אירוסין)
+    # TODO: the English edit 'once they had to say Hallel (it was Rosh Chodesh, or the intermediate days of Passover).' -> 'once they had to say Hallel; it was Rosh Chodesh, or the intermediate days of Passover.': write it in Hebrew
+    # TODO: the English edit 'as was his custom always to tremble in prayer (whoever saw him at prayer saw his trembling).' -> 'as was his custom always to tremble in prayer; whoever saw him at prayer saw his trembling.': write it in Hebrew
+    # TODO: the English edit '(So I heard many times from his choice disciples: he was taller than all of them, and prayed with a great cry.)' -> 'So I heard many times from his choice disciples: he was taller than all of them, and prayed with a great cry.': write it in Hebrew
+    # TODO: the English edit '(The Maggid said that he recognized that the Shechinah was resting on him, and when he saw him, he recognized that he was not in this world.)' -> 'The Maggid said that he recognized that the Shechinah was resting on him, and when he saw him, he recognized that he was not in this world.': write it in Hebrew
+
+  - n: 16
+    # TODO: brackets differ (English 0, Hebrew 1): map them by hand; Hebrew brackets: (מחסן)
+    # TODO: the English edit 'I also heard from the pious rabbi Rabbi Gedaliah:' -> 'I heard from the pious rabbi Rabbi Gedaliah:': write it in Hebrew
+
+  - n: 76
+
+  - n: 95
+    # TODO: the English edit 'And I heard from Rabbi Mendel of Bar,' -> 'I heard from Rabbi Mendel of Bar,': write it in Hebrew
+
+  - n: 147

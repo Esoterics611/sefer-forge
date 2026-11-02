@@ -25,91 +25,98 @@ queue:
 - the-frog-in-the-wilderness    # up 2026-11-01
 - the-speech-of-the-birds    # up 2026-11-01
 - le-garcon-qui-n-avait-pas-peur    # up 2026-11-01
-  # planned for 2026-11-02
-- la-porte-verrouillee
-- the-passing-of-the-baal-shem-tov
-- the-authors-introduction
-- the-hidden-years-and-the-revelation
-- la-grenouille-dans-le-desert
+- la-porte-verrouillee    # up 2026-11-02
+- the-passing-of-the-baal-shem-tov    # up 2026-11-02
+- the-authors-introduction    # up 2026-11-02
+- the-hidden-years-and-the-revelation    # up 2026-11-02
+- la-grenouille-dans-le-desert    # up 2026-11-02
   # planned for 2026-11-03
-- le-langage-des-oiseaux
 - rabbi-gershon-of-kitov
 - the-land-of-israel-and-the-way-there
-- in-prayer
-- la-mort-du-baal-chem-tov
+- hayeled-shelo-pachad
+- hashaar-hanaul
+- le-langage-des-oiseaux
   # planned for 2026-11-04
-- l-introduction-de-l-auteur
+- in-prayer
 - his-ways-and-customs
+- hatzefardea-bamidbar
+- sichat-haofot
+- la-mort-du-baal-chem-tov
+  # planned for 2026-11-05
 - the-rabbi-of-polonne
 - the-mokhiach-of-polonne-part-one
-- les-annees-cachees-et-la-revelation
-  # planned for 2026-11-05
-- rabbi-guershon-de-kitov
+- histalkut-habaal-shem-tov
+- hakdamat-hakotev
+- l-introduction-de-l-auteur
+  # planned for 2026-11-06
 - the-mokhiach-of-polonne-part-two
 - the-maggid-of-mezritch
+- hashanim-hanistarot-vehahitgalut
+- les-annees-cachees-et-la-revelation
 - the-maggids-household-and-disciples
-- la-terre-d-israel-et-le-chemin-qui-y-mene
-  # planned for 2026-11-06
-- dans-la-priere
+  # planned for 2026-11-07
 - rabbi-nachman-of-horodenka
+- rabbi-guershon-de-kitov
 - rabbi-yitzchak-of-drohobych
 - tzaddikim-of-his-generation-part-one
-- ses-vertus-et-ses-coutumes
-  # planned for 2026-11-07
-- le-rav-de-polonne
+- la-terre-d-israel-et-le-chemin-qui-y-mene
+  # planned for 2026-11-08
 - tzaddikim-of-his-generation-part-two
 - opponents-and-testers
+- dans-la-priere
 - opponents-who-drew-close-part-one
-- le-mokhiah-de-polonne-premiere-partie
-  # planned for 2026-11-08
-- le-mokhiah-de-polonne-deuxieme-partie
 - opponents-who-drew-close-part-two
+  # planned for 2026-11-09
+- ses-vertus-et-ses-coutumes
 - seeing-from-afar
 - wonders-on-the-road
-- le-maguid-de-mezritch
-  # planned for 2026-11-09
-- la-maison-du-maguid-et-ses-disciples
+- le-rav-de-polonne
 - leaseholders-and-noblemen-part-one
-- leaseholders-and-noblemen-part-two
-- charity-and-money
-- rabbi-nahman-de-horodenka
   # planned for 2026-11-10
-- rabbi-itshak-de-drohobytch
+- leaseholders-and-noblemen-part-two
+- le-mokhiah-de-polonne-premiere-partie
+- charity-and-money
 - simple-jews-and-hidden-tzaddikim
+- le-mokhiah-de-polonne-deuxieme-partie
+  # planned for 2026-11-11
 - fit-and-unfit
 - healings-part-one
-- les-tsaddikim-de-sa-generation-premiere-partie
-  # planned for 2026-11-11
-- les-tsaddikim-de-sa-generation-deuxieme-partie
+- le-maguid-de-mezritch
 - healings-part-two
 - sons-for-the-childless-part-one
-- sons-for-the-childless-part-two
-- opposants-et-examinateurs
   # planned for 2026-11-12
-- des-opposants-qui-se-sont-rapproches-premiere-partie
+- la-maison-du-maguid-et-ses-disciples
+- sons-for-the-childless-part-two
 - demons-sorcerers-and-harmful-spirits
+- rabbi-nahman-de-horodenka
 - false-accusations-and-dangers
-- the-garden-of-eden-and-gehinnom
-- des-opposants-qui-se-sont-rapproches-deuxieme-partie
   # planned for 2026-11-13
-- voir-de-loin
+- the-garden-of-eden-and-gehinnom
+- rabbi-itshak-de-drohobytch
 - sin-repentance-and-reincarnation
 - his-last-days
+- les-tsaddikim-de-sa-generation-premiere-partie
+  # planned for 2026-11-14
+- les-tsaddikim-de-sa-generation-deuxieme-partie
+- opposants-et-examinateurs
+- des-opposants-qui-se-sont-rapproches-premiere-partie
+- des-opposants-qui-se-sont-rapproches-deuxieme-partie
+- voir-de-loin
+  # planned for 2026-11-15
 - prodiges-en-chemin
 - fermiers-et-seigneurs-premiere-partie
-  # planned for 2026-11-14
 - fermiers-et-seigneurs-deuxieme-partie
 - charite-et-argent
 - juifs-simples-et-tsaddikim-caches
+  # planned for 2026-11-16
 - valide-et-invalide
 - guerisons-premiere-partie
-  # planned for 2026-11-15
 - guerisons-deuxieme-partie
 - des-fils-pour-les-sans-enfants-premiere-partie
 - des-fils-pour-les-sans-enfants-deuxieme-partie
+  # planned for 2026-11-17
 - demons-sorciers-et-esprits-malfaisants
 - fausses-accusations-et-dangers
-  # planned for 2026-11-16
 - le-jardin-d-eden-et-la-gehenne
 - faute-repentir-et-reincarnation
 - ses-derniers-jours
@@ -137,7 +144,30 @@ uploaded:
     id: LN-_wQ3XcAw
     date: '2026-11-01'
     playlist: true
+  la-porte-verrouillee:
+    id: QYZccSf1GE8
+    date: '2026-11-02'
+    playlist: true
+  the-passing-of-the-baal-shem-tov:
+    id: KECS3M-2Jcw
+    date: '2026-11-02'
+    playlist: true
+  the-authors-introduction:
+    id: anXirPFyZk4
+    date: '2026-11-02'
+    playlist: true
+  the-hidden-years-and-the-revelation:
+    id: -RINsUucRN4
+    date: '2026-11-02'
+    playlist: true
+  la-grenouille-dans-le-desert:
+    id: SuNP547qCzg
+    date: '2026-11-02'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
+    uploads: 5
+  '2026-11-02':
+    units: 9100
     uploads: 5

@@ -44,6 +44,19 @@ The channel's Google account is the one the user signs in to Claude with.
    verified in Search Console as the URL prefix `https://esoterics611.github.io/`
    by the tag in `site/index.html`. The old `/sefer-forge/` addresses (the
    `gh-pages` branch here) redirect to it.
+7. **The Hebrew voice** (Google Cloud Text-to-Speech, free within its monthly
+   allowance; `prompts/narration-rules.md`, Voice):
+   - in the sefer-forge project, APIs & Services → Library → "Cloud
+     Text-to-Speech API" → Enable;
+   - Billing: Google asks for a billing account (a card) even for the free
+     allowance. Set a budget alert at $1 (Billing → Budgets & alerts). The
+     build stops at 900,000 characters a month, below the 1,000,000 free;
+   - Credentials → Create credentials → API key → Edit API key → API
+     restrictions: "Cloud Text-to-Speech API" only;
+   - add it to the environment's secrets as `GOOGLE_TTS_API_KEY` (never in
+     a chat). A new session picks it up.
+   Until then the Hebrew episodes stay in the queue and each day's run skips
+   them for the next videos.
 
 ## A publishing session (each day)
 
@@ -101,7 +114,8 @@ without signing in or uploading anything.
     the videos are made);
   - three hashtags (YouTube shows them above the title).
 - **Thumbnail:** the episode's `thumbnail.jpg`, the plain title card with
-  בס"ד, the same for every video (`prompts/narration-rules.md`, The
+  בס"ד (dark ink on warm off-white), the same for every video and the same
+  as the picture in the video (`prompts/narration-rules.md`, The
   thumbnail). `publish` sets it after the upload; `update [<name> ...]`
   puts the current description and thumbnail on videos already up.
 - **Tags, language and playlist:** the series' tags, the episode's language,

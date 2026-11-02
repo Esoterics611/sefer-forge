@@ -1,0 +1,36 @@
+# A narration for video, in Hebrew: the stories of healings-part-one.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/refuot-chelek-alef.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: רפואות, חלק א
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 31
+    # TODO: brackets differ (English 3, Hebrew 5): map them by hand; Hebrew brackets: (ורבי אייזיק היה גיסו של רבי הירץ, בנו של הרב הזה. | (מרפאה) | (קידר) | (החליפו לה את השם) | (והמכתב ששלח הבעל שם טוב היה בכתב ידו של רבי יעקב 
+    # TODO: the English edit '(And Rabbi Isaac was the brother-in-law of Rabbi Hirtz, the son of this rabbi.)' -> 'And Rabbi Isaac was the brother-in-law of Rabbi Hirtz, the son of this rabbi.': write it in Hebrew
+    # TODO: the English edit '(And the letter the Baal Shem Tov sent was in the handwriting of Rabbi Yaakov of Yampol.)' -> 'And the letter the Baal Shem Tov sent was in the handwriting of Rabbi Yaakov of Yampol.': write it in Hebrew
+
+  - n: 56
+
+  - n: 69
+    drop:
+      - (מלקות של אש

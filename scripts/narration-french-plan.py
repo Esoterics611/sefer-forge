@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
-"""Write the French narration plan of an English one, carrying its decisions over by position.
+"""Write the French (or Hebrew) narration plan of an English one, carrying its decisions over by position.
 
 Usage:
     python scripts/narration-french-plan.py booklets/narration/<english>.yaml <french-name> "<French title>"
+    python scripts/narration-french-plan.py booklets/narration/<english>.yaml <hebrew-name> "<כותרת>" --lang he
+
+The Hebrew booklet text (shivchei-habesht-simple.md) is the original the
+English translates paragraph by paragraph, brackets at the same points, so
+the same mapping writes the Hebrew plan; its TODOs are finished by hand in
+Hebrew the same way.
 
 The French booklet text (shivchei-habesht-simple-fr.md) is the English one's
 translation, paragraph by paragraph, with its brackets at the same points
@@ -31,6 +37,10 @@ import yaml
 spec = importlib.util.spec_from_file_location("bn", Path(__file__).with_name("build-narration.py"))
 bn = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bn)
+
+
+HEBREW_VOICE = "he-IL-Chirp3-HD-Charon"      # prompts/narration-rules.md, The voice
+NAME = {"fr": "French", "he": "Hebrew"}
 
 
 def body(section: str, lang: str) -> str:
@@ -83,22 +93,26 @@ def unbracket(text: str, start: int, end: int) -> tuple[str, str]:
 
 
 def main(argv: list[str]) -> None:
-    if len(argv) != 3:
+    lang = "fr"
+    if "--lang" in argv:
+        i = argv.index("--lang")
+        lang, argv = argv[i + 1], argv[:i] + argv[i + 2:]
+    if len(argv) != 3 or lang not in ("fr", "he"):
         sys.exit(__doc__)
     en_path, name, title = Path(argv[0]), argv[1], argv[2]
     plan = yaml.safe_load(en_path.read_text(encoding="utf-8"))
     en = bn.load_sections(Path(bn.SOURCES["en"]))
-    fr = bn.load_sections(Path(bn.SOURCES["fr"]))
+    fr = bn.load_sections(Path(bn.SOURCES[lang]))
     out, todo = [], 0
     for entry in plan["stories"]:
         n = entry["n"]
-        e, f = body(en[n], "en"), body(fr[n], "fr")
+        e, f = body(en[n], "en"), body(fr[n], lang)
         ep, fp = re.split(r"\n\n", e), re.split(r"\n\n", f)
         eb, fb = brackets(e), brackets(f)
         lines = [f"  - n: {n}"]
         cuts, drops, edits, notes = [], [], [], []
         if len(ep) != len(fp):
-            notes.append(f"paragraphs differ (English {len(ep)}, French {len(fp)}): do this story by hand")
+            notes.append(f"paragraphs differ (English {len(ep)}, {NAME[lang]} {len(fp)}): do this story by hand")
         for c in entry.get("cut") or []:
             k = next(i for i, p in enumerate(ep) if p.startswith(c))
             words = fp[k].split()
@@ -107,7 +121,7 @@ def main(argv: list[str]) -> None:
             cuts.append(op)
         same = len(eb) == len(fb)
         if not same and (entry.get("drop") or entry.get("edits")):
-            notes.append(f"brackets differ (English {len(eb)}, French {len(fb)}): map them by hand; French brackets: "
+            notes.append(f"brackets differ (English {len(eb)}, {NAME[lang]} {len(fb)}): map them by hand; {NAME[lang]} brackets: "
                          + " | ".join(f[a:b][:50] for a, b in fb))
         for d in entry.get("drop") or []:
             k = which(e, eb, e.index(d))
@@ -150,9 +164,41 @@ def main(argv: list[str]) -> None:
                 lines.append(f"      - from: {yaml.safe_dump(ff, allow_unicode=True, width=1000).strip().removesuffix(chr(10) + '...')}")
                 lines.append(f"        to: {yaml.safe_dump(ft, allow_unicode=True, width=1000).strip().removesuffix(chr(10) + '...')}")
         for _, _, english in [x for x in edits if not x[0]]:
-            lines.append(f"    # TODO: the English edit {english}: write it in French")
+            lines.append(f"    # TODO: the English edit {english}: write it in {NAME[lang]}")
             todo += 1
         out.append("\n".join(lines))
+    if lang == "he":
+        head = f"""# A narration for video, in Hebrew: the stories of {en_path.name}, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/{name}.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: {yaml.safe_dump(title, allow_unicode=True).strip().removesuffix(chr(10) + '...')}
+lang: he
+voice: {HEBREW_VOICE}
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+"""
+        path = Path(f"booklets/narration/{name}.yaml")
+        path.write_text(head + "\n\n".join(out) + "\n", encoding="utf-8")
+        print(f"  {path}  ({todo} TODO)")
+        return
     head = f"""# A narration for video, in French: the stories of {en_path.name}, from the French
 # booklets (shivchei-habesht-simple-fr.md). Rules: prompts/narration-rules.md.
 # Written by scripts/narration-french-plan.py from the English plan, then finished by hand.

@@ -1,0 +1,37 @@
+# A narration for video, in Hebrew: the stories of the-mokhiach-of-polonne-part-one.yaml, from the Hebrew
+# booklets (shivchei-habesht-simple.md). Rules: prompts/narration-rules.md.
+# Written by scripts/narration-french-plan.py --lang he from the English plan,
+# then finished by hand.
+#
+# Built by: python scripts/build-narration.py booklets/narration/hamochiach-mipolnaa-chelek-alef.yaml
+#   (the Google Cloud Hebrew voice: GOOGLE_TTS_API_KEY)
+#
+# cut: paragraphs left out, by their opening words. drop: brackets that
+# explain a word, by their opening words. edits: `from` -> `to`, each `from`
+# found once in the story; the other brackets become part of the sentence.
+# How the voice reads abbreviations: booklets/narration/say-he.yaml.
+# Summaries are not read.
+
+title: המוכיח מפולנאה, חלק א
+lang: he
+voice: he-IL-Chirp3-HD-Charon
+speed: 1.0
+
+intro: >
+  שבחי הבעל שם טוב, בעברית של ימינו.
+
+outro: >
+  כאן מסתיימים הסיפורים האלה משבחי הבעל שם טוב.
+
+stories:
+  - n: 84
+    # TODO: brackets differ (English 1, Hebrew 3): map them by hand; Hebrew brackets: (מלשין) | (טוזליק) | (והמוכיח הצביע בידו על המת)
+    # TODO: the English edit 'I also heard from that rabbi: in the days' -> 'I heard: in the days': write it in Hebrew
+    # TODO: the English edit 'One day this dog died" (and the Mokhiach pointed with his hand at the dead man) "and there was' -> 'One day this dog died," and the Mokhiach pointed with his hand at the dead man, "and there was': write it in Hebrew
+
+  - n: 85
+    # TODO: the English edit 'And I heard from that rabbi that after a time,' -> 'I heard that after a time,': write it in Hebrew
+
+  - n: 96
+    # TODO: brackets differ (English 2, Hebrew 5): map them by hand; Hebrew brackets: (בית מדרש קטן) | (קאפטין) | (זופיציע) | (טוזליק) | (ונדמה לי ששמו היה רבי אברהם, אבל שכחתי את שמו)
+    # TODO: the English edit 'the greatest man of the generation (and it seems to me that his name was Rabbi Avraham, but I have forgotten his name):' -> 'the greatest man of the generation, and it seems to me that his name was Rabbi Avraham, but I have forgotten his name:': write it in Hebrew
