@@ -26,11 +26,10 @@ queue:
 - the-speech-of-the-birds    # up 2026-11-01
 - le-garcon-qui-n-avait-pas-peur    # up 2026-11-01
 - la-porte-verrouillee    # up 2026-11-02
-  # planned for 2026-11-02
-- the-passing-of-the-baal-shem-tov
-- the-authors-introduction
-- the-hidden-years-and-the-revelation
-- la-grenouille-dans-le-desert
+- the-passing-of-the-baal-shem-tov    # up 2026-11-02
+- the-authors-introduction    # up 2026-11-02
+- the-hidden-years-and-the-revelation    # up 2026-11-02
+- la-grenouille-dans-le-desert    # up 2026-11-02
   # planned for 2026-11-03
 - le-langage-des-oiseaux
 - rabbi-gershon-of-kitov
@@ -141,10 +140,26 @@ uploaded:
     id: QYZccSf1GE8
     date: '2026-11-02'
     playlist: true
+  the-passing-of-the-baal-shem-tov:
+    id: KECS3M-2Jcw
+    date: '2026-11-02'
+    playlist: true
+  the-authors-introduction:
+    id: anXirPFyZk4
+    date: '2026-11-02'
+    playlist: true
+  the-hidden-years-and-the-revelation:
+    id: -RINsUucRN4
+    date: '2026-11-02'
+    playlist: true
+  la-grenouille-dans-le-desert:
+    id: SuNP547qCzg
+    date: '2026-11-02'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
     uploads: 5
   '2026-11-02':
-    units: 2300
-    uploads: 1
+    units: 9100
+    uploads: 5
