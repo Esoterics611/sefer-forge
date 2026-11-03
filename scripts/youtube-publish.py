@@ -7,6 +7,7 @@ Usage:
     python scripts/youtube-publish.py publish               # the next videos in the queue, up to the day's limit
     python scripts/youtube-publish.py publish --build       # ... building first any video not in output/
     python scripts/youtube-publish.py publish <name> ...    # these plans (added to the end of the queue if new)
+    python scripts/youtube-publish.py publish --extra <name> # ... beyond the day's count (the quota still holds)
     python scripts/youtube-publish.py publish --dry-run     # print the titles and descriptions, upload nothing
     python scripts/youtube-publish.py update [<name> ...]   # put the current description and thumbnail on videos up
     python scripts/youtube-publish.py sync                  # rebuild the record from the channel itself
@@ -501,7 +502,7 @@ def show_queue(rec: dict) -> None:
         print(f"      {day}  {name}" + ("" if built(name) else "  (to build)"))
 
 
-def publish(rec: dict, names: list[str], build: bool, dry: bool) -> None:
+def publish(rec: dict, names: list[str], build: bool, dry: bool, extra: bool = False) -> None:
     for name in names:
         if name not in rec["queue"]:
             rec["queue"].append(name)
@@ -518,7 +519,8 @@ def publish(rec: dict, names: list[str], build: bool, dry: bool) -> None:
         units, count = left(rec)
         if dry and done >= rec["settings"]["per_day"]:
             break
-        if not dry and (count <= 0 or units < COST["upload"]):
+        # --extra: named episodes beyond the day's count (a one-off, such as a long shiur); the quota still holds.
+        if not dry and ((count <= 0 and not extra) or units < COST["upload"]):
             print(f"  The day's limit is reached ({rec['settings']['per_day']} videos, {units} units left): "
                   f"the rest go up on the next days (queue).")
             break
@@ -611,7 +613,9 @@ def main(argv: list[str]) -> None:
         for n in names:
             if not (PLANS / f"{n}.yaml").exists():
                 sys.exit(f"No plan booklets/narration/{n}.yaml")
-        publish(rec, names, "--build" in flags, "--dry-run" in flags)
+        if "--extra" in flags and not names:
+            sys.exit("--extra takes the episodes to publish by name")
+        publish(rec, names, "--build" in flags, "--dry-run" in flags, "--extra" in flags)
 
 
 if __name__ == "__main__":

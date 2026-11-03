@@ -45,7 +45,8 @@ says how far each discourse has got and the next step.
 7. **Build and publish**: `python scripts/build-narration.py
    booklets/narration/<name>.yaml` (about 40 minutes of audio takes a while:
    run it in the background), look at `frame.png`, then
-   `python scripts/youtube-publish.py publish <name>`, and review it on
+   `python scripts/youtube-publish.py publish --extra <name>` (beyond the
+   day's two story videos; the quota still holds), and review it on
    YouTube as every video is (`docs/youtube-publishing.md`).
 
 ## Rendering rules
