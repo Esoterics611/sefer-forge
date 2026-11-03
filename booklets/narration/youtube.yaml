@@ -16,7 +16,7 @@
 settings:
   privacy: private
   made_for_kids: false
-  per_day: 5
+  per_day: 2
   daily_units: 10000
   category: '27'
 queue:
@@ -32,94 +32,117 @@ queue:
 - la-grenouille-dans-le-desert    # up 2026-11-02
   # planned for 2026-11-03
 - rabbi-gershon-of-kitov
-- the-land-of-israel-and-the-way-there
-- hayeled-shelo-pachad
-- hashaar-hanaul
 - le-langage-des-oiseaux
   # planned for 2026-11-04
-- in-prayer
-- his-ways-and-customs
-- hatzefardea-bamidbar
-- sichat-haofot
+- the-land-of-israel-and-the-way-there
 - la-mort-du-baal-chem-tov
   # planned for 2026-11-05
-- the-rabbi-of-polonne
-- the-mokhiach-of-polonne-part-one
-- histalkut-habaal-shem-tov
-- hakdamat-hakotev
+- in-prayer
 - l-introduction-de-l-auteur
   # planned for 2026-11-06
-- the-mokhiach-of-polonne-part-two
-- the-maggid-of-mezritch
-- hashanim-hanistarot-vehahitgalut
+- his-ways-and-customs
 - les-annees-cachees-et-la-revelation
-- the-maggids-household-and-disciples
   # planned for 2026-11-07
-- rabbi-nachman-of-horodenka
+- the-rabbi-of-polonne
 - rabbi-guershon-de-kitov
-- rabbi-yitzchak-of-drohobych
-- tzaddikim-of-his-generation-part-one
-- la-terre-d-israel-et-le-chemin-qui-y-mene
   # planned for 2026-11-08
-- tzaddikim-of-his-generation-part-two
-- opponents-and-testers
-- dans-la-priere
-- opponents-who-drew-close-part-one
-- opponents-who-drew-close-part-two
+- the-mokhiach-of-polonne-part-one
+- la-terre-d-israel-et-le-chemin-qui-y-mene
   # planned for 2026-11-09
-- ses-vertus-et-ses-coutumes
-- seeing-from-afar
-- wonders-on-the-road
-- le-rav-de-polonne
-- leaseholders-and-noblemen-part-one
+- the-mokhiach-of-polonne-part-two
+- dans-la-priere
   # planned for 2026-11-10
-- leaseholders-and-noblemen-part-two
-- le-mokhiah-de-polonne-premiere-partie
-- charity-and-money
-- simple-jews-and-hidden-tzaddikim
-- le-mokhiah-de-polonne-deuxieme-partie
+- the-maggid-of-mezritch
+- ses-vertus-et-ses-coutumes
   # planned for 2026-11-11
-- fit-and-unfit
-- healings-part-one
-- le-maguid-de-mezritch
-- healings-part-two
-- sons-for-the-childless-part-one
+- the-maggids-household-and-disciples
+- le-rav-de-polonne
   # planned for 2026-11-12
-- la-maison-du-maguid-et-ses-disciples
-- sons-for-the-childless-part-two
-- demons-sorcerers-and-harmful-spirits
-- rabbi-nahman-de-horodenka
-- false-accusations-and-dangers
+- rabbi-nachman-of-horodenka
+- le-mokhiah-de-polonne-premiere-partie
   # planned for 2026-11-13
-- the-garden-of-eden-and-gehinnom
-- rabbi-itshak-de-drohobytch
-- sin-repentance-and-reincarnation
-- his-last-days
-- les-tsaddikim-de-sa-generation-premiere-partie
+- rabbi-yitzchak-of-drohobych
+- le-mokhiah-de-polonne-deuxieme-partie
   # planned for 2026-11-14
-- les-tsaddikim-de-sa-generation-deuxieme-partie
-- opposants-et-examinateurs
-- des-opposants-qui-se-sont-rapproches-premiere-partie
-- des-opposants-qui-se-sont-rapproches-deuxieme-partie
-- voir-de-loin
+- tzaddikim-of-his-generation-part-one
+- le-maguid-de-mezritch
   # planned for 2026-11-15
-- prodiges-en-chemin
-- fermiers-et-seigneurs-premiere-partie
-- fermiers-et-seigneurs-deuxieme-partie
-- charite-et-argent
-- juifs-simples-et-tsaddikim-caches
+- tzaddikim-of-his-generation-part-two
+- la-maison-du-maguid-et-ses-disciples
   # planned for 2026-11-16
-- valide-et-invalide
-- guerisons-premiere-partie
-- guerisons-deuxieme-partie
-- des-fils-pour-les-sans-enfants-premiere-partie
-- des-fils-pour-les-sans-enfants-deuxieme-partie
+- opponents-and-testers
+- rabbi-nahman-de-horodenka
   # planned for 2026-11-17
+- opponents-who-drew-close-part-one
+- rabbi-itshak-de-drohobytch
+  # planned for 2026-11-18
+- opponents-who-drew-close-part-two
+- les-tsaddikim-de-sa-generation-premiere-partie
+  # planned for 2026-11-19
+- seeing-from-afar
+- les-tsaddikim-de-sa-generation-deuxieme-partie
+  # planned for 2026-11-20
+- wonders-on-the-road
+- opposants-et-examinateurs
+  # planned for 2026-11-21
+- leaseholders-and-noblemen-part-one
+- des-opposants-qui-se-sont-rapproches-premiere-partie
+  # planned for 2026-11-22
+- leaseholders-and-noblemen-part-two
+- des-opposants-qui-se-sont-rapproches-deuxieme-partie
+  # planned for 2026-11-23
+- charity-and-money
+- voir-de-loin
+  # planned for 2026-11-24
+- simple-jews-and-hidden-tzaddikim
+- prodiges-en-chemin
+  # planned for 2026-11-25
+- fit-and-unfit
+- fermiers-et-seigneurs-premiere-partie
+  # planned for 2026-11-26
+- healings-part-one
+- fermiers-et-seigneurs-deuxieme-partie
+  # planned for 2026-11-27
+- healings-part-two
+- charite-et-argent
+  # planned for 2026-11-28
+- sons-for-the-childless-part-one
+- juifs-simples-et-tsaddikim-caches
+  # planned for 2026-11-29
+- sons-for-the-childless-part-two
+- valide-et-invalide
+  # planned for 2026-11-30
+- demons-sorcerers-and-harmful-spirits
+- guerisons-premiere-partie
+  # planned for 2026-12-01
+- false-accusations-and-dangers
+- guerisons-deuxieme-partie
+  # planned for 2026-12-02
+- the-garden-of-eden-and-gehinnom
+- des-fils-pour-les-sans-enfants-premiere-partie
+  # planned for 2026-12-03
+- sin-repentance-and-reincarnation
+- des-fils-pour-les-sans-enfants-deuxieme-partie
+  # planned for 2026-12-04
+- his-last-days
 - demons-sorciers-et-esprits-malfaisants
+  # planned for 2026-12-05
 - fausses-accusations-et-dangers
 - le-jardin-d-eden-et-la-gehenne
+  # planned for 2026-12-06
 - faute-repentir-et-reincarnation
 - ses-derniers-jours
+  # planned for 2026-12-07
+- hayeled-shelo-pachad
+- hashaar-hanaul
+  # planned for 2026-12-08
+- hatzefardea-bamidbar
+- sichat-haofot
+  # planned for 2026-12-09
+- histalkut-habaal-shem-tov
+- hakdamat-hakotev
+  # planned for 2026-12-10
+- hashanim-hanistarot-vehahitgalut
 playlists:
   en: PLHmoqTnaBo-E
   fr: PLC9BzDyQnm5U
