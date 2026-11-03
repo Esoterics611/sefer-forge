@@ -31,8 +31,7 @@ queue:
 - the-hidden-years-and-the-revelation    # up 2026-11-02
 - la-grenouille-dans-le-desert    # up 2026-11-02
 - rabbi-gershon-of-kitov    # up 2026-11-03
-  # planned for 2026-11-03
-- le-langage-des-oiseaux
+- le-langage-des-oiseaux    # up 2026-11-03
   # planned for 2026-11-04
 - the-land-of-israel-and-the-way-there
 - la-mort-du-baal-chem-tov
@@ -191,6 +190,10 @@ uploaded:
     id: Evf7J6669dc
     date: '2026-11-03'
     playlist: true
+  le-langage-des-oiseaux:
+    id: j_cSaktpNmw
+    date: '2026-11-03'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -199,5 +202,5 @@ days:
     units: 9100
     uploads: 5
   '2026-11-03':
-    units: 1700
-    uploads: 1
+    units: 3400
+    uploads: 2
