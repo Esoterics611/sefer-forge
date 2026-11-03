@@ -30,8 +30,8 @@ queue:
 - the-authors-introduction    # up 2026-11-02
 - the-hidden-years-and-the-revelation    # up 2026-11-02
 - la-grenouille-dans-le-desert    # up 2026-11-02
+- rabbi-gershon-of-kitov    # up 2026-11-03
   # planned for 2026-11-03
-- rabbi-gershon-of-kitov
 - le-langage-des-oiseaux
   # planned for 2026-11-04
 - the-land-of-israel-and-the-way-there
@@ -187,6 +187,10 @@ uploaded:
     id: SuNP547qCzg
     date: '2026-11-02'
     playlist: true
+  rabbi-gershon-of-kitov:
+    id: Evf7J6669dc
+    date: '2026-11-03'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -194,3 +198,6 @@ days:
   '2026-11-02':
     units: 9100
     uploads: 5
+  '2026-11-03':
+    units: 1700
+    uploads: 1
