@@ -205,22 +205,31 @@ def metadata(name: str) -> dict:
     plan = plan_of(name)
     lang = plan["lang"]
     t = TEXT[lang]
-    series = yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][lang]["series"]
+    # A plan of its own series (English renderings of shiurim, `parts:`, not booklet stories) brings its own
+    # series, description, tags and playlist.
+    series = plan.get("series") or yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][lang]["series"]
     title = re.sub(r"(?<=\w)'", "’", plan["title"])
     if len(f"{title} | {series}") <= 100:
         title = f"{title} | {series}"
     chapters = (OUT / name / "chapters.txt").read_text(encoding="utf-8").strip()
-    numbers = ", ".join(str(n) for n in sorted(s["n"] for s in plan["stories"]))
-    description = "\n\n".join([t["about"], f"{t['chapters']}\n{chapters}", t["stories"].format(numbers),
-                                t["credits"], t["site"], t["hashtags"]])
+    if plan.get("parts"):
+        tags = plan.get("tags", [])
+        parts = [plan["about"].strip(), f"{t['chapters']}\n{chapters}"]
+    else:
+        tags = t["tags"]
+        numbers = ", ".join(str(n) for n in sorted(s["n"] for s in plan["stories"]))
+        parts = [t["about"], f"{t['chapters']}\n{chapters}", t["stories"].format(numbers)]
+    description = "\n\n".join(parts + [t["credits"], t["site"], plan.get("hashtags", t["hashtags"])])
     description = description.replace("<", "‹").replace(">", "›")      # YouTube refuses angle brackets
     return {
-        "snippet": {"title": title, "description": description, "tags": t["tags"] + [f"sefer-forge-{name}"],
+        "snippet": {"title": title, "description": description, "tags": tags + [f"sefer-forge-{name}"],
                     "categoryId": str(RECORD_SETTINGS["category"]), "defaultLanguage": YT_LANG.get(lang, lang),
                     "defaultAudioLanguage": YT_LANG.get(lang, lang)},
         "status": {"privacyStatus": RECORD_SETTINGS["privacy"],
                    "selfDeclaredMadeForKids": bool(RECORD_SETTINGS["made_for_kids"]), "embeddable": True},
         "lang": lang, "series": series,
+        # The booklet stories have a playlist per language; a series of its own, its own playlist.
+        "playlist": (plan["series"], plan["series"]) if plan.get("series") else (lang, TEXT[lang]["playlist"].format(series)),
     }
 
 
@@ -391,10 +400,9 @@ def update(rec: dict, names: list[str]) -> None:
         set_thumbnail(rec, name, vid)
 
 
-def playlist(rec: dict, lang: str, series: str) -> str:
-    if lang in rec["playlists"]:
-        return rec["playlists"][lang]
-    title = TEXT[lang]["playlist"].format(series)
+def playlist(rec: dict, key: str, title: str, lang: str) -> str:
+    if key in rec["playlists"]:
+        return rec["playlists"][key]
     found = api("GET", "playlists", params={"part": "snippet", "mine": "true", "maxResults": 50})
     spend(rec, COST["list"])
     pid = next((p["id"] for p in found.get("items", []) if p["snippet"]["title"] == title), None)
@@ -405,7 +413,7 @@ def playlist(rec: dict, lang: str, series: str) -> str:
         spend(rec, COST["playlist"])
         pid = made["id"]
         print(f"  playlist made: {title} ({pid})")
-    rec["playlists"][lang] = pid
+    rec["playlists"][key] = pid
     save(rec)
     return pid
 
@@ -413,10 +421,11 @@ def playlist(rec: dict, lang: str, series: str) -> str:
 def add_to_playlist(rec: dict, name: str) -> bool:
     meta = metadata(name)
     units, _ = left(rec)
-    need = COST["entry"] + (0 if meta["lang"] in rec["playlists"] else COST["list"] + COST["playlist"])
+    key, title = meta["playlist"]
+    need = COST["entry"] + (0 if key in rec["playlists"] else COST["list"] + COST["playlist"])
     if units < need:
         return False
-    pid = playlist(rec, meta["lang"], meta["series"])
+    pid = playlist(rec, key, title, YT_LANG.get(meta["lang"], meta["lang"]))
     api("POST", "playlistItems", params={"part": "snippet"},
         json={"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video",
                                                            "videoId": rec["uploaded"][name]["id"]}}})

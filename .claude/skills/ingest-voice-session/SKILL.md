@@ -17,3 +17,5 @@ report no errors.
 
 The lesson finishes, after its pamphlet is proofed, with the readability pass and then the
 style pass (`prompts/style-pass.md`): both as lists in `transcript.md`'s frontmatter.
+Last, when its discourse has English episodes, offer the English rendering of the new
+shiur (`python scripts/narration-status.py <discourse>`, `prompts/render-english.md`).

@@ -12,4 +12,8 @@ description: Show where every session (or one session or discourse) stands and i
    `ingest-session` (photo sessions), `ingest-voice-session` (voice-only), or the command
    the status line names.
 
+For the English episodes of the shiurim, `python scripts/narration-status.py` gives the same
+picture per discourse (English missing / current / stale, episode approved / built / on
+YouTube, the next step); add its next steps when the user asks where things stand.
+
 The script changes nothing; it is safe to run at any time.

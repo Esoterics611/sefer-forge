@@ -48,6 +48,8 @@ Or just say: **"ingest voice session discourses/NNN-<slug>/sessions/MMM"** — t
 >
 > **Step 7 — Style pass** (the last step; `prompts/style-pass.md`): read the lesson through once more and turn the spoken Hebrew into written Hebrew, as a `style:` list in `transcript.md`'s frontmatter (headings, `>` readings and footnotes untouched). Check, rebuild the book and the pamphlet, proof, and read every spread.
 >
-> **Hard constraints:** Hebrew stays Hebrew. Never edit `.raw.txt`, audio, `compiled/`, or `output/`. Do not invoke docx/pptx/xlsx skills. Do not hand-edit `discourse.md` of a voice-only discourse — it is regenerated; edit `transcript.md`. Don't overwrite an existing `transcript.md` that already has body content — ask first.
+> **Step 8 — English episode** (when the discourse has English episodes, or I ask for one): `python scripts/narration-status.py <discourse>` shows the new shiur as English missing. Offer to render it and add it to the next episode, by `prompts/render-english.md`; nothing is recorded before I approve the English.
+>
+> **Hard constraints:** Hebrew stays Hebrew (the English renderings of Step 8 are the one exception, made because I asked for English episodes). Never edit `.raw.txt`, audio, `compiled/`, or `output/`. Do not invoke docx/pptx/xlsx skills. Do not hand-edit `discourse.md` of a voice-only discourse — it is regenerated; edit `transcript.md`. Don't overwrite an existing `transcript.md` that already has body content — ask first.
 >
 > End with one message: transcript path, output path, the readability edits (corrected / removed, and any left for me), the style edits with a short before/after sample, count of auto fixes / review decisions / glossary additions, the counts line from `review.md` with every Added entry and its reason, and any `UNCLEAR` spots (with times) for me to listen to.
