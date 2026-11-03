@@ -37,8 +37,11 @@ says how far each discourse has got and the next step.
    voice says it; check the lowercase Hebrew terms too (hitbonenut, iyun,
    mochin…). Every Hebrew term goes in `booklets/narration/say-en.yaml`
    ("Chassidus and Kabbalah"), shared by every episode, checked with `--say`.
+   Write each respelling as one word, without hyphens (`Hasiddus`, not
+   `Hah-see-dus`): a hyphen makes the voice stress every syllable, which
+   sounds slow and foreign; `--say` should show one stress mark (ˈ) per word.
    Then make a sample of the new terms and the episode's opening and send
-   them to Ronnie to hear.
+   them to Ronnie to hear. Speed: 1.1 (Ronnie's choice, 2026-11-03).
 6. **Approval**: Ronnie reads the English and hears the samples. Only then
    `approved: <date>` in the plan; the full build refuses a plan of `parts:`
    without it.

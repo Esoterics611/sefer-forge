@@ -97,7 +97,7 @@ Milkes: Mil-kes
 Pohrebishtch: Poh-reh-beesh
 Filet: Fee-let
 Kalisz: Kah-leesh
-Rebbe: Reb-beh
+Rebbe: Rebbeh
 Yehudah: Yeh-hoo-dah
 Uman: Oo-mahn
 # the letter, in story 169 ("the Ch is Chaikel"): the voice says its Hebrew name
@@ -167,55 +167,52 @@ Gaon: Gah-on
 Ya mudra, ale ty mudrishe: Yah moo-drah, ah-leh tih moo-dree-sheh
 
 # Chassidus and Kabbalah (the Shaar HaYichud shiurim, 2026-11-03). The voice
-# has no guttural: ח and כ are written h, as in the names above. Checked with
-# --say; listened to in the samples before the first recording.
-Chabad: Hah-bahd
-Chassidus: Hah-see-dus
-Chassidic: Hah-see-dic
-Chassidim: Hah-see-deem
-HaYichud: Hah-yee-hood
-Shaar: Shah-ar
-Mitteler: Mitt-eh-ler
-Kuntres: Koon-tress
-kuntres: koon-tress
-Chochmah: Hokh-mah
-Binah: Bee-nah
-"Da'at": Dah-aht
-Malchut: Mahl-hoot
-Keter: Keh-ter
-Atik: Ah-teek
-Tevunah: Teh-voo-nah
-Yisrael: Yis-rah-el
-Saba: Sah-bah
-Abba: Ah-bah
-Imma: Ee-mah
-Leah: Lay-ah
-Zeir: Zeh-eer
-Anpin: Ahn-peen
-Atzilut: Ahtsee-loot
-Beriah: Bree-ah
-Yetzirah: Yeh-tsee-rah
-Asiyah: Ah-see-yah
-Shema: Sheh-mah
-Shulchan: Shool-hahn
-Aruch: Ah-rooh
-Berachot: Brah-hot
-Mashiach: Mah-shee-ahh
-Haskalah: Hahs-kah-lah
+# has no guttural: ח and כ are written h, as in the names above. Written as one
+# word, without hyphens: a hyphen makes the voice stress every syllable, slow
+# and foreign. Checked with --say (one stress mark per word) and by ear.
+# Said right as written, so not here: Shaar, Mitteler, Keter, Yisrael, Maggid,
+# nefesh, Torah, Zohar, Tanya, Rashi, Sefer.
+Chabad: Hahbahd
+Chassidus: Hasiddus
+Chassidic: Haseedic
+Chassidim: Haseedim
+HaYichud: Hah Yeehood
+Kuntres: Koontress
+kuntres: koontress
+Chochmah: Hokmah
+Binah: Beenah
+"Da'at": Daat
+Malchut: Malhoot
+Atik: Ahteek
+Tevunah: Tevoonah
+Saba: Sahbah
+Abba: Ahbah
+Imma: Eemah
+Leah: Layah
+Zeir: Zeyr
+Anpin: Ahnpeen
+Atzilut: Atzeeloot
+Beriah: Breeah
+Yetzirah: Yetseerah
+Asiyah: Assiya
+Shema: Shehmah
+Shulchan: Shoolhan
+Aruch: Ahrooh
+Berachot: Brahote
+Mashiach: Masheeah
+Haskalah: Haskahlah
 Kabbalah: Kabbala
-Maggid: Mah-gheed
-hitbonenut: hit-bo-neh-noot
-iyun: ee-yoon
-ayin: ah-yin
-"ma'ayan": mah-ah-yahn
+hitbonenut: hitbonenoot
+iyun: eeyoon
+ayin: ayeen
+"ma'ayan": maayahn
 yesh: yehsh
-mochin: moh-heen
-sefirot: seh-fee-rote
-nefesh: neh-fesh
-ruach: roo-ahh
-neshamah: neh-shah-mah
-chayah: hah-yah
-yechidah: yeh-hee-dah
-derhern: der-hehrn
+mochin: mohin
+sefirot: sefeerote
+ruach: rooah
+neshamah: neshahmah
+chayah: hiyah
+yechidah: yeheedah
+derhern: derhehrn
 nun: noon
 nuns: noons
