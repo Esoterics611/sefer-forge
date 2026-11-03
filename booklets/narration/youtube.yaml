@@ -143,6 +143,7 @@ queue:
   # planned for 2026-12-10
 - hashanim-hanistarot-vehahitgalut
 - the-gate-of-unity-part-one    # up 2026-11-03
+- the-gate-of-unity-part-two    # up 2026-11-03
 playlists:
   en: PLHmoqTnaBo-E
   fr: PLC9BzDyQnm5U
@@ -200,6 +201,10 @@ uploaded:
     id: gqACBh9UdL4
     date: '2026-11-03'
     playlist: true
+  the-gate-of-unity-part-two:
+    id: J5qLragaWmg
+    date: '2026-11-03'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -208,5 +213,5 @@ days:
     units: 9100
     uploads: 5
   '2026-11-03':
-    units: 5151
-    uploads: 3
+    units: 6851
+    uploads: 4
