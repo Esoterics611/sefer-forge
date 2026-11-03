@@ -83,6 +83,16 @@ says how far each discourse has got and the next step.
   | משיח; ההשכלה | the Messiah; the Enlightenment movement |
   | שמע ישראל | Hear, O Israel |
   | סידור | prayer book |
+  | אבא ואמא עילאין / תתאין; פרצוף | the upper / lower Father and Mother; configuration |
+  | חסד, גבורה, תפארת, נצח, הוד, יסוד, מלכות | Kindness, Might, Beauty, Victory, Splendor, Foundation, Kingship |
+  | ג' ראשונות, ז' תחתונות; מידות שבשכל | the first three, the seven lower attributes; the emotions within the mind |
+  | ב"כן, נפקא מינא; היולי | the outcome, the practical result; formless matter |
+  | ממלא כל עלמין; יש מאין; כוח הפועל בנפעל | the One who fills all worlds; something from nothing; the power of the Maker within the made |
+  | שם אדנות, שם אלוקים | the divine Name that means Lord, the Name of God that is a word of power |
+  | עין רבתי, דלת רבתי (בשמע ישראל) | the enlarged last letter of "Hear", of "One" |
+  | נו"ן כפופה, נו"ן פשוטה | the letter of fifty bent, and straight |
+  | איש תבונה | a man of understanding (Proverbs 20:5) |
+  | וד"ל | and the understanding will understand |
 
   Add each new term here as it is first translated.
 - **Wordplay** the teaching rests on is explained in English without saying the

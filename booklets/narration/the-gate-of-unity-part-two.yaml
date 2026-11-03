@@ -1,0 +1,41 @@
+# A narration for video, in English: Shaar HaYichud, the Gate of Unity, part
+# two: the shiurim on chapters 2 and 3. Reads the English
+# renderings beside the Hebrew of discourses/002-shaar-hayichud (`parts:`,
+# prompts/render-english.md); each "## " section is a chapter. Ronnie reads
+# and approves the English before it is recorded.
+#
+# Built by: python scripts/build-narration.py booklets/narration/the-gate-of-unity-part-one.yaml
+#
+# Plain English throughout: every Hebrew term translated, never transliterated
+# (Ronnie's decision, 2026-11-03; prompts/render-english.md, Terms). Only
+# names stay: Chabad, the Mitteler Rebbe, the Tanya, the Zohar, Rashi.
+
+title: "The Gate of Unity, Part Two"
+lang: en
+voice: am_michael
+speed: 1.1
+
+parts:
+  - discourses/002-shaar-hayichud/sessions/011/transcript-en.md
+  - discourses/002-shaar-hayichud/sessions/012/transcript-en.md
+
+series: "Shaar HaYichud"
+subtitle: "Lessons in English"
+
+about: >
+  Shaar HaYichud, the Gate of Unity, by the Mitteler Rebbe, with the
+  explanations of Rabbi Hillel of Paritch: chapters 2 and 3, on Understanding
+  and lower Understanding, and contemplating the One who fills all worlds.
+  Shiurim by Ronnie Rendel, rendered in English and read aloud.
+
+tags: ["Shaar HaYichud", "Gate of Unity", "Mitteler Rebbe", "Chabad", "Chassidus",
+       "hitbonenut", "contemplation", "Kabbalah", "Rabbi Hillel of Paritch"]
+hashtags: "#Chassidus #Chabad #Kabbalah"
+
+intro: >
+  The Gate of Unity, by the Mitteler Rebbe. Part two: the second and third
+  chapters.
+
+outro: >
+  Here ends the second part of these lessons on the Gate of Unity.
+
