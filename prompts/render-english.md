@@ -33,15 +33,12 @@ says how far each discourse has got and the next step.
    `parts:` in reading order, until about 7,000 words (40 minutes); then
    start the next plan ("…, Part Two"). Its `series:`, `subtitle:`, `about:`,
    `tags:` and `hashtags:` carry the series; its playlist is the series'.
-5. **Pronunciation** (critical): `--names` lists every capitalised word as the
-   voice says it; check the lowercase Hebrew terms too (hitbonenut, iyun,
-   mochin…). Every Hebrew term goes in `booklets/narration/say-en.yaml`
-   ("Chassidus and Kabbalah"), shared by every episode, checked with `--say`.
-   Write each respelling as one word, without hyphens (`Hasiddus`, not
-   `Hah-see-dus`): a hyphen makes the voice stress every syllable, which
-   sounds slow and foreign; `--say` should show one stress mark (ˈ) per word.
-   Then make a sample of the new terms and the episode's opening and send
-   them to Ronnie to hear. Speed: 1.1 (Ronnie's choice, 2026-11-03).
+5. **Pronunciation** (critical): the English has no Hebrew terms, only names.
+   `--names` lists every capitalised word as the voice says it; a name it says
+   badly gets a respelling in `booklets/narration/say-en.yaml`, written as one
+   word with one stress (a hyphen makes the voice stress every syllable, slow
+   and foreign); `--say` checks it. Then make a sample of the episode's opening
+   and send it to Ronnie to hear. Speed: 1.1 (Ronnie's choice, 2026-11-03).
 6. **Approval**: Ronnie reads the English and hears the samples. Only then
    `approved: <date>` in the plan; the full build refuses a plan of `parts:`
    without it.
@@ -61,11 +58,39 @@ says how far each discourse has got and the next step.
 - **The text being taught** (the `>` lines: Shaar HaYichud and its
   commentary) is rendered as quotation, also `>`, introduced as the shiur
   introduces it ("The text reads:", "The Rebbe continues:").
-- **Hebrew terms**: the term in transliteration, glossed once at first use
-  ("contemplation, hitbonenut"; "Chochmah, Binah and Da'at, wisdom,
-  understanding and knowledge"), then either. Chabad spellings: Chochmah,
-  Binah, Da'at, Chassidus, Atzilut, Beriah, Yetzirah, Asiyah, Malchut,
-  Keter, Atik, mochin, sefirot, kuntres. Verses in English, as said.
+- **Plain English, no transliteration** (Ronnie's decision, 2026-11-03: Hebrew
+  words in an English voice sound foreign however they are spelled). Every
+  term is translated, always the same way:
+
+  | Hebrew | English |
+  |---|---|
+  | חכמה, בינה, דעת | Wisdom, Understanding, Knowledge |
+  | כתר, מלכות | the Crown, Kingship |
+  | עתיק | the Ancient One |
+  | אבא ואמא | the Father and the Mother |
+  | ישראל סבא ותבונה | Israel the Elder and lower Understanding |
+  | זעיר אנפין, לאה | the Small Countenance, Leah |
+  | אצילות, בריאה, יצירה, עשייה | the worlds of Emanation, Creation, Formation and Action |
+  | עשר ספירות | the ten divine attributes |
+  | מוחין | the powers of the mind |
+  | נרנח"י | the five levels of the soul (from the soul that gives life to the body up to the single, innermost essence) |
+  | התבוננות, עיון | contemplation, study |
+  | התפעלות | arousal |
+  | קונטרס; שער הייחוד; קונטרס ההתפעלות | treatise; the Gate of Unity; the Treatise on Arousal |
+  | חסידות, חסידים | Hasidic teaching, the Hasidim |
+  | גמרא; שולחן ערוך; ספר יצירה; מסכת ברכות | the Talmud; the Code of Jewish Law; the Book of Formation; the Talmud |
+  | משיח; ההשכלה | the Messiah; the Enlightenment movement |
+  | שמע ישראל | Hear, O Israel |
+  | סידור | prayer book |
+
+  Add each new term here as it is first translated.
+- **Wordplay** the teaching rests on is explained in English without saying the
+  Hebrew word: "In Hebrew, the word for study comes from the word for the
+  eye"; "the word for contemplation is written with the letter whose number
+  is fifty, twice". Nothing else is added.
+- **Names stay** (people, books, movements): Chabad, the Baal Shem Tov, the
+  Alter Rebbe, the Mitteler Rebbe, the Maggid, Rashi, the Tanya, the Zohar,
+  Kabbalah, the Torah. Verses in English, as said.
 - **Titles**: each "## " section is a chapter of the video, a short English
   title of what it says. No footnotes (they are not read).
 - **No brackets** in what is read: the build stops on one.

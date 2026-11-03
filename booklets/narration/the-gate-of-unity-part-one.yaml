@@ -6,8 +6,9 @@
 #
 # Built by: python scripts/build-narration.py booklets/narration/the-gate-of-unity-part-one.yaml
 #
-# The Hebrew terms are said by booklets/narration/say-en.yaml ("Chassidus and
-# Kabbalah"), shared by every episode; check a new one with --names and --say.
+# Plain English throughout: every Hebrew term translated, never transliterated
+# (Ronnie's decision, 2026-11-03; prompts/render-english.md, Terms). Only
+# names stay: Chabad, the Mitteler Rebbe, the Tanya, the Zohar, Rashi.
 
 title: "The Gate of Unity, Part One"
 lang: en
@@ -19,7 +20,7 @@ parts:
   - discourses/002-shaar-hayichud/sessions/010/transcript-en.md
 
 series: "Shaar HaYichud"
-subtitle: "Shiurim in English"
+subtitle: "Lessons in English"
 
 about: >
   Shaar HaYichud, the Gate of Unity, by the Mitteler Rebbe, with the
@@ -32,9 +33,9 @@ tags: ["Shaar HaYichud", "Gate of Unity", "Mitteler Rebbe", "Chabad", "Chassidus
 hashtags: "#Chassidus #Chabad #Kabbalah"
 
 intro: >
-  Shaar HaYichud, the Gate of Unity. Part one: the introduction, and the
-  first chapter.
+  The Gate of Unity, by the Mitteler Rebbe. Part one: the introduction, and
+  the first chapter.
 
 outro: >
-  Here ends the first part of these shiurim on Shaar HaYichud.
+  Here ends the first part of these lessons on the Gate of Unity.
 
