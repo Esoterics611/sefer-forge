@@ -32,9 +32,8 @@ queue:
 - la-grenouille-dans-le-desert    # up 2026-11-02
 - rabbi-gershon-of-kitov    # up 2026-11-03
 - le-langage-des-oiseaux    # up 2026-11-03
-  # planned for 2026-11-04
-- the-land-of-israel-and-the-way-there
-- la-mort-du-baal-chem-tov
+- the-land-of-israel-and-the-way-there    # up 2026-11-04
+- la-mort-du-baal-chem-tov    # up 2026-11-04
   # planned for 2026-11-05
 - in-prayer
 - l-introduction-de-l-auteur
@@ -205,6 +204,14 @@ uploaded:
     id: J5qLragaWmg
     date: '2026-11-03'
     playlist: true
+  the-land-of-israel-and-the-way-there:
+    id: c7GvzxqKIzc
+    date: '2026-11-04'
+    playlist: true
+  la-mort-du-baal-chem-tov:
+    id: 88gDdsBJ_K0
+    date: '2026-11-04'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -215,3 +222,6 @@ days:
   '2026-11-03':
     units: 6851
     uploads: 4
+  '2026-11-04':
+    units: 3400
+    uploads: 2
