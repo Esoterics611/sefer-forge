@@ -1,0 +1,7 @@
+---
+discourse: 004
+slug: levushei-haneshama
+title: 'לשון אדמו"ר נ"ע בעצמו'
+status: draft
+---
+
