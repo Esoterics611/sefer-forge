@@ -34,9 +34,8 @@ queue:
 - le-langage-des-oiseaux    # up 2026-11-03
 - the-land-of-israel-and-the-way-there    # up 2026-11-04
 - la-mort-du-baal-chem-tov    # up 2026-11-04
-  # planned for 2026-11-05
-- in-prayer
-- l-introduction-de-l-auteur
+- in-prayer    # up 2026-11-05
+- l-introduction-de-l-auteur    # up 2026-11-05
   # planned for 2026-11-06
 - his-ways-and-customs
 - les-annees-cachees-et-la-revelation
@@ -212,6 +211,14 @@ uploaded:
     id: 88gDdsBJ_K0
     date: '2026-11-04'
     playlist: true
+  in-prayer:
+    id: dO6lLZPxatk
+    date: '2026-11-05'
+    playlist: true
+  l-introduction-de-l-auteur:
+    id: YYi24qkSFyU
+    date: '2026-11-05'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -223,5 +230,8 @@ days:
     units: 6851
     uploads: 4
   '2026-11-04':
+    units: 3400
+    uploads: 2
+  '2026-11-05':
     units: 3400
     uploads: 2
