@@ -61,6 +61,12 @@ def voice_only(session: Path) -> bool:
     return meta(discourse_of(session)).get("type") == "voice-only"
 
 
+def text_sourced(session: Path) -> bool:
+    """The session's text came from an edition ("## Source:" in ocr.md), not photos."""
+    f = session / "ocr.md"
+    return f.exists() and bool(re.search(r"^## Source:", f.read_text(encoding="utf-8"), re.M))
+
+
 def find_discourse(name: str) -> Path | None:
     p = Path(name)
     if p.is_dir() and (p / "sessions").is_dir():
@@ -119,17 +125,23 @@ def split_frontmatter(text: str) -> tuple[dict | None, str, str | None]:
 
 
 def ocr_body(session: Path) -> str:
-    """ocr.md without frontmatter, image headings and comments: the printed text only."""
+    """ocr.md without frontmatter, section headings and comments: the printed text only."""
     f = session / "ocr.md"
     if not f.exists():
         return ""
     _, body, _ = split_frontmatter(f.read_text(encoding="utf-8"))
-    body = re.sub(r"^## Image:.*$", "", body, flags=re.M)
+    body = re.sub(r"^## (?:Image|Source):.*$", "", body, flags=re.M)
     return COMMENT.sub(" ", body)
 
 
+# ocr.md sections: "## Image: <photo>" for a page read from a photo, or
+# "## Source: <url or book>" for a page of text taken from a digital edition
+# (no photo; the text as given, e.g. pasted from chabadlibrary.org).
+SECTION_HEADS = ("## Image:", "## Source:")
+
+
 def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
-    """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped.
+    """ocr.md's paragraphs, flags kept, section headings and the photo notes dropped.
     notes=False leaves out each photo's printed footnotes too (its `[Footnotes:]`
     block, up to the next photo): the text as it reads, across photos, where a
     paragraph a photo leaves mid-sentence goes on in the next photo's first."""
@@ -137,11 +149,11 @@ def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
     paras, in_notes, new_photo = [], False, False
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
-        if block.startswith("## Image:"):
+        if block.startswith(SECTION_HEADS):
             in_notes, new_photo = False, bool(paras)
         if block.startswith("[Footnotes:]"):
             in_notes = True
-        if not block or block.startswith("## Image:") or (in_notes and not notes):
+        if not block or block.startswith(SECTION_HEADS) or (in_notes and not notes):
             continue
         if re.fullmatch(r"<!--.*?-->", block, flags=re.S):    # a note about the photo, not text
             continue

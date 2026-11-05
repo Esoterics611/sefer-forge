@@ -1,0 +1,99 @@
+/* Reading pack (scripts/build-references.py): a session's text, broken after
+   each citation, with the cited passage in a box below it. A4, for reading
+   from while recording the lesson. Frank Ruhl Libre (OFL, shipped in
+   templates/fonts/) for everything, so the PDF looks the same on any machine.
+   The Regular and Bold files are static cuts of the variable FrankRuhlLibre.ttf
+   (fontTools instancer): Chrome embeds a variable font as Type 3, which prints poorly.
+   Checked by scripts/proof-pdf.py --profile references (docs/print-standard.md). */
+
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  src: url("../../../templates/fonts/FrankRuhlLibre-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  src: url("../../../templates/fonts/FrankRuhlLibre-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+:root {
+  --ink: #1b1b1b;
+  --soft: #5a5246;
+  --rule: #8c7a5b;
+  --box-fill: #f6f2e9;
+  --mark: #f3df8f;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm 20mm 20mm;
+  @bottom-center { content: counter(page, hebrew); font-family: "Frank Ruhl Libre"; font-size: 10pt; color: var(--soft); }
+}
+
+html { direction: rtl; }
+body {
+  margin: 0;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 14pt;
+  line-height: 1.75;
+  color: var(--ink);
+  background: #fff;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 22pt;
+  line-height: 1.3;
+  text-align: center;
+  margin: 0 0 1mm;
+}
+.sub { text-align: center; font-size: 13pt; margin: 0; color: var(--soft); }
+.src { text-align: center; font-size: 10pt; margin: 0 0 4mm; color: var(--soft); }
+.legend {
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: var(--soft);
+  border-top: 0.6pt solid var(--rule);
+  border-bottom: 0.6pt solid var(--rule);
+  padding: 1.5mm 0;
+  margin: 0 0 6mm;
+}
+
+/* The text being studied. */
+p.text { text-align: justify; margin: 0 0 3mm; }
+.cite { font-weight: 700; color: var(--rule); }
+.cite sup { font-size: 8.5pt; font-weight: 700; margin-inline-start: 0.6mm; color: var(--rule); }
+
+/* A cited passage. */
+.box {
+  background: var(--box-fill);
+  border-right: 2.5pt solid var(--rule);
+  padding: 2.5mm 4mm 2mm;
+  margin: 0 0 5mm;
+  font-size: 12pt;
+  line-height: 1.6;
+}
+.box .head { font-weight: 700; font-size: 11pt; color: var(--soft); break-after: avoid; }
+.box .n {
+  display: inline-block;
+  min-width: 5.5mm;
+  text-align: center;
+  font-size: 9.5pt;
+  color: #fff;
+  background: var(--rule);
+  border-radius: 1mm;
+  margin-inline-end: 1mm;
+}
+.box .note { font-size: 10pt; line-height: 1.45; color: var(--soft); margin: 0.5mm 0 1mm; break-after: avoid; }
+.box .sublabel { font-size: 10pt; font-weight: 700; color: var(--soft); margin-top: 2mm; break-after: avoid; }
+.box .ex p { text-align: justify; margin: 1mm 0 0; }
+.box .ex p.gap { text-align: center; margin: 0; }
+.box .see { margin-top: 1mm; }
+mark { background: var(--mark); color: inherit; padding: 0 0.4mm; }
+.divider { width: 30mm; margin: 6mm auto 5mm; border-top: 0.8pt solid var(--rule); }
+
+/* The works cited but not quoted, kept on one page. */
+.others { break-inside: avoid; }
+h2 { font-size: 13pt; font-weight: 700; margin: 8mm 0 2mm; break-after: avoid; }
+.others ul { font-size: 11pt; line-height: 1.55; margin: 0; padding-inline-start: 6mm; }

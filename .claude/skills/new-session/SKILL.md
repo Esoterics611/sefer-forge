@@ -13,6 +13,9 @@ description: Start a new session in a discourse - make the folder, copy in the p
    `python scripts/session-status.py` shows another transcription running, don't start a
    second; queue this one with `python scripts/transcribe.py --pending` once that ends.
 4. **OCR meanwhile** (photo discourses): follow the `ocr-session` skill up to its step 5.
+   A text pasted from a digital edition instead of photographed goes into `ocr.md` as given,
+   one `## Source: <url>` section per page (no OCR); its sources are set out before the
+   recording with the `references-pack` skill.
 5. When Whisper finishes, continue with the `ingest-session` skill (or
    `ingest-voice-session` for a voice-only discourse).
 

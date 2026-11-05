@@ -11,7 +11,8 @@ A session's steps, in order (voice-only sessions skip the photo steps):
     inputs        photos in images/, the recording in voicenotes/
     transcribe    <audio>.raw.txt  (running: progress and time left;
                   interrupted: rerun transcribe.py to resume)
-    ocr           ocr.md, one "## Image:" per photo
+    ocr           ocr.md, one "## Image:" per photo (or "## Source:" pages of a text
+                  taken from an edition, no photos)
     ocr-match     ocr-match.md, newer than ocr.md and the transcript
     cleanup       commentary.md (transcript.md for voice-only)
     review        review.md, newer than the cleaned text
@@ -88,9 +89,10 @@ def steps(s: Path) -> list[tuple[str, str, str]]:
         out.append(("✓" if audios else "–", "recording" if audios else "no recording in voicenotes/",
                     "" if audios else f"put the shiur recording in {s}/voicenotes/"))
     else:
-        missing = [x for x, ok in (("photos", photos), ("voicenote", audios)) if not ok]
+        sourced = F.text_sourced(s)
+        missing = [x for x, ok in (("photos", photos or sourced), ("voicenote", audios)) if not ok]
         out.append(("–" if missing else "✓",
-                    f"{len(photos)} photo(s), {len(audios)} voicenote(s)",
+                    ("text from an edition" if sourced else f"{len(photos)} photo(s)") + f", {len(audios)} voicenote(s)",
                     f"put the {' and '.join(missing)} in {s}/" if missing else ""))
     if not audios:
         return out
@@ -109,6 +111,8 @@ def steps(s: Path) -> list[tuple[str, str, str]]:
             out.append(("–", "no ocr.md", f"OCR the photos: /ocr-session {s}"))
         elif todo:
             out.append(("✗", f"ocr.md lacks {', '.join(todo)}", f"OCR the new photo(s): /ocr-session {s}"))
+        elif sourced:
+            out.append(("✓", "ocr.md (text from an edition)", ""))
         else:
             out.append(("✓", f"ocr.md ({len(heads)} photo(s))", ""))
         out.append((t_mark, t_detail, t_next))

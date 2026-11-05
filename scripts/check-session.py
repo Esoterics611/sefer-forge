@@ -9,7 +9,8 @@ Usage:
 
 Images+voice sessions:
   ocr.md        valid frontmatter; one "## Image:" per photo, none for a
-                photo that is gone
+                photo that is gone; or, for a text taken from an edition,
+                "## Source:" sections and no photos
   commentary.md every word traceable to Whisper (transcript-diff's Added
                 count), UNCLEAR flags carry their time, review.md up to date
   section.md    valid frontmatter with a title; the three named sections in
@@ -160,6 +161,11 @@ def check_ocr(r: Report) -> list[str]:
     check_frontmatter(r, f)
     text = f.read_text(encoding="utf-8")
     heads = re.findall(r"^## Image:\s*(.+?)\s*$", text, flags=re.M)
+    sources = re.findall(r"^## Source:\s*(.+?)\s*$", text, flags=re.M)
+    if sources and heads:
+        r.error("ocr.md: both “## Image:” and “## Source:” sections: a session's text comes from photos or from an edition, not both")
+    elif sources:
+        r.note(f"ocr.md: text from {len(sources)} source page(s), no photos")
     photos = [p.name for p in F.image_files(r.session)]
     for p in photos:
         if p not in heads:
@@ -372,7 +378,7 @@ def check(session: Path) -> Report:
             check_cleanup(r, t)
         return r
 
-    if not F.image_files(session):
+    if not F.image_files(session) and not F.text_sourced(session):
         r.warn("no photos in images/")
     if not F.audio_files(session):
         r.warn("no voicenote in voicenotes/")

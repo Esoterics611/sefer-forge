@@ -3,12 +3,13 @@
 
 Usage:
     python scripts/proof-pdf.py output/pamphlets/003-breishis-002.pdf
-    python scripts/proof-pdf.py <pdf> --profile booklet      # pamphlet | booklet | booklet-latin | book
+    python scripts/proof-pdf.py <pdf> --profile booklet      # pamphlet | booklet | booklet-latin | references | book
     python scripts/proof-pdf.py <pdf> --no-images            # skip the spread images
 
 The profile follows the PDF's folder (output/pamphlets → pamphlet,
 output/booklets → booklet, output/booklets/en|fr → booklet-latin, the English
-and French booklets, left to right; otherwise book). Fonts, palette and margins come
+and French booklets, left to right; output/references → references, a
+session's reading pack; otherwise book). Fonts, palette and margins come
 from the profile's stylesheet, so the proof always checks the design as it
 stands. Page by page it checks:
 
@@ -71,6 +72,10 @@ PROFILES = {
              "margins_mm": (25, 25, 25, 25), "margin_slack": 8.0, "running_header": False,
              "numerals": "hebrew",
              "fonts": {"David", "David-Bold"}, "heading": 15.0},
+    # Reading packs (scripts/build-references.py): A4, numbered from p.1, no running header.
+    "references": {"css": "templates/references.css", "script": "scripts/build-references.py", "page": "A4",
+                   "numerals": "hebrew", "running_header": False, "cover": False,
+                   "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 20.0},
 }
 LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO'
                    r'|(?:^|\s)(?:>|#{1,4})(?:\s|$)')        # a blockquote or heading marker printed
@@ -281,7 +286,7 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
                 warns.append(f"p.{pno}: page number should read “{want}”, found {nums or 'none'}")
             if not header and prof.get("running_header", True):
                 warns.append(f"p.{pno}: no running header")
-        if pno == 1 and footer and prof["numerals"]:
+        if pno == 1 and footer and prof["numerals"] and prof.get("cover", True):
             warns.append("p.1: the cover carries a page number")
 
     for font, fb in sorted(fallback.items()):
@@ -338,13 +343,14 @@ def main(argv: list[str]) -> int:
     else:
         profile = None
     if len(args) != 1:
-        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|book] [--no-images]")
+        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|book] [--no-images]")
         return 1
     pdf = Path(args[0])
     if not pdf.exists():
         print(f"No such PDF: {pdf}")
         return 1
     profile = profile or ("pamphlet" if "pamphlets" in pdf.parts else
+                          "references" if "references" in pdf.parts else
                           "booklet-latin" if "booklets" in pdf.parts and pdf.parent.name in ("en", "fr") else
                           "booklet" if "booklets" in pdf.parts else "book")
     errors, warns, stats = proof(pdf, profile)

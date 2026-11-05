@@ -12,7 +12,7 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > **Step 0 — Where it stands.** Run `python scripts/session-status.py <SESSION_PATH>` and start at the first step that is not done. Never redo a finished step: a crash or a restart leaves finished files in place. If the voicenote is not transcribed, start Whisper now, in the background: `python scripts/transcribe.py <SESSION_PATH>` (an interrupted run resumes where it stopped). It takes about 0.9× the recording's length on the GPU, 2.4× on the CPU (`session-status.py` shows the estimate), so do the OCR while it runs.
 >
-> **Step 1 — OCR** (skip if `ocr.md` covers every photo). Follow `.claude/skills/ocr-session/SKILL.md`: cut the photos into strips with `scripts/ocr-strips.py`, read them strip by strip into a line-by-line draft, check the line count, write `ocr.md`, then a second pass against the strips.
+> **Step 1 — OCR** (skip if `ocr.md` covers every photo, or the session's text came from a digital edition: `## Source:` sections, no photos). Follow `.claude/skills/ocr-session/SKILL.md`: cut the photos into strips with `scripts/ocr-strips.py`, read them strip by strip into a line-by-line draft, check the line count, write `ocr.md`, then a second pass against the strips.
 >
 > **Step 2 — Match the OCR to the reading** (once Whisper is done). Run `python scripts/ocr-match.py <SESSION_PATH>` and read `<SESSION_PATH>/ocr-match.md`.
 > - For every *heard, not in OCR*, *in OCR, not heard* and *differs* entry, look at the strip that holds the line. If the photo shows the OCR missed or misread something, correct `ocr.md` now. If the photo agrees with the OCR, the speaker added, skipped or misread: leave it.

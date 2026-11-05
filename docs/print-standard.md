@@ -48,6 +48,12 @@ English and French booklets add `templates/booklet-latin.css` (EB Garamond
 Regular, SemiBold and their italics, shipped in `templates/fonts/`; left to
 right; glossary in two columns) and are proofed with the `booklet-latin`
 profile.
+Reading packs (a session's text with the passages it cites, read from while
+recording: `scripts/build-references.py`) follow `templates/references.css`: A4;
+Frank Ruhl Libre Regular and Bold only (static cuts shipped in `templates/fonts/`);
+the pamphlet palette plus `--mark` `#f3df8f` for the highlighted words; page numbers
+in Hebrew letters from page 1, no running header. Proofed with the `references`
+profile; the source's web address on page 1 is the one expected warning.
 Typography changes go in the stylesheet, never in a PDF or the generated HTML.
 A glyph missing from both fonts makes Chrome pull in a third font; that is a
 defect, fixed in the stylesheet's font stacks.
