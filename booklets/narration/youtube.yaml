@@ -36,9 +36,8 @@ queue:
 - la-mort-du-baal-chem-tov    # up 2026-11-04
 - in-prayer    # up 2026-11-05
 - l-introduction-de-l-auteur    # up 2026-11-05
-  # planned for 2026-11-06
-- his-ways-and-customs
-- les-annees-cachees-et-la-revelation
+- his-ways-and-customs    # up 2026-11-06
+- les-annees-cachees-et-la-revelation    # up 2026-11-06
   # planned for 2026-11-07
 - the-rabbi-of-polonne
 - rabbi-guershon-de-kitov
@@ -219,6 +218,14 @@ uploaded:
     id: YYi24qkSFyU
     date: '2026-11-05'
     playlist: true
+  his-ways-and-customs:
+    id: ZwkEGZO45Bo
+    date: '2026-11-06'
+    playlist: true
+  les-annees-cachees-et-la-revelation:
+    id: jxU9Ie4FP34
+    date: '2026-11-06'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -233,5 +240,8 @@ days:
     units: 3400
     uploads: 2
   '2026-11-05':
+    units: 3400
+    uploads: 2
+  '2026-11-06':
     units: 3400
     uploads: 2
