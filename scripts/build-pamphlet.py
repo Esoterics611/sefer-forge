@@ -685,16 +685,22 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
         front.append(f'<section class="contents"><h2>תוכן</h2><ol>{items}</ol></section>')
 
     md = []
+    # Several parts: each in its own container, so a part's last section (its key
+    # points) ends with the part instead of taking in the parts that follow.
+    wrap = whole and len(parts) > 1
     for i, p in enumerate(parts):
+        if wrap:
+            md.append("::: {.part-wrap}")
         if whole:
             first = " first" if i == 0 and not front else ""
             if not p.kicker and i > 0:
                 # No title: the session continues the one before, on the same page.
                 md.append(f'<div class="opener cont"><div class="orn">{ORN}</div></div>')
-                md.append(p.body)
-                continue
-            md.append(f'<div class="opener{first}{" paired" if p.pairs else ""}">{opener_html(p)}</div>')
+            else:
+                md.append(f'<div class="opener{first}{" paired" if p.pairs else ""}">{opener_html(p)}</div>')
         md.append(p.body)
+        if wrap:
+            md.append(":::")
     body = to_html("\n\n".join(md))
 
     parts = [x for x in (series, h1) if x]

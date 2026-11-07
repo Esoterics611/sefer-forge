@@ -2,6 +2,8 @@
 # rebuild with: python scripts/build-section.py discourses/004-levushei-haneshama/sessions/003
 # The narration reads box 2 (Etz Chaim 26:1) in pieces, 02:58-05:22 and again at 06:24
 # (ocr-match.md); the gloss line before it is not read. edits/style: the two passes.
+# nusach.end: the passage prints to the last sentence read; the rest of box 2
+# ("ודע כי יש מלאכים...") stays in the reading pack.
 title: הערה 2 — עץ חיים, שער כ"ו, פרק א'
 heading: הערה ב' — עץ חיים, שער כ"ו, פרק א'
 lines:
@@ -11,6 +13,8 @@ sources:
 - label: לשון אדמו"ר נ"ע
 - label: עץ חיים · שער כ"ו (הצלם) · פרק א'
   quoted: true
+nusach:
+  end: לברר ניצוצין שנפלו כנודע
 keys:
 - label: לשון אדמו"ר
   quote: רק להמשיך אור לתקנם כו' דוגמת גלות השכינה כו'
