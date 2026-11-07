@@ -29,3 +29,7 @@ Whisper 947 words · commentary.md 941 words · fillers removed 0 · removed 2 �
 
 1. ~~באו לתקן את ה~~ — …אומר דווקא כי כל המצוות ⟨ ⟩ הם לא באו לתקן את…
 2. ~~הבחירה וחופש~~ — …עצמם כי ברגע שהשכינה מתגלה ⟨ ⟩ חופש הבחירה נעלם אז בזמן…
+
+## section.md boxes vs commentary.md
+
+identical

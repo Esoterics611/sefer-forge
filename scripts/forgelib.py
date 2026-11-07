@@ -154,14 +154,27 @@ def ocr_paragraph_sections(session: Path) -> list[int]:
     return _ocr_paragraphs(session, False)[1]
 
 
+def source_key(head: str) -> str:
+    """What a "## Source:" heading names, less its page number: two pages of one
+    edition (…/books/3901370076, …/books/3901370077) share a key."""
+    value = head.split(":", 1)[1].split()
+    return re.sub(r"\d+$", "", value[0]) if value else ""
+
+
 def _ocr_paragraphs(session: Path, notes: bool) -> tuple[list[str], list[int]]:
     _, body, _ = split_frontmatter((session / "ocr.md").read_text(encoding="utf-8"))
-    paras, sections, in_notes, new_photo, section = [], [], False, False, -1
+    paras, sections, in_notes, new_photo, section, head = [], [], False, False, -1, ""
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
         if block.startswith(SECTION_HEADS):
-            in_notes, new_photo = False, bool(paras)
+            # A paragraph a page leaves mid-sentence goes on in the next page's
+            # first: always between photos; between "## Source:" pages only when
+            # they are pages of one text, not when the next section is another book.
+            same = not block.startswith("## Source:") or (
+                head.startswith("## Source:") and source_key(head) == source_key(block))
+            in_notes, new_photo = False, bool(paras) and same
             section += 1
+            head = block.splitlines()[0]
         if block.startswith("[Footnotes:]"):
             in_notes = True
         if not block or block.startswith(SECTION_HEADS) or (in_notes and not notes):

@@ -1,0 +1,66 @@
+# Decisions for section.md. Text comes from ocr.md and commentary.md;
+# rebuild with: python scripts/build-section.py discourses/004-levushei-haneshama/sessions/003
+# The narration reads box 2 (Etz Chaim 26:1) in pieces, 02:58-05:22 and again at 06:24
+# (ocr-match.md); the gloss line before it is not read. edits/style: the two passes.
+title: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+heading: הערה ב' — עץ חיים, שער כ"ו, פרק א'
+lines:
+- הצורה, הצלם והחומר
+- ירידת הנשמה — דוגמת גלות השכינה
+sources:
+- label: לשון אדמו"ר נ"ע
+- label: עץ חיים · שער כ"ו (הצלם) · פרק א'
+  quoted: true
+keys:
+- label: לשון אדמו"ר
+  quote: רק להמשיך אור לתקנם כו' דוגמת גלות השכינה כו'
+- label: הצורה היא העיקר
+  quote: כלל העולה כי הצורה הוא העיקר הנקרא אדם
+- label: הצלם — יצר טוב ויצר רע
+  quote: והצלם הזה הוא יצה"ט ויצה"ר והם המלאכים שבאדם עצמו ואינו האדם עצמו
+- label: הבל דגרמי, ממוצע בין הצורה והחומר
+  quote: ולכן נקרא צלם כי הוא דבר ממוצע בין הצורה והחומר
+- label: המצות — לצרף ולברר
+  quote: כל המצות אינם אלא לצרף ולברר הצלם והחומר
+- label: דוגמת גלות השכינה
+  quote: כי זה טעם ירידת הנשמה בעה"ז לתקן ולברר דוגמת גלות השכינה לברר ניצוצין שנפלו כנודע
+edits:
+- from: עץ חיים, שחף אף, פרק א'
+  to: עץ חיים, שער כ"ו, פרק א'
+  why: Whisper (00:01); box 2 is Etz Chaim gate 26
+- from: שבין ה-DNA של האדם
+  to: שבין הדנ"א של האדם
+  why: the Hebrew term for the English word he used
+- from: זה עניין של structure, של מבנה
+  to: זה עניין של מבנה
+  why: the English word he then says in Hebrew
+- from: יש את ה-light ואת ה-shadow, יש את האור ואת החושך
+  to: יש את האור ואת החושך
+  why: the English words he then says in Hebrew
+- from: 'פה מסביר לנו יפה איך שזה. ממשיך חוסר ויפה יותר: "ואינו האדם עצמו"'
+  to: 'פה מסביר לנו יפה איך שזה: "ואינו האדם עצמו"'
+  why: 'removed: "ממשיך חוסר ויפה יותר" cannot be recovered (03:57)'
+- from: החיבור שבין הנפש והגוף, הלכו תמימים שונים טובות ובריאות, הוא באמת אומר
+  to: החיבור שבין הנפש והגוף, הוא באמת אומר
+  why: 'removed: a garbled phrase that cannot be recovered (04:19)'
+- from: נרשמים באוויר גן עדן ואוויר חולה, שנמצאים מסביבנו כל העולם, ואז שאת האדם הקולקטיבי
+  to: נרשמים במה שמסביבנו, בכל העולם, באדם הקולקטיבי
+  why: garbled (04:40); a guess from the context — for the speaker to hear
+- from: נמצא בעברית סטאק, שהערימה מהגוף ועד הנפש
+  to: 'ובעברית: הערימה, מהגוף ועד הנפש'
+  why: Whisper (05:06); he gives the Hebrew word
+- from: שהצורה אינה צריכה תיקון, כי תיקון לא צריך להתלבש בצלם וחומר, רק להמשיך בעומק תקנם
+  to: שהצורה אינה צריכה תיקון כלל, ולא הוצרכה להתלבש בצלם וחומר, רק להמשיך בהם אור לתקנם
+  why: the text being read (Etz Chaim 26:1); Whisper (05:16)
+- from: לברר ניצוצין שנפלו כנגדו, כנודע
+  to: לברר ניצוצין שנפלו, כנודע
+  why: 'removed: "כנגדו" is not in the text being read (05:22)'
+- from: ועל ידי, אתה עכשיו, מה נתווסף
+  to: ועכשיו, מה נתווסף
+  why: 'removed: a garbled false start (06:18)'
+- from: דיין הופך בתיקונים
+  to: עדיין עוסקים בתיקונים
+  why: garbled (06:59); a guess from the context — for the speaker to hear
+- from: וזה מתקן את כל העולם כולו, וגם כזה.
+  to: וזה מתקן את כל העולם כולו.
+  why: 'removed: "וגם כזה" cannot be recovered (07:14)'
