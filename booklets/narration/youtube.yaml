@@ -38,9 +38,8 @@ queue:
 - l-introduction-de-l-auteur    # up 2026-11-05
 - his-ways-and-customs    # up 2026-11-06
 - les-annees-cachees-et-la-revelation    # up 2026-11-06
-  # planned for 2026-11-07
-- the-rabbi-of-polonne
-- rabbi-guershon-de-kitov
+- the-rabbi-of-polonne    # up 2026-11-07
+- rabbi-guershon-de-kitov    # up 2026-11-07
   # planned for 2026-11-08
 - the-mokhiach-of-polonne-part-one
 - la-terre-d-israel-et-le-chemin-qui-y-mene
@@ -226,6 +225,14 @@ uploaded:
     id: jxU9Ie4FP34
     date: '2026-11-06'
     playlist: true
+  the-rabbi-of-polonne:
+    id: m0mQgj_yqoU
+    date: '2026-11-07'
+    playlist: true
+  rabbi-guershon-de-kitov:
+    id: fehD8ouCV3o
+    date: '2026-11-07'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -243,5 +250,8 @@ days:
     units: 3400
     uploads: 2
   '2026-11-06':
+    units: 3400
+    uploads: 2
+  '2026-11-07':
     units: 3400
     uploads: 2
