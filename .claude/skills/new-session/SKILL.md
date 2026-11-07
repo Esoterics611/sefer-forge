@@ -8,6 +8,15 @@ description: Start a new session in a discourse - make the folder, copy in the p
    empty session folder, use that one.
 2. **Files.** Copy (never move) the photos the user names into `images/` and the
    recording into `voicenotes/`. Keep their names. Ask for any that are missing.
+   A recording the user uploaded to Google Drive: find it with the Drive connector's
+   search. Up to about 3 MB, download it with the connector, through a subagent, since the
+   base64 result is large. A larger file breaks the connector's connection. With the user's
+   agreement, share it "anyone with the link" and fetch
+   `https://drive.usercontent.google.com/download?id=<id>&export=download&confirm=t`
+   with curl (that host is on the sefer-forge environment's allowlist). The connector cannot
+   take a link back: tell the user to set the file to Restricted, or empty it from the trash.
+   Check the byte size and `ffprobe` before using it, and trash the Drive copy only after the
+   transcripts are committed and pushed, when the user asked for that.
 3. **Whisper.** Start `python scripts/transcribe.py <session>` with Bash
    `run_in_background`. Run one at a time (on the CPU Whisper needs most of the machine's memory): if
    `python scripts/session-status.py` shows another transcription running, don't start a
