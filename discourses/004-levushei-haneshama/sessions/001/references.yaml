@@ -20,11 +20,15 @@
 # others: citations of works not in sources/ (listed at the end, not quoted)
 # divider_before: words opening a paragraph that starts something new (the
 #   next maamar); a rule is set above it
+# text_title, text_subtitle: the heading of --marked-text's part
 
 title: "לשון אדמו\"ר נ\"ע בעצמו"
 subtitle: "הטקסט עם מקורותיו בעץ חיים ובפרי עץ חיים"
 source: "chabadlibrary.org/books/3901370076–3901370078"
 divider_before: 'ויצא יצחק לשוח בשדה'
+# --marked-text (the text alone, for the pamphlet's opening part): its heading
+text_title: 'הנוסח'
+text_subtitle: 'לשון אדמו"ר נ"ע בעצמו · האות שבגוף הנוסח מורה על ההערה'
 
 cites:
   - at: 'עיין ע"ח שמ"ט פ"ה'
