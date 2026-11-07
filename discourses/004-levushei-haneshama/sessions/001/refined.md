@@ -1,5 +1,5 @@
 ---
-title: 'הקדמה'
+title: הקדמה
 built_from: commentary.md
 passes: 3 readability edit(s), 14 style edit(s)
 ---
