@@ -385,7 +385,19 @@ def check(session: Path) -> Report:
     ocr_words = check_ocr(r) if (session / "ocr.md").exists() else None
     com = session / "commentary.md"
     if com.exists():
-        check_frontmatter(r, com)
+        fm, body = check_frontmatter(r, com)
+        # A narration refined before its layout is decided keeps the passes in
+        # commentary.md's frontmatter (scripts/refined-text.py); a laid-out session
+        # keeps them in section-plan.yaml.
+        if fm and (fm.get("edits") or fm.get("style")):
+            if (session / "section-plan.yaml").exists():
+                r.warn("commentary.md frontmatter has edits/style and there is a section-plan.yaml: "
+                       "move them into the plan, where the build applies them")
+            try:
+                F.edit_transcript(body, F.print_edits(fm))
+                r.note(f"{F.edit_counts(fm)} in commentary.md's frontmatter")
+            except F.EditError as e:
+                r.error(f"commentary.md edits/style: {e}")
         check_unclear_times(r, com, com.read_text(encoding="utf-8"))
         check_cleanup(r, com)
     if (session / "section.md").exists():

@@ -55,7 +55,9 @@ faithful record of what was said:
 
 `from` is the text as it reads after the readability edits (and after the
 style edits above it), and must occur once. A voice-only lesson puts the same
-`style:` list in `transcript.md`'s frontmatter. Then:
+`style:` list in `transcript.md`'s frontmatter; a narration not yet laid out puts
+it in `commentary.md`'s frontmatter and reads the result with
+`python scripts/refined-text.py <session>` (`refined.md`). Then:
 
 1. `python scripts/build-section.py <session>` (its check compares the
    explanation with `commentary.md` plus `edits:` and `style:`), or for a
