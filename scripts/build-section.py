@@ -234,7 +234,10 @@ def commentary_paragraphs(session: Path) -> list[str]:
     _, body, err = F.split_frontmatter(f.read_text(encoding="utf-8"))
     if err:
         raise PlanError(f"commentary.md frontmatter: {err}")
-    return [" ".join(p.split()) for p in re.split(r"\n\s*\n", body) if p.strip()]
+    # `#` labels (a recording's part, the box a narration covers) and comment-only
+    # blocks are not speech: transcript-diff skips them, and so does the page.
+    return [" ".join(p.split()) for p in re.split(r"\n\s*\n", body)
+            if p.strip() and not p.lstrip().startswith("#") and not re.fullmatch(r"\s*<!--.*?-->\s*", p, re.S)]
 
 
 def anchors(nusach: Nusach, paras: list[str]) -> list[int]:
