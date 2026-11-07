@@ -231,6 +231,8 @@ def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None)
         r.error("section.md: boxes or box labels in the paired layout (the explanation is never boxed)")
     check_rtl(r, "הנוסח והביאור", paired)
     text = "\n".join(c for k, c in divs if k == "Nusach")
+    # A source's label line (section-plan `sources:`) names the text; it is not part of it.
+    text = re.sub(r'^\[[^\n]*\]\{dir="rtl"[^}\n]*\.src-label[^}\n]*\}[ \t]*$', "", text, flags=re.M)
     if "{.underline}" in text:
         r.error("section.md נוסח: has {.underline} markup (the נוסח is plain flowing text)")
     n_words = F.words(text)

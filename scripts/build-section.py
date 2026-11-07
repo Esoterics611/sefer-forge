@@ -29,6 +29,10 @@ for word, by construction:
       breaks:                     # extra paragraph starts, beyond the print's own
         - וצ"ל קדימת
       bold: [והנה, ובישר]         # bolded where they open a printed paragraph
+    sources:                      # optional: one per "## Source:" section of ocr.md
+      - label: לשון אדמו"ר נ"ע     # a small line naming the source where a cut enters it
+      - label: עץ חיים · שער מ"ט · פרק ה'
+        quoted: true              # a cited source, set apart from the main text
     footnotes:                    # the print's notes, marked after their words
       - after: אותם בכח
         text: >-
@@ -177,7 +181,15 @@ class Nusach:
             self.notes.append(f"[^{label}]: {span(text)}")
         breaks = {where[locate(words, br, "nusach.breaks", lo=a, hi=b + 1)] for br in n.get("breaks") or []}
 
-        # tokens: [text, para_start, printed_start]
+        # The plan's `sources:` name ocr.md's sections ("## Source:" pages of a text
+        # taken from an edition): each cut shows a source's label where that source
+        # begins, and a quoted source is set apart from the main text.
+        self.sources = plan.get("sources") or []
+        sections = F.ocr_paragraph_sections(session) if self.sources else []
+        if self.sources and max(sections, default=0) >= len(self.sources):
+            raise PlanError(f"sources: {len(self.sources)} given, ocr.md has {max(sections) + 1} sections")
+
+        # tokens: [text, para_start, printed_start, source section]
         self.tokens: list[list] = []
         self.word_tok: list[int] = []          # range word index -> token index
         for pi in range(pa, pb + 1):
@@ -188,7 +200,7 @@ class Nusach:
                 text, ws = toks[ti]
                 first = ti == t0
                 self.tokens.append([text + marks.get((pi, ti), ""), first or (pi, ti) in breaks,
-                                    first and t0 == 0])
+                                    first and t0 == 0, sections[pi] if sections else None])
                 self.word_tok += [len(self.tokens) - 1] * len(ws)
         self.words = words[a:b + 1]
 
@@ -205,16 +217,21 @@ class Nusach:
 
     def markdown(self, t0: int, t1: int) -> list[str]:
         """Tokens t0..t1 as RTL paragraphs; the first always opens a paragraph."""
-        paras: list[tuple[list[str], bool, bool]] = []
+        paras: list[tuple[list[str], bool, bool, int | None]] = []
         for i in range(t0, t1 + 1):
-            text, para_start, printed = self.tokens[i]
+            text, para_start, printed, src = self.tokens[i]
             if para_start or i == t0:
                 # A cut that begins inside a paragraph continues it (.cont): the
                 # pamphlet rejoins the two when they share a page.
-                paras.append(([], printed, not para_start))
+                paras.append(([], printed, not para_start, src))
             paras[-1][0].append(text)
-        out = []
-        for toks, printed, cont in paras:
+        out, shown = [], None
+        for toks, printed, cont, src in paras:
+            source = self.sources[src] if src is not None else {}
+            if source.get("label") and src != shown:
+                out.append(f'[{source["label"]}]{{dir="rtl" .src-label}}')
+            shown = src
+            classes = (" .cont" if cont else "") + (" .quoted" if source.get("quoted") else "")
             for bw in (self.bold if printed else []):
                 k = len(bw)
                 head = [w for tk in toks[:k] for w in F.words(tk)]
@@ -223,7 +240,7 @@ class Nusach:
                     toks = [f"{lead}**{toks[0][len(lead):]}"] + toks[1:]
                     toks[k - 1] = toks[k - 1] + "**"
                     break
-            out.append(span(" ".join(toks)) if not cont else f'[{" ".join(toks)}]{{dir="rtl" .cont}}')
+            out.append(f'[{" ".join(toks)}]{{dir="rtl"{classes}}}' if classes else span(" ".join(toks)))
         return out
 
 

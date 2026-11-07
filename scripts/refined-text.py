@@ -7,12 +7,11 @@ Usage:
 
 The cleaned transcript (commentary.md, or transcript.md in a voice-only
 discourse) stays what Whisper heard (prompts/transcript-review-rules.md). Its
-frontmatter may carry the two refinement passes as exact replacements:
+frontmatter (or, once the session is laid out, its section-plan.yaml) carries
+the two refinement passes as exact replacements:
 `edits:` (prompts/readability-pass.md: garbled words and broken-off half words
 corrected or removed) and `style:` (prompts/style-pass.md: speech made written
-Hebrew, every idea kept in its order). A session laid out from a plan keeps
-them in section-plan.yaml instead; this script is for narrations recorded
-before that layout is decided.
+Hebrew, every idea kept in its order).
 
 Writes <session>/refined.md: the title, each labelled part (the transcript's
 ## headings), and the text as it reads after both passes, without the <!-- -->
@@ -43,6 +42,9 @@ def main(argv: list[str]) -> int:
         print(f"{src}: frontmatter: {err}")
         return 1
     fm = fm or {}
+    plan = session / "section-plan.yaml"
+    if plan.exists():                     # laid out: the passes live in the plan
+        fm = {**fm, **{k: v for k, v in F.load_yaml(plan).items() if k in ("edits", "style")}}
     try:
         text, n = F.edit_transcript(body, F.print_edits(fm))
     except F.EditError as e:

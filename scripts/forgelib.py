@@ -145,12 +145,23 @@ def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
     notes=False leaves out each photo's printed footnotes too (its `[Footnotes:]`
     block, up to the next photo): the text as it reads, across photos, where a
     paragraph a photo leaves mid-sentence goes on in the next photo's first."""
+    return _ocr_paragraphs(session, notes)[0]
+
+
+def ocr_paragraph_sections(session: Path) -> list[int]:
+    """For each paragraph of ocr_paragraphs(session, notes=False), the number of the
+    "## Image:" / "## Source:" section it starts in (0 = the first section)."""
+    return _ocr_paragraphs(session, False)[1]
+
+
+def _ocr_paragraphs(session: Path, notes: bool) -> tuple[list[str], list[int]]:
     _, body, _ = split_frontmatter((session / "ocr.md").read_text(encoding="utf-8"))
-    paras, in_notes, new_photo = [], False, False
+    paras, sections, in_notes, new_photo, section = [], [], False, False, -1
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
         if block.startswith(SECTION_HEADS):
             in_notes, new_photo = False, bool(paras)
+            section += 1
         if block.startswith("[Footnotes:]"):
             in_notes = True
         if not block or block.startswith(SECTION_HEADS) or (in_notes and not notes):
@@ -162,8 +173,9 @@ def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
             paras[-1] += " " + text
         else:
             paras.append(text)
+            sections.append(max(section, 0))
         new_photo = False
-    return paras
+    return paras, sections
 
 
 def printed(paragraph: str) -> str:

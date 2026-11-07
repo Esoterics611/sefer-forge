@@ -312,12 +312,33 @@ def rtl(text: str, cls: str = "") -> str:
     return f'[{text}]{{dir="rtl"{" ." + cls if cls else ""}}}'
 
 
+# Source markup from build-section.py (a plan's `sources:`): a label line naming
+# the source a cut enters, and the class of a quoted source's paragraphs.
+SOURCE_CLASSES = (".quoted", ".src-label")
+
+
+def attrs(md: str) -> str:
+    """The classes in a paragraph's {dir="rtl" ...} block."""
+    m = re.search(r'\]\{dir="rtl"([^}]*)\}\s*$', md)
+    return m.group(1) if m else ""
+
+
+def is_label(md: str) -> bool:
+    return ".src-label" in attrs(md).split()
+
+
+def with_sources(text: str, md: str) -> str:
+    """text wrapped like md, keeping md's source classes (and no other)."""
+    keep = " ".join(c for c in attrs(md).split() if c in SOURCE_CLASSES)
+    return f'[{text}]{{dir="rtl" {keep}}}' if keep else rtl(text)
+
+
 def split_paragraph(md: str, para: int) -> list[Piece]:
     """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each.
     A heading stays whole; a quoted passage loses its '>' marker."""
     if md.startswith("#"):
         return [Piece(md, para)]
-    md = re.sub(r"^>\s?", "", md, flags=re.M)
+    src_md, md = md, re.sub(r"^>\s?", "", md, flags=re.M)
     sentences = re.split(r"(?<=[.?!:])\s+(?=\S)", inner(md))
     pieces, cur = [], []
     for s in sentences:
@@ -327,7 +348,7 @@ def split_paragraph(md: str, para: int) -> list[Piece]:
         cur.append(s)
     if cur:
         pieces.append(" ".join(cur))
-    return [Piece(rtl(x), para) for x in pieces]
+    return [Piece(with_sources(x, src_md), para) for x in pieces]
 
 
 def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
@@ -338,7 +359,7 @@ def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
             pieces += split_paragraph(md, para)
             para += 1
         # The continuation line quotes the passage itself (a quote, not its heading).
-        quoted = [x for x in text if x.startswith(">")] or text
+        quoted = [x for x in text if x.startswith(">")] or [x for x in text if not is_label(x)] or text
         words = re.sub(r"\*\*|\[\^[^\]]+\]|^(#+|>)\s*", "", " ".join(inner(x) for x in quoted)).split()
         lead = " ".join(words[:6]) + ("…" if len(words) > 6 else "")
         u = Unit(text, pieces, lead)
@@ -382,14 +403,26 @@ def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
     top: list[str] = []
     if page["cont"] is not None:
         top.append(cont_head(units[page["cont"]]))
+    shown = None                                   # the source label last set on this page
     for ui in page["texts"]:
         for md in units[ui].text:
-            if ".cont" in md.split("]{")[-1] and top and not top[-1].startswith("<"):
-                top[-1] = rtl(inner(top[-1]) + " " + inner(md))          # one printed paragraph
+            if is_label(md):
+                if md != shown:                    # the same source going on needs no second label
+                    top.append(md)
+                shown = md
+            elif ".cont" in md.split("]{")[-1] and top and not top[-1].startswith("<") and not is_label(top[-1]):
+                top[-1] = with_sources(inner(top[-1]) + " " + inner(md), top[-1])   # one printed paragraph
             else:
                 top.append(md)
+    last_para = None
     for pc in page["text_pieces"]:
-        top.append(pc.md)
+        # Pieces of one paragraph that share a page print as that paragraph: the
+        # split is for paging, not a break in the text.
+        if pc.para == last_para and top and not is_label(pc.md) and not top[-1].startswith(("<", "#")):
+            top[-1] = with_sources(inner(top[-1]) + " " + inner(pc.md), top[-1])
+        else:
+            top.append(pc.md)
+        last_para = pc.para
     if markers:
         if top and top[0].startswith("<p"):
             top[0] = top[0].replace("<p class=\"cont-head\">", f'<p class="cont-head"><span class="mk" dir="ltr">{label}</span>', 1)

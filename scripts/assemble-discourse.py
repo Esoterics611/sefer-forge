@@ -13,7 +13,8 @@ Each session contributes one of:
 
 Optional keys in <discourse-dir>/meta.yaml:
     intro: introduction.md       # placed before the first session; rendered
-                                 #   like a transcript (title → heading)
+                                 #   like a transcript (title → heading); a list
+                                 #   of files makes one opening part each
     skip_sessions: ["000"]       # sessions left out of discourse.md
 
 Markdown footnote labels ([^1]) are prefixed with the session number so
@@ -100,12 +101,14 @@ def main() -> int:
     force = force or generated
 
     fragments: list[tuple[str, str]] = []
-    if meta.get("intro"):
-        intro = discourse / meta["intro"]
+    intros = meta.get("intro") or []
+    for k, name in enumerate([intros] if isinstance(intros, str) else intros):
+        intro = discourse / name
         if not intro.exists():
             print(f"meta.yaml intro not found: {intro}")
             return 1
-        fragments.append((intro.name, render_transcript(intro.read_text(encoding="utf-8"), "intro")))
+        label = "intro" if k == 0 else f"intro{k + 1}"
+        fragments.append((intro.name, render_transcript(intro.read_text(encoding="utf-8"), label)))
 
     skipped: list[str] = []
     for s in sorted(sessions_dir.iterdir()):
