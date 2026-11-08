@@ -73,6 +73,9 @@ cut 4 — "והוא צלם ודיוקן... לברר ניצוצין שנפלו כ
    המבנה אלא ממשיך בו אור" (recorded 2026-11-08), in line with the text,
    which says the mitzvot refine the צלם. The speaker has not confirmed this.
 
+3. **06:59, "דיין הופך בתיקונים"** — printed as "עדיין עוסקים בתיקונים", a reading from the
+   context; confirmed by the speaker (2026-11-08).
+
 ## d. Coverage
 
 Read back in output/pamphlets/004-levushei-haneshama.pdf (the teaching text):
