@@ -40,9 +40,8 @@ queue:
 - les-annees-cachees-et-la-revelation    # up 2026-11-06
 - the-rabbi-of-polonne    # up 2026-11-07
 - rabbi-guershon-de-kitov    # up 2026-11-07
-  # planned for 2026-11-08
-- the-mokhiach-of-polonne-part-one
-- la-terre-d-israel-et-le-chemin-qui-y-mene
+- the-mokhiach-of-polonne-part-one    # up 2026-11-08
+- la-terre-d-israel-et-le-chemin-qui-y-mene    # up 2026-11-08
   # planned for 2026-11-09
 - the-mokhiach-of-polonne-part-two
 - dans-la-priere
@@ -233,6 +232,14 @@ uploaded:
     id: fehD8ouCV3o
     date: '2026-11-07'
     playlist: true
+  the-mokhiach-of-polonne-part-one:
+    id: SyiinYHGgks
+    date: '2026-11-08'
+    playlist: true
+  la-terre-d-israel-et-le-chemin-qui-y-mene:
+    id: UVooBZxfzSQ
+    date: '2026-11-08'
+    playlist: true
 days:
   '2026-11-01':
     units: 8752
@@ -253,5 +260,8 @@ days:
     units: 3400
     uploads: 2
   '2026-11-07':
+    units: 3400
+    uploads: 2
+  '2026-11-08':
     units: 3400
     uploads: 2
