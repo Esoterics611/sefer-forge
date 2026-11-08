@@ -7,7 +7,9 @@ puts scripts/ on the path, so `import forgelib` works from each of them.
 from __future__ import annotations
 
 import importlib.util
+import os
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -485,13 +487,13 @@ def print_edits(d: dict | None) -> list[dict]:
 
 
 # --- the teaching pass (prompts/teaching-pass.md) -----------------------------
-# An optional last layer over `edits:` and `style:`: the explanation rewritten as
-# a written commentary on the text (about half as long). Kept as `teaching:`
-# beside `style:` (section-plan.yaml, or the transcript's frontmatter), one entry
-# per printed paragraph: `from` the paragraph after the two passes, `to` its
-# teaching text (empty: the paragraph is dropped). It prints only in the
-# teaching variant (*.teaching.md, build-pamphlet.py --teaching); the default
-# print is unchanged.
+# The last layer over `edits:` and `style:`, the last step of every narration:
+# the explanation rewritten as a written commentary on the text (about half as
+# long). Kept as `teaching:` beside `style:` (section-plan.yaml, or the
+# transcript's frontmatter), one entry per printed paragraph: `from` the
+# paragraph after the two passes, `to` its teaching text (empty: the paragraph
+# is dropped). The teaching text is what prints (*.teaching.md, discourse.md);
+# the lesson text before it prints with --lesson.
 
 def para_key(p: str) -> str:
     """A paragraph as the teaching pass names it: no <!-- --> flags, single spaces."""
@@ -560,6 +562,22 @@ def teach_blocks(text: str, entries: list[dict] | None) -> str:
         else:
             out.append(b)
     return "\n\n".join(out) + "\n"
+
+
+WIN_CHROME = "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+
+
+def chrome_path() -> str:
+    """The browser that prints the PDFs: $CHROME; else Windows Chrome under WSL
+    (the home machine); else a Chrome or Chromium on the PATH (a cloud container)."""
+    if os.environ.get("CHROME"):
+        return os.environ["CHROME"]
+    if Path(WIN_CHROME).exists():
+        return WIN_CHROME
+    for name in ("google-chrome", "chromium", "chromium-browser"):
+        if found := shutil.which(name):
+            return found
+    return WIN_CHROME
 
 
 def edit_counts(d: dict | None) -> str:

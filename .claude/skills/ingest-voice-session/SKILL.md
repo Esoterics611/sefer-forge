@@ -15,5 +15,7 @@ transcribe audio in the chat; an interrupted run resumes where it stopped) and c
 when it finishes. Before the build, `python scripts/check-session.py <SESSION_PATH>` must
 report no errors.
 
-The lesson finishes, after its pamphlet is proofed, with the readability pass and then the
-style pass (`prompts/style-pass.md`): both as lists in `transcript.md`'s frontmatter.
+The lesson finishes, after its pamphlet is proofed, with the readability pass, the style
+pass (`prompts/style-pass.md`) and last the teaching pass (`prompts/teaching-pass.md`, skill
+`teaching-pass`: a written commentary, about half as long; it is what prints): all three as
+lists in `transcript.md`'s frontmatter.

@@ -1,7 +1,8 @@
 # Style pass
 
-The last step of a session, after the pamphlet is printed, proofed and through
-the readability pass (`prompts/readability-pass.md`). The explanation reads
+A step of every session, after the pamphlet is printed, proofed and through
+the readability pass (`prompts/readability-pass.md`), and before the teaching
+pass (`prompts/teaching-pass.md`). The explanation reads
 well by then, but it is still speech: "אז", "עכשיו", "בוא נגיד ככה",
 restatements, self-corrections, the speaker managing his lesson. This pass
 turns it into written Hebrew, factual and direct, without touching what is
@@ -70,6 +71,7 @@ it in `commentary.md`'s frontmatter and reads the result with
 Report the number of style edits and a short before/after sample, and list any
 sentence left conversational on purpose.
 
-An optional pass can follow: `prompts/teaching-pass.md` rewrites the explanation
-as a written commentary on the text (about half the length), printed as a
-separate teaching variant; the default print stays as this pass leaves it.
+The teaching pass follows (`prompts/teaching-pass.md`), the last step of every
+narration: it rewrites the explanation as a written commentary on the text,
+about half the length, and that is what prints. The text this pass leaves stays
+as the lesson version (`--lesson`).

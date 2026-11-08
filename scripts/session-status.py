@@ -19,6 +19,9 @@ A session's steps, in order (voice-only sessions skip the photo steps):
     plan          section-plan.yaml (sessions whose section.md is hand-made skip it)
     section       section.md, rebuilt since the plan and its sources changed
     checks        scripts/check-session.py finds no errors
+    teaching      the teaching pass (prompts/teaching-pass.md), the last step of
+                  every narration whose transcript entered the repository from
+                  TEACHING_SINCE on; an older session takes it only when asked
 
 OCR and transcription are independent: the next step offered while Whisper
 runs is the OCR. Nothing here changes a file.
@@ -26,6 +29,7 @@ runs is the OCR. Nothing here changes a file.
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -171,7 +175,35 @@ def steps(s: Path) -> list[tuple[str, str, str]]:
                     f"fix it, then: python scripts/check-session.py {s}"))
     else:
         out.append(("✓" if not warns else "!", "checks pass" + (f", {len(warns)} warning(s)" if warns else ""), ""))
+        out.append(teaching_step(s, cleaned))
     return out
+
+
+TEACHING_SINCE = "2026-11-08"      # the teaching pass became the last step of every narration
+
+
+def added_on(f: Path) -> str:
+    """The date a file entered the repository ('' when it is not committed yet)."""
+    r = subprocess.run(["git", "log", "--diff-filter=A", "--format=%cs", "-1", "--", str(f)],
+                       capture_output=True, text=True)
+    return r.stdout.strip()
+
+
+def teaching_step(s: Path, cleaned: Path) -> tuple[str, str, str]:
+    try:
+        paras, holder, _ = F.printed_paragraphs(s)
+    except (F.EditError, OSError):
+        return ("·", "teaching pass: not checked (the passes do not apply)", "")
+    if not paras:
+        return ("·", "no explanation to teach from", "")
+    if holder.get("teaching"):
+        n = sum(1 for e in holder["teaching"] if (e.get("to") or "").strip())
+        return ("✓", f"teaching pass ({len(paras)} paragraphs → {n})", "")
+    since = added_on(cleaned)
+    if since and since < TEACHING_SINCE:
+        return ("·", f"no teaching pass (an older session, {since}: only when asked)", "")
+    first = "" if holder.get("style") else "the style pass (prompts/style-pass.md), then "
+    return ("–", "no teaching pass", f"{first}the teaching pass: /teaching-pass {s}")
 
 
 def next_step(st: list[tuple[str, str, str]]) -> str:

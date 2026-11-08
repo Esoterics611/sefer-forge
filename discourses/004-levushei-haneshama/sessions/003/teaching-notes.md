@@ -32,8 +32,8 @@ cut 1 — the gloss, and "כלל העולה כי הצורה הוא העיקר...
 4. (¶1) טוב ורע כרצון להשפיע/לקבל (בעל הסולם), אבל כפשוטם — drop: an aside the speaker set aside himself
 5. (¶2) שם — בעולמות; כאן — הלבוש שהתורה והמצוות מתקנות הוא הצלם שבאדם עצמו — keep (¶2 merged into ¶3)
 6. (¶3) הצורה העיקר; הגוף חומר ויש מה שמחזיקו (החי נושא את עצמו) — keep
-7. (¶3) "צורת האדם... נקראת גוף האדם האמיתי" — not printed: see doubt 1
-8. (¶3) הצורה מלשון יצירה וציור; היא נפשו — keep ("גם בלשון יצר": see doubt 1)
+7. (¶3) the צלם is what הערה א' called "the true body" (the speaker's correction, 2026-11-08: he said צורה, meant צלם) — keep
+8. (¶3) הצורה מלשון יצירה וציור; היא נפשו — keep ("גם בלשון יצר" left out: it ties the form to the יצר, which is the צלם)
 9. (¶3) כל המדרגות מהדנ"א והאינסטינקטים, דרך המבנים הנפשיים והתסביכים, עד האישיות — הן הצלם — keep
 10. (¶4) הצלם הוא מבנה שגם הפסיכולוגיה מתארת; אור וחושך = יצר טוב ויצר רע, שני צלמים — keep
 11. (¶4) the reading "והם המלאכים שבאדם עצמו, ואינו האדם עצמו" — short quote
@@ -65,30 +65,24 @@ cut 4 — "והוא צלם ודיוקן... לברר ניצוצין שנפלו כ
 
 ## c. Doubts
 
-1. **¶3, "צורת האדם עצמה — כפי שמביא החלק הקודם של עץ חיים — נקראת גוף
-   האדם האמיתי".** In Etz Chaim the form is the נרנח"י, "נשמת אדם עצמו".
-   The true body of 49:5, the noga garment of the נר"ן, is the צלם. The
-   opening of 26.1.2 calls the form "the soul itself" and its garments
-   "צלמים". The sentence would print the form and its garment as one thing,
-   so the teaching text leaves it out and says what is unambiguous: the form
-   is the essence, and the levels from DNA to personality are the צלם. The
-   same goes for "צורה — גם בלשון יצר", which ties the form to the יצר (that
-   is, the צלם). **For the speaker:** what did you mean here?
+1. **¶3, "צורת האדם עצמה… נקראת גוף האדם האמיתי"** — resolved. The speaker (2026-11-08):
+   "I meant the צלם is the true body." Recorded as a correction in `edits:`; both
+   the lesson text and the teaching text now say it of the צלם, in line with
+   Etz Chaim 49:5 and 26:1.
 2. **¶8, the צלם "אינו צריך את התיקון".** It now reads "התיקון אינו משנה את
    המבנה אלא ממשיך בו אור" (recorded 2026-11-08), in line with the text,
    which says the mitzvot refine the צלם. The speaker has not confirmed this.
 
 ## d. Coverage
 
-Read back in output/pamphlets/teaching/004-levushei-haneshama.pdf (pp. 15–17):
-372 words of 617 (60%).
+Read back in output/pamphlets/004-levushei-haneshama.pdf (the teaching text):
+379 words of 616 (62%).
 
-- Kept once each: 1–3, 5–6, 8–10, 12–19, 21–23, 26–27, 29–33. Idea 13
+- Kept once each: 1–3, 5–10, 12–19, 21–23, 26–27, 29–33 (7 since the speaker's correction). Idea 13
   regained "הדיבור לכל" at the read-back.
 - Dropped:
   - 4, the Baal HaSulam aside: the speaker set it aside himself ("אבל יש
     לקחת את העניינים כפי שהם").
-  - 7: doubt 1.
   - 11, 20, 25: retellings of the text above, now short quotations.
   - 24: a lesson reference.
   - 28: repeats 21.

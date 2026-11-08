@@ -33,14 +33,17 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > **Step 5 — Read it through.** Read `section.md` from top to bottom, as its reader will: does each explanation follow the passage it explains, are the key points the passages the argument turns on, does the title say what the session is about? Fix in the plan and rebuild. Then print it, `python scripts/build-pamphlet.py <SESSION_PATH>`, and proof the PDF by the `proof-pdf` skill (`docs/print-standard.md`): `python scripts/proof-pdf.py output/pamphlets/<discourse>-<session>.pdf` with no errors, then every spread read and every finding fixed. Then the **readability pass** (`prompts/readability-pass.md`): correct or remove the short segments Whisper garbled, as `edits:` in the plan; rebuild and proof again.
 >
-> **Step 6 — Style pass** (the last step; `prompts/style-pass.md`). Read the explanation through once more and turn the spoken Hebrew into written Hebrew: speech markers, self-corrections, false starts and restatements go; meaning, examples, sources and order stay; the readings in quotation marks are never touched. Record it as `style:` in the plan, rebuild (`build-section.py` checks it), confirm the cuts did not move, print, proof, and read every spread.
+> **Step 6 — Style pass** (`prompts/style-pass.md`). Read the explanation through once more and turn the spoken Hebrew into written Hebrew: speech markers, self-corrections, false starts and restatements go; meaning, examples, sources and order stay; the readings in quotation marks are never touched. Record it as `style:` in the plan, rebuild (`build-section.py` checks it), confirm the cuts did not move, print, proof, and read every spread.
 >
-> **Step 7 — Report**, in one message:
+> **Step 7 — Teaching pass** (the last step; `prompts/teaching-pass.md`, skill `teaching-pass`). Rewrite the explanation as a written commentary on the text, about half as long: understand it in writing first (`teaching-notes.md`: what the part teaches, the idea inventory, the doubts), draft it per cut with `scripts/apply-teaching.py`, check it (`apply-teaching.py --check`, `check-teaching.py` on the discourse), rebuild (`build-section.py` writes `section.teaching.md`), print, proof and read every page, and tick the inventory. The pamphlet and the discourse print the teaching text; `section.md` keeps the lesson text, printed with `--lesson`. A doubt about what the speaker meant is never settled by guessing: leave the sentence out and ask.
+>
+> **Step 8 — Report**, in one message:
 > - the `session-status.py` line for the session;
 > - the reading range, and every correction made to `ocr.md` from the match, each with what the photo shows;
 > - the speaker's departures from the text that were left as spoken;
 > - the counts line from `review.md`, every Added entry with its reason, and every UNCLEAR flag with its time;
 > - the readability edits (corrected / removed / left for the user), and the style edits with a short before/after sample;
+> - the teaching pass: words before → after, what was cut as repetition and where it is kept, and the doubts put to the speaker;
 > - the `check-session.py` result, the pamphlet's path and its proof summary line, and the visual findings fixed or left.
 >
 > **Rules:**

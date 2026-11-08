@@ -1,14 +1,18 @@
-# Teaching pass (optional)
+# Teaching pass
 
-An optional step after the style pass (`prompts/style-pass.md`). The style
-pass leaves the explanation as a lesson in written Hebrew: the speaker's
-voice, his order, his returns to a point. This pass rewrites it as a written
-commentary on the text printed above it, a ביאור a reader studies, not the
-record of a lesson. Expect it at about half the length.
+The last step of every narration (`prompts/02-ingest-session.md` step 7,
+`prompts/02v-ingest-voice-session.md` step 8), after the style pass
+(`prompts/style-pass.md`). The style pass leaves the explanation as a lesson
+in written Hebrew: the speaker's voice, his order, his returns to a point.
+This pass rewrites it as a written commentary on the text printed above it, a
+ביאור a reader studies, not the record of a lesson. Expect it at about half
+the length.
 
-It is optional and it is a variant: the default print does not change. The
-teaching text prints only through `--teaching` (below), into its own folder,
-so the version before it is always there to go back to.
+The teaching text is what prints: the pamphlet, the discourse and the book.
+The lesson text before it stays in the session (`section.md`, the transcript's
+`style:`), and prints with `--lesson` into its own folder: the version to
+compare against or go back to. A session ingested before 2026-11-08 takes the
+pass only when asked (`session-status.py` marks it so).
 
 ## What the result reads like
 
@@ -146,10 +150,12 @@ that occurs in two places. Decide each one: one place says it, and the other
 points back or drops it. Repeat steps 2–4 until it shows no errors and no
 repeat you have not decided on.
 
-**6. Read it back: the self-check that matters.** Build the variant with
-`python scripts/build-pamphlet.py <discourse> --teaching --png`. Proof it with
-`python scripts/proof-pdf.py output/pamphlets/teaching/<name>.pdf`. Then read
-every page as a reader who has only the page:
+**6. Read it back: the self-check that matters.** Reassemble the discourse
+(`python scripts/assemble-discourse.py <discourse> --force` when its
+`discourse.md` is only the assembled sessions; a hand-polished one is merged by
+hand), print it with `python scripts/build-pamphlet.py <discourse> --png`, and
+proof it with `python scripts/proof-pdf.py output/pamphlets/<name>.pdf`. Then
+read every page as a reader who has only the page:
 
 - Under each cut, does the explanation explain this text? Can it be followed
   without having heard the lesson?
@@ -170,8 +176,8 @@ finds nothing.
 - the words before and after;
 - what was cut as repetition, and where the idea is kept;
 - judgement calls and open questions for the speaker;
-- the variant PDF's path;
-- confirmation that the default PDF was not rebuilt or changed.
+- the PDF's path, and the lesson version's (`--lesson`) when the user may
+  want to compare.
 
 ## Recording and printing
 
@@ -184,20 +190,25 @@ from the draft, never by hand.
 
 | Tool | Writes |
 |---|---|
-| `build-section.py` | `section.teaching.md` |
-| `refined-text.py` | `refined.teaching.md` |
-| `assemble-discourse.py <discourse> --teaching` | `discourse.teaching.md`, generated from the sessions (hand-polish in `discourse.md` is not carried over) |
-| `build-pamphlet.py <path> --teaching` | prints from these into `output/pamphlets/teaching/` |
+| Tool | Writes or prints |
+|---|---|
+| `build-section.py` | `section.teaching.md` beside `section.md` (the lesson text) |
+| `refined-text.py` | `refined.teaching.md` beside `refined.md` |
+| `assemble-discourse.py <discourse>` | `discourse.md` from the teaching text where a part has it |
+| `assemble-discourse.py <discourse> --lesson` | `discourse.lesson.md`: the lesson text throughout |
+| `build-pamphlet.py <path>` | the teaching text, into `output/pamphlets/` |
+| `build-pamphlet.py <path> --lesson` | the lesson text, into `output/pamphlets/lesson/` |
+| `session-status.py` | the pass as a session's last step |
 | `check-session.py` | reports a teaching pass that is stale or not rebuilt |
 | `check-teaching.py` | reports on the writing |
 
-Without `teaching:`, nothing in the default build changes.
+A part without `teaching:` prints its lesson text, as before.
 
 **Going back:**
-- To revert, print without `--teaching`. Remove `teaching:` and the
-  `*.teaching.md` files only if the version is to be discarded.
-- Making the teaching text the default print is a separate decision, for the
-  user.
+- To see or print the lesson version, use `--lesson`.
+- To drop a session's teaching text, remove `teaching:` from its plan (or
+  frontmatter) and rebuild. `build-section.py` then removes
+  `section.teaching.md`.
 
 ## An example (הערה א', cut 2)
 

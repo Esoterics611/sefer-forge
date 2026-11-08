@@ -90,18 +90,31 @@ def units(session: Path, paras: list[str]) -> list[tuple[str, list[int]]]:
 
 def write_draft(session: Path, target: Path) -> int:
     paras, holder, where = F.printed_paragraphs(session)
-    current = paras
-    if holder.get("teaching"):
-        try:
-            current = [t or DROP for t in F.apply_teaching(paras, holder["teaching"])]
-        except F.EditError as e:
-            print(f"  note: the recorded teaching text is stale ({e}); the draft starts from the default text")
+    # The teaching text recorded for each paragraph that still reads as it did;
+    # a paragraph changed since (an edit, a style rewrite) starts from its new
+    # lesson text and is marked, so only it is redone.
+    table: dict[str, list[str]] = {}
+    for e in holder.get("teaching") or []:
+        table.setdefault(F.para_key(str(e.get("from") or "")), []).append(F.para_key(str(e.get("to") or "")))
+    current, changed = [], set()
+    for i, p in enumerate(paras):
+        if holder.get("teaching") and table.get(F.para_key(p)):
+            current.append(table[F.para_key(p)].pop(0) or DROP)
+        else:
+            current.append(p)
+            if holder.get("teaching"):
+                changed.add(i)
+    if changed:
+        print(f"  {len(changed)} paragraph(s) changed since the teaching pass, marked in the draft: "
+              + ", ".join(f"¶{i + 1}" for i in sorted(changed)))
     lines = [f"# Teaching-pass draft for {session} ({len(paras)} paragraphs; {where.name} holds the result).",
              "# Replace each paragraph with its teaching text, or with a lone — to drop it. Keep the order",
              "# and the # lines. Then: python scripts/apply-teaching.py " + f"{session} {target}", ""]
     for head, idx in units(session, paras):
         lines += [f"# ── {head}", ""]
         for i in idx:
+            if i in changed:
+                lines += [f"# ¶{i + 1}: changed since the teaching pass — the lesson text below; rewrite it"]
             lines += [current[i], ""]
     target.write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote {target}: {len(paras)} paragraphs, {len(F.words(' '.join(paras)))} words")
