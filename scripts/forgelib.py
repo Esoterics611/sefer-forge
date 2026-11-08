@@ -484,6 +484,84 @@ def print_edits(d: dict | None) -> list[dict]:
     return list(d.get("edits") or []) + list(d.get("style") or [])
 
 
+# --- the teaching pass (prompts/teaching-pass.md) -----------------------------
+# An optional last layer over `edits:` and `style:`: the explanation rewritten as
+# a written commentary on the text (about half as long). Kept as `teaching:`
+# beside `style:` (section-plan.yaml, or the transcript's frontmatter), one entry
+# per printed paragraph: `from` the paragraph after the two passes, `to` its
+# teaching text (empty: the paragraph is dropped). It prints only in the
+# teaching variant (*.teaching.md, build-pamphlet.py --teaching); the default
+# print is unchanged.
+
+def para_key(p: str) -> str:
+    """A paragraph as the teaching pass names it: no <!-- --> flags, single spaces."""
+    return " ".join(COMMENT.sub("", p).split())
+
+
+def prose(block: str) -> bool:
+    """A block of explanation (not a heading, quoted reading, note or bare flag)."""
+    b = block.lstrip()
+    return bool(COMMENT.sub("", b).strip()) and not b.startswith(("#", ">", "[^", ":::", "---"))
+
+
+def printed_paragraphs(session: Path) -> tuple[list[str], dict, Path]:
+    """The explanation's paragraphs as they print by default (after `edits:` and
+    `style:`), the dict that holds the passes, and its file: section-plan.yaml
+    once the session is laid out, else the transcript's frontmatter."""
+    src = session / ("transcript.md" if voice_only(session) else "commentary.md")
+    fm, body, err = split_frontmatter(src.read_text(encoding="utf-8"))
+    if err:
+        raise EditError(f"{src}: frontmatter: {err}")
+    plan_f = session / "section-plan.yaml"
+    holder, where = (load_yaml(plan_f), plan_f) if plan_f.exists() else (fm or {}, src)
+    blocks = [b for b in re.split(r"\n\s*\n", body.strip()) if b.strip()]
+    if not voice_only(session):                       # as build-section.py reads commentary.md
+        blocks = [" ".join(b.split()) for b in blocks if prose(b)]
+    blocks, _ = apply_edits(blocks, print_edits(holder), src.name)
+    return [para_key(b) for b in blocks if prose(b)], holder, where
+
+
+def apply_teaching(paras: list[str], entries: list[dict] | None) -> list[str | None]:
+    """Each paragraph replaced whole by its teaching text, None where dropped.
+    Every paragraph needs an entry and every entry a paragraph: a change made
+    upstream afterwards (an edit, a style rewrite) is reported, never printed as
+    a mix of the two versions."""
+    table: dict[str, list[str]] = {}          # paragraphs that read alike take their entries in order
+    for e in entries or []:
+        src = para_key(str(e.get("from") or ""))
+        if not src:
+            raise EditError(f"teaching: an entry with no `from`: {e}")
+        table.setdefault(src, []).append(para_key(str(e.get("to") or "")))
+    out = []
+    for p in paras:
+        k = para_key(p)
+        if not table.get(k):
+            raise EditError(f"teaching: no entry for the paragraph “{k[:60]}…” — the text changed since the "
+                            "teaching pass; redo it from scripts/apply-teaching.py --draft")
+        out.append(table[k].pop(0) or None)
+    if stale := [k for k, left in table.items() for _ in left]:
+        raise EditError(f"teaching: {len(stale)} entr{'y' if len(stale) == 1 else 'ies'} match no paragraph "
+                        f"(the text changed since the teaching pass), e.g. “{stale[0][:60]}…”")
+    return out
+
+
+def teach_blocks(text: str, entries: list[dict] | None) -> str:
+    """A transcript-like text (blocks parted by blank lines) with its prose
+    blocks replaced by their teaching text; headings, quoted readings and notes
+    stay as they are."""
+    blocks = re.split(r"\n\s*\n", text.strip())
+    taught = iter(apply_teaching([b for b in blocks if prose(b)], entries))
+    out = []
+    for b in blocks:
+        if prose(b):
+            t = next(taught)
+            if t:
+                out.append(t)
+        else:
+            out.append(b)
+    return "\n\n".join(out) + "\n"
+
+
 def edit_counts(d: dict | None) -> str:
     """'N readability edit(s)', plus ', M style edit(s)' when there are any."""
     d = d or {}

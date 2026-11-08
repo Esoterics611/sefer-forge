@@ -5,6 +5,7 @@ Usage:
     python scripts/build-pamphlet.py discourses/003-breishis/sessions/002
     python scripts/build-pamphlet.py discourses/003-breishis          # every session
     python scripts/build-pamphlet.py <path> --png                     # also page images
+    python scripts/build-pamphlet.py <path> --teaching                # the teaching variant
 
 A session prints from its section.md (images+voice) or transcript.md
 (voice-only). A discourse prints from its discourse.md, the hand-polished
@@ -14,6 +15,12 @@ text (assembled first when the discourse is voice-only), one part per
 Writes output/pamphlets/<discourse>[-<session>].pdf, the HTML it printed
 from under output/pamphlets/html/, and with --png one image per page under
 output/pamphlets/png/ for checking the layout. Run from the repo root.
+
+--teaching prints the teaching variant (prompts/teaching-pass.md): a session
+from its section.teaching.md (a transcript with its `teaching:` applied), a
+discourse from discourse.teaching.md (assembled first, with
+assemble-discourse.py --teaching). Everything goes under
+output/pamphlets/teaching/, so the default print is never overwritten.
 
 Cover and running-header text: the book whose structure.yaml lists the
 discourse supplies series/author/date; a `pamphlet:` block in the
@@ -225,26 +232,36 @@ def parse_part(md: str) -> Part:
     return section_part(md)
 
 
-def session_parts(session: Path) -> list[Part]:
-    for name in ("section.md", "transcript.md"):
+def session_parts(session: Path, teaching: bool = False) -> list[Part]:
+    if teaching and (session / "section.md").exists() and not (session / "section.teaching.md").exists():
+        sys.exit(f"{session}: no teaching pass (section.teaching.md); see prompts/teaching-pass.md")
+    for name in ("section.teaching.md" if teaching else "section.md", "transcript.md"):
         f = session / name
         if f.exists():
             fm, body = frontmatter(f.read_text(encoding="utf-8"))
-            if name == "section.md":
+            if name.startswith("section"):
                 return [section_part(unflag(body))]
             try:
                 body, _ = F.edit_transcript(body, F.print_edits(fm))
+                if teaching:
+                    if not fm.get("teaching"):
+                        sys.exit(f"{f}: no teaching pass (`teaching:`); see prompts/teaching-pass.md")
+                    body = F.teach_blocks(body, fm["teaching"])
             except F.EditError as e:
                 sys.exit(f"{f}: edits: {e}")
             return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), unflag(body))]
     sys.exit(f"{session}: no section.md or transcript.md yet")
 
 
-def discourse_parts(discourse: Path, meta: dict) -> list[Part]:
-    if meta.get("type") == "voice-only":
+def discourse_parts(discourse: Path, meta: dict, teaching: bool = False) -> list[Part]:
+    if teaching:
+        subprocess.run([sys.executable, "scripts/assemble-discourse.py", str(discourse), "--teaching"],
+                       check=True, capture_output=True)
+    elif meta.get("type") == "voice-only":
         subprocess.run([sys.executable, "scripts/assemble-discourse.py", str(discourse)],
                        check=True, capture_output=True)
-    _, body = frontmatter((discourse / "discourse.md").read_text(encoding="utf-8"))
+    source = "discourse.teaching.md" if teaching else "discourse.md"
+    _, body = frontmatter((discourse / source).read_text(encoding="utf-8"))
     chunks = SESSION_MARK.split(body)[1:]            # [name, text, name, text, ...]
     if not chunks:
         sys.exit(f"{discourse}/discourse.md has no sessions; run scripts/assemble-discourse.py first")
@@ -745,7 +762,11 @@ def finis_alone(pdf: Path) -> bool:
 
 
 def main(argv: list[str]) -> int:
+    global OUT
     args = [a for a in argv if not a.startswith("--")]
+    teaching = "--teaching" in argv
+    if teaching:
+        OUT = OUT / "teaching"                    # never over the default print
     if len(args) != 1:
         print(__doc__.split("\n\n")[1])
         return 1
@@ -753,7 +774,7 @@ def main(argv: list[str]) -> int:
     whole = (target / "sessions").is_dir()
     discourse = target if whole else target.parent.parent
     cfg = config(discourse)
-    parts = discourse_parts(discourse, cfg["meta"]) if whole else session_parts(target)
+    parts = discourse_parts(discourse, cfg["meta"], teaching) if whole else session_parts(target, teaching)
 
     # Preflight: what a printed product should not carry unnoticed.
     if not whole and not parts[0].talk and not parts[0].pairs and 'custom-style="Commentary"' not in parts[0].body:

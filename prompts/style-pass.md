@@ -69,3 +69,7 @@ it in `commentary.md`'s frontmatter and reads the result with
 
 Report the number of style edits and a short before/after sample, and list any
 sentence left conversational on purpose.
+
+An optional pass can follow: `prompts/teaching-pass.md` rewrites the explanation
+as a written commentary on the text (about half the length), printed as a
+separate teaching variant; the default print stays as this pass leaves it.

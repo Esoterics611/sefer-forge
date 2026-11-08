@@ -361,6 +361,35 @@ def check_section(r: Report, ocr_words: list[str] | None) -> None:
                 r.note(f"ביאור: {len(boxes)} boxes carry commentary.md word for word")
 
 
+def check_teaching(r: Report) -> None:
+    """The optional teaching pass (prompts/teaching-pass.md): its entries still
+    match the explanation, and the teaching variant is built from them. The
+    writing itself is checked by scripts/check-teaching.py."""
+    try:
+        paras, holder, where = F.printed_paragraphs(r.session)
+    except (F.EditError, OSError):
+        return                                     # reported by the checks above
+    if not holder.get("teaching"):
+        return
+    try:
+        after = F.apply_teaching(paras, holder["teaching"])
+    except F.EditError as e:
+        r.error(f"{where.name} {e}")
+        return
+    kept = [t for t in after if t]
+    words = lambda xs: sum(len(F.words(x)) for x in xs)
+    r.note(f"teaching pass: {len(paras)} paragraphs → {len(kept)}, {words(paras)} words → {words(kept)} "
+           f"(check the writing with scripts/check-teaching.py)")
+    if where.name == "section-plan.yaml":
+        v = r.session / "section.teaching.md"
+        if not v.exists():
+            r.error("section-plan.yaml has a teaching pass but there is no section.teaching.md: run build-section.py")
+        else:
+            nus = lambda f: [b for k, b in DIV.findall(f.read_text(encoding="utf-8")) if k == "Nusach"]
+            if nus(v) != nus(r.session / "section.md"):
+                r.error("section.teaching.md: its cuts of the text differ from section.md's: run build-section.py")
+
+
 def check(session: Path) -> Report:
     r = Report(session)
     if F.voice_only(session):
@@ -378,6 +407,7 @@ def check(session: Path) -> Report:
                 r.error(f"transcript.md edits/style: {e}")
             check_unclear_times(r, t, body)
             check_cleanup(r, t)
+            check_teaching(r)
         return r
 
     if not F.image_files(session) and not F.text_sourced(session):
@@ -404,6 +434,8 @@ def check(session: Path) -> Report:
         check_cleanup(r, com)
     if (session / "section.md").exists():
         check_section(r, ocr_words)
+    if com.exists():
+        check_teaching(r)
     return r
 
 

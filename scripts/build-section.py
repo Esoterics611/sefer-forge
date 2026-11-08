@@ -41,6 +41,8 @@ for word, by construction:
     keys:                         # 5–8, each quoting the נוסח verbatim
       - label: ארץ קדמה לשמים
         quote: ארץ הוא בחי' רצוא שבתפלה
+    teaching:                     # optional: prompts/teaching-pass.md (scripts/apply-teaching.py);
+                                  #   also writes section.teaching.md, the teaching variant
     edits:                        # the readability pass (prompts/readability-pass.md)
       - from: נשע בהמית           # exact words of commentary.md, found once
         to: נפש הבהמית            # empty: the words are removed
@@ -382,11 +384,16 @@ def key_points(plan: dict, nusach: Nusach) -> list[str]:
     return out
 
 
-def build(session: Path, plan: dict) -> str:
-    if plan.get("boxes"):
+def build(session: Path, plan: dict, teaching: bool = False) -> str:
+    """section.md; with `teaching`, its teaching variant (section.teaching.md):
+    the same cuts, paired before the teaching pass so they never move, with each
+    explanation paragraph replaced by its `teaching:` text (prompts/teaching-pass.md)."""
+    if plan.get("boxes") and not teaching:
         print("  note: the plan's boxes are no longer used — text and explanation are paired by the reading")
     fm = {"session": session.name, "discourse": F.discourse_of(session).name,
           "title": plan.get("title") or "", "layout": "paired", "built_from": PLAN}
+    if teaching:
+        fm["variant"] = "teaching"            # prompts/teaching-pass.md
     head = ["---", yaml.safe_dump(fm, allow_unicode=True, sort_keys=False, width=1000).strip(), "---", ""]
     if plan.get("heading"):
         head += [f"**{span(plan['heading'])}**", "", span("• • •"), ""]   # David has "•", not "◆"
@@ -400,8 +407,15 @@ def build(session: Path, plan: dict) -> str:
         explained, _ = F.apply_edits(commentary_paragraphs(session), F.print_edits(plan))
     except F.EditError as e:
         raise PlanError(str(e))
+    paired = pairs(nusach, explained)
+    if teaching:
+        try:
+            taught = iter(F.apply_teaching([p for _, ex in paired for p in ex], plan.get("teaching")))
+        except F.EditError as e:
+            raise PlanError(str(e))
+        paired = [(text, [t for t in (next(taught) for _ in ex) if t]) for text, ex in paired]
     body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]
-    for text, explanation in pairs(nusach, explained):
+    for text, explanation in paired:
         body += ['::: {custom-style="Nusach"}'] + [ln for p in text for ln in (p, "")]
         body[-1] = ":::"
         body.append("")
@@ -498,6 +512,17 @@ def main(argv: list[str]) -> int:
         return 1
     target.write_text(text, encoding="utf-8")
     print(f"Wrote {target}", flush=True)
+    variant = session / "section.teaching.md"          # the optional teaching pass
+    if plan.get("teaching"):
+        try:
+            variant.write_text(build(session, plan, teaching=True), encoding="utf-8")
+        except PlanError as e:
+            print(f"Teaching pass not built — {e}")
+            return 1
+        print(f"Wrote {variant} (the teaching pass)", flush=True)
+    elif variant.exists():
+        variant.unlink()
+        print(f"Removed {variant}: the plan has no teaching pass", flush=True)
     # review.md records the box check too: refresh it, then check the session.
     here = Path(__file__).parent
     subprocess.call([sys.executable, str(here / "transcript-diff.py"), str(session)], stdout=subprocess.DEVNULL)
