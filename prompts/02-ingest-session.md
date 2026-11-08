@@ -22,7 +22,7 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > **Step 3 — Clean the transcript.** Read `prompts/transcript-review-rules.md` first. Clean the `*.fixed.txt` (with its `*.timed.txt`) into `<SESSION_PATH>/commentary.md`: the full voicenote, in the speaker's words. Where he reads the text, his words are a quotation of `ocr.md`: correct Whisper's mis-hearings of it from there, and put the reading in quotation marks. The *commentary stretches* in `ocr-match.md` show where reading stops and explaining begins. Then run `python scripts/transcript-diff.py <SESSION_PATH>`, read `review.md`, and revert every change the rules do not allow. Re-run until it is clean.
 >
-> **Step 4 — Plan and build `section.md`.** Run `python scripts/build-section.py <SESSION_PATH> --init` and fill in `section-plan.yaml` (its header and the script's docstring show every field):
+> **Step 4 — Plan and build `section.md`.** Run `python scripts/build-section.py <SESSION_PATH> --init` (a session started by `scripts/box-session.py` has its starter plan already: title, heading and `sources:` are filled) and fill in `section-plan.yaml` (its header and the script's docstring show every field):
 > - `title`, `heading`, `lines`: the title block. `heading` is the parsha or gate; `lines` name the session's subject in a few words each.
 > - `nusach.start` / `end`: the reading range from Step 2. `breaks`: split the print's long paragraphs at sentence boundaries where the argument turns, every 3–8 printed lines. `bold`: the print's large opening words.
 > - `footnotes`: the print's notes, if `ocr.md` has a `[Footnotes:]` block.

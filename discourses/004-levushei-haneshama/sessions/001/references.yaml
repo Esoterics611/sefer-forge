@@ -29,6 +29,8 @@ divider_before: 'ויצא יצחק לשוח בשדה'
 # --marked-text (the text alone, for the pamphlet's opening part): its heading
 text_title: 'הנוסח'
 text_subtitle: 'לשון אדמו"ר נ"ע בעצמו · האות שבגוף הנוסח מורה על ההערה'
+# box-session.py: the label of the text's stretch on a narration's page
+text_label: 'לשון אדמו"ר נ"ע'
 
 cites:
   - at: 'עיין ע"ח שמ"ט פ"ה'

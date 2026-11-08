@@ -5,12 +5,17 @@ description: Start a new session in a discourse - make the folder, copy in the p
 
 1. **Folder.** `./scripts/new-session.sh <discourse>` creates the next `sessions/MMM/`
    (with `images/` for photo discourses). If the user's files are already in an existing
-   empty session folder, use that one.
+   empty session folder, use that one. A narration of a box of the discourse's reading
+   pack (one per הערה, `prompts/references-pack.md`, "After") starts instead with
+   `python scripts/box-session.py <discourse> <box>`: the session with its `ocr.md` and a
+   starter plan; its OCR step is done. Which box: the recording's name (e.g. "עץ חיים 3")
+   or the discourse's `notes.md`; ask when unclear.
 2. **Files.** Copy (never move) the photos the user names into `images/` and the
    recording into `voicenotes/`. Keep their names. Ask for any that are missing.
    A recording the user uploaded to Google Drive: find it with the Drive connector's
    search. Up to about 3 MB, download it with the connector, through a subagent, since the
-   base64 result is large. A larger file breaks the connector's connection. With the user's
+   base64 result is large: the subagent saves the result as JSON and writes the file with
+   `python scripts/drive-decode.py <result.json> <session>/voicenotes/<name>`. A larger file breaks the connector's connection. With the user's
    agreement, share it "anyone with the link" and fetch
    `https://drive.usercontent.google.com/download?id=<id>&export=download&confirm=t`
    with curl (that host is on the sefer-forge environment's allowlist). The connector cannot

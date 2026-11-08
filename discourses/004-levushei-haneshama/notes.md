@@ -17,11 +17,20 @@ and הקדמה 2.m4a (labelled parts in commentary.md; part 2 opens הערה 1).
 is cut at 01:45, at the speaker's request. The introduction reads none of the
 text (ocr-match finds no reading).
 
-Plan for the next recordings: one narration per box of the reading pack (הערה
-N), each in its own session (002, 003, ...), its commentary.md titled with the
-box number and its source. Each is cleaned (commentary.md, faithful) and
-refined (edits/style in commentary.md's frontmatter → refined.md). How the
-text, the boxes and the narrations combine into the booklet is decided once
-several narrations are in; until then nothing is laid out.
+How it is made (decided 2026-11-08, after הערה 1 and 2):
+- One narration per box of the reading pack (הערה N), each in its own session.
+  `python scripts/box-session.py discourses/004-levushei-haneshama <N>` starts it
+  (session 002 = box 1, 003 = box 2, so box 3 → 004): ocr.md from the pack,
+  a starter plan. Then `ingest-session` to its end: the transcript cleaned
+  faithfully, matched, laid out paired (the text's stretch labelled "לשון
+  אדמו"ר נ"ע", the Etz Chaim passage set apart), `nusach.end` at the last
+  sentence read, the readability, style and teaching passes.
+- The pamphlet opens with the text with its box letters (text.md, from
+  `build-references.py --marked-text`) and the introduction (introduction.md
+  and its .teaching.md, from session 001), then one part per הערה. Reassemble
+  (`assemble-discourse.py --force`: discourse.md here is only the assembled
+  parts) and print (`build-pamphlet.py discourses/004-levushei-haneshama`).
+- The speaker's corrections go in as `edits:` marked "the speaker's
+  correction (date)".
 
 Open: the slug and title are working names; the book this goes in is not chosen.

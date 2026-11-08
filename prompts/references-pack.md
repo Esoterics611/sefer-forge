@@ -97,3 +97,16 @@ Hand over the PDF (`output/` is not in git) with: the number of citations and of
 passages quoted, the ones whose identification is uncertain (by box number), and
 what is listed but not quoted, with the reason. Commit `ocr.md`, `references.yaml`,
 `references.md` and any addition to `sources/`.
+
+## After: one narration per box
+
+The speaker may record the lesson one box at a time (a narration per הערה).
+Each narration gets its own session, started by
+`python scripts/box-session.py <discourse> <box> [<box> ...]`: its `ocr.md` is the
+stretch of the text the box stands under plus the box's passage, exactly as the
+pack prints them, and a starter `section-plan.yaml` names both sources
+(`text_label` in `references.yaml` labels the text). The recording goes into its
+`voicenotes/`, and the session is ingested like any other (`ingest-session`),
+ending with the teaching pass. The discourse's opening parts (the text with the
+box letters, `build-references.py --marked-text`, and an introduction) are set in
+its `meta.yaml` `intro:`.
