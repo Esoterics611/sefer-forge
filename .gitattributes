@@ -22,3 +22,6 @@
 
 # Shell scripts: always LF
 *.sh text eol=lf
+
+# The website's files are served as they are (GitHub Pages, scripts/deploy-site.sh): never LFS
+site/**/*.pdf -filter -diff -merge -text

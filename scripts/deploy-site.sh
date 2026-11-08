@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Publish site/ (the app's home page, privacy policy and terms) to the
+# Publish site/ (the app's home page, privacy policy and terms, and the sample
+# project's pages from scripts/site-samples.py) to the
 # Esoterics611/Esoterics611.github.io repo, which GitHub Pages serves at
 # https://esoterics611.github.io/ (the domain Google's consent screen verifies).
 # A cloud session needs that repo attached first (add_repo, push access).
