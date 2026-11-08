@@ -2,6 +2,9 @@
 # rebuild with: python scripts/build-section.py discourses/004-levushei-haneshama/sessions/002
 # The narration reads box 1 (Etz Chaim 49:5) in pieces, 02:30-06:45 (ocr-match.md);
 # the gloss line before it is not read. edits/style: the readability and style passes.
+# nusach.end: the passage prints to the end of the last sentence read ("...אמנם מתבררים
+# מהרע שנתערבו ע"י חטא אדה"ר ונעשים חדשים ממש והבן"); the rest of box 1
+# ("והנה כפי מה שחסר לאדם...") stays in the reading pack.
 title: הערה 1 — עץ חיים, שער מ"ט, פרק ה'
 heading: הערה א' — עץ חיים, שער מ"ט, פרק ה'
 lines:
@@ -12,6 +15,7 @@ sources:
 - label: עץ חיים · שער מ"ט (קליפת נוגה) · פרק ה'
   quoted: true
 nusach:
+  end: ונעשים חדשים ממש והבן
   breaks:
   - והנה לא נתן הקב"ה
   - ונמצא כי אלו הלבושים

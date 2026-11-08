@@ -13,7 +13,8 @@ up against the OCR (scripts/ocr-match.py's reading finder), every
 explanation paragraph is anchored to the furthest OCR word read by its end,
 and a new pair starts wherever the reading moves on. Explanation before the
 first reading joins the first pair; text after the last reading closes the
-section on its own.
+section on its own, unless it is a few words finishing the sentence read
+(TAIL_JOIN), which print with it.
 
 The plan holds only the decisions; the text comes from the session's files,
 so the נוסח is ocr.md word for word and the explanation is commentary.md word
@@ -295,8 +296,15 @@ def pairs(nusach: Nusach, paras: list[str]) -> list[tuple[list[str], list[str]]]
             pending.append(p)
     if pending:                                      # never read: all of it with all the text
         units.append((len(nusach.words) - 1, pending))
-    if not units or units[-1][0] < len(nusach.words) - 1:
-        units.append((len(nusach.words) - 1, []))    # text past the last reading, on its own
+    end = len(nusach.words) - 1
+    if not units or units[-1][0] < end:
+        def mid_sentence(w: int) -> bool:
+            tok = re.sub(r"\[\^[^\]]+\]", "", F.COMMENT.sub("", nusach.tokens[nusach.word_tok[w]][0])).strip().strip("*")
+            return not tok.endswith((".", ":", ";", "?")) or tok.endswith(SNAP)
+        if units and end - units[-1][0] <= TAIL_JOIN and all(map(mid_sentence, range(units[-1][0], end))):
+            units[-1] = (end, units[-1][1])           # a few words finishing the sentence read
+        else:
+            units.append((end, []))                   # text past the last reading, on its own
     out, t_next = [], 0
     for n, (last_word, ps) in enumerate(units):
         t_last = nusach.word_tok[last_word]
@@ -311,6 +319,7 @@ def pairs(nusach: Nusach, paras: list[str]) -> list[tuple[list[str], list[str]]]
     return out
 
 
+TAIL_JOIN = 12        # words after the last reading that only finish its sentence print with it
 SNAP_REACH = 5        # tokens a cut may move to land on a sentence end
 CLAUSE_REACH = 3     # ... or before a clause or citation opener, or after a comma
 # Words that open a clause or a citation in this literature: a cut just before
