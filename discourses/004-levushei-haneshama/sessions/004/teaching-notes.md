@@ -111,3 +111,21 @@ cut 3 — "וכאשר יתבררו... אז יבא משיח"
 7. **¶4, "השורש של כל הכיסופים של העולם הזה"** — kept as said ("longings"). To
    confirm the word.
 8. **00:16, "מפנח"** — removed (perhaps "מפקודי", the Zohar's parsha).
+
+## d. Coverage
+
+**Full teaching pass** (2026-11-09; read back in
+output/pamphlets/004-levushei-haneshama-004.pdf): 452 words of 726 (62%).
+
+- Kept once each: 2–13 (cut 1), 15–16 (cut 2), 17–19, 21–30, 32–37, and the
+  end of 38 (cut 3).
+- Dropped:
+  - 1, the recap of הערה ב': a pointer is enough (the mark on the צלם points
+    to הערה א');
+  - 14, the reading retold: the text's words open the paragraph;
+  - 20 and 31, repeats of 15 (prayer as העלאת מ"ן), which is said once, in
+    cut 2;
+  - in 38, "עושה את ההתעוררות מלמטה וממשיכה את ההמשכה מלמעלה", a restatement
+    of 32–33 whose subject is unclear (doubt c. 1 is separate).
+- Across parts: 4 points to הערה א' (every deed marks the צלם), and so does 7
+  (man a small world); no five-word phrase is shared with another part.
