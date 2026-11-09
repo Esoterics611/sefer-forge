@@ -54,7 +54,7 @@ Part ג':
 14. (¶7) the צלם, in the Arizal's writings: an intermediary joining the נר"ן to the body — keep (the term's first definition in the book)
 15. (¶8) illustrated from Jung's psychology: a stack of structures ("stack" dropped in the style pass, a foreign restatement of ערימה) — keep
 16. (¶8) at its base the genes in the cells, which dictate the instincts — keep
-17. (¶8) a long discussion: do the instincts draw information from the surroundings too, and how — keep, one clause
+17. (¶8) a long discussion: do the instincts draw information from the surroundings too, and how — drop at the speaker's review (2026-11-09): it anticipates 19, where the surroundings come in
 18. (¶8) a person's deeds act on instincts and genes alike: who programs his instincts programs his genes — keep (the image carries the claim; "משפיעים על שניהם" states it once)
 19. (¶9) on the instincts, further information from the surroundings builds basic personality structures, the personality patterns — keep
 20. (¶9) "ולהלן יתבאר מהיכן בא המידע הזה" — lesson management ("עוד מעט נראה"); the order of ¶11 carries it: drop
@@ -62,9 +62,9 @@ Part ג':
 22. (¶9) each a complex (מכלול) of genes; genes with instincts build complexes (תסביכים) — keep
 23. (¶9) the complexes are half natural: dictated by biology, shaped by surroundings and behaviour — keep
 24. (¶9) all this is not yet the conscious thought, speech and action, the garments of the soul proper — keep
-25. (¶10) above instincts and complexes sit the patterns; their combinations build different personalities — keep
+25. (¶10) above instincts and complexes sit the patterns; their combinations build different personalities — keep, merged into ¶9 ("above the instincts" repeats 19; "above the complexes" and the combinations stay)
 26. (¶10) the four combine into one personality, with all the instincts — keep; the second listing of the four is a repeat of 21: dropped (the style pass)
-27. (¶11) the personality is expressed in thought, speech and action — keep
+27. (¶11) the personality is expressed in thought, speech and action — keep, as "בלבושים אלה" (24 names them)
 28. (¶11) all it hears and thinks, all its life since birth, is written in some "air" — keep
 29. (¶11) the speaker's proposal: this air is the צלם — keep, as a proposal ("ויש לומר")
 30. (¶12) the two צלמים are the good and the evil inclination — keep (¶6 named one of them; this is the definition it points to)
@@ -99,14 +99,14 @@ Read back in output/pamphlets/teaching/004-levushei-haneshama.pdf (p. 9):
   phrase on the verse; the verse and the source remain.
 
 Part ג' (2026-11-09), read back in output/pamphlets/004-levushei-haneshama.pdf
-(pp. ט–י): 174 words of 249 (70%); the introduction 308 of 486 (63%). The
-part is dense: almost every sentence is a step of the stack, so it stays
-above half on purpose.
+(pp. ט–י): 151 words of 249 (61%); the introduction 285 of 486 (59%). Tightened
+at the speaker's review the same day: 17 dropped (it anticipated 19), ¶10
+merged into ¶9, and ¶11 points back to the garments instead of naming them again.
 
-- Kept once each: 14 (¶7), 15–18 (¶8), 19, 21–24 (¶9), 25–26 (¶10), 27–29
-  (¶11), 30–32 (¶12; 31 as a pointer to הערה ב', with the verse).
-- Dropped: 20 (lesson management); in 26, "עם כל האינסטינקטים המוכתבים",
-  which ¶8–¶9 already say.
+- Kept once each: 14 (¶7), 15–16, 18 (¶8), 19, 21–26 (¶9), 27–29 (¶11),
+  30–32 (¶12; 31 as a pointer to הערה ב', with the verse).
+- Dropped: 17 (anticipates 19); 20 (lesson management); in 26, "עם כל
+  האינסטינקטים המוכתבים", which ¶8–¶9 already say.
 - Across parts: Jung's full name is now first given here; הערה ב' ¶5 says
   "הפסיכולוגיה של יונג" (check-teaching found the shared five words).
 - At the read-back: "המחבר את הנר"ן לגוף" (for "עם הגוף") and two small

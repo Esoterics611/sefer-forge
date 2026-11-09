@@ -25,6 +25,7 @@ Then: scripts/assemble-discourse.py <discourse> --force (and --lesson --force).
 """
 from __future__ import annotations
 
+import difflib
 import re
 import sys
 from pathlib import Path
@@ -61,15 +62,25 @@ def sync(src: Path, dst: Path, check: bool) -> bool:
     """Bring dst's paragraphs in line with src's. True when they already were."""
     new = paragraphs(src.read_text(encoding="utf-8"))
     head, old = split_opening(dst.read_text(encoding="utf-8"))
-    same = sum(1 for a, b in zip(old, new) if a == b)
-    changed = [(i, a, b) for i, (a, b) in enumerate(zip(old, new)) if a != b]
-    added, removed = max(0, len(new) - len(old)), max(0, len(old) - len(new))
+    same, notes = 0, []
+    changed = added = removed = 0
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(a=old, b=new, autojunk=False).get_opcodes():
+        if op == "equal":
+            same += i2 - i1
+            continue
+        pairs = min(i2 - i1, j2 - j1) if op == "replace" else 0
+        changed += pairs
+        removed += (i2 - i1) - pairs
+        added += (j2 - j1) - pairs
+        for k in range(i1, i2):
+            notes.append(f"  ¶{k + 1} was: {short(old[k])}")
+        for k in range(j1, j2):
+            notes.append(f"  ¶{k + 1} now: {short(new[k])}")
     ok = old == new
     state = "in step" if ok else ("out of step" if check else "updated")
     print(f"{dst}: {state} — {len(old)} → {len(new)} paragraph(s): "
-          f"{same} kept, {len(changed)} changed, {added} added, {removed} removed")
-    for i, a, b in changed:
-        print(f"  ¶{i + 1} was: {short(a)}\n       now: {short(b)}")
+          f"{same} kept, {changed} changed, {added} added, {removed} removed")
+    print("\n".join(notes)) if notes else None
     if not ok and not check:
         dst.write_text(head + "\n" + "\n\n".join(new) + "\n", encoding="utf-8")
     return ok
