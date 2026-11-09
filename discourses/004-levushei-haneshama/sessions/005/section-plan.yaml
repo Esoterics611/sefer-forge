@@ -1,0 +1,21 @@
+# Decisions for section.md. Text comes from ocr.md and commentary.md;
+# rebuild with: python scripts/build-section.py discourses/004-levushei-haneshama/sessions/005
+# The narration "אבל ירידת משם" (2026-11-09) on the Alter Rebbe's own words after
+# הערה ג' (no box of its own: the stretch the reading pack prints between boxes 3
+# and 4). ocr.md section 1 is that stretch; sections 2-4 are שער הגלגולים, the
+# teaching behind "כמ"ש בגלגולים פ"א", set apart as quoted sources.
+title: אבל ירידתן משם — לשון אדמו"ר נ"ע
+heading: לשון אדמו"ר נ"ע — אחר הערה ג'
+lines:
+- עליית הנר"ן מן הקליפות וירידתן לגוף
+- התפלה והמצוות המעשיות
+sources:
+- label: לשון אדמו"ר נ"ע
+- label: שער הגלגולים · הקדמה י"ב
+  quoted: true
+- label: שער הגלגולים · הקדמה י"ג
+  quoted: true
+- label: שער הגלגולים · הקדמה י"א
+  quoted: true
+nusach: {}
+keys: []

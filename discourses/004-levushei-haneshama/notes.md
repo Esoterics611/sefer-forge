@@ -33,4 +33,15 @@ How it is made (decided 2026-11-08, after הערה 1 and 2):
 - The speaker's corrections go in as `edits:` marked "the speaker's
   correction (date)".
 
+Session 005 (2026-11-09): "אבל ירידת משם.m4a" (6:19), the speaker's narration of
+the Alter Rebbe's own words after הערה ג' ("אבל ירידתן משם ... ומעלה אותה עד הנקבה
+העליונה כו'"), no box of its own. Its ocr.md: that stretch (the reading pack's text
+from citation 3 up to the words of citation 4), then שער הגלגולים, הקדמות י"ב, י"ג,
+י"א (sources/arizal/shaar-hagilgulim.he.json, added the same day at the speaker's
+request: the teaching behind "כמ"ש בגלגולים פ"א"), printed with the part as quoted
+sources. The speaker asked for the restarts merged into one segment and for his
+reading checked against the sources before the text is finished. So box 4's
+narration (`box-session.py ... 4`) starts its text at "וכ"כ בע"ח של"ט דרוש י"א":
+the words before it are this session's.
+
 Open: the slug and title are working names; the book this goes in is not chosen.
