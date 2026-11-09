@@ -40,7 +40,7 @@ from citation 3 up to the words of citation 4), then שער הגלגולים, ה
 י"א (sources/arizal/shaar-hagilgulim.he.json, added the same day at the speaker's
 request: the teaching behind "כמ"ש בגלגולים פ"א"), printed with the part as quoted
 sources. The speaker asked for the restarts merged into one segment and for his
-reading checked against the sources before the text is finished. So box 4's
+reading checked against the sources before the text is finished. Box 4's
 narration (`box-session.py ... 4`) starts its text at "וכ"כ בע"ח של"ט דרוש י"א":
 the words before it are this session's.
 
