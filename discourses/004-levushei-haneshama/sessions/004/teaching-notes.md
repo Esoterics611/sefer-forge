@@ -101,7 +101,7 @@ cut 3 — "וכאשר יתבררו... אז יבא משיח"
    mitzvot; prayer refines the נר"ן themselves, their rise from the kelipot as
    מ"ן. The text follows the correction: "גם בתפילה נעשה בירור, וזו העלאת מ"ן…
    בתפילה עולים הנר"ן עצמם מן הקליפות; ובירור הלבושים, במצוות המעשיות, יתבאר
-   להלן" (session 005). For the speaker to confirm.
+   להלן" (session 005). Confirmed by the speaker (2026-11-09).
 2. **01:20, "והאדם הוא עולם גדול"** — printed "עולם קטן", his own words in הערה א'.
 3. **04:14, "מצווה בלב שווה אף אחד הרי אחר כמוך"** — printed "ואהבת לרעך כמוך",
    from the context. To confirm.
