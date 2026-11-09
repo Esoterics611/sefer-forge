@@ -72,9 +72,10 @@ cut 4 — שער הגלגולים, הקדמות י"ב, י"ג, י"א
 
 ## c. Doubts
 
-1. **00:41 "פדיעת"** — printed as "פדיית גלות השכינה" (the union of the arousal
-   from below and the revelation from above redeems the Shechinah); 00:44
-   "שנייה" removed. A reading from the context, for the speaker to confirm.
+1. **00:41 "פדיעת"** — resolved: printed as "פדיית גלות השכינה" (the union of
+   the arousal from below and the revelation from above redeems the
+   Shechinah), a reading from the context, confirmed by the speaker
+   (2026-11-09); 00:44 "שנייה" removed.
 2. **"דרבנן היא" and "חיוב יותר"** — the text sets them side by side; the
    teaching text says only what it sets: prayer alone, being rabbinic, is not
    the purpose of the descent; the practical mitzvot are, and the obligation to
