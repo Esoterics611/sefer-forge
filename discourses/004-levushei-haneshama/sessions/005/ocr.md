@@ -3,7 +3,7 @@ session: '005'
 discourse: 004-levushei-haneshama
 ---
 
-<!-- No photos: the narration "אבל ירידת משם" (2026-11-09) on the Alter Rebbe's own words after הערה ג' — the reconciliation of הערות א'–ב' (the garments refined by mitzvot) with הערה ג' (the souls refined by prayer). Section 1 is session 001's text from citation 3 up to the words of citation 4 ("וכ"כ בע"ח של"ט דרוש י"א", which open הערה ד'). Sections 2–4 are שער הגלגולים, the teaching behind "כמ"ש בגלגולים פ"א": the Alter Rebbe cites ספר הגלגולים, the other redaction, not in sources/ (sources/sources.yaml, numbering). Quoted exactly as sources/arizal/shaar-hagilgulim.he.json gives them ("..." where cut out of a longer paragraph). -->
+<!-- No photos: the narration "אבל ירידת משם" (2026-11-09) on the Alter Rebbe's own words after הערה ג' — the reconciliation of הערות א'–ב' (the garments refined by mitzvot) with הערה ג' (the souls refined by prayer). Section 1 is session 001's text from citation 3 up to the words of citation 4 ("וכ"כ בע"ח של"ט דרוש י"א", which open הערה ד'). Sections 2–4 are שער הגלגולים, the teaching behind "כמ"ש בגלגולים פ"א": the Alter Rebbe cites ספר הגלגולים, the other redaction, not in sources/ (sources/sources.yaml, numbering). Quoted exactly as sources/arizal/shaar-hagilgulim.he.json gives them ("..." where cut out of a longer paragraph), in excerpts short enough to print on one page with their explanation: הקדמה י"ג to the three ways out of the kelipot, הקדמה י"א without its list of the kinds of mitzvot. -->
 
 ## Source: chabadlibrary.org/books/3901370076 (session 001, ocr.md), citation 3 to citation 4
 
@@ -17,8 +17,10 @@ discourse: 004-levushei-haneshama
 
 ## Source: שער הגלגולים · הקדמה י"ג — sources/arizal/shaar-hagilgulim.he.json 13.1
 
-...גם דע הקדמה אחרת והיא, כי כל אלו הנשמות כאשר יוצאות מתוך הקליפות לעלות אל הקדושה בסוד העבור כנזכר, אינם יוצאות אלא על ידי תפלותיהם של ישראל, כי אז הם יוצאות ועולות אל הקדושה בסוד מ"ן כנודע, או ג"כ יוצאות ע"י איזה יחוד שמייחד האיש הצדיק בעה"ז, כמבואר אצלינו בשער רוח הקדש, מציאות היחודים ועניינם. או יוצאות ע"י איזו מצוה שיעשה האדם בעה"ז. ודע, כי יש נשמות שע"י איזו פגם שיש בתחתונים, או מחמת פגם שיש בהם עצמם שחטאו בתחלה בהיותם בעה"ז, וע"י זה הם יורדות בעמקי הקליפות, ואם אז נזדמנה יציאת ועליית איזו נשמה מתוך הקליפה להתעבר במעי המלכות ולהתקן שם כנזכר, יש יכולת באותה נשמה שבמלכות לאחוז אותם הנשמות שהם פגומות קודם שירדו אל הקליפות ולהעמידם ממקומם, ולהחזירם עמה למעלה במעי המלכות בסוד העבור, ושם יתוקנו כלם, ואח"כ יבואו בעולם:
+...גם דע הקדמה אחרת והיא, כי כל אלו הנשמות כאשר יוצאות מתוך הקליפות לעלות אל הקדושה בסוד העבור כנזכר, אינם יוצאות אלא על ידי תפלותיהם של ישראל, כי אז הם יוצאות ועולות אל הקדושה בסוד מ"ן כנודע, או ג"כ יוצאות ע"י איזה יחוד שמייחד האיש הצדיק בעה"ז, כמבואר אצלינו בשער רוח הקדש, מציאות היחודים ועניינם. או יוצאות ע"י איזו מצוה שיעשה האדם בעה"ז...
 
 ## Source: שער הגלגולים · הקדמה י"א — sources/arizal/shaar-hagilgulim.he.json 11.14
 
-ודע, כי האדם צריך שיקיים כל התרי"ג מצות. ואם חסר אחת מהם, עדיין נפשו חסירה, כפי שעור המצות שחסרו ממנו. ואמנם הרמ"ח מ"ע נחלקים לחמשה חלוקות, א', הם המצות אשר האדם נמנע מלקיימם כגון מצות שהם תלויות בזמן שב"ה היה קיים, כמו הקרבנות וכיוצא בהם. ואלו אין האדם חוזר בגלגול לקיימם, כי מה תועלת יש בגלגול, אמנם כשיבנה ב"ה יקיימם. הב', הם המצות שיכול האדם לקיימם, כמו ציצית ותפילין וכיוצא בזה, ואלו אם לא קיימם, צריך בהכרח שיחזור להתגלגל פעמים רבות, עד שישלים את כלם...
+ודע, כי האדם צריך שיקיים כל התרי"ג מצות. ואם חסר אחת מהם, עדיין נפשו חסירה, כפי שעור המצות שחסרו ממנו...
+
+...המצות שיכול האדם לקיימם, כמו ציצית ותפילין וכיוצא בזה, ואלו אם לא קיימם, צריך בהכרח שיחזור להתגלגל פעמים רבות, עד שישלים את כלם...

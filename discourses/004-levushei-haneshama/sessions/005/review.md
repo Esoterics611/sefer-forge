@@ -44,3 +44,7 @@ Whisper 602 words · commentary.md 600 words · fillers removed 0 · removed 1 �
 ## Removed
 
 1. ~~של~~ — …אבל את הלבושים הפרטיים שלך ⟨ ⟩ לתקן אותם זה דווקא על…
+
+## section.md boxes vs commentary.md
+
+identical
