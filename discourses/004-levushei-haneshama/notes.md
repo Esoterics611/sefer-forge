@@ -17,6 +17,15 @@ and הקדמה 2.m4a (labelled parts in commentary.md; part 2 opens הערה 1).
 is cut at 01:45, at the speaker's request. The introduction reads none of the
 text (ocr-match finds no reading).
 
+Addition (2026-11-09): לבאר ענין הצלם.m4a (3:34), the speaker's addition to the
+introduction, in session 001 as part ג' (commentary.md "## הקדמה — חלק ג'"): the
+צלם as the intermediary between the נר"ן and the body, Jung's stack from genes to
+personality, the "air" in which all is written. It reads none of the text. Its
+last 16 seconds (cognitive psychology, broken off, "כל זה כבר לא שייך") are left
+out, as set aside by the speaker. Same passes as parts א'–ב'; introduction.md and
+introduction.teaching.md carry it (`scripts/sync-opening.py`; skill
+`extend-session`).
+
 How it is made (decided 2026-11-08, after הערה 1 and 2):
 - One narration per box of the reading pack (הערה N), each in its own session.
   `python scripts/box-session.py discourses/004-levushei-haneshama <N>` starts it
