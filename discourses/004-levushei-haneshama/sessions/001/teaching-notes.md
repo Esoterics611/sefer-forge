@@ -66,7 +66,8 @@ Part ג':
 26. (¶10) the four combine into one personality, with all the instincts — keep; the second listing of the four is a repeat of 21: dropped (the style pass)
 27. (¶11) the personality is expressed in thought, speech and action — keep, as "בלבושים אלה" (24 names them)
 28. (¶11) all it hears and thinks, all its life since birth, is written in some "air" — keep
-29. (¶11) the speaker's proposal: this air is the צלם — keep, as a proposal ("ויש לומר")
+29. (¶11) this air is the צלם — keep; a proposal in the recording ("אני מציע"), stated plainly since the speaker's addition (34)
+34. (¶11) the speaker's addition (2026-11-09, `edits:`): the information from the surroundings (19) comes from this air, the צלם, a spiritual intermediary between the biological stack and the soul, whose realm is the half-spiritual one of personality and consciousness — keep; it answers the "ולהלן יתבאר" of 20
 30. (¶12) the two צלמים are the good and the evil inclination — keep (¶6 named one of them; this is the definition it points to)
 31. (¶12) man's thoughts are the angels' speech, "וגבוה מעל גבוה שומר" — said in full in הערה ב' (its idea 13): a pointer here, with the verse, which is only here
 32. (¶12) here below, thoughts receive from the two structures, which influence them — keep
@@ -86,6 +87,9 @@ there it identifies the stack with the text's "לבוש הצורה", so it stays
   part 1's 01:45 cut was. For the speaker, if he wanted it kept.
 - Part ג', 02:20, "כל אחד דם מחברו": not recoverable; removed ("אישיות שונות"
   carries it).
+- Part ג', where the information from the surroundings comes from (20, "עוד
+  מעט נראה"): the recording never says. Settled by the speaker (2026-11-09):
+  from the "air", the צלם (34).
 
 ## d. Coverage
 
@@ -99,14 +103,16 @@ Read back in output/pamphlets/teaching/004-levushei-haneshama.pdf (p. 9):
   phrase on the verse; the verse and the source remain.
 
 Part ג' (2026-11-09), read back in output/pamphlets/004-levushei-haneshama.pdf
-(pp. ט–י): 151 words of 249 (61%); the introduction 285 of 486 (59%). Tightened
+(pp. ט–י): 165 words of 272 (61%); the introduction 299 of 509 (59%). Tightened
 at the speaker's review the same day: 17 dropped (it anticipated 19), ¶10
 merged into ¶9, and ¶11 points back to the garments instead of naming them again.
+Then the speaker's addition (34) completed ¶11.
 
 - Kept once each: 14 (¶7), 15–16, 18 (¶8), 19, 21–26 (¶9), 27–29 (¶11),
-  30–32 (¶12; 31 as a pointer to הערה ב', with the verse).
+  30–32 (¶12; 31 as a pointer to הערה ב', with the verse), 34 (¶11).
 - Dropped: 17 (anticipates 19); 20 (lesson management); in 26, "עם כל
   האינסטינקטים המוכתבים", which ¶8–¶9 already say.
+- Added: 34, the speaker's addition, once (¶11).
 - Across parts: Jung's full name is now first given here; הערה ב' ¶5 says
   "הפסיכולוגיה של יונג" (check-teaching found the shared five words).
 - At the read-back: "המחבר את הנר"ן לגוף" (for "עם הגוף") and two small

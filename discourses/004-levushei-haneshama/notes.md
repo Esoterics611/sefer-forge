@@ -22,7 +22,9 @@ introduction, in session 001 as part ג' (commentary.md "## הקדמה — חל�
 צלם as the intermediary between the נר"ן and the body, Jung's stack from genes to
 personality, the "air" in which all is written. It reads none of the text. Its
 last 16 seconds (cognitive psychology, broken off, "כל זה כבר לא שייך") are left
-out, as set aside by the speaker. Same passes as parts א'–ב'; introduction.md and
+out, as set aside by the speaker. The speaker's addition the same day (`edits:`):
+the "air" is the צלם, the source of the information from the surroundings,
+between the biological stack and the soul. Same passes as parts א'–ב'; introduction.md and
 introduction.teaching.md carry it (`scripts/sync-opening.py`; skill
 `extend-session`).
 
