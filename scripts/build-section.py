@@ -397,6 +397,10 @@ def key_points(plan: dict, nusach: Nusach) -> list[str]:
         quote = F.COMMENT.sub("", quote).replace("**", "")
         quote = re.sub(r"\[\^[^\]]+\]", "", quote).strip().rstrip(".,:;")
         quote = quote.strip(SNAP + " ") if quote.startswith(SNAP) or quote.endswith(SNAP) else quote
+        if quote.count(")") > quote.count("(") and quote.endswith(")"):   # cut out of a parenthesis
+            quote = quote[:-1].rstrip()
+        if quote.count("(") > quote.count(")") and quote.startswith("("):
+            quote = quote[1:].lstrip()
         out += [f"**{span(k['label'])}**", "", f"> {span(quote)}", ""]
     return out
 

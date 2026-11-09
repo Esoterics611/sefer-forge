@@ -6,6 +6,7 @@ Usage:
     python scripts/build-pamphlet.py discourses/003-breishis          # every session
     python scripts/build-pamphlet.py <path> --png                     # also page images
     python scripts/build-pamphlet.py <path> --lesson                  # the text before the teaching pass
+    python scripts/build-pamphlet.py <path> --paired                  # a page per cut (see "Layout")
 
 A session prints from its section.md (images+voice) or transcript.md
 (voice-only). A discourse prints from its discourse.md, the hand-polished
@@ -35,6 +36,15 @@ discourse's meta.yaml overrides any of them:
       title: "..."         # whole-discourse cover only (default: meta title)
       subtitle: "..."      # whole-discourse cover only
       dedication: "..."    # optional page after the cover
+      layout: paired       # optional: a page per cut (default: flowing)
+
+Layout. By default the text and its explanation flow: each cut of the text,
+then what the speaker says about it, one after another, a cut beginning
+wherever the page has room (a cut is kept whole and with the first lines of
+its explanation, a note of the teaching text with its paragraph). `layout:
+paired` (or --paired) gives every cut its own page group instead, text on top
+and explanation below, with a continuation line where an explanation runs on
+(the house layout until 2026-11-09, given up for its half-empty pages).
 
 Rendering is pandoc (markdown -> HTML) plus Chrome's headless print-to-PDF,
 styled by templates/pamphlet.css, as in build-booklets.py. CHROME overrides
@@ -445,8 +455,9 @@ def cont_head(u: Unit) -> str:
             f'“{esc(re.sub(r"<[^>]+>", "", u.lead))}”</p>')
 
 
-def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
-    """One page group: the text cut(s) on top, the explanation below."""
+def page_md(units: list[Unit], page: dict, markers: bool, label: str, flow: bool = False) -> str:
+    """One page group: the text cut(s) on top, the explanation below. In the
+    flowing layout (`flow`), one cut and its explanation, not tied to a page."""
     top: list[str] = []
     if page["cont"] is not None:
         top.append(cont_head(units[page["cont"]]))
@@ -483,7 +494,7 @@ def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
         else:
             expl.append(pc.md)
         last_para = pc.para
-    out = ["::: {.pg}", "::: {.nusach}", *[x + "\n" for x in top], ":::"]
+    out = ["::: {.pg .flow}" if flow else "::: {.pg}", "::: {.nusach}", *[x + "\n" for x in top], ":::"]
     if expl:
         out += ["::: {.biur}", *[x + "\n" for x in expl], ":::"]
     out.append(":::")
@@ -635,6 +646,26 @@ def text_area(css: str) -> float:
     m = re.search(r"@page\s*\{[^}]*?margin:\s*([\d.]+)mm\s+[\d.]+mm\s+([\d.]+)mm", css, re.S)
     top, bottom = (float(m.group(1)), float(m.group(2))) if m else (18.0, 19.0)
     return (210 - top - bottom) * 72 / 25.4
+
+
+def flow(parts: list[Part]) -> int:
+    """The flowing layout (the default; `layout: paired` in meta.yaml's
+    pamphlet: block, or --paired, for the page-per-cut one): each cut of the
+    text, then its explanation, running on, so a cut may begin anywhere on a
+    page and no page is left half empty. templates/pamphlet.css keeps a cut
+    whole and with the first lines of its explanation, and a note with the
+    paragraph that cites it. The key points follow the explanation. Returns
+    the number of cuts."""
+    cuts, para = 0, 0
+    for p in (x for x in parts if x.pairs):
+        units, para = make_units(p, para)
+        blocks = []
+        for ui, u in enumerate(units):
+            pg = {"cont": None, "texts": [ui] if u.pieces else [], "text_pieces": u.text_pieces, "pieces": u.pieces}
+            blocks.append(page_md(units, pg, False, "", flow=True))
+        p.body = "\n\n".join(blocks) + "\n\n" + p.tail.replace("{.part .keys}", "{.part .keys .flow}")
+        cuts += len(units)
+    return cuts
 
 
 def paginate(cfg: dict, parts: list[Part], whole: bool, css: str, work: Path) -> int:
@@ -824,9 +855,12 @@ def main(argv: list[str]) -> int:
     (OUT / "html").mkdir(parents=True, exist_ok=True)
     work = OUT / "html" / f".{name}"
     work.mkdir(exist_ok=True)
-    paired_pages = paginate(cfg, parts, whole, css, work)
-    if paired_pages:
-        print(f"  paired layout: {paired_pages} pages of text with its explanation")
+    if "--paired" in argv or cfg.get("layout") == "paired":
+        paired_pages = paginate(cfg, parts, whole, css, work)
+        if paired_pages:
+            print(f"  paired layout: {paired_pages} pages of text with its explanation")
+    elif cuts := flow(parts):
+        print(f"  flowing layout: {cuts} cuts of the text, each followed by its explanation")
     doc, title = build_html(cfg, parts, whole, css)
     html_path = OUT / "html" / f"{name}.html"
     html_path.write_text(doc, encoding="utf-8")
