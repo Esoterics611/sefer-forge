@@ -19,5 +19,5 @@ The lesson finishes, after its pamphlet is proofed, with the readability pass, t
 pass (`prompts/style-pass.md`) and last the teaching pass (`prompts/teaching-pass.md`, skill
 `teaching-pass`: a written commentary, about half as long; it is what prints): all three as
 lists in `transcript.md`'s frontmatter.
-Last, when its discourse has English episodes, offer the English rendering of the new
+Then, when its discourse has English episodes, offer the English rendering of the new
 shiur (`python scripts/narration-status.py <discourse>`, `prompts/render-english.md`).
