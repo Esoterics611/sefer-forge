@@ -16,7 +16,7 @@ description: Start a new session in a discourse - make the folder, copy in the p
 2. **Files.** Copy (never move) the photos the user names into `images/` and the
    recording into `voicenotes/`. Keep their names. Ask for any that are missing.
    A recording the user uploaded to Google Drive: find it with the Drive connector's
-   search. Up to about 3 MB, download it with the connector, through a subagent, since the
+   search. Up to about 3.5 MB (3.5 MB worked, 6.9 MB broke it), download it with the connector, through a subagent, since the
    base64 result is large: the subagent saves the result as JSON and writes the file with
    `python scripts/drive-decode.py <result.json> <session>/voicenotes/<name>`. A larger file breaks the connector's connection. With the user's
    agreement, share it "anyone with the link" and fetch
