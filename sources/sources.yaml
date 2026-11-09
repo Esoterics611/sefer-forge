@@ -39,3 +39,16 @@ works:
     numbering:
       - "Gates by name (Gate of Prayer = שער א'). Each gate has an 'Introduction' block and numbered chapters."
       - "Gate of Prayer: the Alter Rebbe's פע\"ח ש\"א פ\"ו is chapter 7 here (Gate of Prayer.7.2-7.4)."
+  shaar-hagilgulim:
+    title: "שער הגלגולים"
+    file: sources/arizal/shaar-hagilgulim.he.json
+    cite_as: ['שעה"ג', 'שה"ג']
+    gates: numbered
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Arizal and Chaim Vital/Sha'ar HaGilgulim/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Sha'ar_HaGilgulim
+    version: "Shaar HaGilgulim, from http://www.hebrew.grimoar.cz/vital/saar_ha-gilgulim.htm (Public Domain)"
+    fetched: 2026-11-09
+    numbering:
+      - "Addresses are הקדמה.paragraph: 13.1 = הקדמה י\"ג, its first paragraph (cite it as 'שעה\"ג הקדמה י\"ג'). 1-38 are the הקדמות; 39 is 'בקשר החברים'; 40 is R. Shmuel Vital's appendix."
+      - "Not the ספר הגלגולים the Alter Rebbe cites by chapter ('בגלגולים פ\"א', 'פ\"ז', 'פי\"ד', 'פ\"ב'): that is the other redaction of the same teachings, not in sources/. Its words 'וכפי גודל אותה המצוה או זריזות' are not here; the teaching is: souls rise from the kelipot by others' prayers, a צדיק's יחוד or a mitzvah (13.1, again 39.7), into עיבור in the מלכות, 'נקבה העליונה' (12.5), 'ואח\"כ יורדות בגוף בעה\"ז' (12.7)."
+      - "His 'וע\"ש אחר ס\"פ ל\"ה בקשר החברים' (each soul rising from the kelipot is at least forty days in the מלכות) is 39.6 here, and 12.7."

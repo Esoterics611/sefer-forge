@@ -92,14 +92,16 @@ cut 3 — "וכאשר יתבררו... אז יבא משיח"
 
 ## c. Doubts
 
-1. **The main point and the gloss.** The gloss says that by prayer the נר"ן are
-   refined, "בעלייתן מן הקליפות להיות מ"נ". Its continuation (box 4's stretch, not
-   printed here) sets against it their descent into the body for the practical
-   mitzvot, "לברר ולתקן הלבושים שלהם". The speaker (2026-11-09): through prayer too
-   the garments are refined, and this is העלאת מ"ן. The text says it in his words
-   ("כמו המצוות, גם התפילה מבררת"), quoting the gloss for what prayer refines.
-   For the speaker: should the distinction the gloss draws next be met here, or
-   in הערה ד'?
+1. **The main point and the gloss — settled.** The gloss says that by prayer
+   the נר"ן are refined, "בעלייתן מן הקליפות להיות מ"נ"; its continuation sets
+   against it their descent into the body for the practical mitzvot, "לברר ולתקן
+   הלבושים שלהם". The speaker first summed up הערה ג' as "also through Tefilah you
+   have refining of the garments". His correction of the same day, recorded in
+   session 005 (`edits:` there): the garments are refined by the practical
+   mitzvot; prayer refines the נר"ן themselves, their rise from the kelipot as
+   מ"ן. The text follows the correction: "גם בתפילה נעשה בירור, וזו העלאת מ"ן…
+   בתפילה עולים הנר"ן עצמם מן הקליפות; ובירור הלבושים, במצוות המעשיות, יתבאר
+   להלן" (session 005). For the speaker to confirm.
 2. **01:20, "והאדם הוא עולם גדול"** — printed "עולם קטן", his own words in הערה א'.
 3. **04:14, "מצווה בלב שווה אף אחד הרי אחר כמוך"** — printed "ואהבת לרעך כמוך",
    from the context. To confirm.
@@ -129,3 +131,27 @@ output/pamphlets/004-levushei-haneshama-004.pdf): 452 words of 726 (62%).
     of 32–33 whose subject is unclear (doubt c. 1 is separate).
 - Across parts: 4 points to הערה א' (every deed marks the צלם), and so does 7
   (man a small world); no five-word phrase is shared with another part.
+
+**Condensed, with notes** (2026-11-09, at the speaker's request: the text
+keeps what explains the Etz Chaim passage, the rest goes to notes in smaller
+type). Read back in output/pamphlets/004-levushei-haneshama.pdf (pp. כ–כג):
+486 words, of which the text is 163 and the seven notes 323.
+
+- In the text: 2, 7, 8, 10, 11, 12 (cut 1); 15–16, with the gloss's own words
+  "בעלייתן מן הקליפות להיות מ"נ" (cut 2); 17, 21, 32–33 in one sentence each,
+  and the hidden/seen and the redemption in one (cut 3).
+- In the notes: 3–6 and 9 (1, the refining in the person); 13 (2, the
+  individual and the collective); 18–19 (3, the progress toward the days of
+  Mashiach); 22–25 (4, the arousal from below in practice: the tzedakah);
+  26–30 and 33 (5, male and female, the exile of the Shechinah); 34–35 (6,
+  hidden and seen); 36–38 (7, teshuvah and the redemption).
+- Across parts, after the read-through of the whole discourse with session 005:
+  - notes 2, 3 and 6 now point to הערה ב', which says the collective refining,
+    the Shechinah resting on one who perfects his traits (רוח הקודש), and the
+    Shechinah hidden lest choice be cancelled; note 3 no longer repeats the last
+    of these;
+  - the main point follows session 005's correction (doubt 1).
+- Layout: each note is set under its paragraph, on the page of its number
+  (build-pamphlet.py keeps a note with the end of the paragraph citing it); the
+  closing explanation is three short paragraphs, so that no paragraph carries
+  more than two notes.

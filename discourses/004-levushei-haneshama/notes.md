@@ -44,4 +44,23 @@ How it is made (decided 2026-11-08, after הערה 1 and 2):
 - The speaker's corrections go in as `edits:` marked "the speaker's
   correction (date)".
 
+Session 004 (2026-11-09): "עץ חיים 3.m4a" (7:05, uploaded as "עתיק חיים 3"),
+box 3, Etz Chaim 39:1, in three cuts. Through the full pipeline, then condensed at
+the speaker's request: the text keeps what explains the passage (prayer too
+refines, העלאת מ"ן; the נר"ן rise from the kelipot), the rest is in seven notes
+(`^[...]` in `teaching:`, set under their paragraphs in smaller type). Its main
+point follows the speaker's correction in session 005: the garments by the
+practical mitzvot, the נר"ן by prayer.
+
+Session 005 (2026-11-09): "אבל ירידת משם.m4a" (6:19), the speaker's narration of
+the Alter Rebbe's own words after הערה ג' ("אבל ירידתן משם ... ומעלה אותה עד הנקבה
+העליונה כו'"), no box of its own. Its ocr.md: that stretch (the reading pack's text
+from citation 3 up to the words of citation 4), then שער הגלגולים, הקדמות י"ב, י"ג,
+י"א (sources/arizal/shaar-hagilgulim.he.json, added the same day at the speaker's
+request: the teaching behind "כמ"ש בגלגולים פ"א"), printed with the part as quoted
+sources. The speaker asked for the restarts merged into one segment and for his
+reading checked against the sources before the text is finished. Box 4's
+narration (`box-session.py ... 4`) starts its text at "וכ"כ בע"ח של"ט דרוש י"א":
+the words before it are this session's.
+
 Open: the slug and title are working names; the book this goes in is not chosen.

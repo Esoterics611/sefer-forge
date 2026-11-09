@@ -344,6 +344,11 @@ def is_label(md: str) -> bool:
     return ".src-label" in attrs(md).split()
 
 
+def is_note(md: str) -> bool:
+    """A note of the teaching text, set under its paragraph (take_notes)."""
+    return "fn" in [c.lstrip(".") for c in attrs(md).split()]
+
+
 def with_sources(text: str, md: str) -> str:
     """text wrapped like md, keeping md's source classes (and no other)."""
     keep = " ".join(c for c in attrs(md).split() if c in SOURCE_CLASSES)
@@ -600,7 +605,14 @@ def pack(units: list[Unit], cont_h: float, budgets: dict[int, float], area: floa
             page["text_h"] += u.text_h
             for pc in u.pieces:
                 if pc.h > room(page) and page["pieces"]:
+                    carry = []       # a note keeps the end of the paragraph that cites it on its page
+                    if is_note(pc.md) and len(page["pieces"]) > 1 and not is_note(page["pieces"][-1].md):
+                        carry = [page["pieces"].pop()]
+                        page["h"] -= carry[0].h
                     page = new(cont=ui)
+                    for c in carry:
+                        page["pieces"].append(c)
+                        page["h"] += c.h
                 page["pieces"].append(pc)
                 page["h"] += pc.h
         else:
