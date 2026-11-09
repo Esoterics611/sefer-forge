@@ -222,6 +222,13 @@ section.talk p { font-size: 12.3pt; line-height: 1.6; }
 hr { border: 0; text-align: center; margin: 6mm 0; }
 hr::after { content: "◆   ◆   ◆"; font-family: "Guttman Frank"; color: var(--rule); font-size: 8pt; letter-spacing: 0.3em; }
 
+/* Notes of the teaching text (^[...] in `teaching:`, prompts/teaching-pass.md "Notes"):
+   a numbered note set under the paragraph that cites it, on the same page, in smaller
+   type with the accent rule beside it; the number in the text in the accent colour. */
+.pg .biur span.fnref { font-size: 0.66em; vertical-align: super; line-height: 0; font-weight: bold; color: var(--rule); margin: 0 0.25mm; }
+.pg .biur p:has(> span.fn) { font-size: 10.2pt; line-height: 1.5; text-indent: 0; margin: 0.6mm 2.5mm 2.4mm 0; padding: 0.4mm 3mm 0.4mm 0; border-right: 1.2pt solid var(--rule); }
+.pg .biur span.fnnum { font-weight: bold; color: var(--rule); margin-left: 1.4mm; }
+
 /* Notes at the end. */
 section.footnotes { margin-top: 9mm; padding-top: 3mm; border-top: 1px solid var(--rule); font-size: 10.5pt; line-height: 1.45; }
 section.footnotes::before {

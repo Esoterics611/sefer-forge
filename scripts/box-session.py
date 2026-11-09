@@ -145,7 +145,7 @@ def main(argv: list[str]) -> int:
             "lines": [],
             "sources": [{"label": plan.get("text_label") or "הנוסח"}]
                        + [{"label": lab, "quoted": True} for lab in labels],
-            "nusach": {},
+            "nusach": {"match_abbreviations": True},   # build-section.py: the reading's abbreviations
             "keys": [],
         }, allow_unicode=True, sort_keys=False, width=1000).strip(), ""])
 

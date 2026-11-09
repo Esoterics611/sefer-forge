@@ -30,6 +30,9 @@ for word, by construction:
       breaks:                     # extra paragraph starts, beyond the print's own
         - וצ"ל קדימת
       bold: [והנה, ובישר]         # bolded where they open a printed paragraph
+      match_abbreviations: true   # the reading finder keeps an abbreviation's quote mark
+                                  #   (א', בחי') so its spoken form (אחד, בחינת) matches; set
+                                  #   by box-session.py since 2026-11-09, off in older plans
     sources:                      # optional: one per "## Source:" section of ocr.md
       - label: לשון אדמו"ר נ"ע     # a small line naming the source where a cut enters it
       - label: עץ חיים · שער מ"ט · פרק ה'
@@ -165,6 +168,7 @@ class Nusach:
         if not words:
             raise PlanError("ocr.md has no text")
         n = plan.get("nusach") or {}
+        self.match_abbreviations = bool(n.get("match_abbreviations"))
         a = locate(words, n["start"], "nusach.start") if n.get("start") else 0
         if n.get("end"):
             e = locate(words, n["end"], "nusach.end", lo=a)
@@ -260,10 +264,23 @@ def commentary_paragraphs(session: Path) -> list[str]:
             if p.strip() and not p.lstrip().startswith("#") and not re.fullmatch(r"\s*<!--.*?-->\s*", p, re.S)]
 
 
+def ocr_word(nusach: Nusach, w: int) -> str:
+    """A נוסח word as ocr-match.py sees it: an abbreviation keeps its quote
+    mark (א', בחי'), which F.words strips, so that its spoken forms (אחד,
+    בחינת) match the reading."""
+    word = nusach.words[w]
+    raw = re.sub(r"\[\^[^\]]+\]", "", F.COMMENT.sub("", nusach.tokens[nusach.word_tok[w]][0])).strip().strip("*")
+    raw = raw.strip(".,:;!?()[]")
+    return raw if F.is_abbrev(raw) and F.plain(raw) == F.plain(word) else word
+
+
 def anchors(nusach: Nusach, paras: list[str]) -> list[int]:
     """For each explanation paragraph, the furthest נוסח word read by its end
     (-1 before any reading), never moving back."""
-    ocr = [OM.Tok(w, F.skeleton(w)) for w in nusach.words]
+    if nusach.match_abbreviations:
+        ocr = [OM.Tok(t, F.skeleton(t)) for t in (ocr_word(nusach, w) for w in range(len(nusach.words)))]
+    else:                                     # sessions laid out before 2026-11-09 keep their cuts
+        ocr = [OM.Tok(w, F.skeleton(w)) for w in nusach.words]
     heard, owner = [], []
     for k, p in enumerate(paras):
         for w in F.words(p):
@@ -271,7 +288,7 @@ def anchors(nusach: Nusach, paras: list[str]) -> list[int]:
                 heard.append(OM.Tok(w, F.skeleton(w), str(k)))
                 owner.append(k)
     reach = [-1] * len(paras)
-    for o1, o2, h1, h2, _ in OM.find_reading(ocr, heard):
+    for o1, o2, h1, h2, _ in OM.find_reading(ocr, heard, prefer_heard=nusach.match_abbreviations):
         for j in range(h1, h2 + 1):           # spread the block over its paragraphs
             o = o1 + round((j - h1) * (o2 - o1) / max(1, h2 - h1))
             reach[owner[j]] = max(reach[owner[j]], o)

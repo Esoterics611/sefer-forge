@@ -368,13 +368,38 @@ def split_paragraph(md: str, para: int) -> list[Piece]:
     return [Piece(with_sources(x, src_md), para) for x in pieces]
 
 
+def take_notes(md: str, first: int) -> tuple[str, list[str]]:
+    """A paragraph's inline notes (pandoc's ^[...], written in a teaching text,
+    prompts/teaching-pass.md "Notes"), each replaced by its number. Returns the
+    paragraph and the notes' texts, in order, numbered from `first`."""
+    out, notes, i = [], [], 0
+    while (j := md.find("^[", i)) != -1:
+        depth, k = 0, j + 1
+        while k < len(md):
+            depth += {"[": 1, "]": -1}.get(md[k], 0)
+            if depth == 0:
+                break
+            k += 1
+        if depth:
+            sys.exit(f"an unclosed note ^[ in: {md[j:j + 60]}…")
+        out.append(md[i:j] + f"[{first + len(notes)}]{{.fnref}}")
+        notes.append(md[j + 2:k].strip())
+        i = k + 1
+    return "".join(out) + md[i:], notes
+
+
 def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
-    units, para = [], start_para
+    units, para, note_no = [], start_para, 1
     for text, expl in part.pairs:
         pieces = []
         for md in expl:
+            md, notes = take_notes(md, note_no)
             pieces += split_paragraph(md, para)
             para += 1
+            for n, note in enumerate(notes, note_no):    # under the paragraph that cites it, whole
+                pieces.append(Piece(rtl(f"[{n}]{{.fnnum}} {note}", "fn"), para))
+                para += 1
+            note_no += len(notes)
         # The continuation line quotes the passage itself (a quote, not its heading).
         quoted = [x for x in text if x.startswith(">")] or [x for x in text if not is_label(x)] or text
         words = re.sub(r"\*\*|\[\^[^\]]+\]|^(#+|>)\s*", "", " ".join(inner(x) for x in quoted)).split()
