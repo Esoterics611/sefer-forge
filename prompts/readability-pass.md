@@ -43,6 +43,14 @@ A flag on the edited words goes with them. Then rebuild and recheck:
 which compares the explanation with `commentary.md` plus these edits),
 `python scripts/build-pamphlet.py <session>`, and the proof.
 
+**A narration refined before it is laid out** (its pairing with the text not yet
+decided, as with a discourse recorded box by box) has no plan either: the same
+`edits:` (and `style:`) go in `commentary.md`'s frontmatter, `from` = the exact
+words of its body. `python scripts/refined-text.py <session>` writes
+`refined.md`, the text as it then reads, part by part; `check-session.py` checks
+each `from` matches once. When the session is laid out, the lists move into
+`section-plan.yaml`.
+
 **Voice-only lessons** have no plan: the same `edits:` list goes in
 `transcript.md`'s frontmatter (`from` = the exact words in the transcript's
 body). The book (`assemble-discourse.py`) and the pamphlet apply them;

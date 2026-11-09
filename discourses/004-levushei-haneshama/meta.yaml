@@ -1,0 +1,18 @@
+discourse: 004
+slug: levushei-haneshama
+title: 'לשון אדמו"ר נ"ע בעצמו'
+status: draft
+type: images+voice
+chapter: null
+
+# Opening parts of discourse.md (scripts/assemble-discourse.py), before the
+# sessions: the full text with its box letters (build-references.py
+# --marked-text), then the introduction (from session 001's recordings).
+intro: [text.md, introduction.md]
+skip_sessions: ["001"]        # its text and recordings print through the two files above
+
+# Cover and running header for scripts/build-pamphlet.py.
+pamphlet:
+  subtitle: "לבושי הנשמה · מקורותיו בעץ חיים · ביאור"
+  author: "רוני משה בן שושנה"
+  date: "תשפ\"ז · 2026"

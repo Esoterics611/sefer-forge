@@ -5,6 +5,7 @@ Usage:
     python scripts/build-pamphlet.py discourses/003-breishis/sessions/002
     python scripts/build-pamphlet.py discourses/003-breishis          # every session
     python scripts/build-pamphlet.py <path> --png                     # also page images
+    python scripts/build-pamphlet.py <path> --lesson                  # the text before the teaching pass
 
 A session prints from its section.md (images+voice) or transcript.md
 (voice-only). A discourse prints from its discourse.md, the hand-polished
@@ -14,6 +15,14 @@ text (assembled first when the discourse is voice-only), one part per
 Writes output/pamphlets/<discourse>[-<session>].pdf, the HTML it printed
 from under output/pamphlets/html/, and with --png one image per page under
 output/pamphlets/png/ for checking the layout. Run from the repo root.
+
+What prints is the teaching text (prompts/teaching-pass.md, the last step of
+every narration) wherever a part has one: a session's section.teaching.md, a
+transcript with its `teaching:` applied, a discourse's discourse.md as
+assembled from them. --lesson prints the lesson text instead (section.md, the
+transcript without `teaching:`, discourse.lesson.md from
+assemble-discourse.py --lesson) under output/pamphlets/lesson/: the version
+before the teaching pass, kept to compare or go back to.
 
 Cover and running-header text: the book whose structure.yaml lists the
 discourse supplies series/author/date; a `pamphlet:` block in the
@@ -55,7 +64,7 @@ import forgelib as F
 
 CSS = Path("templates/pamphlet.css")
 OUT = Path("output/pamphlets")
-CHROME = os.environ.get("CHROME", "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe")
+CHROME = F.chrome_path()                # $CHROME, Windows Chrome under WSL, or one on the PATH
 NIQQUD = re.compile(r"[֑-ׇ]")
 FRONTMATTER = re.compile(r"\A---\n([\s\S]*?)\n---\s*\n?")
 COMMENT = re.compile(r"\s*<!--.*?-->", re.S)
@@ -225,26 +234,34 @@ def parse_part(md: str) -> Part:
     return section_part(md)
 
 
-def session_parts(session: Path) -> list[Part]:
-    for name in ("section.md", "transcript.md"):
+def session_parts(session: Path, lesson: bool = False) -> list[Part]:
+    teaching = not lesson
+    first = "section.teaching.md" if teaching and (session / "section.teaching.md").exists() else "section.md"
+    for name in (first, "transcript.md"):
         f = session / name
         if f.exists():
             fm, body = frontmatter(f.read_text(encoding="utf-8"))
-            if name == "section.md":
+            if name.startswith("section"):
                 return [section_part(unflag(body))]
             try:
                 body, _ = F.edit_transcript(body, F.print_edits(fm))
+                if teaching and fm.get("teaching"):
+                    body = F.teach_blocks(body, fm["teaching"])
             except F.EditError as e:
                 sys.exit(f"{f}: edits: {e}")
             return [talk_part(fm.get("title", ""), fm.get("subtitle", ""), unflag(body))]
     sys.exit(f"{session}: no section.md or transcript.md yet")
 
 
-def discourse_parts(discourse: Path, meta: dict) -> list[Part]:
-    if meta.get("type") == "voice-only":
+def discourse_parts(discourse: Path, meta: dict, lesson: bool = False) -> list[Part]:
+    if lesson:
+        subprocess.run([sys.executable, "scripts/assemble-discourse.py", str(discourse), "--lesson"],
+                       check=True, capture_output=True)
+    elif meta.get("type") == "voice-only":
         subprocess.run([sys.executable, "scripts/assemble-discourse.py", str(discourse)],
                        check=True, capture_output=True)
-    _, body = frontmatter((discourse / "discourse.md").read_text(encoding="utf-8"))
+    source = "discourse.lesson.md" if lesson else "discourse.md"
+    _, body = frontmatter((discourse / source).read_text(encoding="utf-8"))
     chunks = SESSION_MARK.split(body)[1:]            # [name, text, name, text, ...]
     if not chunks:
         sys.exit(f"{discourse}/discourse.md has no sessions; run scripts/assemble-discourse.py first")
@@ -312,12 +329,33 @@ def rtl(text: str, cls: str = "") -> str:
     return f'[{text}]{{dir="rtl"{" ." + cls if cls else ""}}}'
 
 
+# Source markup from build-section.py (a plan's `sources:`): a label line naming
+# the source a cut enters, and the class of a quoted source's paragraphs.
+SOURCE_CLASSES = (".quoted", ".src-label")
+
+
+def attrs(md: str) -> str:
+    """The classes in a paragraph's {dir="rtl" ...} block."""
+    m = re.search(r'\]\{dir="rtl"([^}]*)\}\s*$', md)
+    return m.group(1) if m else ""
+
+
+def is_label(md: str) -> bool:
+    return ".src-label" in attrs(md).split()
+
+
+def with_sources(text: str, md: str) -> str:
+    """text wrapped like md, keeping md's source classes (and no other)."""
+    keep = " ".join(c for c in attrs(md).split() if c in SOURCE_CLASSES)
+    return f'[{text}]{{dir="rtl" {keep}}}' if keep else rtl(text)
+
+
 def split_paragraph(md: str, para: int) -> list[Piece]:
     """A paragraph as pieces of whole sentences, up to PIECE_WORDS words each.
     A heading stays whole; a quoted passage loses its '>' marker."""
     if md.startswith("#"):
         return [Piece(md, para)]
-    md = re.sub(r"^>\s?", "", md, flags=re.M)
+    src_md, md = md, re.sub(r"^>\s?", "", md, flags=re.M)
     sentences = re.split(r"(?<=[.?!:])\s+(?=\S)", inner(md))
     pieces, cur = [], []
     for s in sentences:
@@ -327,7 +365,7 @@ def split_paragraph(md: str, para: int) -> list[Piece]:
         cur.append(s)
     if cur:
         pieces.append(" ".join(cur))
-    return [Piece(rtl(x), para) for x in pieces]
+    return [Piece(with_sources(x, src_md), para) for x in pieces]
 
 
 def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
@@ -338,7 +376,7 @@ def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
             pieces += split_paragraph(md, para)
             para += 1
         # The continuation line quotes the passage itself (a quote, not its heading).
-        quoted = [x for x in text if x.startswith(">")] or text
+        quoted = [x for x in text if x.startswith(">")] or [x for x in text if not is_label(x)] or text
         words = re.sub(r"\*\*|\[\^[^\]]+\]|^(#+|>)\s*", "", " ".join(inner(x) for x in quoted)).split()
         lead = " ".join(words[:6]) + ("…" if len(words) > 6 else "")
         u = Unit(text, pieces, lead)
@@ -382,14 +420,26 @@ def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
     top: list[str] = []
     if page["cont"] is not None:
         top.append(cont_head(units[page["cont"]]))
+    shown = None                                   # the source label last set on this page
     for ui in page["texts"]:
         for md in units[ui].text:
-            if ".cont" in md.split("]{")[-1] and top and not top[-1].startswith("<"):
-                top[-1] = rtl(inner(top[-1]) + " " + inner(md))          # one printed paragraph
+            if is_label(md):
+                if md != shown:                    # the same source going on needs no second label
+                    top.append(md)
+                shown = md
+            elif ".cont" in md.split("]{")[-1] and top and not top[-1].startswith("<") and not is_label(top[-1]):
+                top[-1] = with_sources(inner(top[-1]) + " " + inner(md), top[-1])   # one printed paragraph
             else:
                 top.append(md)
+    last_para = None
     for pc in page["text_pieces"]:
-        top.append(pc.md)
+        # Pieces of one paragraph that share a page print as that paragraph: the
+        # split is for paging, not a break in the text.
+        if pc.para == last_para and top and not is_label(pc.md) and not top[-1].startswith(("<", "#")):
+            top[-1] = with_sources(inner(top[-1]) + " " + inner(pc.md), top[-1])
+        else:
+            top.append(pc.md)
+        last_para = pc.para
     if markers:
         if top and top[0].startswith("<p"):
             top[0] = top[0].replace("<p class=\"cont-head\">", f'<p class="cont-head"><span class="mk" dir="ltr">{label}</span>', 1)
@@ -652,16 +702,22 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
         front.append(f'<section class="contents"><h2>תוכן</h2><ol>{items}</ol></section>')
 
     md = []
+    # Several parts: each in its own container, so a part's last section (its key
+    # points) ends with the part instead of taking in the parts that follow.
+    wrap = whole and len(parts) > 1
     for i, p in enumerate(parts):
+        if wrap:
+            md.append("::: {.part-wrap}")
         if whole:
             first = " first" if i == 0 and not front else ""
             if not p.kicker and i > 0:
                 # No title: the session continues the one before, on the same page.
                 md.append(f'<div class="opener cont"><div class="orn">{ORN}</div></div>')
-                md.append(p.body)
-                continue
-            md.append(f'<div class="opener{first}{" paired" if p.pairs else ""}">{opener_html(p)}</div>')
+            else:
+                md.append(f'<div class="opener{first}{" paired" if p.pairs else ""}">{opener_html(p)}</div>')
         md.append(p.body)
+        if wrap:
+            md.append(":::")
     body = to_html("\n\n".join(md))
 
     parts = [x for x in (series, h1) if x]
@@ -706,7 +762,11 @@ def finis_alone(pdf: Path) -> bool:
 
 
 def main(argv: list[str]) -> int:
+    global OUT
     args = [a for a in argv if not a.startswith("--")]
+    lesson = "--lesson" in argv
+    if lesson:
+        OUT = OUT / "lesson"                      # never over the printed text
     if len(args) != 1:
         print(__doc__.split("\n\n")[1])
         return 1
@@ -714,7 +774,7 @@ def main(argv: list[str]) -> int:
     whole = (target / "sessions").is_dir()
     discourse = target if whole else target.parent.parent
     cfg = config(discourse)
-    parts = discourse_parts(discourse, cfg["meta"]) if whole else session_parts(target)
+    parts = discourse_parts(discourse, cfg["meta"], lesson) if whole else session_parts(target, lesson)
 
     # Preflight: what a printed product should not carry unnoticed.
     if not whole and not parts[0].talk and not parts[0].pairs and 'custom-style="Commentary"' not in parts[0].body:

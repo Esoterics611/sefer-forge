@@ -13,7 +13,8 @@ up against the OCR (scripts/ocr-match.py's reading finder), every
 explanation paragraph is anchored to the furthest OCR word read by its end,
 and a new pair starts wherever the reading moves on. Explanation before the
 first reading joins the first pair; text after the last reading closes the
-section on its own.
+section on its own, unless it is a few words finishing the sentence read
+(TAIL_JOIN), which print with it.
 
 The plan holds only the decisions; the text comes from the session's files,
 so the נוסח is ocr.md word for word and the explanation is commentary.md word
@@ -29,6 +30,10 @@ for word, by construction:
       breaks:                     # extra paragraph starts, beyond the print's own
         - וצ"ל קדימת
       bold: [והנה, ובישר]         # bolded where they open a printed paragraph
+    sources:                      # optional: one per "## Source:" section of ocr.md
+      - label: לשון אדמו"ר נ"ע     # a small line naming the source where a cut enters it
+      - label: עץ חיים · שער מ"ט · פרק ה'
+        quoted: true              # a cited source, set apart from the main text
     footnotes:                    # the print's notes, marked after their words
       - after: אותם בכח
         text: >-
@@ -36,6 +41,8 @@ for word, by construction:
     keys:                         # 5–8, each quoting the נוסח verbatim
       - label: ארץ קדמה לשמים
         quote: ארץ הוא בחי' רצוא שבתפלה
+    teaching:                     # optional: prompts/teaching-pass.md (scripts/apply-teaching.py);
+                                  #   also writes section.teaching.md, the teaching variant
     edits:                        # the readability pass (prompts/readability-pass.md)
       - from: נשע בהמית           # exact words of commentary.md, found once
         to: נפש הבהמית            # empty: the words are removed
@@ -177,7 +184,15 @@ class Nusach:
             self.notes.append(f"[^{label}]: {span(text)}")
         breaks = {where[locate(words, br, "nusach.breaks", lo=a, hi=b + 1)] for br in n.get("breaks") or []}
 
-        # tokens: [text, para_start, printed_start]
+        # The plan's `sources:` name ocr.md's sections ("## Source:" pages of a text
+        # taken from an edition): each cut shows a source's label where that source
+        # begins, and a quoted source is set apart from the main text.
+        self.sources = plan.get("sources") or []
+        sections = F.ocr_paragraph_sections(session) if self.sources else []
+        if self.sources and max(sections, default=0) >= len(self.sources):
+            raise PlanError(f"sources: {len(self.sources)} given, ocr.md has {max(sections) + 1} sections")
+
+        # tokens: [text, para_start, printed_start, source section]
         self.tokens: list[list] = []
         self.word_tok: list[int] = []          # range word index -> token index
         for pi in range(pa, pb + 1):
@@ -188,7 +203,7 @@ class Nusach:
                 text, ws = toks[ti]
                 first = ti == t0
                 self.tokens.append([text + marks.get((pi, ti), ""), first or (pi, ti) in breaks,
-                                    first and t0 == 0])
+                                    first and t0 == 0, sections[pi] if sections else None])
                 self.word_tok += [len(self.tokens) - 1] * len(ws)
         self.words = words[a:b + 1]
 
@@ -205,16 +220,21 @@ class Nusach:
 
     def markdown(self, t0: int, t1: int) -> list[str]:
         """Tokens t0..t1 as RTL paragraphs; the first always opens a paragraph."""
-        paras: list[tuple[list[str], bool, bool]] = []
+        paras: list[tuple[list[str], bool, bool, int | None]] = []
         for i in range(t0, t1 + 1):
-            text, para_start, printed = self.tokens[i]
+            text, para_start, printed, src = self.tokens[i]
             if para_start or i == t0:
                 # A cut that begins inside a paragraph continues it (.cont): the
                 # pamphlet rejoins the two when they share a page.
-                paras.append(([], printed, not para_start))
+                paras.append(([], printed, not para_start, src))
             paras[-1][0].append(text)
-        out = []
-        for toks, printed, cont in paras:
+        out, shown = [], None
+        for toks, printed, cont, src in paras:
+            source = self.sources[src] if src is not None else {}
+            if source.get("label") and src != shown:
+                out.append(f'[{source["label"]}]{{dir="rtl" .src-label}}')
+            shown = src
+            classes = (" .cont" if cont else "") + (" .quoted" if source.get("quoted") else "")
             for bw in (self.bold if printed else []):
                 k = len(bw)
                 head = [w for tk in toks[:k] for w in F.words(tk)]
@@ -223,7 +243,7 @@ class Nusach:
                     toks = [f"{lead}**{toks[0][len(lead):]}"] + toks[1:]
                     toks[k - 1] = toks[k - 1] + "**"
                     break
-            out.append(span(" ".join(toks)) if not cont else f'[{" ".join(toks)}]{{dir="rtl" .cont}}')
+            out.append(f'[{" ".join(toks)}]{{dir="rtl"{classes}}}' if classes else span(" ".join(toks)))
         return out
 
 
@@ -234,7 +254,10 @@ def commentary_paragraphs(session: Path) -> list[str]:
     _, body, err = F.split_frontmatter(f.read_text(encoding="utf-8"))
     if err:
         raise PlanError(f"commentary.md frontmatter: {err}")
-    return [" ".join(p.split()) for p in re.split(r"\n\s*\n", body) if p.strip()]
+    # `#` labels (a recording's part, the box a narration covers) and comment-only
+    # blocks are not speech: transcript-diff skips them, and so does the page.
+    return [" ".join(p.split()) for p in re.split(r"\n\s*\n", body)
+            if p.strip() and not p.lstrip().startswith("#") and not re.fullmatch(r"\s*<!--.*?-->\s*", p, re.S)]
 
 
 def anchors(nusach: Nusach, paras: list[str]) -> list[int]:
@@ -275,8 +298,15 @@ def pairs(nusach: Nusach, paras: list[str]) -> list[tuple[list[str], list[str]]]
             pending.append(p)
     if pending:                                      # never read: all of it with all the text
         units.append((len(nusach.words) - 1, pending))
-    if not units or units[-1][0] < len(nusach.words) - 1:
-        units.append((len(nusach.words) - 1, []))    # text past the last reading, on its own
+    end = len(nusach.words) - 1
+    if not units or units[-1][0] < end:
+        def mid_sentence(w: int) -> bool:
+            tok = re.sub(r"\[\^[^\]]+\]", "", F.COMMENT.sub("", nusach.tokens[nusach.word_tok[w]][0])).strip().strip("*")
+            return not tok.endswith((".", ":", ";", "?")) or tok.endswith(SNAP)
+        if units and end - units[-1][0] <= TAIL_JOIN and all(map(mid_sentence, range(units[-1][0], end))):
+            units[-1] = (end, units[-1][1])           # a few words finishing the sentence read
+        else:
+            units.append((end, []))                   # text past the last reading, on its own
     out, t_next = [], 0
     for n, (last_word, ps) in enumerate(units):
         t_last = nusach.word_tok[last_word]
@@ -291,6 +321,7 @@ def pairs(nusach: Nusach, paras: list[str]) -> list[tuple[list[str], list[str]]]
     return out
 
 
+TAIL_JOIN = 12        # words after the last reading that only finish its sentence print with it
 SNAP_REACH = 5        # tokens a cut may move to land on a sentence end
 CLAUSE_REACH = 3     # ... or before a clause or citation opener, or after a comma
 # Words that open a clause or a citation in this literature: a cut just before
@@ -353,11 +384,16 @@ def key_points(plan: dict, nusach: Nusach) -> list[str]:
     return out
 
 
-def build(session: Path, plan: dict) -> str:
-    if plan.get("boxes"):
+def build(session: Path, plan: dict, teaching: bool = False) -> str:
+    """section.md; with `teaching`, its teaching variant (section.teaching.md):
+    the same cuts, paired before the teaching pass so they never move, with each
+    explanation paragraph replaced by its `teaching:` text (prompts/teaching-pass.md)."""
+    if plan.get("boxes") and not teaching:
         print("  note: the plan's boxes are no longer used — text and explanation are paired by the reading")
     fm = {"session": session.name, "discourse": F.discourse_of(session).name,
           "title": plan.get("title") or "", "layout": "paired", "built_from": PLAN}
+    if teaching:
+        fm["variant"] = "teaching"            # prompts/teaching-pass.md
     head = ["---", yaml.safe_dump(fm, allow_unicode=True, sort_keys=False, width=1000).strip(), "---", ""]
     if plan.get("heading"):
         head += [f"**{span(plan['heading'])}**", "", span("• • •"), ""]   # David has "•", not "◆"
@@ -371,8 +407,15 @@ def build(session: Path, plan: dict) -> str:
         explained, _ = F.apply_edits(commentary_paragraphs(session), F.print_edits(plan))
     except F.EditError as e:
         raise PlanError(str(e))
+    paired = pairs(nusach, explained)
+    if teaching:
+        try:
+            taught = iter(F.apply_teaching([p for _, ex in paired for p in ex], plan.get("teaching")))
+        except F.EditError as e:
+            raise PlanError(str(e))
+        paired = [(text, [t for t in (next(taught) for _ in ex) if t]) for text, ex in paired]
     body = ["## הַנֹּסַח וְהַבֵּיאוּר", ""]
-    for text, explanation in pairs(nusach, explained):
+    for text, explanation in paired:
         body += ['::: {custom-style="Nusach"}'] + [ln for p in text for ln in (p, "")]
         body[-1] = ":::"
         body.append("")
@@ -469,6 +512,17 @@ def main(argv: list[str]) -> int:
         return 1
     target.write_text(text, encoding="utf-8")
     print(f"Wrote {target}", flush=True)
+    variant = session / "section.teaching.md"          # the optional teaching pass
+    if plan.get("teaching"):
+        try:
+            variant.write_text(build(session, plan, teaching=True), encoding="utf-8")
+        except PlanError as e:
+            print(f"Teaching pass not built — {e}")
+            return 1
+        print(f"Wrote {variant} (the teaching pass)", flush=True)
+    elif variant.exists():
+        variant.unlink()
+        print(f"Removed {variant}: the plan has no teaching pass", flush=True)
     # review.md records the box check too: refresh it, then check the session.
     here = Path(__file__).parent
     subprocess.call([sys.executable, str(here / "transcript-diff.py"), str(session)], stdout=subprocess.DEVNULL)

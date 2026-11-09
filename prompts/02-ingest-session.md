@@ -12,7 +12,7 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > **Step 0 — Where it stands.** Run `python scripts/session-status.py <SESSION_PATH>` and start at the first step that is not done. Never redo a finished step: a crash or a restart leaves finished files in place. If the voicenote is not transcribed, start Whisper now, in the background: `python scripts/transcribe.py <SESSION_PATH>` (an interrupted run resumes where it stopped). It takes about 0.9× the recording's length on the GPU, 2.4× on the CPU (`session-status.py` shows the estimate), so do the OCR while it runs.
 >
-> **Step 1 — OCR** (skip if `ocr.md` covers every photo). Follow `.claude/skills/ocr-session/SKILL.md`: cut the photos into strips with `scripts/ocr-strips.py`, read them strip by strip into a line-by-line draft, check the line count, write `ocr.md`, then a second pass against the strips.
+> **Step 1 — OCR** (skip if `ocr.md` covers every photo, or the session's text came from a digital edition: `## Source:` sections, no photos). Follow `.claude/skills/ocr-session/SKILL.md`: cut the photos into strips with `scripts/ocr-strips.py`, read them strip by strip into a line-by-line draft, check the line count, write `ocr.md`, then a second pass against the strips.
 >
 > **Step 2 — Match the OCR to the reading** (once Whisper is done). Run `python scripts/ocr-match.py <SESSION_PATH>` and read `<SESSION_PATH>/ocr-match.md`.
 > - For every *heard, not in OCR*, *in OCR, not heard* and *differs* entry, look at the strip that holds the line. If the photo shows the OCR missed or misread something, correct `ocr.md` now. If the photo agrees with the OCR, the speaker added, skipped or misread: leave it.
@@ -22,7 +22,7 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > **Step 3 — Clean the transcript.** Read `prompts/transcript-review-rules.md` first. Clean the `*.fixed.txt` (with its `*.timed.txt`) into `<SESSION_PATH>/commentary.md`: the full voicenote, in the speaker's words. Where he reads the text, his words are a quotation of `ocr.md`: correct Whisper's mis-hearings of it from there, and put the reading in quotation marks. The *commentary stretches* in `ocr-match.md` show where reading stops and explaining begins. Then run `python scripts/transcript-diff.py <SESSION_PATH>`, read `review.md`, and revert every change the rules do not allow. Re-run until it is clean.
 >
-> **Step 4 — Plan and build `section.md`.** Run `python scripts/build-section.py <SESSION_PATH> --init` and fill in `section-plan.yaml` (its header and the script's docstring show every field):
+> **Step 4 — Plan and build `section.md`.** Run `python scripts/build-section.py <SESSION_PATH> --init` (a session started by `scripts/box-session.py` has its starter plan already: title, heading and `sources:` are filled) and fill in `section-plan.yaml` (its header and the script's docstring show every field):
 > - `title`, `heading`, `lines`: the title block. `heading` is the parsha or gate; `lines` name the session's subject in a few words each.
 > - `nusach.start` / `end`: the reading range from Step 2. `breaks`: split the print's long paragraphs at sentence boundaries where the argument turns, every 3–8 printed lines. `bold`: the print's large opening words.
 > - `footnotes`: the print's notes, if `ocr.md` has a `[Footnotes:]` block.
@@ -33,14 +33,17 @@ Or just say **"ingest session discourses/NNN-<slug>/sessions/MMM"**: the `ingest
 >
 > **Step 5 — Read it through.** Read `section.md` from top to bottom, as its reader will: does each explanation follow the passage it explains, are the key points the passages the argument turns on, does the title say what the session is about? Fix in the plan and rebuild. Then print it, `python scripts/build-pamphlet.py <SESSION_PATH>`, and proof the PDF by the `proof-pdf` skill (`docs/print-standard.md`): `python scripts/proof-pdf.py output/pamphlets/<discourse>-<session>.pdf` with no errors, then every spread read and every finding fixed. Then the **readability pass** (`prompts/readability-pass.md`): correct or remove the short segments Whisper garbled, as `edits:` in the plan; rebuild and proof again.
 >
-> **Step 6 — Style pass** (the last step; `prompts/style-pass.md`). Read the explanation through once more and turn the spoken Hebrew into written Hebrew: speech markers, self-corrections, false starts and restatements go; meaning, examples, sources and order stay; the readings in quotation marks are never touched. Record it as `style:` in the plan, rebuild (`build-section.py` checks it), confirm the cuts did not move, print, proof, and read every spread.
+> **Step 6 — Style pass** (`prompts/style-pass.md`). Read the explanation through once more and turn the spoken Hebrew into written Hebrew: speech markers, self-corrections, false starts and restatements go; meaning, examples, sources and order stay; the readings in quotation marks are never touched. Record it as `style:` in the plan, rebuild (`build-section.py` checks it), confirm the cuts did not move, print, proof, and read every spread.
 >
-> **Step 7 — Report**, in one message:
+> **Step 7 — Teaching pass** (the last step; `prompts/teaching-pass.md`, skill `teaching-pass`). Rewrite the explanation as a written commentary on the text, about half as long: understand it in writing first (`teaching-notes.md`: what the part teaches, the idea inventory, the doubts), draft it per cut with `scripts/apply-teaching.py`, check it (`apply-teaching.py --check`, `check-teaching.py` on the discourse), rebuild (`build-section.py` writes `section.teaching.md`), print, proof and read every page, and tick the inventory. The pamphlet and the discourse print the teaching text; `section.md` keeps the lesson text, printed with `--lesson`. A doubt about what the speaker meant is never settled by guessing: leave the sentence out and ask.
+>
+> **Step 8 — Report**, in one message:
 > - the `session-status.py` line for the session;
 > - the reading range, and every correction made to `ocr.md` from the match, each with what the photo shows;
 > - the speaker's departures from the text that were left as spoken;
 > - the counts line from `review.md`, every Added entry with its reason, and every UNCLEAR flag with its time;
 > - the readability edits (corrected / removed / left for the user), and the style edits with a short before/after sample;
+> - the teaching pass: words before → after, what was cut as repetition and where it is kept, and the doubts put to the speaker;
 > - the `check-session.py` result, the pamphlet's path and its proof summary line, and the visual findings fixed or left.
 >
 > **Rules:**

@@ -7,7 +7,9 @@ puts scripts/ on the path, so `import forgelib` works from each of them.
 from __future__ import annotations
 
 import importlib.util
+import os
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -59,6 +61,12 @@ def meta(discourse: Path) -> dict:
 
 def voice_only(session: Path) -> bool:
     return meta(discourse_of(session)).get("type") == "voice-only"
+
+
+def text_sourced(session: Path) -> bool:
+    """The session's text came from an edition ("## Source:" in ocr.md), not photos."""
+    f = session / "ocr.md"
+    return f.exists() and bool(re.search(r"^## Source:", f.read_text(encoding="utf-8"), re.M))
 
 
 def find_discourse(name: str) -> Path | None:
@@ -119,29 +127,59 @@ def split_frontmatter(text: str) -> tuple[dict | None, str, str | None]:
 
 
 def ocr_body(session: Path) -> str:
-    """ocr.md without frontmatter, image headings and comments: the printed text only."""
+    """ocr.md without frontmatter, section headings and comments: the printed text only."""
     f = session / "ocr.md"
     if not f.exists():
         return ""
     _, body, _ = split_frontmatter(f.read_text(encoding="utf-8"))
-    body = re.sub(r"^## Image:.*$", "", body, flags=re.M)
+    body = re.sub(r"^## (?:Image|Source):.*$", "", body, flags=re.M)
     return COMMENT.sub(" ", body)
 
 
+# ocr.md sections: "## Image: <photo>" for a page read from a photo, or
+# "## Source: <url or book>" for a page of text taken from a digital edition
+# (no photo; the text as given, e.g. pasted from chabadlibrary.org).
+SECTION_HEADS = ("## Image:", "## Source:")
+
+
 def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
-    """ocr.md's paragraphs, flags kept, image headings and the photo notes dropped.
+    """ocr.md's paragraphs, flags kept, section headings and the photo notes dropped.
     notes=False leaves out each photo's printed footnotes too (its `[Footnotes:]`
     block, up to the next photo): the text as it reads, across photos, where a
     paragraph a photo leaves mid-sentence goes on in the next photo's first."""
+    return _ocr_paragraphs(session, notes)[0]
+
+
+def ocr_paragraph_sections(session: Path) -> list[int]:
+    """For each paragraph of ocr_paragraphs(session, notes=False), the number of the
+    "## Image:" / "## Source:" section it starts in (0 = the first section)."""
+    return _ocr_paragraphs(session, False)[1]
+
+
+def source_key(head: str) -> str:
+    """What a "## Source:" heading names, less its page number: two pages of one
+    edition (…/books/3901370076, …/books/3901370077) share a key."""
+    value = head.split(":", 1)[1].split()
+    return re.sub(r"\d+$", "", value[0]) if value else ""
+
+
+def _ocr_paragraphs(session: Path, notes: bool) -> tuple[list[str], list[int]]:
     _, body, _ = split_frontmatter((session / "ocr.md").read_text(encoding="utf-8"))
-    paras, in_notes, new_photo = [], False, False
+    paras, sections, in_notes, new_photo, section, head = [], [], False, False, -1, ""
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
-        if block.startswith("## Image:"):
-            in_notes, new_photo = False, bool(paras)
+        if block.startswith(SECTION_HEADS):
+            # A paragraph a page leaves mid-sentence goes on in the next page's
+            # first: always between photos; between "## Source:" pages only when
+            # they are pages of one text, not when the next section is another book.
+            same = not block.startswith("## Source:") or (
+                head.startswith("## Source:") and source_key(head) == source_key(block))
+            in_notes, new_photo = False, bool(paras) and same
+            section += 1
+            head = block.splitlines()[0]
         if block.startswith("[Footnotes:]"):
             in_notes = True
-        if not block or block.startswith("## Image:") or (in_notes and not notes):
+        if not block or block.startswith(SECTION_HEADS) or (in_notes and not notes):
             continue
         if re.fullmatch(r"<!--.*?-->", block, flags=re.S):    # a note about the photo, not text
             continue
@@ -150,8 +188,9 @@ def ocr_paragraphs(session: Path, notes: bool = True) -> list[str]:
             paras[-1] += " " + text
         else:
             paras.append(text)
+            sections.append(max(section, 0))
         new_photo = False
-    return paras
+    return paras, sections
 
 
 def printed(paragraph: str) -> str:
@@ -445,6 +484,100 @@ def print_edits(d: dict | None) -> list[dict]:
     prompts/style-pass.md), whose `from` is the text after the first."""
     d = d or {}
     return list(d.get("edits") or []) + list(d.get("style") or [])
+
+
+# --- the teaching pass (prompts/teaching-pass.md) -----------------------------
+# The last layer over `edits:` and `style:`, the last step of every narration:
+# the explanation rewritten as a written commentary on the text (about half as
+# long). Kept as `teaching:` beside `style:` (section-plan.yaml, or the
+# transcript's frontmatter), one entry per printed paragraph: `from` the
+# paragraph after the two passes, `to` its teaching text (empty: the paragraph
+# is dropped). The teaching text is what prints (*.teaching.md, discourse.md);
+# the lesson text before it prints with --lesson.
+
+def para_key(p: str) -> str:
+    """A paragraph as the teaching pass names it: no <!-- --> flags, single spaces."""
+    return " ".join(COMMENT.sub("", p).split())
+
+
+def prose(block: str) -> bool:
+    """A block of explanation (not a heading, quoted reading, note or bare flag)."""
+    b = block.lstrip()
+    return bool(COMMENT.sub("", b).strip()) and not b.startswith(("#", ">", "[^", ":::", "---"))
+
+
+def printed_paragraphs(session: Path) -> tuple[list[str], dict, Path]:
+    """The explanation's paragraphs as they print by default (after `edits:` and
+    `style:`), the dict that holds the passes, and its file: section-plan.yaml
+    once the session is laid out, else the transcript's frontmatter."""
+    src = session / ("transcript.md" if voice_only(session) else "commentary.md")
+    fm, body, err = split_frontmatter(src.read_text(encoding="utf-8"))
+    if err:
+        raise EditError(f"{src}: frontmatter: {err}")
+    plan_f = session / "section-plan.yaml"
+    holder, where = (load_yaml(plan_f), plan_f) if plan_f.exists() else (fm or {}, src)
+    blocks = [b for b in re.split(r"\n\s*\n", body.strip()) if b.strip()]
+    if not voice_only(session):                       # as build-section.py reads commentary.md
+        blocks = [" ".join(b.split()) for b in blocks if prose(b)]
+    blocks, _ = apply_edits(blocks, print_edits(holder), src.name)
+    return [para_key(b) for b in blocks if prose(b)], holder, where
+
+
+def apply_teaching(paras: list[str], entries: list[dict] | None) -> list[str | None]:
+    """Each paragraph replaced whole by its teaching text, None where dropped.
+    Every paragraph needs an entry and every entry a paragraph: a change made
+    upstream afterwards (an edit, a style rewrite) is reported, never printed as
+    a mix of the two versions."""
+    table: dict[str, list[str]] = {}          # paragraphs that read alike take their entries in order
+    for e in entries or []:
+        src = para_key(str(e.get("from") or ""))
+        if not src:
+            raise EditError(f"teaching: an entry with no `from`: {e}")
+        table.setdefault(src, []).append(para_key(str(e.get("to") or "")))
+    out = []
+    for p in paras:
+        k = para_key(p)
+        if not table.get(k):
+            raise EditError(f"teaching: no entry for the paragraph “{k[:60]}…” — the text changed since the "
+                            "teaching pass; redo it from scripts/apply-teaching.py --draft")
+        out.append(table[k].pop(0) or None)
+    if stale := [k for k, left in table.items() for _ in left]:
+        raise EditError(f"teaching: {len(stale)} entr{'y' if len(stale) == 1 else 'ies'} match no paragraph "
+                        f"(the text changed since the teaching pass), e.g. “{stale[0][:60]}…”")
+    return out
+
+
+def teach_blocks(text: str, entries: list[dict] | None) -> str:
+    """A transcript-like text (blocks parted by blank lines) with its prose
+    blocks replaced by their teaching text; headings, quoted readings and notes
+    stay as they are."""
+    blocks = re.split(r"\n\s*\n", text.strip())
+    taught = iter(apply_teaching([b for b in blocks if prose(b)], entries))
+    out = []
+    for b in blocks:
+        if prose(b):
+            t = next(taught)
+            if t:
+                out.append(t)
+        else:
+            out.append(b)
+    return "\n\n".join(out) + "\n"
+
+
+WIN_CHROME = "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+
+
+def chrome_path() -> str:
+    """The browser that prints the PDFs: $CHROME; else Windows Chrome under WSL
+    (the home machine); else a Chrome or Chromium on the PATH (a cloud container)."""
+    if os.environ.get("CHROME"):
+        return os.environ["CHROME"]
+    if Path(WIN_CHROME).exists():
+        return WIN_CHROME
+    for name in ("google-chrome", "chromium", "chromium-browser"):
+        if found := shutil.which(name):
+            return found
+    return WIN_CHROME
 
 
 def edit_counts(d: dict | None) -> str:

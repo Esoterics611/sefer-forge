@@ -191,6 +191,30 @@ section.keys { break-before: page; }
 /* A lesson's title shares its first page with the first passage. */
 .opener.paired + .pg { break-before: auto; }
 
+/* A text with its sources (a section plan's `sources:`): a quiet line names the
+   source where a cut enters it, and a quoted source (the Etz Chaim passage a
+   note of the maamar cites) is set apart from the maamar's own words: a size
+   smaller, with a rule at its side. */
+.pg .nusach p:has(> span.src-label) {
+  font-family: "David", "Guttman Frank";
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: var(--soft);
+  text-indent: 0 !important;
+  margin: 0 0 1mm;
+}
+.pg .nusach p:has(> span.src-label) + p { text-indent: 0; }
+.pg .nusach p:has(> span.quoted) {
+  font-size: 12pt;
+  line-height: 1.55;
+  text-indent: 0;
+  padding-right: 3mm;
+  border-right: 1.5px solid var(--rule);
+}
+.pg .nusach p:has(> span.src-label):not(:first-child) { margin-top: 2.5mm; }
+/* The maamar printed whole, each citation marked with its note's letter. */
+.pg .nusach span > sup { font-family: "David", "Guttman Frank"; font-weight: bold; font-size: 7.5pt; color: var(--rule); margin: 0 0.4mm; }   /* not a footnote's number (a > sup) */
+
 /* Transcript-style parts (voice-only sessions). */
 section.talk p { font-size: 12.3pt; line-height: 1.6; }
 

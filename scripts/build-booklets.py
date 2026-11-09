@@ -51,12 +51,14 @@ except ImportError:
     print("Missing dependency. Install with: pip install pyyaml")
     sys.exit(1)
 
+import forgelib as F
+
 CONFIG = Path("booklets/booklets.yaml")
 CSS = Path("templates/booklet.css")
 LATIN_CSS = Path("templates/booklet-latin.css")
 FONTS = Path("templates/fonts")
 OUT = Path("output/booklets")
-CHROME = os.environ.get("CHROME", "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe")
+CHROME = F.chrome_path()                # $CHROME, Windows Chrome under WSL, or one on the PATH
 STORY_COUNT = 211          # the author's introduction + stories 1-210
 GLOSSARY_FIT = ["", "tight", "tighter"]   # glossary classes in booklet-latin.css, tried in turn
 HEB = "א-ת"

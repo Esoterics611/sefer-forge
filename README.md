@@ -34,6 +34,10 @@ recording ──► Whisper (local, GPU) ──► .raw.txt / .timed.txt ──�
 
 1. **Capture.** You photograph the pages and record yourself reading and
    explaining them. Photos and recordings stay on this machine; git ignores them.
+   A text taken from a digital edition (chabadlibrary.org) is pasted in instead
+   of photographed. Before recording, a reading pack sets every source the text
+   cites (עץ חיים, פרי עץ חיים) under its citation, from the copies in `sources/`
+   (`prompts/references-pack.md`).
 2. **Transcribe.** `scripts/transcribe.py` runs ivrit.ai's Hebrew Whisper
    locally, on the GPU when there is one (about 0.9× the recording's length),
    and saves its progress so a crash loses nothing.
@@ -157,11 +161,12 @@ Books today (`ls books/`): `shaar-hayichud` (שער היחוד shiurim), `siddur
 |------|---------|
 | `discourses/` | Discourses and their sessions (photos and recordings local only) |
 | `books/<book>/` | `structure.yaml`, `metadata.yaml` (title, typography `polish:`), front and back matter |
+| `sources/` | The books our texts cite (עץ חיים, פרי עץ חיים; Sefaria exports, never edited), looked up with `scripts/source-lookup.py` |
 | `glossary/` | `whisper-fixes.yaml` (recurring mis-hearings, grows every lesson), `abbreviations.yaml` |
 | `prompts/` | The procedures: ingest, review rules, readability pass |
 | `.claude/skills/` | One skill per workflow |
 | `scripts/` | Transcription, OCR, matching, building, proofing, status |
-| `templates/` | Word reference template (`create-template.py`), pamphlet and booklet CSS |
+| `templates/` | Word reference template (`create-template.py`), pamphlet, booklet and reading-pack CSS |
 | `docs/` | Setup, print standard, agentic development, backlog |
 | `compiled/` | Assembled `<book>.md` (generated; never edit) |
 | `booklets/narration/` | Narration plans (one per episode), respellings for the voice, the YouTube record `youtube.yaml` |

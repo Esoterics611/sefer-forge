@@ -9,7 +9,8 @@ Usage:
 
 Images+voice sessions:
   ocr.md        valid frontmatter; one "## Image:" per photo, none for a
-                photo that is gone
+                photo that is gone; or, for a text taken from an edition,
+                "## Source:" sections and no photos
   commentary.md every word traceable to Whisper (transcript-diff's Added
                 count), UNCLEAR flags carry their time, review.md up to date
   section.md    valid frontmatter with a title; the three named sections in
@@ -160,6 +161,11 @@ def check_ocr(r: Report) -> list[str]:
     check_frontmatter(r, f)
     text = f.read_text(encoding="utf-8")
     heads = re.findall(r"^## Image:\s*(.+?)\s*$", text, flags=re.M)
+    sources = re.findall(r"^## Source:\s*(.+?)\s*$", text, flags=re.M)
+    if sources and heads:
+        r.error("ocr.md: both “## Image:” and “## Source:” sections: a session's text comes from photos or from an edition, not both")
+    elif sources:
+        r.note(f"ocr.md: text from {len(sources)} source page(s), no photos")
     photos = [p.name for p in F.image_files(r.session)]
     for p in photos:
         if p not in heads:
@@ -225,6 +231,8 @@ def check_paired(r: Report, body: str, parts: dict, ocr_words: list[str] | None)
         r.error("section.md: boxes or box labels in the paired layout (the explanation is never boxed)")
     check_rtl(r, "הנוסח והביאור", paired)
     text = "\n".join(c for k, c in divs if k == "Nusach")
+    # A source's label line (section-plan `sources:`) names the text; it is not part of it.
+    text = re.sub(r'^\[[^\n]*\]\{dir="rtl"[^}\n]*\.src-label[^}\n]*\}[ \t]*$', "", text, flags=re.M)
     if "{.underline}" in text:
         r.error("section.md נוסח: has {.underline} markup (the נוסח is plain flowing text)")
     n_words = F.words(text)
@@ -353,6 +361,35 @@ def check_section(r: Report, ocr_words: list[str] | None) -> None:
                 r.note(f"ביאור: {len(boxes)} boxes carry commentary.md word for word")
 
 
+def check_teaching(r: Report) -> None:
+    """The optional teaching pass (prompts/teaching-pass.md): its entries still
+    match the explanation, and the teaching variant is built from them. The
+    writing itself is checked by scripts/check-teaching.py."""
+    try:
+        paras, holder, where = F.printed_paragraphs(r.session)
+    except (F.EditError, OSError):
+        return                                     # reported by the checks above
+    if not holder.get("teaching"):
+        return
+    try:
+        after = F.apply_teaching(paras, holder["teaching"])
+    except F.EditError as e:
+        r.error(f"{where.name} {e}")
+        return
+    kept = [t for t in after if t]
+    words = lambda xs: sum(len(F.words(x)) for x in xs)
+    r.note(f"teaching pass: {len(paras)} paragraphs → {len(kept)}, {words(paras)} words → {words(kept)} "
+           f"(check the writing with scripts/check-teaching.py)")
+    if where.name == "section-plan.yaml":
+        v = r.session / "section.teaching.md"
+        if not v.exists():
+            r.error("section-plan.yaml has a teaching pass but there is no section.teaching.md: run build-section.py")
+        else:
+            nus = lambda f: [b for k, b in DIV.findall(f.read_text(encoding="utf-8")) if k == "Nusach"]
+            if nus(v) != nus(r.session / "section.md"):
+                r.error("section.teaching.md: its cuts of the text differ from section.md's: run build-section.py")
+
+
 def check(session: Path) -> Report:
     r = Report(session)
     if F.voice_only(session):
@@ -370,20 +407,35 @@ def check(session: Path) -> Report:
                 r.error(f"transcript.md edits/style: {e}")
             check_unclear_times(r, t, body)
             check_cleanup(r, t)
+            check_teaching(r)
         return r
 
-    if not F.image_files(session):
+    if not F.image_files(session) and not F.text_sourced(session):
         r.warn("no photos in images/")
     if not F.audio_files(session):
         r.warn("no voicenote in voicenotes/")
     ocr_words = check_ocr(r) if (session / "ocr.md").exists() else None
     com = session / "commentary.md"
     if com.exists():
-        check_frontmatter(r, com)
+        fm, body = check_frontmatter(r, com)
+        # A narration refined before its layout is decided keeps the passes in
+        # commentary.md's frontmatter (scripts/refined-text.py); a laid-out session
+        # keeps them in section-plan.yaml.
+        if fm and (fm.get("edits") or fm.get("style")):
+            if (session / "section-plan.yaml").exists():
+                r.warn("commentary.md frontmatter has edits/style and there is a section-plan.yaml: "
+                       "move them into the plan, where the build applies them")
+            try:
+                F.edit_transcript(body, F.print_edits(fm))
+                r.note(f"{F.edit_counts(fm)} in commentary.md's frontmatter")
+            except F.EditError as e:
+                r.error(f"commentary.md edits/style: {e}")
         check_unclear_times(r, com, com.read_text(encoding="utf-8"))
         check_cleanup(r, com)
     if (session / "section.md").exists():
         check_section(r, ocr_words)
+    if com.exists():
+        check_teaching(r)
     return r
 
 

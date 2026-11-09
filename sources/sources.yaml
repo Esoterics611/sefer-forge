@@ -1,0 +1,41 @@
+# Reference works kept in the repo: the books our texts cite, so a session's
+# citations can be looked up and quoted (scripts/source-lookup.py) and set
+# beside the text (scripts/build-references.py). Each file is a Sefaria export,
+# kept exactly as downloaded: never edit it. sources/README.md says how to add
+# a work.
+#
+#   file       the export JSON (Hebrew, "merged" version)
+#   cite_as    how our texts abbreviate the work (first word of a citation)
+#   gates      numbered: gate N is address N (Etz Chaim's 50 gates);
+#              otherwise gate N is the work's Nth named gate (Pri Etz Chaim)
+#   numbering  where the editions our texts cite are numbered differently
+#              from this file, found while placing citations
+
+works:
+  etz-chaim:
+    title: "עץ חיים"
+    file: sources/arizal/etz-chaim.he.json
+    cite_as: ['ע"ח', "עץ", 'בע"ח']
+    gates: numbered
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Arizal and Chaim Vital/Sefer Etz Chaim/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Sefer_Etz_Chaim
+    version: "Sefer Etz Chaim, from http://www.hebrew.grimoar.cz/vital/ec_chajim.htm (Public Domain)"
+    fetched: 2026-11-05
+    numbering:
+      - "Gates 1-50 as in the standard (Warsaw) order; addresses gate.chapter.paragraph. Shaar HaKlalim is 'Shaar HaKlalim.N.M'."
+      - "Gate 39 (מ\"ן ומ\"ד): chapter N = דרוש N; in דרוש י\"א the simanim are paragraphs, siman N = paragraph N+1 (39.11.8 = סי' ז')."
+      - "Gate 40 (פנימיות וחיצוניות): what the Alter Rebbe cites as דרוש ב' and דרוש ג' is in 40.2.1."
+      - "Gate 42: chapters 6-12 are empty in this file; 42.13-17 hold later material of the gate."
+      - "The Shklov print numbers some gates one lower (שער כ\"ו = Shklov שער כ\"ה)."
+  pri-etz-chaim:
+    title: "פרי עץ חיים"
+    file: sources/arizal/pri-etz-chaim.he.json
+    cite_as: ['פע"ח', "פרי", 'בפע"ח']
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Arizal and Chaim Vital/Pri Etz Chaim/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Pri_Etz_Chaim
+    version: "Pri Etz Chaim, from http://www.hebrew.grimoar.cz/vital/pri_ec_chajim.htm (Public Domain)"
+    fetched: 2026-11-05
+    numbering:
+      - "Gates by name (Gate of Prayer = שער א'). Each gate has an 'Introduction' block and numbered chapters."
+      - "Gate of Prayer: the Alter Rebbe's פע\"ח ש\"א פ\"ו is chapter 7 here (Gate of Prayer.7.2-7.4)."
