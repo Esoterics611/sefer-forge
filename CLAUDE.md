@@ -69,6 +69,7 @@ Before committing, `git config user.email` must print the Esoterics611 address; 
 - "status" / "where are we" / "what's next" → skill `session-status`.
 - "new discourse" → use `prompts/01-new-discourse.md`.
 - "new session" / new photos + recording for a discourse → skill `new-session`.
+- a new recording that adds to a session already done ("this goes as part of the introduction", "an addition to הערה N / session N") → skill `extend-session`: a new labelled part at the end of the session, through the same steps, its `edits:` / `style:` / `teaching:` appended (never rewritten), the opening part refreshed with `python scripts/sync-opening.py <session> <discourse>/<name>.md`, reassembled, printed and proofed.
 - "OCR" / a photo added or replaced → skill `ocr-session`.
 - "ingest session" / "process this session" / "continue" → skill `ingest-session` (`prompts/02-ingest-session.md`, images+voice) or, for a voice-only discourse, `prompts/02v-ingest-voice-session.md` (skill: `ingest-voice-session`).
 - "new lesson" / "ingest voice session" / "next shiur" → `prompts/02v-ingest-voice-session.md`.

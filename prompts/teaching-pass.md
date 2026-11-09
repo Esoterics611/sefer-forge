@@ -141,8 +141,9 @@ a length outside 35–65% of the default. Change it, or keep it on purpose.
   points.
 - A narration not yet laid out: run `python scripts/refined-text.py <session>`
   to get `refined.teaching.md`. For an opening part made from a session (like
-  `introduction.md`), copy the paragraphs of `refined.teaching.md` into
-  `<name>.teaching.md` the same way the default file was made.
+  `introduction.md`), run `python scripts/sync-opening.py <session>
+  <discourse>/<name>.md`: it carries the paragraphs of `refined.md` into
+  `<name>.md` and those of `refined.teaching.md` into `<name>.teaching.md`.
 
 **5. Discourse check.** Run `python scripts/check-teaching.py <discourse>`. It
 covers every session and the opening parts, and reports any five-word phrase

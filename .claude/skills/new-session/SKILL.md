@@ -3,6 +3,9 @@ name: new-session
 description: Start a new session in a discourse - make the folder, copy in the photos and voicenote the user names, start Whisper in the background, and begin the OCR while it runs. Use when the user says "new session", "here are the photos and the recording for ...", or drops new files for a discourse. Argument - the discourse slug or path, then any file paths.
 ---
 
+0. **New, or an addition?** A recording that continues a part already ingested (the
+   introduction, a הערה, a lesson: "this goes as part of ...") is not a new session: skill
+   `extend-session` adds it to the session that holds that part.
 1. **Folder.** `./scripts/new-session.sh <discourse>` creates the next `sessions/MMM/`
    (with `images/` for photo discourses). If the user's files are already in an existing
    empty session folder, use that one. A narration of a box of the discourse's reading
