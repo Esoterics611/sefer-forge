@@ -85,6 +85,9 @@ body {
 .contents ol { list-style: none; margin: 0; padding: 0; }
 .contents li { margin: 0 0 3mm; font-family: "Guttman Frank", "David"; font-size: 13pt; line-height: 1.35; }
 .contents li .sub { display: block; font-family: "David", "Guttman Frank"; font-size: 11pt; color: var(--soft); }
+.contents li.group { margin-top: 5mm; font-weight: bold; }          /* נספח, over the addendum's parts */
+.contents li.in-group { padding-right: 6mm; }
+.contents li.after-group { margin-top: 5mm; }
 
 /* Opening page of each part when a pamphlet holds several. */
 .opener { break-before: page; text-align: center; margin: 0 0 8mm; }
@@ -126,14 +129,14 @@ section.nusach p:first-of-type { text-indent: 0; }
 section.nusach strong { font-size: 1.12em; }
 
 /* Key points: a label, then the quoted passage. */
-section.keys p:not(blockquote p) {
+section.keys p:not(blockquote p), .keys-all p:not(blockquote p) {
   font-family: "David", "Guttman Frank";
   font-weight: bold;
   font-size: 12pt;
   margin: 4.5mm 0 1mm;
   break-after: avoid;
 }
-section.keys p:not(blockquote p)::before { content: "◆"; font-family: "Guttman Frank"; font-weight: normal; color: var(--rule); font-size: 7pt; margin-left: 2mm; vertical-align: 2pt; }
+section.keys p:not(blockquote p)::before, .keys-all p:not(blockquote p)::before { content: "◆"; font-family: "Guttman Frank"; font-weight: normal; color: var(--rule); font-size: 7pt; margin-left: 2mm; vertical-align: 2pt; }
 section.keys p:first-of-type { margin-top: 0; }
 
 blockquote {
@@ -193,6 +196,7 @@ section.keys { break-before: page; }
 .pg.flow { break-before: auto; margin-top: 6.5mm; }
 .opener + .pg.flow { margin-top: 0; }
 .pg.flow .nusach { break-after: avoid; }
+.pg.flow.keep .nusach p, .pg.flow .nusach p:has(> span.quoted) { break-inside: avoid; }   /* a paragraph of a short cut, a quoted passage: whole */
 .pg.flow .nusach p { orphans: 3; widows: 3; }
 .pg.flow .nusach p:has(> span.src-label) { break-after: avoid; }
 .pg.flow .biur > p:first-child { break-before: avoid; }
@@ -260,5 +264,47 @@ section.footnotes p { margin-bottom: 1.5mm; }
 a.footnote-ref { text-decoration: none; color: inherit; }
 a.footnote-ref sup { font-size: 0.7em; }
 a.footnote-back { display: none; }
+
+/* The addendum (meta.yaml `addendum:`, scripts/assemble-discourse.py): the speaker's
+   long writing on a passage, after every other part, under one heading; in the
+   passage's place, the basics with a quiet line pointing here. With `notes:
+   addendum`, the teaching text's notes are a part of it, numbered as in the text.
+   With `keys: end`, the key points of every part follow it, once, a heading for
+   each part. */
+.addendum-head {
+  break-before: page;
+  text-align: center;
+  font-family: "Guttman Frank", "David";
+  font-weight: bold;
+  font-size: 24pt;
+  line-height: 1.2;
+  margin: 0 0 6mm;
+  padding-bottom: 4mm;
+  border-bottom: 1px solid var(--rule);
+}
+.opener.after-head { break-before: auto; }
+.pg .biur p:has(> span.see), .pg .nusach p:has(> span.see) {
+  font-size: 10pt;
+  line-height: 1.45;
+  color: var(--soft);
+  text-indent: 0;
+  margin-top: 2.5mm;
+}
+.addnotes p { font-size: 11.3pt; line-height: 1.52; text-indent: 0; margin: 0 0 3mm; }
+.addnotes span.fnnum { font-weight: bold; color: var(--rule); margin-left: 1.6mm; }
+.keys-all h3 {
+  text-align: center;
+  font-size: 12.5pt;
+  margin: 5.5mm 0 2mm;
+  padding-bottom: 1.2mm;
+  border-bottom: 1px solid var(--rule);
+  break-inside: avoid;          /* keeps the spacer below with the heading */
+}
+.keys-all h3::after { content: ""; display: block; height: 32mm; margin-bottom: -32mm; }   /* a part's heading keeps two of its points with it */
+.keys-all section:first-child h3 { margin-top: 0; }
+.keys-all p:not(blockquote p) { font-size: 10.8pt; line-height: 1.4; margin: 2.2mm 0 0.5mm; }
+.keys-all section > p:first-of-type { margin-top: 0; }
+.keys-all blockquote { font-size: 11.3pt; line-height: 1.4; margin: 0.5mm 0 1.2mm; padding-right: 3mm; break-inside: avoid; }
+.keys-all blockquote p { margin-bottom: 0; }
 
 .finis { font-family: "Guttman Frank"; text-align: center; color: var(--rule); font-size: 9pt; letter-spacing: 0.6em; margin-top: 10mm; }

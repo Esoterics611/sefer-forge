@@ -37,6 +37,16 @@ discourse's meta.yaml overrides any of them:
       subtitle: "..."      # whole-discourse cover only
       dedication: "..."    # optional page after the cover
       layout: paired       # optional: a page per cut (default: flowing)
+      notes: addendum      # optional: the teaching text's notes print in the
+                           #   addendum, numbered in the text (default: each
+                           #   under the paragraph that cites it)
+
+An addendum. A discourse whose meta.yaml names `addendum:` sessions (the
+speaker's long writing on a passage) prints them after every other part,
+under a "נספח" heading; in each one's place prints its inline.md, the basics
+pointing to it (scripts/assemble-discourse.py). With `keys: end` the key points
+of every part print once, gathered at the very end. With `notes: addendum` the
+notes join the addendum, a part of their own before the long writing.
 
 Layout. By default the text and its explanation flow: each cut of the text,
 then what the speaker says about it, one after another, a cut beginning
@@ -79,6 +89,9 @@ NIQQUD = re.compile(r"[֑-ׇ]")
 FRONTMATTER = re.compile(r"\A---\n([\s\S]*?)\n---\s*\n?")
 COMMENT = re.compile(r"\s*<!--.*?-->", re.S)
 SESSION_MARK = re.compile(r"^<!-- session: (\S+) -->$", re.M)
+ADDENDUM_MARK = "<!-- addendum -->"     # assemble-discourse.py: the parts after it are the addendum
+KEYS_PART = "keys"                       # assemble-discourse.py: every part's key points, gathered
+ADDENDUM = "נספח"
 SPAN = r'\[(.+?)\]\{dir="rtl"\}'
 BOX_LABEL = re.compile(r'^\*\*\[■ ביאור — (.+?)\]\{dir="rtl"\}\*\*$', re.M)
 # section.md's three named sections → a class for each in pamphlet.css
@@ -131,6 +144,7 @@ class Part:
                  pairs: list | None = None, tail: str = ""):
         self.kicker, self.lines, self.descriptor, self.body, self.talk = kicker, lines, descriptor, body, talk
         self.pairs, self.tail = pairs, tail
+        self.role = ""                    # "addendum", "keys" (the gathered key points), or the body
 
 
 DIV = re.compile(r'^::: \{custom-style="(Nusach|Commentary)"\}\n(.*?)\n:::', re.M | re.S)
@@ -272,10 +286,55 @@ def discourse_parts(discourse: Path, meta: dict, lesson: bool = False) -> list[P
                        check=True, capture_output=True)
     source = "discourse.lesson.md" if lesson else "discourse.md"
     _, body = frontmatter((discourse / source).read_text(encoding="utf-8"))
-    chunks = SESSION_MARK.split(body)[1:]            # [name, text, name, text, ...]
-    if not chunks:
+    marks = list(SESSION_MARK.finditer(body))
+    if not marks:
         sys.exit(f"{discourse}/discourse.md has no sessions; run scripts/assemble-discourse.py first")
-    return [parse_part(unflag(text)) for text in chunks[1::2]]
+    start = body.find(ADDENDUM_MARK)
+    parts = []
+    for k, m in enumerate(marks):
+        text = body[m.end():marks[k + 1].start() if k + 1 < len(marks) else len(body)]
+        if m.group(1) == KEYS_PART:
+            parts.append(keys_part(unflag(text)))
+            continue
+        part = parse_part(unflag(text.replace(ADDENDUM_MARK, "")))
+        if start != -1 and m.start() > start:
+            part.role = "addendum"
+        parts.append(part)
+    return parts
+
+
+def keys_part(md: str) -> Part:
+    """The key points of every part, gathered (meta.yaml `keys: end`): a heading
+    for each part, then its labels and passages."""
+    md = re.sub(r"^## .*$", "", md.strip(), count=1, flags=re.M).strip()
+    part = Part("נקודות מפתח", [], "", f"::: {{.keys-all}}\n{md}\n:::", talk=False)
+    part.role = "keys"
+    return part
+
+
+def notes_to_addendum(parts: list[Part]) -> list[Part]:
+    """meta.yaml `notes: addendum`: each part's notes (^[...] in its teaching
+    text) leave their paragraphs for a part of the addendum, numbered as in the
+    text, and the part ends with a line pointing there. Returns the new parts,
+    in the order of the parts they come from."""
+    out = []
+    for p in parts:
+        if not p.pairs or p.role:
+            continue
+        notes: list[str] = []
+        for _, expl in p.pairs:
+            for i, md in enumerate(expl):
+                expl[i], found = take_notes(md, len(notes) + 1)
+                notes += found
+        if not notes:
+            continue
+        name, _, rest = p.kicker.partition(" — ")
+        p.pairs[-1][1].append(rtl(f"ההוספות המסומנות במספרים — ב{ADDENDUM}, \"הוספות לביאור {name}\".", "see"))
+        body = "\n\n".join(rtl(f"[{n}]{{.fnnum}} {note}") for n, note in enumerate(notes, 1))
+        extra = Part(f"הוספות לביאור {name}", [rest] if rest else [], "", f"::: {{.addnotes}}\n{body}\n:::", talk=False)
+        extra.role = "addendum"
+        out.append(extra)
+    return out
 
 
 SUPERSCRIPT = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹", "0123456789")
@@ -341,7 +400,7 @@ def rtl(text: str, cls: str = "") -> str:
 
 # Source markup from build-section.py (a plan's `sources:`): a label line naming
 # the source a cut enters, and the class of a quoted source's paragraphs.
-SOURCE_CLASSES = (".quoted", ".src-label")
+SOURCE_CLASSES = (".quoted", ".src-label", ".see")     # .see: a line pointing to the addendum
 
 
 def attrs(md: str) -> str:
@@ -648,6 +707,9 @@ def text_area(css: str) -> float:
     return (210 - top - bottom) * 72 / 25.4
 
 
+KEEP_CHARS = 700          # in a cut up to this long (about ten lines), no paragraph splits over a page
+
+
 def flow(parts: list[Part]) -> int:
     """The flowing layout (the default; `layout: paired` in meta.yaml's
     pamphlet: block, or --paired, for the page-per-cut one): each cut of the
@@ -662,7 +724,10 @@ def flow(parts: list[Part]) -> int:
         blocks = []
         for ui, u in enumerate(units):
             pg = {"cont": None, "texts": [ui] if u.pieces else [], "text_pieces": u.text_pieces, "pieces": u.pieces}
-            blocks.append(page_md(units, pg, False, "", flow=True))
+            block = page_md(units, pg, False, "", flow=True)
+            if sum(len(inner(x)) for x in u.text) <= KEEP_CHARS:      # its paragraphs never split
+                block = block.replace("::: {.pg .flow}", "::: {.pg .flow .keep}", 1)
+            blocks.append(block)
         p.body = "\n\n".join(blocks) + "\n\n" + p.tail.replace("{.part .keys}", "{.part .keys .flow}")
         cuts += len(units)
     return cuts
@@ -764,10 +829,15 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
     if cfg.get("dedication"):
         front.append(f'<section class="dedication"><div>{esc(cfg["dedication"])}</div></section>')
     if whole and sum(1 for p in parts if p.kicker) > 1:
-        items = "".join(
-            f"<li>{esc(p.kicker)}" + (f'<span class="sub">{esc(" · ".join(p.lines))}</span>' if p.lines else "")
-            + "</li>" for p in parts if p.kicker)
-        front.append(f'<section class="contents"><h2>תוכן</h2><ol>{items}</ol></section>')
+        items, in_addendum = [], False
+        for p in (x for x in parts if x.kicker):
+            if p.role == "addendum" and not in_addendum:
+                items.append(f'<li class="group">{ADDENDUM}</li>')
+            in_addendum = p.role == "addendum"
+            cls = "in-group" if in_addendum else ("after-group" if p.role == "keys" else "")
+            items.append(f'<li{f" class=\"{cls}\"" if cls else ""}>{esc(p.kicker)}'
+                         + (f'<span class="sub">{esc(" · ".join(p.lines))}</span>' if p.lines else "") + "</li>")
+        front.append(f'<section class="contents"><h2>תוכן</h2><ol>{"".join(items)}</ol></section>')
 
     md = []
     # Several parts: each in its own container, so a part's last section (its key
@@ -778,11 +848,16 @@ def build_html(cfg: dict, parts: list[Part], whole: bool, css: str) -> tuple[str
             md.append("::: {.part-wrap}")
         if whole:
             first = " first" if i == 0 and not front else ""
+            head = p.role == "addendum" and (i == 0 or parts[i - 1].role != "addendum")
+            if head:                              # the addendum's title, over its first part
+                md.append(f'<div class="addendum-head">{ADDENDUM}</div>')
             if not p.kicker and i > 0:
                 # No title: the session continues the one before, on the same page.
                 md.append(f'<div class="opener cont"><div class="orn">{ORN}</div></div>')
             else:
-                md.append(f'<div class="opener{first}{" paired" if p.pairs else ""}">{opener_html(p)}</div>')
+                cls = first + (" paired" if p.pairs else "") + (" after-head" if head else "") \
+                    + (f" {p.role}" if p.role else "")
+                md.append(f'<div class="opener{cls}">{opener_html(p)}</div>')
         md.append(p.body)
         if wrap:
             md.append(":::")
@@ -849,6 +924,13 @@ def main(argv: list[str]) -> int:
         print("  note: no explanation in section.md yet; the session is not fully ingested")
     if UNCLEAR_COUNT:
         print(f"  note: {UNCLEAR_COUNT} UNCLEAR flag(s) in the text (not printed); resolve before publishing")
+
+    if whole and cfg.get("notes") == "addendum":
+        extra = notes_to_addendum(parts)
+        if extra:
+            at = next((i for i, p in enumerate(parts) if p.role), len(parts))
+            parts[at:at] = extra
+            print(f"  notes: {len(extra)} part(s) of notes moved to the addendum")
 
     css = CSS.read_text(encoding="utf-8")
     name = discourse.name if whole else f"{discourse.name}-{target.name}"

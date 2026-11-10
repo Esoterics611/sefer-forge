@@ -63,4 +63,13 @@ reading checked against the sources before the text is finished. Box 4's
 narration (`box-session.py ... 4`) starts its text at "וכ"כ בע"ח של"ט דרוש י"א":
 the words before it are this session's.
 
+Layout (2026-11-10, at the speaker's review: "we screwed up the formatting"):
+session 005's long writing, with the שער הגלגולים passages, prints at the end as
+an addendum (נספח); in its place after הערה ג', sessions/005/inline.md: the Alter
+Rebbe's words and the basics, pointing to the addendum. הערה ג''s seven notes
+print in the addendum too ("הוספות לביאור הערה ג'"), numbered in the text. The key
+points of all four parts print once, after the addendum (meta.yaml `addendum:`,
+`keys: end`, `pamphlet: notes: addendum`). Next: the speaker's recording on שער
+הגלגולים.
+
 Open: the slug and title are working names; the book this goes in is not chosen.

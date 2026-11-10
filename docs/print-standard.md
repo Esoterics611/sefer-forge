@@ -22,6 +22,13 @@ note of the teaching text stays with its paragraph; the key points follow the
 explanation; each part opens on a new page. The old layout, each cut opening its
 own page group with a "המשך הביאור על" line where an explanation runs on, is
 still there (`layout: paired` in meta.yaml's `pamphlet:`, or `--paired`).
+A discourse may also print an **addendum** (נספח) after all its parts:
+`addendum:` sessions in its meta.yaml print there whole, the speaker's long
+writing on a passage, with the basics in its place (the session's `inline.md`,
+ending with a quiet line pointing to the addendum); `pamphlet: notes: addendum`
+moves the teaching text's notes there too, numbered as in the text; `keys: end`
+gathers the key points of every part into one list at the very end, a heading
+for each part, instead of after each part (scripts/assemble-discourse.py).
 Voice-only lessons pair the same way: each topic heading and the passage read
 (the transcript's `>` quotes), then the explanation that follows. The Word book
 flows likewise (each cut over a rule, its explanation after it).
