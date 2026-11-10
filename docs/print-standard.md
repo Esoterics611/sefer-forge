@@ -28,7 +28,8 @@ writing on a passage, with the basics in its place (the session's `inline.md`,
 ending with a quiet line pointing to the addendum); `pamphlet: notes: addendum`
 moves the teaching text's notes there too, numbered as in the text; `keys: end`
 gathers the key points of every part into one list at the very end, a heading
-for each part, instead of after each part (scripts/assemble-discourse.py).
+for each part, instead of after each part, and `keys: none` leaves them out
+(scripts/assemble-discourse.py).
 Voice-only lessons pair the same way: each topic heading and the passage read
 (the transcript's `>` quotes), then the explanation that follows. The Word book
 flows likewise (each cut over a rule, its explanation after it).

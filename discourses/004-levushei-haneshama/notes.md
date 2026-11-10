@@ -68,8 +68,9 @@ session 005's long writing, with the שער הגלגולים passages, prints at
 an addendum (נספח); in its place after הערה ג', sessions/005/inline.md: the Alter
 Rebbe's words and the basics, pointing to the addendum. הערה ג''s seven notes
 print in the addendum too ("הוספות לביאור הערה ג'"), numbered in the text. The key
-points of all four parts print once, after the addendum (meta.yaml `addendum:`,
-`keys: end`, `pamphlet: notes: addendum`). Next: the speaker's recording on שער
+points are left out ("they don't make sense and are unnecessary, remove them
+completely for now", the speaker, 2026-11-10) (meta.yaml `addendum:`,
+`keys: none`, `pamphlet: notes: addendum`). Next: the speaker's recording on שער
 הגלגולים.
 
 Open: the slug and title are working names; the book this goes in is not chosen.

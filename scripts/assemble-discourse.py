@@ -23,7 +23,8 @@ Optional keys in <discourse-dir>/meta.yaml:
                                  #   to the addendum
     keys: end                    # the key points (נקודות מפתח) of every part
                                  #   gathered into one list at the very end, instead
-                                 #   of closing each part
+                                 #   of closing each part; `keys: none` leaves them
+                                 #   out of discourse.md altogether
 
 Markdown footnote labels ([^1]) are prefixed with the session number so
 labels from different sessions never collide in the book.
@@ -207,8 +208,8 @@ def main() -> int:
         else:
             fragments.append((s.name, content))
 
-    if meta.get("keys") == "end":
-        groups: list[tuple[str, str]] = []
+    groups: list[tuple[str, str]] = []
+    if meta.get("keys") in ("end", "none"):
         for k, (name, content) in enumerate(fragments + addenda):
             rest, keys = take_keys(content)
             if keys:
@@ -218,8 +219,9 @@ def main() -> int:
                 fragments[k] = (name, rest)
             else:
                 addenda[k - len(fragments)] = (name, rest)
-    else:
-        groups = []
+        if meta.get("keys") == "none":
+            print(f"Key points of {len(groups)} part(s) left out (meta.yaml keys: none)")
+            groups = []
 
     if not fragments:
         print("No section.md / transcript.md files found.")

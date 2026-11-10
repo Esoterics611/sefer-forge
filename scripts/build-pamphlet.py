@@ -45,7 +45,8 @@ An addendum. A discourse whose meta.yaml names `addendum:` sessions (the
 speaker's long writing on a passage) prints them after every other part,
 under a "נספח" heading; in each one's place prints its inline.md, the basics
 pointing to it (scripts/assemble-discourse.py). With `keys: end` the key points
-of every part print once, gathered at the very end. With `notes: addendum` the
+of every part print once, gathered at the very end; with `keys: none`, nowhere
+(a session's own pamphlet included). With `notes: addendum` the
 notes join the addendum, a part of their own before the long writing.
 
 Layout. By default the text and its explanation flow: each cut of the text,
@@ -924,6 +925,10 @@ def main(argv: list[str]) -> int:
         print("  note: no explanation in section.md yet; the session is not fully ingested")
     if UNCLEAR_COUNT:
         print(f"  note: {UNCLEAR_COUNT} UNCLEAR flag(s) in the text (not printed); resolve before publishing")
+
+    if cfg["meta"].get("keys") == "none":         # no key points (meta.yaml), in a session's pamphlet too
+        for p in parts:
+            p.tail = re.sub(r"\n*## \[◆\]\{\.orn\}.*?\{\.part \.keys\}.*", "", p.tail, flags=re.S)
 
     if whole and cfg.get("notes") == "addendum":
         extra = notes_to_addendum(parts)
