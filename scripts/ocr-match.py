@@ -63,12 +63,17 @@ def heard_tokens(session: Path) -> list[Tok]:
     return [Tok(w, F.skeleton(w), when) for w, when in F.timed_words(session) if F.plain(w)]
 
 
-def match_seq(ocr: list[Tok]) -> tuple[list[str], list[int]]:
+def match_seq(ocr: list[Tok], heard_keys: set[str] | None = None) -> tuple[list[str], list[int]]:
     """OCR skeletons for SequenceMatcher, abbreviations replaced by their usual
-    spoken form, with each entry's OCR token index."""
+    spoken form, with each entry's OCR token index. With `heard_keys` (the
+    heard words' skeletons), an abbreviation takes the first of its spoken forms
+    that was heard in full, the longest (מ"ן: מיין נוקבין, or מים נוקבים), else its usual one."""
     seq, idx = [], []
     for i, t in enumerate(ocr):
         exps = F.expansions(t.text) if F.is_abbrev(t.text) else []
+        if exps and heard_keys:                  # the longest spoken form heard in full
+            heard_exps = [e for e in exps if all(w in heard_keys for w in e)]
+            exps = [max(heard_exps, key=len)] if heard_exps else exps
         for w in (exps[0] if exps else [t.sk]):
             seq.append(w)
             idx.append(i)
@@ -167,11 +172,12 @@ def extend(ocr: list[Tok], heard: list[Tok], block: tuple, forward: bool) -> tup
     return best
 
 
-def find_reading(ocr: list[Tok], heard: list[Tok]) -> list[tuple]:
+def find_reading(ocr: list[Tok], heard: list[Tok], prefer_heard: bool = False) -> list[tuple]:
     """The stretches where the heard text reads the OCR, in order:
     (ocr first, ocr last, heard first, heard last, words). Used by
-    build-section.py too, with commentary.md as the heard text."""
-    seq, idx = match_seq(ocr)
+    build-section.py too, with commentary.md as the heard text (prefer_heard:
+    a plan's nusach.match_abbreviations, see match_seq)."""
+    seq, idx = match_seq(ocr, {t.sk for t in heard} if prefer_heard else None)
     sm = difflib.SequenceMatcher(None, seq, [t.sk for t in heard], autojunk=False)
     blocks = [(idx[i], idx[i + n - 1], j, j + n - 1, n) for i, j, n in sm.get_matching_blocks() if n >= MIN_BLOCK]
     # Drop short matches far from any other reading: commentary quoting the text.

@@ -31,7 +31,7 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 ## Markdown conventions
 - **Snapshot marker**: leading/trailing `...` on text that was cut off in the photo.
 - **RTL wrapping**: every Hebrew paragraph is wrapped in `[text]{dir="rtl"}`.
-- **`section.md` layout — paired (the standard, `layout: paired` in its frontmatter, built by `scripts/build-section.py`):** the title block; `## הַנֹּסַח וְהַבֵּיאוּר` as cuts of the text (`::: {custom-style="Nusach"}`), each followed by the explanation of it (`::: {custom-style="Commentary"}`, unboxed, no labels); the print's notes; `## נְקֻדּוֹת מַפְתֵּחַ`. Pages print text on top, explanation below (`docs/print-standard.md`). The plan's `edits:` hold the readability pass (`prompts/readability-pass.md`), its `style:` the style pass (`prompts/style-pass.md`); both change only what prints.
+- **`section.md` layout — paired (the standard, `layout: paired` in its frontmatter, built by `scripts/build-section.py`):** the title block; `## הַנֹּסַח וְהַבֵּיאוּר` as cuts of the text (`::: {custom-style="Nusach"}`), each followed by the explanation of it (`::: {custom-style="Commentary"}`, unboxed, no labels); the print's notes; `## נְקֻדּוֹת מַפְתֵּחַ`. Each cut prints with its explanation after it, the pairs flowing from page to page (`docs/print-standard.md`; `--paired` for a page per cut). The plan's `edits:` hold the readability pass (`prompts/readability-pass.md`), its `style:` the style pass (`prompts/style-pass.md`); both change only what prints.
 - **Older `section.md` layout = three named sections** (sessions not yet moved; skill `paired-layout` moves them):
   1. `## הַנֹּסַח הָעִקָּרִי` — full OCR text as flowing `[...]{dir="rtl"}` paragraphs; bold key transitional words; preserve `...` snapshot markers and `<!-- UNCLEAR: ... -->` flags; no `{.underline}` markup here.
   2. `## נְקֻדּוֹת מַפְתֵּחַ` — 5–8 bold topic labels each followed by a `>` blockquote of the key source passage, both in `{dir="rtl"}`.
@@ -55,8 +55,11 @@ Two kinds of discourse (`type:` in its `meta.yaml`):
 - `python scripts/check-session.py [path]` — every rule above that a script can check; run it after changing a session. A project hook runs it after each edit of a session file and reports errors.
 - `python scripts/proof-pdf.py <pdf>` — a printed PDF against `docs/print-standard.md` (fonts, palette, leaks, margins, stranded headings, page numbers), plus spread images for the visual review. The book's PDF comes from `bash scripts/docx-to-pdf.sh output/<book>.docx`.
 
+## Steps the user can follow
+Every request of more than a couple of steps (a session's ingest, an addition, a teaching pass, a pamphlet, a book build) starts with its steps listed in the task list (TaskCreate), one task per step of the skill or prompt that governs it, in its order, named as the user knows them (e.g. "Clean the transcript", "Readability and style passes", "Teaching pass"). Mark each step in progress when it starts and done only when it is finished and checked; a step that is blocked stays in progress and says what it waits for. Add a task when the user adds a step mid-way. The user follows the work by this list.
+
 ## Cloud sessions
-A fresh cloud container (Claude Code on the web, environment `sefer-forge`) is set up by `scripts/setup-cloud.sh`, which the environment's setup script runs: the Python packages, preview stand-ins for the house fonts (David Libre, Frank Ruhl Libre; proof-pdf reports them, the real print is made at home), and this repo's git identity. Rerun it by hand if a container lacks any of these. Chrome is found on the PATH; the Whisper model downloads on the first transcription.
+A fresh cloud container (Claude Code on the web, environment `sefer-forge`) is set up by `scripts/setup-cloud.sh`, which the environment's setup script runs: the Python packages, preview stand-ins for the house fonts (David Libre, Frank Ruhl Libre; proof-pdf reports them, the real print is made at home), and this repo's git identity. Rerun it by hand if a container lacks any of these. Chrome is found on the PATH; the Whisper model downloads on the first transcription (huggingface.co: a session on the Default environment is refused, so move it to `sefer-forge`). A recording in Google Drive over about 3.5 MB breaks the Drive connector (a 6.9 MB one failed on 2026-11-09): with the user's agreement, share it "anyone with the link" and fetch it with curl (skill `new-session`, step 2).
 
 ## GitHub account
 Every commit and push in this repo is under **Esoterics611**, never rmr611 (the machine's global git identity, used by other repos). GitHub credits a commit to the account owning its author email, so this repo's local git config sets:
@@ -69,6 +72,7 @@ Before committing, `git config user.email` must print the Esoterics611 address; 
 - "status" / "where are we" / "what's next" → skill `session-status`.
 - "new discourse" → use `prompts/01-new-discourse.md`.
 - "new session" / new photos + recording for a discourse → skill `new-session`.
+- a new recording that adds to a session already done ("this goes as part of the introduction", "an addition to הערה N / session N") → skill `extend-session`: a new labelled part at the end of the session, through the same steps, its `edits:` / `style:` / `teaching:` appended (never rewritten), the opening part refreshed with `python scripts/sync-opening.py <session> <discourse>/<name>.md`, reassembled, printed and proofed.
 - "OCR" / a photo added or replaced → skill `ocr-session`.
 - "ingest session" / "process this session" / "continue" → skill `ingest-session` (`prompts/02-ingest-session.md`, images+voice) or, for a voice-only discourse, `prompts/02v-ingest-voice-session.md` (skill: `ingest-voice-session`).
 - "new lesson" / "ingest voice session" / "next shiur" → `prompts/02v-ingest-voice-session.md`.

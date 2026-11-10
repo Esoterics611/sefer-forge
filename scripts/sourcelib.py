@@ -159,7 +159,7 @@ def parse_cite(cite: str) -> tuple[str, str]:
     i = 0
     while i < len(rest):
         tok = rest[i]
-        if tok in ("שער", "ש'") and i + 1 < len(rest):
+        if tok in ("שער", "ש'", "הקדמה") and i + 1 < len(rest):
             gate, i = numeral(rest[i + 1]), i + 2
             continue
         if tok in ("פרק", "דרוש", "פ'") and i + 1 < len(rest):

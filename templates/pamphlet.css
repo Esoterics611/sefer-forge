@@ -184,6 +184,21 @@ p.box-label .kind::after { content: " ·"; }
 .pg .cont-head .label::after { content: ":"; }
 .pg .biur p { font-size: 11.8pt; line-height: 1.55; margin: 0 0 1.6mm; text-indent: 4mm; text-align: justify; }
 section.keys { break-before: page; }
+/* The flowing layout (the default; scripts/build-pamphlet.py flow()): each cut of the
+   text, then its explanation, running on, so that no page is left half empty. A cut
+   begins wherever there is room and is kept with the first lines of its explanation
+   (a long cut may run over a page, three lines at least on either side); a source's
+   label stays with its passage; a note stays with its paragraph; the key points
+   follow the explanation. */
+.pg.flow { break-before: auto; margin-top: 6.5mm; }
+.opener + .pg.flow { margin-top: 0; }
+.pg.flow .nusach { break-after: avoid; }
+.pg.flow .nusach p { orphans: 3; widows: 3; }
+.pg.flow .nusach p:has(> span.src-label) { break-after: avoid; }
+.pg.flow .biur > p:first-child { break-before: avoid; }
+.pg.flow .biur p { orphans: 3; widows: 3; }
+.pg.flow .biur p:has(> span.fn) { break-before: avoid; break-inside: avoid; }
+section.keys.flow { break-before: auto; margin-top: 10mm; }
 /* Voice-only lessons in the paired layout: the topic heading and the passage
    read sit on top, set like the text, without the quote rule. */
 .pg .nusach h3 { font-family: "Guttman Frank", "David"; font-weight: bold; font-size: 13.5pt; margin: 0 0 1.5mm; }
@@ -221,6 +236,13 @@ section.talk p { font-size: 12.3pt; line-height: 1.6; }
 /* Ornamental break for the markdown --- rules. */
 hr { border: 0; text-align: center; margin: 6mm 0; }
 hr::after { content: "◆   ◆   ◆"; font-family: "Guttman Frank"; color: var(--rule); font-size: 8pt; letter-spacing: 0.3em; }
+
+/* Notes of the teaching text (^[...] in `teaching:`, prompts/teaching-pass.md "Notes"):
+   a numbered note set under the paragraph that cites it, on the same page, in smaller
+   type with the accent rule beside it; the number in the text in the accent colour. */
+.pg .biur span.fnref { font-size: 0.66em; vertical-align: super; line-height: 0; font-weight: bold; color: var(--rule); margin: 0 0.25mm; }
+.pg .biur p:has(> span.fn) { font-size: 10.2pt; line-height: 1.5; text-indent: 0; margin: 0.6mm 2.5mm 2.4mm 0; padding: 0.4mm 3mm 0.4mm 0; border-right: 1.2pt solid var(--rule); }
+.pg .biur span.fnnum { font-weight: bold; color: var(--rule); margin-left: 1.4mm; }
 
 /* Notes at the end. */
 section.footnotes { margin-top: 9mm; padding-top: 3mm; border-top: 1px solid var(--rule); font-size: 10.5pt; line-height: 1.45; }

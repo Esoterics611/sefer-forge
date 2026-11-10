@@ -8,6 +8,7 @@ lesson is recorded (`prompts/references-pack.md`), and in anything printed later
 |---|---|---|
 | עץ חיים | `arizal/etz-chaim.he.json` | Sefaria, "Sefer Etz Chaim" (hebrew.grimoar.cz), Public Domain |
 | פרי עץ חיים | `arizal/pri-etz-chaim.he.json` | Sefaria, "Pri Etz Chaim" (hebrew.grimoar.cz), Public Domain |
+| שער הגלגולים | `arizal/shaar-hagilgulim.he.json` | Sefaria, "Sha'ar HaGilgulim" (hebrew.grimoar.cz), Public Domain |
 
 `sources.yaml` is the catalog: each work's file, how our texts abbreviate it
 (`cite_as`), where it was downloaded and when, and its `numbering:` notes.
@@ -45,6 +46,11 @@ with its license from the version file next to `merged.json`, `fetched`), and
 check a known citation with `source-lookup.py`. Available from the same export:
 שער הכוונות, שער הפסוקים, שער מאמרי רשב"י, שער המצוות and more under
 `json/Kabbalah/Arizal and Chaim Vital/`; the Zohar under `json/Kabbalah/Zohar/`.
-Its שער הגלגולים is not the ספר הגלגולים our texts cite by chapter: it is
-arranged in 40 הקדמות, and the words the Alter Rebbe quotes from "גלגולים פ"א"
-are not in it.
+שער הגלגולים (here since 2026-11-09) is not the ספר הגלגולים our texts cite by
+chapter: it is the other redaction of the same teachings, arranged in הקדמות
+(address = הקדמה.paragraph), and the words the Alter Rebbe quotes from
+"גלגולים פ"א" are not in it. Its teaching is, and a narration that explains
+those citations quotes it from here: the souls' rise from the kelipot by
+others' prayers, יחודים and mitzvot (13.1, 39.7), their עיבור in the מלכות
+before they come down into a body (12.5, 12.7, 39.6). `sources.yaml` lists the
+correspondences found.

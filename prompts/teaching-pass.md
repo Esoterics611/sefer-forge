@@ -141,8 +141,9 @@ a length outside 35–65% of the default. Change it, or keep it on purpose.
   points.
 - A narration not yet laid out: run `python scripts/refined-text.py <session>`
   to get `refined.teaching.md`. For an opening part made from a session (like
-  `introduction.md`), copy the paragraphs of `refined.teaching.md` into
-  `<name>.teaching.md` the same way the default file was made.
+  `introduction.md`), run `python scripts/sync-opening.py <session>
+  <discourse>/<name>.md`: it carries the paragraphs of `refined.md` into
+  `<name>.md` and those of `refined.teaching.md` into `<name>.teaching.md`.
 
 **5. Discourse check.** Run `python scripts/check-teaching.py <discourse>`. It
 covers every session and the opening parts, and reports any five-word phrase
@@ -178,6 +179,31 @@ finds nothing.
 - judgement calls and open questions for the speaker;
 - the PDF's path, and the lesson version's (`--lesson`) when the user may
   want to compare.
+
+## Notes: the main line in the text, the rest below it
+
+A long narration can carry far more than its passage needs: background, a
+whole doctrine behind one term, the speaker's own digressions, all worth
+keeping. When the user asks for it (first: הערה ג', 2026-11-09), the teaching
+text under each cut keeps only what explains the passage: what the text says and
+the point it makes. The rest becomes **notes**, still in the speaker's ideas and
+order, set in smaller type under the paragraph that cites them.
+
+- Write a note inside the teaching paragraph, right after the word it explains,
+  in pandoc's inline form: `…העלאת מ"ן^[מ"ן הם…]`. Brackets may nest inside it.
+  Each entry stays one paragraph, so recording is unchanged.
+- A note is written for reading, not as a dump. It opens with the term or
+  question it answers, holds one idea or one connected chain, and keeps the
+  speaker's examples. Several short notes are better than one long one.
+- **Nothing is lost.** Every idea of the default text is in the text or in a
+  note; the inventory (step 1) marks each **text** or **note**.
+- **What prints:**
+  - the pamphlet (`build-pamphlet.py`) numbers the notes per part and sets each
+    one under its paragraph, on the same page;
+  - the book (pandoc → Word) makes them footnotes;
+  - `--lesson` prints the lesson text, which has no notes.
+- The checks count note words with the paragraph, so the length warning reads
+  the whole. The text without its notes should be the short, clear commentary.
 
 ## Recording and printing
 

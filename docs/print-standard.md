@@ -7,19 +7,24 @@ the hand-over names what was checked.
 
 ## The page: the text with its explanation
 
-Every session prints in the paired layout: each page opens with a cut of the
-original text, and below a thin rule carries what the speaker says about that
-passage, so the reader always has the passage and its explanation together.
-The cuts follow the reading (the speaker reads a passage, then explains it;
-the same words are in both), snapped to sentence or clause ends. A page whose
-explanation continues from the page before opens with a short "המשך הביאור על"
-line naming the passage. The explanation is plain text, never framed in a box.
-`scripts/build-section.py` pairs; `scripts/build-pamphlet.py` lays out the
-pages and checks that no page spills (skill `paired-layout`). Voice-only
-lessons pair the same way: each topic heading and the passage read (the
-transcript's `>` quotes) on top, the explanation that follows below. In the
-Word book the pairs flow (each cut over a rule, its explanation after it);
-only the pamphlet is set page by page.
+Every session prints its text and its explanation together: a cut of the
+original text, and below a thin rule what the speaker says about that passage,
+then the next cut and its explanation. The cuts follow the reading (the speaker
+reads a passage, then explains it; the same words are in both), snapped to
+sentence or clause ends. The explanation is plain text, never framed in a box.
+`scripts/build-section.py` pairs (skill `paired-layout`).
+
+The pairs **flow** (the default since 2026-11-09, when the page-per-cut layout
+was given up for its half-empty pages): a cut begins wherever the page has room,
+is kept with the first lines of its explanation, and may run over a page with
+three lines at least on either side; a source's label stays with its passage; a
+note of the teaching text stays with its paragraph; the key points follow the
+explanation; each part opens on a new page. The old layout, each cut opening its
+own page group with a "המשך הביאור על" line where an explanation runs on, is
+still there (`layout: paired` in meta.yaml's `pamphlet:`, or `--paired`).
+Voice-only lessons pair the same way: each topic heading and the passage read
+(the transcript's `>` quotes), then the explanation that follows. The Word book
+flows likewise (each cut over a rule, its explanation after it).
 
 ## House style: pamphlets (`templates/pamphlet.css`)
 

@@ -6,6 +6,7 @@ Usage:
     python scripts/build-pamphlet.py discourses/003-breishis          # every session
     python scripts/build-pamphlet.py <path> --png                     # also page images
     python scripts/build-pamphlet.py <path> --lesson                  # the text before the teaching pass
+    python scripts/build-pamphlet.py <path> --paired                  # a page per cut (see "Layout")
 
 A session prints from its section.md (images+voice) or transcript.md
 (voice-only). A discourse prints from its discourse.md, the hand-polished
@@ -35,6 +36,15 @@ discourse's meta.yaml overrides any of them:
       title: "..."         # whole-discourse cover only (default: meta title)
       subtitle: "..."      # whole-discourse cover only
       dedication: "..."    # optional page after the cover
+      layout: paired       # optional: a page per cut (default: flowing)
+
+Layout. By default the text and its explanation flow: each cut of the text,
+then what the speaker says about it, one after another, a cut beginning
+wherever the page has room (a cut is kept whole and with the first lines of
+its explanation, a note of the teaching text with its paragraph). `layout:
+paired` (or --paired) gives every cut its own page group instead, text on top
+and explanation below, with a continuation line where an explanation runs on
+(the house layout until 2026-11-09, given up for its half-empty pages).
 
 Rendering is pandoc (markdown -> HTML) plus Chrome's headless print-to-PDF,
 styled by templates/pamphlet.css, as in build-booklets.py. CHROME overrides
@@ -344,6 +354,11 @@ def is_label(md: str) -> bool:
     return ".src-label" in attrs(md).split()
 
 
+def is_note(md: str) -> bool:
+    """A note of the teaching text, set under its paragraph (take_notes)."""
+    return "fn" in [c.lstrip(".") for c in attrs(md).split()]
+
+
 def with_sources(text: str, md: str) -> str:
     """text wrapped like md, keeping md's source classes (and no other)."""
     keep = " ".join(c for c in attrs(md).split() if c in SOURCE_CLASSES)
@@ -368,13 +383,38 @@ def split_paragraph(md: str, para: int) -> list[Piece]:
     return [Piece(with_sources(x, src_md), para) for x in pieces]
 
 
+def take_notes(md: str, first: int) -> tuple[str, list[str]]:
+    """A paragraph's inline notes (pandoc's ^[...], written in a teaching text,
+    prompts/teaching-pass.md "Notes"), each replaced by its number. Returns the
+    paragraph and the notes' texts, in order, numbered from `first`."""
+    out, notes, i = [], [], 0
+    while (j := md.find("^[", i)) != -1:
+        depth, k = 0, j + 1
+        while k < len(md):
+            depth += {"[": 1, "]": -1}.get(md[k], 0)
+            if depth == 0:
+                break
+            k += 1
+        if depth:
+            sys.exit(f"an unclosed note ^[ in: {md[j:j + 60]}…")
+        out.append(md[i:j] + f"[{first + len(notes)}]{{.fnref}}")
+        notes.append(md[j + 2:k].strip())
+        i = k + 1
+    return "".join(out) + md[i:], notes
+
+
 def make_units(part: Part, start_para: int) -> tuple[list[Unit], int]:
-    units, para = [], start_para
+    units, para, note_no = [], start_para, 1
     for text, expl in part.pairs:
         pieces = []
         for md in expl:
+            md, notes = take_notes(md, note_no)
             pieces += split_paragraph(md, para)
             para += 1
+            for n, note in enumerate(notes, note_no):    # under the paragraph that cites it, whole
+                pieces.append(Piece(rtl(f"[{n}]{{.fnnum}} {note}", "fn"), para))
+                para += 1
+            note_no += len(notes)
         # The continuation line quotes the passage itself (a quote, not its heading).
         quoted = [x for x in text if x.startswith(">")] or [x for x in text if not is_label(x)] or text
         words = re.sub(r"\*\*|\[\^[^\]]+\]|^(#+|>)\s*", "", " ".join(inner(x) for x in quoted)).split()
@@ -415,8 +455,9 @@ def cont_head(u: Unit) -> str:
             f'“{esc(re.sub(r"<[^>]+>", "", u.lead))}”</p>')
 
 
-def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
-    """One page group: the text cut(s) on top, the explanation below."""
+def page_md(units: list[Unit], page: dict, markers: bool, label: str, flow: bool = False) -> str:
+    """One page group: the text cut(s) on top, the explanation below. In the
+    flowing layout (`flow`), one cut and its explanation, not tied to a page."""
     top: list[str] = []
     if page["cont"] is not None:
         top.append(cont_head(units[page["cont"]]))
@@ -453,7 +494,7 @@ def page_md(units: list[Unit], page: dict, markers: bool, label: str) -> str:
         else:
             expl.append(pc.md)
         last_para = pc.para
-    out = ["::: {.pg}", "::: {.nusach}", *[x + "\n" for x in top], ":::"]
+    out = ["::: {.pg .flow}" if flow else "::: {.pg}", "::: {.nusach}", *[x + "\n" for x in top], ":::"]
     if expl:
         out += ["::: {.biur}", *[x + "\n" for x in expl], ":::"]
     out.append(":::")
@@ -575,7 +616,14 @@ def pack(units: list[Unit], cont_h: float, budgets: dict[int, float], area: floa
             page["text_h"] += u.text_h
             for pc in u.pieces:
                 if pc.h > room(page) and page["pieces"]:
+                    carry = []       # a note keeps the end of the paragraph that cites it on its page
+                    if is_note(pc.md) and len(page["pieces"]) > 1 and not is_note(page["pieces"][-1].md):
+                        carry = [page["pieces"].pop()]
+                        page["h"] -= carry[0].h
                     page = new(cont=ui)
+                    for c in carry:
+                        page["pieces"].append(c)
+                        page["h"] += c.h
                 page["pieces"].append(pc)
                 page["h"] += pc.h
         else:
@@ -598,6 +646,26 @@ def text_area(css: str) -> float:
     m = re.search(r"@page\s*\{[^}]*?margin:\s*([\d.]+)mm\s+[\d.]+mm\s+([\d.]+)mm", css, re.S)
     top, bottom = (float(m.group(1)), float(m.group(2))) if m else (18.0, 19.0)
     return (210 - top - bottom) * 72 / 25.4
+
+
+def flow(parts: list[Part]) -> int:
+    """The flowing layout (the default; `layout: paired` in meta.yaml's
+    pamphlet: block, or --paired, for the page-per-cut one): each cut of the
+    text, then its explanation, running on, so a cut may begin anywhere on a
+    page and no page is left half empty. templates/pamphlet.css keeps a cut
+    whole and with the first lines of its explanation, and a note with the
+    paragraph that cites it. The key points follow the explanation. Returns
+    the number of cuts."""
+    cuts, para = 0, 0
+    for p in (x for x in parts if x.pairs):
+        units, para = make_units(p, para)
+        blocks = []
+        for ui, u in enumerate(units):
+            pg = {"cont": None, "texts": [ui] if u.pieces else [], "text_pieces": u.text_pieces, "pieces": u.pieces}
+            blocks.append(page_md(units, pg, False, "", flow=True))
+        p.body = "\n\n".join(blocks) + "\n\n" + p.tail.replace("{.part .keys}", "{.part .keys .flow}")
+        cuts += len(units)
+    return cuts
 
 
 def paginate(cfg: dict, parts: list[Part], whole: bool, css: str, work: Path) -> int:
@@ -787,9 +855,12 @@ def main(argv: list[str]) -> int:
     (OUT / "html").mkdir(parents=True, exist_ok=True)
     work = OUT / "html" / f".{name}"
     work.mkdir(exist_ok=True)
-    paired_pages = paginate(cfg, parts, whole, css, work)
-    if paired_pages:
-        print(f"  paired layout: {paired_pages} pages of text with its explanation")
+    if "--paired" in argv or cfg.get("layout") == "paired":
+        paired_pages = paginate(cfg, parts, whole, css, work)
+        if paired_pages:
+            print(f"  paired layout: {paired_pages} pages of text with its explanation")
+    elif cuts := flow(parts):
+        print(f"  flowing layout: {cuts} cuts of the text, each followed by its explanation")
     doc, title = build_html(cfg, parts, whole, css)
     html_path = OUT / "html" / f"{name}.html"
     html_path.write_text(doc, encoding="utf-8")
