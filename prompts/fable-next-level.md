@@ -1,82 +1,61 @@
-# Fable: from print shop to study house
+# Fable: an explanation of the whole הגהה, to read before recording
 
-A prompt for one long Claude Fable 5.2 session (written 2026-11-11). It aims
-Fable at what it does better than Opus: reading a dense text together with its
-sources and getting it right, judging a printed page by eye, and running for
-hours while checking its own work. Routine sessions stay on Opus.
+A prompt for one long Claude Fable 5.2 session (written 2026-11-11, revised the
+same day). Fable reads the Alter Rebbe's הגהה in discourse 004 and every
+source it cites, in full and all together, and writes its own explanation for
+Ronnie to study before he records anything more. It uses what Fable does
+better than Opus: holding a long, difficult text and its sources in mind at
+once, reasoning through it, and checking itself.
 
 ## How to use
 
 1. Start a new Claude Code session on this repo, in the `sefer-forge`
-   environment, with **Fable 5.2** selected and effort **high**.
+   environment, with **Fable 5.2** selected and effort **high** (or **xhigh**
+   for more care, which is slower and costs more).
 2. Paste everything below the line.
 3. Expect a long run. Fable costs twice what Opus does per token, so the
-   prompt tells it to send mechanical work to cheaper models.
+   prompt sends mechanical work to cheaper models.
+
+(The first version of this prompt also covered the print and the repo's
+instructions. It is in git history, in commit "A prompt for a long Fable
+session".)
 
 ---
 
-I'm Ronnie. I teach Chassidus and Kabbalah, and this repo turns my teaching into printed Hebrew pamphlets and books. I photograph a text (or paste it from chabadlibrary.org) and record myself explaining it in Hebrew. The pipeline then transcribes, cleans, lays out, edits and prints it. It works. Read CLAUDE.md, docs/agentic-development.md, docs/print-standard.md and discourses/004-levushei-haneshama/notes.md to see how.
+I'm Ronnie. I teach Chassidus and Kabbalah, and this repo turns my teaching into printed Hebrew pamphlets and books. CLAUDE.md explains how it works.
 
-I'm bringing you in instead of Opus for three things Opus doesn't do well. First, reading a terse, abbreviation-dense Kabbalistic text together with its sources, and getting it right. Second, looking at a printed page the way a book designer does. Third, working for hours on your own and checking your own work until a large job is finished. Routine sessions, such as ingesting a recording or rebuilding a pamphlet, will stay on Opus. So leave the repo in a state where those sessions run better, not worse.
+I'm studying a הגהה of the Alter Rebbe, "לשון אדמו"ר נ"ע בעצמו". It is discourse 004, in discourses/004-levushei-haneshama, and its notes.md says where everything is. It is a dense note on the garments of the soul made by Torah and mitzvot, full of abbreviations and of citations of עץ חיים, פרי עץ חיים, ספר הגלגולים, the Zohar and more. The full text is in sessions/001/ocr.md. An earlier model placed 26 of its citations in sessions/001/references.yaml; check each placement rather than trust it. sources/ holds עץ חיים, פרי עץ חיים and שער הגלגולים (see sources/README.md and scripts/source-lookup.py).
 
-## Why now
+I have already recorded explanations of parts of it, and in at least one key passage ("אבל ירידתן משם…") I misread it. I'm not recording anything more until I understand the whole text properly. So I'm asking you, not Opus, because this needs what you do better: holding a long, difficult text and all its sources in mind at once, reasoning through it carefully, and checking yourself.
 
-This week the weak point showed. Discourse 004 is the Alter Rebbe's הגהה "לשון אדמו"ר נ"ע בעצמו". In session 005 I recorded my explanation of "אבל ירידתן משם…" and I had it backwards. I gave the refining of the garments to prayer and the world to the mitzvot. I read "ואינו אלא" as a negation, and "ולא תפלה לבדה דרבנן היא" as "although prayer is only rabbinic". The text says the reverse. By prayer the נר"ן rise from the kelipot as מ"ן, and others can do that for them. Their descent into the body is for the practical mitzvot, not for prayer alone, and it is only to repair their own garments, which no one else can do. I made the same slip when I summed up הערה ג' (session 004). Its print was aligned afterwards and I confirmed it.
+## What I want
 
-The pipeline caught the mistake only after transcription, layout and the teaching pass, and then it patched it. Most of 005's printed explanation is now Claude's wording, standing in as "the speaker's correction" (the `edits:` in sessions/005/section-plan.yaml). I'm going to re-record it. The printed pamphlet also still isn't good enough (examples below).
+Your own explanation of the entire הגהה, in Hebrew, for me to read and study.
 
-The lesson: the pipeline spends its intelligence on mechanics and very little on understanding. That is what I want to change.
+- **Understand it whole.** Read the whole text, and every source it cites as the whole passage or chapter, not just the few lines around the citation. Keep all of it in view while you write, so that each part is explained in light of the whole. Where a cited work isn't in sources/, find it and add it the way sources/README.md describes. This includes ספר הגלגולים (the repo has only a parallel for it, שער הגלגולים), טעמי המצוות, ליקוטי תורה, מקדש מלך, the כוונות and the Zohar. Look on Sefaria first. If a scanned edition (for example on hebrewbooks.org) is the only form, read it from the page images, and keep the scans out of git like my photos. Where editions number differently, find the exact place the Alter Rebbe means. sources/sources.yaml records what has been found so far, and he himself mentions the Shklov print.
+- **Keep it whole.** The explanation carries the original text complete, and every source passage it relies on complete. I want to read the Alter Rebbe, his sources and your explanation together without looking anything up. Keep the full chapters behind those passages in the repo as well, so I can check anything.
+- **Explain it for me.** I know Chassidus and the Arizal's terms, but not this text. Start with what question the הגהה answers and how its argument moves, first briefly and then along the text. Expand every abbreviation. Explain each term where it first matters. Say what each source says and how the Alter Rebbe uses it. Point out where a reader is likely to go wrong. Make it as long as the text needs, written to be studied, in clear Hebrew.
+- **Make it your own.** Work from the text and the sources only. Until your explanation is finished, don't read my transcripts, teaching texts or teaching notes in sessions 001–005, so that they don't shape your reading.
+- **Then compare.** Once the explanation is finished, read what I have taught so far: the introduction, הערות א'–ג' and session 005. Write a short, separate list of the places where my teaching differs from your reading. Give the evidence for each, and say how much it matters.
 
-## What I want at the end
+Keep your working understanding in files as you go: the terms, a map of the argument, notes on each citation, and the open questions. The session may run long enough that its early context is summarized. Later sessions will also use your explanation as the reference when they check what I record.
 
-These are in order of priority. Where pieces are independent, work on them in parallel.
-
-1. **Ready to re-record, and ready for the re-recording.**
-   - A study brief for the stretch I'm re-recording, in Hebrew, as an A4 PDF like the reading pack. It should give what the Alter Rebbe says clause by clause, with the abbreviations expanded and the sources he cites open in full, not as snippets. It should show where my first recording went wrong and why the text can't mean that, and what in it still holds.
-   - A fidelity audit of everything already recorded in 004: the introduction, הערות א'–ג' and session 005. List every place where my spoken explanation says the text or a source says something it doesn't. Rank them by weight, and give the evidence and your recommendation for each: leave it, fix one word, or re-record that cut. The point is that I re-record everything that needs it in one sitting. My own framing (the psychology, Jung, my analogies) is mine. Flag it only where I attribute it to the text.
-   - A way for the repo to take a re-recording. Today a session can be extended (skill `extend-session`) but not re-recorded. The new recording should replace the old one as the session's source. The old transcript and the edits that patched it are retired, not lost; whether git history or a folder of their own keeps them is your call. Every pass is redone from my new words. The parts that refer to the session are reread (הערה ג' says "יתבאר להלן"). Then the discourse is reassembled, printed and proofed.
-
-2. **A study partner before every recording.** Make the same kind of brief a standard stage of the pipeline, before I record each box of a reading pack. It covers:
-   - the plain meaning and the argument;
-   - the cited passages in full, in the edition the author used (sources/sources.yaml records where editions number differently);
-   - how the box connects to what I've already taught in the discourse;
-   - the readings a careful learner could get wrong, and the open questions.
-
-   Make briefs for the next five boxes of 004, from box 4 on. Later boxes get theirs when they're started. When a cited work isn't in sources/, find it and add it the way sources/README.md describes. Look on Sefaria first. If a scanned edition (for example on hebrewbooks.org) is the only form, read it from the page images, and keep the scans out of git like my photos. For 004, the missing works are ספר הגלגולים (the repo has only a parallel for it, שער הגלגולים), טעמי המצוות, ליקוטי תורה, מקדש מלך, the כוונות and the Zohar.
-
-3. **Review for meaning, not only for words.** After a recording is transcribed and before it is laid out, check what I said against the text and the brief. Divergences come to me as questions with the evidence, not as rewrites. My printed teaching is mine. `edits:` fix a slip of a word or a sentence. When the main line of a cut is wrong, the remedy is that I re-record the cut. Change the ingest procedure, the teaching pass and anything else that needs it, so that this is how it works from now on.
-
-4. **Print at the level of a real sefer.** Look at every spread of every pamphlet, and of the book, the way a Hebrew typesetter would. Fix what's wrong in the templates and scripts, not page by page. Here is what I see in output/pamphlets/004-levushei-haneshama.pdf:
-   - A sentence of the Alter Rebbe is broken across pages 23–24, with one line alone at the top of page 24.
-   - The label "לשון אדמו"ר נ"ע" stands above every cut.
-   - The key points at the end of a part repeat, word for word, what was printed a page earlier.
-   - Three שער הגלגולים excerpts run over two pages before their one paragraph of explanation.
-
-   proof-pdf.py passed that pamphlet, so teach it to catch what it missed. Fix defects without asking. Where it's a matter of taste (how the key points should work, how sources sit beside the text), render the options as sample spreads and let me choose. Show me before and after.
-
-5. **Instructions written for you, and a memory.**
-   - CLAUDE.md, prompts/, the skills and docs/print-standard.md hold about 155 KB of rules and step-by-step procedures, written for earlier models. Much of it spells out every step where a goal and a check would do. Rewrite them to say what each job is for, what done looks like and how it's checked. Keep every rule I decided, with its reason.
-   - Mine the commit history, the notes.md files and the teaching notes for my decisions and corrections, and keep them in docs/lessons/. Write one lesson per file, with a one-line summary on top. Record corrections and confirmed approaches alike, with why they mattered. Update an existing note rather than add a duplicate, and delete a note that turns out to be wrong. Make every session read them.
-   - Before you finish, have a reader who hasn't seen your work map every rule in the old instructions to where it lives in the new ones, or say why it's gone. Then have an Opus subagent run a real task from the new instructions alone, such as the status of every session or a pamphlet rebuild, to show they still work for Opus.
+Put the explanation in the repo as markdown, separate from my sessions and from discourse.md. It is not my words and never prints as mine. Also make a PDF of it that I can read, and proof it like every PDF here (skill `proof-pdf`). Hand me the PDF, because output/ isn't in git.
 
 ## How to work
 
-The tooling in this repo (scripts, templates, skills, prompts, CLAUDE.md) is yours. How it's built is your call, and you'll keep building on it. The content is not yours. My recordings and what I said in them belong to me, and the texts and sources belong to their authors. CLAUDE.md's rules about sources of truth hold: never edit the raw audio, the images, the *.raw.txt files or the source exports; ocr.md is final once it has been matched; photos and audio never go into git; every commit is under the Esoterics611 identity. CLAUDE.md's procedures only describe how things are done today. Where one is in your way, change it and say so.
+This is Torah, and being wrong is worse than being incomplete. Every claim about what a text means rests on a line you can point to. Say how sure you are. Where the text is genuinely open, or the commentators differ, say so instead of choosing. Never invent a source, a quotation or a chapter number. Hebrew stays Hebrew.
 
-This is Torah, and being wrong in print is worse than being incomplete. Every claim about what a text means carries the line it rests on. Say how sure you are. Where the text is genuinely open, or the commentators differ, say so instead of choosing. Never invent a source, a quotation or a chapter number. Hebrew stays Hebrew. The briefs prepare me; they are not a script for me to read. Nothing you write goes into print as my words.
+Write the explanation yourself, as one line of thought; it has to hold together. Use subagents for the work that can be split off: finding and placing sources, and checking. Before a part counts as done, give it to a subagent that hasn't seen your reasoning. That subagent checks the part's claims against the sources and tries to break them. Resolve what it finds, or report it. Spend Fable on the reading, the writing and the checking. Fetching, building and proofing can run on Opus or Sonnet subagents. Every subagent adds cost, so don't start one for what a few tool calls can do.
 
-Check your work with fresh eyes. Before a brief, an audit finding or a layout change counts as done, give it to a subagent that hasn't seen your reasoning. That subagent checks it against the sources or the rendered pages and tries to break it. Before you report progress, check each claim against a tool result from this session. If something isn't verified, say so.
+The tooling (scripts, templates, skills) is yours to change if printing the explanation needs it. My material is not: don't change my sessions, their transcripts or discourse.md. CLAUDE.md's rules about sources of truth hold.
 
-Delegate where the work is independent: a brief per box, the history mining, the spread-by-spread review. Keep working while subagents run. Spend Fable where Fable is needed: reading the texts, judging the print, verifying. Builds, sweeps and mechanical checks can run on Opus or Sonnet subagents. Every subagent adds cost, so don't start one for what a few tool calls can do.
-
-You may do these without asking: build, rebuild and proof anything; change scripts, templates, skills, prompts, docs and CLAUDE.md; add works to sources/; add new skills; commit each finished piece and push it to this session's branch; ask for network access to a host you need.
-
-Ask me first before you do any of these: change the printed teaching of a finished session, other than its layout; decide a disputed reading; delete anything of mine (retiring a recording I have re-recorded is fine); publish anything, such as to YouTube; merge into main.
+You may do these without asking: read anything in the repo; add works to sources/; write the explanation and your notes; add the scripts and templates needed to print it; build and proof; commit as you go and push to this session's branch; ask for network access to a host you need. Ask me first before you change anything of mine, publish anything, or merge into main.
 
 ## Finishing
 
-Don't stop while you still owe work from this list. Status notes are welcome, and so are questions about open decisions, but carry on with everything that doesn't depend on my answer. You will meet ordinary obstacles: a failing script, a timeout, an empty search, a blocked host. Diagnose them and work through them: retry, fix the request, or use another source. Real blockers are few. Only I can make the re-recording, only I can decide a disputed reading, and I may decline a host. When you hit one, say what you found and go on with the rest. Hand me the PDFs you make, because output/ isn't in git.
+Don't stop while you still owe work from this list. Status notes are welcome, but carry on with everything that doesn't depend on my answer. You will meet ordinary obstacles: a failing script, a timeout, a source that is hard to find, a blocked host. Diagnose them and work through them: retry, fix the request, or use another source. If a source can't be found at all, say so in the explanation, explain from what you have, and go on.
 
 ## The report
 
-When you finish, write for someone who hasn't seen any of your work: me, coming back from teaching. Lead with what changed and what I need to do, such as what to re-record and which choices are mine. Then give the details. Write in plain English and full sentences, and use Hebrew for the Torah content. Don't use labels or abbreviations you invented along the way. For each file or skill you mention, say in a plain clause what it is or what changed.
+When you finish, write for someone who hasn't seen any of your work. Start with where the explanation is and what the הגהה says, in a few sentences. Then list the open questions, the sources you couldn't find, and what the comparison with my teaching found. Write in plain English and full sentences, and use Hebrew for the Torah content. Don't use labels or abbreviations you invented along the way.
