@@ -195,6 +195,7 @@ def file_text(d: dict, where: str) -> tuple[str, str]:
         if body is None:
             raise BuildError(f"{where}: no heading containing {d['section']!r} in {d['path']}")
         raw = body
+    raw = re.sub(r"(?m)^#{1,6} .*$", " ", raw)
     text = re.sub(r"\s+", " ", re.sub(r"[*_]", "", raw)).strip()
     return text, f"{d.get('label') or path.stem}  ⟨{d['path']}⟩"
 
