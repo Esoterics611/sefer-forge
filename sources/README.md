@@ -9,6 +9,12 @@ lesson is recorded (`prompts/references-pack.md`), and in anything printed later
 | עץ חיים | `arizal/etz-chaim.he.json` | Sefaria, "Sefer Etz Chaim" (hebrew.grimoar.cz), Public Domain |
 | פרי עץ חיים | `arizal/pri-etz-chaim.he.json` | Sefaria, "Pri Etz Chaim" (hebrew.grimoar.cz), Public Domain |
 | שער הגלגולים | `arizal/shaar-hagilgulim.he.json` | Sefaria, "Sha'ar HaGilgulim" (hebrew.grimoar.cz), Public Domain |
+| שער הכוונות | `arizal/shaar-hakavanot.he.json` | Sefaria (hebrew.grimoar.cz), Public Domain |
+| שער המצוות | `arizal/shaar-hamitzvot.he.json` | Sefaria, Jerusalem 1872, Public Domain |
+| זוהר | `zohar/zohar.he.json` | Sefaria, "Vocalized Zohar, Israel 2013"; licence unknown |
+| מקדש מלך | `zohar/mikdash-melekh.he.json` | Sefaria, Zholkva 1864, Public Domain |
+| תניא | `chabad/tanya.he.json` | Sefaria (Kehot); licence not stated |
+| תורה אור; הערות לתורה אור | `chabad/torah-or.he.json`, `chabad/torah-or-notes.he.json` | Sefaria (Kehot); licence not stated |
 
 `sources.yaml` is the catalog: each work's file, how our texts abbreviate it
 (`cite_as`), where it was downloaded and when, and its `numbering:` notes.
@@ -17,12 +23,24 @@ lesson is recorded (`prompts/references-pack.md`), and in anything printed later
 correction goes in a plan's `note:`, not in the source. Errors found in a file
 (e.g. Etz Chaim 49.2.1 reads "השמ"ל" for "החשמ"ל") are noted where they are quoted.
 
+## The same texts as markdown: `md/`
+
+`python scripts/source-export.py` writes every work as markdown under `sources/md/<work>/`, one file per gate
+or parashah, each paragraph headed by its address (`**[49.5.1]**`), the Zohar with its printed pages marked
+(`⟦דף רכ"ט ע"ב⟧`). These files are for reading, searching and linking; they are generated (`--check` reports
+stale ones), so never edit them. A work that exists only as a scan or a web page is kept there as a
+**transcription**, written by hand with front matter saying what it was read from, by whom, and whether a
+person has proofread it (`md/torah-or/chayei-sarah-15c-17b.md`, from chabadlibrary.org;
+`md/torah-or/tzemach-tzedek-biur-al-hahagaha.md`, from photographs). Page images stay in `sources/scans/`,
+which is not in git.
+
 ## Looking things up
 
     python scripts/source-lookup.py 'ע"ח שמ"ט פ"ה'           # a citation as our texts write it
     python scripts/source-lookup.py etz-chaim 39.11            # a Sefaria address
     python scripts/source-lookup.py --find 'גלות השכינה'       # a phrase, anywhere
     python scripts/source-lookup.py --gates etz-chaim          # the gates and their names
+    python scripts/source-lookup.py --page zohar 2 229b        # a printed page of the Zohar (volume, page)
 
 Addresses are Sefaria's: `gate.chapter.paragraph` (`49.5.1`), or the gate's name
 for Pri Etz Chaim (`Gate of Prayer.7.3`). A paragraph is often a whole chapter.
