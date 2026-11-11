@@ -7,6 +7,8 @@ Usage:
     python scripts/source-lookup.py --find 'אלו הלבושים'         # every place a phrase occurs
     python scripts/source-lookup.py --find 'גלות השכינה' etz-chaim 26
     python scripts/source-lookup.py --gates etz-chaim            # each gate's address and name
+    python scripts/source-lookup.py --page zohar 2 229b          # a printed page (volume, page) of the Zohar
+    python scripts/source-lookup.py --page mikdash-melekh 1 36b  # ... or of Mikdash Melekh on that page
 
 A citation prints the whole chapter it names, paragraph by paragraph with
 addresses, plus the work's numbering notes: older editions number some gates
@@ -71,6 +73,18 @@ def main(argv: list[str]) -> int:
             print("--find needs a phrase")
             return 2
         return find(argv[1], argv[2] if len(argv) > 2 else None, argv[3] if len(argv) > 3 else "")
+    if argv[0] == "--page":
+        if len(argv) < 4:
+            print("--page needs a work, a volume and a page, e.g. --page zohar 2 229b")
+            return 2
+        rows = S.page_rows(argv[1], int(argv[2]), argv[3])
+        if not rows:
+            print(f"{argv[1]}: nothing on volume {argv[2]} page {argv[3]}")
+            return 1
+        print(f"# {S.catalog()[argv[1]]['title']} — volume {argv[2]}, page {argv[3]}\n")
+        for a, t in rows:
+            print(f"[{a}] {t}\n")
+        return 0
     if argv[0] == "--gates":
         return gates(argv[1] if len(argv) > 1 else "etz-chaim")
     if argv[0] in S.catalog():
