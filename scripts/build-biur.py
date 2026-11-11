@@ -116,7 +116,8 @@ def bold(text: str, marks: str | None, where: str) -> str:
 
 
 def strip_niqqud(s: str) -> str:
-    return S.NIQQUD.sub("", s)
+    """Without vowel points and cantillation; the maqaf (־) that joins words is kept."""
+    return re.sub(r"[\u0591-\u05BD\u05BF-\u05C7]", "", s)
 
 
 def source_text(d: dict, where: str) -> tuple[str, str]:
@@ -155,7 +156,7 @@ def source_text(d: dict, where: str) -> tuple[str, str]:
         label = " · ".join(x for x in (entry["title"], gate) if x)
     if d.get("niqqud", "no") != "yes":
         text = strip_niqqud(text)
-    return text, f"{d.get('label') or label}  ⟨{work} {addr}⟩"
+    return text, f"{d.get('label') or label}]{{.makor-label}} [{work} {addr}"
 
 
 HEB = "אבגדהוזחטיכלמנסעפצקרשת"
@@ -197,7 +198,7 @@ def file_text(d: dict, where: str) -> tuple[str, str]:
         raw = body
     raw = re.sub(r"(?m)^#{1,6} .*$", " ", raw)
     text = re.sub(r"\s+", " ", re.sub(r"[*_]", "", raw)).strip()
-    return text, f"{d.get('label') or path.stem}  ⟨{d['path']}⟩"
+    return text, f"{d.get('label') or path.stem}]{{.makor-label}} [{d['path']}"
 
 
 class TextCursor:
@@ -271,7 +272,7 @@ def build(src: Path) -> tuple[str, dict, list[str]]:
         passage = bold(passage, d.get("mark"), where)
         passage = ("… " if head else "") + passage + (" …" if tail else "")
         n_src += 1
-        out += ['::: {.makor}', f"[{label}]{{.makor-label}}", "", passage]
+        out += ['::: {.makor}', f"[{label}]{{.addr}}", "", passage]
         if d.get("note"):
             out += ["", f"[{d['note']}]{{.makor-note}}"]
         out.append(":::")
@@ -295,9 +296,10 @@ def to_pdf(md: Path, meta: dict, pdf: Path) -> None:
     pdf.parent.mkdir(parents=True, exist_ok=True)
     htm = pdf.with_suffix(".html")
     title = meta.get("title", md.stem)
+    import os
     cmd = ["pandoc", str(md), "-f", "markdown+fenced_divs+bracketed_spans+pipe_tables-smart", "-t", "html5", "--standalone",
            "--metadata", f"pagetitle={title}", "--metadata", "lang=he", "--metadata", "dir=rtl",
-           "--css", str(CSS), "--embed-resources", "--resource-path", str(CSS.parent), "-o", str(htm)]
+           "--css", os.path.relpath(CSS, htm.parent), "-o", str(htm)]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode:
         raise BuildError("pandoc: " + r.stderr.strip()[-800:])
