@@ -200,3 +200,35 @@ def gate_title(work: str, address: str) -> str:
         return ""
     names = re.findall(r"(שער (?:(?!שער )[^:.])+?)\s+(?:ובו|ויתחלק|ונחלק)", rows[0][1])
     return names[-1] if names else ""
+
+
+# --- printed pages --------------------------------------------------------------
+# The Zohar's export marks the printed (Vilna) pages inside the text; Mikdash
+# Melekh is arranged by them. pages() gives a printed page's text for either.
+
+PAGE_MARK = re.compile(r'<i data-overlay="Vilna Pages" data-value="([0-9]+[ab])"></i>')
+ZOHAR_VOLUMES = (("Shemot", 2), ("Vayikra", 3))      # the parashah that opens volumes 2 and 3
+
+
+def page_rows(work: str, volume: int, page: str) -> list[tuple[str, str]]:
+    """[(address, text)] of what stands on a printed page (e.g. volume 2, '229b').
+    A paragraph that runs across pages is cut at the page marks."""
+    data = load(work)["text"]
+    if isinstance(data, list):                       # arranged by page: volume, page index, paragraph
+        n = (int(page[:-1]) - 1) * 2 + (1 if page[-1] == "a" else 2)
+        return under(work, f"{volume}.{n}")
+    out, vol, cur = [], 1, None
+    for key, chapters in data.items():
+        vol = next((v for k, v in ZOHAR_VOLUMES if k == key), vol)
+        if not isinstance(chapters, list):
+            continue
+        cur = None
+        for ci, chapter in enumerate(chapters, 1):
+            for pi, raw in enumerate(chapter if isinstance(chapter, list) else [chapter], 1):
+                parts = PAGE_MARK.split(raw)
+                for k, seg in enumerate(parts):
+                    if k % 2:
+                        cur = seg
+                    elif vol == volume and cur == page and clean(seg):
+                        out.append((f"{key}.{ci}.{pi}", clean(seg)))
+    return out
