@@ -34,3 +34,7 @@ discourses/*/sessions/*/voicenotes/*.amr
 # transcribe.py's run state
 discourses/*/sessions/*/voicenotes/*.partial.txt
 discourses/*/sessions/*/voicenotes/*.lock
+
+# Scanned pages of printed editions (page images read for a source): local only,
+# like the photos. Their transcriptions are kept as markdown beside the works.
+sources/scans/
