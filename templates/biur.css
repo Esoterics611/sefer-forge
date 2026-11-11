@@ -76,7 +76,7 @@ h3 { font-size: 13.5pt; font-weight: 700; margin: 8mm 0 2.5mm; color: var(--ink)
 .makor p { margin: 0 0 1.5mm; }
 .makor strong { background: var(--mark); font-weight: 700; padding: 0 0.4mm; }
 .makor-label { font-weight: 700; font-size: 10.5pt; color: var(--soft); }
-.addr { font-size: 8.5pt; color: var(--soft); direction: ltr; unicode-bidi: embed; margin-inline-start: 2mm; }
+.addr { display: none; font-size: 8.5pt; color: var(--soft); direction: ltr; unicode-bidi: embed; margin-inline-start: 2mm; }
 .makor-note { font-size: 10pt; color: var(--soft); }
 
 ul, ol { margin: 0 0 3mm; padding-inline-start: 7mm; }
