@@ -1,0 +1,27 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: הולדת נשמות בזיווג דאצילות
+forms:
+- זווג פב"פ
+- זווג אב"א
+- הולדת נשמות
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: 'הולדת נשמות חדשות אינה אלא על ידי המוחין העליונים, בזיווג דאצילות פנים בפנים; ממנו יוצאים נשמות ורוחין
+    ומלאכים ונמשכים לבי"ע. בהגהה: "אין שום בירור אלא באצילות", ולכן זיווג המצוות הוא באצילות אף שהלבוש לנפש דעשייה.'
+  rests_on:
+  - work: etz-chaim
+    ref: 47.4.2
+    quote: מציאת ההולדה לנשמות חדשות אינה רק ע"י המוחין
+  - work: etz-chaim
+    ref: 47.5.1
+    quote: ע"י זווגים יוצאין נשמות ורוחין קדישין ומלאכים ונמשכין אל היצירה
+  - work: etz-chaim
+    ref: 47.5.1
+    quote: וכל זה ע"י הזווג דאצילות פב"פ
+caution: ההגהה מציינת "שער מ"ד פ"ד ופ"ה"; הדברים נמצאים בשער מ"ז פ"ד–פ"ה. כנראה ט"ס (ד/ז), ואינו ודאי.
+related:
+- mayin-duchrin
+- atzilut-shebebya
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

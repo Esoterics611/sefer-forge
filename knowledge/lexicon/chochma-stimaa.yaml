@@ -22,6 +22,12 @@ senses:
   - work: etz-chaim
     ref: 13.5.1
     quote: האי גלגלתא חוורא דיליה אנהיר לתליסר עיבר
+- meaning: 'שורש המצוות: רמ"ח מצוות עשה בה'' החסדים, ובמקום אחר: תרי"ג "ארחין" הנמשכים מ"חד ארחא", שהוא הלבנונית.
+    מכאן בהגהה שהמצוות פועלות למעלה מגן עדן, עד מו"ס דא"א.'
+  rests_on:
+  - work: tanya
+    ref: Part V; Kuntres Acharon.4.10
+    quote: שהן תרי"ג ארחין נמשכין מחד ארחא כו', שהוא לבנונית
 caution: ב-39.1.2 היא "דברישא דע"ק" (עתיקא קדישא), ובהגהה "מו"ס דא"א" (אריך אנפין). יש לבדוק את היחס ביניהם לפני
   שמשווים.
 related:
@@ -30,3 +36,4 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/004-levushei-haneshama/biur

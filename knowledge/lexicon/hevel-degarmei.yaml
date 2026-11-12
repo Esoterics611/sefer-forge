@@ -18,6 +18,9 @@ senses:
   - work: etz-chaim
     ref: 42.4.1
     quote: הארת העור דז"א הנקרא הבל דגרמי
+  - work: etz-chaim
+    ref: 42.4.1
+    quote: וזאת הבחי' נקרא חשמ"ל שהוא צלם הבל דגרמי שבעור
 related:
 - tzelem
 - shivat-hamelachim
@@ -26,3 +29,6 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/004-levushei-haneshama/biur
+caution: 'בעץ חיים 26.1 הבל דגרמי הוא הצלם הפנימי, וב-42.4 הוא החשמל שבעור. ההגהה מיישבת: "שניהם אור א'' הם, זה
+  פנימי וזה מקיף".'

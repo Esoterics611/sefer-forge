@@ -35,6 +35,9 @@ Each entry: the term · what it means here · the line it rests on (address in s
 
 ## Terms the second half needed (sections 11–19) — added 2026-11-12, for the Opus session
 
+> Carried into `knowledge/lexicon/` the same day: 10 new entries and 9 extended, every quotation `--check`ed.
+> Rows marked "(mine)" or without a source line stay here only.
+
 Notes only: term · meaning as the explanation uses it · address. Not yet carried into `knowledge/lexicon/`
 and not `--check`ed. Where a row repeats a term of the table above, it adds what the second half needed.
 "(mine)" = a reading of the writer, not a line of a source.

@@ -23,6 +23,15 @@ senses:
   - work: etz-chaim
     ref: 26.2.1
     quote: הנה הוא סוד הצלם ויש בו בחי' פנימים ובחי' מקיפים
+- meaning: 'לבוש הנשמה משני צדדים: "אלוה" מאבא ו"חותם" מאימא. עשיית הלבוש היא עצמה העלאת המ"ן, והלבוש "גדול מהחדשים":
+    הכלי המעלה גדול ממה שהוא מלביש.'
+  rests_on:
+  - work: etz-chaim
+    ref: 39.12.1
+    quote: באלו הב' לבושים אלו"ה מאבא וחותם מאמא
+  - work: etz-chaim
+    ref: 39.12.1
+    quote: ודע שהלבוש הזה הוא גדול מהחדשים
 related:
 - tzelem
 - ima-bina
@@ -31,3 +40,4 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/004-levushei-haneshama/biur

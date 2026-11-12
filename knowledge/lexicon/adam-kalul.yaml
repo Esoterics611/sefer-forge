@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: האדם כלול מכל העולמות
+forms:
+- כלול מכל העולמות
+- הכולל כל עולמות
+- אדם תחתון
+category: הנשמה ולבושיה
+senses:
+- meaning: 'האדם התחתון כולל את כל עולמות אבי"ע: יש לו חמש צורות, חמישה צלמים וחמישה כלים באצילות, וכנגדם בבריאה,
+    ביצירה ובעשייה. לכן מעשהו ולימודו נוגעים בכל העולמות.'
+  rests_on:
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: והנה עד"ז הוא באדם תחתון הכולל כל עולמות אבי"ע ויש לו ה' צורות וה' צלמים וה' כלים
+related:
+- naran
+- tzelem
+- kelim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

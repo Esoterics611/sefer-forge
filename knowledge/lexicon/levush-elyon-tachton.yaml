@@ -1,0 +1,25 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: לבוש עליון ולבוש תחתון
+forms:
+- לבושא דלעילא
+- לבוש עליון
+- לבוש תחתון
+- לבושא דהאי עלמא
+category: הנשמה ולבושיה
+senses:
+- meaning: 'הנשמה אינה עולה להיראות לפני המלך עד שזוכה ללבוש של מעלה, וכן אינה יורדת למטה עד שמתלבשת בלבוש של העולם
+    הזה. בהגהה: כשם שהעליונים אינם יורדים בלי לבוש תחתון, התחתונים אינם עולים בלי לבוש עליון, והלבוש מאפשר לסבול
+    את האור.'
+  rests_on:
+  - work: zohar
+    page: 2 229b
+    quote: נשמתא לא סלקא לאתחזאה קמי מלכא קדישא, עד דזכאת לאתלבשא בלבושא דלעילא
+  - work: zohar
+    page: 2 229b
+    quote: וכן כגוונא דא לא נחתא לתתא, עד דאתלבשת בלבושא דהאי
+related:
+- levushim
+- ima-bina
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

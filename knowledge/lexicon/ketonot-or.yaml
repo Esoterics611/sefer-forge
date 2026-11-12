@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: כתנות אור / כתנות עור
+forms:
+- כתנות אור
+- כתנות עור
+- משכא דחויא
+- משכא דחוייא
+category: הנשמה ולבושיה
+senses:
+- meaning: 'לבושי אדם הראשון: קודם החטא "כתנות אור", שהיו מן החשמל, עור התבונה שעל עור ז"א. בחטא נסתלק החשמל והעור
+    נעשה טוב ורע, "כתנות עור, משכא דחויא".'
+  rests_on:
+  - work: etz-chaim
+    ref: 49.4.2
+    quote: ונקרא לבושים דאדה"ר כתנות אור והיו מן החשמ"ל
+  - work: etz-chaim
+    ref: 41.1.2
+    quote: לפי שהיה להם כתנות אור
+  - work: etz-chaim
+    ref: 41.1.2
+    quote: כתנות עור משכא דחוייא ואז הנחש החצון הטמא יונק משם ונעשה טו"ר עור
+related:
+- chashmal
+- kelipat-noga
+- levushim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

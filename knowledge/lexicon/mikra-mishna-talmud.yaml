@@ -19,10 +19,19 @@ senses:
   - work: pri-etz-chaim
     ref: Gate of Conduct While Learning.1.21
     quote: אך הענין, כי באצילות יש כל מה שלמטה ממנו
+- meaning: 'הכוונות בלימוד: בקבלה מכוונים לשם מ"ה. ההגהה לומדת מן השמות שמכוונים בהם שהמקרא, המשנה והתלמוד הם באצילות
+    עצמה, וכל אחד יורד ומתלבש בעולם שלו (מקרא בעשייה, משנה ביצירה, תלמוד בבריאה), והקבלה אינה מתלבשת כלל.'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Conduct While Learning.1.38
+    quote: כשיקרא האדם קבלה, יכוין לשם מ"ה
 caution: המילים "מקרא", "משנה", "תלמוד" לבדן שכיחות מאוד, ולכן --in מוצא אותן גם במקומות שאינם מדברים בענין הזה.
+  ובפע"ח 1.21 "מארי מקרא הם בעשיה" וכו' נראה כחלוקה לעולמות; ההגהה מדגישה שכולם באצילות, וההבדל הוא רק עד היכן כל
+  אחד יורד ומתלבש.
 related:
 - levushim
 - atzilut-shebebya
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/004-levushei-haneshama/biur

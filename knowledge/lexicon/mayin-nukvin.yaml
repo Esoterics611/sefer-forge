@@ -17,6 +17,15 @@ senses:
   - work: etz-chaim
     ref: 39.2.1
     quote: וע"י תפלתינו אנו מעלין הנצוצין האלו עד יסוד נוקבא דז"א בבחי' מ"נ ונמתקין ונתקנים שם
+- meaning: 'עליית המ"ן מעולם לעולם: הבירורים דעשייה עולים ליצירה על ידי שם ב"ן, ומשם לבריאה ולאצילות, עד נוקבא דאצילות.
+    בהגהה: אף מי שאין לו אלא נפש דעשייה, מצוותיו עולות כך עד מלכות דאצילות.'
+  rests_on:
+  - work: etz-chaim
+    ref: 39.11.8
+    quote: מבררים מלכי הבריאה ועולין עד נוקבא דאצילות ושם ניתנין ביסוד שלה בסוד מ"נ
+  - work: tanya
+    ref: Part V; Kuntres Acharon.2.5
+    quote: הבירורים דעשיה עולין ליצירה על ידי שם ב"ן, ומיצירה לבריאה ולאצילות
 caution: בהגהה "מ"ן עצמן דנוקבא" הן סוג מסוים של נשמות (אלו שלא נכללו באדם הראשון), לא כל מ"ן. ראה neshamot-chadashot.
 related:
 - mayin-duchrin
@@ -26,3 +35,4 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/004-levushei-haneshama/biur

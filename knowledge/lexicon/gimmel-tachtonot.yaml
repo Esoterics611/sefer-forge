@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: 'ג"ת דכל עולם: נטילת ידיים, טלית, תפילין'
+forms:
+- ג"ת
+- ג"ת דעשייה
+- ג"ת דעשיה
+- טלית קטן
+- טלית גדול
+- ציצית
+- תפילין
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'סדר הבוקר מתקן את שלוש התחתונות (ג"ת) של כל עולם במקומן: נטילת ידיים וברכת אשר יצר את ג"ת דעשייה, הטלית
+    את דיצירה, תפילין את דבריאה. הטלית הקטן כנגד ז"א בלי ראש וזרועות; הטלית הגדול כנגד ז"א "בהיות גדול".'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.34
+    quote: והרי נתקנו ג"ת דעשייה כנודע במקומן
+  - work: pri-etz-chaim
+    ref: Gate of Fringes.2.2
+    quote: וזהו ענין סוד בחי' טלית קטן, שאין בה עטיפת ראש וזרועותיו
+  - work: pri-etz-chaim
+    ref: Gate of Fringes.2.2
+    quote: אמנם טלית גדול, הוא א"מ דזעיר בהיות גדול
+open: ההגהה מתאימה ציצית קטן לעיבור, טלית ליניקה ותפילין למוחין דגדלות. פע"ח כאן קושר את הטלית הגדול ל"בהיות גדול";
+  מקור לסדר ההגהה עצמו לא נמצא.
+related:
+- penimiyut-chitzoniyut
+- ibur-yenika-mochin
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

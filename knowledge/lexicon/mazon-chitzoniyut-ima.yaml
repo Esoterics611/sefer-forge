@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מזון מחיצוניות הבינה
+forms:
+- חיצוניות אימא
+- חיצונית הבינה
+- פנימית הבינה
+- מזון
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'בכל השנה, באכילה ובברכותיה, ממשיכים שפע ומזון מאמא עלאה אל המלכות, מחיצוניות הבינה; ביום הכיפורים מפנימיותה,
+    ולכן מתענים. בהגהה: הלחם וכל המזון מחיצוניות אימא, ולכן "שכר המצוות" (מאימא) הוא לבוש ומזון לנשמה.'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Yom Kippur.1.8
+    quote: אנו ממשיכין שפע ומזון אמא עלאה אל מלכות רחל נוקבא דז"א
+  - work: pri-etz-chaim
+    ref: Gate of Yom Kippur.1.8
+    quote: מן חיצונית הבינה כנ"ל
+  - work: pri-etz-chaim
+    ref: Gate of Yom Kippur.1.8
+    quote: אך ביוה"כ, אנו נותנין לה אכילה ושתיה, ושארי דברים מסוד הפנימית דבינה
+caution: ההשוואה ללחם בהגהה נקראת בשתי דרכים (ראה הביאור, סעיף 13); הערך מביא רק את המקור.
+related:
+- ima-bina
+- or-pnimi-makif
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

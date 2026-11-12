@@ -1,0 +1,30 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: גן עדן העליון / התחתון
+forms:
+- גן עדן העליון
+- ג"ע העליון
+- געה"ע
+- גן עדן התחתון
+- גן עדן
+category: פרצופים ועולמות
+senses:
+- meaning: 'גן עדן העליון כנגד הבריאה, "שהוא בינה", מדור הנשמות בכיסא הכבוד; גן עדן התחתון בעשייה. מכוונת הלב בתורה
+    ובמצוות נעשה לבוש לנשמה בבריאה, "שהוא גן עדן העליון". בהגהה: גן עדן הוא מן הבריאה, והמצוות פועלות באצילות, ולכן
+    "יפה שעה אחת".'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of the Midnight Prayer.2.11
+    quote: כי ג"ע העליון כנגד הבריאה שהוא בינה גן עליון
+  - work: pri-etz-chaim
+    ref: Gate of the Midnight Prayer.2.11
+    quote: וגן תחתון בעשיה
+  - work: tanya
+    ref: Part I; Likkutei Amarim.39.5
+    quote: נעשה לבוש לנשמה בעולם הבריאה, שהוא גן עדן העליון
+related:
+- ima-bina
+- levushim
+- ein-zivug-bebya
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

@@ -1,0 +1,23 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: '"חכמה דכללות": האצילות כחיה שבעולמות'
+forms:
+- חכמה דכללות
+- בחינת חיה בכללות
+category: פרצופים ועולמות
+senses:
+- meaning: 'בכללות העולמות אבי"ע, האצילות היא בחינת "חיה": מקיף מלמעלה, שאינו מתלבש בכלי. ממנה הבירור ("כולהו במחשבה
+    אתברירו"), ולכן "אין שום בירור אלא באצילות".'
+  rests_on:
+  - work: tanya
+    ref: Part V; Kuntres Acharon.4.19
+    quote: כי האצילות היא בחינת "חיה" בכללות העולמות אצילות־בריאה־יצירה־עשיה
+  - work: etz-chaim
+    ref: 39.1.2
+    quote: לכן כולהו אתביררו במחשבה
+related:
+- chochma-stimaa
+- birur
+- ein-zivug-bebya
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

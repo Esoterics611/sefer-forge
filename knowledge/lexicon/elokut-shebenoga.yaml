@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: אלקות שבנוגה / "אשר שלט האדם באדם"
+forms:
+- אלקות שבנוגה
+- אשר שלט האדם באדם
+- בירורי נוגה
+category: שבירה, קליפות ובירור
+senses:
+- meaning: האלקות המלובשת בקליפת נוגה, שמקורה בכלים החיצוניים של נוקבא דז"א דאצילות שירדו לבי"ע. כל זמן ש"שלט האדם
+    באדם" (שליטת עץ הדעת טוב ורע) הוא זמן בירורי נוגה, שזו תכלית ההשתלשלות.
+  rests_on:
+  - work: tanya
+    ref: Part V; Kuntres Acharon.4.22
+    quote: ממהות חיצונית דכלים דנוקבא ד"זעיר אנפין" דאצילות, שהוא בחינת אלקות
+  - work: tanya
+    ref: Part V; Kuntres Acharon.4.57
+    quote: ולברר בירורי נוגה כל משך זמן הגלות דשלטא אילנא דטוב ורע
+  - work: tanya
+    ref: Part V; Kuntres Acharon.4.57
+    quote: עת אשר שלט האדם באדם
+caution: בהגהה ("רק שבסיוע התחתונים במצות שהיא אלקות שבנוגה") לא ברור אם "שהיא" מוסב על המצווה או על מה שעולה. ראה
+  בדיקת הביאור, סעיף 15.
+related:
+- kelipat-noga
+- atzilut-shebebya
+- zun-bebya-bechol
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur

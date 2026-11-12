@@ -1,0 +1,31 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: כוונה / הלימוד עצמו
+forms:
+- כוונה
+- הכוונה
+- כונה
+- בלי כוונה
+- התלמוד עצמו
+- הלימוד הפשוט
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'הכוונה שבמחשבה היא "הנשמה" של המצווה ושל התורה. לבוש הנשמה נגמר על ידי הכוונה, לבוש הרוח על ידי התורה,
+    ולבוש הנפש על ידי המצוות המעשיות. בתלמוד מתברר "רוח שבבריאה", במשנה "רוח שברוח". בסוף ההגהה: בין נפש לנשמה אין
+    הבדל אלא בכוונה, ולא בלימוד הפשוט עצמו.'
+  rests_on:
+  - work: etz-chaim
+    ref: 40.2.1
+    quote: ואמנם הכונה במחשבה הוא הנשמה
+  - work: etz-chaim
+    ref: 49.5.1
+    quote: וע"י כונת האדם בתורה ובמצות נגמר לבוש נשמה
+  - work: etz-chaim
+    ref: 49.5.2
+    quote: ובתלמוד רוח שבבריאה שהיא נשמה
+related:
+- mikra-mishna-talmud
+- levushim
+- penimiyut-chitzoniyut
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama/biur
