@@ -45,7 +45,6 @@ For each source passage, use `python scripts/source-lookup.py <work> <address>` 
 
 - **Sections 11–19 in `biur.src.md`, following `segments.md`.** For each section:
   - the stretch of the text (`@text`, carrying on from the last one);
-  - the abbreviations it opens;
   - the sources it relies on, set in with `@source`, the words that matter marked;
   - your explanation.
 
@@ -55,9 +54,8 @@ For each source passage, use `python scripts/source-lookup.py <work> <address>` 
 - **Section 19 most of all.** The closing stretch ("ע"ש היטב הדק … וצ"ע. אך זה אינו …") is the most compressed. Work out who the subject of each clause is and what exactly "אך זה אינו" rejects. Where it stays open, say what the possibilities are and what would decide between them.
 - **The close:**
   - a short summary of the whole הגהה as the explanation now reads it;
-  - the open questions, folded in from `open-questions.md` and the "settled since" list in `HANDOFF.md`;
-  - the sources not found, and what was used instead.
-- **Accuracy first.** Being wrong is worse than being incomplete. Every claim about what a text means rests on a line you can point to. Say how sure you are. Never invent a source, a quotation or a chapter number. Hebrew stays Hebrew.
+  - the open questions and the sources not found go in `biur/notes/open-questions.md`, not in the explanation (`prompts/biur-rules.md`).
+- **Accuracy first.** Being wrong is worse than being incomplete. Every claim about what a text means rests on a line you can point to. Say how sure you are in `biur/notes/`, not in the explanation (`prompts/biur-rules.md`). Never invent a source, a quotation or a chapter number. Hebrew stays Hebrew.
 - **For the Opus session, notes only (no formatting work):**
   - in `biur/notes/terms.md`, under a new heading, the terms the second half needed: term, meaning, address;
   - in `HANDOFF.md`, the claims you most want checked against the sources, and anything left marked `<!-- CHECK -->`.

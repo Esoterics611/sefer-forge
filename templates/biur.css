@@ -116,4 +116,4 @@ p:has(+ .makor), p:has(+ .nusach), li:last-child:has(+ .makor) { break-after: av
 /* A long table may run on to the next page, a row at a time; the findings part opens a page. */
 table { break-inside: auto; }
 tr { break-inside: avoid; }
-.findings-part { break-before: page; }
+.findings-part { break-before: auto; }

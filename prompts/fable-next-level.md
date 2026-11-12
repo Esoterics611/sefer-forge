@@ -44,7 +44,7 @@ Put the explanation in the repo as markdown, separate from my sessions and from 
 
 ## How to work
 
-This is Torah, and being wrong is worse than being incomplete. Every claim about what a text means rests on a line you can point to. Say how sure you are. Where the text is genuinely open, or the commentators differ, say so instead of choosing. Never invent a source, a quotation or a chapter number. Hebrew stays Hebrew.
+This is Torah, and being wrong is worse than being incomplete. Every claim about what a text means rests on a line you can point to. Say how sure you are in `biur/notes/`, not in the explanation (`prompts/biur-rules.md`). Where the text is genuinely open, or the commentators differ, say so instead of choosing. Never invent a source, a quotation or a chapter number. Hebrew stays Hebrew.
 
 Write the explanation yourself, as one line of thought; it has to hold together. Use subagents for the work that can be split off: finding and placing sources, and checking. Before a part counts as done, give it to a subagent that hasn't seen your reasoning. That subagent checks the part's claims against the sources and tries to break them. Resolve what it finds, or report it. Spend Fable on the reading, the writing and the checking. Fetching, building and proofing can run on Opus or Sonnet subagents. Every subagent adds cost, so don't start one for what a few tool calls can do.
 

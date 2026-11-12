@@ -270,7 +270,8 @@ def number_paragraphs(lines: list[str]) -> tuple[list[str], int]:
         elif m := SECTION_H2.match(line):
             key, n = m.group(1) + "׳", 0
         elif line.startswith("## "):
-            key, n = ("פתח" if "פתח דבר" in line else None), 0
+            h = line[3:].strip()
+            key, n = ("פתח" if "פתח דבר" in h else h if len(h.split()) == 1 else None), 0
         starts = prev.strip() == "" or LIST_ITEM.match(line)
         prose = line.strip() and not line.startswith(("#", "|", ">", "[", "<!--")) and not line.strip().startswith("@")
         if key and depth == 0 and starts and prose:
@@ -346,12 +347,41 @@ def add_checks(lines: list[str], data: dict) -> tuple[list[str], int]:
     return out, len(seen)
 
 
+FORBIDDEN = [   # prompts/biur-rules.md: what never prints in an explanation
+    (re.compile(r"\*\*ראשי התיבות:?\*\*"), "opened abbreviations (rule 1)"),
+    (re.compile(r"\*\*היכן אפשר לטעות"), "'where one can go wrong' (rule 2)"),
+    (re.compile(r"\*\*מידת הוודאות"), "certainty note (rule 3)"),
+    (re.compile(r"\((?:זו )?השערה[^)]{0,20}\)|מוכרח מן ההקשר"), "certainty tag (rule 3)"),
+    (re.compile(r"לפניי|הבנתי|לא מצאתי|נראה לי|איני יודע|אני קורא|אכתוב|(?<!כמו ש)כתבתי|זיהיתי|ביקשתי|(?<![א-ת])(?:שלי|אני|ראיתי)(?![א-ת])"), "the writer in the first person (rule 4)"),
+    (re.compile(r"שים לב|כדאי לראות|נבנה הביאור"), "instruction to the reader (rule 5)"),
+    (re.compile(r"^## (?!מבוא$|סיכום$|ז\. )"), "method heading: only מבוא, the numbered sections and סיכום (rule 6)"),
+    (re.compile(r"^\*\*ביאור[^*]{0,20}\.\*\*"), "label inside the explanation (rule 7)"),
+]
+
+
+def lint(body: str, first_line: int) -> list[str]:
+    """The lines of the hand-written source that break prompts/biur-rules.md (quotations excepted)."""
+    errs = []
+    for no, line in enumerate(body.split("\n"), first_line):
+        if line.startswith("@") or line.startswith("# "):
+            continue
+        prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', line)          # what is quoted is not the writer's
+        for pat, why in FORBIDDEN:
+            if pat.search(prose if not why.startswith("method") else line):
+                errs.append(f"line {no}: {why}: {line.strip()[:70]!r}")
+                break
+    return errs
+
+
 def build(src: Path) -> tuple[str, dict, list[str]]:
     raw = src.read_text(encoding="utf-8")
     meta, body = {}, raw
     if raw.startswith("---"):
         _, fm, body = raw.split("---", 2)
         meta = yaml.safe_load(fm) or {}
+    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1)
+    if errs:
+        raise BuildError("the source breaks prompts/biur-rules.md:\n  " + "\n  ".join(errs))
     cursor = TextCursor(meta)
     out, notes, n_src = [], [], 0
     for no, line in enumerate(body.split("\n"), raw[: len(raw) - len(body)].count("\n") + 1):
