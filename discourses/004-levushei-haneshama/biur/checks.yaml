@@ -11,6 +11,7 @@ intro: >-
 
 findings:
   - id: 1
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'מקבילה בדברי אדמו"ר הזקן עצמו: תניא, פרק מ'', בהגהה'
     places: ['18.3', '18.10']
     body: >-
@@ -21,6 +22,7 @@ findings:
       בכתיבה, כנראה מפני שהחיפוש בתניא לא מצא מילים שיש בהן ע' (תוקן).
     evidence: 'תניא, ליקוטי אמרים, פרק מ'', בהגהה'
   - id: 2
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'מקור לסדר ציצית קטן–טלית–תפילין = עיבור–יניקה–מוחין'
     places: ['16.11', '16.12']
     body: >-
@@ -30,6 +32,7 @@ findings:
       ראשונה עיבור ויניקה". בזה נפתר גם הקושי מול "א"מ דזעיר בהיות גדול" שבשער הציצית.
     evidence: 'שער הכוונות, דרושי ציצית ה''; פרי עץ חיים, שער התפילין'
   - id: 3
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'שלושה שמות בקריאת התורה'
     places: ['17.4']
     body: >-
@@ -37,6 +40,7 @@ findings:
       הת"ת דז"א, לג' בחי' שבו... הוי"ה חיצונית, הויה בריבוע אמצעי, שם מ"ה פנימי".
     evidence: 'פרי עץ חיים, שער הנהגת הלימוד'
   - id: 4
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'מקור קרוב יותר ל"כוונות עיוה"כ"'
     places: ['13.3', '13.4']
     body: >-
@@ -45,6 +49,7 @@ findings:
       פרי עץ חיים שער יום הכיפורים, אומר שהמזון הולך למלכות, ואינו קורא לז"א "אדם".
     evidence: 'שער הכוונות, דרושי יום הכיפורים א'''
   - id: 5
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: '"כמ"ש בע"ח ספ"ג גבי ח"ש": מועמד שלא נשקל'
     places: ['12.16', '12.19']
     body: >-
@@ -54,6 +59,7 @@ findings:
       לא מאותיות חשמל.
     evidence: 'עץ חיים 41.3.1: "להורות כי יצירה מלבוש לבריאה"'
   - id: 6
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'שער הצלם: ארבעה פרקים, לא שלושה'
     places: ['11.5']
     body: >-
@@ -63,6 +69,7 @@ findings:
       שני המקומות.
     evidence: 'עץ חיים 26.1.1: "שער הצלם ויתחלק לד'' פרקים"; 26.3.1'
   - id: 7
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: '"שהיא אלקות שבנוגה": שתי הקריאות עומדות'
     places: ['15.7']
     body: >-
@@ -72,6 +79,7 @@ findings:
       שהבירורים "גבוהין בשרשן מנפש־רוח־נשמה שבאדם, כי הן מס"ג". יש להציג את שתי הקריאות ולא לפסול אחת.
     evidence: 'תניא, קונטרס אחרון ד, 4.22, 4.27, 4.28; עץ חיים 40.8.1'
   - id: 8
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: '"באצילות": גם במקום האצילות'
     places: ['15.4']
     body: >-
@@ -79,6 +87,7 @@ findings:
       ובסעיף 14 "עד מל' דאצי'", ובעץ חיים 41.3.2 "עלו עד נוקבא דאצילות". נכון יותר: לא רק במקום האצילות.
     evidence: 'לשון ההגהה; עץ חיים 41.3.2'
   - id: 9
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'סעיף 17 אומר יותר מן המקור'
     places: ['17.1', '17.8']
     body: >-
@@ -87,6 +96,7 @@ findings:
       הדבר נכון רק בשמות שההגהה מונה.
     evidence: 'פרי עץ חיים, שער הנהגת הלימוד 1.24, 1.46'
   - id: 10
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'סעיף 18: הנימוק לתלמוד פועל בכיוון ההפוך'
     places: ['18.11']
     body: >-
@@ -95,6 +105,7 @@ findings:
       "רוח דבריאה"). המתח לא נדון, ואפשר שהוא העומד מאחורי "אפשר... בריאה ממש שבעשיה" שבסעיף 19.
     evidence: 'עץ חיים 44.5.9; תניא, קונטרס אחרון 4.55'
   - id: 11
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'דברי הסבא: הפשטת הלבוש רק בדף צ"ח'
     places: ['13.13', '13.14']
     body: >-
@@ -102,6 +113,7 @@ findings:
       בהיכלא טמירא", ואין שם הפשטה. ו"מדור הרוח" הוא לשון הכותב, לא לשון הזוהר.
     evidence: 'זוהר ח"ב צ"ח ע"ב, צ"ט ע"ב'
   - id: 12
+    settled: 'applied to biur.src.md, 2026-11-12, at the teacher''s word'
     title: 'סעיף 19: הקריאה עומדת; שלושה דברים לתקן'
     places: ['19.4', '19.9', '19.10']
     body: >-
