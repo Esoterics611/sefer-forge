@@ -1,0 +1,36 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קליפת נוגה
+forms:
+- קליפת נוגה
+- קלי' נוגה
+- קליפה נוגה
+- נוגה
+- הנוגה
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'הקליפה הרביעית, הקרובה לקדושה, שטוב ורע מעורבים בה (עץ הדעת טוב ורע). היא העור, שהוא "המלכים שלא נתבררו".
+    על ידי התורה והמצוות מזדכך הנוגה של כל עולם ונעשה לבוש לנשמה: מן הנוגה דעשיה לבוש הנפש, מן הנוגה דיצירה לבוש
+    הרוח.'
+  rests_on:
+  - work: etz-chaim
+    ref: 49.3.1
+    quote: אך עיקרו אינו אלא קלי' נוגה לבדה כי היא טו"ר
+  - work: etz-chaim
+    ref: 49.2.1
+    quote: בתיה שהיא נוגה עץ הדעת טוב ורע
+  - work: etz-chaim
+    ref: 41.1.2
+    quote: וזה העור הוא בחי' המלכים שלא נתבררו ונקרא קליפת נוגה
+  - work: etz-chaim
+    ref: 49.5.1
+    quote: וע"י מצות מעשיות מזדכך נוגה דעשיה ונעשה לבוש הנפש
+  - work: etz-chaim
+    ref: 49.5.1
+    quote: התורה מזדכך נוגה דיצירה לבוש הרוח
+related:
+- chashmal
+- birur
+- levushim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

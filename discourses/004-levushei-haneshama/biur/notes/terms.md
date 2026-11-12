@@ -1,5 +1,8 @@
 # מונחים — terms as this הגהה uses them (working lexicon)
 
+> 2026-11-12: carried into the repo-wide lexicon, `knowledge/lexicon/` (25 entries, every quotation checked by
+> `python scripts/lexicon.py --check`; some addresses here were corrected there). Add new terms there, not here.
+
 Each entry: the term · what it means here · the line it rests on (address in sources/). Claude's reading;
 "?" marks what is not settled. Abbreviations are opened in `abbreviations.md`.
 

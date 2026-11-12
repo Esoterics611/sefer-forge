@@ -66,7 +66,7 @@ readers (do not work around it); a search helper was started for these and stopp
 2. Have an independent agent check each part against the sources; resolve or report.
 3. Only then read the owner's teaching (introduction, הערות א'–ג', session 005) and write `biur/comparison.md`.
 4. `templates/biur.css`, `--pdf`, proof with `python scripts/proof-pdf.py`, hand the PDF over.
-5. Write the repo plan (source library, lexicon, knowledge, agents) — task still open; ideas so far: JSON +
+5. Write the repo plan (source library, lexicon, knowledge, agents) — **started 2026-11-12: `knowledge/README.md`, the lexicon in `knowledge/lexicon/` (from `notes/terms.md`), skill `chassidus-context`**; ideas so far: JSON +
    generated markdown per work with stable addresses (done), a catalog of numbering differences (started in
    `sources.yaml`), a citation register per discourse (`notes/citations.md` is the prototype), a lexicon built
    from `notes/terms.md` files, quotations set by address so they can be re-checked by script, a

@@ -1,0 +1,34 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: צלם
+forms:
+- צלם
+- הצלם
+- צלמים
+- הצלמים
+category: הנשמה ולבושיה
+senses:
+- meaning: 'הלבוש שבין הצורה (נר"ן) לבין הכלים: הנשמה אינה נכנסת בגוף אלא על ידו. לכל אחד מחלקי הנשמה צלם משלו.
+    הוא יצר טוב ויצר רע, והוא תרי"ג איברים, ושורשו ברפ"ח הניצוצות שנשארו בכלים שנשברו ("הבל דגרמי"). את הצלמים ואת
+    הכלים המצוות מצרפות ומבררות.'
+  rests_on:
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: והצלם גם הוא נחלק לה' בחי' כנגדן והוא לבוש הצורה ולעולם הצורה הזו אינה יכולה לעמוד בלתי צלם זה
+  - work: etz-chaim
+    ref: 26.2.1
+    quote: וזה הצלם הוא המפסיק בין הכלים לבין העצמות האור
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: לכן הצלם הוא תרי"ג איברים
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: ולא נתנו המצות אלא לצרף ולברר וללבן הצלמים וגם הכלים
+related:
+- tzelem-deima
+- hevel-degarmei
+- chashmal
+- naran
+- birur
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

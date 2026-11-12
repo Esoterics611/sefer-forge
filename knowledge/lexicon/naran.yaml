@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נר"ן (נפש רוח נשמה)
+forms:
+- נר"ן
+- נרנח"י
+- נפש רוח נשמה
+- הצורה
+- העצמות
+abbrev:
+  נר"ן: נפש רוח ונשמה
+  נרנח"י: נפש רוח נשמה חיה יחידה
+category: הנשמה ולבושיה
+senses:
+- meaning: 'האדם עצמו: הנשמה, בחלקיה נפש רוח ונשמה (ועמהם חיה ויחידה). בלשון עץ חיים היא "הצורה" ו"העצמות", לעומת
+    הכלים, שהם הגוף והלבושים שלה.'
+  rests_on:
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: כי הצורה הוא העיקר הנקרא אדם והיא יחידה חיה נר"ן
+  - work: etz-chaim
+    ref: 49.4.2
+    quote: העצמות הם נר"ן וכלים הם לבושים שיש לנר"ן
+related:
+- kelim
+- tzelem
+- levushim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: הבל דגרמי
+forms:
+- הבל דגרמי
+- הבל דגרמין
+- הבל דגרמי'
+category: שבירה, קליפות ובירור
+senses:
+- meaning: הניצוצות (מרפ"ח הניצוצין) שנשארו בתוך הכלים שנשברו. מהם הצלמים. בעיבור וביניקה אין בכלים אלא הבל דגרמי,
+    ובגדלות נכנסים בהם נר"ן. הארת העור דז"א נקראת כך, והיא החשמל.
+  rests_on:
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: סודם הן מן רפ"ח ניצוצין שנשארו בתוך הכלים שנשתברו הנקרא הבל דגרמי
+  - work: etz-chaim
+    ref: 41.2.1
+    quote: בג' הכלים של הגדלות יש נר"ן אך בעיבור ויניקה אין בהם רק הבל דגרמי
+  - work: etz-chaim
+    ref: 42.4.1
+    quote: הארת העור דז"א הנקרא הבל דגרמי
+related:
+- tzelem
+- shivat-hamelachim
+- chashmal
+- ibur-yenika-mochin
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

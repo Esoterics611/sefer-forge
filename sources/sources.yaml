@@ -51,6 +51,7 @@ works:
     numbering:
       - "Addresses are הקדמה.paragraph: 13.1 = הקדמה י\"ג, its first paragraph (cite it as 'שעה\"ג הקדמה י\"ג'). 1-38 are the הקדמות; 39 is 'בקשר החברים'; 40 is R. Shmuel Vital's appendix."
       - "Not the ספר הגלגולים the Alter Rebbe cites by chapter ('בגלגולים פ\"א', 'פ\"ז', 'פי\"ד', 'פ\"ב'): that is the other redaction of the same teachings, not in sources/. Its words 'וכפי גודל אותה המצוה או זריזות' are not here; the teaching is: souls rise from the kelipot by others' prayers, a צדיק's יחוד or a mitzvah (13.1, again 39.7), into עיבור in the מלכות, 'נקבה העליונה' (12.5), 'ואח\"כ יורדות בגוף בעה\"ז' (12.7)."
+      - "ספר הגלגולים itself (checked 2026-11-12): he.wikisource.org has its שער הגלגולים (the same 40 הקדמות as this file) and a page for ספר הגלגולים that is not typed ('עוד לא הוקלד'); it links two scans of the Frankfurt 1684 print, hebrewbooks.org 23822 and 45024. hebrewbooks blocks automated readers: a PDF downloaded by hand into sources/scans/ (local only) can be read from its page images."
       - "His 'וע\"ש אחר ס\"פ ל\"ה בקשר החברים' (each soul rising from the kelipot is at least forty days in the מלכות) is 39.6 here, and 12.7."
   shaar-hakavanot:
     title: "שער הכוונות"

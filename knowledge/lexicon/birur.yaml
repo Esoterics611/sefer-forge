@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: בירור
+forms:
+- בירור
+- בירורים
+- בירורין
+- לברר
+- מתבררים
+- נתבררו
+category: שבירה, קליפות ובירור
+senses:
+- meaning: הפרדת הטוב (ניצוץ הקדושה) מן הרע שנתערב בו, והעלאתו. ירידת העולמות בחטא אדם הראשון, וירידתם בימי החול,
+    תכליתה לברר את המלכים. המצוות ניתנו "לצרף ולברר וללבן" את הצלמים והכלים.
+  rests_on:
+  - work: etz-chaim
+    ref: 26.1.2
+    quote: ולא נתנו המצות אלא לצרף ולברר וללבן הצלמים וגם הכלים ולהסיר מהם הקלי'
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.4
+    quote: וענין הירידה הזאת תכליתה היא, כדי לברר בירור המלכים הנ"ל
+related:
+- shivat-hamelachim
+- levushim
+- zun-bebya-bechol
+- mayin-duchrin
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

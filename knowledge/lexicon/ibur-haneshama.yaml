@@ -1,0 +1,39 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: עיבור הנשמה במלכות
+forms:
+- עיבור במלכות
+- עבור במלכות
+- בבטן המלכות
+- במעי המלכות
+category: הנשמה ולבושיה
+senses:
+- meaning: 'שהיית הנשמה שעלתה מן הקליפות בתוך המלכות, לפני שהיא יורדת לגוף, כדי להיטהר מזוהמת הקליפות. משך השהייה
+    לפי מדרגת הנשמה: החדשות האמיתיות י"ב חודש, שנשתיירו באדם ט'' חודשים, המגולגלות מ'' יום "כנגד יצירת הולד", הגרים
+    ג'' ימים.'
+  rests_on:
+  - work: shaar-hagilgulim
+    ref: '12.5'
+    quote: כדי להטהר להנקות שם מחלאת טומאת זוהמת הקליפות
+  - work: shaar-hagilgulim
+    ref: '12.7'
+    quote: יכולות להשתהות בסוד עבור בבטן המלכות י"ב חדשים, ואח"כ יורדות בגוף בעה"ז
+  - work: shaar-hagilgulim
+    ref: '12.7'
+    quote: אין בהם כח להשתהות במעי המלכות רק ט' חדשים
+  - work: shaar-hagilgulim
+    ref: '12.7'
+    quote: אינם מתעכבות בבטן המלכות רק מ' יום כנגד יצירת הולד
+  - work: shaar-hagilgulim
+    ref: '12.7'
+    quote: רק שלשה ימים בלבד
+  - work: shaar-hagilgulim
+    ref: '39.6'
+    quote: אינם יכולות להתעכב בעבור במלכות רק מ' יום כנגד יצירת הולד
+open: ההגהה מביאה זאת מ"ספר הגלגולים" ("ע"ש אחר ס"פ ל"ה בקשר החברים"). כאן הוא מובא מן המקבילה בשער הגלגולים (39.6,
+  12.7). ספר הגלגולים עצמו (פרנקפורט תמ"ד) אינו ב-sources/.
+related:
+- nukva
+- neshamot-chadashot
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

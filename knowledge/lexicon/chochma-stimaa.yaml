@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: חכמה סתימאה / מוחא סתימאה
+forms:
+- חכמה סתימאה
+- מוחא סתימאה
+- מו"ס
+- חיוורתא
+- י"ג חיוורתא
+abbrev:
+  מו"ס: מוחא סתימאה
+category: פרצופים ועולמות
+senses:
+- meaning: החכמה הסתומה שבראש העליון. לפי שער מ"ן ומ"ד, בירור המלכים נעשה על ידי "המחשבה עליונה שהיא חכמה סתימאה"
+    שהאירה בהם. בה י"ג תיקונים, "י"ג נימין", שהגולגלתא מאירה לי"ג צדדים.
+  rests_on:
+  - work: etz-chaim
+    ref: 39.1.2
+    quote: המחשבה עליונה שהיא חכמה סתימאה דברישא דע"ק
+  - work: etz-chaim
+    ref: 13.5.1
+    quote: בגין דהאי חכמה סתימאה ביה אתפרש ג' זימנין לד' ד'
+  - work: etz-chaim
+    ref: 13.5.1
+    quote: האי גלגלתא חוורא דיליה אנהיר לתליסר עיבר
+caution: ב-39.1.2 היא "דברישא דע"ק" (עתיקא קדישא), ובהגהה "מו"ס דא"א" (אריך אנפין). יש לבדוק את היחס ביניהם לפני
+  שמשווים.
+related:
+- birur
+- shivat-hamelachim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

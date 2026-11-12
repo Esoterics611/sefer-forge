@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ז' מלכים / רפ"ח ניצוצין
+forms:
+- ז' מלכים
+- המלכים
+- מלכים שמתו
+- רפ"ח ניצוצין
+- רפ"ח
+category: שבירה, קליפות ובירור
+senses:
+- meaning: שבעת המלכים שמתו (שבירת הכלים), שהם דינים וגבורות וניצוצי אש. ניצוצותיהם, רפ"ח, הם מה שכל התפילות והכוונות
+    מבררות ומעלות.
+  rests_on:
+  - work: etz-chaim
+    ref: 39.1.2
+    quote: אלו הז' מלכים שמתו שהם דינין וגבורות וניצוצי אש
+  - work: etz-chaim
+    ref: 39.2.1
+    quote: כל תפלותינו וכוונתינו הם לברר ולהעלות הניצוצין של ז' מלכים שמתו שהם רפ"ח ניצוצין
+related:
+- birur
+- mayin-nukvin
+- hevel-degarmei
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

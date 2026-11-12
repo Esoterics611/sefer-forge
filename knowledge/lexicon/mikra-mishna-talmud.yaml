@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מקרא, משנה, תלמוד וקבלה בעולמות
+forms:
+- מארי מקרא
+- מארי משנה
+- מארי תלמוד
+- מקרא משנה ותלמוד
+- מקרא
+- משנה
+- תלמוד
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'לפי הזוהר: בעלי מקרא בעשייה, בעלי משנה ביצירה, בעלי תלמוד בבריאה, בעלי קבלה באצילות. ואף על פי כן כולם
+    באצילות, "כי באצילות יש כל מה שלמטה ממנו".'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Conduct While Learning.1.21
+    quote: כי מארי מקרא הם בעשיה. ומארי משנה הם ביצירה. ומארי תלמוד בבריאה. ומארי קבלה באצילות
+  - work: pri-etz-chaim
+    ref: Gate of Conduct While Learning.1.21
+    quote: אך הענין, כי באצילות יש כל מה שלמטה ממנו
+caution: המילים "מקרא", "משנה", "תלמוד" לבדן שכיחות מאוד, ולכן --in מוצא אותן גם במקומות שאינם מדברים בענין הזה.
+related:
+- levushim
+- atzilut-shebebya
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

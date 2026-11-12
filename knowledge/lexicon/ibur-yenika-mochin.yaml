@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: עיבור, יניקה ומוחין (גדלות)
+forms:
+- עיבור
+- יניקה
+- גדלות
+- מוחין דגדלות
+- בעיבור ויניקה
+category: פרצופים ועולמות
+senses:
+- meaning: שלושת שלבי הגדילה של הפרצוף (ז"א), שבכל אחד מהם מוחין. בעיבור וביניקה אין בכלים אלא הבל דגרמי, ורק בגדלות
+    נכנסים בהם נר"ן. החיצוניות של ז"א היא תחילה ו' כלים, ונשלמת לעשרה בגדלות.
+  rests_on:
+  - work: etz-chaim
+    ref: 40.3.1
+    quote: שיש מוחין בעיבור ויניקה וגדלות
+  - work: etz-chaim
+    ref: 41.2.1
+    quote: בג' הכלים של הגדלות יש נר"ן אך בעיבור ויניקה אין בהם רק הבל דגרמי
+  - work: etz-chaim
+    ref: 26.2.1
+    quote: ואח"כ נגמרים לי' בגדלות
+caution: '"עיבור" כאן הוא שלב בפרצוף. "עיבור הנשמה במלכות" לפני ירידתה לגוף הוא ענין אחר (ibur-haneshama).'
+related:
+- hevel-degarmei
+- ibur-haneshama
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

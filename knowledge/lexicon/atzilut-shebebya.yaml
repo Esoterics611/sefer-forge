@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: חלק האצילות שבבי"ע
+forms:
+- אצילות שבבי"ע
+- חלק האצילות
+- אצילות ממש שבבי"ע
+category: פרצופים ועולמות
+senses:
+- meaning: חלק האצילות מתפשט בכל עולמות בי"ע. הנשמה של ז"א דבריאה היא הכלים הפנימיים מבין שלושת הכלים של ז"א דאצילות.
+  rests_on:
+  - work: etz-chaim
+    ref: 41.3.2
+    quote: כי חלק האצילות מתפשט בכל בי"ע
+  - work: etz-chaim
+    ref: 44.5.1
+    quote: הנשמה של ז"א דבריאה לפנים מכולם הם י"ס (הכלים) הפנימים מג' בחי' (כלים) שיש בז"א דאצילות
+related:
+- shlosha-kelim
+- zun-bebya-bechol
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

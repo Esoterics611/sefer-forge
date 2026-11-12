@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: כלים (של הנשמה) / גוף
+forms:
+- כלים
+- הכלים
+- גוף
+category: הנשמה ולבושיה
+senses:
+- meaning: 'מה שהנשמה (העצמות) מתלבשת בו: "הגוף", שהוא גם "לבושים" שלה. שלושה כלים, חיצון אמצעי ופנימי, כנגד מוח
+    לב וכבד שבגוף האדם. של אדם הראשון היו תחילה "כתנות אור".'
+  rests_on:
+  - work: etz-chaim
+    ref: 49.4.2
+    quote: וכלים הם לבושים שיש לנר"ן
+  - work: etz-chaim
+    ref: 49.4.2
+    quote: תחלה היו אלו הכלים הנקרא גוף ונקרא לבושים דאדה"ר כתנות אור
+  - work: etz-chaim
+    ref: 26.2.1
+    quote: והם ג' בחי' חיצון אמצעי ופנימי והם מוח לב כבד
+caution: '"כלים" כאן הם כלי הנשמה. אין לבלבל עם כלי הספירות (שבירת הכלים), אף שבעץ חיים הם ענין אחד: מה שנשאר בכלים
+  שנשברו הוא שורש הצלם והלבושים (ראה hevel-degarmei).'
+related:
+- naran
+- levushim
+- shlosha-kelim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama
