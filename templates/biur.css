@@ -99,3 +99,21 @@ p { orphans: 2; widows: 2; }
 /* The repository address of a source (etz-chaim 49.5.1) stays in biur.md for checking;
    in print the Hebrew label names the place. */
 @media print { .addr { display: none; } }
+
+/* A paragraph an open finding of the independent check touches (biur/checks.yaml), and the findings
+   themselves in the last part (ז). */
+.flag { font-size: 8.5pt; font-weight: 700; color: #8a4b1f; white-space: nowrap; margin-inline-start: 1.5mm; }
+.finding { border-right: 2.5pt solid #8a4b1f; padding: 1.5mm 4mm 1mm; margin: 0 0 4mm; break-inside: avoid; }
+.finding p { margin: 0 0 1.5mm; }
+.finding-meta { display: block; font-size: 9.5pt; color: var(--soft); line-height: 1.5; }
+
+/* A lead-in ("וכך לשון הצמח צדק:") stays on the page of the passage it introduces. */
+p:has(+ .makor), p:has(+ .nusach), li:last-child:has(+ .makor) { break-after: avoid; }
+/* The abbreviations opened right after a stretch of the text stay whole, with the text. */
+.nusach + p { break-inside: avoid; }
+/* A section's heading, its stretch of the text and its abbreviations: one block, never split. */
+.opening { break-inside: avoid; }
+/* A long table may run on to the next page, a row at a time; the findings part opens a page. */
+table { break-inside: auto; }
+tr { break-inside: avoid; }
+.findings-part { break-before: page; }

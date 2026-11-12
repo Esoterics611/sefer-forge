@@ -29,5 +29,7 @@ paragraph 3; the lettered parts `[ב׳.2]`, the foreword `[פתח.1]`. A remark 
 6. Rebuild (`python scripts/build-biur.py discourses/004-levushei-haneshama/biur --pdf`), proof
    (`python scripts/proof-pdf.py output/biur/004-levushei-haneshama-biur.pdf --profile biur`), commit.
 
-The independent check's findings, before his review, are in `../check.md`; the first Fable session's
+The independent check's findings, before his review, are in `../check.md`; the serious ones print as the
+explanation's last part (ז) and mark the paragraphs they touch ("בדיקה N"), from `../checks.yaml`: when one
+is settled in the register, set its `settled:` there and rebuild, and its mark leaves the print; the first Fable session's
 comparison of his earlier teaching with its own first version is `../comparison.md`.

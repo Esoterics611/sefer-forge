@@ -284,6 +284,68 @@ def number_paragraphs(lines: list[str]) -> tuple[list[str], int]:
     return out, total
 
 
+PNUM = re.compile(r"\[([^\]]+)\]\{\.pnum\}")
+
+
+def group_openings(lines: list[str]) -> list[str]:
+    """Keep a section's opening together on one page: its heading, the stretch of the text that
+    follows it, and the abbreviations opened right after (a :::: {.opening} block the print keeps
+    whole). Only when the heading is followed directly by the text."""
+    out, i = [], 0
+    while i < len(lines):
+        line = lines[i]
+        j = i + 1
+        while j < len(lines) and not lines[j].strip():
+            j += 1
+        if line.startswith("### ") and j < len(lines) and lines[j].startswith("::: {.nusach}"):
+            k = j
+            while k < len(lines) and lines[k].strip() != ":::":
+                k += 1
+            end = k + 1
+            m = end
+            while m < len(lines) and not lines[m].strip():
+                m += 1
+            if m < len(lines) and "ראשי התיבות" in lines[m][:80]:
+                end = m + 1
+            out += [":::: {.opening}", line, ""] + lines[j:end] + ["::::"]
+            i = end
+            continue
+        out.append(line)
+        i += 1
+    return out
+
+
+def add_checks(lines: list[str], data: dict) -> tuple[list[str], int]:
+    """Mark each paragraph an open finding of an independent check touches ([⚑ 3]) and print the
+    findings as the last part (ז). checks.yaml says which; the explanation's sentences are untouched."""
+    findings = [f for f in data.get("findings") or [] if not f.get("settled")]
+    if not findings:
+        return lines, 0
+    marks: dict[str, list[int]] = {}
+    for f in findings:
+        for p in f.get("places") or []:
+            marks.setdefault(str(p), []).append(f["id"])
+    seen, out = set(), []
+    for line in lines:
+        m = PNUM.search(line)
+        if m and m.group(1) in marks:
+            line = line.rstrip() + " [בדיקה " + ", ".join(str(i) for i in marks[m.group(1)]) + "]{.flag}"
+            seen.add(m.group(1))
+        out.append(line)
+    missing = sorted(set(marks) - seen)
+    if missing:
+        raise BuildError(f"checks.yaml: no paragraph numbered {', '.join(missing)}")
+    out += ["", ":::: {.findings-part}", "## ז. ממצאי הבדיקה העצמאית", ""]
+    if data.get("intro"):
+        out += [" ".join(str(data["intro"]).split()), ""]
+    for f in findings:
+        out += ['::: {.finding}', f"**בדיקה {f['id']}. {f['title']}**", "", " ".join(str(f['body']).split()), ""]
+        places = ", ".join(str(p) for p in f.get("places") or [])
+        out += [f"[מקור: {f.get('evidence', '')} · פסקאות: {places}]{{.finding-meta}}", ":::", ""]
+    out.append("::::")
+    return out, len(seen)
+
+
 def build(src: Path) -> tuple[str, dict, list[str]]:
     raw = src.read_text(encoding="utf-8")
     meta, body = {}, raw
@@ -315,6 +377,11 @@ def build(src: Path) -> tuple[str, dict, list[str]]:
     notes.append(f"{n_src} source passage(s) set in")
     out, n_par = number_paragraphs(out)
     notes.append(f"{n_par} paragraph(s) of explanation numbered")
+    out = group_openings(out)
+    checks = src.parent / "checks.yaml"
+    if checks.is_file():
+        out, n_flag = add_checks(out, yaml.safe_load(checks.read_text(encoding="utf-8")) or {})
+        notes.append(f"{n_flag} paragraph(s) marked from checks.yaml")
     if cursor.text:
         notes.append(cursor.report())
     meta_out = dict(meta)
