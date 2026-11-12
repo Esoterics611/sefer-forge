@@ -1,0 +1,92 @@
+/* Study explanation (scripts/build-biur.py): a text explained passage by passage,
+   with the text itself and its sources set in. A4, for reading and study.
+   The same palette and font as the reading packs (templates/references.css):
+   Frank Ruhl Libre Regular and Bold (static cuts in templates/fonts/).
+   Checked by scripts/proof-pdf.py --profile biur (docs/print-standard.md). */
+
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  src: url("fonts/FrankRuhlLibre-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  src: url("fonts/FrankRuhlLibre-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+:root {
+  --ink: #1b1b1b;
+  --soft: #5a5246;
+  --rule: #8c7a5b;
+  --box-fill: #f6f2e9;
+  --mark: #f3df8f;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm 20mm 20mm;
+  @bottom-center { content: counter(page, hebrew); font-family: "Frank Ruhl Libre"; font-size: 10pt; color: var(--soft); }
+}
+
+html { direction: rtl; }
+body {
+  margin: 0;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 13pt;
+  line-height: 1.7;
+  color: var(--ink);
+  background: #fff;
+}
+p { text-align: justify; margin: 0 0 2.5mm; }
+em { font-style: normal; font-weight: 700; color: var(--soft); }
+code { font-family: inherit; font-size: 0.9em; direction: ltr; unicode-bidi: embed; }
+header, #title-block-header { display: none; }
+
+h1 { font-weight: 700; font-size: 22pt; line-height: 1.3; text-align: center; margin: 0 0 1mm; }
+.subtitle { display: block; text-align: center; font-size: 13pt; color: var(--soft); }
+.byline { display: block; text-align: center; font-size: 10.5pt; line-height: 1.5; color: var(--soft);
+  border-top: 0.6pt solid var(--rule); border-bottom: 0.6pt solid var(--rule); padding: 1.5mm 0; margin: 2mm 0 5mm; }
+h2 { font-size: 16pt; font-weight: 700; margin: 9mm 0 3mm; padding-bottom: 1mm; border-bottom: 0.8pt solid var(--rule); break-after: avoid; }
+h3 { font-size: 13.5pt; font-weight: 700; margin: 8mm 0 2.5mm; color: var(--ink); break-after: avoid; }
+
+/* The text being explained: the Alter Rebbe's words. */
+.nusach {
+  border: 1pt solid var(--rule);
+  border-right: 3.5pt solid var(--ink);
+  padding: 2.5mm 4mm 1mm;
+  margin: 0 0 3.5mm;
+  font-size: 14pt;
+  font-weight: 700;
+  line-height: 1.7;
+  break-inside: avoid;
+  break-after: avoid;
+}
+.nusach p { margin: 0 0 1.5mm; }
+
+/* A source passage. */
+.makor {
+  background: var(--box-fill);
+  border-right: 2.5pt solid var(--rule);
+  padding: 2mm 4mm 1mm;
+  margin: 0 0 4mm;
+  font-size: 11.5pt;
+  line-height: 1.6;
+}
+.makor p { margin: 0 0 1.5mm; }
+.makor strong { background: var(--mark); font-weight: 700; padding: 0 0.4mm; }
+.makor-label { font-weight: 700; font-size: 10.5pt; color: var(--soft); }
+.addr { font-size: 8.5pt; color: var(--soft); direction: ltr; unicode-bidi: embed; margin-inline-start: 2mm; }
+.makor-note { font-size: 10pt; color: var(--soft); }
+
+ul, ol { margin: 0 0 3mm; padding-inline-start: 7mm; }
+li { margin: 0 0 1mm; text-align: justify; }
+blockquote { margin: 5mm 0; padding: 2mm 4mm; border: 0.8pt solid var(--rule); color: var(--soft); font-size: 12pt; }
+blockquote p { margin: 0; }
+
+table { border-collapse: collapse; width: 100%; margin: 3mm 0 5mm; font-size: 11pt; line-height: 1.5; break-inside: avoid; }
+th, td { border: 0.6pt solid var(--rule); padding: 1.2mm 2mm; text-align: right; vertical-align: top; }
+th { background: var(--box-fill); font-weight: 700; }
+.nusach + p { break-after: avoid; }
+.makor > p:first-child { break-after: avoid; }
+p { orphans: 2; widows: 2; }

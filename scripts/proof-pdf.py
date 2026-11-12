@@ -76,6 +76,12 @@ PROFILES = {
     "references": {"css": "templates/references.css", "script": "scripts/build-references.py", "page": "A4",
                    "numerals": "hebrew", "running_header": False, "cover": False,
                    "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 20.0},
+    # Study explanations (scripts/build-biur.py): A4, numbered from p.1, no cover, no running header.
+    "biur": {"css": "templates/biur.css", "script": "scripts/build-biur.py", "page": "A4",
+             "numerals": "hebrew", "running_header": False, "cover": False,
+             # Justified right-to-left lines end in a space glyph whose box (no ink) sits 2pt into the margin.
+             "margin_slack": 3.0,
+             "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 13.4},
 }
 LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO'
                    r'|(?:^|\s)(?:>|#{1,4})(?:\s|$)')        # a blockquote or heading marker printed
@@ -343,7 +349,7 @@ def main(argv: list[str]) -> int:
     else:
         profile = None
     if len(args) != 1:
-        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|book] [--no-images]")
+        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|biur|book] [--no-images]")
         return 1
     pdf = Path(args[0])
     if not pdf.exists():
