@@ -36,10 +36,12 @@ script can see.
 - Every source it relies on, in its own words, the words that matter marked (`@source`, `@file`).
 - The explanation: what the source says, what the text does with it, and how this part connects to what
   came before and what follows. Plain, impersonal Hebrew.
-- One line under the title saying it is Claude's explanation and not the teacher's words (CLAUDE.md:
-  a ביאור never prints as his).
-- While the teacher reviews it: the independent check's open findings (`biur/checks.yaml`), marked
-  "בדיקה N" and printed as the last part. They leave the print as he settles them.
+- Nothing about how it was made: no byline, no paragraph numbers, no check marks, no mention of the
+  repository or its copies of the sources ("בעותק שבמאגר"): name a source as the printed books do.
+  Ronnie deploys the finished document as his own work, on his command (CLAUDE.md).
+- For review only, never the finished document: `--review` prints a copy (`output/biur/review/`) with
+  paragraph numbers and the independent check's open findings (`biur/checks.yaml`) marked "בדיקה N" and
+  listed at the end.
 
 ## For the writer
 

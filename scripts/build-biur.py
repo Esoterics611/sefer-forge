@@ -6,10 +6,13 @@ Usage:
     python scripts/build-biur.py discourses/004-levushei-haneshama/biur          # biur.src.md → biur.md
     python scripts/build-biur.py discourses/004-levushei-haneshama/biur --pdf    # ... and output/biur/<discourse>.pdf
     python scripts/build-biur.py <dir> --check                                   # only the checks
+    python scripts/build-biur.py <dir> --pdf --review                            # a review copy (output/biur/review/):
+        paragraph numbers, and the open findings of an independent check (checks.yaml) marked and listed at the end.
+        The plain --pdf is the finished document: neither numbers nor marks.
 
-A ביאור is not the speaker's words and never prints as his: it lives in its own
-folder beside the discourse's sessions (`<discourse>/biur/`) and is printed only
-by this script, to `output/biur/`.
+A ביאור lives in its own folder beside the discourse's sessions (`<discourse>/biur/`)
+and is printed by this script, to `output/biur/`. It is kept apart from the
+teacher's sessions until he commands it deployed as his own work (CLAUDE.md).
 
 `biur.src.md` is what is written by hand: the explanation, with one-line
 directives where a text is to stand. The build replaces each directive by the
@@ -286,6 +289,7 @@ def number_paragraphs(lines: list[str]) -> tuple[list[str], int]:
 
 
 PNUM = re.compile(r"\[([^\]]+)\]\{\.pnum\}")
+PNUM_TAG = re.compile(r"\[[^\]]+\]\{\.pnum\} ")
 
 
 def group_openings(lines: list[str]) -> list[str]:
@@ -354,6 +358,7 @@ FORBIDDEN = [   # prompts/biur-rules.md: what never prints in an explanation
     (re.compile(r"\((?:זו )?השערה[^)]{0,20}\)|מוכרח מן ההקשר"), "certainty tag (rule 3)"),
     (re.compile(r"לפניי|הבנתי|לא מצאתי|נראה לי|איני יודע|אני קורא|אכתוב|(?<!כמו ש)כתבתי|זיהיתי|ביקשתי|(?<![א-ת])(?:שלי|אני|ראיתי)(?![א-ת])"), "the writer in the first person (rule 4)"),
     (re.compile(r"שים לב|כדאי לראות|נבנה הביאור"), "instruction to the reader (rule 5)"),
+    (re.compile(r"Claude|בינה מלאכותית|במאגר|שבמאגר|\bsources/|\{\.byline\}"), "how it was made: byline, repository (rules: In the explanation)"),
     (re.compile(r"^## (?!מבוא$|סיכום$|ז\. )"), "method heading: only מבוא, the numbered sections and סיכום (rule 6)"),
     (re.compile(r"^\*\*ביאור[^*]{0,20}\.\*\*"), "label inside the explanation (rule 7)"),
 ]
@@ -373,7 +378,7 @@ def lint(body: str, first_line: int) -> list[str]:
     return errs
 
 
-def build(src: Path) -> tuple[str, dict, list[str]]:
+def build(src: Path, with_checks: bool = False) -> tuple[str, dict, list[str]]:
     raw = src.read_text(encoding="utf-8")
     meta, body = {}, raw
     if raw.startswith("---"):
@@ -409,7 +414,7 @@ def build(src: Path) -> tuple[str, dict, list[str]]:
     notes.append(f"{n_par} paragraph(s) of explanation numbered")
     out = group_openings(out)
     checks = src.parent / "checks.yaml"
-    if checks.is_file():
+    if with_checks and checks.is_file():
         out, n_flag = add_checks(out, yaml.safe_load(checks.read_text(encoding="utf-8")) or {})
         notes.append(f"{n_flag} paragraph(s) marked from checks.yaml")
     if cursor.text:
@@ -456,6 +461,7 @@ def main(argv: list[str]) -> int:
         print(f"no {src}")
         return 2
     try:
+        review = "--review" in argv or "--checks" in argv
         text, meta, notes = build(src)
         if "--check" not in argv:
             (folder / "biur.md").write_text(text + "\n", encoding="utf-8")
@@ -464,8 +470,16 @@ def main(argv: list[str]) -> int:
             print(" ·", n)
         if "--pdf" in argv:
             name = meta.get("pdf_name") or folder.parent.name
-            pdf = ROOT / "output" / "biur" / f"{name}.pdf"
-            to_pdf(folder / "biur.md", meta, pdf)
+            if review:      # paragraph numbers and the open findings of a check: a copy for review only
+                text, _, _ = build(src, with_checks=True)
+                pdf = ROOT / "output" / "biur" / "review" / f"{name}.pdf"
+            else:           # the finished document: no numbers, no marks
+                text = PNUM_TAG.sub("", text)
+                pdf = ROOT / "output" / "biur" / f"{name}.pdf"
+            md = pdf.with_suffix(".md")
+            pdf.parent.mkdir(parents=True, exist_ok=True)
+            md.write_text(text + "\n", encoding="utf-8")
+            to_pdf(md, meta, pdf)
             print(f"wrote {pdf.relative_to(ROOT)}")
     except BuildError as e:
         print(f"ERROR: {e}")
