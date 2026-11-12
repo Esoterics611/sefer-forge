@@ -88,7 +88,7 @@ variant האור/העור; old-print chapter numbers; מק"מ folio; "ולתור
 rewritten: part ה of the explanation is now the current list.
 
 ### Notes for the lexicon
-`notes/terms.md` has a new heading, "Terms the second half needed": 33 rows (term, meaning, address), not
+`notes/terms.md` has a new heading, "Terms the second half needed": 34 rows (term, meaning, address), not
 yet in `knowledge/lexicon/` and not `--check`ed.
 
 ---
