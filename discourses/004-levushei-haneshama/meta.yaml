@@ -11,8 +11,19 @@ chapter: null
 intro: [text.md, introduction.md]
 skip_sessions: ["001"]        # its text and recordings print through the two files above
 
+# The speaker's long writing on the Alter Rebbe's words after הערה ג' (session 005,
+# with שער הגלגולים) prints at the end as an addendum (נספח); in its place, the
+# basics (sessions/005/inline.md), pointing to the addendum (2026-11-10, at the
+# speaker's request). The key points (נקודות מפתח) are left out altogether: "they
+# don't make sense and are unnecessary, remove them completely for now" (the speaker,
+# 2026-11-10); `keys: end` would print them once after the addendum.
+# scripts/assemble-discourse.py.
+addendum: ["005"]
+keys: none
+
 # Cover and running header for scripts/build-pamphlet.py.
 pamphlet:
   subtitle: "לבושי הנשמה · מקורותיו בעץ חיים · ביאור"
   author: "רוני משה בן שושנה"
   date: "תשפ\"ז · 2026"
+  notes: addendum      # the teaching text's notes (הערה ג') print in the addendum, numbered in the text

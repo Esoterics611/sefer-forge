@@ -17,6 +17,14 @@ Optional keys in <discourse-dir>/meta.yaml:
                                  #   like a transcript (title → heading); a list
                                  #   of files makes one opening part each
     skip_sessions: ["000"]       # sessions left out of discourse.md
+    addendum: ["005"]            # sessions printed whole at the end, as an addendum
+                                 #   (נספח), after every other part; in a session's
+                                 #   own place, its inline.md: the basics, pointing
+                                 #   to the addendum
+    keys: end                    # the key points (נקודות מפתח) of every part
+                                 #   gathered into one list at the very end, instead
+                                 #   of closing each part; `keys: none` leaves them
+                                 #   out of discourse.md altogether
 
 Markdown footnote labels ([^1]) are prefixed with the session number so
 labels from different sessions never collide in the book.
@@ -50,6 +58,28 @@ import forgelib as F
 
 FRONTMATTER_RE = re.compile(r"^---\n([\s\S]*?)\n---\s*")
 FOOTNOTE_RE = re.compile(r"\[\^([^\]\s]+)\]")
+NIQQUD = re.compile(r"[\u0591-\u05c7]")
+KICKER_RE = re.compile(r'^\*\*\[(.+?)\]\{dir="rtl"\}\*\*$', re.M)
+ADDENDUM_MARK = "<!-- addendum -->"       # build-pamphlet.py: the parts after it are the addendum
+KEYS_PART = "keys"                         # the key points of every part, gathered (meta.yaml keys: end)
+
+
+def take_keys(fragment: str) -> tuple[str, str]:
+    """A section's '## נקודות מפתח' cut out: (the section without it, its body)."""
+    heads = list(re.finditer(r"^## (.+)$", fragment, re.M))
+    for i, m in enumerate(heads):
+        if NIQQUD.sub("", m.group(1)).strip() == "נקדות מפתח":
+            end = heads[i + 1].start() if i + 1 < len(heads) else len(fragment)
+            return (fragment[:m.start()] + fragment[end:]).strip(), fragment[m.end():end].strip()
+    return fragment, ""
+
+
+def gathered_keys(groups: list[tuple[str, str]]) -> str:
+    """One list of key points, a heading for each part they come from."""
+    out = ["## נְקֻדּוֹת מַפְתֵּחַ"]
+    for title, keys in groups:
+        out += [f'### [{title}]{{dir="rtl"}}', keys]
+    return "\n\n".join(out)
 
 
 def strip_frontmatter(text: str) -> str:
@@ -85,6 +115,30 @@ def render_transcript(text: str, label: str, teaching: bool = False) -> str:
     if fm.get("subtitle"):
         head.append(f"*{fm['subtitle']}*")
     return "\n\n".join(head + [body])
+
+
+def tail_parts(fragments: list[tuple[str, str]], addenda: list[tuple[str, str]],
+               groups: list[tuple[str, str]]) -> list[str]:
+    """The parts in print order: the body, then the addendum, then the gathered key points."""
+    out: list[str] = []
+    for name, content in fragments:
+        out += [f"<!-- session: {name} -->", content, ""]
+    if addenda:
+        out += [ADDENDUM_MARK, ""]
+        for name, content in addenda:
+            out += [f"<!-- session: {name} -->", content, ""]
+    if groups:
+        out += [f"<!-- session: {KEYS_PART} -->", gathered_keys(groups), ""]
+    return out
+
+
+def listing(fragments: list, addenda: list, groups: list) -> None:
+    for name, _ in fragments:
+        print(f"  - {name}")
+    for name, _ in addenda:
+        print(f"  - {name} (addendum, meta.yaml addendum:)")
+    if groups:
+        print(f"  - key points of {len(groups)} part(s), gathered at the end (meta.yaml keys: end)")
 
 
 def main() -> int:
@@ -125,6 +179,8 @@ def main() -> int:
         label = "intro" if k == 0 else f"intro{k + 1}"
         fragments.append((intro.name, render_transcript(intro.read_text(encoding="utf-8"), label)))
 
+    addendum = {str(s).zfill(3) for s in meta.get("addendum") or []}
+    addenda: list[tuple[str, str]] = []
     skipped: list[str] = []
     for s in sorted(sessions_dir.iterdir()):
         if not s.is_dir():
@@ -137,9 +193,35 @@ def main() -> int:
             section = s / "section.teaching.md"
         transcript = s / "transcript.md"
         if section.exists():
-            fragments.append((s.name, strip_frontmatter(section.read_text(encoding="utf-8")).strip()))
+            content = strip_frontmatter(section.read_text(encoding="utf-8")).strip()
         elif transcript.exists():
-            fragments.append((s.name, render_transcript(transcript.read_text(encoding="utf-8"), s.name, teaching)))
+            content = render_transcript(transcript.read_text(encoding="utf-8"), s.name, teaching)
+        else:
+            continue
+        if s.name in addendum:
+            inline = s / "inline.md"
+            if not inline.exists():
+                print(f"meta.yaml addendum: {s.name} has no inline.md (the basics printed in its place)")
+                return 1
+            fragments.append((f"{s.name}/inline.md", strip_frontmatter(inline.read_text(encoding="utf-8")).strip()))
+            addenda.append((s.name, content))
+        else:
+            fragments.append((s.name, content))
+
+    groups: list[tuple[str, str]] = []
+    if meta.get("keys") in ("end", "none"):
+        for k, (name, content) in enumerate(fragments + addenda):
+            rest, keys = take_keys(content)
+            if keys:
+                m = KICKER_RE.search(content)
+                groups.append((m.group(1) if m else name, keys))
+            if k < len(fragments):
+                fragments[k] = (name, rest)
+            else:
+                addenda[k - len(fragments)] = (name, rest)
+        if meta.get("keys") == "none":
+            print(f"Key points of {len(groups)} part(s) left out (meta.yaml keys: none)")
+            groups = []
 
     if not fragments:
         print("No section.md / transcript.md files found.")
@@ -152,13 +234,11 @@ def main() -> int:
         parts = [fm or f"---\ndiscourse: {discourse.name}\n---", "",
                  "<!-- GENERATED by scripts/assemble-discourse.py --lesson: the lesson text, before the "
                  "teaching pass (prompts/teaching-pass.md). Not the printed text; not for editing. -->", ""]
-        for name, content in fragments:
-            parts += [f"<!-- session: {name} -->", content, ""]
+        parts += tail_parts(fragments, addenda, groups)
         out = discourse / "discourse.lesson.md"
         out.write_text("\n".join(parts) + "\n", encoding="utf-8")
         print(f"Assembled {out} (the lesson text) from {len(fragments)} part(s):")
-        for name, _ in fragments:
-            print(f"  - {name}")
+        listing(fragments, addenda, groups)
         return 0
 
     if target.exists():
@@ -180,15 +260,11 @@ def main() -> int:
     if generated:
         parts += ["<!-- GENERATED by scripts/assemble-discourse.py on every build."
                   " Edit sessions/*/transcript.md (or the intro), not this file. -->", ""]
-    for name, content in fragments:
-        parts.append(f"<!-- session: {name} -->")
-        parts.append(content)
-        parts.append("")
+    parts += tail_parts(fragments, addenda, groups)
 
     target.write_text("\n".join(parts) + "\n", encoding="utf-8")
     print(f"Assembled {target} from {len(fragments)} part(s):")
-    for name, _ in fragments:
-        print(f"  - {name}")
+    listing(fragments, addenda, groups)
     if skipped:
         print(f"Skipped (meta.yaml skip_sessions): {', '.join(skipped)}")
     return 0
