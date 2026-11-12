@@ -81,7 +81,9 @@ PROFILES = {
              "numerals": "hebrew", "running_header": False, "cover": False,
              # Justified right-to-left lines end in a space glyph whose box (no ink) sits 2pt into the margin.
              "margin_slack": 3.0,
-             "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 13.4},
+             "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 13.4,
+             # The נוסח is set at heading size (14pt bold) and a long stretch runs across pages.
+             "text_blocks": True},
     # Class handouts (scripts/build-handout.py, WeasyPrint): A4, footnotes at the foot, numbered from p.1.
     "handout": {"css": "templates/handout.css", "script": "scripts/build-handout.py", "page": "A4",
                 "numerals": "hebrew", "running_header": False, "cover": False, "margin_slack": 3.0,
@@ -285,6 +287,17 @@ def proof(pdf: Path, profile_name: str) -> tuple[list, list, dict]:
             body_size = sizes.most_common(1)[0][0] if sizes else 0
             for i, (y0, y1, x0, x1, size, text, spans) in enumerate(body_lines):
                 is_head = size >= prof["heading"]
+                if is_head and prof.get("text_blocks"):
+                    # A run of 3+ heading-size lines is a block of text (a biur's נוסח), not a heading:
+                    # it may run on across the page.
+                    run, j = 1, i - 1
+                    while j >= 0 and body_lines[j][4] >= prof["heading"]:
+                        run, j = run + 1, j - 1
+                    j = i + 1
+                    while j < len(body_lines) and body_lines[j][4] >= prof["heading"]:
+                        run, j = run + 1, j + 1
+                    if run >= 3:
+                        is_head = False
                 is_label = text.strip().startswith("ביאור") and any("Bold" in s["font"] for s in spans)
                 if not (is_head or is_label):
                     continue

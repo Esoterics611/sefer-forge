@@ -58,6 +58,7 @@ import yaml
 import sourcelib as S
 
 ROOT = S.ROOT
+LONG_STRETCH = 1200        # characters: a stretch of the text longer than this may break across pages
 CSS = ROOT / "templates" / "biur.css"
 DIRECTIVE = re.compile(r"^@(text|source|file)\b(.*)$")
 
@@ -303,7 +304,7 @@ def group_openings(lines: list[str]) -> list[str]:
         j = i + 1
         while j < len(lines) and not lines[j].strip():
             j += 1
-        if line.startswith("### ") and j < len(lines) and lines[j].startswith("::: {.nusach}"):
+        if line.startswith("### ") and j < len(lines) and lines[j].startswith("::: {.nusach"):
             k = j
             while k < len(lines) and lines[k].strip() != ":::":
                 k += 1
@@ -399,7 +400,9 @@ def build(src: Path, with_checks: bool = False) -> tuple[str, dict, list[str]]:
         where = f"line {no}"
         if kind == "text":
             t = cursor.take(d, where)
-            out += ['::: {.nusach}', bold(t, d.get("mark"), where), ":::"]
+            # A long stretch may break across pages (`.long`); a short one is kept whole.
+            cls = "{.nusach .long}" if len(t) > LONG_STRETCH else "{.nusach}"
+            out += [f'::: {cls}', bold(t, d.get("mark"), where), ":::"]
             continue
         text, label = source_text(d, where) if kind == "source" else file_text(d, where)
         passage, head, tail = cut(text, d.get("from"), d.get("to"), where)
