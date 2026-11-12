@@ -6,7 +6,7 @@ Read this first, every session. Update it before you stop.
 2026-11-12: prepared, nothing written. `biur.src.md` holds the front matter and the headings
 only: מבוא (stage 00), sections 1–13 (stages 01–13), סיכום. Builds clean (0 passages).
 
-**Next:** session 1, below.
+**Next:** part 1, below.
 
 ## What it is
 The basics of Shacharit after the Arizal, stage by stage in the order of the prayer: what
@@ -26,13 +26,13 @@ frame for both.
 - A term or a cited passage of עץ חיים: `python scripts/source-lookup.py etz-chaim <address>`
   or `--find '<words>'`; the lexicon: `python scripts/lexicon.py <term>`.
 
-## Suggested split (by the size of שער הכוונות per stage)
-| Session | Writes | שער הכוונות | פרי עץ חיים (selectively) |
+## The parts (one Fable session each, `prompts/fable-005-arizal.md`, started by Ronnie)
+| Part | Writes | שער הכוונות to read | Status |
 |---|---|---|---|
-| 1 | מבוא (00), §1–§5 | 205K chars | 380K |
-| 2 | §6–§9 | 283K | 340K |
-| 3 | §10–§13, סיכום | 173K | 150K |
-Stop earlier rather than later: a section finished and committed is worth more than two half-read.
+| 1 | מבוא (00), §1–§4: עולם העשיה | 172K chars | **next** |
+| 2 | §5–§8: קדיש, פסוקי דזמרה, ברכות ק"ש, ק"ש | 189K | |
+| 3 | §9–§13, סיכום: the עמידה to the end | 300K | |
+פרי עץ חיים by its index, at most three passages in full per section.
 
 ## Where things go
 - `notes/terms.md`: term, meaning, address (for the lexicon, `knowledge/lexicon/`).

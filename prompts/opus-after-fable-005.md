@@ -1,7 +1,7 @@
 # Opus: after Fable writes — build, check, print and hand over an explanation of discourse 005
 
 A prompt for the Opus session that follows any of the Fable prompts for discourse 005
-(`prompts/fable-005-arizal.md`, `fable-005-rashash.md`, `fable-005-chasdei-david.md`).
+(`prompts/fable-005-arizal.md`, `fable-005-rashash.md`). For leftovers of the preparing session, `prompts/opus-tidy-005.md`.
 Fable wrote; this session does everything mechanical. **It does not rewrite Fable's
 explanation.** It fixes directives and formatting, checks claims, and reports; a change of
 meaning is proposed to Ronnie, not made. Run it once per explanation (the folder is named

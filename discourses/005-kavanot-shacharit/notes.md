@@ -13,7 +13,7 @@ from Ronnie's own teaching until he commands it deployed (CLAUDE.md):
 Each folder: `biur.src.md` (written), `HANDOFF.md` (state and plan; read first),
 `notes/` (the writer's apparatus: terms, argument map, citations, open questions).
 Build: `python scripts/build-biur.py discourses/005-kavanot-shacharit/<folder> [--pdf]`.
-The prompts for the sessions: `prompts/fable-005-*.md`, then `prompts/opus-after-fable-005.md`.
+The prompts: `prompts/fable-005-arizal.md` (one limited part per session), `prompts/fable-005-rashash.md` (after level 1), `prompts/opus-after-fable-005.md` (after each Fable part), `prompts/opus-tidy-005.md` (leftovers). The חסדי דוד explanation was written by Opus on 2026-11-12 (`biur-chasdei-david/HANDOFF.md`).
 
 ## The sources
 
