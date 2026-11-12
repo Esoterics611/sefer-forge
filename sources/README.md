@@ -15,6 +15,8 @@ lesson is recorded (`prompts/references-pack.md`), and in anything printed later
 | מקדש מלך | `zohar/mikdash-melekh.he.json` | Sefaria, Zholkva 1864, Public Domain |
 | תניא | `chabad/tanya.he.json` | Sefaria (Kehot); licence not stated |
 | תורה אור; הערות לתורה אור | `chabad/torah-or.he.json`, `chabad/torah-or-notes.he.json` | Sefaria (Kehot); licence not stated |
+| נהר שלום (with הקדמת רחובות הנהר), the Rashash | `sharabi/nahar-shalom.he.json` | hebrew.grimoar.cz, kept as downloaded in `sharabi/nahar-shalom.grimoar.htm`; JSON by `scripts/grimoar-import.py` |
+| קונטרס חסדי דוד, R. David Magar | `sharabi/chasdei-david.he.json` | the same, `sharabi/chasdei-david.grimoar.htm` |
 
 `sources.yaml` is the catalog: each work's file, how our texts abbreviate it
 (`cite_as`), where it was downloaded and when, and its `numbering:` notes.
@@ -33,6 +35,12 @@ stale ones), so never edit them. A work that exists only as a scan or a web page
 person has proofread it (`md/torah-or/chayei-sarah-15c-17b.md`, from chabadlibrary.org;
 `md/torah-or/tzemach-tzedek-biur-al-hahagaha.md`, from photographs). Page images stay in `sources/scans/`,
 which is not in git.
+
+**Works from hebrew.grimoar.cz** (the site Sefaria's Etz Chaim and Pri Etz Chaim came from)
+are kept as the HTML page downloaded (`raw:` in `sources.yaml`, stored byte for byte:
+`.gitattributes` marks it binary); `python scripts/grimoar-import.py` turns it into the JSON the
+scripts read, addressed by the printed page the site marks (`27a.7` = דף כ"ז ע"א, seventh
+paragraph). Their markdown is one file per work (`md: one-file`).
 
 ## Looking things up
 
