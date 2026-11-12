@@ -85,6 +85,8 @@ def letters(s: str) -> tuple[str, list[int]]:
     """(letters and single spaces, index in s of each kept character)."""
     out, idx = [], []
     for i, ch in enumerate(s):
+        if ch == "ﬠ":                 # Hebrew letter alternative ayin (Sefaria's Tanya): read as ע
+            ch = "ע"
         if LETTER.match(ch):
             out.append(ch)
             idx.append(i)
