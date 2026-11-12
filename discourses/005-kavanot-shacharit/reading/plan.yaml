@@ -1,0 +1,197 @@
+# The reading pack for discourse 005 (כוונות תפילת השחר): the sources of every stage of
+# Shacharit, cut by address from sources/ and set in the order of the prayer.
+# Built by: python scripts/reading-pack.py discourses/005-kavanot-shacharit/reading
+#
+# Each stage has three lists of passages:
+#   arizal:   שער הכוונות (the main text for the Arizal level) and פרי עץ חיים (the other
+#             redaction of the same teachings, in other words: the two were compared word by
+#             word and almost nothing is verbatim, so both are read)
+#   rashash:  נהר שלום (with הקדמת רחובות הנהר), the Rashash's own explanation of his siddur's
+#             kavanot. The siddur itself (the charts of names) is not in an open edition.
+# A passage is `ref:` (everything at or under an address) or `from:` / `to:` (address
+# prefixes, inclusive, in book order). Boundaries inside נהר שלום were placed by the
+# opening words of its paragraphs (2026-11-12); a paragraph or two either side may belong
+# to the neighbouring stage.
+
+works:
+  shaar-hakavanot: 'שער הכוונות'
+  pri-etz-chaim: 'פרי עץ חיים'
+  nahar-shalom: 'נהר שלום'
+
+stages:
+  - id: "00"
+    slug: yesodot
+    title: 'יסודות: סדר תיקון תפילת השחר'
+    covers: 'the whole prayer as one order: the four worlds (from the start to ברוך שאמר עשיה, to יוצר יצירה, to the עמידה בריאה, the עמידה אצילות), deed (מעשה) and speech (דיבור), what prayer repairs; blessings in general; the synagogue'
+    arizal:
+      - {work: shaar-hakavanot, from: "Sermons on Morning Prayers.1", to: "Sermons on Morning Prayers.3.7", note: 'דרושי תפלת השחר, א–ג (until the קרבנות)'}
+      - {work: shaar-hakavanot, ref: "Sermons on the Intentions of Blessings", note: 'דרושי כוונת הברכות: ברוך אתה, בית הכנסת'}
+      - {work: shaar-hakavanot, from: "Sermons on Morning Blessings.1", to: "Sermons on Morning Blessings.9", note: 'הקדמות to the morning: prayer in עשיה, joy, loving one’s fellow, the eighteen blessings'}
+      - {work: pri-etz-chaim, from: "Gate of Prayer.Introduction", to: "Gate of Prayer.1", note: 'שער התפלה: פנימיות and חיצוניות of the worlds'}
+      - {work: pri-etz-chaim, from: "Gate of Prayer.4", to: "Gate of Prayer.8", note: 'שער התפלה: the four parts of prayer, deed and speech, why prayer, the rising of the worlds on weekdays'}
+      - {work: pri-etz-chaim, from: "Gate of Blessings.1", to: "Gate of Blessings.3", note: 'שער הברכות: ברוך, אתה'}
+    rashash:
+      - {work: nahar-shalom, from: "9b.4", to: "15a.4", note: 'הקדמה on the source of souls (מחצב הנשמות), and the three prayers (13b.9)'}
+      - {work: nahar-shalom, from: "15a.5", to: "15b.5", note: '"דרוש זה סובב והולך בפרטי ד’ תיקוני התפלה"'}
+
+  - id: "01"
+    slug: hashkamah-birchot-hashachar
+    title: 'השכמה, נטילת ידים וברכות השחר'
+    covers: 'rising, dressing and shoes, the toilet (יפנה), washing the hands, אשר יצר, אלהי נשמה, the blessings of the morning, ברכות התורה'
+    arizal:
+      - {work: shaar-hakavanot, from: "Sermons on Morning Blessings.10", to: "Sermons on Morning Blessings.26"}
+      - {work: pri-etz-chaim, from: "Gate of Prayer.2", to: "Gate of Prayer.3", note: 'garments and shoes'}
+      - {work: pri-etz-chaim, from: "Gate of Blessings.4", to: "Gate of Blessings.7"}
+    rashash:
+      - {work: nahar-shalom, from: "19a.10", to: "24b.2", note: 'מצוות מעשיות and their blessings, נטילה, הקדמת הברכה, the morning blessings'}
+      - {work: nahar-shalom, from: "24b.3", to: "25a.10", note: 'ברכת התורה, the days of the week'}
+
+  - id: "02"
+    slug: tzitzit
+    title: 'ציצית וטלית'
+    covers: 'the small and large tallit, the fringes, אור מקיף'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on Tzitzit"}
+      - {work: pri-etz-chaim, ref: "Gate of Fringes"}
+    rashash:
+      - {work: nahar-shalom, from: "15b.6", to: "17a.2", note: 'כונות הב’ טליתות; from 16a.4 notes found in his father’s hand'}
+
+  - id: "03"
+    slug: tefillin
+    title: 'תפילין'
+    covers: 'hand and head tefillin, Rashi and Rabbeinu Tam, the straps and knots, the mochin'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on Tefillin"}
+      - {work: pri-etz-chaim, ref: "Gate of Teffilin"}
+    rashash:
+      - {work: nahar-shalom, from: "17a.3", to: "17b.6"}
+
+  - id: "04"
+    slug: korbanot
+    title: 'קרבנות, פטום הקטורת ואנא בכח (עולם העשיה)'
+    covers: 'from פרשת העקידה: the תמיד, the incense, אנא בכח, איזהו מקומן; the plague (מגפה) yichudim'
+    arizal:
+      - {work: shaar-hakavanot, from: "Sermons on Morning Prayers.3.8", to: "Sermons on Morning Prayers.3.18"}
+      - {work: pri-etz-chaim, ref: "Gate of the World of Action"}
+    rashash:
+      - {work: nahar-shalom, from: "25a.11", to: "26a.3", note: 'הקדמת הקרבנות, פטום הקטורת, אנא בכח'}
+
+  - id: "05"
+    slug: kaddish-amen
+    title: 'הקדיש ועניית אמן'
+    covers: 'every kaddish of the morning, what each raises; answering אמן and יהא שמיה רבא'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on Kaddish"}
+      - {work: pri-etz-chaim, ref: "Gate of the Holies"}
+      - {work: pri-etz-chaim, ref: "Gate of Amen Intention"}
+    rashash:
+      - {work: nahar-shalom, from: "26a.4", to: "26b.6"}
+
+  - id: "06"
+    slug: pesukei-dezimra
+    title: 'פסוקי דזמרה: מהודו עד ישתבח (עולם היצירה)'
+    covers: 'הודו, ה’ מלך, ברוך שאמר, מזמור לתודה, יהי כבוד, אשרי, the הללויה psalms, ויברך דוד, צדקה, the Song of the Sea, ישתבח'
+    arizal:
+      - {work: shaar-hakavanot, from: "Morning Prayers.1", to: "Morning Prayers.26"}
+      - {work: pri-etz-chaim, ref: "Gate of Songs"}
+    rashash:
+      - {work: nahar-shalom, from: "26b.7", to: "27a.1"}
+
+  - id: "07"
+    slug: birchot-kriat-shema
+    title: 'ברכות קריאת שמע: יוצר אור ואהבת עולם (עולם הבריאה)'
+    covers: 'יוצר אור, the קדושה of יוצר (the ofanim and chayot), אהבת עולם, the four remembrances'
+    arizal:
+      - {work: shaar-hakavanot, from: "Morning Prayers.27", to: "Morning Prayers.31"}
+      - {work: pri-etz-chaim, from: "Gate of the Recitation of the Shema.1", to: "Gate of the Recitation of the Shema.4"}
+    rashash:
+      - {work: nahar-shalom, from: "27a.2", to: "27a.6"}
+
+  - id: "08"
+    slug: kriat-shema
+    title: 'קריאת שמע ואמת ויציב'
+    covers: 'the union of אבא and אמא, שמע ישראל, אחד, ברוך שם, the 248 words, ואהבת, the paragraphs, אמת ויציב, עזרת; (Pri Etz Chaim 17-20 also treat מנחה and the bedtime shema, for contrast)'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on Intentions of the Shema Recitation"}
+      - {work: pri-etz-chaim, from: "Gate of the Recitation of the Shema.5", to: "Gate of the Recitation of the Shema.29"}
+    rashash:
+      - {work: nahar-shalom, from: "17b.7", to: "19a.9", note: 'ק"ש in general; from 18a.4 the Shabbat and ראש חודש shema, for contrast'}
+      - {work: nahar-shalom, from: "27a.7", to: "28a.5", note: 'the shema of יוצר, word by word'}
+
+  - id: "09"
+    slug: amidah
+    title: 'תפילת העמידה (עולם האצילות)'
+    covers: 'אדני שפתי תפתח, the bows, אבות word by word, גבורות, קדושת השם, the middle blessings, רצה, מודים, שים שלום'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on the Standing Prayer"}
+      - {work: pri-etz-chaim, ref: "Gate of the Silent Prayer"}
+    rashash:
+      - {work: nahar-shalom, from: "28a.6", to: "29a.7"}
+
+  - id: "10"
+    slug: chazarat-hashatz
+    title: 'חזרת הש"ץ, הקדושה וברכת כהנים'
+    covers: 'why the repetition, the קדושה standing, the priestly blessing'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on the Repetition of the Standing Prayer"}
+      - {work: pri-etz-chaim, ref: "Gate of the Repetition of the Silent Prayer"}
+    rashash:
+      - {work: nahar-shalom, from: "29a.8", to: "29b.1"}
+
+  - id: "11"
+    slug: vidui-yud-gimel-midot
+    title: 'וידוי וי"ג מידות (ויעבור)'
+    covers: 'confession, ויעבור and the thirteen attributes, the thirteen תיקוני דיקנא'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on Vaya'avor"}
+      - {work: pri-etz-chaim, ref: "Gate of Confession"}
+    rashash: []
+
+  - id: "12"
+    slug: nefilat-apayim
+    title: 'נפילת אפים'
+    covers: 'falling on the face, descending to the kelipot to raise מיין נוקבין, the ten martyrs'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on the Falling on the Face Prayer"}
+      - {work: pri-etz-chaim, ref: "Gate of Putting Down the Head"}
+    rashash: []
+
+  - id: "13"
+    slug: kriat-hatorah-vesiyum
+    title: 'קריאת התורה וסיום התפילה'
+    covers: 'reading the Torah (Monday, Thursday), אשרי, למנצח, ובא לציון, the incense at the end, עלינו, the nusach the Ari gave'
+    arizal:
+      - {work: shaar-hakavanot, ref: "Sermons on Torah Reading"}
+      - {work: shaar-hakavanot, ref: "Sermons on Ashrei, Incense Compositions, and Aleinu"}
+      - {work: shaar-hakavanot, ref: "Sermons on Aleinu and the Prayer Formula"}
+      - {work: pri-etz-chaim, ref: "Gate of Reading the Torah"}
+    rashash: []
+
+# Read for the Rashash level before any stage: his foundations, and what in his book bears
+# on Shacharit outside its order.
+rashash_foundations:
+  - id: "R1"
+    slug: hakdamat-rechovot-hanahar
+    title: 'הקדמת רחובות הנהר'
+    passages:
+      - {work: nahar-shalom, from: "2a", to: "9b.3"}
+  - id: "R2"
+    slug: sheelot-utshuvot
+    title: 'שאלות ותשובות (מתוניס)'
+    covers: 'questions sent to the Rashash and his answers; many on the weekday prayer (the order of the zivugim, the קדושה, מנחה, the mochin)'
+    passages:
+      - {work: nahar-shalom, from: "29b.2", to: "34b.2"}
+  - id: "R3"
+    slug: klalim-vehagahot
+    title: 'דרושי הדעת, כללים, והגהות ספר הכוונות'
+    covers: 'the דרושים on the דעת, numbered כללים with their sources, and his glosses on שער הכוונות (46a.4-46b.5, by gate and folio)'
+    passages:
+      - {work: nahar-shalom, from: "41a.7", to: "46b.5"}
+
+# A separate explanation, not tied to Shacharit (at Ronnie's request, 2026-11-12).
+chasdei_david:
+  - id: "CD"
+    slug: chasdei-david
+    title: 'קונטרס חסדי דוד'
+    passages:
+      - {work: chasdei-david, from: "48b", to: "56a"}

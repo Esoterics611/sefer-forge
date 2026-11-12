@@ -217,6 +217,7 @@ class TextCursor:
         if raw.startswith("---"):
             raw = raw.split("---", 2)[2]
         raw = re.sub(r"(?m)^#{1,6} .*$", " ", raw)
+        raw = re.sub(r"\*\*\[[^\]\n]+\]\*\*", " ", raw)     # the address tags of a generated sources/md file
         text = re.sub(r"\s+", " ", re.sub(r"[*_]", "", raw)).strip()
         self.text, _, _ = cut(text, meta.get("text_from"), meta.get("text_to"), "front matter text_from/text_to")
 

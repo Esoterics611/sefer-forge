@@ -101,6 +101,30 @@ def render(work: str, index: int, key: str, rows: list[tuple[str, str]]) -> tupl
     return OUT / work / name, "\n".join(lines)
 
 
+def render_whole(work: str, units: list[tuple[str, list[tuple[str, str]]]]) -> tuple[Path, str]:
+    """The whole work in one file, a `##` heading per part (catalog `md: one-file`)."""
+    entry = S.catalog()[work]
+    lines = [
+        "---",
+        f"work: {work}",
+        f'title: "{entry["title"]}"',
+        f'from: "{entry.get("from", "")}"',
+        f'version: {yaml_str(entry.get("version", ""))}',
+        f"fetched: {entry.get('fetched', '')}",
+        f"generated_from: {entry['file']}",
+        "generated_by: scripts/source-export.py (do not edit; rerun the script)",
+        "---",
+        "",
+        f"# {entry['title']}",
+        "",
+    ]
+    for key, rows in units:
+        lines += [f"## {S.gate_title(work, key) or key} ({key})", ""]
+        for a, raw in rows:
+            lines += [f"**[{a}]** {body(raw)}", ""]
+    return OUT / work / f"{work}.md", "\n".join(lines)
+
+
 def yaml_str(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
@@ -115,8 +139,11 @@ def main(argv: list[str]) -> int:
             return 2
         if not S.catalog()[work].get("file", "").endswith(".json"):
             continue                                   # a transcription kept as markdown
-        for i, (key, rows) in enumerate(parts(work), 1):
-            path, text = render(work, i, key, rows)
+        units = parts(work)
+        if S.catalog()[work].get("md") == "one-file":     # a work addressed by printed page (grimoar imports)
+            units = [(None, units)]
+        for i, (key, rows) in enumerate(units, 1):
+            path, text = render(work, i, key, rows) if key is not None else render_whole(work, rows)
             if path.exists() and path.read_text(encoding="utf-8") == text:
                 continue
             if check:

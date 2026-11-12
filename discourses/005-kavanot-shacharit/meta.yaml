@@ -1,0 +1,15 @@
+discourse: 005
+slug: kavanot-shacharit
+title: "כוונות תפילת השחר"
+status: draft
+type: images+voice
+chapter: null
+
+# A discourse of written explanations (ביאור), not yet of sessions: three explanations,
+# each in its own folder, built with scripts/build-biur.py <folder> (prompts/biur-rules.md),
+# from the reading pack in reading/ (scripts/reading-pack.py). notes.md says where
+# everything is. Sessions (Ronnie's recordings) may be added later as usual.
+biur:
+  - biur-arizal          # level 1: the basics, after the Arizal (שער הכוונות, פרי עץ חיים)
+  - biur-rashash         # level 2: the Rashash (נהר שלום, רחובות הנהר), on top of level 1
+  - biur-chasdei-david   # קונטרס חסדי דוד, explained whole (not tied to Shacharit)
