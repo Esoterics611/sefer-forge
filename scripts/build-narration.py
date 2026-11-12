@@ -19,7 +19,10 @@ read, from the English, French or Hebrew booklet text (shivchei-habesht-simple-e
 out (`drop:`, by their opening words), the changes that make the text
 read aloud well (`edits:`: the booklet's bracketed explanations of words left
 out, its other brackets turned into spoken phrases) and how the voice says the
-names (`say:`, over the shared booklets/narration/say-<lang>.yaml). Nothing of the booklet's contents or glossary is read: only the
+names. A plan may read English renderings of shiurim instead (`parts:`, the
+*-en.md files beside a discourse's Hebrew, whose "## " sections are its
+chapters; prompts/render-english.md), with its own `series:` and `subtitle:`
+for the title card and `about:`, `tags:`, `hashtags:` for YouTube (`say:`, over the shared booklets/narration/say-<lang>.yaml). Nothing of the booklet's contents or glossary is read: only the
 plan's short `intro:`, the stories and its `outro:`. The build stops when a cut
 or an edit no longer matches the story, or a bracket is left in what is read.
 
@@ -142,13 +145,47 @@ def story_paragraphs(section: str, entry: dict, lang: str) -> tuple[str, list[st
     return plain(title), [plain(p) for p in re.split(r"\n\s*\n", text) if p.strip()]
 
 
+def rendering_is_current(path: Path) -> tuple[bool, dict]:
+    """An English rendering (*-en.md beside its Hebrew): (whether its Hebrew is unchanged since, its frontmatter)."""
+    import hashlib
+    text = path.read_text(encoding="utf-8")
+    meta = yaml.safe_load(text.split("---")[1]) if text.startswith("---") else {}
+    # rendered_from is relative to the discourse folder (introduction.md, sessions/010/transcript.md).
+    discourse = Path(str(path).split("/sessions/")[0]) if "/sessions/" in str(path) else path.parent
+    source = discourse / meta.get("rendered_from", "")
+    current = source.is_file() and hashlib.sha256(source.read_bytes()).hexdigest()[:16] == meta.get("source_sha256")
+    return current, meta
+
+
+def text_sections(path: Path) -> list[tuple[str, list[str]]]:
+    """An English rendering (a plan's `parts:`): its "## " sections as (title, paragraphs), comments left out."""
+    current, meta = rendering_is_current(path)
+    if not current:
+        sys.exit(f"{path}: its Hebrew ({meta.get('rendered_from')}) changed after it was rendered: bring the English "
+                 f"up to date, then set source_sha256 (prompts/render-english.md)")
+    text = path.read_text(encoding="utf-8").split("---", 2)[2]
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+    out = []
+    for part in re.split(r"^## ", text, flags=re.M)[1:]:
+        title, _, body = part.partition("\n")
+        paras = [p.strip() for p in re.split(r"\n\s*\n", body) if p.strip()]
+        out.append((plain(title), [plain(p) for p in paras]))
+    return out
+
+
 def build_blocks(plan: dict, sections: list[str]) -> list[dict]:
     """The narration as blocks: {text, pause after it, chapter it opens or None}."""
     lang = plan["lang"]
     blocks = []
     if plan.get("intro"):
         blocks.append({"text": plain(plan["intro"]), "pause": PAUSE["story"], "chapter": None})
-    for entry in plan["stories"]:
+    for part in plan.get("parts") or []:
+        # An English rendering of a shiur, not booklet stories: each section is a chapter.
+        for title, paras in text_sections(Path(part)):
+            blocks.append({"text": title.rstrip(".") + ".", "pause": PAUSE["title"], "chapter": title})
+            blocks += [{"text": p, "pause": PAUSE["paragraph"], "chapter": None} for p in paras]
+            blocks[-1]["pause"] = PAUSE["story"]
+    for entry in plan.get("stories") or []:
         if "MATURE:" in sections[entry["n"]]:
             sys.exit(f"story {entry['n']} is flagged MATURE: not for narration (prompts/narration-rules.md)")
         title, paras = story_paragraphs(sections[entry["n"]], entry, lang)
@@ -312,6 +349,8 @@ def make_frame(plan: dict, out: Path) -> Path:
     except ImportError:
         sys.exit("Missing dependency. Install with: pip install pillow")
     series = yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][plan["lang"]]
+    if plan.get("series"):                      # a series of its own (a plan of `parts:`)
+        series = {"series": plan["series"], "subtitle": plan.get("subtitle", "")}
     # Typographic apostrophes, as the booklets print them.
     series = {k: re.sub(r"(?<=\w)'", "\u2019", v) for k, v in series.items()}
     plan = {**plan, "title": re.sub(r"(?<=\w)'", "\u2019", plan["title"])}
@@ -488,7 +527,7 @@ def main(argv: list[str]) -> None:
     say = {**(yaml.safe_load(shared.read_text(encoding="utf-8")) or {} if shared.exists() else {}),
            **(plan.get("say") or {})}
 
-    sections = load_sections(Path(SOURCES[plan["lang"]]))
+    sections = [] if plan.get("parts") else load_sections(Path(SOURCES[plan["lang"]]))
     blocks = build_blocks(plan, sections)
     out = OUT / plan_path.stem
     out.mkdir(parents=True, exist_ok=True)
@@ -521,6 +560,9 @@ def main(argv: list[str]) -> None:
         print(f"  {make_video(out)}")
         return
 
+    if plan.get("parts") and not plan.get("approved") and not samples_for:
+        sys.exit(f"{plan_path}: Ronnie has not approved its English yet (`approved: <date>` in the plan, "
+                 f"prompts/render-english.md); --script, --frame and --sample work meanwhile")
     model = load_model(plan["lang"])
     if samples_for:
         first = next(i for i, b in enumerate(blocks) if b["chapter"])

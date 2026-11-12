@@ -107,6 +107,35 @@ and continues with **"ingest session …"**: OCR, matching, cleanup, the paired
 Then, when a discourse's sessions are done: **"assemble discourse"**,
 **"add to chapter"**, **"build book"**. Anytime: **"status"**.
 
+## Narrated videos (YouTube)
+
+Two kinds of episode go up on the channel, private, as plain title-card
+videos (בס"ד, dark ink on warm paper) with chapters, subtitles, a
+description linking to the Sefer Forge site, and a playlist per series:
+
+- **Shivchei HaBesht stories**, from the English and French booklets (Hebrew
+  waits for a Hebrew voice): one English and one French a day, uploaded by a
+  daily scheduled run. Skill `narrate-video`, rules
+  `prompts/narration-rules.md`.
+- **Shiurim in English** (first: שער היחוד, "The Gate of Unity"): each
+  shiur is rendered in English beside its Hebrew (`transcript-en.md`), a few
+  parts make one ~40-minute episode, and nothing is recorded before you
+  approve the English and hear the pronunciation samples. As new sessions
+  are ingested, the English follows:
+
+  ```bash
+  python scripts/narration-status.py      # per discourse: English missing / current / stale,
+                                          # which episode, built, on YouTube; the next step
+  ```
+
+  Tell Claude **"English episode"** or **"next shiur in English"**; the
+  procedure is `prompts/render-english.md`.
+
+Building: `scripts/build-narration.py` (Kokoro voice; Hebrew terms said as
+`booklets/narration/say-en.yaml` spells them). Publishing:
+`scripts/youtube-publish.py`, setup and daily routine in
+`docs/youtube-publishing.md`.
+
 **Starting something new:**
 
 ```bash
@@ -140,6 +169,8 @@ Books today (`ls books/`): `shaar-hayichud` (שער היחוד shiurim), `siddur
 | `templates/` | Word reference template (`create-template.py`), pamphlet, booklet and reading-pack CSS |
 | `docs/` | Setup, print standard, agentic development, backlog |
 | `compiled/` | Assembled `<book>.md` (generated; never edit) |
+| `booklets/narration/` | Narration plans (one per episode), respellings for the voice, the YouTube record `youtube.yaml` |
+| `site/` | The Sefer Forge website (https://esoterics611.github.io/), published by `scripts/deploy-site.sh` |
 | `output/` | DOCX, PDFs, pamphlets, narrations (gitignored) |
 
 ## Dependencies

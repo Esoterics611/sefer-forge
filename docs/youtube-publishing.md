@@ -126,6 +126,12 @@ without signing in or uploading anything.
 
 ## What each video gets
 
+(An episode of shiurim in English, a plan with `parts:`, is published by name
+once built: `publish --extra <name>` (beyond the day's count); its description is the plan's `about:` with the
+chapters, its tags the plan's, and it goes in a playlist named after its
+`series:`. It is not in the daily queue: it waits for Ronnie's approval,
+`prompts/render-english.md`.)
+
 - **Title:** the plan's title and the series, e.g. "The Boy Who Was Not
   Afraid | In Praise of the Baal Shem Tov".
 - **Description:**

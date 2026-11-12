@@ -167,6 +167,16 @@ episode past 900,000 (`TTS_MONTHLY_LIMIT`). Needs `GOOGLE_TTS_API_KEY`
   רבי, חז״ל); the subtitles keep the written form.
 - The title card is set in Frank Ruhl Libre (`templates/fonts`, OFL).
 
+## Episodes of shiurim in English
+
+Besides the booklet stories, an episode can read Ronnie's shiurim in English:
+a plan with `parts:` (English renderings beside the Hebrew), its own
+`series:`, `subtitle:`, `about:`, `tags:`, `hashtags:`, and `approved:`
+once Ronnie has read the English and heard the pronunciation samples. The
+procedure and its tracking: `prompts/render-english.md`,
+`python scripts/narration-status.py`. The Hebrew terms these shiurim use are
+in `say-en.yaml`, "Chassidus and Kabbalah".
+
 ## The picture and the thumbnail
 
 - **One plain title card, the same for every episode**, as the picture shown
