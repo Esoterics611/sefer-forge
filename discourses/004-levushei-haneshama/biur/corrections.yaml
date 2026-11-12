@@ -1,0 +1,15 @@
+# The register of Ronnie's remarks on the explanation (biur.md), and what was done with each.
+# How a sitting is processed: review/README.md.
+#
+# Each item:
+#   id: 1                       running number
+#   place: '12.3'               the paragraph number in biur.md / the PDF ([12.3]); or a section, '§12'
+#   sitting: '001'              review/<sitting>/ (or 'chat' and the date for a written note)
+#   kind: error | reading | own | question | term
+#   explanation_says: '...'     what the explanation says there (short, its words)
+#   teacher_says: '...'         what Ronnie says (from the transcript, his words)
+#   source: '...'               the line that decides it, by address (etz-chaim 49.5.1: "..."), if there is one
+#   status: applied | disputed | open | answered
+#   done: '...'                 what was changed (biur.src.md, lexicon entry, ...), with the commit
+
+items: []

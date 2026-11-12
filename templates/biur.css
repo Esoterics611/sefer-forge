@@ -90,3 +90,12 @@ th { background: var(--box-fill); font-weight: 700; }
 .nusach + p { break-after: avoid; }
 .makor > p:first-child { break-after: avoid; }
 p { orphans: 2; widows: 2; }
+
+/* Paragraph numbers ([12.3] = section 12, paragraph 3): the place a remark points to
+   (biur/corrections.yaml). Small and quiet, at the start of the paragraph. */
+.pnum { font-size: 8pt; color: var(--soft); direction: ltr; unicode-bidi: isolate; margin-inline-end: 1.6mm;
+  font-weight: 400; vertical-align: 1pt; }
+
+/* The repository address of a source (etz-chaim 49.5.1) stays in biur.md for checking;
+   in print the Hebrew label names the place. */
+@media print { .addr { display: none; } }

@@ -248,6 +248,42 @@ class TextCursor:
         return f"text covered: {pct}%" + (f"; NOT yet reached: {len(left)} characters from {left[:60]!r}" if left else " (whole)")
 
 
+SECTION_H3 = re.compile(r"^### (\d+)\.")
+SECTION_H2 = re.compile(r"^## ([א-ת])\.")
+LIST_ITEM = re.compile(r"^(\s*(?:[-*]|\d+\.) )(.*)$")
+
+
+def number_paragraphs(lines: list[str]) -> tuple[list[str], int]:
+    """Number each paragraph of the explanation, per section: [12.3] = section 12, paragraph 3
+    (the lettered parts: [ב׳.2]; the foreword: [פתח.1]). The text and the sources (fenced divs),
+    headings, tables and blockquotes are not numbered. A remark on the explanation points to its
+    place by this number (biur/corrections.yaml)."""
+    out, key, n, total, depth, prev = [], None, 0, 0, 0, ""
+    for line in lines:
+        if line.startswith(":::"):
+            depth = depth + 1 if line.strip() != ":::" else max(0, depth - 1)
+            out.append(line)
+            prev = line
+            continue
+        if m := SECTION_H3.match(line):
+            key, n = m.group(1), 0
+        elif m := SECTION_H2.match(line):
+            key, n = m.group(1) + "׳", 0
+        elif line.startswith("## "):
+            key, n = ("פתח" if "פתח דבר" in line else None), 0
+        starts = prev.strip() == "" or LIST_ITEM.match(line)
+        prose = line.strip() and not line.startswith(("#", "|", ">", "[", "<!--")) and not line.strip().startswith("@")
+        if key and depth == 0 and starts and prose:
+            n += 1
+            total += 1
+            tag = f"[{key}.{n}]{{.pnum}} "
+            m = LIST_ITEM.match(line)
+            line = (m.group(1) + tag + m.group(2)) if m else tag + line
+        out.append(line)
+        prev = line
+    return out, total
+
+
 def build(src: Path) -> tuple[str, dict, list[str]]:
     raw = src.read_text(encoding="utf-8")
     meta, body = {}, raw
@@ -277,6 +313,8 @@ def build(src: Path) -> tuple[str, dict, list[str]]:
             out += ["", f"[{d['note']}]{{.makor-note}}"]
         out.append(":::")
     notes.append(f"{n_src} source passage(s) set in")
+    out, n_par = number_paragraphs(out)
+    notes.append(f"{n_par} paragraph(s) of explanation numbered")
     if cursor.text:
         notes.append(cursor.report())
     meta_out = dict(meta)

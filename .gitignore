@@ -38,3 +38,15 @@ discourses/*/sessions/*/voicenotes/*.lock
 # Scanned pages of printed editions (page images read for a source): local only,
 # like the photos. Their transcriptions are kept as markdown beside the works.
 sources/scans/
+
+# A review of an explanation (biur) by the teacher: recordings local only, like a session's
+discourses/*/biur/review/*/voicenotes/*.m4a
+discourses/*/biur/review/*/voicenotes/*.mp3
+discourses/*/biur/review/*/voicenotes/*.wav
+discourses/*/biur/review/*/voicenotes/*.ogg
+discourses/*/biur/review/*/voicenotes/*.opus
+discourses/*/biur/review/*/voicenotes/*.aac
+discourses/*/biur/review/*/voicenotes/*.flac
+discourses/*/biur/review/*/voicenotes/*.amr
+discourses/*/biur/review/*/voicenotes/*.partial.txt
+discourses/*/biur/review/*/voicenotes/*.lock
