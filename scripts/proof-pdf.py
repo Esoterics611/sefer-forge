@@ -88,6 +88,12 @@ PROFILES = {
                 # WeasyPrint names the same faces by family for the Latin digits and punctuation.
                 "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold", "Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold"},
                 "heading": 16.0},
+    # English and French handouts: handout.css plus handout-latin.css, EB Garamond, left to right.
+    "handout-latin": {"css": "templates/handout.css", "script": ["scripts/build-handout.py", "templates/handout-latin.css"],
+                      "page": "A4", "numerals": "decimal", "rtl": False, "running_header": False, "cover": False,
+                      "margin_slack": 3.0,
+                      "fonts": {"EB-Garamond", "EB-Garamond-Bold", "EB-Garamond-Italic", "Frank-Ruhl-Libre",
+                                "Frank-Ruhl-Libre-Bold"}, "heading": 14.5},
 }
 LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO'
                    r'|(?:^|\s)(?:>|#{1,4})(?:\s|$)')        # a blockquote or heading marker printed
@@ -355,7 +361,7 @@ def main(argv: list[str]) -> int:
     else:
         profile = None
     if len(args) != 1:
-        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|biur|handout|book] [--no-images]")
+        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|biur|handout|handout-latin|book] [--no-images]")
         return 1
     pdf = Path(args[0])
     if not pdf.exists():
@@ -363,7 +369,7 @@ def main(argv: list[str]) -> int:
         return 1
     profile = profile or ("pamphlet" if "pamphlets" in pdf.parts else
                           "references" if "references" in pdf.parts else
-                          "handout" if "handouts" in pdf.parts else
+                          ("handout-latin" if pdf.stem.endswith(("-en", "-fr")) else "handout") if "handouts" in pdf.parts else
                           "biur" if "biur" in pdf.parts else
                           "booklet-latin" if "booklets" in pdf.parts and pdf.parent.name in ("en", "fr") else
                           "booklet" if "booklets" in pdf.parts else "book")

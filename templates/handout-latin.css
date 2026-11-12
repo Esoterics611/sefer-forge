@@ -1,0 +1,15 @@
+/* An English or French handout: over templates/handout.css, left to right, EB Garamond (as the
+   Latin booklets), Frank Ruhl Libre for the Hebrew (בס"ד). */
+@font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-Regular.ttf"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-Italic.ttf"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-SemiBold.ttf"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-SemiBoldItalic.ttf"); font-weight: 700; font-style: italic; }
+
+html { direction: ltr; }
+body { font-family: "EB Garamond", "Frank Ruhl Libre", serif; line-height: 1.5; hyphens: auto; }
+em { font-style: italic; }
+.bsd { text-align: right; font-family: "Frank Ruhl Libre", serif; direction: rtl; }
+@page { @footnote { direction: ltr; text-align: left; } }
+.fn { text-align: left; }
+ol { padding-inline-start: 6mm; }
+@page { @bottom-center { content: counter(page); font-family: "EB Garamond", serif; } }
