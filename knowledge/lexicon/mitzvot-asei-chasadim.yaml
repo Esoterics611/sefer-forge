@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מצוות עשה בחסדים (רמ"ח מ"ע, ה"ח דז"א)
+forms:
+- רמ"ח מ"ע
+- ה"ח דז"א
+- מ"ע
+- מצות עשה
+- ה"ח
+abbrev:
+  מ"ע: מצוות עשה
+  ה"ח: ה' חסדים
+category: תורה, מצוות ותפילה
+senses:
+- meaning: מצוות העשה תלויות בחסדים (בה' החסדים דז"א), ובחסדים יש מכוסים ומגולים. ההגהה בונה על זה ש"בירור הלבושים
+    ע"י המצות הוא במ"ד דז"א, והיינו המשכת האור דלעילא, והן הם ה"ח דז"א".
+  rests_on:
+  - work: shaar-hamitzvot
+    ref: Introduction.2.10
+    quote: שכל מ"ע הם בחסדים כנז"ל אלא שיש בהם ב' בחי' והם חסדים מכוסים וחסדים מגולים
+  - cite: טעמי המצוות, סוף ההקדמה (ד"ה סוד מציאות המצות כולם), the Alter Rebbe's citation; not in sources/
+related:
+- mayin-duchrin
+- levushim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מ"ד (מיין דכורין)
+forms:
+- מ"ד
+- מיין דכורין
+abbrev:
+  מ"ד: מיין דכורין
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: 'מה שיורד מן הזכר כנגד המ"ן בזיווג: החסדים. משניהם נתקנות הנשמות. כוח הבירור הוא בזכר דווקא (ז"א), ולכן
+    הבירור הוא בימי החול.'
+  rests_on:
+  - work: etz-chaim
+    ref: 39.1.2
+    quote: ואז יתחברו עמהם מ"ד ע"י הזווג זכר ונקבה
+  - work: etz-chaim
+    ref: 39.11.8
+    quote: ואז יורדין החסדים מן הזכר ומשניהן מתקנים הנשמות
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.4
+    quote: והנה אין כח בזה, רק בז"א בלבד, לפי שהוא הזכר, ויש בו כח לברור
+related:
+- mayin-nukvin
+- zun-bebya-bechol
+- mitzvot-asei-chasadim
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

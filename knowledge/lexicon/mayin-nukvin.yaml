@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מ"ן (מיין נוקבין)
+forms:
+- מ"ן
+- מ"נ
+- מיין נוקבין
+abbrev:
+  מ"ן: מיין נוקבין
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: מה שעולה מלמטה אל הנקבה ומעורר זיווג. לפי שער מ"ן ומ"ד אלו הן "הנשמות הקדושות ממש" שבתוך המלכים שמתו,
+    שצריך לבררן ולהעלותן. בתפילה מעלים את הניצוצות עד יסוד נוקבא דז"א בבחינת מ"ן, ושם הם נמתקים ונתקנים.
+  rests_on:
+  - work: etz-chaim
+    ref: 39.1.2
+    quote: ענין בחי' מ"נ הם הנשמות הקדושות ממש הם עצמם אשר תוך מלכים אלו
+  - work: etz-chaim
+    ref: 39.2.1
+    quote: וע"י תפלתינו אנו מעלין הנצוצין האלו עד יסוד נוקבא דז"א בבחי' מ"נ ונמתקין ונתקנים שם
+caution: בהגהה "מ"ן עצמן דנוקבא" הן סוג מסוים של נשמות (אלו שלא נכללו באדם הראשון), לא כל מ"ן. ראה neshamot-chadashot.
+related:
+- mayin-duchrin
+- nukva
+- shivat-hamelachim
+- neshamot-chadashot
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

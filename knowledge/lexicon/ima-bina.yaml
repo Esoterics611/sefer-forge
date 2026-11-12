@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: אימא / בינה / תבונה
+forms:
+- אימא
+- אמא
+- בינה
+- תבונה
+category: פרצופים ועולמות
+senses:
+- meaning: הספירה והפרצוף שממנה הצלם, הלבוש שהנשמה מתלבשת בו ("החלק שנתנה האם בבנה"). היא מאירה בבריאה, "אמא מקננא
+    בכורסייא", והבריאה מקבלת ממנה דרך מסך, שהוא "החשמל הזה".
+  rests_on:
+  - work: etz-chaim
+    ref: 41.1.2
+    quote: והוא החלק שנתנה האם בבנה
+  - work: etz-chaim
+    ref: 42.13.1
+    quote: אמא מקננא בכורסייא שהוא ענין החשמ"ל הזה
+  - work: etz-chaim
+    ref: 42.13.1
+    quote: והבריאה מקבלת מבינה
+open: הזיהוי של בינה עם "עולם הבא", שההגהה בונה עליו ("והשתא א"ש הא דשכר המצות הוא לבוש לנשמה"), עדיין לא נמצא כאן
+  במקור מפורש. בעבודה על ההגהה נרשם "זוהר ח"ב ר"י ע"ב" ולא נבדק. לבדוק לפני שמסתמכים.
+related:
+- tzelem-deima
+- chashmal
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

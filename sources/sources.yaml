@@ -51,4 +51,88 @@ works:
     numbering:
       - "Addresses are הקדמה.paragraph: 13.1 = הקדמה י\"ג, its first paragraph (cite it as 'שעה\"ג הקדמה י\"ג'). 1-38 are the הקדמות; 39 is 'בקשר החברים'; 40 is R. Shmuel Vital's appendix."
       - "Not the ספר הגלגולים the Alter Rebbe cites by chapter ('בגלגולים פ\"א', 'פ\"ז', 'פי\"ד', 'פ\"ב'): that is the other redaction of the same teachings, not in sources/. Its words 'וכפי גודל אותה המצוה או זריזות' are not here; the teaching is: souls rise from the kelipot by others' prayers, a צדיק's יחוד or a mitzvah (13.1, again 39.7), into עיבור in the מלכות, 'נקבה העליונה' (12.5), 'ואח\"כ יורדות בגוף בעה\"ז' (12.7)."
+      - "ספר הגלגולים itself (checked 2026-11-12): he.wikisource.org has its שער הגלגולים (the same 40 הקדמות as this file) and a page for ספר הגלגולים that is not typed ('עוד לא הוקלד'); it links two scans of the Frankfurt 1684 print, hebrewbooks.org 23822 and 45024. hebrewbooks blocks automated readers: a PDF downloaded by hand into sources/scans/ (local only) can be read from its page images."
       - "His 'וע\"ש אחר ס\"פ ל\"ה בקשר החברים' (each soul rising from the kelipot is at least forty days in the מלכות) is 39.6 here, and 12.7."
+  shaar-hakavanot:
+    title: "שער הכוונות"
+    file: sources/arizal/shaar-hakavanot.he.json
+    cite_as: ['שעה"כ', 'שער הכוונות', 'כוונות', 'בכוונות']
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Arizal and Chaim Vital/Sha'ar HaKavanot/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Sha'ar_HaKavanot
+    version: "Shaar HaKavanot, from http://www.hebrew.grimoar.cz/vital/saar_ha-kavanot.htm (Public Domain)"
+    fetched: 2026-11-11
+    numbering:
+      - "Gates by name (the דרושים of each subject): 'Sermons on Yom Kippur.1.5' = דרושי יום הכיפורים, דרוש א', paragraph 5."
+      - "The Alter Rebbe's 'כוונות' is not always this work. His 'כמ\"ש בכוונות עיוה\"כ' (bread and food come from חיצוניות אימא) is in פרי עץ חיים, שער יום הכיפורים פ\"א, 'ענין כל האוכל ושותה בט' (Gate of Yom Kippur.1.8-1.10), and פ\"ג (3.1-3.3); the parallel here is Sermons on Yom Kippur.1.5."
+  shaar-hamitzvot:
+    title: "שער המצוות"
+    file: sources/arizal/shaar-hamitzvot.he.json
+    cite_as: ['שעה"מ', 'שער המצוות', 'שער המצות']
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Arizal and Chaim Vital/Sha'ar HaMitzvot/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Sha'ar_HaMitzvot
+    version: "Jerusalem, 1872 (National Library of Israel scan; Public Domain)"
+    fetched: 2026-11-11
+    numbering:
+      - "By parashah (Introduction, Bereshit ... Vayelekh). Introduction.1 is R. Shmuel Vital's preface; Introduction.2 is the הקדמה of the gate itself."
+      - "Not the טעמי המצוות the Alter Rebbe cites ('בטעמי המצות בסוף ההקדמה'): that is the other redaction, printed with ליקוטי תורה (Zolkiew 1775). The parallel teaching is in Introduction.2.7 (מצוות עשה are the חסדים) and 2.9 (the mitzvot bring about the זיווג of זו\"ן)."
+  zohar:
+    title: "זוהר"
+    file: sources/zohar/zohar.he.json
+    cite_as: ['זוהר', 'בזוהר', 'זהר', 'זח"א', 'זח"ב', 'זח"ג']
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Zohar/Zohar/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Zohar
+    version: "Vocalized Zohar, Israel 2013. License: unknown (the vocalization may be under copyright; the Aramaic text is public domain)."
+    fetched: 2026-11-11
+    numbering:
+      - "By parashah, chapter, paragraph ('Pekudei.20.1'). The printed (Vilna) pages our texts cite are marked inside the text; look a page up with: python scripts/source-lookup.py --page zohar 2 229b (volume, page)."
+      - "Volumes: 1 = הקדמה to ויחי, 2 = שמות to פקודי, 3 = ויקרא to האזינו. The Alter Rebbe cites by parashah and דף ('זוהר פקודי דף רכ\"ט')."
+  mikdash-melekh:
+    title: "מקדש מלך"
+    file: sources/zohar/mikdash-melekh.he.json
+    cite_as: ['מק"מ', 'מקדש מלך']
+    gates: numbered
+    from: "https://storage.googleapis.com/sefaria-export/json/Kabbalah/Zohar/Mikdash Melekh on Zohar/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Mikdash_Melekh_on_Zohar
+    version: "Zholkva, 1864 (National Library of Israel scan; Public Domain)"
+    fetched: 2026-11-11
+    numbering:
+      - "Arranged by the Zohar's page: volume.N.paragraph, where N counts the Zohar's pages (דף X ע\"א = 2X-1, ע\"ב = 2X), so Zohar I 36b is 1.72. Look up with: python scripts/source-lookup.py --page mikdash-melekh 1 36b."
+      - "The Alter Rebbe cites the folio of an older print: his 'מק\"מ בראשית (דף ק\"ב סוף ע\"ב)' is the piece on Zohar I 36b (1.72.1: 'שהם ג' חשמלים שנסתלקו ממנה ונפלו בנוגה')."
+  tanya:
+    title: "תניא"
+    file: sources/chabad/tanya.he.json
+    cite_as: ['תניא', 'לקו"א', 'אגה"ק', 'קו"א']
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Chasidut/Chabad/Tanya/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Tanya
+    version: "Kehot Publication Society (as on Sefaria; license not stated there)"
+    fetched: 2026-11-11
+    numbering:
+      - "Five parts by name; 'Part V; Kuntres Acharon.4.14' = קונטרס אחרון, the fourth essay (ד\"ה להבין מ\"ש בפע\"ח), paragraph 14."
+      - "Kuntres Acharon essays 2 (ד\"ה עיין ע\"ח שער הנקודות) and 4 are the Alter Rebbe's own parallels to the הגהה in תורה אור חיי שרה טז ע\"ג (discourse 004): מ\"ן דנוקבא, מצוות מעשיות and the זיווג; תפלה and בירור; רמ\"ח מ\"ע בה' חסדים and the לבנונית; משנה ותלמוד in the כלים of נוקבא דאצילות."
+  torah-or:
+    title: "תורה אור"
+    file: sources/chabad/torah-or.he.json
+    cite_as: ['תו"א', 'תורה אור']
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Chasidut/Chabad/Torah Ohr/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Torah_Ohr
+    version: "As on Sefaria (license not stated there)"
+    fetched: 2026-11-11
+    numbering:
+      - "By parashah, maamar, paragraph. The pages our discourse 004 explains (חיי שרה טו ע\"ג – יז ע\"ב) are also kept column by column, as chabadlibrary.org gives them, in sources/md/torah-or/chayei-sarah-15c-17b.md."
+  torah-or-notes:
+    title: "מראי מקומות והערות לתורה אור"
+    file: sources/chabad/torah-or-notes.he.json
+    cite_as: []
+    gates: named
+    from: "https://storage.googleapis.com/sefaria-export/json/Chasidut/Chabad/Sources and References on Torah Ohr/Hebrew/merged.json"
+    sefaria: https://www.sefaria.org/Sources_and_References_on_Torah_Ohr
+    version: "As on Sefaria (the notes of the Kehot edition; license not stated there)"
+    fetched: 2026-11-11
+    numbering:
+      - "By parashah, then the דף of תורה אור, then the note: 'Chayei Sara.16.35' is the 35th note on דף טז (the note on 'לשון אדמו\"ר נ\"ע בעצמו')."
+      - "Chayei Sara.16.35 says the Tzemach Tzedek's maamar explaining the הגהה is printed in תורה אור at קלט, ג (not in the online libraries; not yet in sources/)."

@@ -1,0 +1,33 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: צלם דאימא / "חותם" / לבוש מאמא
+forms:
+- צלם דאימא
+- צלם דאמא
+- צ' דצלם
+- חותם
+- לבוש מאמא
+category: הנשמה ולבושיה
+senses:
+- meaning: 'הלבוש שהנשמה (נר"ן דז"א, וכן נשמות בני אדם) מתלבשת בו: שלושה כלים של התבונה (אימא), "החלק שנתנה האם
+    בבנה". בו פנימי ומקיף. עשייתו היא העלאת מ"ן.'
+  rests_on:
+  - work: etz-chaim
+    ref: 41.1.2
+    quote: מתלבשין תוך ג' כלים דתבונה הנקרא צ' דצלם
+  - work: etz-chaim
+    ref: 41.1.2
+    quote: והוא החלק שנתנה האם בבנה בסוד עובר ירך אמו והוא לבוש אל הנר"ן
+  - work: etz-chaim
+    ref: 39.12.1
+    quote: וכן יש לבוש מאמא והוא החותם ועשיית לבוש זה הוא עצמו מציאות העלאת מ"ן
+  - work: etz-chaim
+    ref: 26.2.1
+    quote: הנה הוא סוד הצלם ויש בו בחי' פנימים ובחי' מקיפים
+related:
+- tzelem
+- ima-bina
+- chashmal
+- mayin-nukvin
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

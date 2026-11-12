@@ -1,0 +1,33 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: אור פנימי ואור מקיף
+forms:
+- או"פ
+- או"מ
+- אור פנימי
+- אור מקיף
+- מקיף
+- מקיפים
+abbrev:
+  או"פ: אור פנימי
+  או"מ: אור מקיף
+category: פרצופים ועולמות
+senses:
+- meaning: 'האור הנכנס בכלי, והאור הנשאר מחוצה לו וסובבו. בצלם: החלק המקיף הוא החשמל. במצוות: האור הפנימי כנגד המעשה,
+    והמקיף כנגד הברכה. מוחין שמסתלקים מן הראש אחרי התפילה נעשים לו אור מקיף.'
+  rests_on:
+  - work: etz-chaim
+    ref: 40.2.1
+    quote: או"פ כנגד המעשה ואו"מ כנגד הברכה
+  - work: etz-chaim
+    ref: 26.2.1
+    quote: חלק הצלם הנשאר בסוד המקיף מבחוץ
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.19
+    quote: ושם נעשין אליו בחי' אור מקיף
+related:
+- penimiyut-chitzoniyut
+- chashmal
+- tzelem
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

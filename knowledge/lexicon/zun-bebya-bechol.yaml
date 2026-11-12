@@ -1,0 +1,33 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ירידת זו"ן לבי"ע בימי החול
+forms:
+- זו"נ
+- זו"ן
+- ימי החול
+- בחול
+abbrev:
+  זו"ן: זעיר אנפין ונוקבא
+  בי"ע: בריאה יצירה עשיה
+category: פרצופים ועולמות
+senses:
+- meaning: אחרי חטא אדם הראשון ירדו העולמות ממקומם כדי לברר את המלכים. בששת ימי החול זו"ן דאצילות יורדים ומתלבשים
+    למטה ומבררים בזיווגם שם. הכוח לברר הוא בז"א, הזכר, ולכן הבירור בששת ימי החול. השבת כנגד המלכות, הנקבה.
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.4
+    quote: ירדו כל העולמות ממקומם. וענין הירידה הזאת תכליתה היא, כדי לברר בירור המלכים הנ"ל
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.4
+    quote: ומתלבשות למטה בששת ימי המעשה, ימי החול, כדי לברר בירורין הנ"ל
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.4
+    quote: ביום השבת, שהוא נגד המלכות, והיא נקבה
+caution: ההגהה מציינת זאת כ"פע"ח ש"א פ"ו" ובמקום אחר כ"ע"ח ש"א פ"י". בקובץ הוא פרק ז' של שער התפילה (ראה sources.yaml
+  numbering ו-open-questions של 004).
+related:
+- birur
+- mayin-duchrin
+- atzilut-shebebya
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama

@@ -1,0 +1,25 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נוקבא דז"א / מלכות / "נקבה העליונה"
+forms:
+- נוקבא דז"א
+- נוקבא
+- נקבה העליונה
+- הנקבה העליונה
+- מלכות
+category: פרצופים ועולמות
+senses:
+- meaning: הפרצוף המקבל, שהמ"ן עולים אל היסוד שלו. הנשמות היוצאות מן הקליפות באות תחילה "בעבור במעי של המלכות, נקבה
+    העליונה", כדי להיטהר, ורק אחר כך יורדות לגוף.
+  rests_on:
+  - work: etz-chaim
+    ref: 39.2.1
+    quote: עד יסוד נוקבא דז"א בבחי' מ"נ
+  - work: shaar-hagilgulim
+    ref: '12.5'
+    quote: הם צריכות בתחלה לבא בעבור במעי של המלכות נקבה העליונה, כדי להטהר
+related:
+- mayin-nukvin
+- ibur-haneshama
+status: draft
+learned_from:
+- discourses/004-levushei-haneshama
