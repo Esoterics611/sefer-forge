@@ -1,26 +1,33 @@
 # Hand-off: the explanation of קונטרס חסדי דוד (005)
 
-Read this first, every session. Update it before you stop.
+## State on 2026-11-12: written, built, proofed
+Written in one Opus session (at Ronnie's request, instead of Fable). `biur.src.md`: מבוא,
+24 sections over the הקדמה and כללים (א)–(קכ), סיכום. Build: 100% of the text covered, 9
+source passages, 148 paragraphs. PDF `output/biur/005-chasdei-david.pdf`, 67 pages, proof 0
+errors, 0 warnings, visual review in `output/biur/005-chasdei-david.proof.md`.
 
-## State
-2026-11-12: prepared, nothing written. `biur.src.md` holds the front matter (the text is
-`sources/md/chasdei-david/chasdei-david.md`, from its title to its last words) and the
-headings מבוא and סיכום. The build reports the text covered: 0% of 84,778 characters.
+## What was checked, and how
+- Every `@text`, `@source` and `mark=` resolves (the build).
+- Every phrase quoted inside the prose (241) was matched against the קונטרס, נהר שלום and עץ
+  חיים by script; the 26 that did not match letter for letter were corrected to the text's own
+  spelling or taken out of quotation marks (2026-11-12).
+- Each section's claims were reread against its כללים by the writer. **No independent check
+  yet** (a reader who has not seen the writing): that is the first job of
+  `prompts/opus-tidy-005.md`.
 
-## What it is
-R. David Magar's קונטרס: a הקדמה (headed "מהרב אמת ליעקב") and 120 numbered כללים, (א) to
-(קכ), the whole system as the Rashash teaches it, from אור אין סוף and the צמצום down
-through א"ק, the נקודים, the partzufim of אצילות and the worlds. Not tied to Shacharit
-(Ronnie asked for it on its own, 2026-11-12). The explanation carries the text complete,
-stretch by stretch (`@text`, numbered sections `### N.` grouping the כללים by subject),
-with the sources it rests on (עץ חיים, נהר שלום) set in by `@source`.
+## Claims most worth an independent check
+1. §8: that כללים (יז)–(כ) follow the Rashash's "בפרטות לבד" (נהר שלום 2a.1); the קונטרס does
+   not cite him there.
+2. §13: the reading of the four kinds of זיווג (שלים / לא שלים, twice) as the place of the
+   partzuf and the degree of the union inside it; the table's assignments are the text's, the
+   reading is the writer's.
+3. §16: the table of the two זיווגים (vessel at night, "אחד" / "בשכמל"ו"; birth by day,
+   "שמע" / "שים שלום") — from (עז), checked; the sentence on Shabbat and weekdays from (עט).
+4. §17: the table of sparks per king (פג–פח) and the note on why נה"י are not counted (פז).
+5. §22: the summary of (קיח) — the three worlds, their numbers, the copyist's notes (א"ה) —
+   is compressed; nothing in it is meant to go beyond the text.
+6. §1: "אמת ליעקב" is read as the name of the copyist's book ("כנראה").
 
-## Reading
-`../reading/chasdei-david/CD-chasdei-david.md`: the index of its paragraphs, then the text.
-For its sources: `python scripts/source-lookup.py etz-chaim <address>` / `--find`, and
-נהר שלום (`nahar-shalom`, addresses page.paragraph; `../reading/rashash/R1-…` is its הקדמה).
-
-## Where things go
-`notes/terms.md`, `notes/segments.md` (the plan: which כללים form each section, and
-from/to words), `notes/citations.md`, `notes/open-questions.md`; this file for the stopping
-point and the claims to check.
+## Not done
+- The lexicon: the terms in `notes/terms.md` are not yet entries in `knowledge/lexicon/`.
+- No comparison with Ronnie's teaching (none recorded on this text).
