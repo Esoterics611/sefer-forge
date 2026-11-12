@@ -82,6 +82,12 @@ PROFILES = {
              # Justified right-to-left lines end in a space glyph whose box (no ink) sits 2pt into the margin.
              "margin_slack": 3.0,
              "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 13.4},
+    # Class handouts (scripts/build-handout.py, WeasyPrint): A4, footnotes at the foot, numbered from p.1.
+    "handout": {"css": "templates/handout.css", "script": "scripts/build-handout.py", "page": "A4",
+                "numerals": "hebrew", "running_header": False, "cover": False, "margin_slack": 3.0,
+                # WeasyPrint names the same faces by family for the Latin digits and punctuation.
+                "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold", "Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold"},
+                "heading": 16.0},
 }
 LEAKS = re.compile(r'\{dir|\]\{|\{\.|:::|\*\*|\[\^|<!--|-->|\\\[|\\\]|custom-style|UNCLEAR|TODO'
                    r'|(?:^|\s)(?:>|#{1,4})(?:\s|$)')        # a blockquote or heading marker printed
@@ -349,7 +355,7 @@ def main(argv: list[str]) -> int:
     else:
         profile = None
     if len(args) != 1:
-        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|biur|book] [--no-images]")
+        print("Usage: python scripts/proof-pdf.py <pdf> [--profile pamphlet|booklet|booklet-latin|references|biur|handout|book] [--no-images]")
         return 1
     pdf = Path(args[0])
     if not pdf.exists():
@@ -357,6 +363,8 @@ def main(argv: list[str]) -> int:
         return 1
     profile = profile or ("pamphlet" if "pamphlets" in pdf.parts else
                           "references" if "references" in pdf.parts else
+                          "handout" if "handouts" in pdf.parts else
+                          "biur" if "biur" in pdf.parts else
                           "booklet-latin" if "booklets" in pdf.parts and pdf.parent.name in ("en", "fr") else
                           "booklet" if "booklets" in pdf.parts else "book")
     errors, warns, stats = proof(pdf, profile)
