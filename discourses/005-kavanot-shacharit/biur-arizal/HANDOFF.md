@@ -3,14 +3,14 @@
 Read this first, every session. Update it before you stop.
 
 ## State
-2026-11-12: **part 1 written** (the מבוא and §1–§4), in one Fable session, on branch
-`claude/loving-curie-yubxz5` (which carries the preparation branch `claude/busy-planck-pec3bg`;
-neither is in `main`). `biur.src.md`: 68 passages set in, all resolving
-(`build-biur.py --check`). §5–§13 and the סיכום are headings only. Not built to PDF, not
-proofed, not checked by anyone: that is Opus's (`prompts/opus-after-fable-005.md`) or waits for
-the other parts.
+2026-11-13: **written in full** — מבוא and §1–§13 and סיכום. Part 1 (מבוא, §1–§4) and part 2
+(§5–§8) by Fable; part 3 (§9–§13, סיכום) by Opus, after the Fable credits ran out, at Ronnie's
+request, from selected passages (`notes/open-questions.md`, "Part 3"). Branch
+`claude/loving-curie-yubxz5`. Built, checked by three independent subagents (`check.md`),
+printed and proofed: `output/biur/005-kavanot-shacharit-arizal.pdf`.
 
-**Next:** part 2 (§5–§8), when Ronnie starts it. See "For part 2" below.
+**Next:** Ronnie reads the PDF and `check.md`; then the level-2 explanation (the Rashash,
+`prompts/fable-005-rashash.md`) builds on this one section by section.
 
 ## What it is
 The basics of Shacharit after the Arizal, stage by stage in the order of the prayer: what
@@ -34,8 +34,8 @@ frame for both.
 | Part | Writes | שער הכוונות to read | Status |
 |---|---|---|---|
 | 1 | מבוא (00), §1–§4: עולם העשיה | 172K chars | **written 2026-11-12** |
-| 2 | §5–§8: קדיש, פסוקי דזמרה, ברכות ק"ש, ק"ש | 189K | **next** |
-| 3 | §9–§13, סיכום: the עמידה to the end | 300K | |
+| 2 | §5–§8: קדיש, פסוקי דזמרה, ברכות ק"ש, ק"ש | 189K | **written 2026-11-12/13 (Fable)** |
+| 3 | §9–§13, סיכום: the עמידה to the end | 300K | **written 2026-11-13 (Opus, selected passages)** |
 פרי עץ חיים by its index, at most three passages in full per section.
 
 ## Where things go

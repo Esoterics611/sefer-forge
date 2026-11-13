@@ -33,3 +33,18 @@ lexicon, `knowledge/lexicon/`). SK = שער הכוונות, PEC = פרי עץ ח
 | נקודת הכתר דרחל | the root point of Rachel; down to היכל ק"ק דבריאה at midnight, back to אצילות at dawn, tied to ז"א's left arm | SK Sermons on Tefillin.5.5–5.6 |
 | ישראל / יעקב | two aspects of ז"א, divided at the chest; Leah is with the first, Rachel with the second | PEC Gate of Prayer.7.46–7.47 |
 | ד' יחודים | ק"ש = י', תפילין = ה' ראשונה, ציצית = ו', תפילה = ה' אחרונה | SK Sermons on Tzitzit.7.2 |
+
+Parts 2–3 (§5–§13):
+
+| Term | Meaning here | Address |
+|---|---|---|
+| היכל ק"ק / ו' היכלות | in each world six lower היכלות (its ו"ק) and the seventh, its head, where the מלכות of the world above stands | SK Sermons on Kaddish.1.1.3, 1.1.6 |
+| עמוד (בין עולם לעולם) | the passage by which each היכל rises into the one above; the kaddish | SK Sermons on Kaddish.1.1.6 |
+| שם מ"ב (of a הוי"ה) | the 4+10+28 letters of a הוי"ה with its fillings; "אין עליה אלא בשם מ"ב" | SK Sermons on Kaddish.1.5.3 |
+| תרגום | the אחוריים of holiness, where the חיצונים draw; the kaddish is said in it to subdue them | SK Sermons on Kaddish.1.5.1 |
+| אל"ם (מאלהים) | the mochin of קטנות when the קליפות hold them: י"ה of אלהים hidden | SK Sermons on Kaddish.1.5.4 |
+| חיבוק / נישוק | the amen of the kaddish (נוקבא first) / of the blessings (זכר first); היכל אהבה / היכל רצון | PEC Gate of Amen Intention.2.1–2.2; SK Shema 5.1.8 |
+| זיווג תדירי / זיווג לנשמות | the constant union of או"א for the life of the worlds / the one for the souls, which needs מ"ן of זו"ן | SK Shema 6.1.6, 6.1.9 |
+| ציקי קדרה | the light that reaches Rachel in ק"ש, from the ten garments of the חו"ג, "בחשאי" | SK Shema 6.5.4–6.5.5 |
+| כתפלה אריכתא | היכל ק"ק דבריאה joined to מלכות דאצילות and rising with her | SK Standing Prayer.1.1.3 |
+| נפילת אפים | the fall to the end of עשיה to raise מ"ן through בי"ע to the יסוד of Rachel | SK Falling on the Face Prayer.2.3 |

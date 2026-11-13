@@ -102,3 +102,48 @@ The deeds in detail (SK Prayers.3.2–3.4):
   מלכות דיצירה, inner ג' אמצעיות clothe its outer: six levels ↔ six letters of שקוצי"ת.
   איזהו מקומן: the rest of עשיה, with the incense-life as the outermost. 13 מידות = the 13
   levels of עשיה.
+
+## 6. Parts 2–3, section by section (§5–§13 and the סיכום)
+
+Part 2 (§5–§8) was written by Fable; part 3 (§9–§13, סיכום) by Opus, on 2026-11-13, from
+selected passages (see open-questions, "Part 3").
+
+- **§5 the kaddish.** One kaddish at each change of world (SK Kaddish.1.1.3): before הודו
+  (עשיה→יצירה), between ישתבח and יוצר (יצירה→בריאה), none between גאולה and תפילה (the whole
+  מלכות דאצילות stands in ראש הבריאה, 1.1.5), after the עמידה (בריאה into אצילות again, to
+  receive the שפע), before תפלה לדוד, before the קטורת; קדיש יתום outside the count. Each world:
+  six lower היכלות (its ו"ק) + היכל ק"ק (its head), where the מלכות of the world above stands
+  (מיעוט הירח). The kaddish = the עמוד between worlds (1.1.6). 28 letters raise the six
+  היכלות, 28 words the seventh; the names are those of the world above (מ"ה/ס"ג, then ס"ג/ע"ב).
+  Targum = אחוריים, subdues the קליפות. יתגדל = ו"ה raised to י"ה; אל"ם → אלהים → filled (אמן =
+  91). אמן of the kaddish = חיבוק (אדנ"י first, PEC Amen 2.1).
+- **§6 פסוקי דזמרה.** הודו: ג"ר דעשיה receive נשמה from יצירה (after נפש, רוח) before ב"ש.
+  אל נקמות: the ten martyrs gather the sparks of עשיה; ה' מלך: the ten sparks as kings.
+  ברוך שאמר = א"א דיצירה (13 ברוך, 87 words); מזמור לתודה = או"א דיצירה; יהי כבוד = ז"א
+  (מטטרון, 18 names); אשרי / פותח את ידיך (חת"ך by the hour); five הללויה = מלכות → ג"ר
+  of יצירה; ויברך דוד, צדקה; ישתבח: 13 = יצירה after its ג"ר rose (as רבי ישמעאל in עשיה).
+  Second kaddish, ברכו.
+- **§7 ברכות ק"ש.** The seven היכלות of בריאה along יוצר (SK Morning Prayers.27); מלכות
+  דבריאה joins יסוד דבריאה (יאהדונה"י); קדושת יוצר raises it to הוד (PEC Shema 2.3); אהבת
+  עולם, not רבה; the four tzitzit gathered; the four זכירות.
+- **§8 ק"ש.** ק"ש = זיווג או"א and מוחין to זו"ן; עמידה = זיווג זו"ן. Only ו"ק of מוחין
+  דאימא enter. Two זיווגים of או"א (constant / for souls). שמע ישראל = הכנה from the constant
+  one; ישראל completes the קטנות (מקיפים דאבא). אחד: מ"ן up (Rachel from היכל אהבה, with
+  מסירת נפש), זיווג, מוחין down (ד' יה"ו in ד' אה"י). Leah receives at ד' דאחד (her כתר);
+  Rachel only ציקי קדרה בחשאי. Three paragraphs = רמ"ח of ז"א. אמת ויציב: Rachel built in
+  היכל הרצון; תהלות לאל עליון: יסוד אבא, פב"פ with Yaakov, rising to היכל ק"ק; סמיכת גאולה
+  לתפלה. Ranking of the four ק"ש.
+- **§9 עמידה.** ה' שפתי תפתח = היכל ק"ק דבריאה, "כתפלה אריכתא" (reconciles מבוא's two
+  wordings). The nine sefirot of Rachel rise (her keter stays). ברכת אבות = second זיווג או"א:
+  ג"ר of מוחין דאימא and the nine of אבא; bows. Rachel built, turned פב"פ at מלך עוזר ומושיע
+  ומגן, Yaakov נצח / Rachel הוד; נה"י דאימא leave her, she returns to the chest; מגן אברהם
+  bow. 3+13+3 structure; חיבוק/נשיקין; שים שלום = the drop begins. The union completes in
+  נפילת אפים (SK Shema 3.1.6, 4.1.2; SK Falling on the Face 2.2).
+- **§10 repetition.** One level up (חג"ת), aloud; Yaakov חסד, Rachel גבורה (PEC). ברכת כהנים
+  brings the מקיפים דאבא.
+- **§11 וידוי, ויעבור.** Stations of the drop: שים שלום (to the chest), וידוי (to the heart),
+  ויעבור (ישראל–לאה above the chest), נ"א (יעקב–רחל). Two purposes of the 13 מידות.
+- **§12 נ"א.** מ"ן from the kings in בי"ע; falling to the end of עשיה and rising through
+  יצירה, בריאה to the יסוד of Rachel; natural death vs death by court.
+- **§13.** Torah reading: the two bursts of יסוד אבא. The שפע descends בריאה→יצירה→עשיה; the
+  worlds themselves go down only after עלינו, which brings down the אור מקיף.
