@@ -145,7 +145,18 @@ def source_text(d: dict, where: str) -> tuple[str, str]:
         text = " ".join(texts)
         label = f"{entry['title']} · {page_label(d['page'])}"
     else:
-        refs = [r.strip() for r in d.get("ref", "").split(",") if r.strip()]
+        # Several addresses are separated by commas; a gate name may itself hold a comma
+        # ("Sermons on Ashrei, Incense Compositions, and Aleinu.1.2"), so pieces that are
+        # not addresses of the work are joined back to the next one.
+        known = S.paragraphs(work)
+        refs, part = [], ""
+        for piece in d.get("ref", "").split(","):
+            part = f"{part},{piece}" if part else piece
+            if part.strip() in known:
+                refs.append(part.strip())
+                part = ""
+        if part.strip():
+            refs.append(part.strip())
         if not refs:
             raise BuildError(f"{where}: @source needs ref= or page=")
         texts = []
