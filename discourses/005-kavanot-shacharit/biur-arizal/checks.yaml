@@ -1,0 +1,9 @@
+# The independent check's open findings (check.md, 2026-11-13), for the review print.
+# All findings of the check were applied to biur.src.md the same day (see check.md, "What was done");
+# none is open, so the review copy carries no marks.
+
+intro: >-
+  אחרי שנכתב הביאור בדקו אותו שלושה בודקים שלא ראו את דרך חשיבתו של הכותב, מול המקורות שבמאגר.
+  ממצאיהם הוכנסו לביאור, ואין ממצא פתוח.
+
+findings: []
