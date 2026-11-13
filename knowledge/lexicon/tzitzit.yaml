@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ציצית
+forms:
+- ציצית
+- ציציות
+- ציץ
+category: מצוות וכוונותיהן
+senses:
+- meaning: 'הקוצין של שערות ראש ז"א, ממוחין דעיבור, היורדים עד חזהו, שם ראשה של רחל: המקיף שלה. "ציצית" מלשון הסתכלות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.2
+    quote: כי ציצית מלשון הסתכלות כמו מציץ מן החרכים גם ציצית מלשון [יחזקאל ח' פסוק
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.7
+    quote: ד' ציציות הם בחינת קוצא דשערי דרישא דז"א ממוחין דעיבור והם סוד א"מ השני הפנימי א"כ
+related:
+- tallit
+- kotzin-nimin-searot
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

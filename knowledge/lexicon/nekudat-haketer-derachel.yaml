@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נקודת הכתר דרחל
+forms:
+- נקודת הכתר
+- נקודת הכתר דרחל
+category: פרצופים
+senses:
+- meaning: הנקודה העשירית של רחל, הכתר שבה, שורש עצמותה; שאר ט' הספירות באות לה בתוספת. בבוקר היא עולה ונקשרת בזרועו של ז"א,
+    וזו תפילין של יד.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.6
+    quote: ודע כי הנקודה הי' הנז' היא בחי' הכתר שברחל והיא שרשית ועיקרית בה והט"ס האחרות הם התחתונות שמן החכמה
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.7
+    quote: ועלתה נקו' הכת' שלה למעלה ונקשרה בזרוע ע"י עסק התורה של התחתו' שעסקו כנז' ואותו הרשימו ג"כ
+related:
+- nukva
+- tefillin
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

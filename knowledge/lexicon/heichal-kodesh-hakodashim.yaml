@@ -1,0 +1,17 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: היכל ק"ק (בסדר התפילה)
+forms:
+- היכל ק"ק
+- היכל קדש הקדשים
+category: תפילה וכוונות
+senses:
+- meaning: 'ראשו של כל עולם בסדר התפילה, ההיכל העליון שבו: בעשיה מהודו ועד ברוך שאמר, ביצירה ברוך שאמר, בבריאה ברכת אבות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.2
+    quote: היכל ק"ק דבריאה עד סוף בא"י מגן אברהם ושאר כל העמידה
+related:
+- maaseh-vedibur
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

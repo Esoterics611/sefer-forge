@@ -1,0 +1,19 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מנצפ"ך
+forms:
+- מנצפ"ך
+category: שמות
+senses:
+- meaning: 'חמש הגבורות, המסתיימות באצבעות (כפולות: שתי הידיים). בשיטת הרש"ש: ה'' גבורות של מ"ה, הממתקות את דיני ב"ן.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.11
+    quote: חמש מיני גבורות שהם פ"ה וחוט"ם וזרו"ע וי"ד ואצבעו"ת כמבואר אצלנו באידרת נשא
+  - work: chasdei-david
+    ref: 54a.2
+    quote: ה' אותיות מנצפ"ך והם גבורות דמ"ה והם ה' אהי"ה ועי"ז נעשו הה"פ דין
+related:
+- shivat-hamelachim
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

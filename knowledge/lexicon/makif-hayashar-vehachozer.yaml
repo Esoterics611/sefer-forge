@@ -1,0 +1,24 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מקיף הישר ומקיף החוזר
+forms:
+- מקיף הישר
+- מקיף החוזר
+- ל' דצלם
+- מ' דצלם
+category: אורות וכלים
+senses:
+- meaning: החיה מתחלקת לג' מקיפים ומקיפה רק את נר"ן של הפרצוף (ל' דצלם, מקיף החוזר); היחידה לד' מקיפים ומקיפה אותו ואת כל
+    שתחתיו (מ' דצלם, מקיף הישר).
+  rests_on:
+  - work: chasdei-david
+    ref: 48b.6
+    quote: ומתחלקת לג' מקיפים כדי להקיף לנר"ן דאותו פרצוף בלבד ונק' ל' דצלם ומקיף
+  - work: chasdei-david
+    ref: 48b.6
+    quote: והיחידה מתחלקת לד' מקיפים כנגד הנרנ"ח ומקפת לאותו פרצוף ולכל הפרצופים שממנו ולמטה ונק'
+related:
+- or-pnimi-makif
+- tzelem
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-chasdei-david

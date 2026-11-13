@@ -1,0 +1,17 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: שם מ"ב (אנא בכח)
+forms:
+- שם מ"ב
+- אנא בכח
+- אבגית"ץ
+category: שמות
+senses:
+- meaning: שם של היצירה. באמירת "אנא בכח" חוזרת העשיה להיות יצירה; שמו האחרון, שקוצי"ת, הוא מלכות דיצירה.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.9
+    quote: שם אחרון שבשם מ"ב שקוצי"ת ויש בו ו' אותיות ותכוין כי ע"י ששה שמות דאבגית"ץ
+related: []
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

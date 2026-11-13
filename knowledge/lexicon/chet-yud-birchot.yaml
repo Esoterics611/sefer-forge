@@ -1,0 +1,17 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ח"י ברכות השחר
+forms:
+- ח"י ברכות
+- י"ח ברכות
+category: תפילה וכוונות
+senses:
+- meaning: 'ברכות השחר, מנטילת ידים עד ברכות התורה: רמזים לאורות עליונים, ולכן כל אדם מברך את כולן.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.7
+    quote: כל הח"י ברכות שיש מן ענט"י עד סוף ברכת התורה כולן חייב האדם
+related:
+- maaseh-vedibur
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

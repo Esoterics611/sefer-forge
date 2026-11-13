@@ -1,0 +1,19 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: טלית קטן וטלית גדול
+forms:
+- טלית קטן
+- טלית גדול
+- טלית
+category: מצוות וכוונותיהן
+senses:
+- meaning: 'המקיף של ז"א: הטלית הקטן כנגד מוחין דעיבור, כשאין לו אלא ו"ק, והגדול כשנגדל.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.1.1
+    quote: ענין הציצית הוא בחי' אור המקיף כנודע אצלינו כי יש א"מ ויש א"פ וכבר ידעת כי
+related:
+- tzitzit
+- or-pnimi-makif
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

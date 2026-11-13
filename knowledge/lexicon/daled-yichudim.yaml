@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ד' יחודים (ק"ש, תפילין, ציצית, תפילה)
+forms:
+- ד' יחודים
+category: תפילה וכוונות
+senses:
+- meaning: 'ארבע מצוות עשה, תפילה, ציצית, תפילין וק"ש, רמוזות בד'' אותיות ההויה; המבטל אחת מהן פוגם באות שכנגדה (תפילה: ה''
+    אחרונה).'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.7.2
+    quote: ד' כוונות יש בד' מצות הרמוזות בד' אותיות הויה וטוב הוא לכוין בהם תמיד באופן שנבאר הנה לפעמים האדם
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.7.2
+    quote: פוגם בה' אחרונה של הויה והמבטל מצות ציצית פוגם באות ו' של הויה
+related:
+- tefillin
+- tzitzit
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

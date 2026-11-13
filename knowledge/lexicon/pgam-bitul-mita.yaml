@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: פגם, ביטול, מיתה
+forms:
+- פגם
+- ביטול
+- מיתה
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'שלוש מדרגות הנזק בשבירה: הכתר נפגם (אחורי נה"י), או"א נתבטלו (אחוריהם נפלו רק למקום זו"ן), זו"ן מתו (כליהם לבי"ע).
+    לפי מידת אור האוזן שכל אחד קיבל.'
+  rests_on:
+  - work: chasdei-david
+    ref: 53b.5
+    quote: וזה נקרא פגם . ואו"א דנקו' שלא קבלו רק מחוטם פה בשיבולת הזקן
+  - work: chasdei-david
+    ref: 53b.5
+    quote: ולכן נקרא ביטול . וזו"ן דנקודים שלא קיבלו אפי' הארת האזן כלל רק
+related:
+- shivat-hamelachim
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-chasdei-david

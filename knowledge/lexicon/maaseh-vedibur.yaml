@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מעשה ודיבור (בתפילה)
+forms:
+- מעשה ודיבור
+- מעשה ודבור
+category: תפילה וכוונות
+senses:
+- meaning: 'בסדר התפילה שני מעברים על ארבעת העולמות: המעשה (נטילה, טליתות, תפילין) מתקן את חיצוניות כל עולם במקומו, והדיבור
+    (ארבעת חלקי התפילה) מעלה עולם לעולם.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.2
+    quote: ע"י מצות מעשיות שאנו עושים למטה בעה"ז וכונת התיקון הזה הוא לתקנם במקומם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: ועתה נבאר בחי' הדיבור כנ"ל בשם הזוהר ויקהל דר"א ע"א ופ' במדבר דק"כ ע"ב
+related:
+- penimiyut-chitzoniyut
+- or-pnimi-makif
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

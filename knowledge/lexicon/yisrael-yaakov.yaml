@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ישראל ויעקב
+forms:
+- ישראל ויעקב
+- יעקב
+- ישראל
+category: פרצופים
+senses:
+- meaning: 'בשיטת הרש"ש: ישראל ולאה הם ז"א (ז"א דמ"ה וז"א דב"ן), יעקב ורחל הם הנוקבא (מלכות דמ"ה ומלכות דב"ן).'
+  rests_on:
+  - work: chasdei-david
+    ref: 51a.14
+    quote: ונקרא ישראל ולאה ונקראו שניהם ז"א ונק' אותיות והלבישו לא"א מהטיבור עד רגליו
+  - work: chasdei-david
+    ref: 51a.15
+    quote: ונוק' יעקב ורחל ושניהם נקראו נוק' דז"א והם בחי' מספר ומלבישים לז"א מהטיבור
+related:
+- nukva
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

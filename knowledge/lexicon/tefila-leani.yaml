@@ -1,0 +1,17 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תפילה לעני
+forms:
+- תפילה לעני
+- תפלה לעני
+category: תפילה וכוונות
+senses:
+- meaning: התפילה היא המלכות השואלת צרכיה מז"א; לכן כל תפילה היא בעולם העשיה, הנקרא נפש.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.1
+    quote: כל תפילה היא בעולם העשיה בסוד תפילה לעני והיא המלכות השואלת צרכיה ומתפללת אל זעיר
+related:
+- nukva
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

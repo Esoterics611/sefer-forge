@@ -1,0 +1,24 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תפילין
+forms:
+- תפילין
+- תש"י
+- תש"ר
+category: מצוות וכוונותיהן
+senses:
+- meaning: אור ארבעת המוחין של ז"א היוצא אל המצח (הפרשיות), עם אור לבושיהם, נה"י דאימא (הבתים).
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.4
+    quote: אהיה הויה אהיה בתפילין ש"ר שהם גי' חיים ונקרא חיי המלך לפי שהם
+- meaning: הרשימו של המוחין שנשאר בזו"ן אחרי התפילה ומסתלק בלילה; בו תלוי סדר הנחת התפילין.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.4
+    quote: ענין הרשימו הזה שמסתלק בלילה ובו נבאר ג"כ פסוק שימני כחותם על לבך כו' אשר
+related:
+- kesher-shel-rosh
+- nekudat-haketer-derachel
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

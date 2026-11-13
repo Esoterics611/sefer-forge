@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נחלה ומתנה
+forms:
+- נחלה
+- מתנה
+- ירושה
+category: פרצופים
+senses:
+- meaning: 'מה שיש לזו"ן מזמן המלכים (ו"ק דב"ן לז"א, כתר דב"ן לנוקבא) אינו מסתלק לעולם: "ירושה בלי הפסק". מה שבא בתוספת מסתלק
+    בפגם: "מתנה".'
+  rests_on:
+  - work: chasdei-david
+    ref: 54a.3
+    quote: נק' ירושה בלי הפסק דאינם מסתלקים מזו"ן אפי' בעת הפגם כנז' ואורות הי"ס דזו"ן
+  - work: chasdei-david
+    ref: 54a.3
+    quote: נקרא מתנה ויש לה הפסק כי בעת הפגם מסתלק כל זה ואין
+related:
+- ibur-yenika-mochin
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-chasdei-david

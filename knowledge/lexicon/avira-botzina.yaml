@@ -1,0 +1,23 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: אוירא דכייא ובוצינא דקרדינותא
+forms:
+- אוירא דכייא
+- בוצינא דקרדינותא
+category: פרצופים
+senses:
+- meaning: החסד והגבורה של עתיק המלובשים בכתר ובחכמה של אריך. הבוצינא היא שורש כל הגבורות, הממתקת את הדינים ונותנת מידה לאורות.
+  rests_on:
+  - work: chasdei-david
+    ref: 54b.4
+    quote: החסד דעתיק מתלבש בגלגלתא כתר דא"א והוא נקרא אוירא דכייא והגבורה במוחא סתימאה חכמה
+  - work: chasdei-david
+    ref: 54b.4
+    quote: היא שורש כל הגבורות והיא ממתקת כל הדינין התחתונים כי אין הדין נמתק אלא
+  - work: etz-chaim
+    ref: 16.7.1
+    quote: בוצינא דקרדינותא הוא שורש לכל הדינין שבעולם רק ששם הם נכפין וממו"ס
+related:
+- chochma-stimaa
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-chasdei-david

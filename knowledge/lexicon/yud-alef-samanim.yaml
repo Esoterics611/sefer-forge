@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: י"א סממני הקטורת
+forms:
+- י"א סמנים
+- י"א סממני הקטורת
+- סממני הקטורת
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'עשרה ניצוצות של קדושה המחיים את הקליפות באור פנימי, ואחד שהוא להם אור מקיף. בשורשם: שבעת המלכים וארבעת אחורי או"א
+    וישסו"ת.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.12
+    quote: עשרה ניצוצי הקדושה המחיה הקלי' בסוד אור פנימי ויש נצוץ א' שהוא בסוד
+  - work: etz-chaim
+    ref: 9.2.1
+    quote: והם י"א סמני הקטורת שהם י"א אורות שנשארו מאלו הי"א בחי' כנ"ל שירדו ולא
+related:
+- shivat-hamelachim
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

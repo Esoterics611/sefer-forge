@@ -1,0 +1,27 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: זווגא שלים
+forms:
+- זווגא שלים
+- זיווגא שלים
+- זווגא דלא שלים
+- זווגא לא שלים
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: 'בעץ חיים: זיווג או"א בהיותם שווים למעלה, תדיר; וזיווג כשאימא רובצת על בניה, לפרקים.'
+  rests_on:
+  - work: etz-chaim
+    ref: 15.1.3
+    quote: הנה זווג אחד הוא נקרא זווגא שלים כנזכר זוהר פרשת אחרי דס"א ע"ב והזווג הב' נקרא זווגא
+- meaning: 'בחסדי דוד, ארבעה: אבא שלים דשלים, אימא לא שלים דשלים, ישראל סבא שלים דלא שלים (תדיר), תבונה לא שלים דלא שלים.'
+  rests_on:
+  - work: chasdei-david
+    ref: 51a.10
+    quote: ונקרא זווגא שלים דשלים ג"ר דג"ר פנים בפנים אצי' דאצי' ונקרא זווג דחכמה עם
+  - work: chasdei-david
+    ref: 51a.12
+    quote: ונקרא זיווגא שלים דלא שלים ג"ר דו"ק פני' דחיצו' אצי' דבי"ע וזיווגייהו תדיר ולא פסיק
+related:
+- mayin-nukvin
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-chasdei-david

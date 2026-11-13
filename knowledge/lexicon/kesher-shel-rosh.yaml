@@ -1,0 +1,18 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קשר של ראש
+forms:
+- קשר של ראש
+- קשר של תפילין
+- הקשר
+category: מצוות וכוונותיהן
+senses:
+- meaning: 'הקשר שבעורף, ד'', הוא לאה: האור החוזר של ארבע הפרשיות, מלובש במלכות דתבונה.'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Teffilin.5.1
+    quote: הנה ענין קשר של תפילין של ראש , ענינו כך הוא, כי כל מציאת אור, יש בו
+related:
+- tefillin
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

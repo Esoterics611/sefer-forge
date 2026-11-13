@@ -1,0 +1,18 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קוצין, נימין ושערות
+forms:
+- קוצין
+- נימין
+- קוצא דשערי
+category: פרצופים
+senses:
+- meaning: שלושה מיני שערות בראש ז"א, כנגד מוחין דעיבור, דיניקה ודגדלות.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.4
+    quote: יש שלש מיני שערות ונקרא קוצין ונימין ושערות ופשר הדבר הוא כי כבר ביארנו
+related:
+- tzitzit
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

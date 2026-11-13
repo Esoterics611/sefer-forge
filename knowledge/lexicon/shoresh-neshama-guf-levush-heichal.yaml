@@ -1,0 +1,20 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: שורש, נשמה, גוף, לבוש, היכל
+forms:
+- שורש נשמה גוף לבוש והיכל
+- שנ"ג
+category: פרצופים
+senses:
+- meaning: חמש בחינות של כל עולם ושל כל פרצוף בשיטת הרש"ש. שורש, נשמה וגוף הם היושר שלו; לבוש והיכל הם המקיף והעיגולים.
+  rests_on:
+  - work: chasdei-david
+    ref: 49a.3
+    quote: שורש ונשמה וגוף דכל פרצוף הם בחי' יושר דכל פרצוף והם בחי' בפ"ע דהיינו שורש
+  - work: nahar-shalom
+    ref: 11b.1
+    quote: אות י' שהיא החכמה היא הנשמה ואות ה' ראשונה שהיא הבינה הוא הגוף ואות ו' שהוא
+related:
+- tzelem
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-chasdei-david

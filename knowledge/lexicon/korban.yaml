@@ -1,0 +1,17 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קרבן
+forms:
+- קרבן
+- קרבנות
+category: תפילה וכוונות
+senses:
+- meaning: '"לקרב התחתון בעליון": הפנימיות של העולם התחתון נעשית חיצוניות לעליון. אמירת הקרבנות היא בעשיה.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.10
+    quote: כל אלו הקרבנות הם למטה בעולם העשיה וכבר ידעת כי עולם העשיה ה"ס
+related:
+- maaseh-vedibur
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal
