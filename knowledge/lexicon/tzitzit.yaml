@@ -1,0 +1,62 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ציצית / ציץ
+forms:
+- ציצית
+- ציציות
+- הציציות
+- ציץ
+- ציץ דכורא
+- ציצית נקבה
+category: פרצופים ועולמות
+senses:
+- meaning: הטלית הוא אור מקיף על כל ז"א עד סיום היסוד; הציציות התלויות ממנו הן הקוצין, השערות של ראש ז"א הבאות ממוחין
+    דעיבור, הארוכות עד החזה, ראש רחל. הן אור מקיף לרחל, ולכן נקראות "ציצית" בלשון נקבה ו"תשמישי מצוה".
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.6
+    quote: הוא בחינת אור המקיף על כל ז"א כולו עד סיום היסוד שבו
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.6
+    quote: ובחינה זו של הקוצין הם סוד הציציות היוצאות ונתלות מן הטלית
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.5
+    quote: והנה השערות הנקראין קוצין שהם ממוחין דעיבור יוצאין בתחילה ולכם הם ארוכים ונמשכים עד החזה דז"א עד רישא
+      דנוק' נק' רחל
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.1.1
+    quote: וד' הציצית יוצאים ממנו ומקיפין את הנקבה אשר שם מתחת החזה ולכן נק' ציצית לשון נקבה
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.5.4
+    quote: והקוצים הם ארוכי' והם אור מקיף לרחל
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.5.4
+    quote: כי הציצית נק' תשמישי מצוה לפי שהם מאירים אל הנוק' דז"א הנק' מצוה
+- meaning: 'ציץ וציצית לשון שערות ולשון הסתכלות. ציץ (זכר) הוא קוצא דשערי של א"א, הנמשך עד ראש ז"א: הסתכלות א"א
+    בז"א. ציצית (נקבה) הוא קוצא דשערי של ז"א, הנמשך עד ראש הנוקבא: הסתכלות ז"א בנוקבא. ציץ הכהן הגדול ממוחין דאבא,
+    והציצית ממוחין דאימא.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.3
+    quote: כי ציץ הוא דכורא והוא קוצא דשערי דא"א
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.3
+    quote: אבל קוצא דשערי דז"א אקרי ציצית נקבה משום דאתפשט עד רישא דנוק'
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.2.3
+    quote: ציץ אסתכלותא דא"א בז"א וציצית אסתכלותא דז"א בנוקביה
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.4.3
+    quote: הוא סוד הציץ של כ"ג שהוא ממוחין דאבא
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.4.3
+    quote: אבל הציצית הוא ממוחין דאימא ולכן נקרא ציצית בלשון נקבה
+related:
+- kotzin-nimin-searot
+- gimmel-tachtonot
+- or-pnimi-makif
+- tefillin
+open: בדרוש ה' (Sermons on Tzitzit.5.4) הקוצים "ממוח הדעת", ולא ממוחין דעיבור כבדרוש ב' (2.5); ראה kotzin-nimin-searot.
+  ובדרוש ד' (4.3) מסתפק הכותב אם גם ממוחין דאבא יוצאות ציציות או רק אור הציץ ("וצ"ע").
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

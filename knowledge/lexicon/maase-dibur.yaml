@@ -1,0 +1,41 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מעשה ודיבור (בסדר תפילת השחר)
+forms:
+- מעשה ודיבור
+- סוד המעשה
+- סוד הדבור
+- מצות מעשיות
+- הדיבור של התפלה
+category: תורה, מצוות ותפילה
+senses:
+- meaning: שני שלבים בתיקון הבוקר. המעשה, ארבעה תיקונים (יפנה, יתעטף בציצית, יניח תפילין של יד ואחר כך של ראש),
+    מתקן את חיצוניות כל העולמות במקומם ומפריד מהם את הקליפה שנאחזה בהם בלילה; בו אין האדם מתקן אלא את הנפש שלו.
+    הדיבור שבתפילה (קרבנות, זמירות, יוצר, שמונה עשרה) מעלה עולם בעולם וקושר אותם יחד.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: שבתחלה צריך לעשות התיקון בבחי' המעשה שהם ד' תיקוני' והם אלו יפנה ויתעטף בציצית ויניח תש"י ואח"כ תש"ר
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: הנה בתחילה צריך בסוד המעשה לתקן בחי' חיצוניו' כל העולמות במקומם אשר להם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: אבל האדם בעצמו לא נתקן רק בחי' הנפש שלו בלבד לפי שכל אלו הם מצות מעשיו'
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: ולכן כדי לתקן בחי' שנית צריך סוד הדבור בתפלה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.2
+    quote: וכונת התיקון הזה הוא לתקנם במקומם עצמם שהקליפה אשר סביבותיהם שנתאחזו בהם בלילה יתפרדו עתה מהם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: והנה עד עתה ע"י המעשה נתקנו העולמות במקומן ונסתלקו מהם הקלי' כדי שאח"כ ע"י הדיבור של התפלה נוכל להעלות
+      עולם בעולם ולקשרם
+related:
+- penimiyut-chitzoniyut
+- or-pnimi-makif
+- gimmel-tachtonot
+- korban
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

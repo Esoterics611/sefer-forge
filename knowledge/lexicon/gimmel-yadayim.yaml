@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ג' ידים (יד הגדולה, יד החזקה, יד רמה)
+forms:
+- ג' ידים
+- יד הגדולה
+- יד החזקה
+- יד רמה
+- ג' ידות
+category: שמות ואותיות
+senses:
+- meaning: 'שלוש הידות שבתיקונים, שבהן נרמז שם בן מ"ב: יהו"ה אלקינ"ו יהו"ה בימין, כוז"ו במוכס"ז כוז"ו בשמאל, והויה
+    במילויה באמצע. הן של עולם היצירה, ועל ידיהן מעלים את עולם העשיה בברכת על נטילת ידים.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: והנה נרמז שם בן מ"ב בשלשה הידים הנזכרין בתקונין בסוד יד הגדולה ויד החזקה ויד רמה באמצעיתא
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: עוד תכוין בברכת ענט"י דשחרית להעלות העשיה למעלה ע"י אלו הג' ידים שאמרנו
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: וע"י ג' ידות אלו דיצירה אנו מעלין את עולם העשיה
+related:
+- shem-mem-bet
+- mantzepach
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

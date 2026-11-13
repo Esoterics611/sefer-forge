@@ -1,0 +1,39 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נקודת הכתר דרחל
+forms:
+- נקודת הכתר
+- הכתר דרחל
+- הנקודה הי'
+- הספי' הי' דרחל
+category: פרצופים ועולמות
+senses:
+- meaning: 'הנקודה השרשית והעיקרית של רחל, בחינת הכתר שבה; שאר תשע הספירות באות לה בתוספת. בחצות הלילה היא יורדת
+    לעולם הבריאה, להיכל ק"ק דבריאה, ועומדת שם עד הבוקר, ותשע הספירות מתחברות ללאה. באור הבוקר היא עולה לאצילות ועומדת
+    פנים בפנים עם ז"א, קשורה בזרועו השמאלית כנגד הלב: זו תפילין של יד.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.6
+    quote: ודע כי הנקודה הי' הנז' היא בחי' הכתר שברחל והיא שרשית ועיקרית בה
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.5
+    quote: כי בחצי הלילה יורדת הספי' הי' דרחל בעולם הבריאה בהיכל הז' העליון הנקרא היכל ק"ק דבריאה כנודע ועומדת שם עד אור
+      הבקר
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.5
+    quote: וט"ס האחרות הם מתחברות עם פרצוף לאה
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.6
+    quote: ונמצא כי בזרועו השמאלי עומד הכתר דרחל פב"פ עם ז"א
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.6
+    quote: אז נק' אותה הנקודה תפילין של יד
+related:
+- heichal-kodesh-hakodashim
+- tefillin
+- reshimu
+- yisrael-yaakov
+open: 'הכותב מעיד על סתירה לדרוש ברכת אבות של ראש השנה: Sermons on Tefillin.5.6 "וצ"ע שם כי נראה שהוא הפך ממה שכתוב
+  כאן", וכן 5.9 "אבל בביאור ברכת אבות דר"ה נראה בהפך ממ"ש כאן".'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

@@ -1,0 +1,44 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תפילין
+forms:
+- תש"ר
+- תש"י
+- תפילין של ראש
+- תפילין של יד
+- אימא על ברא
+category: פרצופים ועולמות
+senses:
+- meaning: 'המניח הוא ז"א, והתפילין הן המוחין שלו: קוצא דשערי של א"א שמאחורי ראש ז"א מוציא את הארת ארבעת המוחין
+    אל המצח (ארבע הפרשיות) ואת הארת לבושיהם, נה"י דאימא (ארבעה הבתים); "אימא על ברא". הן אור מקיף של זמן הגדלות,
+    גדול מן הציצית, וכנגד פנימיות העולמות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.7.2
+    quote: וענין התפילין עצמם הם בסוד המוחין שלו
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.7.2
+    quote: נמשך קוצ' דשערי דאריך אחורי רישא דז"א במקום העורף ומוציא הארת הד' מוחין לחוץ במקום המצח דז"א וגם מוציא
+      הארת מלבושיהם שהם נה"י דאימא
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.7.2
+    quote: ולכן הם ד' פ' כנגד הארת ד' מוחין עצמן והד' בתים כנגד הארת מלבושיהן שהם נה"י
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.4
+    quote: שהתפילין ה"ס אימא על ברא כנזכר בתיקונים
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.5.2
+    quote: אבל התפילין הוא אור מקיף מבחי' זמן הג' דז"א הנק' גדלות דמוחין
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.5.2
+    quote: והתפילין כנגד אור מקיף של בחי' הנשמו' שהם פנימיות העולמות
+related:
+- reshimu
+- chayei-hamelech
+- yabak
+- kesher-shel-rosh
+- nekudat-haketer-derachel
+- gimmel-tachtonot
+- tzitzit
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

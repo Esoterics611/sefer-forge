@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: כתפלה אריכתא
+forms:
+- כתפלה אריכתא
+- כתפל' אריכת'
+- תפלה אריכתא
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'למה "ה'' שפתי תפתח" אינו הפסק בין גאולה לתפילה: הפסוק כנגד היכל ק"ק דבריאה, והג"ר שבו נכללים עם מלכות
+    דאצילות, הנקראת "תפלה", ועולים עמה יחד לאצילות; כאילו התפילה נתארכה.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on the Standing Prayer.1.1.3
+    quote: והנה פסוק זה של אדני שפתי תפתח הוא כנגד היכל קה"ק שבבריאה ממש
+  - work: shaar-hakavanot
+    ref: Sermons on the Standing Prayer.1.1.3
+    quote: וכן עתה הג"ר שבהיכל ק"ק דבריאה הם נכללים עם המל' דאצילות הנקרא תפלה ונעשית חיבור א' ועולים יחד אל עולם
+      האצילות
+  - work: shaar-hakavanot
+    ref: Sermons on the Standing Prayer.1.1.3
+    quote: כתפל' אריכת' דמיא שהוא המל' דאצילות הנקרא תפלה וכאלו נתארכה ונגדלה יותר ע"י התחברות היכל קה"ק דבריאה
+      עמה
+related:
+- heichal-kodesh-hakodashim
+- tefila-leani
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

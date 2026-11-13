@@ -1,0 +1,39 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: חיבוק ונישוק
+forms:
+- חיבוק
+- נישוק
+- החיבוק
+- הנישוק
+- היכל אהבה
+- היכל הרצון
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: 'החיבוק קודם לנישוק. אמן של הקדיש הוא בסוד החיבוק (ריבוע אדני בגימטריא "חיבוק"), ובו הנוקבא קודמת: אותיות
+    אדני לפני הויה. שני מיני האמן האחרים (בתפילה ובעמידה, ובברכת הנהנין והמצוות) נקראים נישוק, ובהם הזכר קודם (יאהדונה"י).
+    בקריאת שמע ברכת אהבת עולם היא היכל אהבה, החיבוק, ואמת ויציב היכל הרצון, הנישוק, "אתדבקותא דרוחא ברוחא".'
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of Amen Intention.2.1
+    quote: ענין אמן של הקדיש, נקרא בסוד החיבוק, שהוא רבוע שם אדני העולה חיבוק
+  - work: pri-etz-chaim
+    ref: Gate of Amen Intention.2.1
+    quote: כי הנוקבא מתעוררת תחלה אליו, ואז הוא מחבקה, ולפיכך אותיותיה קודמין
+  - work: pri-etz-chaim
+    ref: Gate of Amen Intention.2.2
+    quote: אך ב' חלוקות האמן האחרות, שתיהן נקראין נישוק
+  - work: pri-etz-chaim
+    ref: Gate of Amen Intention.2.2
+    quote: כי לעולם הכוונה בהם הוא, אותיות הזכר קודמין, כזה - יאהדונה"י
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.5.1.8
+    quote: והנה היכל אהבה ה"ס החיבוק והיכל הרצון הוא סוד הנישוק
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.5.1.8
+    quote: וכבר נודע כי אין נישוק אלא אתדבקותא דרוחא ברוחא
+related:
+- zivug-tadir
+- heichal-kodesh-hakodashim
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

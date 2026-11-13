@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ציקי קדרה
+forms:
+- ציקי קדרה
+- ציק"י קדר"ה
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: 'ההארה שיורדת לרחל בקריאת שמע, כשהיא עדיין בהיכל אהבה שבבריאה: לא מן החסדים והגבורות עצמם אלא מעשרת לבושיהם,
+    עשר פעמים אהיה (בגימטריא "ציקי"). היא באה "בחשאי", כדי שלא יאחזו בה החיצונים, כי פרצופה עוד לא נגמר; המוחין
+    העיקריים שלה נשארים בלאה עד ברכת אבות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.5.4
+    quote: וזו ההארה קראוה רז"ל בלשון ציקי קדרה שהביאו לה עבדי' בחשאי וה"ס י"פ שם אהיה שהוא בגי' ציקי
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.5.5
+    quote: והנה עתה רחל אינה יכולה לקבל הארה מן החו"ג עצמן רק מן העשר לבושים שלהם שהם י"פ אהיה
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.5.5
+    quote: וזווגם בחשאי הוא כדי שלא יתאחזו בהם החיצוני' יען לא נגמר פרצופה
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.5.5
+    quote: ואמנם המוחין האמתים העקרים שלה הם נשארים ועומדים למעל' בלאה עד שיבא זמן תיקון רחל בברכת אבות
+related:
+- yisrael-yaakov
+- chibuk-nishuk
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

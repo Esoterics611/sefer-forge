@@ -1,0 +1,37 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קשר של ראש (ד' של הקשר)
+forms:
+- קשר של ראש
+- קשר תש"ר
+- הקשר דתש"ר
+- ד' דאחד
+- קשר של תפילין
+category: פרצופים ועולמות
+senses:
+- meaning: הקשר של תפילין של ראש הוא לאה, ה-ד' של "אחד". האור של ארבע הפרשיות חוזר לאחור כאור חוזר דרך המוחין הפנימיים,
+    מתלבש באור המלכות של התבונה, הנקראת גם היא ד', ונגלה מאחורי העורף במקום הקשר.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.7.2
+    quote: כי קשר תש"ר היא לאה ותש"י היא רחל נוקבא דז"א
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: והנה בחי' לאה היא בבחי' הקשר דתש"ר שבעולם האצילות
+  - work: pri-etz-chaim
+    ref: Gate of Teffilin.5.1
+    quote: לכן חזר האור של ד' פרשיות האלו, ומתנוצץ לפנים בג' מוחין הפנימים, ובלטו לאחור עד מקום הקשר של תפילין,
+      ושם נעשית ד' זו, שהוא סוד ד' דאחד
+  - work: pri-etz-chaim
+    ref: Gate of Teffilin.5.2
+    quote: ונתלבשו באור המלכות של התבונה, הנקראת גם היא ד'
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.9
+    quote: ולכן בקשר ההוא עושין צורת ד' גדולה שה"ס ד' של יהודה
+related:
+- tefillin
+- yisrael-yaakov
+- nekudat-haketer-derachel
+open: אם לאה (שער הכוונות) והמלכות של התבונה (פרי עץ חיים שער התפילין 5.2) הן אחת, אין המקומות האלה אומרים.
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

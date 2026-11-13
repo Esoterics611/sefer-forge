@@ -1,0 +1,27 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: עמוד (בין עולם לעולם)
+forms:
+- העמוד
+- בסוד עמוד
+- עמוד א' שיש בין כל עולם ועולם
+category: פרצופים ועולמות
+senses:
+- meaning: עמוד אחד שבין כל עולם לעולם ובאמצע כל היכל, שדרכו עולה כל היכל אל שלמעלה ממנו ונכלל בו. הקדיש שבין עולם
+    לעולם בתפילה הוא בחינת העמוד הזה.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.6
+    quote: אז אנו צריכין להעלות אותם בסוד עמוד א' שיש בין כל עולם ועולם ובאמצע כל היכל והיכל ודרך העמוד הזה עולה
+      כל היכל והיכל בחבירו שלמעלה ממנו
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.6
+    quote: והנה סוד הקדיש הזה הוא בחי' העמוד הנז' אשר באמצעות עולם העשיה
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.3
+    quote: ולכן תקנו קדיש אחד בכל שינוי עולם ועולם
+related:
+- heichal-kodesh-hakodashim
+- shem-mem-bet
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

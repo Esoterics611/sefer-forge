@@ -1,0 +1,35 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נפילת אפים
+forms:
+- נפילת אפים
+- בנפילת אפים
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'אחרי העמידה, לפני ירידת טיפת מ"ד של החסדים ברחל, צריך להעלות מ"ן: הבירורים מן שבעת המלכים שמתו, הנתונים
+    בקליפות בי"ע. המתפלל, שעמד באצילות, מפיל עצמו עד סוף עולם העשיה, מלקט ומברר שם, עולה ביצירה ובבריאה, ומוסר את
+    המ"ן ביסוד של רחל. הבירורים אינם עולים אלא כשהוא משתף עמהם את נר"ן שלו.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on the Falling on the Face Prayer.2.3
+    quote: כי הנה עתה הוא זמן הורדת טפת מ"ד של החסדים בנוק' רחל. וצריך להקדי' להעלות מ"ן
+  - work: shaar-hakavanot
+    ref: Sermons on the Falling on the Face Prayer.2.3
+    quote: שענין המ"ן הם ממה שמתברר בכל יום ויום ע"י תפלותינו מן הז' מלכים דמיתו
+  - work: shaar-hakavanot
+    ref: Sermons on the Falling on the Face Prayer.2.3
+    quote: ואנו מפילים עצמנו מלמעל' מן עולם האצילות אשר אנו עת' שם ויורדין עד למטה בסוף עולם העשיי'
+  - work: shaar-hakavanot
+    ref: Sermons on the Falling on the Face Prayer.2.3
+    quote: ושם תמסרם ותניחם תוך היסוד שלה בסוד מ"ן
+  - work: shaar-hakavanot
+    ref: Sermons on the Falling on the Face Prayer.2.3
+    quote: אם לא ע"י שיכוין האדם לשתף נר"ן שלו עמהם
+related:
+- mayin-nukvin
+- mayin-duchrin
+- birur
+- shivat-hamelachim
+- naran
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

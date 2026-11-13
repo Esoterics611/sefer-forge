@@ -1,0 +1,31 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תרגום (לשון הקדיש)
+forms:
+- תרגום
+- לשון תרגום
+- בלשון תרגום
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'התרגום הוא אחוריים של הקדושה: קדושה גם הוא, אבל החיצונים יונקים משם. הקליפות, הנאחזות באחוריים, מבינות
+    לשון תרגום, והמלאכים אינם מבינים אותו. הקדיש, שמעלה את העולמות, נתקן בלשון תרגום, כדי שהקליפות ישמעו את השבח
+    ויכנעו ולא יעלו עמהם.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.1
+    quote: איך התרגום ה"ס אחוריים דקדושה והוא קדושה ג"כ אלא שהחיצונים יונקים משם
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.1
+    quote: הנה הקדיש נתקן בלשון תרגום
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.1
+    quote: ולכן נתקן בלשון תרגום דאיהו לישנא דלא משתמע למלאכין עלאין
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.1
+    quote: והם מבינים בל' תרגום שהוא אחוריים ובהיותינו אומרים השבח הגדול והקדוש הזה של הקדיש בלשון תרגום שהם מבינים
+      אותו אז הם נכנעים
+related:
+- yud-alef-samanei-haketoret
+- amud
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

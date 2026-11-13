@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: צ"ו ("צו את בני ישראל")
+forms:
+- צ"ו
+- צו את בני ישראל
+- אחרי הצו
+category: שמות ואותיות
+senses:
+- meaning: צ"ו בגימטריא א"ל אדני, שם עולם העשיה, ועליו רומז "צו את בני ישראל" בפרשת קרבן התמיד. הקליפות הנאחזות
+    בעשיה, הקשות מאוד, יונקות משם זה; לכן "אין צו אלא עבודה זרה".
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.10
+    quote: וכבר ידעת כי עולם העשיה ה"ס שם אל אדני שהם בגימ' צ"ו וזהו רמוז באומרו צו את בני ישראל
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.10
+    quote: כי הקליפות הנאחזות בעשי' הם קשות וחזקות מאד וצריך לשרפם באש
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.10
+    quote: והטעם לפי שיונקים ונאחזים בשם אל אדני שהוא בעשיה
+related:
+- shemot-haolamot
+- korban
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

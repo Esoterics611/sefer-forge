@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: יב"ק (מעבר יב"ק)
+forms:
+- יב"ק
+- מעבר יב"ק
+- המעברתא
+- המעברת'
+category: שמות ואותיות
+senses:
+- meaning: 'אהיה הויה אדני בגימטריא יב"ק: שמות תפילין של יד, וגם סוד המעברתא של התפילין, "ויעבר את מעבר יב"ק", שדרך
+    שלושת השמות האלה עובר השפע מתחילת האצילות עד סופו. יב"ק הוא גם "הויה אלקים", סוד המלכות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.6
+    quote: וענין המעברת' של התפילין ה"ס ג' שמות הנז' שהם אהיה הויה אדני והם בגי' יב"ק
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.6
+    quote: כי דרך ג' שמות אלו עובר ונמשך השפע מתחילת האצילות עד סופו
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.11
+    quote: ואח"כ תכוין כי ג' שמות הנז' אהיה הויה אדני עולים גי' יב"ק וה"ס הויה אלקים שה"ס המלכות בסוד מעבר יב"ק
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.11
+    quote: שהם יב"ק דתפילין של יד וס"ח דתש"ר
+related:
+- tefillin
+- chayei-hamelech
+open: 'בדרוש ז'' (Sermons on Tefillin.7.2) נאמר: "וענין המעברת'' של ראש וש"י ה"ס ג'' שמות אהיה הויה אלקים שמספרם
+  יב"ק", ולא אהיה הויה אדני כבדרוש ב'' (2.6) וה'' (5.11).'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ד' יחודים (ד' מצוות כנגד אותיות הוי"ה)
+forms:
+- ד' יחודים
+- ד' כוונות
+- ד' מצות
+category: שמות ואותיות
+senses:
+- meaning: 'ארבע מצוות עשה רמוזות בארבע אותיות הויה: קריאת שמע ביו"ד, תפילין בה"א ראשונה, ציצית בוא"ו, תפילה בה"א
+    אחרונה. המבטל אחת מהן פוגם באות שכנגדה, ולתיקון מכוונים בכל אחת יחוד משלה, כל יחוד במקומו.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.7.2
+    quote: דע כי ד' כוונות יש בד' מצות הרמוזות בד' אותיות הויה
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.7.2
+    quote: והעובר על מצוה זו פוגם בה' אחרונה של הויה והמבטל מצות ציצית פוגם באות ו' של הויה והמבטל מצות תפילין פוגם
+      בה' ראשונה של הויה והמבטל ק"ש פוגם באות י' של ההויה
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.7.2
+    quote: וכדי לתקן הפגמי' הנז' צריך האדם לייחד ד' יחודים אלו
+related:
+- tefillin
+- tzitzit
+open: 'ליחוד התפילין כותב הכותב בדרושי תפילין סדר אחר: Sermons on Tefillin.5.11 "אמנם הנלע"ד יותר באמיתו'' הוא שצריך
+  לכוין ליחד בתחלה ב'' אותיות י"ה זו בזו".'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

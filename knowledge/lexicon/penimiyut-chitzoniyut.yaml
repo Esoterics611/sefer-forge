@@ -32,12 +32,34 @@ senses:
   - work: etz-chaim
     ref: 41.1.2
     quote: כלל העולה כי הנשמות נקראו פנימיות והכלים שהוא הגוף נקרא חיצוניות
+- meaning: 'בשער הכוונות: חיצוניות העולמות היא כללות העולמות עצמם, "כסא הכבוד ומלאכים ואופנים"; פנימיות העולמות
+    הן הנשמות שבהם: הנפשות של בני אדם בעשיה, הרוחות ביצירה, הנשמות בבריאה. בעליית העולמות עולות רק הנפשות, הרוחות
+    והנשמות; העולמות עצמם, החיצוניות, נשארים במקומם וחוזרים להיות בבחינת פנימיות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: חיצוניות העולמות הוא בחי' כללו' העולמות בבחי' חיצונית' הנקר' כסא הכבוד ומלאכים ואופנים
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: פנימיות העולמות שהם בחי' הנפשות של בני אדם דעשיה והרוחו' שביצירה והנשמות שבבריאה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: שאינם עולים רק בחינת הנפשות והרוחות והנשמות אשר בהם בלבד אבל העולמות עצמן אינן עולים
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: כי העולמות הנקרא חיצוניות אינם עולים כלל אמנם נשארים במקומם וחוזרים להיות בחינת פנימיות
+  - work: shaar-hakavanot
+    ref: Sermons on Tzitzit.5.2
+    quote: כי המלאכים הם חיצו' בבחי' העולמו'
 caution: 'ההגהה: "התפלה בפנימית והמצוה בחיצוניות", בציון "ע"ח ש"מ דרוש ג''", ובקובץ הזה המקום הוא 40.2.1 (ראה sources.yaml
   numbering). שני המובנים קרובים ואינם אחד.'
 related:
 - or-pnimi-makif
 - ibur-yenika-mochin
+- maase-dibur
+- korban
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
 - discourses/004-levushei-haneshama/biur
+- discourses/005-kavanot-shacharit/biur-arizal

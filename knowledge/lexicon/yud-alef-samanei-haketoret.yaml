@@ -1,0 +1,54 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: י"א סממני הקטורת
+forms:
+- י"א סממני הקטרת
+- י"א סמני הקטרת
+- סממני הקטורת
+- פטום הקטורת
+- פטום הקטרת
+- י"א סממנים
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'החיות של הקדושה שבתוך הקליפה ומחיה אותה: עשרה ניצוצי קדושה המחיים את עשר הקליפות בסוד אור פנימי, ואחד
+    שהוא אור מקיף להם ואינו מתחלק (הלבונה). באמירת פטום הקטורת מסלקים את החיות הזה מן הקליפות, והן נשארות מתות;
+    והחיות שעלה נעשה חיצוניות למלכות דעשיה.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.8
+    quote: והלא הוא אותו החיות אשר בתוך הקלי' והיא בחינת הקדושה המחי' הקליפה וה"ס י"א סמני הקטור'
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.8
+    quote: והנה יש י"ס דקליפה ועוד כח א' קדוש המחיה אותם הרי הם י"א
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.8
+    quote: ולכן כיון שהקדוש' והחיות שבהם מסתלק מהם אז נשארים הם מתים
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.12
+    quote: ה"ס עשרה ניצוצי הקדושה המחיה הקלי' בסוד אור פנימי ויש נצוץ א' שהוא בסוד אוה"מ להם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.13
+    quote: ולבונה זכה ה"ס אוה"מ לכולם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.9
+    quote: ועולה אותו החיות של הקדושה שעלה ע"י י"א סמני הקטרת כנ"ל ונעשה בחינ' חיצוניות אל חיצוניות מלכות דעשיה
+- meaning: 'בשורשם: שבעת המלכים שמתו וארבעה אחוריים עליונים של או"א וישסו"ת שנפלו עמהם; אחוריים שירדו במקום זו"ן,
+    כנגד האותיות ו"ה (בגימטריא י"א).'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.13
+    quote: כי אלו הי"א סממנים הם בחי' הז' מלכים דמיתו. ועוד יש ד' אחוריים עליונים דאו"א וישסו"ת שגם הם נפלו עמהם
+      וסך כולם הם י"א
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.1
+    quote: כי י"א סמנים הם אחוריים שלמעלה שירדו בעת מיתת המלכים וביטולם
+related:
+- shivat-hamelachim
+- or-pnimi-makif
+- targum
+- shem-mem-bet
+open: 'המניין נאמר בכמה לשונות: Sermons on Morning Prayers.3.8 "הי"ס דעשיה ועוד אותה נקודה קדושה העליונה" ו"י"ס
+  דקליפה ועוד כח א'' קדוש"; 3.12 עשרה ניצוצות באור פנימי ואחד באור מקיף; 3.13 ז'' מלכים וד'' אחוריים. איך הם מתיישבים
+  זה עם זה לא נתבאר כאן.'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

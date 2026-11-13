@@ -1,0 +1,36 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ישראל ויעקב (ולאה ורחל)
+forms:
+- יעקב וישראל
+- ישראל ויעקב
+- לאה ורחל
+- לאה עם ישראל
+- רחל עם יעקב
+category: פרצופים ועולמות
+senses:
+- meaning: ז"א מתחלק לשני פרצופים, יעקב וישראל, וכנגדם נוקביה לשתיים, לאה ורחל. מקום ההפרש בין יעקב לישראל הוא מהחזה
+    ולמטה. בתפילת שחרית של חול לאה עם ישראל אחור באחור, ורחל עם יעקב פנים בפנים; במנחה לאה עם ישראל לבדו פנים בפנים.
+    לאה נקראת "עלמא דאתכסייא", ורחל "עלמא דאתגלייא".
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.3.1
+    quote: כי כמו שז"א מתחלק לב' פרצופים והם יעקב וישראל וכן גם נוקביה נחלקת לשנים והם לאה ורחל
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.46
+    quote: כי בתפלת שחרית דחול, אז לאה עם ישראל אב"א, ורחל עם יעקב פב"פ
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.46
+    quote: ובמנחה, אז לאה מזדווגת עם ישראל לבדו פב"פ
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.47
+    quote: שהוא מקום הפרש בין יעקב לישראל שהוא מהחזה ולמטה
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.7.47
+    quote: לכן לאה נקרא עלמא דאתכסייא, רחל עלמא דאתגלייא
+related:
+- nukva
+- kesher-shel-rosh
+- nekudat-haketer-derachel
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

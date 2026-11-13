@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מנצפ"ך (ה' גבורות)
+forms:
+- מנצפ"ך
+- ה' גבורות
+- ה"ג
+category: שמות ואותיות
+senses:
+- meaning: חמש הגבורות (פה, חוטם, זרוע, יד, אצבעות) מתפשטות דרך הזרוע עד סוף האצבעות, ומשם יונקים החיצונים; חמש
+    אצבעות היד כנגד חמש אותיות מנצפ"ך. האותיות כפולות, ולכן חמש גבורות אחרות ביד שמאל. בנטילת ידים מעלים אותן ומטהרים
+    אותן במים, שהם חמשה חסדים.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.11
+    quote: ולכן יש ה' אצבעות ביד ימין כנגד ה' אותיות מנצפ"ך שהם ה' גבורות הנזכרות אשר סיום התפשטותם הוא באצבעות
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.11
+    quote: וכבר ידעת כי הם אותיות כפולות ולכן הם ג"כ ה' גבורות אחרות ביד שמאל
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.11
+    quote: ומשם יונקים החיצונים
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: וכבר ידעת כי ה' אצבעות הם ה' גבורות מנצפ"ך והם כפולות
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: ואז נטהרים ע"י המים שהם ה' חסדים
+related:
+- gimmel-yadayim
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

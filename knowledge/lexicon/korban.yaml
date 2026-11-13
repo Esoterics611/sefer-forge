@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קרבן (קרבן התמיד)
+forms:
+- קרבן
+- קרבנות
+- הקרבנות
+- קרבן התמיד
+category: תורה, מצוות ותפילה
+senses:
+- meaning: '"לקרב התחתון בעליון": בקרבן התמיד עולה פנימיות ג"ר דעשיה ונעשית חיצוניות לג"ת דיצירה, וכך בכל המדרגות:
+    הפנימיות של התחתון נעשית חיצוניות של העליון, והחיצוניות שנשארה חוזרת להיות פנימיות, עד אין סוף. העולמות הנקראים
+    חיצוניות אינם עולים.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: וז"ס קרבן התמיד שהוא לקרב התחתון בעליון ולהעלותו עד שם למעלה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: ונמצ' כי ע"י קרבן התמיד עול' פנימיות ג"ר דעשיה ונעשים חיצוניות אל ג"ת דיצירה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: פי' כי ע"י קרבנות עולים העולמות ומתקשרים זה בזה מדרגה למעלה ממדרגה עד א"ס
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: כי העולמות הנקרא חיצוניות אינם עולים כלל אמנם נשארים במקומם וחוזרים להיות בחינת פנימיות
+related:
+- penimiyut-chitzoniyut
+- maase-dibur
+- tzav
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

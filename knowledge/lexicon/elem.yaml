@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: אל"ם (מן אלקים)
+forms:
+- אלם
+- אל"ם
+- נאלמתי דומיה
+category: שמות ואותיות
+senses:
+- meaning: 'המוחין דקטנות הם שמות אלקים, ובהם כל אחיזת הקליפות. כשהקליפות נאחזות בהם, שתי האותיות י"ה (שורש המוחין,
+    חו"ב) מתכסות, ונשאר "אלם" ("נאלמתי דומיה"). הגדלתם בשני שלבים: מאלם לאלקים פשוט, ואחר כך אלקים במילוייהם.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.4
+    quote: כי המוחין דאלקים לפעמים נקרא אלם והוא כשקלי' נאחזות בהם
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.4
+    quote: כי ב' אותיות י"ה מאלקים הם מתכסים ונעלמים ונשאר אלם מן אלקים
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.4
+    quote: והנה כל אחיזת הקליפות היא במוחין דקטנות שהם שמות אלקים
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.4
+    quote: כי עיקר ושרש המוח הוא שני אותיות י"ה שבשם אלקים שה"ס חו"ב
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.4
+    quote: כי מאלם יהיה אלקים
+related:
+- ibur-yenika-mochin
+- targum
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

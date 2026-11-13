@@ -1,0 +1,52 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: שם מ"ב (שם בן מ"ב)
+forms:
+- שם מ"ב
+- שם בן מ"ב
+- אנא בכח
+- שקוצי"ת
+- אבגית"ץ
+category: שמות ואותיות
+senses:
+- meaning: שם בן מ"ב הרמוז ב"אנא בכח" הוא בעולם היצירה. אומרים אותו אחר פטום הקטורת, ועל ידו עולם העשיה חוזר להיות
+    יצירה. שבעה שמות בו, ובכל יום גובר אחד מהם; האחרון, שקוצי"ת, הוא המלכות דיצירה, ובששת השמות מעלים את שש מדרגות
+    העשיה אל שש אותיותיו. אין עלייה אלא בשם זה.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.8
+    quote: ולכן צ"ל תיקון שם בן מ"ב הרמוז באנא בכח גדולת כו' כנודע והוא בעולם היצירה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.8
+    quote: אנא בכח כו' שהוא מ"ב אשר ביצירה וע"י יש יכולת בעשיה לחזור לבחינת יצירה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.8
+    quote: שביום השבת גובר שם של שקוצי"ת
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.9
+    quote: ונודע שהמלכות דיצירה ה"ס שם אחרון שבשם מ"ב שקוצי"ת
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: והנה ענין עליתם אינם עולים לעולם אלא בשם בן מ"ב
+- meaning: 'בכוונת הקדיש: שם מ"ב היוצא מכל הויה לפי מקומה, ארבע אותיותיה הפשוטות, עשר אותיות המילוי ועשרים ושמונה
+    אותיות מילוי המילוי (4+10+28). "אין עליה אלא בשם מ"ב", והקדיש מעלה את העולמות בו.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.3
+    quote: ונמצא כי שם בן מ"ב של כונת הקדיש איננו שם בן מ"ב הנודע אצלינו בר"ת של אנא בכח כו' רק הוא שם מ"ב היוצא
+      מכל הויה והויה כפי מקומה
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.5.3
+    quote: כי ארבע אותיות פשוטות של הויה הם בחי' א' ואח"כ הם י' אותיות המלוי הרי בחי' שנית ואח"כ הם אותיו' מלוי
+      המלוי והם כ"ח
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.6
+    quote: וגם לעולם אין עליה אלא בשם מ"ב
+related:
+- gimmel-yadayim
+- yud-alef-samanei-haketoret
+- amud
+caution: 'שני שמות שונים בשם אחד. הקדיש עצמו מבחין: שם מ"ב שבכוונת הקדיש "איננו שם בן מ"ב הנודע אצלינו בר"ת של אנא
+  בכח" (Sermons on Kaddish.1.5.3).'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

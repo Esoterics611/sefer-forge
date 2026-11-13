@@ -1,0 +1,40 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: רשימו (של המוחין)
+forms:
+- רשימו
+- הרשימו
+- רשימו זעיר
+- רשימו דילהון
+category: פרצופים ועולמות
+senses:
+- meaning: אחרי התפילה המוחין יוצאים מראש ז"א ועומדים עליו כאור מקיף, אבל רשימו קטן מהם נשאר בזו"ן כל היום, ומעמיד
+    אותם בגדלותם. בלילה מסתלק גם הרשימו; רשימו מוחין של הנוקבא נשאר בתוך ז"א בחזה, על לבו ("שימני כחותם על לבך").
+    התפילין נעשות מן הרשימו של מוחין של אתמול, ולכן כל היום זמן תפילין והלילה לא.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.3
+    quote: כי כל דבר קדושה ורוחניות אע"פ שמסתלק עכ"ז נשאר שם לעולם בחי' רשימו זעיר תמיד
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.3
+    quote: עכ"ז נשאר רשימו דילהון גו ז"א כל היום כלו
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.3
+    quote: וכאשר הוא לילה תיכף מסתלק מהם אף אותו הרשימו הנז'
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.3
+    quote: ולעולם אין התפילין אלא מבחי' הרשימו שהיה מן המוחין של אתמול
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.4
+    quote: אבל רשימו דמוחין דנוקבא נשאר תוך ז"א ממש תוך החזה שלו אשר שם נתון לב ז"א
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.7.2
+    quote: ולכן כל היום הוא זמן תפילין אבל בלילה מסתלק אפי' הרשימו
+related:
+- tefillin
+- or-pnimi-makif
+- nekudat-haketer-derachel
+open: 'היכן הרשימו בלילה: Sermons on Tefillin.5.3 "הרשימו דז"א עולה בתחילה הלילה ונעשה בחי'' אור מקיף על ראשו";
+  5.9 "ואפשר כי זהו בחי'' הרשימו של יום אתמול שירד בלילה בבריאה". הכותב עצמו כותב "ואפשר".'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

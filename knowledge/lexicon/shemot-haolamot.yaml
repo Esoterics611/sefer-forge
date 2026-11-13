@@ -1,0 +1,36 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: א"ל אדנ"י / א"ל הוי"ה / א"ל שד"י (שמות העולמות)
+forms:
+- א"ל אדני
+- אל אדני
+- א"ל הויה
+- א"ל שדי
+category: שמות ואותיות
+senses:
+- meaning: 'שם א"ל אדני בעולם העשיה, א"ל הויה ביצירה, א"ל שדי בבריאה. ונשמת כל עולם היא הויה במילוי: ב"ן (דההין)
+    לעשיה, הנקראת נפש; מ"ה (דאלפין) ליצירה, רוח; ס"ג לבריאה; וע"ב (דיודין) בברכת אבות.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: גם תכוין אל שם א"ל אדני אשר בעולם העשיה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: גם תכוין אל שם א"ל הויה אשר בעולם היצירה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: גם תכוין אל שם א"ל שדי אשר בעולם הבריאה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: והויה זו דמילוי ההין ה"ס נשמת העשיה הנק' בחי' נפש
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: תכוין אל נשמת עולם היצירה שהוא הויה דאלפין העולה בגי' מ"ה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: תכוין אל נשמת הבריאה והיא הויה דמילוי ס"ג
+related:
+- tzav
+- naran
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

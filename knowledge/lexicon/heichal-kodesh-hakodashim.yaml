@@ -1,0 +1,52 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: היכל ק"ק (קדש הקדשים) / ו' היכלות
+forms:
+- היכל ק"ק
+- היכל קה"ק
+- היכל ק"ק דבריאה
+- ו' היכלות
+- ששה היכלות
+category: פרצופים ועולמות
+senses:
+- meaning: בכל עולם ששה היכלות תחתונים, והשביעי, העליון, הוא היכל ק"ק, הכולל ארבעה היכלות. בו עומדת המלכות של העולם
+    שלמעלה ממנו (מלכות דאצילות בהיכל ק"ק דבריאה מאז מיעוט הירח, מלכות דבריאה בהיכל ק"ק דיצירה וכן הלאה). לכן בעלייה
+    ההיכל הזה "חוזר ונהפך" להיות מן העולם שלמעלה, מה שאין כן בששת ההיכלות התחתונים.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.6
+    quote: והב' הוא בחי' ההיכל הז' העליון שנקרא היכל ק"ק אשר הוא נכלל למעלה וחוזר ונהפך להיותו במציאות העולם שלמעלה
+      ממנו
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.6
+    quote: הא' היא בחי' הו' היכלות שיש בכל עולם מהם
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.3
+    quote: היא עצמה בעת מיעוט הירח נתמעטה וירדה למטה בהיכל ק"ק דבריאה
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.3
+    quote: כי כן המלכו' דבריאה היא בהיכל ק"ק דיצירה והמלכו' דיצירה היא בהיכל ק"ק דעשי'
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.3
+    quote: והיכל ק"ק יש בו ד' היכלות
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.5
+    quote: בהיכל הז' העליון הנקרא היכל ק"ק דבריאה
+- meaning: 'בסדר התפילה, ראש כל עולם הוא היכל ק"ק שלו: של עשיה מ"הודו" עד "ברוך שאמר"; של יצירה "ברוך שאמר"; של
+    בריאה ברכת אבות, ו"ה'' שפתי תפתח" בו.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.2
+    quote: ומן הודו עד ב"ש הוא ריש' דעשי' היכל ק"ק שלה וב"ש הוא היכל ק"ק ראש היצירה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.2
+    quote: וברכת אבות הוא ראש הבריאה הנקרא היכל ק"ק דבריאה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.3
+    quote: כי ה' שפתי תפתח הוא בהיכל ק"ק דבריאה
+related:
+- amud
+- kitfila-arichta
+- nekudat-haketer-derachel
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

@@ -1,0 +1,38 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: זיווג תדירי / זיווג לנשמות (באו"א)
+forms:
+- זווג תדירי
+- זיווג תדירי
+- הזווג החיצון
+- זווג חיות העולמות
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: באו"א שני מיני זיווג. האחד, לקיום ולחיות ולמזון של כל העולמות, תדירי ואינו נפסק רגע; הוא זיווג חיצון,
+    ואינו צריך עליית מ"ן של זו"ן. השני, לתת מוחין לזו"ן להוליד נשמות, שהן פנימיות העולמות; הוא נפסק לפעמים, ואינו
+    נעשה אלא בעליית זו"ן אל או"א בסוד מ"ן, ולכך כוונת התפילות והמצוות.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.1.6
+    quote: כי למעלה באו"א יש ב' מיני זווגים הא' הוא כדי לתת קיום וחיות ומזון אל כל העולמות
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.1.6
+    quote: אמנם זווג הזה הוא תדירי ואינו נפסק שום רגע
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.1.6
+    quote: והב' הוא כדי להמשיך ולתת מוחין לזו"ן כדי להוליד נשמות בני אדם התחתונים בעוה"ז
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.1.6
+    quote: והזיוג הזה איננו מוכרח להיות תדירי ולפעמים נפסק
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.1.9
+    quote: כאשר רוצים או"א להזדווג לצורך הנשמות שהם פנימיות העולמות אין זווגם רק ע"י עליית זו"ן עד או"א בסוד מ"ן
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.1.9
+    quote: אבל הזווג החיצון אשר הוא לצורך חיות העולמות ולכן אינו נפסק אין לו צורך אל עליית מ"ן של זו"ן
+related:
+- mayin-nukvin
+- ein-zivug-bebya
+- penimiyut-chitzoniyut
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

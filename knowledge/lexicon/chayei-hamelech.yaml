@@ -1,0 +1,30 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: חיי המלך (אהי"ה הוי"ה אהי"ה)
+forms:
+- חיי המלך
+- אהיה הויה אהיה
+category: שמות ואותיות
+senses:
+- meaning: 'שלושת השמות של תפילין של ראש: ארבעה הבתים כנגד אהיה, ארבע הפרשיות כנגד הויה, ועשרים ואחת האזכרות כנגד
+    אהיה (כ"א). יחד בגימטריא "חיים", ונקראים "חיי המלך", כי מצד אימא הם נעשים תפילין של ראש לז"א, המלך.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.4
+    quote: כי ד' בתים של התפילין הם נגד ארבע אותיות אהיה וד' פ' כנגד ארבע אותיות הויה וכ"א אזכרות שבהם כנגד שם אהיה
+      שהוא בגי' כ"א
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.4
+    quote: והרי הם ג' שמות אהיה הויה אהיה בתפילין ש"ר שהם גי' חיים ונקרא חיי המלך לפי שהם מצד אימא הנעשים תפילין
+      ש"ר דז"א
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.2.4
+    quote: כי המלך הוא ז"א וחיי המלך הנז' נמשכים לו מאו"א הנקר' חיים
+  - work: shaar-hakavanot
+    ref: Sermons on Tefillin.5.11
+    quote: ג' שמות הנ"ל שהם אהיה הויה אהיה העולים בגי' חיים וה"ס חיי המלך
+related:
+- tefillin
+- yabak
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

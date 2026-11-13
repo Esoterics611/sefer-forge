@@ -27,6 +27,29 @@ senses:
   - work: etz-chaim
     ref: 49.5.1
     quote: התורה מזדכך נוגה דיצירה לבוש הרוח
+- meaning: 'בשער הכוונות (ברכות השחר): לבוש הנשמה הוא מן הקדושה. בחטא מפשיטים מן האדם את לבוש הקדושה ומלבישים את
+    נשמתו לבוש הקליפה; חטא קל מחליש את הלבוש, חטא חמור מסלק אותו לגמרי. בכל בוקר המלכות העליונה, שבידה הופקדה הנשמה
+    בלילה, מחדשת: למי שנסתלק לבושו נותנת לבוש ("מלביש ערומים"), ולמי שנחלש נותנת כח ("הנותן ליעף כח"), על ידי השם
+    א"ל. לבוש הנשמה נמשך משם אלו"ה, א"ל ו"ה.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: וע"י כך מפשיטין מעליו לבוש הקדושה ומלבישין לנשמתו לבוש הקלי'
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: כי אם החטא הוא קל מתחלש כח הלבוש ההוא
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: ואם החטא הוא חמור מסתלק הלבוש לגמרי מעליו
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: ומי שנסתלק ממנו לבושו נותנת אליו בבקר בחי' לבוש ומי שיש לו לבוש אלא שנחלש היא נותנת כח בלבוש ההוא
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: וחידוש זה נעשה ע"י השם אל המתעורר בבקר בסו' החסד
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: כי לבוש הנשמה נמשך משם אלוה
 caution: 'זו נקודת הפתיחה של ההגהה "לשון אדמו"ר נ"ע בעצמו" (תו"א חיי שרה): הלבושים "מתבררים" ואינם נבראים. וירידת
   הנשמה לגוף היא לברר את לבושיה, לא לתקן את עצמה.'
 related:
@@ -34,6 +57,9 @@ related:
 - birur
 - kelipat-noga
 - naran
+- chashmal
+- ketonot-or
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/005-kavanot-shacharit/biur-arizal

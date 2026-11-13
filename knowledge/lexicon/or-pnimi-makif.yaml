@@ -24,10 +24,26 @@ senses:
   - work: pri-etz-chaim
     ref: Gate of Prayer.7.19
     quote: ושם נעשין אליו בחי' אור מקיף
+- meaning: 'בשער הכוונות, במצוות: "כל מצוה הנעשית בדיבור ובהבל הפה" היא אור מקיף. המעשה (נטילת ידים, יפנה) מתקן
+    את האור הפנימי, והברכה שעליו (על נטילת ידים, אשר יצר), שהיא הבל היוצא מן הפה, מתקנת את האור המקיף.'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.2
+    quote: כנודע כי כל מצוה הנעשית בדיבור ובהבל הפה הוא בחי' אור מקיף
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.2
+    quote: ואמנם ע"י שני ברכות שמברכין ענ"י כשנוטל ידיו ואשר יצר כשיפנה נתקן אוה"מ שלהם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.2.2
+    quote: וע"י ברכת אשר יצר שה"ס הבל היוצא מן הפה בעת שמברך הוא מתקן אוה"מ דעולם העשיה
 related:
 - penimiyut-chitzoniyut
 - chashmal
 - tzelem
+- maase-dibur
+- tzitzit
+- tefillin
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+- discourses/005-kavanot-shacharit/biur-arizal

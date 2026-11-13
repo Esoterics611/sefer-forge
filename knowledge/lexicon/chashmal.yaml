@@ -49,6 +49,36 @@ senses:
   - work: mikdash-melekh
     page: 1 36b
     quote: שהם ג' חשמלים שנסתלקו ממנה ונפלו בנוגה
+- meaning: 'בשער הכוונות (ברכות השחר): החשמל הוא המלבוש החיצון של אימא עילאה, הלבוש החיצון ביותר של נה"י דאימא,
+    שאינו נכנס בראש ז"א ונשאר מבחוץ, מלביש וסובב את זו"ן ומגן עליהם מן החיצונים מרוב עביותו. מצדדיהם הוא נקרא "מלבושים",
+    ומתחת לרגליהם "מנעלים" (מבחינת נ"ה דאימא). "חשמל" בגימטריא "מלבוש" (שע"ח, שני שמות א"ל במילואם ושמונה אותיותיהם).'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.18
+    quote: והנה מן המלבוש החיצון דאימא עילאה הנק' חשמ"ל כי כן חשמ"ל בגי' מלבוש
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: והוא בגימ' חשמ"ל לבוש הבינה המלבשת את זו"ן
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.17
+    quote: ועם ח' אותיו' א"ל אל"ף למ"ד הרי שע"ח גימטריא מלבוש
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.21
+    quote: ואמנם הלבוש היותר חיצוני מכל לבושי נה"י הנז' אינו נכנס תוך רישא דז"א ונשאר מבחוץ דזו"ן ומלביש וסובב אותם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.21
+    quote: אשר ע"י אין הקלי' יונקת מן האור פנימי דז"א מפני רוב עביות החשמל הזה המפסיק ביניהם
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.22
+    quote: והבחי' המקפת אותם מצדדיהם נק' מלבושים והבחי' הסובבת מלמטה מתחת רגליהם נק' מנעלים
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.23
+    quote: כי אלו המנעלים שנעשים מחשמל דאימא כנ"ל הוא מבחי' נ"ה דאימא
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.18
+    quote: ואל תטעה ותחשוב כי זהו האוה"מ דז"א
+  note: כאן מפורש שהחשמל הזה "בבחינת לבוש בלבד ולא בבחי' אור מקיף" (Sermons on Morning Blessings.18), ואילו המובן
+    הראשון (עץ חיים 26.2.1) קורא לו "חלק הצלם הנשאר בסוד המקיף".
 caution: אותה מילה בשלושה מובנים, שקרובים זה לזה ואינם אחד. ההגהה ("שער החשמל פ"א") מבארת למה דבר אחד נקרא גם חשמל
   וגם קליפת נוגה. לפני שמפרשים, יש לברר באיזה מובן מדובר.
 related:
@@ -56,7 +86,10 @@ related:
 - tzelem
 - tzelem-deima
 - hevel-degarmei
+- levushim
+- ima-bina
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
 - discourses/004-levushei-haneshama/biur
+- discourses/005-kavanot-shacharit/biur-arizal

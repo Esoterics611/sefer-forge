@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ח"י ברכאן דיסוד (דעשיה, דיצירה)
+forms:
+- ח"י ברכאן
+- ח"י ברכות
+- הי"ח ברכות
+- ח"י ברכאן דיסוד
+category: תורה, מצוות ותפילה
+senses:
+- meaning: שמונה עשרה ברכות השחר, מברכת על נטילת ידים עד ברכת התורה, הן ח"י ברכאן דיסוד דעשיה. כנגדן ביצירה ח"י
+    ההויות שבפסוקי "יהי כבוד", ח"י ברכאן דיסוד דיצירה. על ידי ברכות אלו יורד שפע אל ג"ר דעשיה.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.2
+    quote: כי הי"ח ברכות שיש מן ענ"י עד ברכת התורה הם ח"י ברכאן דיסוד דעשיה
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.1.2
+    quote: והנה הם ח"י ברכאן דיסוד דיצירה
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.6.14
+    quote: כי ח"י ברכאן דשחרית, מן ענט"י עד ברכת התורה, הם כנגד ח"י ברכאן דיסוד
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Prayers.3.5
+    quote: ע"י הי"ח ברכ' דשחרי' מברכ' ענ"י עד פ' התמיד אנו מורידים שפע גדול והארה גדולה אל הג' ראשונות דעשיה
+related:
+- heichal-kodesh-hakodashim
+- tefila-leani
+open: 'סוף הברכות: בדרוש א'' (Sermons on Morning Prayers.1.2) "עד ברכת התורה"; בדרוש ג'' (3.5) "עד פ'' התמיד". אם
+  זה אותו מניין או שני חשבונות, לא נתברר.'
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

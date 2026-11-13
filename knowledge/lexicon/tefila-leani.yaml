@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תפילה לעני
+forms:
+- תפילה לעני
+- תפלה לעני
+- הנקרא עני
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'כל תפילה היא בעולם העשיה: המלכות השואלת צרכיה ומתפללת אל ז"א. לכן לשון תפילה היא "שפיכת נפש", והמלכות
+    דאצילות או עולם העשיה נקראים נפש. עולם העשיה נקרא גם "עני" (ראשי התיבות של "על נטילת ידים").'
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.1
+    quote: דע כי כל תפילה היא בעולם העשיה בסוד תפילה לעני והיא המלכות השואלת צרכיה ומתפללת אל זעיר אנפין
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.1
+    quote: והיא בחינת מלכות דאצילות או עולם העשיה הנקרא נפש
+  - work: shaar-hakavanot
+    ref: Sermons on Morning Blessings.13
+    quote: ולכן ר"ת על נט"י ענ"י שהוא בעולם העשיה הנקרא עני
+related:
+- nukva
+- naran
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal
