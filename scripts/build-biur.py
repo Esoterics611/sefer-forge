@@ -317,6 +317,24 @@ def group_openings(lines: list[str]) -> list[str]:
             out += [":::: {.opening}", line, ""] + lines[j:end] + ["::::"]
             i = end
             continue
+        if line.startswith("### ") and j < len(lines) and lines[j].strip() and not lines[j].startswith(("@", ":::", "#", "|")):
+            # A heading followed by prose: keep it with its first paragraph (Chrome ignores
+            # break-after: avoid before a paragraph).
+            end = j
+            while end < len(lines) and lines[end].strip():
+                end += 1
+            # A one-line lead-in ("...:") belongs with the source it introduces.
+            m = end
+            while m < len(lines) and not lines[m].strip():
+                m += 1
+            if lines[end - 1].rstrip().endswith(":") and m < len(lines) and lines[m].startswith("::: {.makor}"):
+                k = m
+                while k < len(lines) and lines[k].strip() != ":::":
+                    k += 1
+                end = k + 1
+            out += [":::: {.opening}", line, ""] + lines[j:end] + ["::::"]
+            i = end
+            continue
         out.append(line)
         i += 1
     return out

@@ -6,11 +6,22 @@ Read this first, every session. Update it before you stop.
 2026-11-12: **part 1 written** (the מבוא and §1–§4), in one Fable session, on branch
 `claude/loving-curie-yubxz5` (which carries the preparation branch `claude/busy-planck-pec3bg`;
 neither is in `main`). `biur.src.md`: 68 passages set in, all resolving
-(`build-biur.py --check`). §5–§13 and the סיכום are headings only. Not built to PDF, not
-proofed, not checked by anyone: that is Opus's (`prompts/opus-after-fable-005.md`) or waits for
-the other parts.
+(`build-biur.py --check`). §5–§13 and the סיכום are headings only. Built, proofed and checked afterwards: see the next part.
 
 **Next:** part 2 (§5–§8), when Ronnie starts it. See "For part 2" below.
+
+## After part 1: built, checked, printed (Opus, 2026-11-13)
+- Built: 68 passages, 119 paragraphs; PDF `output/biur/005-kavanot-shacharit-arizal.pdf` (28 pages)
+  and review copy `output/biur/review/` (31 pages, findings marked), both proofed clean.
+- PEC labels: 7.3, 7.5 "פרק ו׳" (the attested correspondence); every other PEC passage is named by the
+  ד״ה of the discussion it stands in.
+- The independent check (two examiners): `check.md`, main findings in `checks.yaml`. **Two errors
+  wait for Ronnie**: מבוא.10 ("אלא אל ראשה" is contradicted by the rising itself) and §1.13 (the count
+  of the eighteen blessings in שער הברכות). Ten points are imprecise. Nothing in the explanation was
+  changed on them; part 2 can correct them if Ronnie says so.
+- The quotations in the prose (61) were matched letter for letter by script; one spelling aligned
+  ("תפלה לדוד").
+- Lexicon: 17 terms of part 1 entered (`knowledge/lexicon/`), `--check` 0 errors.
 
 ## What it is
 The basics of Shacharit after the Arizal, stage by stage in the order of the prayer: what

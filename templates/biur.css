@@ -129,3 +129,4 @@ tr { break-inside: avoid; }
    most of a page empty before it. Its heading still stays with its first lines. */
 .nusach.long { break-inside: auto; orphans: 3; widows: 3; }
 .opening:has(.nusach.long) { break-inside: auto; }
+
