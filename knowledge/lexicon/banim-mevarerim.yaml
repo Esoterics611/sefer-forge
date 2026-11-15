@@ -1,0 +1,23 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: בנים (בסדר הבירור)
+forms:
+- נקרא בן אליו
+- נקראו בנים
+- בנים לזו"ן
+category: מ"ן ומ"ד והזיווג
+senses:
+- meaning: כל פרצוף תחתון נקרא בן לפרצוף שעליו, מברר את בירוריו ומעלה אותם אל הפרצוף שמעליו. ישראל הם הבנים של זו"ן דאצילות,
+    ותיקון כל העולמות תלוי בתיקון זו"ן ותיקון זו"ן תלוי בישראל.
+  rests_on:
+  - work: nahar-shalom
+    ref: 3b.1
+    quote: כל פרצוף תחתון נקרא בן לפרצוף שעליו והוא מברר בירורי הפרצוף העליון ההוא
+  - work: nahar-shalom
+    ref: 3b.1
+    quote: ותיקון זו"ן דאצי' תלוי ביד ישראל
+related:
+- mayin-nukvin
+- birur
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash

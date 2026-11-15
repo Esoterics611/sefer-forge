@@ -15,10 +15,10 @@ neither is in `main`). `biur.src.md`: 68 passages set in, all resolving
   and review copy `output/biur/review/` (31 pages, findings marked), both proofed clean.
 - PEC labels: 7.3, 7.5 "פרק ו׳" (the attested correspondence); every other PEC passage is named by the
   ד״ה of the discussion it stands in.
-- The independent check (two examiners): `check.md`, main findings in `checks.yaml`. **Two errors
-  wait for Ronnie**: מבוא.10 ("אלא אל ראשה" is contradicted by the rising itself) and §1.13 (the count
-  of the eighteen blessings in שער הברכות). Ten points are imprecise. Nothing in the explanation was
-  changed on them; part 2 can correct them if Ronnie says so.
+- The independent check (two examiners): `check.md`, main findings in `checks.yaml`. The **two errors**
+  (מבוא.10, "אלא אל ראשה"; §1.13, the count of the eighteen blessings) were **corrected on 2026-11-15** at
+  Ronnie's word (`check.md`, "Settled"). Ten points are imprecise and still open; part 2 can correct
+  them if Ronnie says so.
 - The quotations in the prose (61) were matched letter for letter by script; one spelling aligned
   ("תפלה לדוד").
 - Lexicon: 17 terms of part 1 entered (`knowledge/lexicon/`), `--check` 0 errors.

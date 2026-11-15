@@ -10,8 +10,19 @@ senses:
   - work: shaar-hakavanot
     ref: Sermons on Morning Blessings.7
     quote: כל הח"י ברכות שיש מן ענט"י עד סוף ברכת התורה כולן חייב האדם
+- meaning: 'אצל הרש"ש: השמונה עשרה נמנות מ"הנותן לשכוי" עד סוף ברכת התורה, ושלוש ברכות לפניהן; המניין מענ"י שבשער הכוונות
+    טעות סופר. הן מתקנות שמונה עשרה בחינות בפרצוף האמצעי של ז"א דעשיה, תשע באור ישר ותשע באור חוזר.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 46a.5
+    quote: ט"ס הוא זה וצ"ל מן ברכת הנותן לשכוי
+  - work: nahar-shalom
+    ref: 22a.13
+    quote: לתקן ח"י בחי' דפרצו' אמצעי דז"א דעשיה
 related:
 - maaseh-vedibur
 status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-arizal
+- discourses/005-kavanot-shacharit/biur-rashash
+caution: שער הכוונות מונה מענ"י (דרושי תפלת השחר א); שער הברכות שבפרי עץ חיים מביא את שני המניינים זה לצד זה.

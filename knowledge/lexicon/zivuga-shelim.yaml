@@ -20,8 +20,16 @@ senses:
   - work: chasdei-david
     ref: 51a.12
     quote: ונקרא זיווגא שלים דלא שלים ג"ר דו"ק פני' דחיצו' אצי' דבי"ע וזיווגייהו תדיר ולא פסיק
+- meaning: 'אצל הרש"ש: הזיווג הפנימי (דג"ר, או"א) שלים, והחיצוני (דו"ק, ישסו"ת) לא שלים; וכל אחד כלול משניהם, ועולים לשמונה
+    זיווגים.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 15a.1
+    quote: וזווג דחצוניות נק' דלא שלים והוא זווג דו"ק
 related:
 - mayin-nukvin
+- zivug-chayot-neshamot
 status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-chasdei-david
+- discourses/005-kavanot-shacharit/biur-rashash

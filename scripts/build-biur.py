@@ -35,6 +35,9 @@ Directives (each alone on a line; values in double quotes):
         phrases to set in bold (the words the text cites), separated by |.
         `page="2:229b"` instead of `ref` takes a printed page (Zohar, Mikdash
         Melekh); several pages: "2:229a,2:229b".
+        `emend="נמות>נפשות"` corrects a slip of the copy in what prints (the
+        copy in sources/ is untouched; record each one in the biur's check.md).
+        The word must occur once in the passage; several: "a>b|c>d".
 
     @file path="sources/md/..." section="..." from="..." to="..." label="..."
         A passage of a markdown file (a transcription): `section` is a
@@ -99,6 +102,22 @@ def cut(text: str, frm: str | None, to: str | None, where: str) -> tuple[str, bo
     return text[a:b].strip(), a > 0, b < len(text.rstrip())
 
 
+def emend(text: str, fixes: str | None, where: str) -> str:
+    """A slip of the copy, printed corrected (the copy itself is not changed)."""
+    if not fixes:
+        return text
+    for pair in fixes.split("|"):
+        if ">" not in pair:
+            raise BuildError(f"{where}: emend= expects old>new, got {pair!r}")
+        old, new = (x.strip().replace("״", '"').replace("׳", "'") for x in pair.split(">", 1))
+        hits = [m.start() for m in re.finditer(rf"(?<![\u05d0-\u05ea]){re.escape(old)}(?![\u05d0-\u05ea\"'])", text)]
+        if len(hits) != 1:
+            raise BuildError(f"{where}: emend= word {old!r} occurs {len(hits)} times in the passage (must be once)")
+        i = hits[0]
+        text = text[:i] + new + text[i + len(old):]
+    return text
+
+
 def bold(text: str, marks: str | None, where: str) -> str:
     if not marks:
         return text
@@ -156,7 +175,12 @@ def source_text(d: dict, where: str) -> tuple[str, str]:
                 raise BuildError(f"{where}: {work} has no paragraph {r}") from None
         text = " ".join(texts)
         gate = S.gate_title(work, refs[0])
-        addr = refs[0] if len(refs) == 1 else f"{refs[0]}–{refs[-1].rsplit('.', 1)[-1]}"
+        if len(refs) == 1:
+            addr = refs[0]
+        elif refs[0].rsplit(".", 1)[0] == refs[-1].rsplit(".", 1)[0]:
+            addr = f"{refs[0]}–{refs[-1].rsplit('.', 1)[-1]}"       # same page or chapter: 12a.4–8
+        else:
+            addr = f"{refs[0]}–{refs[-1]}"                          # across a page: 19a.10–19b.2
         label = " · ".join(x for x in (entry["title"], gate) if x)
     if d.get("niqqud", "no") != "yes":
         text = strip_niqqud(text)
@@ -425,6 +449,7 @@ def build(src: Path, with_checks: bool = False) -> tuple[str, dict, list[str]]:
         text, label = source_text(d, where) if kind == "source" else file_text(d, where)
         passage, head, tail = cut(text, d.get("from"), d.get("to"), where)
         passage = bold(passage, d.get("mark"), where)
+        passage = emend(passage, d.get("emend"), where)
         passage = ("… " if head else "") + passage + (" …" if tail else "")
         n_src += 1
         out += ['::: {.makor}', f"[{label}]{{.addr}}", "", passage]

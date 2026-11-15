@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: הויות מנוקדות (בהמשכת מוחין)
+forms:
+- הויות המנוקדות
+- הויו"ת המנוקדות
+- ההויות המנוקדות
+category: שמות
+senses:
+- meaning: 'בכל המשכת מוחין: בתוך הצלם המוחין, ובתוך המוחין עשר הויות מנוקדות, והן הנרנח"י של המוחין, חיותם וקיומם; בלעדיהן
+    המוחין "גוף בלא נשמה".'
+  rests_on:
+  - work: nahar-shalom
+    ref: 9b.2
+    quote: להמשיך בתוכם העשר הויות המנוקדות שהיה הנרנח"י דאותם המוחין והם חיותם
+  - work: nahar-shalom
+    ref: 9b.2
+    quote: כי הם גוף בלא נשמה
+related:
+- tzelem
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash

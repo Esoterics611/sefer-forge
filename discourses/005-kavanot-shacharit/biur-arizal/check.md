@@ -7,6 +7,7 @@ session). The labels the examiners questioned were fixed (below). Paragraph numb
 the review copy (`--review`): מבוא.10 = the מבוא, paragraph 10.
 
 ## Errors (the explanation says what the source does not)
+Both corrected on 2026-11-15 at Ronnie's word (see "Settled" at the end).
 1. **מבוא.10, "אין מחברים אותה אל תחתית היצירה אלא אל ראשה".** "Head to head" is right as the
    order of the prayer (SK Morning Prayers.1.2; PEC Gate of Prayer.6.13 "צריך לייחד תחלה ראש
    היצירה עם ראש העשייה"). But the negative is contradicted wherever the rising itself is
@@ -76,3 +77,13 @@ light; the union in the עמידה; SK's count of the blessings; §1's washing, 
 מלבוש = 378, the shoes from נ"ה דאימא; "היצירה בקטנותה"; the four fillings = four fringes, eight threads, five
 knots; §3.9–3.12 (the רשימו, midnight, the כתר point at the arm); Rashi/Rabbenu Tam's main points; the two
 changes of עשיה; the six levels of אנא בכח; all the numbers (31, 32, יב"ק, חיים, ק"ף, צ"ו, תולע, 21, 13).
+
+## Settled (2026-11-15, at Ronnie's word)
+- **1, מבוא.10.** "אין מחברים אותה אל תחתית היצירה אלא אל ראשה" replaced by the order of SK Morning
+  Prayers.1.2 itself: "מייחדים תחילה את ראש היצירה בראש העשיה, ורק אחר כך נסדרת שאר היצירה מלמטה
+  למעלה". Nothing is said any longer about where עשיה attaches.
+- **2, §1.13.** The paragraph now gives SK's count (ענט"י to the end of ברכת התורה), both counts of PEC שער
+  הברכות 4.2/4.3 side by side, 5.1's "עשרים ברכות של שחר" with the three before the eighteen, and says in
+  one clause that 3 + 18 = 21 is not explained there. "וכן בשער התפילה שבפרי עץ חיים" dropped (7.55/7.57
+  count from לשכוי). The exceptions as SK Morning Blessings.7: "שעשה לי כל צרכי" on ט"ב and יוה"כ, ענט"י and
+  אשר יצר when not obliged.
