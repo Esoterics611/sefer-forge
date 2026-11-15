@@ -17,3 +17,6 @@
 8. **Level 1, for Ronnie**: (a) its check finding 7 (the small tallit in עשיה/יצירה, inner/outer) is resolved by 16a.6 and 24b.6;
    (b) finding 4 (PEC Prayer ch. 8) is reconciled by the Rashash's two layers; (c) its §1.13 count of the 18: the Rashash calls the
    count from ענ"י in SK a scribal error (46a.5, 46a.7). Level 1 itself was not changed on any of these.
+9. **The copy's slips.** The grimoar text of נהר שלום has many one-letter slips (נמות for נפשות, הכים for הכלים ...).
+   Inside a printed passage they are marked with `emend=` ("[צ״ל: ...]"); `check.md` lists those done. A full
+   proofreading of the copy against a printed edition is not possible here (no scan).

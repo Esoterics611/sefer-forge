@@ -50,3 +50,22 @@ weekday measure; the two unions and the pointed הויות; the gloss on the 18 
 quarters; המעביר; the garments; the tallit layers, hairs, gaze, wrapping, תכלת; the tefillin and the numbers (יב"ק,
 חיים, ק"פ); the cascade of the deeds = SK Morning Prayers.3.3–3.4; the mourner; the offerings; the two risings;
 the קטורת; אנא בכח and the mapping onto level 1's terms. Print rules: no breach found.
+
+## After Ronnie's reading (2026-11-15)
+- **12a.3 "הנק' נמות"** (p. 3): the source he cites, עץ חיים שער פנימיות וחיצוניות פי"א (Etz Chaim 40.11.1), reads
+  "בעשייה החיצוניות שלהם הם האופנים והפנימיות הם נפשות"; "נמות" is a slip of the online copy (it is in the downloaded
+  page itself). Printed "נפשות"; the prose quotes עץ חיים. Settled.
+- At Ronnie's word, slips of the copy are **printed corrected, without a mark** (`emend=` of `@source`; the copy in
+  `sources/` is untouched). A full reading of all 47 passages found these, all corrected in print:
+  12a.3 נמות→נפשות; 12a.5 בער→בערך; 12a.8 בפנימות→בפנימיות; 9b.2 שהיה→שהם; 15a.9 לקתן→לתקן; 16a.5 הוחין→המוחין;
+  16a.6 דנשות→דנשמות; 16a.9 טלי→טלית; 17a.4 דחו"א→דאו"א, בניקוד'→בנקודת; 17a.6 a doubled phrase ("ויוצאים הארת הד'
+  מוחין עם ארבע לבושין ובוקעים מצח דז"א") dropped; 17b.2–3 כלים→מכלים, הדנשמות→דנשמות, "דחיצוניות דחיצוניות" doubled
+  (→ דפנימיות דחיצוניות דעשיה, as 24b.8); 17b.6 זיוג→זיווג; 17a.2 החיצוניות→החיצוניים; 19a.10 מעשות→מעשיות; 19b.5
+  להמשך→להמשיך, מכים→מים, דאותיות→ד' אותיות; 20a.4 אם→את, ע"→ע"ש, צרי→צריך; 20b.1 כלזו"ן→לזו"ן, דחיצוניות דא"א→
+  דחיצוניות דאו"א (as earlier in the same passage); 22a.10 וחצון→וחיצון; 22a.13 שה→ששה, לג' פרצוף→לג' פרצופים; 24b.4
+  שניה→שניהם, ואי→ואין; 25a.10 דאאצי'→דאצי'; 25a.12 וסולגת→וסולת; 25a.14 a stray ")" after "וה'"; 25b.1 הכים→הכלים,
+  וכמתלבשים→ומתלבשים; 26a.1 דדלות→דגדלות.
+- Left as printed: "נרנח"י דרנח"י" (24b.6; רנח"י = רוח נשמה חיה יחידה, his usage); "בניקוד מוצא" (24b.2, דעת: not
+  certain what is meant); the parenthesised folios, which belong to the book he discusses.
+- The prose was reread whole as well: seven places tightened (the letters in the same position; the hand tefillin's
+  נה"י of בריאה; "אל פני הלבוש"; the three mochin all of גדלות; her garment from ז"א's יסוד; the mourner stated).
