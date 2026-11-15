@@ -1,0 +1,24 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ירידת האצילות בימי החול
+forms:
+- גלות השכינה
+- בימי החול יורדים
+category: פרצופים ועולמות
+senses:
+- meaning: בששת ימי החול פרצופי האצילות יורדים ומתלבשים בפרצופים שכנגדם בבי"ע, לברר את כלי המלכים שנפלו שם; בכל יום פרט אחד
+    מכולם. בתפילה הם עולים עם הבירורים עד האצילות בעמידה, ואף זה מקומה של האצילות בחול; בליל שבת עולים העולמות למקומם.
+  rests_on:
+  - work: nahar-shalom
+    ref: 24b.10
+    quote: יורדים כל הפרצופים העליונים דאצי' בימי החול בסוד גלות השכינה
+  - work: nahar-shalom
+    ref: 25a.1
+    quote: רק פרט אחד מכל אחד מהם
+  - work: nahar-shalom
+    ref: 25b.1
+    quote: שאף האצי' אינו במקומו האמתי
+related:
+- zun-bebya-bechol
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash

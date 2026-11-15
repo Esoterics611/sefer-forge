@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מטבע כוונת הברכה
+forms:
+- מטבע כוונת הברכה
+- מטבע כונת הברכה
+category: תפילה וכוונות
+senses:
+- meaning: 'הדפוס הקבוע של כל ברכה אצל הרש"ש: המשכת שפע מכתר עליון דרך שני הזיווגים, הפנימי והחיצוני, של עתיק, אריך, או"א
+    וישסו"ת, אל זו"ן. ההבדל בין ברכה לברכה הוא הפרצוף של זו"ן שאליו היא ממשיכה.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 22a.10
+    quote: וזה המטבע אינו משתנה לעולם
+  - work: nahar-shalom
+    ref: 22a.11
+    quote: כגון בברכת ענ"י דשחרית שהיא באריך דז"א
+related:
+- chet-yud-birchot
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash

@@ -11,8 +11,21 @@ senses:
   - work: shaar-hakavanot
     ref: Sermons on Tzitzit.2.4
     quote: יש שלש מיני שערות ונקרא קוצין ונימין ושערות ופשר הדבר הוא כי כבר ביארנו
+- meaning: 'אצל הרש"ש, בכוונת הטלית: הקוצים (עיבור) עד החזה הם הציציות, מקיף לרחל; הנימין (יניקה) עד הגרון, מקיף ללאה; השערות
+    (גדלות) עד ראש הקרקפתא, מקיף לז"א. וקוצא דשערי דא"א מכה בעורף ז"א ומגלה הארת מוחיו.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 15b.8
+    quote: והם הציצית דטלית הנז'
+  - work: nahar-shalom
+    ref: 15b.8
+    quote: יכוין להמשיכם לאור מקיף לנוק' העליונה הנק' לאה
+  - work: nahar-shalom
+    ref: 16b.11
+    quote: להכות בעורף ז"א
 related:
 - tzitzit
 status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-arizal
+- discourses/005-kavanot-shacharit/biur-rashash

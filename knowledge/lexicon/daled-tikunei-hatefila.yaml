@@ -1,0 +1,24 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ד' תיקוני התפלה
+forms:
+- ד' תיקוני התפלה
+- תיקוני התפלה
+category: תפילה וכוונות
+senses:
+- meaning: 'אצל הרש"ש: בכל עולם מחברים את האות של הוי"ה עם האות של אדנ"י על ידי האות של אהי"ה שבמקומה: בעשיה הי"ה, ביצירה
+    ונ"י, בבריאה הד"ה, באצילות יא"א; ועל פיהם המעשים והדיבור של כל עולם.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 15a.5
+    quote: דרוש זה סובב והולך בפרטי ד' תיקוני התפלה
+  - work: nahar-shalom
+    ref: 15a.8
+    quote: לחבר ה' אחרונה דהוי"ה עם י' דאדנ"י ע"י ה' אחרונה דאהי"ה
+  - work: nahar-shalom
+    ref: 15b.4
+    quote: יכוין לחבר י' דהוי"ה עם א' דאדנ"י ע"י א' דאהי"ה
+related:
+- maaseh-vedibur
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash

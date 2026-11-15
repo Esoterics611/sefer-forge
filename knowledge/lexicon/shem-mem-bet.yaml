@@ -11,7 +11,17 @@ senses:
   - work: shaar-hakavanot
     ref: Sermons on Morning Prayers.3.9
     quote: שם אחרון שבשם מ"ב שקוצי"ת ויש בו ו' אותיות ותכוין כי ע"י ששה שמות דאבגית"ץ
+- meaning: 'אצל הרש"ש: שם מ"ב הוא היראה הפנימית והחיצונית שבכל אור, שלא יעלה למקורו יותר מן הראוי ולא ירד מגבולו; מקומו ביצירה,
+    בחג"ת. ששת שמותיו הראשונים מעלים שש מדרגות של העשיה להלביש את מלכות היצירה, שקוצי"ת.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 25b.6
+    quote: והנה יראה זו היא שם מ"ב שהוא בחינת גבורה כמספר יראה
+  - work: nahar-shalom
+    ref: 26a.1
+    quote: להלביש פנימיות וחיצוניות מלכות דיצירה העומדת שם שבה שש אותיות דשם השביעי שקוצי"ת
 related: []
 status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-arizal
+- discourses/005-kavanot-shacharit/biur-rashash

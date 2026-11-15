@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: רוחא דחיי (בתפילין של יד)
+forms:
+- רוחא דחיי
+category: פרצופים
+senses:
+- meaning: הו"ד של מילוי היו"ד של שם ס"ג שבחוטם אריך אנפין, בנקב השמאלי, הנמשכת דרך שמאל אריך לנוקבא; ממנה הכוח לנקודת הכתר
+    של רחל לעלות ולהיקשר בזרוע השמאלית של ז"א.
+  rests_on:
+  - work: nahar-shalom
+    ref: 17a.5
+    quote: הוא רוחא דחיי בנקב שמאל דחוטם דאריך
+  - work: nahar-shalom
+    ref: 17a.5
+    quote: ועי"כ יש כח לכתר רחל להעלות ולהתקשר בזרוע שמאלי דז"א
+related:
+- nekudat-haketer-derachel
+- tefillin
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash

@@ -14,9 +14,20 @@ senses:
   - work: shaar-hakavanot
     ref: Sermons on Morning Prayers.3.5
     quote: ועתה נבאר בחי' הדיבור כנ"ל בשם הזוהר ויקהל דר"א ע"א ופ' במדבר דק"כ ע"ב
+- meaning: 'אצל הרש"ש: המעשים מתקנים את החיצוניות והפנימיות של העולמות החיצוניים, במקומם; הדיבור מתקן את החיצוניות והפנימיות
+    של העולמות הפנימיים ומעלה עולם בעולם, ועמם את החיצוניים.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 19a.10
+    quote: בירור ותיקון חיצוניות ופנימיות דחיצוניות הוא ע"י מצות מעשות וברכותיהם
+  - work: nahar-shalom
+    ref: 15a.7
+    quote: ולכלול ולהעלות עולם בעולם
 related:
 - penimiyut-chitzoniyut
 - or-pnimi-makif
+- zivug-chayot-neshamot
 status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-arizal
+- discourses/005-kavanot-shacharit/biur-rashash

@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ימי השבוע (בבירור)
+forms:
+- יום א' חסד
+- ימי השבוע
+category: תפילה וכוונות
+senses:
+- meaning: 'אצל הרש"ש: כל יום הוא "מלך אחד", ספירה אחת מכל הפרצופים, בעולם משלו: א'' חסד, ב'' גבורה, ג'' ת"ת (בבריאה, ביצירה
+    ובעשיה של השבוע שעבר), ד'' נצח, ה'' הוד, ו'' יסוד (בעשיה, ביצירה ובבריאה של השבוע הבא), שבת מלכות באצילות. מה שנעשה ביום
+    מברר את חלקי אותו יום בלבד.'
+  rests_on:
+  - work: nahar-shalom
+    ref: 25a.2
+    quote: יום א' חסד
+  - work: nahar-shalom
+    ref: 25a.8
+    quote: יום שבת מלכות ע"ד הנז"ל והוא באבי"ע דאצילות
+  - work: nahar-shalom
+    ref: 25a.10
+    quote: הם לברר חלקי אותו יום לבד
+related:
+- yeridat-haatzilut-bechol
+open: למה שלושת הימים הראשונים "דשבוע שעבר" והאחרונים "דשבוע הבא" אינו מפורש במה שנקרא.
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-rashash
