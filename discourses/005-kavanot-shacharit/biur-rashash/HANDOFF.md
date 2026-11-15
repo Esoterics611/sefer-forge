@@ -9,7 +9,12 @@ matched letter for letter. §5–§10 and the סיכום are headings only, and 
 Notes: `notes/argument-map.md` (the five foundations of the מבוא, then §1–§4), `notes/terms.md`, `notes/citations.md`,
 `notes/open-questions.md`, `notes/reading-log.md` (what was read in R1, 00, 01–04, R2/R3, with addresses).
 
-**Claims to check first** (the independent check, `check.md`):
+**Checked 2026-11-15** (one independent examiner, `check.md`): all 47 passages exact; 5 errors and 6
+imprecisions in the prose found and corrected the same day; 3 readings stay open (`checks.yaml`, in the review copy).
+PDF `output/biur/005-kavanot-shacharit-rashash.pdf` (22 pp.) and review copy (23 pp.), proofed clean. Lexicon: 9 new
+entries, 6 given the Rashash's sense (`--check` 0 errors).
+
+The claims the check took first:
 - מבוא: the reading of PEC Gate of Prayer.8.1 (עולמות/נשמות) as the Rashash's two unions; the days (25a.2–8) stated
   without the reason for "דשבוע שעבר/הבא".
 - §1: the gloss 46a.5 (SK's count from ענ"י a scribal error; from הנותן לשכוי).

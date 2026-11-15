@@ -156,7 +156,12 @@ def source_text(d: dict, where: str) -> tuple[str, str]:
                 raise BuildError(f"{where}: {work} has no paragraph {r}") from None
         text = " ".join(texts)
         gate = S.gate_title(work, refs[0])
-        addr = refs[0] if len(refs) == 1 else f"{refs[0]}–{refs[-1].rsplit('.', 1)[-1]}"
+        if len(refs) == 1:
+            addr = refs[0]
+        elif refs[0].rsplit(".", 1)[0] == refs[-1].rsplit(".", 1)[0]:
+            addr = f"{refs[0]}–{refs[-1].rsplit('.', 1)[-1]}"       # same page or chapter: 12a.4–8
+        else:
+            addr = f"{refs[0]}–{refs[-1]}"                          # across a page: 19a.10–19b.2
         label = " · ".join(x for x in (entry["title"], gate) if x)
     if d.get("niqqud", "no") != "yes":
         text = strip_niqqud(text)
