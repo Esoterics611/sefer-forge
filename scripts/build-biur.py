@@ -43,6 +43,16 @@ Directives (each alone on a line; values in double quotes):
         A passage of a markdown file (a transcription): `section` is a
         heading of the file (the text under it), optional.
 
+The meaning layer (Ronnie's word, 2026-11-16): a block
+
+    ::: {.meaning}
+    The paragraph above, in the soul of a person: the terms as Ronnie defines them (knowledge/teacher/terms.yaml).
+    :::
+
+prints after the paragraph it explains, labelled "בנפש האדם", and the build appends "מפתח המושגים": every term of
+terms.yaml the blocks use, with its meaning and the shiur it comes from. `--no-meaning` prints without the layer
+(output/biur/plain/).
+
 Checks: every directive resolves; the @text stretches cover the text in order;
 no directive is left in the output.
 """
@@ -422,12 +432,50 @@ def lint(body: str, first_line: int) -> list[str]:
     return errs
 
 
-def build(src: Path, with_checks: bool = False) -> tuple[str, dict, list[str]]:
+MEANING_OPEN = "::: {.meaning}"
+
+
+def meaning_blocks(body: str) -> list[str]:
+    return re.findall(r"^::: \{\.meaning\}\n(.*?)\n:::$", body, flags=re.S | re.M)
+
+
+def strip_meaning(body: str) -> str:
+    return re.sub(r"\n?^::: \{\.meaning\}\n.*?\n:::$\n?", "\n", body, flags=re.S | re.M)
+
+
+def terms_key(blocks: list[str]) -> list[str]:
+    """The key of the terms the meaning layer uses, from knowledge/teacher/terms.yaml."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("teacher_terms", ROOT / "scripts" / "teacher-terms.py")
+    tt = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tt)
+    d = tt.load()
+    used = tt.uses(d, "\n".join(blocks))
+    if not used:
+        return []
+    out = ["", "## מפתח המושגים", "",
+           "[המושגים כפי שהם בנפש האדם, כפי שהם מתבארים בשיעורי שער היחוד ולבושי הנשמה. "
+           "\"יישום\": החלת אותה מסגרת על מושג שלא נתבאר שם בפירוש.]{.terms-intro}", ""]
+    for t in used:
+        if t.get("said"):
+            where = "; ".join(dict.fromkeys(tt.label(x["where"]) for x in t["said"]))
+            out += [f"**{t['term']}**: {' '.join(t['soul'].split())} [{where}]{{.terms-src}}", ""]
+        else:
+            out += [f"**{t['term']}** (יישום): {' '.join(t['applied'].split())}", ""]
+    return out
+
+
+def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[str, dict, list[str]]:
     raw = src.read_text(encoding="utf-8")
     meta, body = {}, raw
     if raw.startswith("---"):
         _, fm, body = raw.split("---", 2)
         meta = yaml.safe_load(fm) or {}
+    blocks = meaning_blocks(body)
+    if not meaning:
+        head_len = len(raw) - len(body)
+        body = strip_meaning(body)
+        raw = raw[:head_len] + body
     errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1)
     if errs:
         raise BuildError("the source breaks prompts/biur-rules.md:\n  " + "\n  ".join(errs))
@@ -437,6 +485,8 @@ def build(src: Path, with_checks: bool = False) -> tuple[str, dict, list[str]]:
         m = DIRECTIVE.match(line)
         if not m:
             out.append(line)
+            if line.strip() == MEANING_OPEN:
+                out += ["[בנפש האדם]{.meaning-label}", ""]
             continue
         kind, d = m.group(1), args_of(m.group(2), no)
         where = f"line {no}"
@@ -457,6 +507,10 @@ def build(src: Path, with_checks: bool = False) -> tuple[str, dict, list[str]]:
             out += ["", f"[{d['note']}]{{.makor-note}}"]
         out.append(":::")
     notes.append(f"{n_src} source passage(s) set in")
+    if meaning and blocks:
+        key = terms_key(blocks)
+        out += key
+        notes.append(f"{len(blocks)} meaning block(s); {sum(1 for k in key if k.startswith('**'))} term(s) in the key")
     out, n_par = number_paragraphs(out)
     notes.append(f"{n_par} paragraph(s) of explanation numbered")
     out = group_openings(out)
@@ -509,8 +563,9 @@ def main(argv: list[str]) -> int:
         return 2
     try:
         review = "--review" in argv or "--checks" in argv
-        text, meta, notes = build(src)
-        if "--check" not in argv:
+        meaning = "--no-meaning" not in argv
+        text, meta, notes = build(src, meaning=meaning)
+        if "--check" not in argv and meaning:
             (folder / "biur.md").write_text(text + "\n", encoding="utf-8")
             print(f"wrote {(folder / 'biur.md').relative_to(ROOT)}")
         for n in notes:
@@ -518,11 +573,11 @@ def main(argv: list[str]) -> int:
         if "--pdf" in argv:
             name = meta.get("pdf_name") or folder.parent.name
             if review:      # paragraph numbers and the open findings of a check: a copy for review only
-                text, _, _ = build(src, with_checks=True)
+                text, _, _ = build(src, with_checks=True, meaning=meaning)
                 pdf = ROOT / "output" / "biur" / "review" / f"{name}.pdf"
             else:           # the finished document: no numbers, no marks
                 text = PNUM_TAG.sub("", text)
-                pdf = ROOT / "output" / "biur" / f"{name}.pdf"
+                pdf = ROOT / "output" / "biur" / ("" if meaning else "plain") / f"{name}.pdf"
             md = pdf.with_suffix(".md")
             pdf.parent.mkdir(parents=True, exist_ok=True)
             md.write_text(text + "\n", encoding="utf-8")
