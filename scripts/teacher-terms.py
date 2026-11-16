@@ -30,6 +30,11 @@ def letters(s: str) -> str:
     return re.sub(r"[^א-ת]", "", s)
 
 
+def latin(s: str) -> str:
+    """A quote in English (his words in writing): compared by its Latin letters, lower case."""
+    return re.sub(r"[^a-z]", "", s.lower())
+
+
 def load() -> dict:
     return yaml.safe_load(TERMS.read_text(encoding="utf-8"))
 
@@ -50,9 +55,14 @@ def check(d: dict) -> list[str]:
             if not f.exists():
                 errs.append(f"{owner}: file not found: {s['where']}")
                 continue
-            if s["where"] not in cache:
-                cache[s["where"]] = letters(f.read_text(encoding="utf-8"))
-            if letters(s["quote"]) not in cache[s["where"]]:
+            key = s["where"]
+            if key not in cache:
+                text = f.read_text(encoding="utf-8")
+                cache[key] = letters(text)
+                cache[key + "#latin"] = latin(text)
+            q = letters(s["quote"])
+            found = (q in cache[key]) if q else (latin(s["quote"]) and latin(s["quote"]) in cache[key + "#latin"])
+            if not found:
                 errs.append(f"{owner}: quote not found in {s['where']}: {s['quote'][:60]!r}")
 
     p = d.get("principle") or {}
@@ -84,6 +94,8 @@ def label(where: str) -> str:
         return f"לבושי הנשמה, שיעור {int(m.group(1))}"
     if "004-levushei-haneshama/introduction" in where:
         return "לבושי הנשמה, הקדמה"
+    if where.startswith("knowledge/teacher/said/"):
+        return "מדבריו בכתב"
     return where
 
 
