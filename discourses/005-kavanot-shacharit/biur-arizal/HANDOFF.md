@@ -137,3 +137,13 @@ None: every directive resolved. What needs checking is listed above and in the n
   mochin in ברכת אבות (6.4.4); the union of the עמידה is יעקב ורחל (3.1.4; מבוא).
 - To settle there: open-questions 1 (where בריאה ends: ברכת אבות or אדנ"י שפתי תפתח) and 2 (the point of Rachel),
   from "הקדמת ברכת אבות דשחרית דחול" ("הכונה הב' הקצרה דברכת אבות ... בסוף כל תפלת השחר", SK Shema.1.1.3).
+
+## Meaning layer (2026-11-16)
+
+At Ronnie's request every section carries "בנפש האדם" blocks (`::: {.meaning}`) applying the paragraph in
+his meanings of the terms (`knowledge/teacher/terms.yaml`; rules in `prompts/biur-rules.md`, last part), and
+the build appends מפתח המושגים. Seven terms are Claude's application, not his words (printed "(יישום)"):
+פנימיות וחיצוניות העולמות, מעשה ודיבור, קטנות וגדלות, אור פנימי ומקיף, אחור באחור / פנים בפנים, רחל,
+הקדיש כעמוד. When he confirms or corrects one, change it in terms.yaml (move it to `terms:` with `said:` once
+he has said it on a recording) and rebuild; the blocks that rest on it may need rewording. Without the layer:
+`--no-meaning` → `output/biur/plain/`.

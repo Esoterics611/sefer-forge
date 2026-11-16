@@ -14,7 +14,7 @@ folder is the understanding built on it.
 | **Lexicon** | `lexicon/<slug>.yaml`, index `lexicon/INDEX.md` | one entry per term: its meanings in these texts, each resting on exact words at an address in `sources/` | **started** (2026-11-12, from discourse 004) |
 | Concepts | `concepts/<slug>.md` | a page or two per recurring teaching (מ"ן ומ"ד, בירור הלבושים, פנימיות וחיצוניות…): the argument, its key passages by address, the lexicon terms it uses | planned |
 | Citations | `citations.yaml` | every citation met in any text → the address it resolves to, how sure, and the edition's numbering where it differs | planned (today: `sources/sources.yaml` `numbering:` and each discourse's `biur/notes/citations.md`) |
-| The teacher | `teacher/` | what Ronnie teaches: his positions and framings, corrections he made, how he says things; each with the session it comes from | planned |
+| The teacher | `teacher/terms.yaml`, generated `teacher/TERMS.md` | Ronnie's meaning of each term in the soul and in service (the second dimension of every term, 002 introduction): `said:` his words, quoted from the shiur and checked; `applied:` Claude's application of his frame, to confirm. Read by `scripts/teacher-terms.py` (`--check`, `--in <file>`; a plain run writes TERMS.md and syncs each lexicon entry's `teacher:`); printed as the "בנפש האדם" layer of an explanation (`prompts/biur-rules.md`) | **started** (2026-11-16, from 002 and 004) |
 
 Two rules hold across all four:
 

@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: שמע = שם ע'; ישראל = שי"ר א"ל
+forms:
+- "שם ע'"
+- שי"ר א"ל
+category: תפילה
+senses:
+- meaning: >-
+    "שמע" היא המלכות, הנקראת שם ע'; "ישראל" הוא שי"ר א"ל; בהם עולים מ"ן ואבא ואימא מזדווגים בסוד הדעת, "ה' אלהינו ה'".
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.5.1.9
+    quote: כי שמע היא המלכות הנקרא שם ע׳
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.5.1.9
+    quote: ואח״כ ישראל ר״ל שי״ר א״ל
+related:
+- daled-rabati-deechad
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

@@ -1,0 +1,25 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: סמיכת גאולה לתפלה
+forms:
+- סמיכת גאולה לתפלה
+- סמיכות גאולה לתפלה
+category: תפילה
+senses:
+- meaning: הגאולה מורידה את הארתה למטה בבריאה אל המלכות הנקראת תפלה, ובסמיכות הזאת המלכות עולה מן הבריאה אל האצילות.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.8.1.28
+    quote: אמנם הוא מוריד הארתו למטה בבריאה אל המלכות הנק׳ תפלה
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.8.1.28
+    quote: וע״י סמיכות הזה עולה המלכות הנק׳ תפלה מן הבריאה אל האצילות
+- meaning: בין הבריאה לאצילות אין קדיש, כי כללות מלכות דאצילות היא בראש הבריאה.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.5
+    quote: לפי שכל כללות מלכות דאצילות היא בראש הבריאה ואין לך סמיכות גדול מזה
+related:
+- amud-hakaddish
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal
