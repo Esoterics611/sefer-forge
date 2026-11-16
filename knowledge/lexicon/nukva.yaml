@@ -8,8 +8,8 @@ forms:
 - מלכות
 category: פרצופים ועולמות
 senses:
-- meaning: הפרצוף המקבל, שהמ"ן עולים אל היסוד שלו. הנשמות היוצאות מן הקליפות באות תחילה "בעבור במעי של המלכות, נקבה
-    העליונה", כדי להיטהר, ורק אחר כך יורדות לגוף.
+- meaning: הפרצוף המקבל, שהמ"ן עולים אל היסוד שלו. הנשמות היוצאות מן הקליפות באות תחילה "בעבור במעי של המלכות, נקבה העליונה",
+    כדי להיטהר, ורק אחר כך יורדות לגוף.
   rests_on:
   - work: etz-chaim
     ref: 39.2.1
@@ -23,3 +23,10 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+teacher:
+- said: והמלכות זה איך שהוא מגלה את עצמו לזולת
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: כאן הנקבה היא העולם הזה המתעורר ומקבל, והזכר, המשפיע, הוא הקדוש ברוך הוא
+  where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+  from: knowledge/teacher/terms.yaml

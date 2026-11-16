@@ -9,8 +9,8 @@ forms:
 - נתבררו
 category: שבירה, קליפות ובירור
 senses:
-- meaning: הפרדת הטוב (ניצוץ הקדושה) מן הרע שנתערב בו, והעלאתו. ירידת העולמות בחטא אדם הראשון, וירידתם בימי החול,
-    תכליתה לברר את המלכים. המצוות ניתנו "לצרף ולברר וללבן" את הצלמים והכלים.
+- meaning: הפרדת הטוב (ניצוץ הקדושה) מן הרע שנתערב בו, והעלאתו. ירידת העולמות בחטא אדם הראשון, וירידתם בימי החול, תכליתה לברר
+    את המלכים. המצוות ניתנו "לצרף ולברר וללבן" את הצלמים והכלים.
   rests_on:
   - work: etz-chaim
     ref: 26.1.2
@@ -26,3 +26,10 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+teacher:
+- said: בירור הניצוצות הוא בירורה של האנושות כולה
+  where: discourses/004-levushei-haneshama/sessions/003/refined.md
+  from: knowledge/teacher/terms.yaml
+- said: כל מעשה שלנו בעולם הזה משאיר רושם בשני הצלמים
+  where: discourses/004-levushei-haneshama/sessions/002/refined.md
+  from: knowledge/teacher/terms.yaml

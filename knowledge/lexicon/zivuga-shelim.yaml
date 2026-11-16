@@ -33,3 +33,10 @@ status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-chasdei-david
 - discourses/005-kavanot-shacharit/biur-rashash
+teacher:
+- said: ישראל סבא ותבונה הם נקראים אבא ואמא תתאין, שהם המוחין ששייכים למידות
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: שבתוך השכל עדיין יש איכשהו איך שאני מתייחס אל זה, אבל זה בתת־מודע
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml

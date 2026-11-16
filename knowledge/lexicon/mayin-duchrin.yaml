@@ -7,8 +7,8 @@ abbrev:
   מ"ד: מיין דכורין
 category: מ"ן ומ"ד והזיווג
 senses:
-- meaning: 'מה שיורד מן הזכר כנגד המ"ן בזיווג: החסדים. משניהם נתקנות הנשמות. כוח הבירור הוא בזכר דווקא (ז"א), ולכן
-    הבירור הוא בימי החול.'
+- meaning: 'מה שיורד מן הזכר כנגד המ"ן בזיווג: החסדים. משניהם נתקנות הנשמות. כוח הבירור הוא בזכר דווקא (ז"א), ולכן הבירור
+    הוא בימי החול.'
   rests_on:
   - work: etz-chaim
     ref: 39.1.2
@@ -26,3 +26,7 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+teacher:
+- said: וכנגד ההתעוררות הזאת נמשכים מלמעלה מים דכורין, השפעה אלוקית
+  where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+  from: knowledge/teacher/terms.yaml
