@@ -104,3 +104,13 @@ explanation draws a conclusion the passage does not state.
   8 chapters and the gate says six ("ויתחלק לו' פרקים"; `sources.yaml`: the print's פ"ו is
   chapter 7 here), so its passages are labelled "פרי עץ חיים, שער התפילה" with no chapter:
   Opus to set the printed chapter. שער הברכות likewise has no chapter in its label.
+
+## Part 2 (§5–§8), 2026-11-16 — all directives resolve (build-biur --check)
+- §5: SK Kaddish 1.1.3 (×2), 1.1.5, 1.1.6 (×2), 1.1.2, 1.5.1, 1.5.2, 1.5.3, 1.5.4, 1.5.8 (×2); PEC Amen Intention 3.2.
+  Grade A (plain). The overview of the later Kaddishes (1.2.1, 1.3.1, 1.4.1–1.4.3) is in prose, not set in.
+- §6: SK Morning Prayers 2, 6 (×2), 3, 4, 9, 11, 12, 20, 26. Grade A. Prose for 5, 7–8, 10, 14–15, 17, 19, 21–24.
+- §7: SK Morning Prayers 27, 29, 30 (×2); PEC Shema 2.3, 4.4, 4.5. Grade A. The step "מלכות דבריאה → יסוד (SK 29), then
+  → הוד in the קדושה (PEC 2.3)" joins the two works: grade B.
+- §8: SK Shema 1.1.4, 3.1.4, 2.1.2, 6.1.4, 6.1.10, 5.1.9, 6.3.5, 6.4.3, 6.4.4, 5.1.1, 8.1.13, 8.1.28. Grade A, except the
+  sentence that 6.3.4–5 (ד' = Rachel, for מ"ן) and 6.4.3–4 (ד' = the כתר of Leah, for mochin) describe two moments of the
+  one word: the explanation's reading, grade B.

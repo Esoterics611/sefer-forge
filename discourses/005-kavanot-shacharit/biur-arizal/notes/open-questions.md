@@ -72,3 +72,20 @@ What stays open after part 1 (מבוא, §1–§4), 2026-11-12. Not printed.
 - "ביאור ברכת אבות דר"ה", "הקדמת ברכת אבות דשחרית דחול" (question 2).
 - Zohar ויקהל ר"א, במדבר ק"כ, צו כ"ו, פנחס רכ"ו, שלח קע"ד; תיקונים. Quoted by the דרושים only.
 - No passage of עץ חיים was needed in part 1.
+
+## After part 2 (§5–§8), 2026-11-16
+- **7 (ישתבח), stated in §6:** SK Morning Prayers.26: its 13 praises are יצירה become 13 (or the 13 ברוך of ב"ש); PEC
+  Songs 6.17: "הבריאה היא ג"כ בי"ג"; SK Prayers 3.9: בבריאה. All three given, not settled.
+- **2 (the point of Rachel), partly:** SK Shema דרוש ו puts Rachel, before ק"ש, in **היכל אהבה דבריאה** (6.3.5; also
+  PEC Shema 4.5), not היכל ק"ק as SK Prayers 2.2 (the מבוא). In 6.3.4 the ד' of אחד is Rachel (rising as מ"ן); in
+  6.4.3–4 it is the כתר of Leah (receiving mochin), Rachel only prepared in בשכמל"ו for ברכת אבות. §8 gives both and
+  ties them to the מבוא; §9 (ברכת אבות) must finish it.
+- **The ק"ש itself in the מבוא vs §8:** the מבוא (SK 2.2) says Rachel rises to Leah and is included in her; §8 (דרוש ו)
+  says Leah receives and Rachel is prepared. Compatible, but worth a reader's check.
+- **The Kaddish: rising or giving רוח?** SK 1.1.2 (gives רוח of יצירה to ג"ר דעשיה) and 1.1.6 (raises the heichalot);
+  §5 says they do not conflict. PEC Holies 1.5 (gloss): only the souls rise.
+- **הודו: נשמה from יצירה (SK 6)** vs the Kaddish's רוח: the ladder נפש/רוח/נשמה is SK's own (6); not checked
+  against PEC Songs 1.3, which says the Kaddish gave רוח.
+- Not read in full: SK Shema דרוש ז (קו המדה), the rest of דרוש ח (8.1.4–8.1.11, 8.1.17–8.1.26: the fifteen ו' of אמת
+  ויציב, תהלות לאל עליון), דרוש ו 6.2.1–6.3.3 and 6.5.2–6.5.7 (the detailed names), SK Tzitzit דרוש ג. PEC by index only,
+  except Holies 1.4–1.7, Amen 1.2, 3.2, Songs 1.10–1.14, 4.3, 5.1, 5.33, 6.1, 6.17, Shema 2.3, 4.4–4.6.
