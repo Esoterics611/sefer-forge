@@ -1,0 +1,508 @@
+# Ronnie's meanings of the terms: how each term is in the soul of a person and in the service of God,
+# as he teaches them (`said:`, his words, checked against the file by scripts/teacher-terms.py --check),
+# and where Claude applies his frame to a term he has not yet defined (`applied:`, Claude's, for him to
+# confirm or correct). Kept apart from the lexicon's meanings from the sources (knowledge/README.md).
+#
+# The principle (002 introduction): every term is in two dimensions, "אחד כמו שהם בעולמות העליונים, השני
+# כמו שהם בנפש האדם". The lexicon (knowledge/lexicon/) holds the first; this file the second.
+#
+# Fields: slug, term, forms (as texts write it: the build finds the term by these), lexicon (the lexicon
+# entry, if any), soul (the meaning in the soul and the service, in Hebrew, one or two sentences),
+# said: [{quote, where (file), at (heading in it)}], applied (Claude's application, when there is no said),
+# related.
+
+principle:
+  soul: >-
+    המבנה שבנפש האדם, המחשבה, הדיבור והמעשה ומבני הנפש עצמה, מקביל לבניין העולמות כולם; לכן כל מושג
+    בקבלה מתפרש בשני ממדים, כמו שהוא למעלה וכמו שהוא בנפש, ו"מבשרי אחזה אלוה".
+  said:
+    - quote: 'בשני מימדים: אחד כמו שהם בעולמות העליונים, השני כמו שהם בנפש האדם'
+      where: discourses/002-shaar-hayichud/introduction.md
+      at: חב"ד וישראל סבא ותבונה במבנה הנפש
+    - quote: 'הם מקבילים לגמרי לבניין העולמות כולם. כמו שהנפש ממלא את הגוף, ככה הקדוש ברוך הוא ממלא את העולם'
+      where: discourses/002-shaar-hayichud/introduction.md
+      at: ההתבוננות — יסוד עבודת חב"ד
+  kavanah: >-
+    כוונות הקבלה פועלות בעולמות העליונים בשמות ובפרטים; כוונות החסידות מתבוננות באותם מבנים כדי לעורר אהבה
+    ויראה בלב ולתקן את המידות. ההתבוננות היא הכוונה של החסידות.
+  kavanah_said:
+    - quote: 'הכוונות של המקובלים — הם מכוונים בשמות עליונים שרומזים לעניינים נשגבים בעולמות עליונים, ומכוונים לשם. והכוונה הזאת היא בחינת ההתבוננות'
+      where: discourses/002-shaar-hayichud/introduction.md
+      at: כוונות הקבלה וכוונות החסידות
+
+terms:
+  - slug: chochma
+    term: חכמה (אבא)
+    forms: [חכמה, חוכמה, אבא]
+    soul: >-
+      נקודת השכל שבהעלם, "ברק המבריק", קודם שהיא מלובשת באותיות; המעיין שממנו נובע השכל, ונקראת אין, כי
+      עדיין אינה מושגת.
+    said:
+      - quote: 'בחינת החכמה זה ברק המבריק'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: חב"ד וישראל סבא ותבונה במבנה הנפש
+      - quote: 'והחוכמה נקראת אין, והבינה הנקראת כבר יש'
+        where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+        at: נהר יוצא מעדן — החכמה נקראת אין
+      - quote: 'בבינה היא כבר מתחילה להתלבש באותיות'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: ז' תחתונות דבינה — מידות שבשכל
+    related: [bina, mochin]
+  - slug: bina
+    term: בינה (אימא)
+    forms: [בינה, אימא, אמא]
+    lexicon: ima-bina
+    soul: >-
+      הנהר: נקודת החכמה מקבלת בה אורך, רוחב ועומק, עד שיכולה להתלבש באותיות המחשבה; "מבין דבר מתוך דבר".
+    said:
+      - quote: 'ובינה זה כבר רוחב שבו מלובש ברק המבריק הזה'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: חב"ד וישראל סבא ותבונה במבנה הנפש
+      - quote: 'שזה נהר המחשבה שמתגלה בו נקודת הפנימיות, שהיא החוכמה'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: אבא ואמא תתאין — ישראל סבא ותבונה
+    related: [chochma, tevuna, iyun]
+  - slug: iyun
+    term: פנימיות בינה, עיון, התבוננות (שער הנו"ן)
+    forms: [התבוננות, עיון, פנימיות בינה, שער הנו"ן]
+    soul: >-
+      הכוח להתעכב על עצם הנקודה ולחפור בה עד עומק המושג, הפך הסקירה המהירה; ממנו נובעים שכלים חדשים. זו
+      עבודת ההתבוננות, הכוונה של החסידות בתפילה.
+    said:
+      - quote: 'יש כוח בשכל שהוא נקרא כוח העיון, והוא נקרא פנימיות בינה'
+        where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+        at: פתיחה — מהות ההתבוננות
+      - quote: 'השער הנו"ן זה עניין של כוח העיון, שמשם נובעות רעיונות חדשים'
+        where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+        at: שער הנו"ן — העיון כעיכוב המחשבה
+    related: [bina, omek, pnimiyut-atik]
+  - slug: omek
+    term: עומק, אורך ורוחב (של המושכל)
+    forms: [עומק המושג, אורך ורוחב]
+    soul: >-
+      העומק הוא עצם נקודת המושג, שממנו הכל נובע; הרוחב ריבוי הפרטים; האורך ירידת המושג במשלים עד שאפילו
+      תינוק משיג. רק אחר האורך והרוחב מגיעים אל העומק.
+    said:
+      - quote: 'עומק השכל זה עצם הנקודה של השכל'
+        where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+        at: עומק רום ועומק תחת — שנת ת"ר לחיי נח
+      - quote: 'אתה לא יכול להגיע לעומק המושג עד שלא הבנת אותו לאורך ורוחב'
+        where: discourses/002-shaar-hayichud/sessions/012/transcript.md
+        at: ההתבוננות בממלא כל עלמין
+    related: [iyun]
+  - slug: pnimiyut-atik
+    term: פנימיות עתיק
+    forms: [פנימיות עתיק, עתיק]
+    soul: >-
+      הנביעה עצמה, שורש השכל שלמעלה מן השכל, הנפש שלמעלה מזמן ומקום; מתגלה על ידי פנימיות בינה, ובשלמות
+      רק לעתיד לבוא.
+    said:
+      - quote: 'שהבחינה של פנימיות עתיק זה הבחינה של הנביעה עצמה, של המעיין'
+        where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+        at: שלושת ממדי המושכל — עומק, אורך ורוחב
+      - quote: 'פנימיות עתיק זה הפנימיות של הפנימיות של הכתר, שזו הבחינה שמתגלה רק לעתיד לבוא'
+        where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+        at: למעלה אפילו מן החכמה — פנימיות בינה היא פנימיות עתיק
+    related: [iyun, chochma]
+  - slug: tevuna
+    term: תבונה (אמא תתאה)
+    forms: [תבונה, איש תבונה]
+    soul: >-
+      התובנה: הכוח לדלות מן העומק אל הגילוי, להוציא מן ההבנה מסקנה, פסק דין, או התפעלות בלב; ממנה נולדות
+      המידות. בלעדיה ההבנה נשארת "דבר היולי".
+    said:
+      - quote: 'כוח התבונה, שהוא נותן את הכוח לדלות מעומק המושג לשטח'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: כוח התבונה — מהעלם לגילוי
+      - quote: 'התבונה היא בעצמה, היא מולידה את המידות, איך אני מתייחס לזה, והמידות זה אהבה ויראה'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: תבונה כבן ובת — להוליד מידות
+    related: [bina, yisrael-saba-tevuna, malchut-detevuna]
+  - slug: yisrael-saba-tevuna
+    term: ישראל סבא ותבונה (אבא ואמא תתאין)
+    forms: [ישראל סבא ותבונה, ישסו"ת, ישראל סבא, אבא ואמא תתאין]
+    lexicon: zivuga-shelim
+    soul: >-
+      המוחין השייכים למידות: השכל כשכבר יש לי יחס אליו. ישראל סבא הוא המידות שבחכמה, היחס שבתת־המודע;
+      תבונה המידות שבבינה, היחס שבמודע, "איך אני מרגיש עם זה".
+    said:
+      - quote: 'ישראל סבא ותבונה הם נקראים אבא ואמא תתאין, שהם המוחין ששייכים למידות'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: מלכות התבונה — אותיות המחשבה ולאה
+      - quote: 'שבתוך השכל עדיין יש איכשהו איך שאני מתייחס אל זה, אבל זה בתת־מודע'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: מלכות התבונה — אותיות המחשבה ולאה
+    related: [tevuna, abba-ima, zeir-anpin]
+  - slug: abba-ima
+    term: אבא ואימא עילאין
+    forms: [אבא ואימא עילאין, או"א עילאין, או"א, אבא ואימא]
+    soul: >-
+      החכמה והבינה כמו שהן מצד עצמן, "שכל אבסולוטי", שאין בו שייכות למידות, איך אני מרגיש.
+    said:
+      - quote: 'אין כאן אבא ואמא עילאין, חוכמה ובינה ממש, אין שום שייכות למידות. שכל אבסולוטי'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: מלכות התבונה — אותיות המחשבה ולאה
+    related: [chochma, bina, yisrael-saba-tevuna]
+  - slug: sheva-tachtonot-debina
+    term: ז' תחתונות דבינה (מידות שבשכל)
+    forms: [ז' תחתונות דבינה, מידות שבשכל, מידות דבינה]
+    soul: >-
+      הבינה לפני שמולידה שכל חדש, כשכבר יש לה ישות: איך אני מתייחס לשכל הזה, מה אני חושב עליו.
+    said:
+      - quote: 'יש את המידות דבינה, הז'' תחתונות דבינה, שבהם איך אני מתייחס לשכל הזה'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: ז' תחתונות דבינה — מידות שבשכל
+    related: [tevuna]
+  - slug: malchut-detevuna
+    term: מלכות דתבונה (אותיות המחשבה)
+    forms: [מלכות דתבונה, אותיות המחשבה]
+    soul: >-
+      השכל כשהוא בא באותיות המחשבה, ה"פה" שבמחשבה.
+    said:
+      - quote: 'תבונה היא בעצם המידות שבבינה, והמלכות דתבונה זה כבר האותיות'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: מלכות התבונה — אותיות המחשבה ולאה
+    related: [tevuna, leah]
+  - slug: leah
+    term: לאה (וד' רבתי דאחד)
+    forms: [לאה, ד' רבתי, ד' של אחד]
+    soul: >-
+      אותיות המחשבה כשאנחנו חושבים בצורה מוכרת, שורש אותיות המחשבה; הד' הגדולה של "אחד".
+    said:
+      - quote: 'אותיות המחשבה כשאנחנו חושבים בצורה מוכרת זה כבר בחינת לאה, שזה נוקבא דזעיר אנפין'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: חב"ד וישראל סבא ותבונה במבנה הנפש
+      - quote: 'אז רומז לנו, שתדע, בספרי הקבלה, דלת רבתי דאחד רומז למלכות דתבונה'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: מלכות התבונה — אותיות המחשבה ולאה
+    related: [malchut-detevuna, nukva]
+  - slug: daat
+    term: דעת
+    forms: [דעת]
+    soul: >-
+      ההתקשרות: החכמה והבינה יחד מולידות את הדעת, ואז הדבר "שייך אליך"; הדעת מעוררת את הלב.
+    said:
+      - quote: 'דעת זה גם בחינת התקשרות'
+        where: discourses/002-shaar-hayichud/sessions/012/transcript.md
+        at: וידעת היום — דעת המעוררת לב
+      - quote: 'הדעת הזאת היא מעוררת את התפעלות הלב'
+        where: discourses/002-shaar-hayichud/sessions/012/transcript.md
+        at: וידעת היום — דעת המעוררת לב
+    related: [chochma, bina, hitpaalut]
+  - slug: partzuf
+    term: פרצוף
+    forms: [פרצוף, פרצופים]
+    soul: >-
+      ספירה כשמדברים על המבנה שבתוכה, כמבנה שלם, עם מוחין, מידות ומלכות משלה.
+    said:
+      - quote: 'וכל פרצוף הוא מבנה שלם, כדי שנוכל לדבר בפרטים של אותו פרצוף'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: אבא ואמא תתאין — ישראל סבא ותבונה
+    related: [mochin, zeir-anpin, nukva]
+  - slug: mochin
+    term: מוחין (ג' ראשונות)
+    forms: [מוחין, ג' ראשונות, שלוש הראשונות, ג"ר]
+    soul: >-
+      הפנימיות והעצם של האדם, האישיות הפנימית, שאינו מגלה לזולת ואף לא לעצמו.
+    said:
+      - quote: 'יש את השלושה המוחין שלו, זו האישיות הפנימית שלו, שהיא העצם שלו, והוא לא מגלה את זה לזולת, גם לעצמו לא'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: ז' תחתונות דבינה — מידות שבשכל
+    related: [partzuf, zeir-anpin]
+  - slug: zeir-anpin
+    term: זעיר אנפין (המידות)
+    forms: [זעיר אנפין, ז"א, המידות, תפארת]
+    soul: >-
+      המידות, מחסד עד יסוד: האדם עצמו כמו שהוא מכיר את עצמו, ואינו מגלה עדיין לזולת. זו"ן הם אהבה ויראה.
+    said:
+      - quote: 'יש את המידות, שכנגד פרצוף זעיר אנפין, של השש ספירות, מחסד ועד יסוד, שזה המידות, זה הבן אדם עצמו'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: ז' תחתונות דבינה — מידות שבשכל
+      - quote: 'והמידות זה אהבה ויראה, מבחינת זעיר אנפין ונוקבא'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: תבונה כבן ובת — להוליד מידות
+    related: [mochin, nukva]
+  - slug: nukva
+    term: מלכות, נוקבא
+    forms: [מלכות, נוקבא, רחל, שכינה]
+    lexicon: nukva
+    soul: >-
+      איך האדם מתגלה לזולת: הדיבור, הביטוי, המעשה. וכנקבה בזיווג: העולם הזה המתעורר מלמטה ומקבל.
+    said:
+      - quote: 'והמלכות זה איך שהוא מגלה את עצמו לזולת'
+        where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+        at: ז' תחתונות דבינה — מידות שבשכל
+      - quote: 'כאן הנקבה היא העולם הזה המתעורר ומקבל, והזכר, המשפיע, הוא הקדוש ברוך הוא'
+        where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+    related: [zeir-anpin, zivug, leah]
+  - slug: almin-stimin
+    term: עלמין סתימין (אצילות)
+    forms: [עלמין סתימין, אצילות]
+    soul: >-
+      הרבדים העמוקים שבנפש, המעיינות הפנימיים, שמתגלים רק כשמעוררים אותם בהתבוננות בעומק.
+    said:
+      - quote: 'וכל הרבדים היותר עמוקים בנפש הם בעלמין סתימין'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: עלמין סתימין ועלמין דאתגליין — שמע ישראל
+    related: [almin-ditgalyan]
+  - slug: almin-ditgalyan
+    term: עלמין דאתגליין (בריאה, יצירה, עשיה)
+    forms: [עלמין דאתגליין, בי"ע, בריאה, יצירה, עשיה]
+    soul: >-
+      הנפש כשהיא כבר בגילוי: המחשבה באותיות, הדיבור והמעשה.
+    said:
+      - quote: 'גם באדם יש את הבחינה של עלמין דאתגליין — זה כבר הבחינה של מחשבה, דיבור ומעשה'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: עלמין סתימין ועלמין דאתגליין — שמע ישראל
+    applied: >-
+      בהקבלה אחד לאחד, כנהוג בספרי החסידות: הבריאה המחשבה, היצירה הדיבור, העשיה המעשה. ההקבלה המפורטת היא
+      יישום של העיקרון, ולא נאמרה במפורש בשיעורים.
+    related: [almin-stimin]
+  - slug: hitpaalut
+    term: התפעלות
+    forms: [התפעלות]
+    soul: >-
+      גילוי הנפש, הרוח, הנשמה, החיה והיחידה במוח ובלב; אינה באה מאיתנו אלא מלמעלה, והיא נולדת מן ההתבוננות.
+    said:
+      - quote: 'ההתפעלות במוח ולב זה גילוי של נפש רוח נשמה חיה יחידה'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: ההתבוננות — יסוד עבודת חב"ד
+    related: [iyun, daat]
+  - slug: shema
+    term: שמע
+    forms: [שמע ישראל, קריאת שמע]
+    soul: >-
+      לשון הבנה: העיון בעניין עד שיש נביעה של מחשבות וכוחות חדשים; "דערהערן". ה"שמע" של שמע ישראל הוא העיון
+      באחדות השם.
+    said:
+      - quote: 'מה העניין של ''שמע''? זה עניין של העיון, לשון הבנה'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: עלמין סתימין ועלמין דאתגליין — שמע ישראל
+    related: [iyun]
+  - slug: tzelem
+    term: צלם
+    forms: [צלם, צלמים]
+    lexicon: tzelem
+    soul: >-
+      המבנה הנפשי, האישיות והתודעה, הממוצע בין הנשמה לגוף, ה"אוויר" שבו נרשם כל מה שאדם שומע וחושב; ושניים
+      הם, יצר טוב ויצר רע.
+    said:
+      - quote: 'ואני מציע שהאוויר הזה הוא שנקרא צלם'
+        where: discourses/004-levushei-haneshama/introduction.md
+        at: (introduction)
+      - quote: 'ושני צלמים הם, הנקראים יצר טוב ויצר רע'
+        where: discourses/004-levushei-haneshama/introduction.md
+        at: (introduction)
+    related: [levushim, naran]
+  - slug: levushim
+    term: לבושים, גוף אמיתי, כתנות עור
+    forms: [לבושים, לבוש, כתנות עור, גוף אמיתי]
+    lexicon: levushim
+    soul: >-
+      הנפש הפסיכולוגית, התודעה והאישיות על כל מדרגותיהן, מקליפת נוגה, כלולות מטוב ורע; מתבררות בתורה ובמצוות.
+    said:
+      - quote: 'מה שאנו קוראים הנפש הפסיכולוגית הוא מקליפת נוגה'
+        where: discourses/004-levushei-haneshama/sessions/002/refined.md
+        at: הערה 1 — עץ חיים, שער מ"ט, פרק ה'
+      - quote: 'בתורה ובמצוות שאנו עושים אנו מבררים את עצמנו'
+        where: discourses/004-levushei-haneshama/sessions/002/refined.md
+        at: הערה 1 — עץ חיים, שער מ"ט, פרק ה'
+    related: [tzelem, birur, kelipat-noga]
+  - slug: kelipat-noga
+    term: קליפת נוגה, קליפות
+    forms: [קליפת נוגה, קליפות, קליפה]
+    lexicon: kelipat-noga
+    soul: >-
+      מה שמסתיר את הפרי; קליפת נוגה ממוצעת, טוב ורע, ובה הלבושים, הנפש הפסיכולוגית; הקליפות הן ההעלם וההסתר
+      שבהם בלבד יש בחירה.
+    said:
+      - quote: 'הקליפה מסתירה את הפרי עד שהוא מוכן'
+        where: discourses/004-levushei-haneshama/sessions/003/refined.md
+        at: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+    related: [levushim, birur]
+  - slug: naran
+    term: נר"ן (הצורה)
+    forms: [נר"ן, נרנח"י, נפש רוח נשמה, נשמה]
+    lexicon: naran
+    soul: >-
+      הנשמה עצמה, האלוקית, שאינה צריכה תיקון; יורדת לגוף כדי להאיר בלבושים ולברר אותם; בתפילה היא עצמה עולה
+      מן הקליפות.
+    said:
+      - quote: 'המצוות לא באו לתקן את הצורה, שהיא הנר"ן'
+        where: discourses/004-levushei-haneshama/sessions/003/refined.md
+        at: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+      - quote: 'בתפילה אין המדובר בלבושים, אלא בנר"ן עצמם, העולים מן הקליפות'
+        where: discourses/004-levushei-haneshama/sessions/005/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+    related: [levushim, tzelem, tefila]
+  - slug: birur
+    term: בירור הניצוצות
+    forms: [בירור, בירורים, ניצוצות, ניצוצין]
+    lexicon: birur
+    soul: >-
+      הבחירה בטוב בכל ניסיון, שמשאירה רושם בצלם ומנקה את הלבושים; ובכלל העולם, התקדמות האנושות כולה, המדעית,
+      החברתית והמוסרית, עד הגאולה.
+    said:
+      - quote: 'בירור הניצוצות הוא בירורה של האנושות כולה'
+        where: discourses/004-levushei-haneshama/sessions/003/refined.md
+        at: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+      - quote: 'כל מעשה שלנו בעולם הזה משאיר רושם בשני הצלמים'
+        where: discourses/004-levushei-haneshama/sessions/002/refined.md
+        at: הערה 1 — עץ חיים, שער מ"ט, פרק ה'
+    related: [levushim, melachim, geula]
+  - slug: melachim
+    term: המלכים (שבירת הכלים, תוהו)
+    forms: [המלכים, שבעת המלכים, מלכים, שבירת הכלים, תוהו]
+    lexicon: shivat-hamelachim
+    soul: >-
+      האורות דתוהו, שורש כל הכיסופים שבעולם הזה; כל העבודה בעולם היא לברר את ניצוצותיהם.
+    said:
+      - quote: 'הם האורות דתוהו, שורש כל הכיסופים שבעולם הזה'
+        where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+    related: [birur]
+  - slug: galut-hashechina
+    term: גלות השכינה
+    forms: [גלות השכינה, בסוד גלות השכינה]
+    soul: >-
+      השכינה, כוח אלוקי אין־סופי, נסתרת, כדי שתהיה בחירה; כשאין התעוררות מלמטה אין השפעה מלמעלה ואין גילוי.
+    said:
+      - quote: 'השכינה היא כוח אלוקי אין סופי, וכשהיא מתגלה, חופש הבחירה נעלם; לכן בגלות היא נסתרת'
+        where: discourses/004-levushei-haneshama/sessions/003/refined.md
+        at: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+    related: [mayin-nukvin, nukva]
+  - slug: mayin-nukvin
+    term: מיין נוקבין (מ"ן)
+    forms: [מיין נוקבין, מ"ן, מ"נ]
+    lexicon: mayin-nukvin
+    soul: >-
+      ההתעוררות מלמטה: הבחירה בטוב בעת ניסיון, בתפילה כבמצוות, ביחיד ובעולם כולו; כגון מי שאינו רוצה לתת
+      צדקה ונותן.
+    said:
+      - quote: 'העלאת מ"ן, המים נוקבים, היא ההתעוררות מלמטה, בתפילה כבמצוות, ביחיד ובעולם כולו'
+        where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+    related: [mayin-duchrin, zivug]
+  - slug: mayin-duchrin
+    term: מיין דכורין (מ"ד)
+    forms: [מיין דכורין, מים דכורין, מ"ד]
+    lexicon: mayin-duchrin
+    soul: >-
+      ההשפעה האלוקית הנמשכת מלמעלה כנגד ההתעוררות מלמטה, לפי ערכה: קבלת התפילה, או גילוי הנמשך במצוה.
+    said:
+      - quote: 'וכנגד ההתעוררות הזאת נמשכים מלמעלה מים דכורין, השפעה אלוקית'
+        where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+    related: [mayin-nukvin, zivug]
+  - slug: zivug
+    term: זיווג (זכר ונקבה)
+    forms: [זיווג, זווג, יחוד, ייחוד]
+    soul: >-
+      הייחוד האלוקי שבין המשפיע, הקדוש ברוך הוא, למקבל, העולם המתעורר; תכליתו גילוי בעולם; ובנפש, התחברות
+      השכל והמידות לגילוי.
+    said:
+      - quote: 'זיווגם הוא הייחוד האלוקי, ותכליתו גילוי בעולם'
+        where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+    related: [mayin-nukvin, mayin-duchrin, nukva]
+  - slug: olam-adam-gadol
+    term: העולם אדם גדול (התודעה הקולקטיבית)
+    forms: [אדם גדול, אדם א', אדם הכללי]
+    soul: >-
+      העולם הוא אדם גדול והאדם עולם קטן; לבושי העולם הם התודעה הקולקטיבית של האנושות, וכל אדם משפיע עליה.
+    said:
+      - quote: 'גם לעולם יש לבושים, ואני ממשיל אותם לתודעה הקולקטיבית'
+        where: discourses/004-levushei-haneshama/sessions/002/refined.md
+        at: הערה 1 — עץ חיים, שער מ"ט, פרק ה'
+    related: [birur]
+  - slug: malachim
+    term: מלאכים
+    forms: [מלאכים, מלאך]
+    soul: >-
+      הכוחות שמהם באות מחשבות האדם: מחשבות האדם הן דיבור המלאכים, ומדרגה אחר מדרגה עד עולם המחשבה של האדם.
+    said:
+      - quote: 'האדם פונה אל העולם הגשמי, אבל מחשבותיו באות מדיבור המלאכים'
+        where: discourses/004-levushei-haneshama/sessions/003/refined.md
+        at: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+    related: [tzelem]
+  - slug: geula
+    term: גאולה
+    forms: [גאולה, ביאת המשיח, משיח]
+    soul: >-
+      כשמתבררים כל הניצוצות, והאנושות מגיעה לשיא שנועדה לו, השכינה מתגלה; ובאדם, כשמגיע למידות הטובות, הנשמה
+      מתגלה בלבושים.
+    said:
+      - quote: 'וכשיתבררו כל הניצוצות, זו הגאולה האמיתית והשלמה'
+        where: discourses/004-levushei-haneshama/sessions/003/refined.md
+        at: הערה 2 — עץ חיים, שער כ"ו, פרק א'
+    related: [birur, galut-hashechina]
+  - slug: tefila
+    term: תפילה
+    forms: [תפילה, תפלה, עבודת התפילה]
+    soul: >-
+      בתפילה הנשמה עצמה עולה מן הקליפות, וההשפעה שנסתרת בגלות נראית; והיסוד שלה הוא הכוונה, ההתבוננות.
+    said:
+      - quote: 'בגלות ההשפעה הזאת נסתרת, ובתפילה היא נראית'
+        where: discourses/004-levushei-haneshama/sessions/004/section.teaching.md
+        at: הַנֹּסַח וְהַבֵּיאוּר
+      - quote: 'והיסוד של כל החיים היהודים — שהיא עבודת התפילה — שפה העיקר הוא הכוונה'
+        where: discourses/002-shaar-hayichud/introduction.md
+        at: מהות הקונטרס — שער היחוד
+    related: [naran, iyun]
+
+# Claude's applications of the frame to terms not yet defined in the shiurim (to confirm or correct).
+applied_terms:
+  - slug: maaseh-dibur
+    term: מעשה ודיבור (בתפילה)
+    forms: [מעשה ודיבור, המעשה, הדיבור]
+    lexicon: maaseh-vedibur
+    applied: >-
+      המעשה מתקן את הלבושים במקומם, כבחירה שבמצוות המעשיות; הדיבור, שבו עולה הנשמה עצמה, מעלה מעולם לעולם,
+      מן המעשה אל הדיבור, אל המחשבה, אל הרבדים העמוקים. נשען על נר"ן ולבושים (004, הערות ג'–ד').
+    related: [levushim, naran]
+  - slug: pnimiyut-chitzoniyut
+    term: פנימיות וחיצוניות העולמות
+    forms: [פנימיות, חיצוניות]
+    lexicon: penimiyut-chitzoniyut
+    applied: >-
+      החיצוניות היא העולם עצמו, ובנפש הלבושים והכלים, דפוסי המחשבה, הדיבור והמעשה; הפנימיות היא הנשמות, ובנפש
+      הנר"ן עצמם המאירים בהם.
+    related: [levushim, naran]
+  - slug: katnut-gadlut
+    term: קטנות וגדלות; עיבור, יניקה ומוחין
+    forms: [קטנות, גדלות, עיבור, יניקה]
+    lexicon: ibur-yenika-mochin
+    applied: >-
+      קטנות היא המידות כשאין בהן עדיין שכל, הרגל בלי התבוננות; גדלות היא המידות כשהשכל מאיר בהן. עיבור,
+      יניקה וגדלות הם שלבי כניסת ההבנה במידות: כבוש, ניזון, עומד בעצמו.
+    related: [mochin, zeir-anpin]
+  - slug: or-pnimi-makif
+    term: אור פנימי ואור מקיף
+    forms: [אור פנימי, אור מקיף, מקיף, מקיפים]
+    lexicon: or-pnimi-makif
+    applied: >-
+      אור פנימי הוא מה שנקלט ומובן ונכנס במידות; אור מקיף הוא מה שמשפיע מבחוץ ואינו נקלט, כמו הכוונה בברכה
+      שמקיפה את המעשה.
+    related: [maaseh-dibur]
+  - slug: panim-achor
+    term: אחור באחור, פנים בפנים, נסירה
+    forms: [אחור באחור, פנים בפנים, אב"א, פב"פ, נסירה]
+    applied: >-
+      אחור באחור: השכל והמידות, או המידות והביטוי, פועלים כל אחד לעצמו; פנים בפנים: מכוונים זה אל זה והביטוי
+      מקבל מן הפנימיות; הנסירה היא ההפרדה שמאפשרת פנים בפנים.
+    related: [zivug, zeir-anpin, nukva]
+  - slug: rachel
+    term: רחל
+    forms: [רחל, נקודת המלכות]
+    applied: >-
+      אם לאה היא אותיות המחשבה, רחל היא הגילוי למטה, הדיבור והמעשה; "עולימתא שפירתא דלית לה עיינין": הביטוי
+      שאין בו עדיין ראייה מן הפנימיות.
+    related: [leah, nukva]
+  - slug: kaddish
+    term: קדיש, עמוד שבין העולמות
+    forms: [קדיש]
+    applied: >-
+      המעבר מרובד לרובד בנפש, מן המעשה אל הדיבור ומן הדיבור אל המחשבה; בכל מעבר יש סכנה שהקליפות, הנגיעות,
+      יעלו עמו, ולכן הוא בשבח שמכניע אותן.
+    related: [almin-ditgalyan, kelipat-noga]

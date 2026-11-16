@@ -16,6 +16,10 @@ The layer is described in `knowledge/README.md`; today it holds the lexicon.
    term in a sense the entry lacks, that is a new sense, not a reason to stretch the old one.
 4. Anything the entry does not cover is looked up in `sources/` (`scripts/source-lookup.py --find`), never
    answered from memory.
+5. The second dimension: `python scripts/teacher-terms.py --in <file>` lists the terms of the text that
+   Ronnie has given a meaning in the soul (`knowledge/teacher/TERMS.md`). An explanation in his terms (the
+   "בנפש האדם" layer, `prompts/biur-rules.md`) applies those meanings and no others; a term he has not
+   defined is applied from his frame and recorded under `applied_terms:` for him to confirm.
 
 ## After the work
 
@@ -23,8 +27,9 @@ The layer is described in `knowledge/README.md`; today it holds the lexicon.
    (format in `knowledge/README.md`), its meaning in Hebrew, resting on the exact words at an address found
    with `source-lookup.py`. A source outside `sources/` goes in as `cite:`; an unsettled point under `open:`.
 2. Correct an entry the work showed to be wrong or narrow: a new sense or a `caution:`, with its source.
-3. What the teacher said of a term goes under `teacher:` with the session it comes from, never into the
-   meaning.
+3. What the teacher said of a term goes into `knowledge/teacher/terms.yaml` (`said:`, his exact words and
+   the file), never into the lexicon meaning; `python scripts/teacher-terms.py` checks the quote and copies it
+   to the entry's `teacher:`. A new definition he records (a voice note on a term) goes in the same way.
 4. `python scripts/lexicon.py --check` until it reports 0 errors (it rewrites `knowledge/lexicon/INDEX.md`).
    Every quote must be found at its address; a miss means the words or the address are wrong; fix them, do
    not drop the check.

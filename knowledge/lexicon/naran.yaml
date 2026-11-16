@@ -11,8 +11,8 @@ abbrev:
   נרנח"י: נפש רוח נשמה חיה יחידה
 category: הנשמה ולבושיה
 senses:
-- meaning: 'האדם עצמו: הנשמה, בחלקיה נפש רוח ונשמה (ועמהם חיה ויחידה). בלשון עץ חיים היא "הצורה" ו"העצמות", לעומת
-    הכלים, שהם הגוף והלבושים שלה.'
+- meaning: 'האדם עצמו: הנשמה, בחלקיה נפש רוח ונשמה (ועמהם חיה ויחידה). בלשון עץ חיים היא "הצורה" ו"העצמות", לעומת הכלים, שהם
+    הגוף והלבושים שלה.'
   rests_on:
   - work: etz-chaim
     ref: 26.1.2
@@ -27,3 +27,10 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+teacher:
+- said: המצוות לא באו לתקן את הצורה, שהיא הנר"ן
+  where: discourses/004-levushei-haneshama/sessions/003/refined.md
+  from: knowledge/teacher/terms.yaml
+- said: בתפילה אין המדובר בלבושים, אלא בנר"ן עצמם, העולים מן הקליפות
+  where: discourses/004-levushei-haneshama/sessions/005/section.teaching.md
+  from: knowledge/teacher/terms.yaml

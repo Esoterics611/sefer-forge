@@ -7,9 +7,9 @@ forms:
 - הצלמים
 category: הנשמה ולבושיה
 senses:
-- meaning: 'הלבוש שבין הצורה (נר"ן) לבין הכלים: הנשמה אינה נכנסת בגוף אלא על ידו. לכל אחד מחלקי הנשמה צלם משלו.
-    הוא יצר טוב ויצר רע, והוא תרי"ג איברים, ושורשו ברפ"ח הניצוצות שנשארו בכלים שנשברו ("הבל דגרמי"). את הצלמים ואת
-    הכלים המצוות מצרפות ומבררות.'
+- meaning: 'הלבוש שבין הצורה (נר"ן) לבין הכלים: הנשמה אינה נכנסת בגוף אלא על ידו. לכל אחד מחלקי הנשמה צלם משלו. הוא יצר טוב
+    ויצר רע, והוא תרי"ג איברים, ושורשו ברפ"ח הניצוצות שנשארו בכלים שנשברו ("הבל דגרמי"). את הצלמים ואת הכלים המצוות מצרפות
+    ומבררות.'
   rests_on:
   - work: etz-chaim
     ref: 26.1.2
@@ -32,3 +32,10 @@ related:
 status: draft
 learned_from:
 - discourses/004-levushei-haneshama
+teacher:
+- said: ואני מציע שהאוויר הזה הוא שנקרא צלם
+  where: discourses/004-levushei-haneshama/introduction.md
+  from: knowledge/teacher/terms.yaml
+- said: ושני צלמים הם, הנקראים יצר טוב ויצר רע
+  where: discourses/004-levushei-haneshama/introduction.md
+  from: knowledge/teacher/terms.yaml

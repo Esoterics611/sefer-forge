@@ -48,3 +48,13 @@ the prose.
 ## Where things go
 As in level 1: `notes/terms.md`, `notes/argument-map.md`, `notes/citations.md`,
 `notes/open-questions.md`; this file for the stopping point and the claims to check.
+
+## Meaning layer (2026-11-16)
+
+At Ronnie's request every section carries "בנפש האדם" blocks (`::: {.meaning}`) applying the paragraph in
+his meanings of the terms (`knowledge/teacher/terms.yaml`; rules in `prompts/biur-rules.md`, last part), and
+the build appends מפתח המושגים. Seven terms are Claude's application, not his words (printed "(יישום)"):
+פנימיות וחיצוניות העולמות, מעשה ודיבור, קטנות וגדלות, אור פנימי ומקיף, אחור באחור / פנים בפנים, רחל,
+הקדיש כעמוד. When he confirms or corrects one, change it in terms.yaml (move it to `terms:` with `said:` once
+he has said it on a recording) and rebuild; the blocks that rest on it may need rewording. Without the layer:
+`--no-meaning` → `output/biur/plain/`.

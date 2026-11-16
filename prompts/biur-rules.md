@@ -48,3 +48,25 @@ script can see.
 The apparatus is useful while writing and checking: certainty, misreadings to avoid, what is missing.
 Write it in `biur/notes/` (one file per kind), not in `biur.src.md`. A checker reads the notes beside the
 explanation; the reader of the explanation never sees them.
+
+## The meaning layer ("בנפש האדם")
+
+Added at Ronnie's word on 2026-11-16 ("explain the Arizal and the Rashash according to how I define the
+terms; another section on each page"). An explanation may carry, after a paragraph, a block that applies
+what that paragraph says to the soul and the service of prayer, in the meanings Ronnie gives the terms:
+
+```
+::: {.meaning}
+<plain, impersonal Hebrew: the same sentence, read in the soul>
+:::
+```
+
+- The meanings come from `knowledge/teacher/terms.yaml` (`TERMS.md`): what he said (`said:`, quoted and
+  checked) and, where he has not defined a term, Claude's application of his frame (`applied:`, printed
+  "(יישום)" in the key, to be confirmed). Nothing from memory, nothing from another school.
+- The rules above hold inside the block: no first person, no instructions, no certainty notes.
+- The build labels each block "בנפש האדם" and appends **מפתח המושגים**: every term the blocks use, his
+  meaning, and the shiur it comes from. `--no-meaning` prints the explanation without the layer
+  (`output/biur/plain/`).
+- Each block follows its paragraph; a paragraph that leads into a source with ":" gets its block after
+  the source. Not every paragraph needs one: a lead-in, or a bare list of addresses, can stand without.

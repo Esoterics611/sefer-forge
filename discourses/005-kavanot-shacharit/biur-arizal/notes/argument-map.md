@@ -102,3 +102,27 @@ The deeds in detail (SK Prayers.3.2–3.4):
   מלכות דיצירה, inner ג' אמצעיות clothe its outer: six levels ↔ six letters of שקוצי"ת.
   איזהו מקומן: the rest of עשיה, with the incense-life as the outermost. 13 מידות = the 13
   levels of עשיה.
+
+## 6. Part 2, section by section (written 2026-11-16)
+
+- **§5** Kaddish: one at each change of world (SK Kaddish.1.1.3); none between בריאה and אצילות, since all of מלכות
+  דאצילות stands in the head of בריאה (1.1.5). Every world 10 and 13 (six heichalot + היכל ק"ק of four + the כסא); the
+  מלכות of the upper world stands in היכל ק"ק of the lower (מיעוט הירח). Two modes of rising: the six heichalot are only
+  included; the seventh turns into the world above (1.1.6) — hence הודו, a psalm, in עשיה. Kaddish = the pillar; 28
+  letters raise the six, 28 words the seventh; only שם מ"ב raises (7 ו' of וישתבח; not ישתבח with י). 1.1.2: gives רוח
+  of יצירה to ג"ר דעשיה. PEC Holies 1.5: only the souls rise. Content: Aramaic (klipot subdued); יתגדל ויתקדש = 11 = ו"ה
+  raised to י"ה; מ"ב = 4+10+28, the אמן separations; mochin of קטנות (אלם → אלהים → filled); אמן = 91; לעלם/לעלמי/עלמיא;
+  PEC Amen 3.2 אמן = יאהדונה"י. Overview of all Kaddishes; קדיש יתום.
+- **§6** Pesukei deZimra: הודו before ב"ש (Sefardi); נפש → רוח (Kaddish) → נשמה (הודו); klipot fear and rise; אל נקמות: ten
+  martyrs; ה' מלך: ten sparks become kings; ב"ש = א"א of יצירה (13 ברוך, 87 = 22+65; inner 87 = מ"ה+42); מזמור לתודה =
+  או"א; יהי כבוד = ט"ט מטטרון, ז"א of יצירה; אשרי = כתר; פא"י/חת"ך; תהלה = אמת; five הללויה from מלכות up (Vital's
+  doubt); ויברך דוד = כתר (אהי"ה), צדקה; שירת הים = another partzuf; ישתבח 13 (SK 26 יצירה; PEC 6.17 בריאה).
+- **§7** Blessings of Shema: tefillin of the hand at יוצר; the seven heichalot of בריאה along the blessings (SK 27);
+  המלך המרומם: מלכות דבריאה rises to יסוד דבריאה (29); קדושת יוצר → הוד דבריאה (PEC Shema 2.3); אהבת עולם not רבה (30);
+  gathering the fringes; four remembrances (31); היכל אהבה: מ"ן to או"א, and why in בריאה (PEC Shema 4.4–4.5).
+- **§8** Kriat Shema: why in Shacharit (פב"פ; enough for Mincha; SK 1.1.4); two ק"ש, "לאט לאט" (3.1.4–5); what is in ז"א
+  before (2.1.2); three tasks at once (6.1.4); the outer union first, the inner at אחד (6.1.10); שמע = שם ע', ישראל = שיר
+  אל, ה' אלהינו ה' = או"א ודעת, א"ח/ד' (5.1.9); מסירת נפש, Rachel from היכל אהבה (6.3.5); Leah gets her mochin, ד' = her
+  כתר; Rachel only prepared in בשכמל"ו for ברכת אבות (6.4.3–4); only ו"ק of גדלות, 248 (5.1.1, 5.1.8); ואהבת = חסד, ריוח
+  בין הדבקים (8.1.2); פרשת ציצית: ק"ל = עין, Rachel without eyes (8.1.13); אמת ויציב = kiss, היכל רצון, 4+4 אמת (5.1.8);
+  סמיכת גאולה לתפלה (8.1.28).

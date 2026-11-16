@@ -1,0 +1,20 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: הקדיש, העמוד שבין עולם לעולם
+forms:
+- עמוד
+- קדיש
+category: תפילה
+senses:
+- meaning: הקדיש הוא העמוד שבו עולים מעולם לעולם; לכן בכל שינוי עולם תיקנו קדיש.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.6
+    quote: והנה סוד הקדיש הזה הוא בחי׳ העמוד הנז׳
+  - work: shaar-hakavanot
+    ref: Sermons on Kaddish.1.1.3
+    quote: ולכן תקנו קדיש אחד בכל שינוי עולם ועולם
+related:
+- heichal-kodesh-hakodashim
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

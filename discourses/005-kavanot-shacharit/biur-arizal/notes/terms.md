@@ -33,3 +33,20 @@ lexicon, `knowledge/lexicon/`). SK = שער הכוונות, PEC = פרי עץ ח
 | נקודת הכתר דרחל | the root point of Rachel; down to היכל ק"ק דבריאה at midnight, back to אצילות at dawn, tied to ז"א's left arm | SK Sermons on Tefillin.5.5–5.6 |
 | ישראל / יעקב | two aspects of ז"א, divided at the chest; Leah is with the first, Rachel with the second | PEC Gate of Prayer.7.46–7.47 |
 | ד' יחודים | ק"ש = י', תפילין = ה' ראשונה, ציצית = ו', תפילה = ה' אחרונה | SK Sermons on Tzitzit.7.2 |
+
+## Part 2 (2026-11-16)
+- עמוד (בין עולם לעולם) — the Kaddish: SK Kaddish.1.1.6 "והנה סוד הקדיש הזה הוא בחי' העמוד".
+- היכל קודש הקודשים / שית דרגין וארבע רגלין דכורסיא — SK Kaddish.1.1.3–1.1.4.
+- מיעוט הירח (המלכות בהיכל ק"ק של העולם שתחתיה) — SK Kaddish.1.1.3.
+- שם מ"ב של הוי"ה (4+10+28) — SK Kaddish.1.5.3; "דאיהו סליק ולא נחית" 1.1.6.
+- אלם / אלהים (מוחין דקטנות) — SK Kaddish.1.5.4.
+- אמן = צ"א / יאהדונה"י — SK Kaddish.1.5.8; PEC Amen 3.2.
+- עשרה הרוגי מלכות (ליקוט ניצוצות העשיה) — SK Morning Prayers.4.
+- מטטרו"ן, ט"ט (ז"א דיצירה), ח"י אזכרות — SK Morning Prayers.12.
+- חת"ך, פא"י — SK Morning Prayers.14–15.
+- היכל אהבה (חיבוק) / היכל רצון (נישוק) — SK Shema.5.1.8.
+- זיווג חיצון / זיווג פנימי של או"א (in ק"ש) — SK Shema.6.1.6, 6.1.9–6.1.10.
+- שמע = שם ע'; ישראל = שי"ר א"ל — SK Shema.5.1.9.
+- ד' רבתי דאחד (כתר דלאה) — SK Shema.6.4.3–6.4.4.
+- עולימתא שפירתא דלית לה עיינין (רחל) — SK Shema.5.1.7, 8.1.13.
+- סמיכת גאולה לתפלה — SK Shema.8.1.28; Kaddish.1.1.5.

@@ -1,0 +1,20 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: היכל אהבה (בקריאת שמע)
+forms:
+- היכל אהבה
+- היכל האהבה
+category: עולמות
+senses:
+- meaning: בהיכל אהבה דבריאה נעשים מ"ן לעורר את הזיווג העליון של אבא ואימא שבאצילות; קריאת שמע היא זיווג אבא ואימא והורדת מוחין לזו"ן, ובעמידה זיווג זו"ן.
+  rests_on:
+  - work: pri-etz-chaim
+    ref: Gate of the Recitation of the Shema.4.4
+    quote: נעשין בו מ״נ לעורר הזיווג העליון דאו״א שבאצילות
+  - work: pri-etz-chaim
+    ref: Gate of the Recitation of the Shema.4.4
+    quote: נמצא, כי ענין ק״ש הוא בחי׳ זיווג דאו״א, והורדת מוחין לזו״נ, ואח״כ בעמידה זיווג זו״נ
+related:
+- daled-rabati-deechad
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal

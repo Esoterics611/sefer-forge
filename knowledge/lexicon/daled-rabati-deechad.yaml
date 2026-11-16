@@ -1,0 +1,21 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ד' רבתי דאחד
+forms:
+- "ד' דאחד"
+- "ד' רבתי"
+category: תפילה
+senses:
+- meaning: בד' של "אחד" מכוונים אל המלכות, ומוסרים בה את הנפש על קידוש השם, ובכך יש כוח ברחל לעלות מהיכל אהבה דבריאה עד מקום ז"א דאצילות.
+  rests_on:
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.5.1.9
+    quote: ובד׳ דאח״ד תכוין אל המלכות
+  - work: shaar-hakavanot
+    ref: Sermons on Intentions of the Shema Recitation.6.3.5
+    quote: ולכן אנו צריכין למסור נפשינו על קדוש השם באות ד׳ דאחד
+related:
+- shema-shem-ayin
+- heichal-ahava-ratzon
+status: draft
+learned_from:
+- discourses/005-kavanot-shacharit/biur-arizal
