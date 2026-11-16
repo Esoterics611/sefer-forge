@@ -87,3 +87,36 @@ changes of עשיה; the six levels of אנא בכח; all the numbers (31, 32, �
   one clause that 3 + 18 = 21 is not explained there. "וכן בשער התפילה שבפרי עץ חיים" dropped (7.55/7.57
   count from לשכוי). The exceptions as SK Morning Blessings.7: "שעשה לי כל צרכי" on ט"ב and יוה"כ, ענט"י and
   אשר יצר when not obliged.
+
+# The independent check of part 2 (§5–§8), 2026-11-16
+
+One examiner, who had not seen the writing or its notes, checked §5–§8 of `biur.md` against `sources/`. All 42
+passages set in are exact, with correct addresses and דרוש numbers; the prose quotations checked are exact. The
+writer corrected the following the same day (✔).
+
+## Errors
+1. ✔ §8, the outer union of או"א "אינו צריך מיין נוקבין": it does not need the מ"ן of זו"ן; its own מ"ן rise from
+   "ההוא רוחא" in אימא (SK Shema 6.1.9). Corrected.
+2. ✔ §6, אכתריא"ל in אריך, אבא and אימא: SK Morning Prayers 12 "אכתריאל בא"א י"ה באבא ה' צבאות באימא". Corrected.
+3. ✔ §6, "בביאור היסודי נזכר ... שלושה עשר ברוך ושמונים ושבע תיבות": not said earlier; and a self-reference. Rewritten.
+
+## Imprecise
+4. ✔ §6, ישתבח "ובדרוש א' הם בסוף היצירה": the passage is SK Morning Prayers 26 (cited in the paragraph). Dropped.
+5. ✔ Rachel before ק"ש: היכל אהבה (SK Shema 6.3.5, 6.4.3; PEC 4.5) vs היכל ק"ק (the מבוא, from SK Prayers 2.2). Now
+   stated in §8.
+6. ✔ §8, "זה מכוון לדברי המבוא": the ד' that rises as מ"ן is Rachel and not Leah (6.3.4–5; 6.4.2), against the מבוא's
+   "Rachel rises to Leah". Now stated as a difference, with what both agree on.
+7. ✔ §5, the two accounts of the first Kaddish (1.1.2: עשיה already included, the Kaddish gives רוח; 1.1.6 and Morning
+   Prayers 6: the Kaddish raises): now given as two, not harmonized; "מוסיף המעתיק" → "בהגהה".
+8. ✔ §5, the fourth and fifth Kaddish "יורדים": they include and raise (1.4.1); now "בחלק הירידה ... כוללים ומעלים".
+9. ✔ §5, "הקדיש תלוי בעונים ... העמוד וההגדלה": overstated; now only the second הגדלה at "אמן יהא שמיה רבא" (1.5.8).
+10. ✔ §7, the קדושה of יוצר: the three "קדוש" are three stages (PEC Shema 2.3); now so, and "בכל מקום" said.
+11. Open: §6, "אשרי הוא הכתר של היצירה" beside ב"ש as א"א / "כתר דיצירה" (PEC Songs 6.17): two crowns, not explained.
+
+## Minor
+12. ✔ חת"ך in the morning "יונק משם מצפ"ץ" (not "נגזר"); תהלה = אמת "עם הכולל"; "הוד והדר" = נ"ה, "עוז וחדוה" =
+    יסוד; "העלית מן שאול" given as a hearing; the ק"ש paragraph on the souls' מ"ן tied to the start of the דרוש
+    (6.1.5); §8 opening: עשיה and יצירה are מ"ן to או"א of בריאה, ז"א with the ד' to או"א of אצילות.
+13. Open: the 28 words end "דאמירן בעלמא ואמרו אמן" (1.1.2) in one place and "דאמירן בעלמא" (1.5.3) in another; and
+    the ד' רבתי has three reasons (5.1.9, 6.4.3, 6.4.4), two given.
+14. Print rules: ✔ "כאן נבאר" (first person) and "צריך לדעת" (to the reader) rewritten.
