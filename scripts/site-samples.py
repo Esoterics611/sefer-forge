@@ -1,35 +1,41 @@
 #!/usr/bin/env python3
-"""Page images of the website's sample project (site/samples/).
+"""Page images of the website's samples (site/samples/).
 
-    python scripts/site-samples.py
+    python scripts/site-samples.py            # every sample whose PDF is built
+    python scripts/site-samples.py handout-he # one of them, by key in SAMPLES
 
-The home page (site/index.html) shows one discourse as a sample project: every
-page of its pamphlet and of its reading pack in a page viewer, a close-up or
-two, and the two PDFs to download. This renders them from the printed PDFs:
+The home page (site/index.html, and the Hebrew page site/he/index.html) shows
+the work page by page in one viewer. Each sample here is a printed PDF and the
+pages of it the viewer shows:
 
-    site/samples/<name>/pamphlet-NN.webp   (+ pamphlet-NN-t.webp, the thumbnail)
-    site/samples/<name>/pack-NN.webp       (+ pack-NN-t.webp)
-    site/samples/<name>/<crop>.webp        (the close-ups in CROPS)
-    site/samples/<name>/<name>-pamphlet.pdf, <name>-reading-pack.pdf
+    site/samples/<dir>/<prefix>-NN.webp   (+ <prefix>-NN-t.webp, the thumbnail)
+    site/samples/<dir>/<pdf name>         (when the sample publishes its PDF)
 
-and, for the Tefillah program, chosen pages of the ביאור of 005 (deployed at
-Ronnie's word, 2026-11-17; the PDF itself is not published while §9-§13 are
-unwritten):
-
-    site/samples/kavanot-shacharit/biur-NN.webp   (+ biur-NN-t.webp)
+The samples (2026-11-17):
+- biur: chosen pages of the ביאור of 005, the morning prayer after the Arizal
+  (deployed at Ronnie's word; the PDF is not published while §9-§13 are
+  unwritten). Its section openings move when the text grows: check them
+  against the PDF's headings before rerunning.
+- handout-he, handout-en: the four-page class handout on the garments of the
+  soul (004), in Hebrew and in English, every page and the PDFs.
 
 Build and proof the PDFs first (CLAUDE.md: no PDF goes out unproofed):
 
-    python scripts/build-pamphlet.py discourses/004-levushei-haneshama
-    python scripts/build-references.py discourses/004-levushei-haneshama/sessions/001
-    python scripts/proof-pdf.py output/pamphlets/004-levushei-haneshama.pdf
     python scripts/build-biur.py discourses/005-kavanot-shacharit/biur-arizal --pdf
     python scripts/proof-pdf.py output/biur/005-kavanot-shacharit-arizal.pdf --profile biur
+    python scripts/build-handout.py discourses/004-levushei-haneshama/handouts/levushei-haneshama-mavo.md
+    python scripts/build-handout.py discourses/004-levushei-haneshama/handouts/levushei-haneshama-mavo-en.md
+    python scripts/proof-pdf.py output/handouts/levushei-haneshama-mavo.pdf
+    python scripts/proof-pdf.py output/handouts/levushei-haneshama-mavo-en.pdf
 
-then run this, check that the page captions in site/index.html (PAGES in its
-script) still describe the pages it prints, and publish with
-scripts/deploy-site.sh. Made in a cloud container, the pages show the preview
-fonts (scripts/setup-cloud.sh); made at home, the house fonts.
+then run this, check that the page captions in both pages' scripts (DOCS)
+still describe the pages it prints, and publish with scripts/deploy-site.sh.
+Made in a cloud container, the pages show the preview fonts
+(scripts/setup-cloud.sh); made at home, the house fonts.
+
+site/samples/levushei-haneshama/pack-closeup.webp (the process section's
+close-up of a reading pack) was cut from the 8 Nov reading pack and is kept as
+it is.
 """
 from __future__ import annotations
 
@@ -38,94 +44,64 @@ import shutil
 import sys
 from pathlib import Path
 
-import fitz  # PyMuPDF
+import pymupdf
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-NAME = "levushei-haneshama"
-OUT = ROOT / "site" / "samples" / NAME
-
-# kind -> (PDF, width of the full-size page image in pixels)
-DOCS = {
-    "pamphlet": (ROOT / "output/pamphlets/004-levushei-haneshama.pdf", 1240),
-    "pack": (ROOT / "output/references/004-levushei-haneshama-001.pdf", 1500),
-}
 THUMB_WIDTH = 220
-# Close-ups: name -> (kind, page, (left, top, right, bottom) as fractions of the page)
-CROPS = {
-    "pack-closeup": ("pack", 1, (0.08, 0.214, 0.92, 0.565)),
+
+# key -> (PDF, folder under site/samples, file prefix, pages (None = all),
+#         width of the full-size image, published name of the PDF or None)
+SAMPLES = {
+    "biur": (ROOT / "output/biur/005-kavanot-shacharit-arizal.pdf", "kavanot-shacharit", "biur",
+             [1, 2, 11, 18, 25, 39, 53, 57], 1240, None),
+    "handout-he": (ROOT / "output/handouts/levushei-haneshama-mavo.pdf", "levushei-haneshama",
+                   "handout-he", None, 1240, "levushei-haneshama-handout.pdf"),
+    "handout-en": (ROOT / "output/handouts/levushei-haneshama-mavo-en.pdf", "levushei-haneshama",
+                   "handout-en", None, 1240, "levushei-haneshama-handout-en.pdf"),
 }
-# The Tefillah sample: chosen pages of the ביאור, in this order (captions in
-# site/index.html, DOCS.biur in its script). Its section openings move when the
-# text grows: check them against the PDF's headings before rerunning.
-BIUR_PDF = ROOT / "output/biur/005-kavanot-shacharit-arizal.pdf"
-BIUR_OUT = ROOT / "site" / "samples" / "kavanot-shacharit"
-BIUR_PAGES = [1, 2, 11, 18, 25, 39, 53, 57]
-BIUR_WIDTH = 1240
 
 
-def render(page: fitz.Page, width: int) -> Image.Image:
+def render(page: pymupdf.Page, width: int) -> Image.Image:
     zoom = width / page.rect.width
-    pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom))
+    pix = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom))
     return Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
 
 
-def main() -> int:
-    missing = [str(p.relative_to(ROOT)) for p, _ in DOCS.values() if not p.exists()]
-    if missing:
-        print("Build these first (see the header of this script): " + ", ".join(missing))
-        return 1
-    OUT.mkdir(parents=True, exist_ok=True)
-    for old in OUT.glob("*.webp"):
+def build(key: str) -> bool:
+    pdf, folder, prefix, pages, width, published = SAMPLES[key]
+    if not pdf.exists():
+        print(f"{key}: build this first (see the header of this script): {pdf.relative_to(ROOT)}")
+        return False
+    out = ROOT / "site" / "samples" / folder
+    out.mkdir(parents=True, exist_ok=True)
+    for old in out.glob(f"{prefix}-*.webp"):
         old.unlink()
-
-    pages: dict[str, list[Image.Image]] = {}
-    for kind, (pdf, width) in DOCS.items():
-        doc = fitz.open(pdf)
-        pages[kind] = []
-        size = 0
-        for n, page in enumerate(doc, 1):
-            im = render(page, width)
-            pages[kind].append(im)
-            full = OUT / f"{kind}-{n:02d}.webp"
-            im.save(full, "WEBP", quality=82, method=6)
-            thumb = im.copy()
-            thumb.thumbnail((THUMB_WIDTH, THUMB_WIDTH * 2))
-            thumb.save(OUT / f"{kind}-{n:02d}-t.webp", "WEBP", quality=72, method=6)
-            size += full.stat().st_size
-        print(f"{kind}: {doc.page_count} pages, {size // 1024} KB  ({pdf.relative_to(ROOT)})")
-
-    for name, (kind, n, (l, t, r, b)) in CROPS.items():
-        im = pages[kind][n - 1]
-        w, h = im.size
-        im.crop((int(l * w), int(t * h), int(r * w), int(b * h))).save(
-            OUT / f"{name}.webp", "WEBP", quality=84, method=6)
-        print(f"close-up: {name}.webp ({kind} p. {n})")
-
-    shutil.copyfile(DOCS["pamphlet"][0], OUT / f"{NAME}-pamphlet.pdf")
-    shutil.copyfile(DOCS["pack"][0], OUT / f"{NAME}-reading-pack.pdf")
-    print(f"PDFs copied. Now check the captions in site/index.html against "
-          f"{len(pages['pamphlet'])} pamphlet and {len(pages['pack'])} reading-pack pages.")
-    return biur()
-
-
-def biur() -> int:
-    if not BIUR_PDF.exists():
-        print(f"Build this first (see the header of this script): {BIUR_PDF.relative_to(ROOT)}")
-        return 1
-    BIUR_OUT.mkdir(parents=True, exist_ok=True)
-    for old in BIUR_OUT.glob("*.webp"):
-        old.unlink()
-    doc = fitz.open(BIUR_PDF)
-    for n, page_no in enumerate(BIUR_PAGES, 1):
-        im = render(doc[page_no - 1], BIUR_WIDTH)
-        im.save(BIUR_OUT / f"biur-{n:02d}.webp", "WEBP", quality=82, method=6)
+    doc = pymupdf.open(pdf)
+    chosen = pages or list(range(1, doc.page_count + 1))
+    for n, page_no in enumerate(chosen, 1):
+        im = render(doc[page_no - 1], width)
+        im.save(out / f"{prefix}-{n:02d}.webp", "WEBP", quality=82, method=6)
         thumb = im.copy()
         thumb.thumbnail((THUMB_WIDTH, THUMB_WIDTH * 2))
-        thumb.save(BIUR_OUT / f"biur-{n:02d}-t.webp", "WEBP", quality=72, method=6)
-    print(f"biur: {len(BIUR_PAGES)} of {doc.page_count} pages ({', '.join(map(str, BIUR_PAGES))})")
-    return 0
+        thumb.save(out / f"{prefix}-{n:02d}-t.webp", "WEBP", quality=72, method=6)
+    if published:
+        shutil.copyfile(pdf, out / published)
+    print(f"{key}: {len(chosen)} of {doc.page_count} pages"
+          + (f", PDF as {folder}/{published}" if published else ""))
+    return True
+
+
+def main(argv: list[str]) -> int:
+    keys = argv or list(SAMPLES)
+    unknown = [k for k in keys if k not in SAMPLES]
+    if unknown:
+        print("unknown sample(s): " + ", ".join(unknown) + "; known: " + ", ".join(SAMPLES))
+        return 2
+    ok = [build(k) for k in keys]
+    print("Now check the page captions (DOCS) in site/index.html and site/he/index.html.")
+    return 0 if all(ok) else 1
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

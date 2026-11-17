@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>איך זה נעשה · ספר פורג'</title>
+<meta name="description" content="ספר פורג' חוקר, מבאר ומתרגם את פנימיות התורה, קבלת האר&quot;י והחסידות, ומוציא אותה לחוברות, תרגומים, דפי לימוד ושיעורים מוקלטים. כל ציטוט מדויק, וכל מקור מובא לצד המילים המצטטות אותו.">
+<link rel="alternate" hreflang="en" href="https://esoterics611.github.io/how.html">
+<link rel="alternate" hreflang="he" href="https://esoterics611.github.io/he/how.html">
+<meta property="og:title" content="ספר פורג': פנימיות התורה, בדיוק ובחיות">
+<meta property="og:description" content="מחקר, ביאור ותרגום של פנימיות התורה, ולימוד תפילה מתוך הבנה. כל ציטוט מדויק, וכל מקור מובא במקומו.">
+<meta property="og:image" content="https://esoterics611.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://esoterics611.github.io/he/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="home">
+<header>
+  <img src="../assets/logo.webp" alt="הסמל של ספר פורג'">
+  <a class="name" href="./">ספר פורג'</a>
+  <nav>
+    <a href="./">ראשי</a>
+    <a class="lang-toggle" href="../how.html" lang="en" hreflang="en">English</a>
+    <a class="nav-give" href="https://wa.me/972556850823?text=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%9E%D7%95%D7%9A%20%D7%91%D7%A1%D7%A4%D7%A8%20%D7%A4%D7%95%D7%A8%D7%92%27">לתמוך</a>
+  </nav>
+</header>
+
+<main>
+  <h1>איך זה נעשה</h1>
+  <p class="lead">למי שרוצה את הפרטים: התהליך שמאחורי כל עמוד, העקבות שכל שיעור משאיר,
+  והכלים. הכול פתוח ב־GitHub.</p>
+  <section class="hero">
+    <img src="../assets/sefer-forge-workshop.webp" width="1408" height="768" loading="lazy"
+         alt="ספר פורג': סמל המיזם על שולחן סדנה, בין מגילת סדר העבודה ללוח היכולות">
+  </section>
+
+  <section id="process" class="block">
+    <p class="eyebrow">איך זה נעשה</p>
+    <h2>משיעור מוקלט לעמוד מודפס</h2>
+    <p class="prose">שיעורי המלמד עוברים תהליך שנבנה כדי לשמור כל מילה מודפסת נאמנה
+    לספר ולמה שנאמר. המלמד לומד ספר ומבאר אותו בקול. ספר פורג' הופך את ההקלטה לפרסום
+    שבו כל עמוד נושא קטע מן המקור למעלה ואת ביאור המלמד עליו למטה: נאמן למה שנאמר,
+    וכתוב כדי שיקראו אותו.</p>
+
+    <ol class="steps">
+      <li>
+        <h3>לקלוט את הספר</h3>
+        <p>מצלמים את דפי הספר, או מדביקים את הלשון ממהדורה דיגיטלית. כל צילום נקרא
+        ברצועות ברזולוציה מלאה, השורות נספרות והכול נקרא פעם שנייה; מה שאי אפשר לקרוא
+        מסומן, לעולם לא מנוחש.</p>
+        <p class="chips"><code>ocr.md</code></p>
+      </li>
+      <li>
+        <h3>להביא את מקורותיו</h3>
+        <p>לפני ההקלטה, חוברת מקורות מביאה כל מקור שהספר מצטט תחת הציטוט: הקטע מעץ חיים
+        או מפרי עץ חיים עם השורות שלפניו ושאחריו, והמילים שהוא מכוון אליהן מסומנות,
+        מצוטט במדויק מן הספרים שבמאגר.</p>
+        <p class="chips"><code>references.yaml</code><code>חוברת מקורות (PDF)</code></p>
+        <figure class="closeup">
+          <img src="../samples/levushei-haneshama/pack-closeup.webp" width="1260" height="745" loading="lazy"
+               alt="מתוך חוברת מקורות: שורה מן הספר עם מראה המקום שלה, ומתחתיה, במסגרת מוצללת, הקטע מעץ חיים שהיא מצטטת והמילים המכוונות מסומנות">
+          <figcaption>מתוך חוברת מקורות: הלשון, מראה מקום 1, והקטע שהוא מכוון אליו.</figcaption>
+        </figure>
+      </li>
+      <li>
+        <h3>להקליט את הביאור</h3>
+        <p>המלמד קורא את הלשון בקול ומבאר אותה, בעברית, הערה אחר הערה, בטלפון. הצילומים
+        וההקלטות נשארים במחשב הבית: הם לעולם אינם עולים לרשת.</p>
+        <p class="chips"><code>voicenotes/</code></p>
+      </li>
+      <li>
+        <h3>לתמלל, בבית</h3>
+        <p>מודל ה־Whisper העברי של ivrit.ai רץ על כרטיס המסך בבית, בכ־0.9 מאורך ההקלטה,
+        ושומר תוך כדי, כך שתקלה אינה מאבדת דבר. מילון משותף מתקן את השיבושים החוזרים.</p>
+        <p class="chips"><code>.raw.txt</code><code>.timed.txt</code><code>whisper-fixes.yaml</code></p>
+      </li>
+      <li>
+        <h3>להתאים ולנקות</h3>
+        <p>התמלול מותאם למילים המודפסות שהמלמד קרא בקול, וכל אחד מתקן את חברו. הוא מנוקה
+        רק במקום שיש במאגר ראיה (הלשון, המילון, פסוק המצוטט). מילה מסופקת שומרת את
+        זמנה כדי שהמחבר יוכל לשמוע שוב, ודוח מונה כל מילה ששונתה.</p>
+        <p class="chips"><code>ocr-match.md</code><code>commentary.md</code><code>review.md</code></p>
+      </li>
+      <li>
+        <h3>לחבר לשון וביאור</h3>
+        <p>תוכנית קצרה חותכת את הלשון במקום שבו מתחיל ביאורה, והעמוד נבנה ממנה: הקטע
+        למעלה, הביאור למטה.</p>
+        <p class="chips"><code>section-plan.yaml</code><code>section.md</code></p>
+      </li>
+      <li>
+        <h3>לעשות אותו לשון כתובה</h3>
+        <p>שלושה מעברים, כל אחד נשמר כרשימת שינויים שאפשר לבטל: <strong>קריאות</strong>
+        (מילים משובשות), <strong>סגנון</strong> (עברית מדוברת נעשית כתובה)
+        ו<strong>הוראה</strong> (השיעור נכתב מחדש כביאור על הלשון, בערך במחצית האורך).
+        התמלול הנאמן נשאר לצידם, והלשון המצוטטת אינה משתנה לעולם.</p>
+        <p class="chips"><code>edits:</code><code>style:</code><code>teaching:</code><code>teaching-notes.md</code></p>
+      </li>
+      <li>
+        <h3>להדפיס, להגיה, לאשר</h3>
+        <p>כל מפגש נדפס כקונטרס A5; דרושים מתקבצים לפרקים ולספרים. כל PDF מוגה לגופנים,
+        לצבעים, לשוליים, לסימני עריכה שנשארו, לכותרות תלושות ולמספרי עמודים, ואחר כך
+        נבדק עמוד אחר עמוד, לפני שהוא מגיע אל המחבר לאישור.</p>
+        <p class="chips"><code>pamphlet (PDF)</code><code>book (DOCX)</code><code>proof-pdf.py</code></p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">שיעור ועקבותיו</p>
+    <h3>מאחורי הדפים: העקבות של הערה א'</h3>
+    <p class="small">בשיעורי המלמד, כל צעד משאיר קובץ במאגר, כך שכל משפט בעמוד אפשר
+    להחזיר אל ההקלטה.</p>
+    <div class="trail">
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/001/references.yaml"><code>references.yaml</code><span>התוכנית של חוברת המקורות: כל מראה מקום והקטע שלו</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/ocr.md"><code>ocr.md</code><span>קטע הלשון של ההערה, והקטע מעץ חיים</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/tree/main/discourses/004-levushei-haneshama/sessions/002/voicenotes"><code>voicenotes/</code><span>התמלול של Whisper, רגיל ומתוזמן (ההקלטה נשארת בבית)</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/ocr-match.md"><code>ocr-match.md</code><span>אילו מילים מודפסות נקראו בקול, ומתי</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/commentary.md"><code>commentary.md</code><span>התמלול הנאמן, והמעברים רשומים מעליו</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/review.md"><code>review.md</code><span>כל מילה ששונתה לעומת Whisper</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/section-plan.yaml"><code>section-plan.yaml</code><span>היכן נחתכת הלשון, ומה מבאר כל ביאור</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/teaching-notes.md"><code>teaching-notes.md</code><span>ההערה מובנת בכתב לפני שהיא נכתבת מחדש</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/section.teaching.md"><code>section.teaching.md</code><span>העמוד כפי שהוא נדפס</span></a>
+    </div>
+  </section>
+
+  <section id="automation" class="block">
+    <details class="tech">
+    <summary>לאנשי טכנולוגיה: סוכן בינה מלאכותית עושה את העבודה, והמאגר שומר עליה ישרה</summary>
+    <p class="prose">את העבודה עושה <strong>Claude Code</strong> כסוכן. המחבר אומר מטרה
+    ("מפגש חדש", "לקלוט את מפגש 3", "מעבר הוראה", "להגיה את הקונטרס") והסוכן מבצע כל
+    צעד: קורא את הצילומים, מריץ את הכלים, כותב את הקבצים, בודק את עבודתו, בונה מחדש,
+    ומדווח מה צריך את המחבר. כל מה שהוא יודע נמצא במאגר, לא בשיחה, כך שכל מפגש מתחיל
+    מאותם כללים.</p>
+    <div class="layers">
+      <div class="layer"><span class="tag">כללים</span><h3><code>CLAUDE.md</code></h3>
+      <p>מה אסור לשנות לעולם, מבנה הקבצים, ואיזו מיומנות עונה לאיזו בקשה.</p></div>
+      <div class="layer"><span class="tag">נהלים</span><h3><code>prompts/</code></h3>
+      <p>הצעדים המלאים לכל סוג מפגש, כללי בדיקת התמלול, ומעברי הקריאות, הסגנון וההוראה.</p></div>
+      <div class="layer"><span class="tag">מיומנויות</span><h3><code>.claude/skills/</code></h3>
+      <p>מיומנות לכל תהליך: <code>new-session</code>, <code>ocr-session</code>,
+      <code>ingest-session</code>, <code>references-pack</code>, <code>teaching-pass</code>,
+      <code>proof-pdf</code>, <code>build-book</code>…</p></div>
+      <div class="layer"><span class="tag">כלים</span><h3><code>scripts/</code></h3>
+      <p>העבודה הקבועה (תמלול, רצועות הצילום, התאמה, בנייה, הדפסה, מצב), כך שהסוכן מריץ
+      כלים ואינו מאלתר.</p></div>
+      <div class="layer"><span class="tag">ווים</span><h3><code>.claude/settings.json</code></h3>
+      <p>אחרי כל עריכה של קובץ מפגש רץ <code>check-session.py</code>; שגיאה חוזרת מיד אל
+      הסוכן לפני שהוא ממשיך.</p></div>
+      <div class="layer"><span class="tag">הגהות</span><h3><code>proof-pdf.py</code></h3>
+      <p>כל PDF נמדד מול <code>docs/print-standard.md</code>, ונבדק גיליון אחר גיליון, לפני
+      שמבקשים מאיש לאשר אותו.</p></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <h3>ראיה, לא המצאה</h3>
+        <div class="evidence">
+          <p class="file">sessions/002/review.md</p>
+          <p class="stat">Whisper 887 מילים · נוקה 883 · הוחלפו 32 · <strong class="nowrap">נוספו 0</strong></p>
+          <ul class="he">
+            <li><del>שעמם ט</del> ← <ins>שער מ"ט</ins></li>
+            <li><del>כותנות</del> ← <ins>כתנות</ins></li>
+            <li><del>ויבשם כותנות</del> ← <ins>וילבשם כתנות</ins></li>
+          </ul>
+        </div>
+        <p class="small">כל מילה בתמלול המנוקה חוזרת אל מה ש־Whisper שמע. מילה שנוספה בלי
+        כלל היא שגיאה, והבדיקה מדווחת עליה.</p>
+      </div>
+      <div>
+        <h3>איפה המחבר מחליט</h3>
+        <ul class="ticks">
+          <li>אישור PDF;</li>
+          <li>החלפת מקור אמת (תמלול גולמי, פענוח גמור);</li>
+          <li>כתיבה על לשון שנערכה ביד;</li>
+          <li>שינוי שהיה משנה את הטענה;</li>
+          <li>כל מה שיוצא מן המחשב או שאי אפשר לבטל: מיזוג, מחיקה, פרסום.</li>
+        </ul>
+      </div>
+    </div>
+    </details>
+  </section>
+
+  <section id="learn" class="block">
+    <p class="eyebrow">עוד</p>
+    <h2>הכול פתוח</h2>
+    <p class="prose">הקוד, הכללים שהסוכן פועל לפיהם, וקבצי כל מפגש נמצאים ב־<a href="https://github.com/Esoterics611/sefer-forge">github.com/Esoterics611/sefer-forge</a> (באנגלית).</p>
+    <div class="learn">
+      <div class="group">
+        <h3>להתחיל כאן</h3>
+        <a href="https://github.com/Esoterics611/sefer-forge#readme">README<span>התהליך במבט אחד</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/VISION.md">החזון<span>למה הכול נעשה בבית, ולאן זה הולך</span></a>
+      </div>
+      <div class="group">
+        <h3>התהליך לעומק</h3>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/prompts/teaching-pass.md">מעבר ההוראה<span>משיעור לביאור כתוב</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/print-standard.md">תקן הדפוס<span>העמוד הגמור, וההגהה</span></a>
+      </div>
+      <div class="group">
+        <h3>הדפים</h3>
+        <a href="../samples/levushei-haneshama/levushei-haneshama-handout.pdf">דף הלימוד (PDF)<span>לבושי הנשמה, ארבעה עמודים</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/discourses/004-levushei-haneshama">תיקיית לבושי הנשמה<span>המפגשים, הדרוש וההערות</span></a>
+      </div>
+    </div>
+  </section>
+  <div class="cta-band">
+    <h3>לתמוך בעבודה</h3>
+    <p>להקדיש חלק ממנה, לכבוד אדם יקר או לעילוי נשמת.</p>
+    <a class="btn primary" href="https://wa.me/972556850823?text=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%9E%D7%95%D7%9A%20%D7%91%D7%A1%D7%A4%D7%A8%20%D7%A4%D7%95%D7%A8%D7%92%27">שלחו לנו הודעה בוואטסאפ</a>
+    <a class="btn" href="./">חזרה לעמוד הראשי</a>
+  </div>
+</main>
+
+<footer>
+  <a href="../privacy.html">מדיניות פרטיות</a>
+  <a href="../terms.html">תנאי שימוש</a>
+  <a href="https://wa.me/972556850823?text=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%9E%D7%95%D7%9A%20%D7%91%D7%A1%D7%A4%D7%A8%20%D7%A4%D7%95%D7%A8%D7%92%27">יצירת קשר (וואטסאפ)</a>
+  <a href="../" lang="en">English</a>
+  <div>© 2026 Ronnie Rendel · Sefer Forge</div>
+</footer>
+</body>
+</html>

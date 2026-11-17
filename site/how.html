@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it is made · Sefer Forge</title>
+<meta name="description" content="Sefer Forge researches, explains and translates the inner Torah (Pnimiyut HaTorah), the Kabbalah of the Arizal and Chassidus, and turns it into teaching materials: books, pamphlets, source packs, translations and narrated lessons. Every quotation exact, every source set in.">
+<link rel="alternate" hreflang="en" href="https://esoterics611.github.io/how.html">
+<link rel="alternate" hreflang="he" href="https://esoterics611.github.io/he/how.html">
+<meta property="og:title" content="Sefer Forge: the inner Torah, explained and taught">
+<meta property="og:description" content="Research, explanation and translation of Pnimiyut HaTorah, and the teaching of Tefillah with meaning. Every quotation exact, every source set in.">
+<meta property="og:image" content="https://esoterics611.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://esoterics611.github.io/">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+<header>
+  <img src="assets/logo.webp" alt="Sefer Forge logo">
+  <a class="name" href="./">Sefer Forge</a>
+  <nav>
+    <a href="./">Home</a>
+    <a class="lang-toggle" href="he/how.html" lang="he" hreflang="he">עברית</a>
+    <a class="nav-give" href="https://wa.me/972556850823?text=I%27d%20like%20to%20support%20Sefer%20Forge">Support</a>
+  </nav>
+</header>
+
+<main>
+  <h1>How it is made</h1>
+  <p class="lead">For those who want the details: the process behind every page, the
+  trail each lesson leaves, and the tools. Everything is open on GitHub.</p>
+  <section class="hero">
+    <img src="assets/sefer-forge-workshop.webp" width="1408" height="768"
+         alt="Sefer Forge, AI Powered Repository: Build. Validate. Forge. The Sefer Forge emblem over a workshop table, between the workflow scroll and the features board">
+  </section>
+
+  <!-- ───────────────────────── The process ───────────────────────── -->
+  <section id="process" class="block">
+    <p class="eyebrow">How it is made</p>
+    <h2>From a recorded lesson to a printed page</h2>
+    <p class="prose">The teacher's lessons go through a process built to keep every
+    printed word faithful to the text and to what was said. A teacher learns a text and explains it aloud. Sefer Forge
+    turns the recording into a publication in which every page carries a passage
+    of the original on top and the teacher's explanation of it below: faithful to
+    what was said, and written to be read.</p>
+
+    <ol class="steps">
+      <li>
+        <h3>Take in the text</h3>
+        <p>Photograph the pages of a sefer, or paste the text from a digital
+        edition. The agent reads each photo in strips at full resolution, counts
+        the lines and reads everything a second time; what it cannot read is
+        flagged, never guessed.</p>
+        <p class="chips"><code>ocr.md</code></p>
+      </li>
+      <li>
+        <h3>Set out its sources</h3>
+        <p>Before recording, a reading pack sets every source the text cites
+        under its citation: the passage from Etz Chaim or Pri Etz Chaim with the
+        lines before and after, the words it refers to highlighted, quoted exactly
+        from the texts kept in the repository.</p>
+        <p class="chips"><code>references.yaml</code><code>reading pack (PDF)</code></p>
+        <figure class="closeup">
+          <img src="samples/levushei-haneshama/pack-closeup.webp" width="1260" height="745" loading="lazy"
+               alt="A close-up of the sample's reading pack: a line of the text with its citation, and below it, in a shaded box, the Etz Chaim passage it cites with the referred-to words highlighted">
+          <figcaption>From the sample's reading pack: the text, citation 1, and the
+          passage it points to.</figcaption>
+        </figure>
+      </li>
+      <li>
+        <h3>Record the explanation</h3>
+        <p>The teacher reads the text aloud and explains it, in Hebrew, one note
+        at a time, on a phone. Photos and recordings stay on the home machine:
+        they are never committed or uploaded.</p>
+        <p class="chips"><code>voicenotes/</code></p>
+      </li>
+      <li>
+        <h3>Transcribe, locally</h3>
+        <p>ivrit.ai's Hebrew Whisper (large-v3) runs on the home GPU, in about
+        0.9× the recording's length, saving as it goes so a crash loses nothing.
+        A shared glossary corrects the mis-hearings that recur.</p>
+        <p class="chips"><code>.raw.txt</code><code>.timed.txt</code><code>whisper-fixes.yaml</code></p>
+      </li>
+      <li>
+        <h3>Match and clean</h3>
+        <p>The transcript is matched against the printed words the speaker read
+        aloud, which corrects both. It is cleaned only where the repository holds
+        evidence (the text, the glossary, a verse being quoted). A doubtful word
+        keeps its time so the author can listen again, and a report lists every
+        word that changed.</p>
+        <p class="chips"><code>ocr-match.md</code><code>commentary.md</code><code>review.md</code></p>
+      </li>
+      <li>
+        <h3>Pair text and explanation</h3>
+        <p>A short plan cuts the text where its explanation begins, and the page is
+        built from the plan: the passage on top, the explanation below.</p>
+        <p class="chips"><code>section-plan.yaml</code><code>section.md</code></p>
+      </li>
+      <li>
+        <h3>Make it read as writing</h3>
+        <p>Three passes, each kept as a list of changes that can be undone:
+        <strong>readability</strong> (garbled words), <strong>style</strong>
+        (spoken Hebrew made written) and <strong>teaching</strong> (the lesson
+        rewritten as a commentary on the text, about half the length). The
+        faithful transcript stays beside them, and the quoted readings never
+        change.</p>
+        <p class="chips"><code>edits:</code><code>style:</code><code>teaching:</code><code>teaching-notes.md</code></p>
+      </li>
+      <li>
+        <h3>Print, proof, accept</h3>
+        <p>A session prints as an A5 pamphlet; discourses gather into chapters
+        and books (Word, through pandoc). Every PDF is proofed for fonts, colours,
+        margins, stray markup, stranded headings and page numbers, then reviewed
+        page by page, before it reaches the author for acceptance.</p>
+        <p class="chips"><code>pamphlet (PDF)</code><code>book (DOCX)</code><code>proof-pdf.py</code></p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">A lesson and its trail</p>
+    <h3>Behind the pages: the trail of note <span lang="he" dir="rtl">א</span></h3>
+    <p class="small">In the teacher's lessons, every step leaves a file in the repository, so any sentence on
+    the page can be traced back to the recording.</p>
+    <div class="trail">
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/001/references.yaml"><code>references.yaml</code><span>the reading pack's plan: each citation and its passage</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/ocr.md"><code>ocr.md</code><span>the note's stretch of the text, and its Etz Chaim passage</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/tree/main/discourses/004-levushei-haneshama/sessions/002/voicenotes"><code>voicenotes/</code><span>Whisper's transcript, plain and timed (the audio stays home)</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/ocr-match.md"><code>ocr-match.md</code><span>which printed words were read aloud, and when</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/commentary.md"><code>commentary.md</code><span>the faithful transcript, with its passes listed above it</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/review.md"><code>review.md</code><span>every word changed against Whisper</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/section-plan.yaml"><code>section-plan.yaml</code><span>where the text is cut, and what each explanation covers</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/teaching-notes.md"><code>teaching-notes.md</code><span>the note understood in writing before it is rewritten</span></a>
+      <a href="https://github.com/Esoterics611/sefer-forge/blob/main/discourses/004-levushei-haneshama/sessions/002/section.teaching.md"><code>section.teaching.md</code><span>the page as it prints</span></a>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── Automation ───────────────────────── -->
+  <section id="automation" class="block">
+    <details class="tech">
+    <summary>For technologists: an AI agent does the work, the repository keeps it honest</summary>
+    <p class="prose">The work is done by <strong>Claude Code</strong> acting as an
+    agent. The author names a goal (“new session”, “ingest session 3”,
+    “teaching pass”, “proof the pamphlet”) and the agent carries out every step.
+    It reads the photos, runs the scripts, writes the files, checks its own work,
+    rebuilds, and reports what needs the author. Everything it knows lives in the
+    repository, not in a chat, so every session starts from the same rules.</p>
+
+    <div class="layers">
+      <div class="layer">
+        <span class="tag">Rules</span>
+        <h3><code>CLAUDE.md</code></h3>
+        <p>What may never be edited, the file formats, and which skill answers
+        which request.</p>
+      </div>
+      <div class="layer">
+        <span class="tag">Procedures</span>
+        <h3><code>prompts/</code></h3>
+        <p>The full steps for each kind of session, the transcript review rules,
+        and the readability, style and teaching passes.</p>
+      </div>
+      <div class="layer">
+        <span class="tag">Skills</span>
+        <h3><code>.claude/skills/</code></h3>
+        <p>Sixteen skills, one per workflow: <code>new-session</code>,
+        <code>ocr-session</code>, <code>ingest-session</code>,
+        <code>references-pack</code>, <code>teaching-pass</code>,
+        <code>proof-pdf</code>, <code>build-book</code>…</p>
+      </div>
+      <div class="layer">
+        <span class="tag">Scripts</span>
+        <h3><code>scripts/</code></h3>
+        <p>The deterministic work (transcription, OCR strips, matching, building,
+        printing, status), so the agent runs tools instead of improvising.</p>
+      </div>
+      <div class="layer">
+        <span class="tag">Hooks</span>
+        <h3><code>.claude/settings.json</code></h3>
+        <p>After every edit of a session file a hook runs
+        <code>check-session.py</code>; an error goes straight back to the agent
+        before it moves on.</p>
+      </div>
+      <div class="layer">
+        <span class="tag">Proofs</span>
+        <h3><code>proof-pdf.py</code></h3>
+        <p>Every PDF is held to <code>docs/print-standard.md</code>, then reviewed
+        spread by spread, before anyone is asked to accept it.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <h3>You say, the agent does</h3>
+        <table class="say">
+          <tr><th>“new session” + files</th><td>makes the session, starts Whisper in the background, begins the OCR</td></tr>
+          <tr><th>“references”</th><td>sets out every cited source as a reading pack</td></tr>
+          <tr><th>“ingest session”</th><td>OCR, match, clean, pair, the three passes, the pamphlet and its proof</td></tr>
+          <tr><th>“status”</th><td>where every session stands, and its next step</td></tr>
+          <tr><th>“assemble discourse”, “build book”</th><td>joins the sessions, places the chapter, renders the book</td></tr>
+          <tr><th>“grow the glossary”</th><td>proposes Whisper fixes from corrections made again and again</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Evidence, not invention</h3>
+        <div class="evidence">
+          <p class="file">sessions/002/review.md (from the sample)</p>
+          <p class="stat">Whisper 887 words · cleaned 883 · replaced 32 · <strong class="nowrap">added 0</strong></p>
+          <ul class="he">
+            <li><del>שעמם ט</del> ← <ins>שער מ"ט</ins></li>
+            <li><del>כותנות</del> ← <ins>כתנות</ins></li>
+            <li><del>ויבשם כותנות</del> ← <ins>וילבשם כתנות</ins></li>
+          </ul>
+        </div>
+        <p class="small">Every word of the cleaned transcript traces back to what
+        Whisper heard. A word added without a rule is an error, and the check
+        reports it.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <h3>Where the author decides</h3>
+        <ul class="ticks">
+          <li>accepting a PDF;</li>
+          <li>replacing a source of truth (a raw transcript, a finished OCR);</li>
+          <li>overwriting hand-edited text;</li>
+          <li>a change that would alter the argument;</li>
+          <li>anything that leaves the machine or cannot be undone: merging,
+          deleting, publishing.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Built to resume</h3>
+        <p>Long steps run in the background. Every workflow picks up where it
+        stopped, after a crash, a restart or a week away:
+        <code>session-status.py</code> names each session's next step. Each
+        piece of work goes on a branch and reaches <code>main</code> through a
+        pull request.</p>
+      </div>
+    </div>
+
+    <h3>From agentic to autonomous</h3>
+    <ol class="levels">
+      <li><b>Assisted</b><span>the author, step by step</span></li>
+      <li class="now"><b>Agentic sessions</b><span>name the goal; the agent runs the workflow</span><em>today</em></li>
+      <li><b>Event-driven</b><span>a new recording starts its own session</span></li>
+      <li><b>Scheduled</b><span>a recurring run advances every mechanical step</span></li>
+      <li><b>Autonomous, with gates</b><span>one pull request per piece; the author reviews and accepts</span></li>
+    </ol>
+    </details>
+  </section>
+
+  <!-- ───────────────────────── Learn more ───────────────────────── -->
+  <section id="learn" class="block">
+    <p class="eyebrow">Learn more</p>
+    <h2>Everything is open</h2>
+    <p class="prose">The code, the rules the agent follows, and the files of
+    every session are at
+    <a href="https://github.com/Esoterics611/sefer-forge">github.com/Esoterics611/sefer-forge</a>.</p>
+    <div class="learn">
+      <div class="group">
+        <h3>Start here</h3>
+        <a href="https://github.com/Esoterics611/sefer-forge#readme">README<span>the process at a glance, quick start</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/SETUP_GUIDE.md">Setup guide<span>what you need, and the daily workflow</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/VISION.md">Vision<span>why it is local-first, and where it is going</span></a>
+      </div>
+      <div class="group">
+        <h3>The process in depth</h3>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/prompts/02-ingest-session.md">Ingesting a session<span>the procedure, step by step</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/prompts/transcript-review-rules.md">Transcript review rules<span>what may be corrected, and on what evidence</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/prompts/teaching-pass.md">The teaching pass<span>from a lesson to a written commentary</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/print-standard.md">Print standard<span>the finished page, and the proof</span></a>
+      </div>
+      <div class="group">
+        <h3>The AI workflow</h3>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/agentic-development.md">Agentic development<span>how the agent works, and the road to autonomy</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/CLAUDE.md">CLAUDE.md<span>the rules every session follows</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/.claude/skills">Skills<span>one per workflow</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/.claude/settings.json">Hooks<span>the check after every edit</span></a>
+      </div>
+      <div class="group">
+        <h3>The sample and the code</h3>
+        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/discourses/004-levushei-haneshama">The sample's folder<span>its sessions, discourse and notes</span></a>
+        <a href="samples/levushei-haneshama/levushei-haneshama-handout-en.pdf">The class handout (PDF)<span>The garments of the soul, 4 pages</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/scripts">scripts/<span>transcription, matching, building, proofing</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/scripts/youtube-publish.py">The publishing tool<span>scripts/youtube-publish.py</span></a>
+      </div>
+    </div>
+  </section>
+  <div class="cta-band">
+    <h3>Support the work</h3>
+    <p>Dedicate a part of it, in honor of someone or l'ilui nishmat a loved one.</p>
+    <a class="btn primary" href="https://wa.me/972556850823?text=I%27d%20like%20to%20support%20Sefer%20Forge">Message us on WhatsApp</a>
+    <a class="btn" href="./">Back to the home page</a>
+  </div>
+</main>
+
+<footer>
+  <a href="privacy.html">Privacy policy</a>
+  <a href="terms.html">Terms of service</a>
+  <a href="https://wa.me/972556850823?text=I%27d%20like%20to%20support%20Sefer%20Forge">Contact (WhatsApp)</a>
+  <div>© 2026 Ronnie Rendel · Sefer Forge</div>
+</footer>
+</body>
+</html>
