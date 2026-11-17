@@ -443,3 +443,9 @@ header nav a.nav-give { background: var(--accent); color: #fff; padding: 2px 14p
 .cta-band .btn + .btn { margin-left: 8px; }
 [dir="rtl"] .cta-band .btn + .btn { margin-left: 0; margin-right: 8px; }
 @media (max-width: 560px) { .stats.compact { grid-template-columns: 1fr 1fr; } }
+
+.why-block { margin-top: 44px; }
+.why-block h2 { margin-bottom: 6px; }
+.pillars-grid { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.pillars-grid li { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15.5px; }
+.pillars-grid li b { display: block; color: var(--text); font-size: 16.5px; margin-bottom: 2px; }
