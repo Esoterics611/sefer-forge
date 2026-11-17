@@ -378,3 +378,16 @@ details.tech > summary { cursor: pointer; font-weight: 600; padding: 12px 0; }
 .funds-key i { position: absolute; left: 0; top: 6px; width: 14px; height: 14px; border-radius: 4px; }
 @media (max-width: 560px) { .funds span { font-size: 12px; } }
 @media (prefers-color-scheme: dark) { .funds span { color: #0f1522; } }
+
+/* The ask, near the top */
+.ask-top { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px 18px; margin: 32px 0; box-shadow: var(--shadow); scroll-margin-top: 16px; }
+.ask-top h2 { font-size: 26px; line-height: 1.25; margin: 4px 0 10px; }
+.ask-top h3 { margin: 20px 0 4px; font-size: 17px; }
+header nav a.nav-give { background: var(--accent); color: #fff; padding: 2px 14px; border-radius: 999px; font-weight: 600; }
+.details-divider { margin: 80px 0 0; text-align: center; border-top: 1px solid var(--border); }
+.details-divider span { position: relative; top: -12px; background: var(--bg); padding: 0 14px; color: var(--muted); font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+@media (max-width: 560px) { .ask-top { padding: 18px 16px; } .ask-top h2 { font-size: 22px; } }
+@media (max-width: 560px) {
+  header nav { margin-left: auto; }
+  header nav a:not(.nav-give) { display: none; }
+}
