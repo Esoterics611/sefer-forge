@@ -449,3 +449,9 @@ header nav a.nav-give { background: var(--accent); color: #fff; padding: 2px 14p
 .pillars-grid { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
 .pillars-grid li { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 15.5px; }
 .pillars-grid li b { display: block; color: var(--text); font-size: 16.5px; margin-bottom: 2px; }
+
+.episodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 28px; margin: 14px 0; }
+.episodes h3 { font-size: 16px; margin: 6px 0; }
+.episodes ol { margin: 0; padding-left: 30px; color: var(--muted); font-size: 15px; }
+.episodes ol li { margin: 2px 0; }
+[dir="rtl"] .episodes ol[dir="ltr"] { text-align: left; }

@@ -161,21 +161,48 @@
     <a href="how.html">How it is made</a>.</p>
   </section>
 
-  <!-- ───────────────────────── YouTube and Google (keep on the home page: Google's verification) ───────────────────────── -->
-  <section class="block small-print">
-    <h2>How Sefer Forge uses YouTube and Google Drive</h2>
-    <p>Sefer Forge includes a publishing tool used only by the project's owner. Signed in with
-    the owner's own Google account, it uploads the project's narrated videos to the owner's
-    YouTube channel as private videos, with their titles, descriptions, chapters and language;
-    adds each to a playlist for its language; reads the channel's own list of uploads, to keep
-    the project's record of what has been published; and copies each episode's files to a
-    folder in the owner's Google Drive as a backup (it can see only the files it created
-    there). It does not read, change or delete anyone else's videos or files, and it is not
-    offered as a service to other users. Details are in the
-    <a href="privacy.html">privacy policy</a>.</p>
-    <p>Sefer Forge uses YouTube API Services. By using it you agree to the
+  <!-- ───────────────────────── YouTube (keep on the home page: Google's verification) ───────────────────────── -->
+  <section id="youtube" class="block">
+    <h2>From the booklets to YouTube</h2>
+    <p class="prose">The stories of Shivchei HaBesht are retold in simple Hebrew, translated
+    into English and French sentence by sentence, read aloud, and made into videos with
+    subtitles and chapters. A publishing tool, used only by the project's owner and signed in
+    with the owner's own Google account, uploads them to the project's YouTube channel (private
+    for now, two a day), adds each to the playlist of its language, and reads the channel's own
+    list of uploads to keep the project's record. It does not read, change or delete anyone
+    else's videos, and it is not offered as a service to others
+    (<a href="privacy.html">privacy policy</a>).</p>
+    <div class="episodes">
+      <div><h3>In English (13)</h3><ol><li>The Boy Who Was Not Afraid</li><li>The Locked Gate</li><li>The Frog in the Wilderness</li><li>The Speech of the Birds</li><li>The Passing of the Baal Shem Tov</li><li>The Author&#x27;s Introduction</li><li>The Hidden Years and the Revelation</li><li>Rabbi Gershon of Kitov</li><li>The Land of Israel and the Way There</li><li>In Prayer</li><li>His Ways and Customs</li><li>The Rabbi of Polonne</li><li>The Mokhiach of Polonne, Part One</li></ol></div>
+      <div><h3>En français (9)</h3><ol><li>Le garçon qui n&#x27;avait pas peur</li><li>La porte verrouillée</li><li>La grenouille dans le désert</li><li>Le langage des oiseaux</li><li>La mort du Baal Chem Tov</li><li>L&#x27;introduction de l&#x27;auteur</li><li>Les années cachées et la révélation</li><li>Rabbi Guershon de Kitov</li><li>La terre d&#x27;Israël et le chemin qui y mène</li></ol></div>
+      <div><h3>Shiurim in English (2)</h3><ol><li>The Gate of Unity, Part One</li><li>The Gate of Unity, Part Two</li></ol>
+      <p class="small">63 more episodes are in the queue, in English and French; the Hebrew ones wait for a Hebrew voice.</p></div>
+    </div>
+    <p class="small">Sefer Forge uses YouTube API Services. By using it you agree to the
     <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and the
     <a href="https://policies.google.com/privacy">Google Privacy Policy</a> applies.</p>
+  </section>
+
+  <!-- ───────────────────────── Open source ───────────────────────── -->
+  <section id="learn" class="block">
+    <h2>Everything is open</h2>
+    <p class="prose">The code, the rules the AI agent follows, and the files of every lesson are at
+    <a href="https://github.com/Esoterics611/sefer-forge">github.com/Esoterics611/sefer-forge</a>.
+    The whole process, step by step: <a href="how.html">How it is made</a>.</p>
+    <div class="learn">
+      <div class="group">
+        <a href="https://github.com/Esoterics611/sefer-forge#readme">README<span>the process at a glance</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/VISION.md">Vision<span>why it is local-first, and where it is going</span></a>
+      </div>
+      <div class="group">
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/CLAUDE.md">CLAUDE.md<span>the rules every session follows</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/.claude/skills">Skills<span>one per workflow</span></a>
+      </div>
+      <div class="group">
+        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/scripts">scripts/<span>transcription, matching, building, proofing</span></a>
+        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/scripts/youtube-publish.py">The publishing tool<span>scripts/youtube-publish.py</span></a>
+      </div>
+    </div>
   </section>
 </main>
 
