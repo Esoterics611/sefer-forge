@@ -361,3 +361,20 @@ table.say td { color: var(--muted); }
 details.tech { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 4px 20px; margin: 24px 0; }
 details.tech > summary { cursor: pointer; font-weight: 600; padding: 12px 0; }
 @media (max-width: 560px) { .stat-card b { font-size: 26px; } .pillars li { padding-left: 54px; } }
+
+/* Use of funds */
+:root { --f1: #1f6fe0; --f2: #8b7550; --f3: #2f8f6b; --f4: #8a94a6; --f5: #b5642a; }
+@media (prefers-color-scheme: dark) { :root { --f1: #5aa2ff; --f2: #c8ad7f; --f3: #5fc79d; --f4: #9aa6ba; --f5: #e39a62; } }
+.funds { display: flex; height: 38px; border-radius: 10px; overflow: hidden; margin: 14px 0 12px; gap: 2px; }
+.funds span { display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 14px; }
+.funds .f1, .funds-key .f1 { background: var(--f1); }
+.funds .f2, .funds-key .f2 { background: var(--f2); }
+.funds .f3, .funds-key .f3 { background: var(--f3); }
+.funds .f4, .funds-key .f4 { background: var(--f4); }
+.funds .f5, .funds-key .f5 { background: var(--f5); }
+.funds-key { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px; max-width: 820px; }
+.funds-key li { position: relative; padding-left: 26px; color: var(--muted); font-size: 15.5px; }
+.funds-key li b { color: var(--text); }
+.funds-key i { position: absolute; left: 0; top: 6px; width: 14px; height: 14px; border-radius: 4px; }
+@media (max-width: 560px) { .funds span { font-size: 12px; } }
+@media (prefers-color-scheme: dark) { .funds span { color: #0f1522; } }
