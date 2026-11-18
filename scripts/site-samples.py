@@ -88,7 +88,7 @@ def build(key: str) -> bool:
         return False
     out = ROOT / "site" / "samples" / folder
     out.mkdir(parents=True, exist_ok=True)
-    for old in out.glob(f"{prefix}-*.webp"):
+    for old in out.glob(f"{prefix}-[0-9][0-9]*.webp"):   # page images only, not pack-closeup.webp
         old.unlink()
     doc = pymupdf.open(pdf)
     chosen = pages or list(range(1, doc.page_count + 1))
