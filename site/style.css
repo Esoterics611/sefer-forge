@@ -457,3 +457,31 @@ header nav a.nav-give { background: var(--accent); color: #fff; padding: 2px 14p
 .episodes ol { margin: 0; padding-left: 30px; color: var(--muted); font-size: 15px; }
 .episodes ol li { margin: 2px 0; }
 [dir="rtl"] .episodes ol[dir="ltr"] { text-align: left; }
+
+/* ── The three parts: Give (index), The texts (library), How it is made (how) ── */
+h1.tagline { font-size: 30px; line-height: 1.3; margin: 32px 0 10px; }
+header nav a[aria-current="page"] { font-weight: 700; color: var(--text); }
+.more-pages { margin: 14px 0 0; color: var(--muted); }
+.parts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.part { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px 22px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); }
+.part:hover { border-color: var(--accent); }
+.part b { display: block; font-size: 21px; line-height: 1.3; margin: 4px 0 8px; }
+.part span:not(.part-kicker) { color: var(--muted); font-size: 15px; line-height: 1.55; }
+.part-kicker { color: var(--accent); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
+[dir="rtl"] .part-kicker { text-transform: none; letter-spacing: 0; }
+.part::after { content: "→"; display: block; margin-top: 10px; color: var(--accent); font-weight: 700; }
+[dir="rtl"] .part::after { content: "←"; }
+.works { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.work { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+.work h3 { margin: 0 0 2px; font-size: 19px; }
+.work .he-title { font-family: "Frank Ruhl Libre", serif; color: var(--gold); margin: 0 0 8px; font-size: 17px; }
+.work p { margin: 0 0 8px; line-height: 1.6; }
+.work .work-links { margin: 10px 0 0; font-weight: 600; }
+@media (max-width: 560px) {
+  h1.tagline { font-size: 24px; margin-top: 20px; }
+  .parts { grid-template-columns: 1fr; }
+  header nav a.nav-part { display: inline-block; }
+  header nav a.nav-part[aria-current="page"] { display: none; }
+  header nav { flex-wrap: wrap; overflow-x: visible; white-space: normal; row-gap: 10px; gap: 10px 12px; }
+}

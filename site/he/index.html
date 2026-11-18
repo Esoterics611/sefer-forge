@@ -27,16 +27,16 @@
   <img src="../assets/logo.webp" alt="הסמל של ספר פורג'">
   <a class="name" href="./">ספר פורג'</a>
   <nav>
-    <a href="#work">הדפים</a>
-    <a href="how.html">איך זה נעשה</a>
+    <a class="nav-part" href="./" aria-current="page">לתרום</a>
+    <a class="nav-part" href="library.html">הספרים</a>
+    <a class="nav-part" href="how.html">איך זה נעשה</a>
     <a class="lang-toggle" href="../" lang="en" hreflang="en">English</a>
     <a class="nav-give" href="https://wa.me/972556850823?text=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%9E%D7%95%D7%9A%20%D7%91%D7%A1%D7%A4%D7%A8%20%D7%A4%D7%95%D7%A8%D7%92%27">לתמוך</a>
   </nav>
 </header>
 
 <main>
-  <h1>ספר פורג'</h1>
-  <p class="tagline">פנימיות התורה, מבוארת בדיוק ונלמדת בחיות.</p>
+  <h1 class="tagline">פנימיות התורה, מבוארת בדיוק ונלמדת בחיות.</h1>
   <p class="lead">אנחנו מבארים את קבלת האר"י ז"ל ואת החסידות מתוך מקורותיהן, כל ציטוט
   מדויק, ומוציאים אותן לחוברות מודפסות, לתרגומים ולשיעורים.</p>
 
@@ -82,14 +82,6 @@
     </div>
   </section>
 
-  <!-- ───────────────────────── מי ───────────────────────── -->
-  <section id="who" class="block">
-    <h2>מי עומד מאחורי זה</h2>
-    <p class="prose">ספר פורג' הוא עבודתו של <span lang="en" dir="ltr">Ronnie Rendel</span>:
-    <a href="https://esoterics611.github.io/ronnie/">הדף שלו</a> (באנגלית) ·
-    <a href="https://github.com/Esoterics611">הקוד שלו ב־GitHub</a>.</p>
-  </section>
-
   <!-- ───────────────────────── הדפים ───────────────────────── -->
   <section id="work" class="block sample">
     <h2>לראות את הדפים</h2>
@@ -102,9 +94,6 @@
       <div class="tabs" role="tablist">
         <button role="tab" aria-selected="true" data-doc="biur">תפילת השחר <span>8 מתוך 67 עמודים · A4</span></button>
         <button role="tab" aria-selected="false" data-doc="pamphlet">החוברת <span>8 מתוך 24 עמודים · A5</span></button>
-        <button role="tab" aria-selected="false" data-doc="pack">חוברת המקורות <span>13 עמודים · A4</span></button>
-        <button role="tab" aria-selected="false" data-doc="handoutHe">לבושי הנשמה <span>עברית · 4 עמודים</span></button>
-        <button role="tab" aria-selected="false" data-doc="handoutEn" lang="en">The garments of the soul <span>English · 4</span></button>
       </div>
       <div class="stage">
         <div class="frame">
@@ -127,26 +116,8 @@
       </div>
       <div class="thumbs" id="thumbs"></div>
     </div>
+    <p class="more-pages">ההגהה המלאה, חוברת המקורות, דפי הלימוד ושאר העבודות: <a href="library.html">הספרים</a>.</p>
 
-  </section>
-
-  <!-- ───────────────────────── התוכנית ───────────────────────── -->
-  <section id="program" class="block">
-    <h2>מה התמיכה שלכם בונה</h2>
-    <ul class="pillars-grid">
-      <li><b>מחקר וביאור.</b> כתבי האר"י ומאמרי החסידות מבוארים מתוך מקורותיהם, כל קטע מצוטט
-      במדויק, נבדק לפני הדפוס.</li>
-      <li><b>תפילה מתוך הבנה.</b> תפילת השחר כולה, ואחריה תפילות החול, השבת והחגים, ביותר
-      מרמה אחת, למתחיל וללמדן.</li>
-      <li><b>חיות בתורה ובמצוות.</b> ציצית, תפילין, הברכות, קריאת שמע: מה היא כל אחת על פי
-      המקורות, ומה היא נותנת למקיים אותה.</li>
-      <li><b>תרגום.</b> אנגלית וצרפתית תחילה, ואחריהן ספרדית, רוסית ועוד, כל תרגום נבדק מול
-      העברית כדי שדבר לא יחסר ולא יתווסף.</li>
-      <li><b>ערכות לימוד.</b> לכל ספר, מה שמלמד יכול ללמד ממנו מחר: הביאור, מקורותיו, דף
-      לימוד לשיעור ושיעור מוקלט.</li>
-      <li><b>טכנולוגיה פתוחה.</b> הכלים שמאחורי העבודה, נבנים בגלוי: קריאת ספרים מצילום,
-      תמלול שיעורים בעברית, מילון מושגים.</li>
-    </ul>
   </section>
 
   <!-- ───────────────────────── להקדיש ───────────────────────── -->
@@ -168,6 +139,27 @@
     <p class="small">מלמדים, מוסדות, חוקרים והוצאות לאור שרוצים להשתמש בחומרים או לעבוד על
     הספרים: אותו כפתור. איך העבודה נעשית, צעד אחר צעד: <a href="how.html">איך זה נעשה</a>.</p>
   </section>
+  <!-- ───────────────────────── מי ───────────────────────── -->
+  <section id="who" class="block">
+    <h2>מי עומד מאחורי זה</h2>
+    <p class="prose">ספר פורג' הוא עבודתו של <span lang="en" dir="ltr">Ronnie Rendel</span>:
+    <a href="https://esoterics611.github.io/ronnie/">הדף שלו</a> (באנגלית) ·
+    <a href="https://github.com/Esoterics611">הקוד שלו ב־GitHub</a>.</p>
+  </section>
+
+  <!-- ───────────────────────── שני החלקים האחרים ───────────────────────── -->
+  <section id="more" class="block">
+    <div class="parts">
+      <a class="part" href="library.html"><span class="part-kicker">הספרים</span>
+        <b>כל העבודות, עמוד אחר עמוד</b>
+        <span>ביאור תפילת השחר, לבושי הנשמה עם חוברת המקורות ודפי הלימוד, שבחי הבעש"ט בשלוש שפות,
+        השיעורים על שער היחוד, המילון, ומה בא אחר כך.</span></a>
+      <a class="part" href="how.html"><span class="part-kicker">איך זה נעשה</span>
+        <b>משיעור מוקלט לדף מודפס</b>
+        <span>התהליך, הבדיקות וההגהות, סוכן הבינה המלאכותית והכללים שלו, והקוד הפתוח.</span></a>
+    </div>
+  </section>
+
   <!-- ───────────────────────── יוטיוב ───────────────────────── -->
   <section id="youtube" class="block">
     <h2>מן החוברות אל יוטיוב</h2>
@@ -177,37 +169,11 @@
     ביום), מוסיף כל אחד לרשימת ההשמעה של שפתו, וקורא את רשימת ההעלאות של הערוץ כדי לשמור את
     רישום המיזם. הוא אינו קורא, משנה או מוחק סרטונים של אחרים, ואינו מוצע כשירות לאחרים
     (<a href="../privacy.html">מדיניות הפרטיות</a>, באנגלית).</p>
-    <div class="episodes">
-      <div><h3>באנגלית (13)</h3><ol lang="en" dir="ltr"><li>The Boy Who Was Not Afraid</li><li>The Locked Gate</li><li>The Frog in the Wilderness</li><li>The Speech of the Birds</li><li>The Passing of the Baal Shem Tov</li><li>The Author&#x27;s Introduction</li><li>The Hidden Years and the Revelation</li><li>Rabbi Gershon of Kitov</li><li>The Land of Israel and the Way There</li><li>In Prayer</li><li>His Ways and Customs</li><li>The Rabbi of Polonne</li><li>The Mokhiach of Polonne, Part One</li></ol></div>
-      <div><h3>בצרפתית (9)</h3><ol lang="fr" dir="ltr"><li>Le garçon qui n&#x27;avait pas peur</li><li>La porte verrouillée</li><li>La grenouille dans le désert</li><li>Le langage des oiseaux</li><li>La mort du Baal Chem Tov</li><li>L&#x27;introduction de l&#x27;auteur</li><li>Les années cachées et la révélation</li><li>Rabbi Guershon de Kitov</li><li>La terre d&#x27;Israël et le chemin qui y mène</li></ol></div>
-      <div><h3>שיעורים באנגלית (2)</h3><ol lang="en" dir="ltr"><li>The Gate of Unity, Part One</li><li>The Gate of Unity, Part Two</li></ol>
-      <p class="small">עוד 63 פרקים ממתינים בתור, באנגלית ובצרפתית; העבריים ממתינים לקול עברי.</p></div>
-    </div>
+    <p class="small">הפרקים עד כה, באנגלית ובצרפתית: <a href="library.html#episodes">הספרים</a>.</p>
     <p class="small">ספר פורג' משתמש בשירותי ה־API של יוטיוב. בשימוש בו אתם מסכימים ל<a href="https://www.youtube.com/t/terms">תנאי השירות של יוטיוב</a>,
     ו<a href="https://policies.google.com/privacy">מדיניות הפרטיות של גוגל</a> חלה.</p>
   </section>
 
-  <!-- ───────────────────────── קוד פתוח ───────────────────────── -->
-  <section id="learn" class="block">
-    <h2>הכול פתוח</h2>
-    <p class="prose">הקוד, הכללים שסוכן הבינה המלאכותית פועל לפיהם, וקבצי כל שיעור נמצאים ב־
-    <a href="https://github.com/Esoterics611/sefer-forge">github.com/Esoterics611/sefer-forge</a> (באנגלית).
-    התהליך כולו, צעד אחר צעד: <a href="how.html">איך זה נעשה</a>.</p>
-    <div class="learn">
-      <div class="group">
-        <a href="https://github.com/Esoterics611/sefer-forge#readme">README<span>התהליך במבט אחד</span></a>
-        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/VISION.md">החזון<span>למה הכול נעשה בבית, ולאן זה הולך</span></a>
-      </div>
-      <div class="group">
-        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/CLAUDE.md">CLAUDE.md<span>הכללים שכל מפגש פועל לפיהם</span></a>
-        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/.claude/skills">מיומנויות<span>אחת לכל תהליך</span></a>
-      </div>
-      <div class="group">
-        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/scripts"><bdi dir="ltr">scripts/</bdi><span>תמלול, התאמה, בנייה, הגהה</span></a>
-        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/scripts/youtube-publish.py">כלי ההוצאה לאור<span>scripts/youtube-publish.py</span></a>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div class="lightbox" id="lightbox" hidden>
@@ -223,6 +189,7 @@
 </div>
 
 <footer>
+  <a href="library.html">הספרים</a>
   <a href="how.html">איך זה נעשה</a>
   <a href="../privacy.html">מדיניות פרטיות</a>
   <a href="../terms.html">תנאי שימוש</a>
@@ -264,48 +231,6 @@ window.SF_VIEWER = {
         ['פתיחת הערה ב\' (עמ\' 13)', 'עץ חיים, שער כ"ו, פרק א\': הצורה, הצלם והחומר; ירידת הנשמה, דוגמת גלות השכינה.'],
         ['פתיחת הערה ג\' (עמ\' 16)', 'עץ חיים, שער ל"ט, דרוש א\': התפילה, העלאת מ"ן; אדם אחד מראשו ועד רגליו, עד ביאת המשיח.'],
         ['הנספח (עמ\' 19)', 'הוספות לביאור הערה ג\', מודפסות בשלמותן בסוף, כדי שההערות עצמן יישארו קצרות.']
-      ]
-    },
-    pack: {
-      name: 'חוברת המקורות', label: 'חוברת המקורות',
-      dir: '../samples/levushei-haneshama/', prefix: 'pack',
-      pdf: '../samples/levushei-haneshama/levushei-haneshama-reading-pack.pdf',
-      pages: [
-        ['כותרת, מקרא והציונים הראשונים', 'הטקסט באותיות גדולות. בכל ציון מציגה תיבה ממוספרת את הקטע שהוא מציין, עם שורות לפניו ואחריו; המילים שההגהה מתכוונת אליהן מודגשות.'],
-        ['ציונים 3–5', 'כשההגהה מזכירה שער ולא את מקומו בו, התיבה אומרת איזה מקום הכוונה.'],
-        ['ציונים 6–7', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 8–9', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 10–11', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 12–14', 'כמה ציונים בקטע קצר: כל תיבה באה אחרי המילים המציינות אותה, כך שהטקסט ומקורותיו נקראים יחד.'],
-        ['ציונים 15–17', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 18–19', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציון 20', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 21–22', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 23–24', 'הטקסט ממשיך, ציון אחר ציון. כל קטע מובא בדיוק כפי שהמקור מדפיס אותו; רק ההדגשה נוספה.'],
-        ['ציונים 25–26', 'הציונים האחרונים לעץ חיים ולפרי עץ חיים.'],
-        ['הסוף, והספרים האחרים', 'סוף הטקסט, והספרים שהוא מזכיר ואינם מובאים כאן (ספר הגלגולים, טעמי המצוות, מקדש מלך, הזוהר ועוד), ברשימה, כדי שדבר ממה שהוא מציין לא ייעלם מן העין.']
-      ]
-    },
-    handoutHe: {
-      name: 'דף הלימוד', label: 'לבושי הנשמה',
-      dir: '../samples/levushei-haneshama/', prefix: 'handout-he',
-      pdf: '../samples/levushei-haneshama/levushei-haneshama-handout.pdf',
-      pages: [
-        ['שעה אחת · מי הוא האדם · שלושה לבושים', '"יפה שעה אחת": השאלה שאדמו"ר הזקן עונה עליה. הנשמה, הגוף והצלם שביניהם; מחשבה, דיבור ומעשה כלבושי הנשמה.'],
-        ['ארבעה עולמות, שלושה לבושים · הימים שנעשים לבוש', 'איזה לבוש נארג ממה, לאיזה חלק של הנשמה ובאיזה עולם, בטבלה אחת. הזוהר על הימים עצמם שנעשים לבוש.'],
-        ['לבוש שנפל ומחכה · למה ירדה הנשמה · למה הלבוש הוא השכר', 'הלבושים אינם נבראים חדשים אלא מתבררים ממה שנפל בחטא אדם הראשון. הנשמה יורדת לברר את לבושיה; הלבוש הוא מה שמאפשר לה לקבל את האור.'],
-        ['"יפה שעה אחת" · חיים של אריגה · לעיון ולשיחה', 'התשובה לשאלה שבפתיחה, החיים כולם כאריגה, וארבע שאלות לשיעור.']
-      ]
-    },
-    handoutEn: {
-      name: 'דף הלימוד באנגלית', label: 'The garments of the soul',
-      dir: '../samples/levushei-haneshama/', prefix: 'handout-en', ltr: true,
-      pdf: '../samples/levushei-haneshama/levushei-haneshama-handout-en.pdf',
-      pages: [
-        ['One hour · What is a human being · Three garments', 'התרגום לאנגלית של עמוד 1.'],
-        ['Four worlds, three garments · The days that become a garment', 'התרגום לאנגלית של עמוד 2, עם טבלת הלבושים והעולמות.'],
-        ['A garment that fell · Why the soul descended · Why the reward is a garment', 'התרגום לאנגלית של עמוד 3.'],
-        ['“Better is one hour” · A life of weaving · For study and discussion', 'התרגום לאנגלית של עמוד 4, עם השאלות לעיון.']
       ]
     }
   }

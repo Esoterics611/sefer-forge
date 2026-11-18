@@ -27,16 +27,16 @@
   <img src="assets/logo.webp" alt="Sefer Forge logo">
   <a class="name" href="./">Sefer Forge</a>
   <nav>
-    <a href="#work">The pages</a>
-    <a href="how.html">How it is made</a>
+    <a class="nav-part" href="./" aria-current="page">Give</a>
+    <a class="nav-part" href="library.html">The texts</a>
+    <a class="nav-part" href="how.html">How it is made</a>
     <a class="lang-toggle" href="he/" lang="he" hreflang="he">עברית</a>
     <a class="nav-give" href="https://wa.me/972556850823?text=I%27d%20like%20to%20support%20Sefer%20Forge">Support</a>
   </nav>
 </header>
 
 <main>
-  <h1>Sefer Forge</h1>
-  <p class="tagline">The inner Torah, explained with exactness and taught with life.</p>
+  <h1 class="tagline">The inner Torah, explained with exactness and taught with life.</h1>
   <p class="lead">We explain the Kabbalah of the Arizal and Chassidus from their sources,
   every quotation exact, and turn it into printed booklets, translations and lessons.</p>
 
@@ -85,14 +85,6 @@
     </div>
   </section>
 
-  <!-- ───────────────────────── Who ───────────────────────── -->
-  <section id="who" class="block">
-    <h2>Who is behind it</h2>
-    <p class="prose">Sefer Forge is the work of Ronnie Rendel:
-    <a href="https://esoterics611.github.io/ronnie/">his page</a> ·
-    <a href="https://github.com/Esoterics611">his code on GitHub</a>.</p>
-  </section>
-
   <!-- ───────────────────────── The pages ───────────────────────── -->
   <section id="work" class="block sample">
     <h2>See the pages</h2>
@@ -109,9 +101,6 @@
       <div class="tabs" role="tablist">
         <button role="tab" aria-selected="true" data-doc="biur">The morning prayer <span>A4 · 8 of 67 pages</span></button>
         <button role="tab" aria-selected="false" data-doc="pamphlet">The pamphlet <span>A5 · 8 of 24 pages</span></button>
-        <button role="tab" aria-selected="false" data-doc="pack">The reading pack <span>A4 · 13 pages</span></button>
-        <button role="tab" aria-selected="false" data-doc="handoutEn">The garments of the soul <span>English · 4 pages</span></button>
-        <button role="tab" aria-selected="false" data-doc="handoutHe">לבושי הנשמה <span>Hebrew · 4 pages</span></button>
       </div>
       <div class="stage">
         <div class="frame">
@@ -134,26 +123,8 @@
       </div>
       <div class="thumbs" id="thumbs"></div>
     </div>
+    <p class="more-pages">Every page of these, the reading pack, the class handouts and the other works: <a href="library.html">The texts</a>.</p>
 
-  </section>
-
-  <!-- ───────────────────────── The program ───────────────────────── -->
-  <section id="program" class="block">
-    <h2>What your support builds</h2>
-    <ul class="pillars-grid">
-      <li><b>Research and explanation.</b> The writings of the Arizal and the discourses of
-      Chassidus explained from their sources, every passage quoted exactly, checked before print.</li>
-      <li><b>Tefillah with meaning.</b> The whole morning prayer, then weekday, Shabbat and
-      festival prayers, at more than one level, for a beginner and a scholar.</li>
-      <li><b>Life in Torah and mitzvot.</b> Tzitzit, tefillin, the blessings, the Shema: what each
-      is, from the sources, and what it gives the one who keeps it.</li>
-      <li><b>Translation.</b> English and French first, then Spanish, Russian and more, each
-      checked against the Hebrew so nothing is lost or added.</li>
-      <li><b>Teaching packages.</b> For each text, what a teacher can use tomorrow: the
-      explanation, its sources, a class handout and a narrated lesson.</li>
-      <li><b>Open technology.</b> The tools behind it, built in the open: reading sefarim from
-      photographs, Hebrew speech-to-text, a lexicon of the terms.</li>
-    </ul>
   </section>
 
   <!-- ───────────────────────── Dedicate ───────────────────────── -->
@@ -177,6 +148,29 @@
     <a href="how.html">How it is made</a>.</p>
   </section>
 
+  <!-- ───────────────────────── Who ───────────────────────── -->
+  <section id="who" class="block">
+    <h2>Who is behind it</h2>
+    <p class="prose">Sefer Forge is the work of Ronnie Rendel:
+    <a href="https://esoterics611.github.io/ronnie/">his page</a> ·
+    <a href="https://github.com/Esoterics611">his code on GitHub</a>.</p>
+  </section>
+
+  <!-- ───────────────────────── The two other parts ───────────────────────── -->
+  <section id="more" class="block">
+    <div class="parts">
+      <a class="part" href="library.html"><span class="part-kicker">The texts</span>
+        <b>Every work so far, page by page</b>
+        <span>The morning prayer, the garments of the soul with its reading pack and class
+        handouts, the stories of the Baal Shem Tov in three languages, the shiurim on Shaar
+        HaYichud, the lexicon, and what comes next.</span></a>
+      <a class="part" href="how.html"><span class="part-kicker">How it is made</span>
+        <b>From a recorded lesson to a printed page</b>
+        <span>The process, the checks and proofs, the AI agent and its rules, and the open
+        code.</span></a>
+    </div>
+  </section>
+
   <!-- ───────────────────────── YouTube (keep on the home page: Google's verification) ───────────────────────── -->
   <section id="youtube" class="block">
     <h2>From the booklets to YouTube</h2>
@@ -188,38 +182,12 @@
     list of uploads to keep the project's record. It does not read, change or delete anyone
     else's videos, and it is not offered as a service to others
     (<a href="privacy.html">privacy policy</a>).</p>
-    <div class="episodes">
-      <div><h3>In English (13)</h3><ol><li>The Boy Who Was Not Afraid</li><li>The Locked Gate</li><li>The Frog in the Wilderness</li><li>The Speech of the Birds</li><li>The Passing of the Baal Shem Tov</li><li>The Author&#x27;s Introduction</li><li>The Hidden Years and the Revelation</li><li>Rabbi Gershon of Kitov</li><li>The Land of Israel and the Way There</li><li>In Prayer</li><li>His Ways and Customs</li><li>The Rabbi of Polonne</li><li>The Mokhiach of Polonne, Part One</li></ol></div>
-      <div><h3>En français (9)</h3><ol><li>Le garçon qui n&#x27;avait pas peur</li><li>La porte verrouillée</li><li>La grenouille dans le désert</li><li>Le langage des oiseaux</li><li>La mort du Baal Chem Tov</li><li>L&#x27;introduction de l&#x27;auteur</li><li>Les années cachées et la révélation</li><li>Rabbi Guershon de Kitov</li><li>La terre d&#x27;Israël et le chemin qui y mène</li></ol></div>
-      <div><h3>Shiurim in English (2)</h3><ol><li>The Gate of Unity, Part One</li><li>The Gate of Unity, Part Two</li></ol>
-      <p class="small">63 more episodes are in the queue, in English and French; the Hebrew ones wait for a Hebrew voice.</p></div>
-    </div>
+    <p class="small">The episodes so far, in English and French: <a href="library.html#episodes">The texts</a>.</p>
     <p class="small">Sefer Forge uses YouTube API Services. By using it you agree to the
     <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and the
     <a href="https://policies.google.com/privacy">Google Privacy Policy</a> applies.</p>
   </section>
 
-  <!-- ───────────────────────── Open source ───────────────────────── -->
-  <section id="learn" class="block">
-    <h2>Everything is open</h2>
-    <p class="prose">The code, the rules the AI agent follows, and the files of every lesson are at
-    <a href="https://github.com/Esoterics611/sefer-forge">github.com/Esoterics611/sefer-forge</a>.
-    The whole process, step by step: <a href="how.html">How it is made</a>.</p>
-    <div class="learn">
-      <div class="group">
-        <a href="https://github.com/Esoterics611/sefer-forge#readme">README<span>the process at a glance</span></a>
-        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/docs/VISION.md">Vision<span>why it is local-first, and where it is going</span></a>
-      </div>
-      <div class="group">
-        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/CLAUDE.md">CLAUDE.md<span>the rules every session follows</span></a>
-        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/.claude/skills">Skills<span>one per workflow</span></a>
-      </div>
-      <div class="group">
-        <a href="https://github.com/Esoterics611/sefer-forge/tree/main/scripts">scripts/<span>transcription, matching, building, proofing</span></a>
-        <a href="https://github.com/Esoterics611/sefer-forge/blob/main/scripts/youtube-publish.py">The publishing tool<span>scripts/youtube-publish.py</span></a>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div class="lightbox" id="lightbox" hidden>
@@ -235,6 +203,7 @@
 </div>
 
 <footer>
+  <a href="library.html">The texts</a>
   <a href="how.html">How it is made</a>
   <a href="privacy.html">Privacy policy</a>
   <a href="terms.html">Terms of service</a>
@@ -275,48 +244,6 @@ window.SF_VIEWER = {
         ['Note ב opens (p. 13)', 'Etz Chaim, gate 26, chapter 1: the form, the tzelem and the matter; the descent of the soul, a likeness of the exile of the Shechinah.'],
         ['Note ג opens (p. 16)', 'Etz Chaim, gate 39, derush 1: prayer as the raising of mayin nukvin, and the one Adam, from head to foot, until the coming of Mashiach.'],
         ['The addendum (p. 19)', 'Additions to the explanation of note ג, printed whole at the end so that the notes themselves stay short.']
-      ]
-    },
-    pack: {
-      name: 'the reading pack', label: 'The reading pack',
-      dir: 'samples/levushei-haneshama/', prefix: 'pack',
-      pdf: 'samples/levushei-haneshama/levushei-haneshama-reading-pack.pdf',
-      pages: [
-        ['Title, key and the first citations', 'The text runs in large type. At each citation a numbered box sets out the passage it cites, with lines before and after; the words the gloss refers to are highlighted.'],
-        ['Citations 3–5', 'Where the gloss names a gate but not its section, the box says which one is meant.'],
-        ['Citations 6–7', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 8–9', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 10–11', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 12–14', 'Several citations in a short stretch: each box follows the words that cite it, so the text and its sources are read together.'],
-        ['Citations 15–17', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 18–19', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citation 20', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 21–22', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 23–24', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
-        ['Citations 25–26', 'The last citations of Etz Chaim and Pri Etz Chaim.'],
-        ['The end, and the other works', 'The end of the text, and the works it names that are not quoted here (Sefer HaGilgulim, Ta’amei HaMitzvot, Mikdash Melech, the Zohar and others), listed so that nothing it cites goes unseen.']
-      ]
-    },
-    handoutEn: {
-      name: 'the class handout', label: 'The garments of the soul',
-      dir: 'samples/levushei-haneshama/', prefix: 'handout-en', ltr: true,
-      pdf: 'samples/levushei-haneshama/levushei-haneshama-handout-en.pdf',
-      pages: [
-        ['One hour; what is a human being; three garments', '“Better is one hour…”: the question the Alter Rebbe answers. The soul, the body, and the tzelem between them; thought, speech and action as garments of the soul.'],
-        ['Four worlds, three garments; the days that become a garment', 'Which garment is woven from what, for which part of the soul, in which world, in one table. The Zohar on the days themselves as garments.'],
-        ['A garment that fell; why the soul descended; why the reward is a garment', 'The garments are not made anew but clarified from what fell with Adam’s sin. The soul comes down to clarify its own garments; the garment is what lets it receive the light.'],
-        ['“Better is one hour”; a life of weaving; for study and discussion', 'The answer to the opening question, a whole life as weaving, and four questions for a class.']
-      ]
-    },
-    handoutHe: {
-      name: 'the class handout in Hebrew', label: 'לבושי הנשמה',
-      dir: 'samples/levushei-haneshama/', prefix: 'handout-he',
-      pdf: 'samples/levushei-haneshama/levushei-haneshama-handout.pdf',
-      pages: [
-        ['שעה אחת · מי הוא האדם · שלושה לבושים', 'The Hebrew original of page 1: the question, the soul and its tzelem, thought, speech and action.'],
-        ['ארבעה עולמות, שלושה לבושים · הימים שנעשים לבוש', 'The Hebrew original of page 2, with the table of the garments and the worlds.'],
-        ['לבוש שנפל ומחכה · למה ירדה הנשמה · למה הלבוש הוא השכר', 'The Hebrew original of page 3.'],
-        ['"יפה שעה אחת" · חיים של אריגה · לעיון ולשיחה', 'The Hebrew original of page 4, with the questions for study.']
       ]
     }
   }
