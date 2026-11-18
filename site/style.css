@@ -319,8 +319,8 @@ table.say td { color: var(--muted); }
     gap: 16px; width: 100%; margin-left: 0; flex-wrap: nowrap;
     overflow-x: auto; white-space: nowrap; scrollbar-width: none;
   }
-  .tabs { flex-wrap: nowrap; }
-  .tabs button { flex: 1; text-align: left; padding: 8px 12px; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; }
+  .tabs button { text-align: left; padding: 8px 12px; }
   .tabs button span { display: block; margin-left: 0; }
   /* Full size on a phone: wider than the screen, to be read by panning */
   .lb-scroll { text-align: left; padding: 0 0 24px; }

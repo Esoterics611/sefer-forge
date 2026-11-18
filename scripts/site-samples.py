@@ -16,6 +16,11 @@ The samples (2026-11-17):
   (deployed at Ronnie's word; the PDF is not published while §9-§13 are
   unwritten). Its section openings move when the text grows: check them
   against the PDF's headings before rerunning.
+- pamphlet: the pamphlet of 004, the Alter Rebbe's gloss on the garments of
+  the soul explained note by note (chosen pages, and the PDF). Its part
+  openings move when the discourse grows: check them against the contents
+  page before rerunning.
+- pack: its reading pack (session 001), every page and the PDF.
 - handout-he, handout-en: the four-page class handout on the garments of the
   soul (004), in Hebrew and in English, every page and the PDFs.
 
@@ -23,6 +28,10 @@ Build and proof the PDFs first (CLAUDE.md: no PDF goes out unproofed):
 
     python scripts/build-biur.py discourses/005-kavanot-shacharit/biur-arizal --pdf
     python scripts/proof-pdf.py output/biur/005-kavanot-shacharit-arizal.pdf --profile biur
+    python scripts/build-pamphlet.py discourses/004-levushei-haneshama
+    python scripts/build-references.py discourses/004-levushei-haneshama/sessions/001
+    python scripts/proof-pdf.py output/pamphlets/004-levushei-haneshama.pdf
+    python scripts/proof-pdf.py output/references/004-levushei-haneshama-001.pdf
     python scripts/build-handout.py discourses/004-levushei-haneshama/handouts/levushei-haneshama-mavo.md
     python scripts/build-handout.py discourses/004-levushei-haneshama/handouts/levushei-haneshama-mavo-en.md
     python scripts/proof-pdf.py output/handouts/levushei-haneshama-mavo.pdf
@@ -55,6 +64,10 @@ THUMB_WIDTH = 220
 SAMPLES = {
     "biur": (ROOT / "output/biur/005-kavanot-shacharit-arizal.pdf", "kavanot-shacharit", "biur",
              [1, 2, 11, 18, 25, 39, 53, 57], 1240, None),
+    "pamphlet": (ROOT / "output/pamphlets/004-levushei-haneshama.pdf", "levushei-haneshama", "pamphlet",
+                 [1, 2, 3, 8, 10, 13, 16, 19], 1240, "levushei-haneshama-pamphlet.pdf"),
+    "pack": (ROOT / "output/references/004-levushei-haneshama-001.pdf", "levushei-haneshama", "pack",
+             None, 1500, "levushei-haneshama-reading-pack.pdf"),
     "handout-he": (ROOT / "output/handouts/levushei-haneshama-mavo.pdf", "levushei-haneshama",
                    "handout-he", None, 1240, "levushei-haneshama-handout.pdf"),
     "handout-en": (ROOT / "output/handouts/levushei-haneshama-mavo-en.pdf", "levushei-haneshama",
