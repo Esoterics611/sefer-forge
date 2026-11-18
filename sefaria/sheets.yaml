@@ -1,0 +1,104 @@
+# What is published on Sefaria (Voices on Sefaria, the account Ronnie publishes
+# under): every sheet, by number, with the discourse it belongs to, and the
+# collection that holds them. The record of what is up, as
+# booklets/narration/youtube.yaml is for YouTube: a sheet is changed by saving
+# it again under its number, so the link already shared keeps working.
+# scripts/sefaria-sheet.py reads and writes this file; keep it in main.
+#
+#   id          the sheet's number: https://www.sefaria.org/sheets/<id>
+#   title       as published
+#   discourse   the discourse folder it belongs to
+#   made_from   the repo file the sheet's content was made from
+#               ("not recorded": published before this record existed; the
+#               likeliest file is named, unchecked)
+#   linked      how many distinct passages it quotes as linked Sefaria sources
+#               (each shows the sheet in that passage's side panel on Sefaria);
+#               the rest of its quotations are pasted text, from works Sefaria
+#               does not have (noted)
+#   beside      checked 2026-11-18 through Sefaria's related-sheets API: whether
+#               the sheet is listed beside its passages
+#   status      public | unlisted
+
+collection:
+  name: "ביאורים בקבלה ובחסידות"
+  description: "ביאורים בדברי האר\"י ז\"ל, הרש\"ש ורבותינו נשיאינו: הנוסח, מקורותיו וביאורו."
+  slug: "ביאורים-בקבלה-ובחסידות"        # public since 2026-11-18 (the private slug was 1nXo4V0Q)
+  url: "https://www.sefaria.org/collections/%D7%91%D7%99%D7%90%D7%95%D7%A8%D7%99%D7%9D-%D7%91%D7%A7%D7%91%D7%9C%D7%94-%D7%95%D7%91%D7%97%D7%A1%D7%99%D7%93%D7%95%D7%AA"
+  image: "https://storage.googleapis.com/sefaria-collection-images/20138-bc806862-e358-11f1-9401-fae83ada074e.png"
+  website: null           # the collection's one link (websiteUrl)
+  cover: "drawn in the browser: the name on parchment, a double brown border (no logo)"
+  made: 2026-11-18
+
+sheets:
+  - id: 759440
+    title: "תפילת השחר על פי האר\"י: השכמה, נטילת ידיים וברכות השחר"
+    discourse: 005-kavanot-shacharit
+    made_from: "not recorded: likely reading/arizal/01-hashkamah-birchot-hashachar.md"
+    linked: 11
+    beside: yes
+    status: public
+    created: 2026-11-18
+  - id: 759441
+    title: "לבושי הנשמה: מקורות ההגהה בעץ חיים ופרי עץ חיים"
+    discourse: 004-levushei-haneshama
+    made_from: "not recorded: likely sessions/001/references.yaml"
+    linked: 26
+    beside: yes
+    status: public
+    created: 2026-11-18
+  - id: 759467
+    title: "לבושי הנשמה: לשון אדמו\"ר נ\"ע בעצמו, עם ביאור"
+    discourse: 004-levushei-haneshama
+    made_from: "not recorded: the teaching text (discourse.md) by הערה, the text linked to Torah Ohr"
+    linked: 9
+    beside: yes
+    status: public
+    created: 2026-11-18
+  - id: 759468
+    title: "שער היחוד לאדמו\"ר האמצעי: הקדמה ושיעורים"
+    discourse: 002-shaar-hayichud
+    made_from: "not recorded: likely discourse.md"
+    linked: 31
+    beside: "not yet: none of the 4 passages tried lists it (The Gate of Unity); check again"
+    status: public
+    created: 2026-11-18
+  - id: 759469
+    title: "שער הל\"ג בעומר: בענין הודאת ישראל, עם ביאור"
+    discourse: 001-lag-baomer
+    made_from: "not recorded: likely discourse.md"
+    linked: 0  # the Siddur im Dach is not on Sefaria
+    beside: "n/a"
+    status: public
+    created: 2026-11-18
+  - id: 759470
+    title: "פרשת בראשית: רצוא ושוב, שמים וארץ"
+    discourse: 003-breishis
+    made_from: "not recorded: likely discourse.md"
+    linked: 17
+    beside: yes
+    status: public
+    created: 2026-11-18
+  - id: 759471
+    title: "כוונות תפילת השחר על פי האר\"י ז\"ל: ביאור יסודי · שער הכוונות ופרי עץ חיים"
+    discourse: 005-kavanot-shacharit
+    made_from: "not recorded: likely biur-arizal/biur.src.md"
+    linked: 91
+    beside: yes
+    status: public
+    created: 2026-11-18
+  - id: 759472
+    title: "כוונות תפילת השחר על פי הרש\"ש: ביאור בדרגה שנייה · נהר שלום ורחובות הנהר"
+    discourse: 005-kavanot-shacharit
+    made_from: "not recorded: likely biur-rashash/biur.src.md"
+    linked: 1  # Nahar Shalom and Rechovot HaNahar are not on Sefaria
+    beside: yes
+    status: public
+    created: 2026-11-18
+  - id: 759474
+    title: "ביאור על קונטרס חסדי דוד: להרב דוד מאגאר · כללי החכמה על פי הרש\"ש"
+    discourse: 005-kavanot-shacharit
+    made_from: "not recorded: likely biur-chasdei-david/biur.src.md"
+    linked: 7  # Kuntres Chasdei David is not on Sefaria
+    beside: yes
+    status: public
+    created: 2026-11-18
