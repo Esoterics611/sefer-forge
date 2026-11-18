@@ -8,9 +8,11 @@
 #   id          the sheet's number: https://www.sefaria.org/sheets/<id>
 #   title       as published
 #   discourse   the discourse folder it belongs to
-#   made_from   the repo file the sheet's content was made from
-#               ("not recorded": published before this record existed; the
-#               likeliest file is named, unchecked)
+#   made_from   the repo file the sheet's content was made from: a biur.src.md
+#               is rebuilt and saved again by scripts/sefaria-sheet.py (the three
+#               here checked 2026-11-18: the build matches the published text word
+#               for word); "not recorded": published before this record existed,
+#               the likeliest file named, unchecked
 #   linked      how many distinct passages it quotes as linked Sefaria sources
 #               (each shows the sheet in that passage's side panel on Sefaria);
 #               the rest of its quotations are pasted text, from works Sefaria
@@ -25,7 +27,7 @@ collection:
   slug: "ביאורים-בקבלה-ובחסידות"        # public since 2026-11-18 (the private slug was 1nXo4V0Q)
   url: "https://www.sefaria.org/collections/%D7%91%D7%99%D7%90%D7%95%D7%A8%D7%99%D7%9D-%D7%91%D7%A7%D7%91%D7%9C%D7%94-%D7%95%D7%91%D7%97%D7%A1%D7%99%D7%93%D7%95%D7%AA"
   image: "https://storage.googleapis.com/sefaria-collection-images/20138-bc806862-e358-11f1-9401-fae83ada074e.png"
-  website: null           # the collection's one link (websiteUrl)
+  website: "https://esoterics611.github.io/library.html"   # the collection's one link (websiteUrl): chosen 2026-11-18, set by Ronnie's paste the same day (unconfirmed)
   cover: "drawn in the browser: the name on parchment, a double brown border (no logo)"
   made: 2026-11-18
 
@@ -81,7 +83,7 @@ sheets:
   - id: 759471
     title: "כוונות תפילת השחר על פי האר\"י ז\"ל: ביאור יסודי · שער הכוונות ופרי עץ חיים"
     discourse: 005-kavanot-shacharit
-    made_from: "not recorded: likely biur-arizal/biur.src.md"
+    made_from: discourses/005-kavanot-shacharit/biur-arizal/biur.src.md
     linked: 91
     beside: yes
     status: public
@@ -89,7 +91,7 @@ sheets:
   - id: 759472
     title: "כוונות תפילת השחר על פי הרש\"ש: ביאור בדרגה שנייה · נהר שלום ורחובות הנהר"
     discourse: 005-kavanot-shacharit
-    made_from: "not recorded: likely biur-rashash/biur.src.md"
+    made_from: discourses/005-kavanot-shacharit/biur-rashash/biur.src.md
     linked: 1  # Nahar Shalom and Rechovot HaNahar are not on Sefaria
     beside: yes
     status: public
@@ -97,7 +99,7 @@ sheets:
   - id: 759474
     title: "ביאור על קונטרס חסדי דוד: להרב דוד מאגאר · כללי החכמה על פי הרש\"ש"
     discourse: 005-kavanot-shacharit
-    made_from: "not recorded: likely biur-chasdei-david/biur.src.md"
+    made_from: discourses/005-kavanot-shacharit/biur-chasdei-david/biur.src.md
     linked: 7  # Kuntres Chasdei David is not on Sefaria
     beside: yes
     status: public
