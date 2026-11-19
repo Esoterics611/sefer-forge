@@ -91,6 +91,13 @@ PROFILES = {
                    "page": "A4", "numerals": "hebrew", "running_header": True, "cover": False, "margin_slack": 3.0,
                    "fonts": {"Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold", "David-Libre", "David-Libre-Bold",
                              "EB-Garamond", "EB-Garamond-Bold"}, "heading": 13.4},
+    # Its English translation (lang: en, templates/biur-woven-en.css): left to right, EB Garamond, page numbers in digits.
+    "biur-woven-en": {"css": "templates/biur.css",
+                      "script": ["scripts/build-biur.py", "templates/biur-woven.css", "templates/biur-woven-en.css"],
+                      "page": "A4", "numerals": "decimal", "rtl": False, "running_header": True, "cover": False,
+                      "margin_slack": 3.0,
+                      "fonts": {"EB-Garamond", "EB-Garamond-Bold", "EB-Garamond-Italic", "EB-Garamond-Bold-Italic",
+                                "Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold"}, "heading": 13.4},
     # Class handouts (scripts/build-handout.py, WeasyPrint): A4, footnotes at the foot, numbered from p.1.
     "handout": {"css": "templates/handout.css", "script": "scripts/build-handout.py", "page": "A4",
                 "numerals": "hebrew", "running_header": False, "cover": False, "margin_slack": 3.0,

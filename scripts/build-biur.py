@@ -59,6 +59,10 @@ The build reads the bold words in order (footnotes, headings and meaning blocks 
 they are the text itself, word for word; it reports how much of the text they cover. A text_file's HTML
 comments (a session's ocr.md: notes, column marks) are not part of the text.
 
+An English translation (front matter `lang: en`, set left to right; headings Introduction, Summary and those declared
+in `headings:`) can hold itself to the original with `mirror: <the original's biur.src.md>`: section by section, the
+same number of stretches of the text (bold) and of footnotes, or the build fails.
+
 Printing: `engine: weasyprint` prints with WeasyPrint instead of Chrome, for footnotes at the foot of
 the page (`[...]{.fn}`); `css:` names stylesheets laid over templates/biur.css (a path, or a list).
 
@@ -428,7 +432,10 @@ FORBIDDEN = [   # prompts/biur-rules.md: what never prints in an explanation
 ]
 
 
-def lint(body: str, first_line: int, headings: list[str] | None = None) -> list[str]:
+EN_HEADING = re.compile(r"^## (?!Introduction$|Summary$)")      # an English explanation (lang: en)
+
+
+def lint(body: str, first_line: int, headings: list[str] | None = None, english: bool = False) -> list[str]:
     """The lines of the hand-written source that break prompts/biur-rules.md (quotations excepted).
     `headings`: part headings the document declares besides מבוא and סיכום (front matter `headings:`)."""
     errs = []
@@ -438,6 +445,8 @@ def lint(body: str, first_line: int, headings: list[str] | None = None) -> list[
             continue
         prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', line)          # what is quoted is not the writer's
         for pat, why in FORBIDDEN:
+            if why.startswith("method") and english:
+                pat = EN_HEADING
             if pat.search(prose if not why.startswith("method") else line):
                 errs.append(f"line {no}: {why}: {line.strip()[:70]!r}")
                 break
@@ -447,6 +456,34 @@ def lint(body: str, first_line: int, headings: list[str] | None = None) -> list[
 MEANING_OPEN = "::: {.meaning}"
 
 FOOTNOTE = re.compile(r"\[(?:[^\[\]]|\[[^\[\]]*\])*\]\{\.fn\}")
+
+
+def section_counts(body: str) -> dict[str, tuple[int, int]]:
+    """For each numbered section (### N.), the number of bold stretches and of footnotes."""
+    out, key = {}, None
+    for part in re.split(r"(?m)^(### \d+\.)", strip_meaning(body)):
+        m = re.match(r"### (\d+)\.", part)
+        if m:
+            key = m.group(1)
+            continue
+        if key:
+            fns = len(FOOTNOTE.findall(part))
+            out[key] = (len(re.findall(r"\*\*(.+?)\*\*", FOOTNOTE.sub(" ", part), flags=re.S)), fns)
+    return out
+
+
+def mirror_check(body: str, original: Path) -> str:
+    """A translation of a woven explanation (front matter `mirror:` = the original's biur.src.md): section by
+    section, the same number of stretches of the text (bold) and of footnotes as the original, so that no
+    stretch is skipped or merged."""
+    raw = original.read_text(encoding="utf-8")
+    want = section_counts(raw.split("---", 2)[2] if raw.startswith("---") else raw)
+    got = section_counts(body)
+    bad = [f"§{k}: {got.get(k, (0, 0))} for {want[k]}" for k in want if got.get(k) != want[k] and k in got]
+    missing = [k for k in want if k not in got]
+    if bad:
+        raise BuildError("mirror: (stretches, footnotes) differ from the original in " + "; ".join(bad))
+    return f"mirror: {len(got)} of {len(want)} sections match the original" + (f"; not yet: §{missing[0]}–§{missing[-1]}" if missing else "")
 
 
 def woven_check(body: str, text: str) -> str:
@@ -510,11 +547,13 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
         head_len = len(raw) - len(body)
         body = strip_meaning(body)
         raw = raw[:head_len] + body
-    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1, meta.get("headings"))
+    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1, meta.get("headings"), meta.get("lang") == "en")
     if errs:
         raise BuildError("the source breaks prompts/biur-rules.md:\n  " + "\n  ".join(errs))
     cursor = TextCursor(meta)
     out, notes, n_src = [], [], 0
+    if meta.get("mirror"):
+        notes.append(mirror_check(body, (src.parent / meta["mirror"]).resolve()))
     if meta.get("woven"):
         if not cursor.text:
             raise BuildError("woven: true needs text_file in the front matter")
@@ -581,7 +620,7 @@ def to_pdf(md: Path, meta: dict, pdf: Path) -> None:
     title = meta.get("title", md.stem)
     import os
     cmd = ["pandoc", str(md), "-f", "markdown+fenced_divs+bracketed_spans+pipe_tables-smart", "-t", "html5", "--standalone", "--wrap=none",
-           "--metadata", f"pagetitle={title}", "--metadata", "lang=he", "--metadata", "dir=rtl",
+           "--metadata", f"pagetitle={title}", "--metadata", f"lang={meta.get('lang', 'he')}", "--metadata", f"dir={'ltr' if meta.get('lang') == 'en' else 'rtl'}",
            "--css", os.path.relpath(CSS, htm.parent), "-o", str(htm)]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode:
