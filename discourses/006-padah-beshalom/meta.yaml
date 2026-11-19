@@ -1,0 +1,13 @@
+discourse: 006
+slug: padah-beshalom
+title: "פדה בשלום נפשי"
+status: draft
+type: images+voice
+chapter: null
+
+# The Mittler Rebbe's maamar ד"ה פדה בשלום (ביאור ביסוד ענין התפלה שנקרא שעת קרבא),
+# שערי תשובה, שער התפלה, דף מט ע"א – נו ע"ד, 12 chapters. The text is in
+# sessions/001/ocr.md, from chabadlibrary.org (no photos); the lesson's reading copy
+# is handouts/padah-beshalom-text.md (scripts/build-handout.py).
+pamphlet:
+  subtitle: "ד\"ה פדה בשלום · אדמו\"ר האמצעי · שערי תשובה"
