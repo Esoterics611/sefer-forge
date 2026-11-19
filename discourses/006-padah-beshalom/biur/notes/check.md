@@ -28,3 +28,13 @@ Hebrew, print for black and white, Sefer Forge branding (in English, at his word
 - Ch. 9 speaks of "חיה יחידה שבנה"ב", and §32 ("בא"ז זלע"ז חסר בחי' יחידה") says the other side lacks a yechidah.
   The explanation reports both as the maamar says them, without reconciling them.
 - An independent check (a reader who did not write it) has not been made yet.
+
+## 2026-11-19, second round (one document)
+- The cliff notes (summary, outline, the four levels, chapter by chapter) now open the ביאור, under the מבוא; the
+  outline gained a column pointing to the explanation's sections. Part heading "המאמר עם ביאור" declared in the front
+  matter (`headings:`). A closing page: the brand, our other works, links to the site.
+- Tables re-laid out (column widths on the `col` elements; the section ranges set left to right).
+- Footnotes 10pt (from 9.6) for reading comfort.
+- Language review, read as a student: §11 and §36 had the divine soul soiled in "its own garments"; the text says
+  "בלבושים צואים דנה"ב": corrected. §24 used "נסיון" for everyday experience, a clash with the maamar's term: reworded.
+  §12, §14, §18, §41: ambiguous reference or gender, corrected. §6, §7, §25 and the בני חיי ומזוני note polished.

@@ -428,11 +428,13 @@ FORBIDDEN = [   # prompts/biur-rules.md: what never prints in an explanation
 ]
 
 
-def lint(body: str, first_line: int) -> list[str]:
-    """The lines of the hand-written source that break prompts/biur-rules.md (quotations excepted)."""
+def lint(body: str, first_line: int, headings: list[str] | None = None) -> list[str]:
+    """The lines of the hand-written source that break prompts/biur-rules.md (quotations excepted).
+    `headings`: part headings the document declares besides מבוא and סיכום (front matter `headings:`)."""
     errs = []
+    allowed = {f"## {h}" for h in headings or []}
     for no, line in enumerate(body.split("\n"), first_line):
-        if line.startswith("@") or line.startswith("# "):
+        if line.startswith("@") or line.startswith("# ") or line.strip() in allowed:
             continue
         prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', line)          # what is quoted is not the writer's
         for pat, why in FORBIDDEN:
@@ -508,7 +510,7 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
         head_len = len(raw) - len(body)
         body = strip_meaning(body)
         raw = raw[:head_len] + body
-    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1)
+    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1, meta.get("headings"))
     if errs:
         raise BuildError("the source breaks prompts/biur-rules.md:\n  " + "\n  ".join(errs))
     cursor = TextCursor(meta)

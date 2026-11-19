@@ -31,7 +31,7 @@ h3 { font-family: "Frank Ruhl Libre", serif; font-size: 13.5pt; margin: 9mm 0 3m
 .opening { break-inside: auto; }
 
 /* Footnotes: a concept in plain words. */
-.fn { float: footnote; footnote-policy: line; font-family: "David Libre", serif; font-size: 9.6pt; line-height: 1.5;
+.fn { float: footnote; footnote-policy: line; font-family: "David Libre", serif; font-size: 10pt; line-height: 1.55;
   color: #000; text-align: justify; }
 .fn::footnote-call { content: counter(footnote); font-family: "David Libre", serif; font-size: 0.62em;
   vertical-align: super; line-height: 0; font-weight: 700; }
@@ -48,3 +48,36 @@ h3 { font-family: "Frank Ruhl Libre", serif; font-size: 13.5pt; margin: 9mm 0 3m
 .colophon strong { font-family: "EB Garamond", serif; letter-spacing: 0.18em; }
 .wordmark { font-weight: 700; letter-spacing: 0.18em; }
 .colophon .wordmark { display: block; font-size: 13pt; margin-bottom: 2mm; }
+
+/* Tables in the opening (the outline, the four levels): a narrow column for chapter and folio, text set right. */
+table { font-size: 11pt; line-height: 1.55; width: 100%; table-layout: fixed; }
+th, td { border: 0.5pt solid #666; padding: 1.4mm 2.2mm; vertical-align: top; }
+th { background: #eee; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+td { text-align: right; }
+.outline table { font-size: 11pt; }
+.outline col:nth-child(1) { width: 8% !important; }
+.outline col:nth-child(2) { width: 13% !important; }
+.outline col:nth-child(3) { width: 61% !important; }
+.outline col:nth-child(4) { width: 18% !important; }
+.outline td:nth-child(1), .outline td:nth-child(2) { text-align: center; white-space: nowrap; }
+.outline td:nth-child(4) { text-align: center; direction: ltr; white-space: nowrap; }
+.levels col:nth-child(1) { width: 17% !important; }
+.levels col:nth-child(2) { width: 30% !important; }
+.levels col:nth-child(3) { width: 29% !important; }
+.levels col:nth-child(4) { width: 24% !important; }
+.levels { break-inside: avoid; }
+h4 { font-family: "Frank Ruhl Libre", serif; font-size: 12.5pt; margin: 5mm 0 1.5mm; break-after: avoid; }
+ul { margin: 0 0 3mm; padding-inline-start: 6mm; }
+li { margin: 0 0 1.6mm; text-align: justify; }
+.newpage { break-before: page; }
+
+/* The closing page: the brand, our other works, where to find them. */
+.works { break-before: page; margin-top: 30mm; padding: 8mm 10mm; border-top: 1pt solid #000; border-bottom: 1pt solid #000; }
+.works .wordmark { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 18pt;
+  letter-spacing: 0.22em; font-weight: 700; }
+.works .tagline { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 11pt;
+  letter-spacing: 0.04em; margin: 1mm 0 6mm; }
+.works p { text-align: justify; }
+.works .wt { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+.works .links { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 10.5pt;
+  line-height: 1.7; margin-top: 2mm; }
