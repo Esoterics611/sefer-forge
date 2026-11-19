@@ -84,6 +84,13 @@ PROFILES = {
              "fonts": {"FrankRuhlLibre-Regular", "FrankRuhlLibre-Bold"}, "heading": 13.4,
              # The נוסח is set at heading size (14pt bold) and a long stretch runs across pages.
              "text_blocks": True},
+    # A woven explanation (build-biur.py, `woven: true`, WeasyPrint, templates/biur-woven.css): black and white,
+    # the text in Frank Ruhl Libre Bold, the explanation in David Libre, footnotes at the foot, a running head
+    # (the section, and the Sefer Forge brand in English), the colophon in EB Garamond.
+    "biur-woven": {"css": "templates/biur.css", "script": ["scripts/build-biur.py", "templates/biur-woven.css"],
+                   "page": "A4", "numerals": "hebrew", "running_header": True, "cover": False, "margin_slack": 3.0,
+                   "fonts": {"Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold", "David-Libre", "David-Libre-Bold",
+                             "EB-Garamond", "EB-Garamond-Bold"}, "heading": 13.4},
     # Class handouts (scripts/build-handout.py, WeasyPrint): A4, footnotes at the foot, numbered from p.1.
     "handout": {"css": "templates/handout.css", "script": "scripts/build-handout.py", "page": "A4",
                 "numerals": "hebrew", "running_header": False, "cover": False, "margin_slack": 3.0,
@@ -171,12 +178,26 @@ def line_starts(page, top: float, bottom: float, rtl: bool = True) -> list[tuple
     For a left-to-right booklet, the leftmost glyph of a line with Latin
     letters. A "..." snapshot marker is not punctuation out of place."""
     out = []
+    # The PDF splits one printed line where the font changes (a woven explanation: the text's words in
+    # one face, the explanation in another, at slightly different heights). Spans whose vertical middles
+    # lie within 3pt are one line.
+    rows: list[list] = []
     for block in page.get_text("rawdict")["blocks"]:
         for line in block.get("lines", []):
             chars = [c for s in line["spans"] for c in s["chars"] if not c["c"].isspace()]
             if not chars or line["bbox"][1] < top or line["bbox"][3] > bottom:
                 continue
+            mid = (line["bbox"][1] + line["bbox"][3]) / 2
             text = "".join(c["c"] for s in line["spans"] for c in s["chars"])
+            for row in rows:
+                if abs(row[0] - mid) <= 3:
+                    row[1] += chars
+                    row[2] += " " + text
+                    break
+            else:
+                rows.append([mid, chars, text])
+    for _, chars, text in rows:
+        if True:
             right = sorted(chars, key=lambda c: -c["bbox"][2]) if rtl else \
                 sorted(chars, key=lambda c: c["bbox"][0])
             if not re.search("[א-ת]" if rtl else "[A-Za-z]", text):
