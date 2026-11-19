@@ -4,4 +4,5 @@
 - Digital edition: https://chabadlibrary.org/books/2500660005 (the maamar's contents), one page per column, https://chabadlibrary.org/books/2500660203 … 2500660234 (מט ע"א … נו ע"ד). Fetched 2026-11-19.
 - The Rebbe cites it as "שערי תשובה ח"א מט, א. נו, א" (ד"ה פדה בשלום תשי"ב and others, he.chabad.org/library/article_cdo/aid/4279859).
 - Asked for as "פדה בשלום in דרך חיים": the library lists it under שערי תשובה; דרך חיים is sometimes counted as a part of שערי תשובה. To check against the printed volume Ronnie learns from.
-- Lesson reading copy: handouts/padah-beshalom-text.md → output/handouts/padah-beshalom-text.pdf.
+- Lesson reading copy: handouts/padah-beshalom-text.md → output/handouts/padah-beshalom-text.pdf. In front of the text: a summary, the outline, the four levels of "ואהבת" (פרק ט), and chapter-by-chapter notes (2026-11-19, written from the text; every quotation checked against ocr.md).
+- Lexicon terms from this maamar: itkafya-ithapcha, mesirat-nefesh (draft; the maamar itself is not in sources/, so it is cited, not checked).

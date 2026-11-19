@@ -41,3 +41,10 @@ li { margin: 0 0 1.5mm; text-align: justify; }
 .lead .fn { font-weight: 400; }
 .daf { font-size: 0.62em; color: var(--rule); font-weight: 700; white-space: nowrap; unicode-bidi: isolate; }
 h2.chapter { text-align: center; font-size: 1em; color: var(--soft); margin-top: 6mm; }
+.newpage { break-before: page; }
+h2.text-title { font-size: 1.25em; color: var(--ink); margin-top: 0; }
+ul { margin: 0 0 2.5mm; padding-inline-start: 5mm; }
+.outline table { break-inside: auto; font-size: 0.86em; }
+.outline td, .outline th { padding: 0.5mm 2mm; }
+.outline tr { break-inside: avoid; }
+.keep { break-inside: avoid; }
