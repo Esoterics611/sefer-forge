@@ -53,6 +53,19 @@ prints after the paragraph it explains, labelled "בנפש האדם", and the bu
 terms.yaml the blocks use, with its meaning and the shiur it comes from. `--no-meaning` prints without the layer
 (output/biur/plain/).
 
+A woven explanation (front matter `woven: true`, with `text_file`): instead of @text stretches, the
+words of the text run inside the explanation in bold (**...**), the plain meaning woven between them.
+The build reads the bold words in order (footnotes, headings and meaning blocks aside) and fails unless
+they are the text itself, word for word; it reports how much of the text they cover. A text_file's HTML
+comments (a session's ocr.md: notes, column marks) are not part of the text.
+
+An English translation (front matter `lang: en`, set left to right; headings Introduction, Summary and those declared
+in `headings:`) can hold itself to the original with `mirror: <the original's biur.src.md>`: section by section, the
+same number of stretches of the text (bold) and of footnotes, or the build fails.
+
+Printing: `engine: weasyprint` prints with WeasyPrint instead of Chrome, for footnotes at the foot of
+the page (`[...]{.fn}`); `css:` names stylesheets laid over templates/biur.css (a path, or a list).
+
 Checks: every directive resolves; the @text stretches cover the text in order;
 no directive is left in the output.
 """
@@ -251,6 +264,7 @@ class TextCursor:
         raw = (ROOT / meta["text_file"]).read_text(encoding="utf-8")
         if raw.startswith("---"):
             raw = raw.split("---", 2)[2]
+        raw = re.sub(r"<!--.*?-->", " ", raw, flags=re.S)    # a session's ocr.md: its notes and column marks
         raw = re.sub(r"(?m)^#{1,6} .*$", " ", raw)
         raw = re.sub(r"\*\*\[[^\]\n]+\]\*\*", " ", raw)     # the address tags of a generated sources/md file
         text = re.sub(r"\s+", " ", re.sub(r"[*_]", "", raw)).strip()
@@ -418,14 +432,21 @@ FORBIDDEN = [   # prompts/biur-rules.md: what never prints in an explanation
 ]
 
 
-def lint(body: str, first_line: int) -> list[str]:
-    """The lines of the hand-written source that break prompts/biur-rules.md (quotations excepted)."""
+EN_HEADING = re.compile(r"^## (?!Introduction$|Summary$)")      # an English explanation (lang: en)
+
+
+def lint(body: str, first_line: int, headings: list[str] | None = None, english: bool = False) -> list[str]:
+    """The lines of the hand-written source that break prompts/biur-rules.md (quotations excepted).
+    `headings`: part headings the document declares besides מבוא and סיכום (front matter `headings:`)."""
     errs = []
+    allowed = {f"## {h}" for h in headings or []}
     for no, line in enumerate(body.split("\n"), first_line):
-        if line.startswith("@") or line.startswith("# "):
+        if line.startswith("@") or line.startswith("# ") or line.strip() in allowed:
             continue
         prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', line)          # what is quoted is not the writer's
         for pat, why in FORBIDDEN:
+            if why.startswith("method") and english:
+                pat = EN_HEADING
             if pat.search(prose if not why.startswith("method") else line):
                 errs.append(f"line {no}: {why}: {line.strip()[:70]!r}")
                 break
@@ -433,6 +454,59 @@ def lint(body: str, first_line: int) -> list[str]:
 
 
 MEANING_OPEN = "::: {.meaning}"
+
+FOOTNOTE = re.compile(r"\[(?:[^\[\]]|\[[^\[\]]*\])*\]\{\.fn\}")
+
+
+def section_counts(body: str) -> dict[str, tuple[int, int]]:
+    """For each numbered section (### N.), the number of bold stretches and of footnotes."""
+    out, key = {}, None
+    # A stretch continued in a new paragraph (a translation may break a long sentence of the text into
+    # paragraphs) is marked so: "…**", blank line, "<!--cont-->**…". It counts as one stretch.
+    body = re.sub(r"\*\*[ \t]*\n[ \t]*\n[ \t]*<!--cont-->\*\*", " ", body)
+    for part in re.split(r"(?m)^(### \d+\.)", strip_meaning(body)):
+        m = re.match(r"### (\d+)\.", part)
+        if m:
+            key = m.group(1)
+            continue
+        if key:
+            fns = len(FOOTNOTE.findall(part))
+            out[key] = (len(re.findall(r"\*\*(.+?)\*\*", FOOTNOTE.sub(" ", part), flags=re.S)), fns)
+    return out
+
+
+def mirror_check(body: str, original: Path) -> str:
+    """A translation of a woven explanation (front matter `mirror:` = the original's biur.src.md): section by
+    section, the same number of stretches of the text (bold) and of footnotes as the original, so that no
+    stretch is skipped or merged."""
+    raw = original.read_text(encoding="utf-8")
+    want = section_counts(raw.split("---", 2)[2] if raw.startswith("---") else raw)
+    got = section_counts(body)
+    bad = [f"§{k}: {got.get(k, (0, 0))} for {want[k]}" for k in want if got.get(k) != want[k] and k in got]
+    missing = [k for k in want if k not in got]
+    if bad:
+        raise BuildError("mirror: (stretches, footnotes) differ from the original in " + "; ".join(bad))
+    return f"mirror: {len(got)} of {len(want)} sections match the original" + (f"; not yet: §{missing[0]}–§{missing[-1]}" if missing else "")
+
+
+def woven_check(body: str, text: str) -> str:
+    """A woven explanation (front matter `woven: true`): the words of the text are set in bold
+    (**...**) inside the explanation, in order. Every bold word, read in order, must be the text
+    itself, word for word and whole; the footnotes, headings and meaning blocks are not read."""
+    prose = strip_meaning(body)
+    prose = FOOTNOTE.sub(" ", prose)
+    prose = "\n".join(l for l in prose.split("\n") if not l.startswith("#"))
+    got = " ".join(re.findall(r"\*\*(.+?)\*\*", prose, flags=re.S)).split()
+    want = text.split()
+    for i, (g, w) in enumerate(zip(got, want)):
+        if g != w:
+            raise BuildError(f"woven text: word {i + 1} is {g!r}, the text has {w!r}: "
+                             f"…{' '.join(want[max(0, i - 6):i])} [{w}] {' '.join(want[i + 1:i + 6])}…")
+    if len(got) > len(want):
+        raise BuildError(f"woven text: {len(got) - len(want)} bold word(s) after the end of the text: {' '.join(got[len(want):])[:80]!r}")
+    pct = 100 * len(got) // max(1, len(want))
+    left = " ".join(want[len(got):])
+    return f"woven text: {len(got)} of {len(want)} words ({pct}%)" + (f"; NOT yet reached from {left[:60]!r}" if left else ", whole and in order")
 
 
 def meaning_blocks(body: str) -> list[str]:
@@ -476,11 +550,17 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
         head_len = len(raw) - len(body)
         body = strip_meaning(body)
         raw = raw[:head_len] + body
-    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1)
+    errs = lint(body, raw[: len(raw) - len(body)].count("\n") + 1, meta.get("headings"), meta.get("lang") == "en")
     if errs:
         raise BuildError("the source breaks prompts/biur-rules.md:\n  " + "\n  ".join(errs))
     cursor = TextCursor(meta)
     out, notes, n_src = [], [], 0
+    if meta.get("mirror"):
+        notes.append(mirror_check(body, (src.parent / meta["mirror"]).resolve()))
+    if meta.get("woven"):
+        if not cursor.text:
+            raise BuildError("woven: true needs text_file in the front matter")
+        notes.append(woven_check(body, cursor.text))
     for no, line in enumerate(body.split("\n"), raw[: len(raw) - len(body)].count("\n") + 1):
         m = DIRECTIVE.match(line)
         if not m:
@@ -511,6 +591,10 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
         key = terms_key(blocks)
         out += key
         notes.append(f"{len(blocks)} meaning block(s); {sum(1 for k in key if k.startswith('**'))} term(s) in the key")
+    if meta.get("woven"):
+        # A line must not open with the punctuation that follows a stretch of the text or a footnote call:
+        # a word joiner (U+2060, not printed) binds it to what precedes it.
+        out = [re.sub(r"(?<=\S)(\*\*|\]\{\.fn\})(?=[.:;,)\[])", "\\1\u2060", l) for l in out]
     out, n_par = number_paragraphs(out)
     notes.append(f"{n_par} paragraph(s) of explanation numbered")
     out = group_openings(out)
@@ -518,7 +602,7 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
     if with_checks and checks.is_file():
         out, n_flag = add_checks(out, yaml.safe_load(checks.read_text(encoding="utf-8")) or {})
         notes.append(f"{n_flag} paragraph(s) marked from checks.yaml")
-    if cursor.text:
+    if cursor.text and not meta.get("woven"):
         notes.append(cursor.report())
     meta_out = dict(meta)
     meta_out["built_from"] = src.name
@@ -538,12 +622,27 @@ def to_pdf(md: Path, meta: dict, pdf: Path) -> None:
     htm = pdf.with_suffix(".html")
     title = meta.get("title", md.stem)
     import os
-    cmd = ["pandoc", str(md), "-f", "markdown+fenced_divs+bracketed_spans+pipe_tables-smart", "-t", "html5", "--standalone",
-           "--metadata", f"pagetitle={title}", "--metadata", "lang=he", "--metadata", "dir=rtl",
+    cmd = ["pandoc", str(md), "-f", "markdown+fenced_divs+bracketed_spans+pipe_tables-smart", "-t", "html5", "--standalone", "--wrap=none",
+           "--metadata", f"pagetitle={title}", "--metadata", f"lang={meta.get('lang', 'he')}", "--metadata", f"dir={'ltr' if meta.get('lang') == 'en' else 'rtl'}",
            "--css", os.path.relpath(CSS, htm.parent), "-o", str(htm)]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode:
         raise BuildError("pandoc: " + r.stderr.strip()[-800:])
+    extra = [ROOT / c for c in ([meta["css"]] if isinstance(meta.get("css"), str) else meta.get("css") or [])]
+    if meta.get("engine") == "weasyprint":
+        # WeasyPrint sets footnotes at the foot of the page ([...]{.fn}, `float: footnote`), which Chrome cannot.
+        from weasyprint import CSS as WCSS, HTML
+        from weasyprint.text.fonts import FontConfiguration
+        fc = FontConfiguration()
+        page = re.sub(r'<link rel="stylesheet"[^>]*>', "", htm.read_text(encoding="utf-8"))
+        page = re.sub(r"<style>.*?</style>", "", page, flags=re.S)
+        HTML(string=page, base_url=str(CSS.parent)).write_pdf(
+            pdf, stylesheets=[WCSS(filename=str(f), font_config=fc) for f in [CSS] + extra], font_config=fc)
+        return
+    if extra:
+        page = htm.read_text(encoding="utf-8")
+        links = "".join(f'<link rel="stylesheet" href="{os.path.relpath(f, htm.parent)}" />' for f in extra)
+        htm.write_text(page.replace("</head>", links + "</head>"), encoding="utf-8")
     r = subprocess.run([chrome(), "--headless=new", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
                         "--allow-file-access-from-files", f"--print-to-pdf={pdf}", str(htm)],
                        capture_output=True, text=True, timeout=600)

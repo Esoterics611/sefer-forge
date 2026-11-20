@@ -34,3 +34,17 @@ th, td { border: 0.6pt solid var(--rule); padding: 1mm 2mm; text-align: center; 
 th { background: #f6f2e9; font-weight: 700; }
 ol { margin: 0 0 2mm; padding-inline-start: 6mm; }
 li { margin: 0 0 1.5mm; text-align: justify; }
+
+/* A text printed whole for a lesson (e.g. discourses/006-padah-beshalom/handouts/padah-beshalom-text.md):
+   its opening line, and where each printed column (daf and amud) begins. */
+.lead { display: block; text-align: center; font-weight: 700; font-size: 1.08em; margin: 0 0 4mm; }
+.lead .fn { font-weight: 400; }
+.daf { font-size: 0.62em; color: var(--rule); font-weight: 700; white-space: nowrap; unicode-bidi: isolate; }
+h2.chapter { text-align: center; font-size: 1em; color: var(--soft); margin-top: 6mm; }
+.newpage { break-before: page; }
+h2.text-title { font-size: 1.25em; color: var(--ink); margin-top: 0; }
+ul { margin: 0 0 2.5mm; padding-inline-start: 5mm; }
+.outline table { break-inside: auto; font-size: 0.86em; }
+.outline td, .outline th { padding: 0.5mm 2mm; }
+.outline tr { break-inside: avoid; }
+.keep { break-inside: avoid; }

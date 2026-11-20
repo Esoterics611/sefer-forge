@@ -22,7 +22,10 @@ out, its other brackets turned into spoken phrases) and how the voice says the
 names. A plan may read English renderings of shiurim instead (`parts:`, the
 *-en.md files beside a discourse's Hebrew, whose "## " sections are its
 chapters; prompts/render-english.md), with its own `series:` and `subtitle:`
-for the title card and `about:`, `tags:`, `hashtags:` for YouTube (`say:`, over the shared booklets/narration/say-<lang>.yaml). Nothing of the booklet's contents or glossary is read: only the
+for the title card and `about:`, `tags:`, `hashtags:` for YouTube (`say:`, over the shared booklets/narration/say-<lang>.yaml).
+A plan may also read a written explanation whole (`biur:`, a built biur.md, with `read:` the stretches
+read): a read-along, its words burned into a dark screen as they are read (readalong.ass; the rules'
+"Read-along videos"), `--preview <seconds>` one still of it. Nothing of the booklet's contents or glossary is read: only the
 plan's short `intro:`, the stories and its `outro:`. The build stops when a cut
 or an edit no longer matches the story, or a bracket is left in what is read.
 
@@ -378,7 +381,9 @@ def title_card(plan: dict, series: dict, size: tuple[int, int]):
     from PIL import Image, ImageDraw, ImageFont, features
     W, H = size
     k = W / THUMB[0]                                    # laid out at 1280x720, scaled
-    img = Image.new("RGB", size, PAPER)
+    # A read-along (a plan with `biur:`) has the same card in its own colours: light on dark.
+    paper, ink, bronze = (DARK_BG, DARK_INK, DARK_GOLD) if plan.get("biur") else (PAPER, INK, BRONZE)
+    img = Image.new("RGB", size, paper)
     draw = ImageDraw.Draw(img)
     def font(name: str, pt: float):
         if plan["lang"] != "he":
@@ -393,7 +398,7 @@ def title_card(plan: dict, series: dict, size: tuple[int, int]):
     # בס"ד, top right; Pillow without raqm lays out no right-to-left text, so the letters go in reversed.
     bsd = 'בס"ד' if features.check("raqm") else 'בס"ד'[::-1]
     bsd_font = font("SemiBold", 38) if plan["lang"] == "he" else ImageFont.truetype(hebrew, round(40 * k))
-    draw.text((W - 56 * k, 40 * k), bsd, font=bsd_font, fill=BRONZE, anchor="ra")
+    draw.text((W - 56 * k, 40 * k), bsd, font=bsd_font, fill=bronze, anchor="ra")
 
 
     def centred(y: float, text: str, f, fill, tracking: float = 0) -> None:
@@ -422,14 +427,283 @@ def title_card(plan: dict, series: dict, size: tuple[int, int]):
     size_px = pt * k
     gap = size_px * 1.12
     y = (H - (gap * (len(lines) - 1) + size_px)) / 2 + 10 * k
-    centred(y - 120 * k, series["series"].upper(), font("Regular", 38), BRONZE,
+    centred(y - 120 * k, series["series"].upper(), font("Regular", 38), bronze,
             tracking=0 if plan["lang"] == "he" else 5 * k)        # spaced letters break Hebrew
-    draw.line([(W / 2 - 90 * k, y - 52 * k), (W / 2 + 90 * k, y - 52 * k)], fill=BRONZE, width=max(2, round(2 * k)))
+    draw.line([(W / 2 - 90 * k, y - 52 * k), (W / 2 + 90 * k, y - 52 * k)], fill=bronze, width=max(2, round(2 * k)))
     for line in lines:
-        centred(y - size_px * 0.18, line, big, INK)
+        centred(y - size_px * 0.18, line, big, ink)
         y += gap
-    centred(y - gap + size_px + 40 * k, series["subtitle"], font("Italic", 44), BRONZE)
+    centred(y - gap + size_px + 40 * k, series["subtitle"], font("Italic", 44), bronze)
     return img
+
+
+# --- Read-along: a written explanation (a ביאור) read aloud with its words on the screen ----------
+#
+# A plan with `biur:` (a built biur.md) reads the stretches its `read:` names
+# and shows every word as it is read, burned into the picture: light letters on
+# a dark ground (asked for 2026-11-20: to read along, and to fall asleep by,
+# without a bright screen). The words of the text itself (bold in the print)
+# are in a soft gold, the explanation in ivory, a note (a footnote of the
+# print, read after its paragraph) in a dimmer italic; the section read is
+# named small at the top. Citations in brackets are left out of voice and
+# screen alike; a quotation inside one stays.
+
+DARK_BG, DARK_INK, DARK_GOLD, DARK_NOTE, DARK_BRONZE = (26, 23, 20), (226, 218, 202), (226, 196, 138), \
+    (172, 163, 148), (160, 136, 98)
+SCREEN_LINE, SCREEN_LINES = 54, 3          # what one cue holds: three lines, wrapped wider by libass (EB Garamond 68)
+_BOOK = r"(?:I{1,2} )?[A-Z][\w’']*(?: (?:of|[A-Z][\w’']*))*(?: [IVX]+)?"
+REF = _BOOK + r",? (?:chapters? )?\d+[ab]?(?:[:.]\d+[ab]?)?(?:[–-]\d+[ab]?(?::\d+)?)?(?:, \d+[ab]?(?::\d+)?)*"
+
+
+def biur_markdown(s: str) -> str:
+    """A biur paragraph's markdown, as read: no numbers, comments or citations."""
+    s = re.sub(r"\[[^\]]*\]\{\.pnum\}\s*", "", s)
+    s = re.sub(r"<!--.*?-->", "", s, flags=re.S)
+    s = re.sub(r"\(\d{1,2}\) ?", "", s)                                   # the discourse's chapter numbers
+    s = re.sub(rf"\((?:{REF}; )*{REF}: ", "(", s)                          # (Shabbat 114a: “...”) -> (“...”)
+    s = re.sub(rf"\s*\((?:{REF}; )*{REF}\)", "", s)                        # (Psalms 92:10)
+    s = re.sub(r"\s*\(\d+:\d+\)", "", s)                                       # Psalms (55:19)
+    s = re.sub(rf",?(”),? {REF}\)", r"\1)", s)                                   # (“...,” Ecclesiastes 7:14)
+    s = re.sub(r"\*\*\s*\*\*", " ", s)                                     # a bold run closed and reopened
+    return " ".join(s.split())
+
+
+def styled(md: str) -> tuple[str, list[int]]:
+    """Markdown emphasis to (plain text, a style per character): 1 bold (the text), 2 italic."""
+    text, styles, bold, italic = [], [], False, False
+    for tok in re.split(r"(\*\*|\*)", md):
+        if tok == "**":
+            bold = not bold
+        elif tok == "*":
+            italic = not italic
+        else:
+            text.append(tok)
+            styles += [bold | (italic << 1)] * len(tok)
+    plain_text = "".join(text)
+    # Spaces left at the edges by a removed citation.
+    return plain_text, styles
+
+
+def footnotes(md: str) -> tuple[str, list[str]]:
+    """Take the [ ... ]{.fn} notes out of a paragraph (brackets inside them balanced)."""
+    notes, out, i = [], [], 0
+    while True:
+        j = md.find("{.fn}", i)
+        if j < 0:
+            out.append(md[i:])
+            break
+        depth, k = 0, j - 1
+        while k >= i:
+            depth += {"]": 1, "[": -1}.get(md[k], 0)
+            if depth == 0:
+                break
+            k -= 1
+        out.append(md[i:k])
+        notes.append(md[k + 1:j - 1])
+        i = j + len("{.fn}")
+    return "".join(out), notes
+
+
+def biur_blocks(plan: dict) -> list[dict]:
+    """The read-along as blocks: {text, styles, kind (title, heading, para, note), pause, chapter}."""
+    src = Path(plan["biur"]).read_text(encoding="utf-8")
+    src = src.split("---", 2)[2] if src.startswith("---") else src
+    blocks = []
+
+    def add(md: str, kind: str, chapter=None, pause=PAUSE["paragraph"]):
+        text, styles = styled(biur_markdown(md))
+        if text.strip():
+            lead = len(text) - len(text.lstrip())
+            text, styles = text.strip(), styles[lead:lead + len(text.strip())]
+            blocks.append({"text": text, "styles": styles, "kind": kind, "pause": pause, "chapter": chapter})
+
+    if plan.get("intro"):
+        add(plan["intro"], "title", pause=PAUSE["story"])
+    for stretch in plan["read"]:
+        start = src.find(stretch["from"])
+        end = src.find(stretch["to"], start + 1)
+        if start < 0 or end < 0:
+            sys.exit(f"{plan['biur']}: read from {stretch['from']!r} to {stretch['to']!r} not found")
+        body = src[start:end]
+        body = body.partition("\n")[2]           # its own heading: the chapter's name, or none
+        if stretch.get("chapter"):
+            add(stretch["chapter"], "heading", chapter=stretch["chapter"], pause=PAUSE["title"])
+        for para in re.split(r"\n\s*\n", body):
+            para = "\n".join(l for l in para.splitlines() if not l.startswith(":::")).strip()
+            if not para or para.startswith("|"):
+                continue
+            if para.startswith("#"):
+                title = para.lstrip("#").strip()
+                add(title, "heading", chapter=plain(title), pause=PAUSE["title"])
+                continue
+            md, notes = footnotes(para)
+            add(md, "para")
+            for n in notes:
+                add(n, "note")
+        if blocks:
+            blocks[-1]["pause"] = PAUSE["story"]
+    if plan.get("outro"):
+        add(plan["outro"], "title", pause=0.0)
+    return blocks
+
+
+def clauses(sentence: str) -> list[str]:
+    """A sentence too long for one screen, said in parts at its ; and : (each part said whole)."""
+    if fits_screen(sentence):
+        return [sentence]
+    parts = [p for p in re.split(r"(?<=[;:]) ", sentence) if p]
+    out = [parts[0]]
+    for p in parts[1:]:
+        if fits_screen(out[-1] + " " + p):
+            out[-1] += " " + p
+        else:
+            out.append(p)
+    return out
+
+
+def fits_screen(text: str) -> bool:
+    return len(textwrap.wrap(text, SCREEN_LINE, break_on_hyphens=False)) <= SCREEN_LINES
+
+
+def screen_pieces(text: str) -> list[str]:
+    """A part too long for one screen, shown in even pieces, at a comma where one is near."""
+    pieces, words = [], text.split(" ")
+    while not fits_screen(" ".join(words)):
+        rest = " ".join(words)
+        target = len(rest) / math.ceil(len(rest) / (SCREEN_LINE * SCREEN_LINES - 20))
+        best = None
+        for take in range(1, len(words)):
+            head = " ".join(words[:take])
+            if not fits_screen(head):
+                break
+            score = abs(len(head) - target) - (25 if head[-1] in ",;:—" else 0)
+            if best is None or score < best[0]:
+                best = (score, take)
+        pieces.append(" ".join(words[:best[1]]))
+        words = words[best[1]:]
+    return pieces + [" ".join(words)]
+
+
+def synthesize_readalong(model, blocks: list[dict], voice: str, speed: float, say: dict):
+    """Read the blocks part by part; return (samples, rate, cues), a cue (start, end, block, from, to) per screen."""
+    import numpy as np
+    lang, rate, t = voice_lang(voice), 24000, 0.0
+    audio, cues = [], []
+    for bi, b in enumerate(blocks):
+        if b["chapter"]:
+            print(f"  {b['chapter']}", flush=True)
+        b["start"] = t
+        parts = [c for s in sentences(b["text"]) for c in clauses(s)]
+        at = 0
+        for j, part in enumerate(parts):
+            at = b["text"].index(part, at)
+            said = re.sub(r"[\[\]()]", "", spoken(part, say, lang))
+            samples, rate = model.create(said, voice=voice, speed=speed, lang=lang)
+            length = len(samples) / rate
+            pieces = screen_pieces(part)
+            total, u, p_at = sum(len(p) for p in pieces), t, at
+            for p in pieces:
+                p_at = b["text"].index(p, p_at)
+                d = length * len(p) / total
+                cues.append((u, u + d, bi, p_at, p_at + len(p)))
+                u, p_at = u + d, p_at + len(p)
+            last = j == len(parts) - 1
+            gap = np.zeros(int((b["pause"] if last else PAUSE["sentence"]) * rate), np.float32)
+            audio += [samples, gap]
+            t += length + len(gap) / rate
+            at += len(part)
+    return np.concatenate(audio), rate, cues
+
+
+def ass_colour(rgb: tuple[int, int, int]) -> str:
+    return "&H00%02X%02X%02X" % (rgb[2], rgb[1], rgb[0])
+
+
+def write_readalong(blocks: list[dict], cues: list, out: Path) -> None:
+    """The words on the screen (readalong.ass, burned in) and the same cues as narration.srt."""
+    W, H = VIDEO
+    head = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {W}
+PlayResY: {H}
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Body,EB Garamond,68,{ass_colour(DARK_INK)},&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,230,230,40,1
+Style: Note,EB Garamond,60,{ass_colour(DARK_NOTE)},&H000000FF,&H00000000,&H00000000,0,1,0,0,100,100,0,0,1,0,0,5,260,260,40,1
+Style: Heading,EB Garamond,72,{ass_colour(DARK_GOLD)},&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,200,200,40,1
+Style: Top,EB Garamond,36,{ass_colour(DARK_BRONZE)},&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,0,0,8,200,200,64,1
+Style: Label,EB Garamond,32,{ass_colour(DARK_BRONZE)},&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,3,0,1,0,0,5,200,200,40,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    def ts(t: float) -> str:
+        cs = int(round(t * 100))
+        return f"{cs // 360000}:{cs // 6000 % 60:02d}:{cs // 100 % 60:02d}.{cs % 100:02d}"
+
+    def esc(s: str) -> str:
+        return s.replace("\\", "∖").replace("{", "(").replace("}", ")")
+
+    def runs(b: dict, a: int, z: int) -> str:
+        """The text from a to z with its colours: the text's own words gold, the explanation ivory."""
+        out, cur = [], None
+        for i in range(a, z):
+            st = b["styles"][i]
+            if b["kind"] == "para" and st != cur:
+                colour = DARK_GOLD if st & 1 else DARK_INK
+                out.append("{\\c%s\\i%d}" % (ass_colour(colour)[2:] + "&", 1 if st & 2 else 0))
+                cur = st
+            elif b["kind"] == "note" and st != cur:
+                out.append("{\\i%d}" % (0 if st & 2 else 1))     # a term set off in a note: upright
+                cur = st
+            out.append(esc(b["text"][i]))
+        return "".join(out)
+
+    events, srt, chapter_spans = [], [], []
+    starts = [(b["start"], plain(b["chapter"])) for b in blocks if b["chapter"]]
+    for (t0, name), nxt in zip(starts, starts[1:] + [(cues[-1][1] + 5, None)]):
+        chapter_spans.append((t0, nxt[0], name))
+    for t0, t1, name in chapter_spans:
+        events.append(f"Dialogue: 0,{ts(t0)},{ts(t1)},Top,,0,0,0,,{esc(name.upper())}")
+    for n, (c0, c1, bi, a, z) in enumerate(cues):
+        b = blocks[bi]
+        if b["kind"] == "title" and bi == 0:
+            continue                         # the opening words: the title card says them
+        # Each cue stays up until the next one comes (through the pauses), so the screen is never empty.
+        end = cues[n + 1][0] if n + 1 < len(cues) else c1 + 4
+        style = {"para": "Body", "note": "Note", "heading": "Heading", "title": "Heading"}[b["kind"]]
+        text = runs(b, a, z)
+        if b["kind"] == "note":
+            text = "{\\fs30\\c%s\\i0\\fsp3}NOTE{\\r}\\N" % (ass_colour(DARK_BRONZE)[2:] + "&") + text
+        events.append(f"Dialogue: 1,{ts(c0)},{ts(end)},{style},,0,0,0,,{{\\fad(220,220)}}{text}")
+        srt.append(f"{n + 1}\n{stamp(c0)} --> {stamp(c1)}\n"
+                   + "\n".join(textwrap.wrap(b["text"][a:z], SUB_LINE, break_on_hyphens=False)) + "\n")
+    (out / "readalong.ass").write_text(head + "\n".join(events) + "\n", encoding="utf-8")
+    (out / "narration.srt").write_text("\n".join(srt), encoding="utf-8")
+
+
+def make_readalong_video(out: Path, title_until: float) -> Path:
+    """The dark ground with the words burned in; the title card for the opening words, fading out."""
+    if not shutil.which("ffmpeg"):
+        sys.exit("ffmpeg is needed for the video")
+    video = out / "video.mp4"
+    bg = "0x%02X%02X%02X" % DARK_BG
+    fade = max(0.0, title_until - 1.0)
+    graph = (f"[1]format=rgba,fade=t=out:st={fade:.2f}:d=1:alpha=1[card];"
+             f"[0][card]overlay=eof_action=pass:shortest=0[v];"
+             f"[v]ass={out / 'readalong.ass'}:fontsdir={FONTS},format=yuv420p[out]")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error",
+                    "-f", "lavfi", "-i", f"color=c={bg}:s={VIDEO[0]}x{VIDEO[1]}:r=10",
+                    "-loop", "1", "-framerate", "10", "-t", f"{title_until + 0.5:.2f}", "-i", str(out / "frame.png"),
+                    "-i", str(out / "narration.wav"),
+                    "-filter_complex", graph, "-map", "[out]", "-map", "2:a",
+                    "-c:v", "libx264", "-tune", "stillimage", "-preset", "veryfast", "-crf", "22", "-g", "100",
+                    "-af", LOUDNORM, "-ar", "48000", "-c:a", "aac", "-b:a", "160k",
+                    "-shortest", "-movflags", "+faststart", str(video)], check=True)
+    return video
 
 
 def make_video(out: Path) -> Path:
@@ -527,6 +801,8 @@ def main(argv: list[str]) -> None:
     say = {**(yaml.safe_load(shared.read_text(encoding="utf-8")) or {} if shared.exists() else {}),
            **(plan.get("say") or {})}
 
+    if plan.get("biur"):
+        return readalong(plan, plan_path, argv, voice, say, samples_for)
     sections = [] if plan.get("parts") else load_sections(Path(SOURCES[plan["lang"]]))
     blocks = build_blocks(plan, sections)
     out = OUT / plan_path.stem
@@ -590,6 +866,85 @@ def main(argv: list[str]) -> None:
     print(f"  {out / 'chapters.txt'}")
     make_frame(plan, out)
     print(f"  {make_video(out)}")
+
+
+def readalong(plan: dict, plan_path: Path, argv: list[str], voice: str, say: dict, samples_for: list[str]) -> None:
+    """A plan with `biur:`: the explanation read aloud, its words on a dark screen."""
+    blocks = biur_blocks(plan)
+    out = OUT / plan_path.stem
+    out.mkdir(parents=True, exist_ok=True)
+    lines = []
+    for b in blocks:
+        if b["kind"] == "heading":
+            lines.append(f"# {b['text']}")
+        else:
+            lines.append(("NOTE: " if b["kind"] == "note" else "")
+                         + textwrap.fill(b["text"], 90, break_on_hyphens=False))
+    (out / "script.txt").write_text("\n\n".join(lines) + "\n", encoding="utf-8")
+    words = sum(len(b["text"].split()) for b in blocks)
+    print(f"  {out / 'script.txt'}  ({words} words, {sum(1 for b in blocks if b['chapter'])} chapters, "
+          f"about {words / 165 / plan.get('speed', 1.0):.0f} minutes)")
+    if "--script" in argv:
+        return
+    if "--names" in argv:
+        model, lang = load_model(), voice_lang(voice)
+        names = sorted({w for b in blocks for w in re.findall(r"(?<![\w'’])[A-Z][\w'’‑-]*", b["text"])})
+        # The italic words too: the Hebrew terms.
+        italic = sorted({m.strip(" ,.;:“”") for b in blocks for m in
+                         re.findall(r"\S+", "".join(c if s & 2 else " " for c, s in zip(b["text"], b["styles"])))})
+        for w in sorted(set(names) | set(italic)):
+            ph = model.tokenizer.phonemize(spoken(w, say, lang), lang)
+            print(f"  {w:22} {spoken(w, say, lang):22} {ph}")
+        return
+    if "--frame" in argv or "--thumbnail" in argv:
+        print(f"  {make_frame(plan, out)}")
+        return
+    model = load_model(plan["lang"])
+    if samples_for:
+        first = next(i for i, b in enumerate(blocks) if b["kind"] == "para")
+        for v in samples_for:
+            audio, rate, _ = synthesize_readalong(model, blocks[:first + 3], v, plan.get("speed", 1.0), say)
+            print(f"  {write_audio(audio, rate, out / f'sample-{v}.wav')}")
+        return
+    if "--video" not in argv:
+        audio, rate, cues = synthesize_readalong(model, blocks, voice, plan.get("speed", 1.0), say)
+        print(f"  {write_audio(audio, rate, out / 'narration.wav')}  ({len(audio) / rate / 60:.1f} minutes, voice {voice})")
+        import json
+        (out / "cues.json").write_text(json.dumps({"cues": cues, "starts": [b.get("start") for b in blocks]}),
+                                       encoding="utf-8")
+    else:
+        import json
+        if not (out / "cues.json").exists():
+            sys.exit(f"{out / 'cues.json'}: no reading yet; build without --video first")
+        saved = json.loads((out / "cues.json").read_text(encoding="utf-8"))
+        cues = [tuple(c) for c in saved["cues"]]
+        for b, s in zip(blocks, saved["starts"]):
+            b["start"] = s
+    write_readalong(blocks, cues, out)
+    print(f"  {out / 'narration.srt'}")
+    chapters = [(b["start"], plain(b["chapter"])) for b in blocks if b["chapter"]]
+    chapters[0] = (0.0, chapters[0][1])
+    (out / "chapters.txt").write_text("".join(f"{stamp(t, srt=False)} {c}\n" for t, c in chapters), encoding="utf-8")
+    print(f"  {out / 'chapters.txt'}")
+    make_frame(plan, out)
+    # The title card stays up while the opening words are read.
+    title_until = next(c[0] for c in cues if blocks[c[2]]["kind"] != "title")
+    if "--preview" in argv:          # a minute from where --preview says (seconds), to look at
+        at = float(argv[argv.index("--preview") + 1])
+        print(f"  {make_preview(out, at)}")
+        return
+    print(f"  {make_readalong_video(out, title_until)}")
+
+
+def make_preview(out: Path, at: float) -> Path:
+    """Stills of the read-along screen at a moment, without making the whole video."""
+    bg = "0x%02X%02X%02X" % DARK_BG
+    path = out / f"preview-{int(at)}.png"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i",
+                    f"color=c={bg}:s={VIDEO[0]}x{VIDEO[1]}:r=10:d={at + 1}",
+                    "-vf", f"ass={out / 'readalong.ass'}:fontsdir={FONTS}", "-ss", str(at), "-frames:v", "1",
+                    str(path)], check=True)
+    return path
 
 
 if __name__ == "__main__":

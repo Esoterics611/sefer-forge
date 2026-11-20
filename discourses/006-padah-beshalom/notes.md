@@ -1,0 +1,10 @@
+# Notes — padah-beshalom
+
+- The maamar: ד"ה פדה בשלום of אדמו"ר האמצעי, headed "ביאור ביסוד ענין התפלה שנקרא שעת קרבא מיוסד ע"פ פדה בשלום", printed in שערי תשובה (חלק א), שער התפלה, דף מט ע"א – נו ע"ד, י"ב פרקים.
+- Digital edition: https://chabadlibrary.org/books/2500660005 (the maamar's contents), one page per column, https://chabadlibrary.org/books/2500660203 … 2500660234 (מט ע"א … נו ע"ד). Fetched 2026-11-19.
+- The Rebbe cites it as "שערי תשובה ח"א מט, א. נו, א" (ד"ה פדה בשלום תשי"ב and others, he.chabad.org/library/article_cdo/aid/4279859).
+- Asked for as "פדה בשלום in דרך חיים": the library lists it under שערי תשובה; דרך חיים is sometimes counted as a part of שערי תשובה. To check against the printed volume Ronnie learns from.
+- Lesson reading copy: handouts/padah-beshalom-text.md → output/handouts/padah-beshalom-text.pdf. In front of the text: a summary, the outline, the four levels of "ואהבת" (פרק ט), and chapter-by-chapter notes (2026-11-19, written from the text; every quotation checked against ocr.md).
+- Lexicon terms from this maamar: itkafya-ithapcha, mesirat-nefesh (draft; the maamar itself is not in sources/, so it is cited, not checked).
+- English: handouts/padah-beshalom-notes-en.md → output/handouts/padah-beshalom-notes-en.pdf (2026-11-19): the summary and chapter notes translated, each quotation translated from the maamar, its exact Hebrew in a footnote with chapter and folio-column (49a = folio 49, first column), placed by script from ocr.md (171 footnotes, all found). Reviewed against the Hebrew in context; the review also corrected one Hebrew note (פרק ו, מיכאל וגבריאל: the ministers before the king).
+- ביאור (2026-11-19): biur/biur.src.md → output/biur/006-padah-beshalom.pdf (`python scripts/build-biur.py discourses/006-padah-beshalom/biur --pdf`, proof `--profile biur-woven`). The whole maamar woven into the explanation in bold, 43 sections, concepts in footnotes, black-and-white print, Sefer Forge brand in English. How it was checked and what is open: biur/notes/check.md.

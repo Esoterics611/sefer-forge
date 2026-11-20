@@ -1,0 +1,49 @@
+/* An English woven explanation (build-biur.py, lang: en), laid over biur.css and biur-woven.css: left to right,
+   EB Garamond throughout. The translated words of the text: SemiBold; the explanation woven between them: Regular;
+   concepts in footnotes. Black and white; the Sefer Forge brand in the running head and on the closing page. */
+@font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-Italic.ttf"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-SemiBoldItalic.ttf"); font-weight: 700; font-style: italic; }
+
+@page {
+  @top-right { content: "Sefer Forge · esoterics611.github.io"; font-family: "EB Garamond", serif; font-size: 8.5pt;
+    letter-spacing: 0.04em; color: #333; }
+  @top-left { content: string(section); font-family: "EB Garamond", serif; font-size: 9pt; font-style: italic; color: #333; }
+  @bottom-center { content: counter(page); font-family: "EB Garamond", serif; font-size: 10pt; color: #000; }
+  @footnote { direction: ltr; text-align: left; }
+}
+@page :first { @top-right { content: none; } @top-left { content: none; } }
+
+html { direction: ltr; }
+body { font-family: "EB Garamond", serif; font-size: 12.5pt; line-height: 1.62; hyphens: auto; }
+p, li { text-align: justify; }
+strong { font-family: "EB Garamond", serif; font-weight: 700; }
+em { font-style: italic; font-weight: 400; color: inherit; }
+h1, h2, h3, h4, th, .subtitle { font-family: "EB Garamond", serif; }
+h1 { font-size: 26pt; font-weight: 700; }
+h3 { font-size: 13.5pt; }
+.bsd { text-align: right; direction: rtl; font-family: "Frank Ruhl Libre", serif; }
+.fn { font-family: "EB Garamond", serif; font-size: 10pt; line-height: 1.45; text-align: justify; }
+.fn::footnote-call { font-family: "EB Garamond", serif; }
+td { text-align: left; }
+.outline td:nth-child(4) { direction: ltr; }
+ul { padding-inline-start: 6mm; }
+.works p { text-align: justify; }
+.works .wt { font-family: "EB Garamond", serif; font-weight: 700; }
+.he { font-family: "Frank Ruhl Libre", serif; direction: rtl; unicode-bidi: isolate; }
+.works .links { hyphens: none; }
+
+/* Reading comfort (2026-11-20, at Ronnie's word: "bigger font, broken up, easier to read"): larger type, more
+   leading, air between paragraphs and before each section. */
+body { font-size: 13.5pt; line-height: 1.68; }
+p { margin: 0 0 3.8mm; }
+li { margin: 0 0 2mm; }
+h2 { font-size: 18pt; margin: 10mm 0 4mm; }
+h3 { font-size: 15pt; margin: 11mm 0 3.5mm; padding-top: 3mm; }
+h4 { font-family: "EB Garamond", serif; font-size: 13.5pt; margin: 6mm 0 2mm; }
+.fn { font-size: 10.5pt; line-height: 1.45; }
+table, .outline table { font-size: 11.5pt; }
+.subtitle { font-size: 13pt; }
+/* The closing page stays on one page at the larger type. */
+.works { margin-top: 8mm; padding: 6mm 9mm; }
+.works p, .works li { font-size: 12pt; line-height: 1.55; }
+.works .links { font-size: 10.5pt; }

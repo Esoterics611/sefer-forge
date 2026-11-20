@@ -13,3 +13,6 @@ em { font-style: italic; }
 .fn { text-align: left; }
 ol { padding-inline-start: 6mm; }
 @page { @bottom-center { content: counter(page); font-family: "EB Garamond", serif; } }
+/* Hebrew inside an English handout (a quotation's original words in a footnote), and a short note under the title. */
+.he { font-family: "Frank Ruhl Libre", serif; direction: rtl; unicode-bidi: isolate; font-size: 1.05em; }
+.note { display: block; text-align: center; font-style: italic; color: var(--soft); font-size: 0.9em; margin: 0 0 4mm; }
