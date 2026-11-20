@@ -1,0 +1,63 @@
+# A read-along video, in English: the Mitteler Rebbe's discourse Padah
+# beShalom with its explanation, the English ביאור of
+# discourses/006-padah-beshalom (biur-en/biur.md, the text of
+# output/biur/006-padah-beshalom-en.pdf), read whole, its words on the screen
+# as they are read: light letters on a dark ground, for reading along and for
+# listening at night (Ronnie, 2026-11-20). The words of the discourse (bold in
+# the print) show in gold, the explanation in ivory, each note (a footnote of
+# the print) after its paragraph in a dimmer italic.
+#
+# Built by: python scripts/build-narration.py booklets/narration/he-redeemed-my-soul-in-peace.yaml
+#   --script   the text read, --names how the terms are said, --frame the title card,
+#   --video    the video again from the reading made, --preview <seconds> one still of the screen
+#
+# Read: the Introduction (its prose), the 43 sections of "The Discourse with
+# Its Explanation", the Summary. Not read: the two tables (the course of the
+# discourse; the four levels of "And you shall love"), "The chapters in brief"
+# (a summary of what the 43 sections then read whole), and the back page of
+# other works. Citations in brackets (Psalms 92:10) are left out of voice and
+# screen alike; a quotation inside one stays. Nothing is added.
+
+title: "He Redeemed My Soul in Peace"
+lang: en
+voice: am_michael
+speed: 0.95                # a little slower than the stories: to read along, and to fall asleep by
+
+biur: discourses/006-padah-beshalom/biur-en/biur.md
+read:
+  - from: "## Introduction"
+    to: "### The course of the discourse"
+    chapter: "Introduction"
+  - from: "## The Discourse with Its Explanation"
+    to: "## Summary"
+  - from: "## Summary"
+    to: "::: {.works}"
+    chapter: "Summary"
+
+series: "The Mitteler Rebbe"
+subtitle: "The discourse with its explanation, read along"
+
+about: >
+  Padah beShalom, "He redeemed my soul in peace": a discourse of the Mitteler
+  Rebbe, Rabbi DovBer of Lubavitch, on prayer as "a time of battle" between the
+  divine soul and the animal soul, and on the peace above that battle, the
+  surrender of the soul itself from the Yechidah. Read whole in English, with
+  its explanation, every word on the screen as it is read: the words of the
+  discourse in gold, the explanation in white. Light letters on a dark screen,
+  to read along or to listen to at night.
+
+tags: ["Padah beShalom", "Mitteler Rebbe", "Shaarei Teshuvah", "Chabad", "Chassidus",
+       "prayer", "Yechidah", "animal soul", "divine soul", "read along", "sleep"]
+hashtags: "#Chassidus #Chabad #Prayer"
+
+intro: >
+  He Redeemed My Soul in Peace. A discourse of the Mitteler Rebbe, Rabbi DovBer
+  of Lubavitch, with its explanation.
+
+outro: >
+  Here ends the discourse He Redeemed My Soul in Peace, with its explanation.
+
+say:                       # the letters, and a word, that would be English words elsewhere
+  lamed: lahmehd
+  hei: hey
+  li: lee

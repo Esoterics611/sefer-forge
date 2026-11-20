@@ -206,14 +206,15 @@ def metadata(name: str) -> dict:
     plan = plan_of(name)
     lang = plan["lang"]
     t = TEXT[lang]
-    # A plan of its own series (English renderings of shiurim, `parts:`, not booklet stories) brings its own
+    # A plan of its own series (English renderings of shiurim, `parts:`, or a read-along ביאור, `biur:`;
+    # not booklet stories) brings its own
     # series, description, tags and playlist.
     series = plan.get("series") or yaml.safe_load(SERIES.read_text(encoding="utf-8"))["languages"][lang]["series"]
     title = re.sub(r"(?<=\w)'", "’", plan["title"])
     if len(f"{title} | {series}") <= 100:
         title = f"{title} | {series}"
     chapters = (OUT / name / "chapters.txt").read_text(encoding="utf-8").strip()
-    if plan.get("parts"):
+    if plan.get("parts") or plan.get("biur"):
         tags = plan.get("tags", [])
         parts = [plan["about"].strip(), f"{t['chapters']}\n{chapters}"]
     else:

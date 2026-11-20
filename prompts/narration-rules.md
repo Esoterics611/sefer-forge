@@ -177,6 +177,32 @@ procedure and its tracking: `prompts/render-english.md`,
 `python scripts/narration-status.py`. The Hebrew terms these shiurim use are
 in `say-en.yaml`, "Chassidus and Kabbalah".
 
+## Read-along videos of a ביאור
+
+Asked for 2026-11-20 (פדה בשלום in English): a written explanation read whole,
+long, **every word on the screen as it is read**, light letters on a dark
+ground, to read along and to fall asleep by. A plan with `biur:` (a built
+`biur.md`) and `read:` (the stretches read, from one heading to another; a
+stretch's `chapter:` names it, else each `###` in it is a chapter). Once Ronnie
+asks for the video, the ביאור is deployed (CLAUDE.md): no byline, nothing of how
+it was made.
+- **What is read:** the prose of the stretches named; not tables, not a
+  summary of chapters that are then read whole, not the back page. Each
+  footnote is read after its paragraph, shown as a NOTE. Citations in
+  brackets ("(Psalms 92:10)") are left out of voice and screen alike; a
+  quotation inside one stays. Nothing is added.
+- **The screen** (burned in, `readalong.ass`, EB Garamond): ground (26, 23,
+  20), a warm near-black; the explanation in ivory (226, 218, 202); the words
+  of the text itself (bold in the print) in a soft gold (226, 196, 138); a note
+  in a dimmer italic (172, 163, 148) under a small NOTE; the section read
+  named small at the top. A cue at most three lines, faded in and out, up until
+  the next comes. The title card in the same colours for the opening words
+  and as the thumbnail. `narration.srt` goes up beside it as captions.
+- **The voice** a little slower (`speed: 0.95`). A long sentence is said in
+  parts at its `;` and `:`, each part a cue or more, so the words on the
+  screen keep with the voice.
+- `--preview <seconds>` makes one still of the screen without the video.
+
 ## The picture and the thumbnail
 
 - **One plain title card, the same for every episode**, as the picture shown
