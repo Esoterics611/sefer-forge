@@ -15,3 +15,12 @@ maamar with its explanation, the summary, the closing page), with the same brand
 - Proof: `python scripts/proof-pdf.py output/biur/006-padah-beshalom-en.pdf --profile biur-woven-en`: 0 errors,
   0 warnings.
 - Open: no independent reading of the translation against the Hebrew yet.
+
+## 2026-11-20, third round (layout and language)
+- Larger type (13.5pt, leading 1.68), more space between paragraphs and before sections, footnotes 10.5pt.
+- Long paragraphs broken at sentence ends (75 → about 200 paragraphs; 4 over 200 words): between stretches of the
+  text, after footnote calls, and inside a long sentence of the text (a semicolon or comma before "and / but / for /
+  therefore…" made a full stop). A stretch continued in a new paragraph is marked `<!--cont-->`, so the mirror check
+  still counts it as one: 43 of 43 sections match the Hebrew. No split inside a quotation or before "and the wise will
+  understand".
+- Language: §16, §17, §21, §22, §38 smoothed; the closing page fitted to one page.

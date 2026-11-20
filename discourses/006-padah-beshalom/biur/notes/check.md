@@ -38,3 +38,8 @@ Hebrew, print for black and white, Sefer Forge branding (in English, at his word
 - Language review, read as a student: §11 and §36 had the divine soul soiled in "its own garments"; the text says
   "בלבושים צואים דנה"ב": corrected. §24 used "נסיון" for everyday experience, a clash with the maamar's term: reworded.
   §12, §14, §18, §41: ambiguous reference or gender, corrected. §6, §7, §25 and the בני חיי ומזוני note polished.
+
+## 2026-11-20, third round
+- The chapter notes' heading: "פרק אחר פרק" → "תמצית הפרקים" (English: "The chapters in brief").
+- Hebrew opening: "הנפש האלקית / הבהמית" with the article throughout; quotation marks unified (straight); a lead-in
+  for chapter ב's notes; gender and wording in chapters ד, ה, ז, ט; §21 "שלוש מדרגות".

@@ -461,6 +461,9 @@ FOOTNOTE = re.compile(r"\[(?:[^\[\]]|\[[^\[\]]*\])*\]\{\.fn\}")
 def section_counts(body: str) -> dict[str, tuple[int, int]]:
     """For each numbered section (### N.), the number of bold stretches and of footnotes."""
     out, key = {}, None
+    # A stretch continued in a new paragraph (a translation may break a long sentence of the text into
+    # paragraphs) is marked so: "…**", blank line, "<!--cont-->**…". It counts as one stretch.
+    body = re.sub(r"\*\*[ \t]*\n[ \t]*\n[ \t]*<!--cont-->\*\*", " ", body)
     for part in re.split(r"(?m)^(### \d+\.)", strip_meaning(body)):
         m = re.match(r"### (\d+)\.", part)
         if m:
