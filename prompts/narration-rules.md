@@ -333,4 +333,10 @@ French, `lang: fr` (the English episode's stories and drawing), in the English t
 | `faute-repentir-et-reincarnation` | 193, 49, 72, 175, 201, 209 | 10:26 | sin-repentance-and-reincarnation |
 | `ses-derniers-jours` | 77, 90, 105, 106, 107 | 3:47 | his-last-days |
 
+Read-along videos of a ביאור (Read-along videos, above):
+
+| Plan | Reads | Length |
+|---|---|---|
+| `he-redeemed-my-soul-in-peace` | `discourses/006-padah-beshalom/biur-en/biur.md`: Introduction, sections 1–43, Summary (45 chapters, 38 notes) | 2:25:24 |
+
 Ideas for the next episodes are in `docs/backlog.md`.
