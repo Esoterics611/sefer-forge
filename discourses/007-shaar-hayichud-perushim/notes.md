@@ -12,3 +12,4 @@
 - 2026-11-21: פרק ד (session 004, קיא ע"ב – קיב ע"א) and its ביאור, biur-perek-04 (10 pages), with the student read.
 - 2026-11-21: פרק ה (session 005, קיב ע"א – קיג ע"א), biur-perek-05 (8 pages), with the student read.
 - 2026-11-21: פרק ו (session 006, קיג ע"א – קיד ע"א), biur-perek-06 (10 pages), with the student read.
+- 2026-11-21: פרק ז (session 007, קיד ע"א – קטו ע"א), biur-perek-07 (10 pages), with the student read.

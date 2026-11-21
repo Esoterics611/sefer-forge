@@ -443,7 +443,8 @@ def lint(body: str, first_line: int, headings: list[str] | None = None, english:
     for no, line in enumerate(body.split("\n"), first_line):
         if line.startswith("@") or line.startswith("# ") or line.strip() in allowed:
             continue
-        prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', line)          # what is quoted is not the writer's
+        prose = re.sub(r"\*\*.+?\*\*", " ", line)                    # a woven text's own words (bold) are not the writer's
+        prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', prose)          # what is quoted is not the writer's
         for pat, why in FORBIDDEN:
             if why.startswith("method") and english:
                 pat = EN_HEADING
