@@ -40,3 +40,4 @@
 - 2026-11-21: פרק לב (session 032, קלא ע"ב – קלב ע"א), biur-perek-32 (8 pages), with the student read.
 - 2026-11-21: פרק לג (session 033, קלב ע"א – קלג ע"א), biur-perek-33 (7 pages), with the student read.
 - 2026-11-21: פרק לד (session 034, קלג ע"א – ע"ב), biur-perek-34 (7 pages), with the student read.
+- 2026-11-21: פרק לה (session 035, קלג ע"ב – קלד ע"א), biur-perek-35 (8 pages), with the student read.
