@@ -1,0 +1,13 @@
+discourse: 007
+slug: shaar-hayichud-perushim
+title: "שער היחוד עם פירושים"
+status: draft
+type: images+voice
+chapter: null
+
+# The Mittler Rebbe's שער היחוד (נר מצוה ותורה אור, קה"ת), פרק אחר פרק, with R' Hillel of
+# Paritch's commentary (ליקוטי ביאורים) and a ביאור. Kept apart from 002-shaar-hayichud (the
+# recorded shiurim, voice-only) so the ביאור is written from the texts alone (CLAUDE.md).
+# Session 001 = פרק א, its text from chabadlibrary.org (no photos): sessions/001/ocr.md.
+pamphlet:
+  subtitle: "שער היחוד · אדמו\"ר האמצעי · נר מצוה ותורה אור"
