@@ -9,3 +9,4 @@
 - 2026-11-21: ביאור of פרק א written and printed, without R' Hillel yet (Ronnie: "do perek alef and I will send images"): 18 sections, the whole פרק woven in bold, concepts in footnotes; proof 0 errors, 13 pages. Checks and open points: biur-perek-01/notes/check.md.
 - 2026-11-21: פרק ב (session 002, קי ע"א – קיא ע"א) and its ביאור, biur-perek-02, with the new student read (prompts/student-read.md) before the proof. The ביאור folders renamed biur → biur-perek-01 so each פרק has its own.
 - 2026-11-21: פרק ג (session 003, קיא ע"א – ע"ב) and its ביאור, biur-perek-03 (8 pages), with the student read.
+- 2026-11-21: פרק ד (session 004, קיא ע"ב – קיב ע"א) and its ביאור, biur-perek-04 (10 pages), with the student read.
