@@ -29,3 +29,4 @@
 - 2026-11-21: פרק כא (session 021, קכד ע"ב – קכה ע"א), biur-perek-21 (7 pages), with the student read.
 - 2026-11-21: פרק כב (session 022, קכה ע"א – קכו ע"א), biur-perek-22 (8 pages), with the student read.
 - 2026-11-21: פרק כג (session 023, קכו ע"א – ע"ב), biur-perek-23 (7 pages), with the student read.
+- 2026-11-21: פרק כד (session 024, קכו ע"ב – קכז ע"א), biur-perek-24 (7 pages), with the student read.
