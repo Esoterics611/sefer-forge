@@ -36,3 +36,4 @@
 - 2026-11-21: פרק כח (session 028, קכט ע"א – ע"ב), biur-perek-28 (6 pages), with the student read.
 - 2026-11-21: פרק כט (session 029, קכט ע"ב – קל ע"א), biur-perek-29 (7 pages), with the student read.
 - 2026-11-21: פרק ל (session 030, קל ע"א – קלא ע"א), biur-perek-30 (8 pages), with the student read.
+- 2026-11-21: פרק לא (session 031, קלא ע"א – ע"ב), biur-perek-31 (7 pages), with the student read.
