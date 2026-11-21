@@ -18,3 +18,4 @@
 - 2026-11-21: פרק י (session 010, קטז ע"ב – קיז ע"ב), biur-perek-10 (10 pages), with the student read.
 - 2026-11-21: פרק יא (session 011, קיז ע"ב – קיח ע"ב), biur-perek-11 (8 pages), with the student read.
 - 2026-11-21: פרק יב (session 012, קיח ע"ב – קיט ע"א), biur-perek-12 (7 pages), with the student read.
+- 2026-11-21: פרק יג (session 013, קיט ע"א – קכ ע"א), biur-perek-13 (9 pages), with the student read.
