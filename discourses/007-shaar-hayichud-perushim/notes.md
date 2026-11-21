@@ -24,3 +24,4 @@
 - 2026-11-21: פרק טז (session 016, קכא ע"א – קכב ע"א), biur-perek-16 (7 pages), with the student read.
 - 2026-11-21: פרק יז (session 017, קכב ע"א – ע"ב), biur-perek-17 (8 pages), with the student read.
 - 2026-11-21: פרק יח (session 018, קכב ע"ב – קכג ע"א), biur-perek-18 (7 pages), with the student read.
+- 2026-11-21: פרק יט (session 019, קכג ע"א – קכד ע"א), biur-perek-19 (7 pages), with the student read.
