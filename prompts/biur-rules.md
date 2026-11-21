@@ -49,6 +49,11 @@ The apparatus is useful while writing and checking: certainty, misreadings to av
 Write it in `biur/notes/` (one file per kind), not in `biur.src.md`. A checker reads the notes beside the
 explanation; the reader of the explanation never sees them.
 
+Before the proof, every ביאור is read once more as its student will read it (`prompts/student-read.md`,
+Ronnie, 2026-11-21): the built `biur.md` from title to סיכום, each term, reference and step checked for
+whether a student meeting the text for the first time can follow it; the findings and fixes in
+`notes/student-read.md`.
+
 ## The meaning layer ("בנפש האדם")
 
 Added at Ronnie's word on 2026-11-16 ("explain the Arizal and the Rashash according to how I define the

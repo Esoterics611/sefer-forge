@@ -3,7 +3,7 @@ session: 001
 discourse: 007-shaar-hayichud-perushim
 ---
 
-<!-- No photos: the text is the digital edition on chabadlibrary.org (נר מצוה ותורה אור, קה"ת, שער היחוד, קט ע"א – קי ע"א), fetched 2026-11-21, one "## Source:" section per printed page, in order, from "א) הנה" to the end of the פרק ("וד"ל):"). The text is as given there, its abbreviations unopened; only the editor's note numbers are taken out (the notes themselves: notes/kehot-notes.md). -->
+<!-- No photos: the text is the digital edition on chabadlibrary.org (נר מצוה ותורה אור, קה"ת, שער היחוד, קט ע"א – קי ע"א), fetched 2026-11-21, one "## Source:" section per printed page, in order, from "א) הנה" to the end of the פרק ("וד"ל):"). The text is as given there, its abbreviations unopened; only the editor's note numbers are taken out (the notes themselves: biur-perek-01/notes/kehot-notes.md). -->
 
 ## Source: https://chabadlibrary.org/books/2800530217
 <!-- קט ע"א -->
