@@ -14,3 +14,4 @@
 - 2026-11-21: פרק ו (session 006, קיג ע"א – קיד ע"א), biur-perek-06 (10 pages), with the student read.
 - 2026-11-21: פרק ז (session 007, קיד ע"א – קטו ע"א), biur-perek-07 (10 pages), with the student read.
 - 2026-11-21: פרק ח (session 008, קטו ע"א – קטז ע"א), biur-perek-08 (9 pages), with the student read.
+- 2026-11-21: פרק ט (session 009, קטז ע"א – ע"ב), biur-perek-09 (7 pages), with the student read.

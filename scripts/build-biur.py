@@ -444,6 +444,7 @@ def lint(body: str, first_line: int, headings: list[str] | None = None, english:
         if line.startswith("@") or line.startswith("# ") or line.strip() in allowed:
             continue
         prose = re.sub(r"\*\*.+?\*\*", " ", line)                    # a woven text's own words (bold) are not the writer's
+        prose = re.sub(r'(?<=[א-ת])["״](?=[א-ת](?![א-ת]))', "", prose)  # the gershayim of an abbreviation, before its last letter (ע"א, דא"ס), is not a quote mark
         prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', prose)          # what is quoted is not the writer's
         for pat, why in FORBIDDEN:
             if why.startswith("method") and english:
