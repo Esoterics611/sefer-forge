@@ -55,7 +55,7 @@ def card_he():
     give = (f'<div class="q"><img src="{qr(GIVE_URL)}"><div>לתרומה</div></div>' if GIVE_URL else "")
     return f"""<div class="card he">
   <div class="brand">ספר פורג'</div>
-  <div class="title">פְּדֵה בְשָׁלוֹם נַפְשִׁי</div>
+  <div class="title">פָּדָה בְשָׁלוֹם נַפְשִׁי</div>
   <div class="sub">מאמר אדמו"ר האמצעי · שערי תשובה, שער התפלה</div>
   <div class="verse">הפסוק שאמר אדמו"ר הזקן ביציאתו לחירות בי"ט כסלו</div>
   <p>אנחנו מבארים את קבלת האר"י ז"ל ואת החסידות מתוך מקורותיהן, כל ציטוט מדויק,
@@ -63,6 +63,7 @@ def card_he():
   <p class="ask">המאמרים מוכנים. חסרה ההדפסה.</p>
   <div class="tiers">{TIERS_HE}</div>
   <div class="ded">אפשר להקדיש את ההדפסה לזכות או לעילוי נשמת.</div>
+  <div class="also">וגם: שער היחוד לאדמו"ר האמצעי, פרק אחר פרק.<br>שיעורים בבית הכנסת, בחבורה ובאונליין.</div>
   <div class="qrs"><div class="q"><img src="{qr(SITE_HE)}"><div>סרקו לראות את הדפים</div></div>{give}</div>
   <div class="url en">esoterics611.github.io/he</div>
 </div>"""
@@ -82,6 +83,7 @@ def card_en():
   <p class="ask">The maamarim are ready. What is missing is the printing.</p>
   <div class="tiers">{TIERS_EN}</div>
   <div class="ded">A printing can be dedicated in honor of someone, or in memory of a loved one.</div>
+  <div class="also">Also: the Mitteler Rebbe's Shaar HaYichud, chapter by chapter.<br>Shiurim in shul, in study groups, and online.</div>
   <div class="qrs"><div class="q"><img src="{qr(SITE_EN)}"><div>Scan to see the pages</div></div>{give}</div>
   <div class="url">esoterics611.github.io</div>
 </div>"""
@@ -91,7 +93,7 @@ CARD_CSS = BASE_CSS + """
 @page { size: A4; margin: 0; }
 .sheet { width: 210mm; height: 297mm; display: flex; flex-wrap: wrap; page-break-after: always; }
 .sheet:last-child { page-break-after: auto; }
-.card { width: 105mm; height: 148.5mm; padding: 13mm 9mm 7mm; outline: 0.2mm dashed #c9c0b4;
+.card { width: 105mm; height: 148.5mm; padding: 9mm 9mm 6mm; outline: 0.2mm dashed #c9c0b4;
         outline-offset: -0.1mm; display: flex; flex-direction: column; text-align: center; }
 .brand { font-size: 8pt; letter-spacing: .08em; color: #7a4b1e; }
 .title { font-size: 24pt; font-weight: bold; margin-top: 3mm; line-height: 1.15; }
@@ -103,7 +105,8 @@ CARD_CSS = BASE_CSS + """
 .card p.ask { font-weight: bold; text-align: center; font-size: 11pt; margin-top: 3.5mm; }
 .tiers { font-size: 10.6pt; font-weight: bold; color: #7a4b1e; margin-top: 2mm; }
 .ded { font-size: 8.8pt; margin-top: 1.2mm; }
-.qrs { display: flex; justify-content: center; gap: 8mm; margin-top: 7mm; }
+.also { font-size: 8.8pt; margin-top: 3mm; padding-top: 2.5mm; border-top: 0.2mm solid #d8cfc3; line-height: 1.35; }
+.qrs { display: flex; justify-content: center; gap: 8mm; margin-top: 5mm; }
 .q { font-size: 7.6pt; text-align: center; }
 .q img { width: 27mm; height: 27mm; display: block; margin: 0 auto 1mm; }
 .url { font-size: 7.4pt; color: #6b6259; margin-top: 1mm; font-family: "EB Garamond"; }
@@ -142,7 +145,7 @@ hr {{ border: 0; border-top: 0.6mm solid #7a4b1e; width: 55%; margin: 16mm auto 
 <div class="he">
   <div class="now">לומדים עכשיו</div>
   <div class="m">מאמר</div>
-  <div class="big">פְּדֵה בְשָׁלוֹם</div>
+  <div class="big">פָּדָה בְשָׁלוֹם</div>
   <div class="by">של אדמו"ר האמצעי</div>
   <div class="verse">הפסוק שאמר אדמו"ר הזקן ביציאתו לחירות בי"ט כסלו</div>
   <div class="come">בואו ללמוד חמש דקות</div>
@@ -163,7 +166,8 @@ def sign_fund():
 html, body {{ height: 100%; }}
 body {{ text-align: center; display: flex; flex-direction: column; justify-content: space-between; }}
 .top {{ font-size: 50pt; font-weight: bold; color: #7a4b1e; line-height: 1.2; }}
-.big {{ font-size: 120pt; font-weight: bold; line-height: 1.05; margin-top: 4mm; }}
+.big {{ font-size: 100pt; font-weight: bold; line-height: 1.05; margin-top: 4mm; }}
+.big2 {{ font-size: 70pt; font-weight: bold; line-height: 1.1; }}
 .by {{ font-size: 32pt; margin-top: 3mm; }}
 .to {{ font-size: 40pt; font-weight: bold; margin-top: 12mm; line-height: 1.3; }}
 .tiers {{ margin: 12mm 11% 0; padding: 6mm 4mm; border: 0.8mm solid #7a4b1e; }}
@@ -176,16 +180,17 @@ hr {{ border: 0; border-top: 0.6mm solid #7a4b1e; width: 55%; margin: 10mm auto 
 .q img {{ width: 62mm; height: 62mm; display: block; margin: 0 auto 3mm; }}
 </style></head><body>
 <div class="he">
-  <div class="top">מגבית להדפסת המאמר</div>
-  <div class="big">פְּדֵה בְשָׁלוֹם</div>
-  <div class="by">מאמר אדמו"ר האמצעי</div>
-  <div class="to">ולהפצתו בבתי הכנסת<br>ובחבורות הלימוד</div>
+  <div class="top">מגבית להדפסת מאמרי חסידות</div>
+  <div class="big">פָּדָה בְשָׁלוֹם</div>
+  <div class="big2">שַׁעַר הַיִּחוּד</div>
+  <div class="by">לאדמו"ר האמצעי</div>
+  <div class="to">קונטרסים ושיעורים<br>לבתי הכנסת ולחבורות הלימוד</div>
   <div class="tiers"><div class="t">ח"י ₪ · ל"ו ₪ · ק"פ ₪</div>
   <div class="d">הקדשת הדפסה שלמה, לזכות או לעילוי נשמת: <b>1,800 ₪</b></div></div>
 </div>
 <hr>
-<div class="en"><b>Fundraising to print this maamar</b><br>
-<i>Padah B'Shalom</i> of the Mitteler Rebbe, for shuls and study groups.<br>
+<div class="en"><b>Fundraising to print Chassidus</b>: <i>Padah B'Shalom</i> and <i>Shaar HaYichud</i><br>
+of the Mitteler Rebbe. Booklets and shiurim for shuls and study groups.<br>
 ₪18 · ₪36 · ₪180 · Dedicate a whole printing: ₪1,800</div>
 <div class="qrs"><div class="q"><img src="{qr(SITE_HE)}">
 <div class="he">לראות את הדפים</div><div class="en" style="font-size:15pt">See the pages</div></div>{give}</div>
@@ -199,17 +204,18 @@ def sign_wear():
 html, body {{ height: 100%; }}
 body {{ text-align: center; display: flex; flex-direction: column; justify-content: space-between; }}
 .top {{ font-size: 66pt; font-weight: bold; color: #7a4b1e; line-height: 1.15; }}
-.big {{ font-size: 138pt; font-weight: bold; line-height: 1.05; }}
+.big {{ font-size: 112pt; font-weight: bold; line-height: 1.05; }}
+.big2 {{ font-size: 80pt; font-weight: bold; line-height: 1.1; }}
 .by {{ font-size: 36pt; margin-top: 2mm; }}
 .to {{ font-size: 48pt; font-weight: bold; line-height: 1.25; }}
 .en {{ font-size: 30pt; line-height: 1.3; }}
 .q img {{ width: 80mm; height: 80mm; display: block; margin: 0 auto 2mm; }}
 .q {{ font-size: 20pt; }}
 </style></head><body>
-<div class="he top">מגבית להדפסת<br>המאמר</div>
-<div class="he"><div class="big">פְּדֵה בְשָׁלוֹם</div><div class="by">מאמר אדמו"ר האמצעי</div></div>
-<div class="he to">להפצה בבתי הכנסת<br>ובחבורות הלימוד</div>
-<div class="en"><b>Fundraising to print this maamar</b><br>for shuls and study groups</div>
+<div class="he top">מגבית להדפסת<br>מאמרי חסידות</div>
+<div class="he"><div class="big">פָּדָה בְשָׁלוֹם</div><div class="big2">שַׁעַר הַיִּחוּד</div><div class="by">לאדמו"ר האמצעי</div></div>
+<div class="he to">קונטרסים ושיעורים<br>לבתי הכנסת ולחבורות</div>
+<div class="en"><b>Fundraising to print Chassidus</b><br>booklets and shiurim for shuls and study groups</div>
 <div class="q"><img src="{qr(SITE_HE)}"><div class="he">סרקו לראות את הדפים · <span class="en" style="font-size:20pt">See the pages</span></div></div>
 </body></html>"""
     write("sign-wear-A3.pdf", html)
@@ -218,7 +224,7 @@ body {{ text-align: center; display: flex; flex-direction: column; justify-conte
 # ---------------------------------------------------------------- sign-up sheet (A4 landscape)
 
 def signup():
-    rows = "".join("<tr><td></td><td></td><td></td><td></td><td></td><td class='c'><span class='box'></span></td></tr>" for _ in range(13))
+    rows = "".join("<tr><td></td><td></td><td></td><td></td><td></td><td class='c'><span class='box'></span></td><td class='c'><span class='box'></span></td></tr>" for _ in range(13))
     html = f"""<html><head><meta charset="utf-8"><style>{BASE_CSS}
 @page {{ size: A4 landscape; margin: 12mm 12mm 10mm; }}
 h1 {{ font-size: 19pt; text-align: center; }}
@@ -231,16 +237,17 @@ td.c {{ text-align: center; }}
 .box {{ display: inline-block; width: 4mm; height: 4mm; border: 0.3mm solid #6b6259; }}
 .foot {{ font-size: 9pt; color: #6b6259; text-align: center; margin-top: 4mm; }}
 </style></head><body>
-<div class="he"><h1>לקבל את המאמרים, ולהיות שותפים בהדפסה</h1></div>
-<div class="en h">Receive the maamarim, and be a partner in printing them</div>
+<div class="he"><h1>לקבל את הקונטרסים, להזמין שיעור, ולהיות שותפים בהדפסה</h1></div>
+<div class="en h">Receive the booklets, book a shiur, and be a partner in printing them</div>
 <table>
 <tr>
-<th style="width:21%">שם<span>Name</span></th>
-<th style="width:17%">טלפון / וואטסאפ<span>Phone / WhatsApp</span></th>
-<th style="width:22%">אימייל<span>Email</span></th>
-<th style="width:9%">סכום<span>Amount</span></th>
-<th style="width:21%">הקדשה: לזכות / לע"נ<span>Dedication</span></th>
-<th style="width:10%">לשלוח לי את המאמר<span>Send me the maamar</span></th>
+<th style="width:19%">שם<span>Name</span></th>
+<th style="width:16%">טלפון / וואטסאפ<span>Phone / WhatsApp</span></th>
+<th style="width:20%">אימייל<span>Email</span></th>
+<th style="width:8%">סכום<span>Amount</span></th>
+<th style="width:17%">הקדשה: לזכות / לע"נ<span>Dedication</span></th>
+<th style="width:10%">לשלוח לי קונטרס<span>Send me a booklet</span></th>
+<th style="width:10%">רוצה שיעור<span>I want a shiur</span></th>
 </tr>{rows}</table>
 <div class="foot"><span class="he">הפרטים נשמרים אצל ספר פורג' בלבד ולא יועברו לאחרים.</span>
 &nbsp;·&nbsp; <span class="en">Kept by Sefer Forge only, never passed on.</span></div>
@@ -294,6 +301,10 @@ print it for anyone who wants to learn. Will you be a partner? 36 shekels, 180, 
 <li><b>איפה אני:</b> "אני עומד ליד הדלת עם המאמר. סרקו את הכרטיס או כתבו שם." ולשתוק.</li>
 </ul>
 
+<h2>מי שלומד בחבורה, או גבאי</h2>
+<div class="say">"יש לי גם שער היחוד לאדמו"ר האמצעי, פרק אחר פרק. אני נותן שיעורים בבית הכנסת, בחבורה ובזום,
+ומביא קונטרס לכל משתתף. רוצים שיעור?" ומסמנים בדף ההרשמה.</div>
+
 <h2>מי שמתעניין</h2>
 <div class="say">"רוצה להקדיש את ההדפסה? 1,800 שקל, והקונטרס יוצא לזכות מי שתבחר."</div>
 
@@ -338,7 +349,7 @@ print it for anyone who wants to learn. Will you be a partner? 36 shekels, 180, 
 <div class="cols"><div>
 <h2>לקחת</h2>
 <ul>
-<li>הקונטרס "פדה בשלום"</li>
+<li>הקונטרס "פדה בשלום", ופרקי שער היחוד</li>
 <li>200 כרטיסים</li>
 <li>השלט, ומשהו להעמיד או להדביק אותו</li>
 <li>לוח כתיבה, 3 דפי הרשמה, 2 עטים</li>
