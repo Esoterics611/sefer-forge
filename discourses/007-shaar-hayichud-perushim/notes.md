@@ -46,3 +46,4 @@
 - 2026-11-22: פרק לח (session 038, קלה ע"ב – קלו ע"א), biur-perek-38 (7 pages), with the student read.
 - 2026-11-22: פרק לט (session 039, קלו ע"א – ע"ב), biur-perek-39 (7 pages), with the student read.
 - 2026-11-22: פרק מ (session 040, קלו ע"ב – קלז ע"ב), biur-perek-40 (7 pages), with the student read.
+- 2026-11-22: פרק מא (session 041, קלז ע"ב – קלח ע"א), biur-perek-41 (7 pages), with the student read.
