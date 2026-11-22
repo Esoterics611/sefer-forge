@@ -59,3 +59,4 @@
 - 2026-11-22: פרק נא (session 051, קמד ע"ב – קמה ע"א), biur-perek-51 (8 pages), with the student read.
 - 2026-11-22: פרק נב (session 052, קמה ע"א – קמו ע"א), biur-perek-52 (7 pages), with the student read.
 - 2026-11-22: פרק נג (session 053, קמו ע"א – ע"ב), biur-perek-53 (8 pages), with the student read.
+- 2026-11-22: פרק נד (session 054, קמו ע"ב – קמז ע"ב), biur-perek-54 (8 pages), with the student read. With it the ביאור of all fifty-four chapters is written.
