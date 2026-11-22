@@ -156,6 +156,65 @@ hr {{ border: 0; border-top: 0.6mm solid #7a4b1e; width: 55%; margin: 16mm auto 
     write("sign-A3.pdf", html)
 
 
+def sign_fund():
+    give = (f'<div class="q"><img src="{qr(GIVE_URL)}"><div>לתרומה · Give</div></div>' if GIVE_URL else "")
+    html = f"""<html><head><meta charset="utf-8"><style>{BASE_CSS}
+@page {{ size: A3; margin: 22mm 22mm; }}
+html, body {{ height: 100%; }}
+body {{ text-align: center; display: flex; flex-direction: column; justify-content: space-between; }}
+.top {{ font-size: 50pt; font-weight: bold; color: #7a4b1e; line-height: 1.2; }}
+.big {{ font-size: 120pt; font-weight: bold; line-height: 1.05; margin-top: 4mm; }}
+.by {{ font-size: 32pt; margin-top: 3mm; }}
+.to {{ font-size: 40pt; font-weight: bold; margin-top: 12mm; line-height: 1.3; }}
+.tiers {{ margin: 12mm 11% 0; padding: 6mm 4mm; border: 0.8mm solid #7a4b1e; }}
+.tiers .t {{ font-size: 36pt; font-weight: bold; color: #7a4b1e; }}
+.tiers .d {{ font-size: 24pt; margin-top: 2mm; }}
+hr {{ border: 0; border-top: 0.6mm solid #7a4b1e; width: 55%; margin: 10mm auto 8mm; }}
+.en {{ font-size: 25pt; line-height: 1.35; }}
+.qrs {{ display: flex; justify-content: center; gap: 22mm; margin-top: 10mm; }}
+.q {{ font-size: 17pt; }}
+.q img {{ width: 62mm; height: 62mm; display: block; margin: 0 auto 3mm; }}
+</style></head><body>
+<div class="he">
+  <div class="top">מגבית להדפסת המאמר</div>
+  <div class="big">פְּדֵה בְשָׁלוֹם</div>
+  <div class="by">מאמר אדמו"ר האמצעי</div>
+  <div class="to">ולהפצתו בבתי הכנסת<br>ובחבורות הלימוד</div>
+  <div class="tiers"><div class="t">ח"י ₪ · ל"ו ₪ · ק"פ ₪</div>
+  <div class="d">הקדשת הדפסה שלמה, לזכות או לעילוי נשמת: <b>1,800 ₪</b></div></div>
+</div>
+<hr>
+<div class="en"><b>Fundraising to print this maamar</b><br>
+<i>Padah B'Shalom</i> of the Mitteler Rebbe, for shuls and study groups.<br>
+₪18 · ₪36 · ₪180 · Dedicate a whole printing: ₪1,800</div>
+<div class="qrs"><div class="q"><img src="{qr(SITE_HE)}">
+<div class="he">לראות את הדפים</div><div class="en" style="font-size:15pt">See the pages</div></div>{give}</div>
+</body></html>"""
+    write("sign-fundraising-A3.pdf", html)
+
+
+def sign_wear():
+    html = f"""<html><head><meta charset="utf-8"><style>{BASE_CSS}
+@page {{ size: A3; margin: 16mm 14mm; }}
+html, body {{ height: 100%; }}
+body {{ text-align: center; display: flex; flex-direction: column; justify-content: space-between; }}
+.top {{ font-size: 66pt; font-weight: bold; color: #7a4b1e; line-height: 1.15; }}
+.big {{ font-size: 138pt; font-weight: bold; line-height: 1.05; }}
+.by {{ font-size: 36pt; margin-top: 2mm; }}
+.to {{ font-size: 48pt; font-weight: bold; line-height: 1.25; }}
+.en {{ font-size: 30pt; line-height: 1.3; }}
+.q img {{ width: 80mm; height: 80mm; display: block; margin: 0 auto 2mm; }}
+.q {{ font-size: 20pt; }}
+</style></head><body>
+<div class="he top">מגבית להדפסת<br>המאמר</div>
+<div class="he"><div class="big">פְּדֵה בְשָׁלוֹם</div><div class="by">מאמר אדמו"ר האמצעי</div></div>
+<div class="he to">להפצה בבתי הכנסת<br>ובחבורות הלימוד</div>
+<div class="en"><b>Fundraising to print this maamar</b><br>for shuls and study groups</div>
+<div class="q"><img src="{qr(SITE_HE)}"><div class="he">סרקו לראות את הדפים · <span class="en" style="font-size:20pt">See the pages</span></div></div>
+</body></html>"""
+    write("sign-wear-A3.pdf", html)
+
+
 # ---------------------------------------------------------------- sign-up sheet (A4 landscape)
 
 def signup():
@@ -303,4 +362,4 @@ print it for anyone who wants to learn. Will you be a partner? 36 shekels, 180, 
 
 
 if __name__ == "__main__":
-    cards(); sign(); signup(); script()
+    cards(); sign(); sign_fund(); sign_wear(); signup(); script()
