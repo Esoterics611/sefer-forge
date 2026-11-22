@@ -55,3 +55,4 @@
 - 2026-11-22: פרק מז (session 047, קמא ע"ב – קמב ע"א), biur-perek-47 (8 pages), with the student read.
 - 2026-11-22: פרק מח (session 048, קמב ע"א – קמג ע"א), biur-perek-48 (7 pages), with the student read.
 - 2026-11-22: פרק מט (session 049, קמג ע"א – ע"ב), biur-perek-49 (8 pages), with the student read.
+- 2026-11-22: פרק נ (session 050, קמג ע"ב – קמד ע"ב), biur-perek-50 (7 pages), with the student read.
