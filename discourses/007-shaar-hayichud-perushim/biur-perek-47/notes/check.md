@@ -20,3 +20,4 @@ Written 2026-11-22 from the text (sessions/047/ocr.md, chabadlibrary.org, קה"�
 - "זילי נטירי ביתך" (the editor: זהר בלק קפז, א): not found in the זהר export; glossed by meaning.
 - "עושי דברו אזעירת גרמה כנקודה" (the editor: זהר בלק קצא, א): not found as such in the export; the image of the moon that "אזעירת גרמה" is in וישב 5.1 (set in, at "לית לה מגרמה") and בראשית 9.13.
 - R' Hillel of Paritch's commentary on this פרק: with the photos.
+- Later (2026-11-22, פרק מט): the זהר on "אזעירת גרמה" as a single point is זהר בלק 6.86 in the export ("אזעירת גרמה בזעירו סגי, עד דלא אתחזיאת מנה אלא זעירו דנקודה חדא ... שחורה אני"); set in at פרק מט, where the text cites it with "שחורה אני".
