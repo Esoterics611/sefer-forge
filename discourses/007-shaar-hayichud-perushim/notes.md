@@ -53,3 +53,4 @@
 - 2026-11-22: פרק מה (session 045, קמ ע"א – ע"ב), biur-perek-45 (7 pages), with the student read.
 - 2026-11-22: פרק מו (session 046, קמ ע"ב – קמא ע"ב), biur-perek-46 (8 pages), with the student read. A note that ran into the text at the page foot was moved to kehot-notes.md.
 - 2026-11-22: פרק מז (session 047, קמא ע"ב – קמב ע"א), biur-perek-47 (8 pages), with the student read.
+- 2026-11-22: פרק מח (session 048, קמב ע"א – קמג ע"א), biur-perek-48 (7 pages), with the student read.
