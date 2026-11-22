@@ -58,3 +58,4 @@
 - 2026-11-22: פרק נ (session 050, קמג ע"ב – קמד ע"ב), biur-perek-50 (7 pages), with the student read.
 - 2026-11-22: פרק נא (session 051, קמד ע"ב – קמה ע"א), biur-perek-51 (8 pages), with the student read.
 - 2026-11-22: פרק נב (session 052, קמה ע"א – קמו ע"א), biur-perek-52 (7 pages), with the student read.
+- 2026-11-22: פרק נג (session 053, קמו ע"א – ע"ב), biur-perek-53 (8 pages), with the student read.
