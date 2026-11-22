@@ -49,3 +49,4 @@
 - 2026-11-22: פרק מא (session 041, קלז ע"ב – קלח ע"א), biur-perek-41 (7 pages), with the student read.
 - 2026-11-22: פרק מב (session 042, קלח ע"א – ע"ב), biur-perek-42 (7 pages), with the student read.
 - 2026-11-22: פרק מג (session 043, קלח ע"ב – קלט ע"א), biur-perek-43 (7 pages), with the student read.
+- 2026-11-22: פרק מד (session 044, קלט ע"א – קמ ע"א), biur-perek-44 (9 pages), with the student read.
