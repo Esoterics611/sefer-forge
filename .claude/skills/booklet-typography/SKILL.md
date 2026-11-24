@@ -1,6 +1,6 @@
 ---
 name: booklet-typography
-description: Lay out a printed booklet for how it is really read - black and white, A4 sheets folded in half and stapled at the spine, so every page is A5 - with type big enough to read at that size and a page that catches the eye - parts opening a page, the verse displayed, an overview as numbered steps with titles, chapters as black tabs, square bullets, key sentences in bold - all from the content, never decoration. Set by Ronnie on 2026-11-24 on פדה בשלום (discourse 006) ("the overview is too boring, we need to capture the reader's eye ... it will be printed black and white folded into booklets stapled in the middle spine, the fonts need to be big"). Use when the user says "booklet", "folded", "stapled", "fonts too small", "too boring", "capture the eye", "formatting", "styles", "readability of the print", or before any ביאור booklet (skill biur-booklet) is handed over. Argument - the biur folder, e.g. discourses/006-padah-beshalom/biur.
+description: Lay out a printed booklet for how it is really read - black and white, A4 sheets folded in half and stapled at the spine, so every page is A5 - with type big enough to read at that size and a page that catches the eye - parts opening a page, the verse displayed, an overview as numbered steps with titles, chapters in plain bold, square bullets, key sentences in bold - all from the content, never decoration. Set by Ronnie on 2026-11-24 on פדה בשלום (discourse 006) ("the overview is too boring, we need to capture the reader's eye ... it will be printed black and white folded into booklets stapled in the middle spine, the fonts need to be big"). Use when the user says "booklet", "folded", "stapled", "fonts too small", "too boring", "capture the eye", "formatting", "styles", "readability of the print", or before any ביאור booklet (skill biur-booklet) is handed over. Argument - the biur folder, e.g. discourses/006-padah-beshalom/biur.
 ---
 
 # Booklet typography: black and white, folded, A5
@@ -21,7 +21,7 @@ spine. An A4 PDF printed that way shrinks to 71% (13pt reads as 9pt). So the boo
 | footnotes | 9.5pt, `footnote-policy: auto` (`line` strands headings on near-empty A5 pages) |
 | part heading (`##`) | 19pt, centred, heavy rule, opens a page |
 | heading in a part (`###`) | 14pt, heavy rule above; `{.part}` for the opening's headings (16pt, centred) |
-| chapter of the summaries (`####`) | 13pt, `[פרק א׳]{.ch}` as a black tab |
+| chapter of the summaries (`####`) | 13pt, `[פרק א׳]{.ch}` in plain bold with a colon, a thin rule under it |
 | running head, page number | 8-8.5pt, 10.5pt; nothing smaller than 8pt anywhere |
 
 Margins 16/15/17/15mm. The page count is a multiple of four (`fold: true`; filler pages per
@@ -31,7 +31,7 @@ Margins 16/15/17/15mm. The page count is a multiple of four (`fold: true`; fille
 
 Black ink, white paper, one grey (#333 for the running head; `#eee` at most for a fill). Structure comes
 from **weight, size, rules, black shapes and white space**: a heavy rule (1.2-1.6pt) under a part
-heading, a black disc or tab with white type, a square bullet, a framed box. Never colour, never a tint
+heading, a large bold letter, a square bullet, a framed box. No black shapes with white type (Ronnie removed the discs and the chapter tabs: plain black on white). Never colour, never a tint
 that a photocopier loses, never type on a grey fill.
 
 ## 3. Catch the eye with the content itself
@@ -45,7 +45,7 @@ Each device shows something true about the text; none is ornament:
   a short title from the text's own terms (`[...]{.st}`), then the paragraph. The paragraph must not
   repeat its title: drop an opening that only restates it ("זהו 'פדה בשלום נפשי':" under the title
   "פדה בשלום נפשי").
-- **Chapters as tabs** in the summaries; points with square bullets.
+- **Chapters** in the summaries as "פרק א׳:" and the name, in plain bold over a thin rule; points with square bullets.
 - **Key sentences in bold** inside a long prose part (the הקדמה): the topic sentence of a paragraph as
   `[...]{.pk}`, three or four in a part, the writer's own sentences, unchanged.
 - **Parts open a page**; a short part may follow on the page where the last one ended (`## מבוא {.flow}`)
@@ -67,7 +67,7 @@ uses spans (`{.pk}`, `{.st}`), never `**`. A heading's `{.class}` is layout only
    are the English brand and the bare back pages. A page that "holds only N lines" is fixed, not
    accepted (a part that may flow on, a heading kept with its text, a filler page).
 3. Read **every spread** in `output/biur/proof/` as the folded booklet: the cover alone; no heading at a
-   page's foot; no word alone on a line of a display; tabs, discs and rules black and crisp; the back
+   page's foot; no word alone on a line of a display; rules and bullets black and crisp; the back
    cover on one page, outside of the back.
 4. `python scripts/check-quotes.py <folder>`.
 

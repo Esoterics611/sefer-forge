@@ -57,9 +57,11 @@ h3 { font-size: 14pt; line-height: 1.35; margin: 7mm 0 3mm; padding-top: 2mm; bo
 .st { display: block; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 13pt; line-height: 1.4;
   margin: 0 0 0.8mm; }
 
-/* The chapter summaries: the chapter as a black tab, its name beside it; points with a square bullet. */
+/* The chapter summaries: "פרק א׳:" and its name in plain bold, a thin rule under it (no black tab: Ronnie wants
+   plain black on white); points with a square bullet. */
 h4 { font-size: 13pt; line-height: 1.4; margin: 6mm 0 2mm; padding-bottom: 1.2mm; border-bottom: 0.5pt solid #000; }
-.ch { display: inline-block; background: #000; color: #fff; padding: 0.4mm 2.2mm; margin-left: 2.2mm; font-size: 11pt; }
+.ch { font-size: 13pt; }
+.ch::after { content: ":"; }
 ul { list-style: none; padding-inline-start: 0; padding-right: 5mm; }
 li { position: relative; margin: 0 0 2mm; }
 li::before { content: ""; position: absolute; right: -4.6mm; top: 2.6mm; width: 1.8mm; height: 1.8mm; background: #000; }
