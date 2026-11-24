@@ -47,14 +47,13 @@ h3 { font-size: 14pt; line-height: 1.35; margin: 7mm 0 3mm; padding-top: 2mm; bo
   line-height: 1.45; margin: 4mm 4mm 1mm; }
 .vref { display: block; text-align: center; font-size: 10.5pt; margin: 0 0 5mm; }
 
-/* The text in short (המאמר בקצרה): numbered steps, each a title over its paragraph, the number in a
-   black disc. */
+/* The text in short (המאמר בקצרה): numbered steps, each a title over its paragraph, the number a large
+   bold letter beside it (no disc: Ronnie found the circles distracting). */
 .steps ul { list-style: none; padding: 0; margin: 0; counter-reset: step; }
 .steps li { counter-increment: step; position: relative; padding-right: 10.5mm; margin: 0 0 4mm; text-align: justify;
   break-inside: avoid; }
-.steps li::before { content: counter(step, hebrew); position: absolute; right: 0; top: 0.4mm; width: 7.4mm; height: 7.4mm;
-  border-radius: 50%; background: #000; color: #fff; text-align: center; font-family: "Frank Ruhl Libre", serif;
-  font-weight: 700; font-size: 11pt; line-height: 7.4mm; }
+.steps li::before { content: counter(step, hebrew); position: absolute; right: 0; top: -1.2mm; width: 9mm;
+  text-align: right; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 19pt; line-height: 1.2; color: #000; }
 .st { display: block; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 13pt; line-height: 1.4;
   margin: 0 0 0.8mm; }
 
@@ -104,3 +103,17 @@ h2 { margin-bottom: 4.5mm; }
 h2.flow { break-before: auto; margin-top: 9mm; }
 .catalog p { font-size: 11pt; line-height: 1.5; margin: 0 0 2.6mm; }
 .ct { font-size: 12.5pt; }
+/* A heading in the opening that starts a page of its own (תמצית הפרקים). */
+h3.newp { break-before: page; margin-top: 2mm; }
+/* The chapter summaries, a little tighter between points and chapters. */
+h4 { margin-top: 4.6mm; }
+li { margin-bottom: 1.5mm; }
+/* The catalog, a filler page: one page, the dedication box at its foot. */
+.catalog p { font-size: 10.5pt; line-height: 1.42; margin: 0 0 1.8mm; }
+.catalog .ct { font-size: 12pt; margin-top: 0; }
+.catalog .atitle { margin-bottom: 3mm; }
+.dedicate { margin-top: 3mm; padding: 2mm 5mm 0.5mm; }
+/* The step letter: no fill or box from the square-bullet rule above. */
+.steps li::before { background: none; height: auto; border-radius: 0; top: -1.2mm; right: 0; }
+/* The first section under a part heading, wrapped in .opening: no second rule under the part's rule. */
+h2 + .opening > h3:first-child { border-top: none; padding-top: 0; margin-top: 2mm; }

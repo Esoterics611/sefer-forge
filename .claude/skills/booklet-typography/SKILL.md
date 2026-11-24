@@ -41,7 +41,7 @@ Each device shows something true about the text; none is ornament:
   colon so no word sits alone), the sub-slogan, the brand at the foot.
 - **The verse the text is built on, displayed**: `[...]{.verse}` 17pt bold, centred, its reference under it
   (`{.vref}`).
-- **The overview as numbered steps** (`::: {.steps}` around the list): the step's number in a black disc,
+- **The overview as numbered steps** (`::: {.steps}` around the list): the step's number as a large bold letter (no disc: Ronnie found circles distracting),
   a short title from the text's own terms (`[...]{.st}`), then the paragraph. The paragraph must not
   repeat its title: drop an opening that only restates it ("זהו 'פדה בשלום נפשי':" under the title
   "פדה בשלום נפשי").
@@ -49,7 +49,12 @@ Each device shows something true about the text; none is ornament:
 - **Key sentences in bold** inside a long prose part (the הקדמה): the topic sentence of a paragraph as
   `[...]{.pk}`, three or four in a part, the writer's own sentences, unchanged.
 - **Parts open a page**; a short part may follow on the page where the last one ended (`## מבוא {.flow}`)
-  instead of leaving two lines alone on a page.
+  only when Ronnie asks; otherwise fit the part before it to its pages.
+
+**What opens a page**: the cover; each `##` part (הקדמה, מבוא, המאמר עם ביאור, סיכום); the chapter
+summaries (`### תמצית הפרקים {.part .newp}`); the glossary; each Sefer Forge page; the back cover. Never a
+part heading under the end of another part's text on the same page, and no box (`.dedicate`) carried alone
+to a page of its own.
 
 Bold `**...**` is the text itself in a woven ביאור (the woven check reads it): emphasis outside the text
 uses spans (`{.pk}`, `{.st}`), never `**`. A heading's `{.class}` is layout only (the lint ignores it).

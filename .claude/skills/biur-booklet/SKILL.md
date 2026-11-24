@@ -48,7 +48,12 @@ Chassidus. Work in passes, and record nothing as done until the last:
    at the first line. Say who or what the point is about (the two souls, the יחידה, the war, the verse),
    and, where a chapter opens, what it explains. **Lean toward the original summary**: its order, its
    quotations and its wording are the base; an explanation serves the point, never replaces it.
-3. **Check**: every quotation exact (`python scripts/check-quotes.py <folder>`: quotations not in the
+3. **Every sentence whole** (Ronnie, on "וזו בפנימי ביותר באלקות"): read each sentence alone, as printed.
+   It has its verb and its noun ("ופנימיות התורה קשורה בנקודה הפנימית ביותר באלקות", not "וזו בפנימי
+   ביותר"); every "זו", "הוא", "הן", "מכאן" points to something the reader can name; no fragment that
+   starts from a quotation or a bare term ("שלום, כי..." under a title → ""בשלום", כי..."); two parallel
+   halves say what each is about. Fix in place, the fewest words; the frame, the הקדמה and the סיכום too.
+4. **Check**: every quotation exact (`python scripts/check-quotes.py <folder>`: quotations not in the
    text are listed: a verse quoted from elsewhere is fine, anything else is fixed); then read again for
    flow and length.
 
