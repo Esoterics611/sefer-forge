@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: עלמין סתימין ועלמין דאתגליין
+forms:
+- עלמין סתימין
+- עלמין דאתגליין
+- עלמא דאתגליא
+- עלמא דאתכסיא
+category: פרצופים ועולמות
+senses:
+- meaning: 'עולמות נסתרים ועולמות גלויים, כמחשבה ודיבור. בשער היחוד (פנ"ב), בעשר הספירות דבריאה: המחשבה היא "עלמין סתימין",
+    ועולם היצירה, עולם הדיבור, הוא "עלמין דאתגליין".'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '52.2'
+    quote: עלמין סתימין
+  - work: shaar-hayichud
+    ref: '52.2'
+    quote: ועולם היצי' עולם הדבור עלמין דאתגליין
+related:
+- leah-rachel
+open: כאן המונחים באים בבריאה וביצירה. משמעותם הכללית (אצילות כנגד בי"ע, כפי שהמלמד מבאר אותם) יש לבסס במקורות נוספים.
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: גם באדם יש את הבחינה של עלמין דאתגליין — זה כבר הבחינה של מחשבה, דיבור ומעשה
+  where: discourses/002-shaar-hayichud/introduction.md
+  from: knowledge/teacher/terms.yaml

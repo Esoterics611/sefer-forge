@@ -1,0 +1,39 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מחשבות זרות (ומזיקין)
+forms:
+- מחשבות זרות
+- מחשבה זרה
+- המחשבה זרה
+- מזיקין
+- מקטרגין
+abbrev:
+  מ"ז: מחשבות זרות
+category: תפילה
+senses:
+- meaning: 'מחשבות על ענייני העולם ותאוותיו העולות בשעת התפילה. בתניא: הן מן הנפש הבהמית, הנלחמת בנפש האלקית במוחו של אדם,
+    ואין בהן ראיה שהתפילה אינה כלום.'
+  rests_on:
+  - work: tanya
+    ref: Part I; Likkutei Amarim.28.5
+    quote: להוכיח מנפילת המחשבה זרה מכלל שאין תפלתם כלום
+  - work: tanya
+    ref: Part I; Likkutei Amarim.28.6
+    quote: הן שתי נפשות הנלחמות זו עם זו במוחו של אדם
+- meaning: 'בפדה בשלום: הן מתגברות דווקא בתפילה, כי הנפש הבהמית נדבקת בנפש האלקית כשהיא באה להפוך אותה. ומחשבה אינה אובדת:
+    מחשבות רבות מתקבצות ונעשות נפש שלמה, "מזיקין ומקטרגין", והן "אויבי ה''" שבפסוק.'
+  rests_on:
+  - work: padah-beshalom
+    ref: 50a.2
+    quote: לבלבלה במחשבות זרות
+  - work: padah-beshalom
+    ref: 50b.1
+    quote: אין לה איבוד
+  - work: padah-beshalom
+    ref: 51b.1
+    quote: מזיקין ומקטרגין
+related:
+- shaat-tzlota-krava
+- nefesh-elokit-behamit
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

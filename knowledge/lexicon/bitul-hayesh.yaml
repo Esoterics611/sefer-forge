@@ -1,0 +1,27 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: יש ואין (ביטול היש לאין)
+forms:
+- ביטול היש לאין
+- ביטול היש
+- יש ודבר בפ"ע
+category: תורה, מצוות ותפילה
+senses:
+- meaning: '"יש" הוא מה שמרגיש את עצמו כמציאות לעצמו, "יש ודבר בפני עצמו"; "אין" הוא מה שבטל ואינו מרגיש את עצמו. בפדה בשלום:
+    הביטול שבפנימיות החכמה הוא "ביטול היש לאין" בפועל, ולא בהבנה בלבד, ולכן גם ההתבוננות מביאה אליו, מה שאין כן אהבה של "בכל
+    נפשך".'
+  rests_on:
+  - work: padah-beshalom
+    ref: 49b.1
+    quote: יש ודבר בפ"ע
+  - work: padah-beshalom
+    ref: 56d.1
+    quote: ביטול היש לאין
+  - work: padah-beshalom
+    ref: 56d.1
+    quote: גם בהתבוננות נתפס
+related:
+- chaya-yechida
+- bitul-beetzem
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

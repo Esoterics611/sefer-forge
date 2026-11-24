@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נקודה, ספירה, פרצוף
+forms:
+- נקודה ספירה פרצוף
+- פרצוף
+- פרצופים
+category: פרצופים ועולמות
+senses:
+- meaning: 'שלוש צורות של הספירות. בתהו הן "נקודות" בלבד: כל ספירה בעצמיותה, טרם שתתפשט, ואינה מתחלקת. בתיקון כל ספירה מתחלקת
+    לעשר וכלולה מחברותיה, ובזה נעשית קומה שלמה, פרצוף; וזו ההתכללות על ידי שם מ"ה.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '20.1'
+    quote: נקודה ספי' פרצוף
+  - work: shaar-hayichud
+    ref: '20.1'
+    quote: די"ס דתהו הן בבחי' נקודות לבד
+  - work: shaar-hayichud
+    ref: '20.1'
+    quote: שבחי' הנקודו' הוא בחי' העצמיות טרם שמתפשט
+related:
+- tohu-tikun
+- shivat-hamelachim
+- hitkalelut
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: וכל פרצוף הוא מבנה שלם, כדי שנוכל לדבר בפרטים של אותו פרצוף
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml

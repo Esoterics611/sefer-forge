@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: איהו וחיוהי חד, איהו וגרמוהי חד
+forms:
+- איהו וחיוהי חד
+- איהו וגרמוהי חד
+- וגרמוהי חד
+category: אורות וכלים
+senses:
+- meaning: 'מן התיקונים: באצילות האורות ("חיוהי") והכלים ("גרמוהי") אחד עם המאציל ("איהו"). בשער היחוד זה עיקר המכוון בהתבוננות
+    באורות ובכלים דאצילות; ואף שהאורות "בלי מה" והכלים "יש", מצד המאציל שורש הכלים קודם לשורש האורות. לכן עד הכלים דז"א הכול
+    נחשב עדיין "סוף עולם האין סוף".'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '29.1'
+    quote: דאיהו וחיוהי חד וגרמוהי חד
+  - work: shaar-hayichud
+    ref: '29.1'
+    quote: דגם שהאורות הן בלי מה והכלים הן בבחי' יש
+  - work: shaar-hayichud
+    ref: '32.1'
+    quote: ועדיין הוא סוף עולם הא"ס
+related:
+- kelim
+- tohu-tikun
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud

@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: רשימו
+forms:
+- רשימו
+- הרשימו
+category: פרצופים ועולמות
+senses:
+- meaning: הרושם שנשאר בחלל אחר הצמצום. הוא כ"היולי", כוח כולל כל מה שיסתעף ממנו על ידי הקו; כל האור נכלל בו בקיצור, ומפני
+    שהוא כוח מגביל אינו מתפשט אלא דרך קו.
+  rests_on:
+  - work: shaar-hayichud
+    ref: '15.1'
+    quote: רושם שנשאר בחלל
+  - work: shaar-hayichud
+    ref: '15.1'
+    quote: שהוא בחי' היולי כולל כל מה שיסתעף ממנו
+  - work: shaar-hayichud
+    ref: '15.1'
+    quote: רק להיותו כח מגביל לכללות האור הראשון
+related:
+- tzimtzum
+- kav
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud

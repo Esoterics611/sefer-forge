@@ -1,0 +1,35 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: חכמה (אין, מעיין)
+forms:
+- חכמה
+- החכמה
+category: פרצופים ועולמות
+senses:
+- meaning: 'החכמה היא המקור שממנו נובע עומק המושכל: נקראת "אין", כי היא לפני שהדבר נתפס בהשגה, ונקראת "מעיין", והבינה "נהר"
+    היוצא ממנו.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '1.1'
+    quote: נובע מן החכמה הנקר' אין
+  - work: shaar-hayichud
+    ref: '1.1'
+    quote: שהבינה נק' נהר והחכמ' נק' מעיין
+related:
+- tevuna
+- ima-bina
+- omek-orech-rochav
+- bitul-hayesh
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: בחינת החכמה זה ברק המבריק
+  where: discourses/002-shaar-hayichud/introduction.md
+  from: knowledge/teacher/terms.yaml
+- said: והחוכמה נקראת אין, והבינה הנקראת כבר יש
+  where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: בבינה היא כבר מתחילה להתלבש באותיות
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml

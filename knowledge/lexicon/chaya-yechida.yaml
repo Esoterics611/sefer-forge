@@ -1,0 +1,41 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: חיה ויחידה
+forms:
+- יחידה
+- חיה ויחידה
+- חיה יחידה
+- יחידתי
+category: הנשמה ולבושיה
+senses:
+- meaning: 'שתי המדרגות העליונות בנפש, מעל נפש רוח ונשמה: מקיפים, שאינם נכנסים בכלי. בפדה בשלום הן שני מיני רצון. החיה מאירה
+    במוח ובלב, רצון שהאדם מרגיש, וממנה האהבה של "בכל נפשך". היחידה היא "רצון פשוט" שאינו מאיר בשום כוח, עצם הנפש ומקור כל
+    רצון, וממנה "בכל מאדך". אין לרע אחיזה בה, ולכן היא לא נטמאה גם בחוטא; ובה כל ישראל שווים, "איש אחד".'
+  rests_on:
+  - work: padah-beshalom
+    ref: 52a.1
+    quote: רצון פשוט שלמעלה מהארה
+  - work: padah-beshalom
+    ref: 52a.1
+    quote: ואין חיצונים מקבלים שם יניקה כלל
+  - work: padah-beshalom
+    ref: 54d.1
+    quote: יחידה העצמית שבו שלא הוטמאה
+  - work: padah-beshalom
+    ref: 56c.2
+    quote: כולם שוים ונק' איש אחד
+  - work: padah-beshalom
+    ref: 56d.1
+    quote: מקיף דחי' לבד
+related:
+- or-pnimi-makif
+- naran
+- mesirat-nefesh
+- hishtavut
+- bitul-beetzem
+caution: היחידה אינה כוח נוסף לצד השכל והמידות. היא עצם הנפש ואינה מאירה בשום כוח מסוים; לכן הביטול שממנה אינו בא במלחמה ואינו
+  משתנה (פדה בשלום פ"ט).
+open: חמש המדרגות (נפש, רוח, נשמה, חיה, יחידה) מקורן במדרש ("חמשה שמות נקראו לה", בראשית רבה יד, ט), שאינו ב-sources/; וכן
+  לא נמצאה "יחידה" בתניא שב-sources/. יש להוסיף מקור ממקורות האר"י לסדר המדרגות.
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

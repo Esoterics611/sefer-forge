@@ -25,7 +25,7 @@ The model is `discourses/006-padah-beshalom/biur/` (its `biur.src.md`, `abbrevia
    newcomer** (below). No outline table or table of levels unless asked (Ronnie removed both).
 6. **המאמר עם ביאור**: the woven text with its glosses, reviewed by skill `lean-biur` (the middle way).
 7. **סיכום**.
-8. **מילון המונחים** (`::: {.glossary}`, two columns, one page if it can): every term the summaries
+8. **מילון המונחים** (`::: {.glossary}`; start from the lexicon entries, `python scripts/lexicon.py --in <text>`, and add back the terms it lacks, skill `chassidus-context`): every term the summaries
    explain, alphabetical, each defined in a sentence or two from the text and its footnotes.
 9. **Back cover** (`::: {.works}`): Sefer Forge on **one** page, the outside of the back.
 

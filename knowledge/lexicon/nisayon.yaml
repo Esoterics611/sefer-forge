@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נסיון
+forms:
+- נסיון
+- ניסיון
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'בפדה בשלום: מצב שבו שני רצונות עומדים זה כנגד זה, ואפשר שיגבר כל אחד מהם. כל זמן שהחיה והיחידה שבנפש הבהמית מאירות,
+    הרצון האלקי גובר על הרצון הזר, וזה נסיון, כמו "והאלקים נסה את אברהם"; למעלה מזה הדבר "מוחלט שאין בו ספק כלל".'
+  rests_on:
+  - work: padah-beshalom
+    ref: 54b.2
+    quote: והאלקים נסה את אברהם
+  - work: padah-beshalom
+    ref: 54c.1
+    quote: דבר מוחלט שאין בו ספק
+related:
+- hishtavut
+- chaya-yechida
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

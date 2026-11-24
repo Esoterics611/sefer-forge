@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ביטול בעצם
+forms:
+- ביטול בעצם
+- ביטול עצמי
+- בבחי' ביטול בעצם
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'ביטול שאינו בא מכוח שגובר על הדבר, אלא מעצם הנפש, שאין בו רצון שכנגד. בפדה בשלום: זו מסירת הנפש בעצמה, "בכל מאדך",
+    מבחינת היחידה; לכן אין בה מלחמה, אינה משתנה ואין בה צער.'
+  rests_on:
+  - work: padah-beshalom
+    ref: 53a.1
+    quote: ביטול בעצם מצד עצמו
+  - work: padah-beshalom
+    ref: 53c.1
+    quote: בבחי' ביטול בעצם שלא יתכן בזה סיבת מלחמה וניצוח כלל
+  - work: padah-beshalom
+    ref: 54c.1
+    quote: ביטול זה להיותו בחי' עצמיות ע"כ מאליו ומעצמו יבא ולא יפול בו שינוי כלל
+related:
+- bitul-hamiut-berov
+- chaya-yechida
+- mesirat-nefesh
+- hishtavut
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

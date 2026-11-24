@@ -1,0 +1,31 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ממלא כל עלמין וסובב כל עלמין
+forms:
+- ממכ"ע
+- סוכ"ע
+- ממלא כל עלמין
+- סובב כל עלמין
+abbrev:
+  ממכ"ע: ממלא כל עלמין
+  סוכ"ע: סובב כל עלמין
+category: פרצופים ועולמות
+senses:
+- meaning: '"סובב כל עלמין" הוא האור המקיף שלמעלה מהדרגה, שלגביו אצילות ועשייה שווים; "ממלא כל עלמין" הוא האור הפנימי, המתלבש
+    בכל עולם לפי ערכו ובא בהדרגה, על ידי צמצומים. גם בממלא אין שינוי לגבי העצמות: "אני הוי'' לא שניתי".'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '9.1'
+    quote: הנק' סוכ"ע בכלל ופרט שלמעל' מהדרג' האור שבבחי' ממכ"ע
+  - work: shaar-hayichud
+    ref: '9.1'
+    quote: גם בבחי' או"פ בחי' ממלא בכלל ובפרט אין שינוי
+  - work: shaar-hayichud
+    ref: '9.1'
+    quote: דגם בבחי' ממלא בא ירידת האור והשפע ע"י צמצומים דוקא
+related:
+- or-pnimi-makif
+- tzimtzum
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud

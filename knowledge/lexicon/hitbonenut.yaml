@@ -1,0 +1,38 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: התבוננות (עיון)
+forms:
+- התבוננות
+- ההתבוננות
+- עיון
+- להתבונן
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'מהות ההתבוננות: הסתכלות חזקה בעומק הענין והעמידה עליו הרבה, עד שיובן על בוריו בכל חלקיו. היא פנימיות הבינה, שהגמרא
+    קוראת "עיון", והיפוכה ה"גירסא", הבנה במבט ראשון. "התבוננות" בנו"ן כפולה: שמתבונן ומעיין בדבר הרבה. ממנה נולדת ההתפעלות
+    במוח ובלב.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '1.1'
+    quote: והנה מהות ההתבוננות בעצם הוא ענין ההסתכלו' החזקה בעמקות הענין
+  - work: shaar-hayichud
+    ref: '1.1'
+    quote: בחי' פנימיות בינה הנק' בלשון הגמרא בשם עיון
+  - work: shaar-hayichud
+    ref: '1.1'
+    quote: והוא הנקר' התבוננות בנו"ן הכפול דוקא
+related:
+- omek-orech-rochav
+- hitpaalut
+- tevuna
+- ima-bina
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: יש כוח בשכל שהוא נקרא כוח העיון, והוא נקרא פנימיות בינה
+  where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: השער הנו"ן זה עניין של כוח העיון, שמשם נובעות רעיונות חדשים
+  where: discourses/002-shaar-hayichud/sessions/010/transcript.md
+  from: knowledge/teacher/terms.yaml

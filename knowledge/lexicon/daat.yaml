@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: דעת
+forms:
+- דעת
+- הדעת
+- העמקת הדעת
+category: פרצופים ועולמות
+senses:
+- meaning: הדעת אינה עומק ההשגה, שהוא בבינה, אלא התקשרות הנפש והרגשתה במושכל. לכן מה שהעולם קורא "העמקת הדעת" אינו גופה של
+    ההעמקה.
+  rests_on:
+  - work: shaar-hayichud
+    ref: '1.2'
+    quote: אין זה גופה של העמקה
+  - work: shaar-hayichud
+    ref: '1.2'
+    quote: אך הדעת הוא בחי' התקשרות הרגשתו
+related:
+- hitbonenut
+- tevuna
+- hitpaalut
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: דעת זה גם בחינת התקשרות
+  where: discourses/002-shaar-hayichud/sessions/012/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: הדעת הזאת היא מעוררת את התפעלות הלב
+  where: discourses/002-shaar-hayichud/sessions/012/transcript.md
+  from: knowledge/teacher/terms.yaml

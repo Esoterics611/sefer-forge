@@ -1,0 +1,37 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: נפש אלקית ונפש בהמית
+forms:
+- נפש האלקית
+- נפש אלקית
+- נפש הבהמית
+- נפש בהמית
+- שתי נפשות
+- ב' הנפשות
+abbrev:
+  נה"א: נפש האלקית
+  נה"ב: נפש הבהמית
+category: הנשמה ולבושיה
+senses:
+- meaning: שתי הנפשות שבאדם מישראל. הנפש האלקית היא "חלק אלוה ממעל", וטבעה לעלות ולהידבק במקורה; הנפש הבהמית (החיונית) מחיה
+    את הגוף, וממנה התאוות, וטבעה לרדת. הן נלחמות זו בזו, וכל אחת רוצה לשלוט באדם.
+  rests_on:
+  - work: tanya
+    ref: Part I; Likkutei Amarim.1.15
+    quote: יש שתי נשמות
+  - work: tanya
+    ref: Part I; Likkutei Amarim.2.1
+    quote: חלק אלוה ממעל ממש
+  - work: tanya
+    ref: Part I; Likkutei Amarim.28.6
+    quote: הן שתי נפשות הנלחמות זו עם זו במוחו של אדם
+  - work: padah-beshalom
+    ref: 49c.1
+    quote: רוח האדם הוא העולה
+related:
+- machshavot-zarot
+- shaat-tzlota-krava
+- itkafya-ithapcha
+- chaya-yechida
+status: draft
+learned_from:
+- discourses/006-padah-beshalom
