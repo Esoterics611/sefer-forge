@@ -40,6 +40,11 @@ Chassidus. Work in passes, and record nothing as done until the last:
 2. **Rewrite**: the term said once, in plain words, where it first appears ("בירור, כלומר הוצאת הטוב
    מתוך הרע"); a longer explanation in a footnote (`[...]{.fn}`); the verse translated in a clause.
    Precise, not "relatable"; no selling, no "imagine", no slogans; flowing, not long.
+   **Every point names its subject** (Ronnie): a summary that opens "שני הפכים רחוקים זה מזה" without
+   saying they are the two fighters of the parable, and that the parable is the two souls, loses the reader
+   at the first line. Say who or what the point is about (the two souls, the יחידה, the war, the verse),
+   and, where a chapter opens, what it explains. **Lean toward the original summary**: its order, its
+   quotations and its wording are the base; an explanation serves the point, never replaces it.
 3. **Check**: every quotation exact (`python scripts/check-quotes.py <folder>`: quotations not in the
    text are listed: a verse quoted from elsewhere is fine, anything else is fixed); then read again for
    flow and length.
