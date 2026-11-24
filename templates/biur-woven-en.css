@@ -18,7 +18,7 @@ body { font-family: "EB Garamond", serif; font-size: 12.5pt; line-height: 1.62; 
 p, li { text-align: justify; }
 strong { font-family: "EB Garamond", serif; font-weight: 700; }
 em { font-style: italic; font-weight: 400; color: inherit; }
-h1, h2, h3, h4, th, .subtitle { font-family: "EB Garamond", serif; }
+h1, h2, h3, h4, th, .subtitle, .msub { font-family: "EB Garamond", serif; }
 h1 { font-size: 26pt; font-weight: 700; }
 h3 { font-size: 13.5pt; }
 .bsd { text-align: right; direction: rtl; font-family: "Frank Ruhl Libre", serif; }

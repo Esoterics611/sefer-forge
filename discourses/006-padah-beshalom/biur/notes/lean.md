@@ -5,7 +5,7 @@
   punctuation kept, so the sentence breaks stay), 6 trimmed to what explains, the rest kept as explaining or tying
   to context, every one recorded in notes/lean-decisions.md. Five long stretches split into sentences (§7, §19,
   §23, §24, §27), with a short explanation where the step needs one. Aramaic: שכינתא שריא and דחזו אפי שכינתא
-  translated beside their addresses, שדי עפרא והוי חרבא translated in place. §31 renamed "הראיה מן הבכי בתשובה"
+  translated beside their addresses, שדי עפרא והוי חרבא translated in the gloss after it (so the English keeps the same stretches). §31 renamed "הראיה מן הבכי בתשובה"
   (עי"ת left as written). Lean check: 26 flagged → 19, each read and kept as explaining.
   - Left for Ronnie: "וכה"ג א' כד ארי' ואריותא קיימין כו'" (§27): no source or translation found; not guessed.
   - An earlier pass the same day cut too much (221 → 112, and the opening): undone.
