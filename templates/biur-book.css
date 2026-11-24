@@ -1,0 +1,26 @@
+/* A whole work joined from chapter ביאורים (scripts/combine-biur.py), laid over biur.css and
+   biur-woven.css: a title page, a contents page with page numbers, each chapter on a new page,
+   and the running head naming the chapter and its section. */
+
+@page {
+  @top-right { content: string(chapter) " · " string(section); }
+}
+
+h1.booktitle { font-size: 34pt; margin: 55mm 0 6mm; }
+.span { display: block; margin-top: 2mm; }
+
+h1.chapter { break-before: page; string-set: chapter attr(data-short); counter-reset: footnote; }
+
+/* The contents: chapter, folios and topics, the page at the end of the line. */
+.toc { break-before: page; page: front; }
+@page front { @top-right { content: none; } }
+.toc h2.toc-head { string-set: section ""; text-align: center; border-bottom: 0.8pt solid #000; margin-top: 0; }
+.toc p { margin: 0 0 2mm; text-align: start; }
+a.toc-line { display: block; color: #000; text-decoration: none; font-size: 11pt; line-height: 1.5;
+  padding-inline-end: 12mm; position: relative; break-inside: avoid; }
+a.toc-line::after { content: target-counter(attr(href), page, hebrew); position: absolute; left: 0; top: 0;
+  font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+.tn { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+.tf { font-size: 10pt; color: #333; }
+.tf::before { content: " · "; }
+.tt { display: block; font-size: 10pt; color: #333; padding-inline-start: 6mm; }

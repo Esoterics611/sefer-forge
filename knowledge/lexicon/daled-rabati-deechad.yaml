@@ -13,9 +13,19 @@ senses:
   - work: shaar-hakavanot
     ref: Sermons on Intentions of the Shema Recitation.6.3.5
     quote: ולכן אנו צריכין למסור נפשינו על קדוש השם באות ד׳ דאחד
+- meaning: ד' רבתי היא לאה, הבחינה העליונה של הנוקבא, וד' זעירא רחל, התחתונה; וכנגדן בבינה, ד' עליונה בינה וד' תחתונה תבונה. בשער
+    היחוד (פרק ב) שורש אותיות המחשבה, הנמשך ממלכות דתבונה, "נק' לאה... והוא ד' רבתי דאחד".
+  rests_on:
+  - work: etz-chaim
+    ref: Shaar HaKlalim.11.2
+    quote: ודע כמו שיש ד' רבתי וד' זעירא
+  - work: pri-etz-chaim
+    ref: Gate of Prayer.4.5
+    quote: ונשארין למעלה בד' דאחד שהיא לאה
 related:
 - shema-shem-ayin
 - heichal-ahava-ratzon
 status: draft
 learned_from:
 - discourses/005-kavanot-shacharit/biur-arizal
+- discourses/007-shaar-hayichud-perushim/biur-perek-02

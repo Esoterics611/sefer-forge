@@ -1,0 +1,63 @@
+# Notes — shaar-hayichud-perushim
+
+- The text: שער היחוד of אדמו"ר האמצעי, in נר מצוה ותורה אור (קה"ת). פרק א = דף קט ע"א – קי ע"א, from "א) הנה כבר מבואר באריכות" to "וכמה שכתוב בכתבים בכמה דוכתי וד"ל):".
+- Digital edition: https://chabadlibrary.org/books/2800530003 (שער היחוד), one page per printed page, https://chabadlibrary.org/books/2800530217 … 2800530219 for פרק א. Fetched 2026-11-21 (rendered in a browser; the page text without the editor's note numbers). The editor's notes: biur/notes/kehot-notes.md.
+- Also on Sefaria: The Gate of Unity (Neirot 2023, abbreviations opened, Hebrew + English, CC-BY English). The Kehot text is the one used.
+- R' Hillel of Paritch's commentary (ליקוטי ביאורים, ווארשא תרכ"ח; also in the new קה"ת printing): online only as a HebrewBooks scan (43321, 43257), behind a bot check. Ronnie is sending photos (2026-11-21); they go to sources/scans/ (local only) and a transcription in sources/md/ with provenance, cited into the ביאור by @file.
+- Requested (2026-11-21): a reading/teaching PDF of פרק א, the full text and R' Hillel's explanation, with a brief running explanation of the words (their connotation completed, the cited sources brought in a few words), in the format of the פדה בשלום ביאור.
+- ביאור: one folder per פרק, biur-perek-NN/biur.src.md → output/biur/007-shaar-hayichud-perek-NN.pdf.
+- 2026-11-21: ביאור of פרק א written and printed, without R' Hillel yet (Ronnie: "do perek alef and I will send images"): 18 sections, the whole פרק woven in bold, concepts in footnotes; proof 0 errors, 13 pages. Checks and open points: biur-perek-01/notes/check.md.
+- 2026-11-21: פרק ב (session 002, קי ע"א – קיא ע"א) and its ביאור, biur-perek-02, with the new student read (prompts/student-read.md) before the proof. The ביאור folders renamed biur → biur-perek-01 so each פרק has its own.
+- 2026-11-21: פרק ג (session 003, קיא ע"א – ע"ב) and its ביאור, biur-perek-03 (8 pages), with the student read.
+- 2026-11-21: פרק ד (session 004, קיא ע"ב – קיב ע"א) and its ביאור, biur-perek-04 (10 pages), with the student read.
+- 2026-11-21: פרק ה (session 005, קיב ע"א – קיג ע"א), biur-perek-05 (8 pages), with the student read.
+- 2026-11-21: פרק ו (session 006, קיג ע"א – קיד ע"א), biur-perek-06 (10 pages), with the student read.
+- 2026-11-21: פרק ז (session 007, קיד ע"א – קטו ע"א), biur-perek-07 (10 pages), with the student read.
+- 2026-11-21: פרק ח (session 008, קטו ע"א – קטז ע"א), biur-perek-08 (9 pages), with the student read.
+- 2026-11-21: פרק ט (session 009, קטז ע"א – ע"ב), biur-perek-09 (7 pages), with the student read.
+- 2026-11-21: פרק י (session 010, קטז ע"ב – קיז ע"ב), biur-perek-10 (10 pages), with the student read.
+- 2026-11-21: פרק יא (session 011, קיז ע"ב – קיח ע"ב), biur-perek-11 (8 pages), with the student read.
+- 2026-11-21: פרק יב (session 012, קיח ע"ב – קיט ע"א), biur-perek-12 (7 pages), with the student read.
+- 2026-11-21: פרק יג (session 013, קיט ע"א – קכ ע"א), biur-perek-13 (9 pages), with the student read.
+- 2026-11-21: פרק יד (session 014, קכ ע"א – ע"ב), biur-perek-14 (7 pages), with the student read.
+- 2026-11-21: פרק טו (session 015, קכ ע"ב – קכא ע"א), biur-perek-15 (8 pages), with the student read.
+- 2026-11-21: פרק טז (session 016, קכא ע"א – קכב ע"א), biur-perek-16 (7 pages), with the student read.
+- 2026-11-21: פרק יז (session 017, קכב ע"א – ע"ב), biur-perek-17 (8 pages), with the student read.
+- 2026-11-21: פרק יח (session 018, קכב ע"ב – קכג ע"א), biur-perek-18 (7 pages), with the student read.
+- 2026-11-21: פרק יט (session 019, קכג ע"א – קכד ע"א), biur-perek-19 (7 pages), with the student read.
+- 2026-11-21: פרק כ (session 020, קכד ע"א – ע"ב), biur-perek-20 (7 pages), with the student read.
+- 2026-11-21: פרק כא (session 021, קכד ע"ב – קכה ע"א), biur-perek-21 (7 pages), with the student read.
+- 2026-11-21: פרק כב (session 022, קכה ע"א – קכו ע"א), biur-perek-22 (8 pages), with the student read.
+- 2026-11-21: פרק כג (session 023, קכו ע"א – ע"ב), biur-perek-23 (7 pages), with the student read.
+- 2026-11-21: פרק כד (session 024, קכו ע"ב – קכז ע"א), biur-perek-24 (7 pages), with the student read.
+- 2026-11-21: פרק כה (session 025, קכז ע"א – קכח ע"א), biur-perek-25 (8 pages), with the student read.
+- 2026-11-21: פרק כו (session 026, קכח ע"א – ע"ב), biur-perek-26 (8 pages), with the student read.
+- 2026-11-21: פרק כז (session 027, קכח ע"ב – קכט ע"א), biur-perek-27 (7 pages), with the student read.
+- 2026-11-21: פרק כח (session 028, קכט ע"א – ע"ב), biur-perek-28 (6 pages), with the student read.
+- 2026-11-21: פרק כט (session 029, קכט ע"ב – קל ע"א), biur-perek-29 (7 pages), with the student read.
+- 2026-11-21: פרק ל (session 030, קל ע"א – קלא ע"א), biur-perek-30 (8 pages), with the student read.
+- 2026-11-21: פרק לא (session 031, קלא ע"א – ע"ב), biur-perek-31 (7 pages), with the student read.
+- 2026-11-21: פרק לב (session 032, קלא ע"ב – קלב ע"א), biur-perek-32 (8 pages), with the student read.
+- 2026-11-21: פרק לג (session 033, קלב ע"א – קלג ע"א), biur-perek-33 (7 pages), with the student read.
+- 2026-11-21: פרק לד (session 034, קלג ע"א – ע"ב), biur-perek-34 (7 pages), with the student read.
+- 2026-11-21: פרק לה (session 035, קלג ע"ב – קלד ע"א), biur-perek-35 (8 pages), with the student read.
+- 2026-11-22: פרק לו (session 036, קלד ע"א – ע"ב), biur-perek-36 (7 pages), with the student read.
+- 2026-11-22: פרק לז (session 037, קלד ע"ב – קלה ע"ב), biur-perek-37 (8 pages), with the student read.
+- 2026-11-22: פרק לח (session 038, קלה ע"ב – קלו ע"א), biur-perek-38 (7 pages), with the student read.
+- 2026-11-22: פרק לט (session 039, קלו ע"א – ע"ב), biur-perek-39 (7 pages), with the student read.
+- 2026-11-22: פרק מ (session 040, קלו ע"ב – קלז ע"ב), biur-perek-40 (7 pages), with the student read.
+- 2026-11-22: פרק מא (session 041, קלז ע"ב – קלח ע"א), biur-perek-41 (7 pages), with the student read.
+- 2026-11-22: פרק מב (session 042, קלח ע"א – ע"ב), biur-perek-42 (7 pages), with the student read.
+- 2026-11-22: פרק מג (session 043, קלח ע"ב – קלט ע"א), biur-perek-43 (7 pages), with the student read.
+- 2026-11-22: פרק מד (session 044, קלט ע"א – קמ ע"א), biur-perek-44 (9 pages), with the student read.
+- 2026-11-22: פרק מה (session 045, קמ ע"א – ע"ב), biur-perek-45 (7 pages), with the student read.
+- 2026-11-22: פרק מו (session 046, קמ ע"ב – קמא ע"ב), biur-perek-46 (8 pages), with the student read. A note that ran into the text at the page foot was moved to kehot-notes.md.
+- 2026-11-22: פרק מז (session 047, קמא ע"ב – קמב ע"א), biur-perek-47 (8 pages), with the student read.
+- 2026-11-22: פרק מח (session 048, קמב ע"א – קמג ע"א), biur-perek-48 (7 pages), with the student read.
+- 2026-11-22: פרק מט (session 049, קמג ע"א – ע"ב), biur-perek-49 (8 pages), with the student read.
+- 2026-11-22: פרק נ (session 050, קמג ע"ב – קמד ע"ב), biur-perek-50 (7 pages), with the student read.
+- 2026-11-22: פרק נא (session 051, קמד ע"ב – קמה ע"א), biur-perek-51 (8 pages), with the student read.
+- 2026-11-22: פרק נב (session 052, קמה ע"א – קמו ע"א), biur-perek-52 (7 pages), with the student read.
+- 2026-11-22: פרק נג (session 053, קמו ע"א – ע"ב), biur-perek-53 (8 pages), with the student read.
+- 2026-11-22: פרק נד (session 054, קמו ע"ב – קמז ע"ב), biur-perek-54 (8 pages), with the student read. With it the ביאור of all fifty-four chapters is written.
+- 2026-11-22: the whole work joined into one book, output/biur/007-shaar-hayichud-complete.pdf (374 pages: title page, contents with page numbers, the 54 chapters, the colophon), by scripts/combine-biur.py; proof-pdf 0 errors.

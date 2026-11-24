@@ -447,7 +447,9 @@ def lint(body: str, first_line: int, headings: list[str] | None = None, english:
     for no, line in enumerate(body.split("\n"), first_line):
         if line.startswith("@") or line.startswith("# ") or line.strip() in allowed:
             continue
-        prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', line)          # what is quoted is not the writer's
+        prose = re.sub(r"\*\*.+?\*\*", " ", line)                    # a woven text's own words (bold) are not the writer's
+        prose = re.sub(r'(?<=[א-ת])["״](?=[א-ת](?![א-ת]))', "", prose)  # the gershayim of an abbreviation, before its last letter (ע"א, דא"ס), is not a quote mark
+        prose = re.sub(r'"[^"\n]*"|״[^״\n]*״', '""', prose)          # what is quoted is not the writer's
         for pat, why in FORBIDDEN:
             if why.startswith("method") and english:
                 pat = EN_HEADING
@@ -565,6 +567,14 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
         if not cursor.text:
             raise BuildError("woven: true needs text_file in the front matter")
         notes.append(woven_check(body, cursor.text))
+        # Skill lean-biur (Ronnie, 2026-11-24): a gloss gives a term or a source, never the text again.
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("restate", Path(__file__).with_name("check-restatement.py"))
+        restate = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(restate)
+        n_gl, n_flag, _ = restate.tally(body)
+        notes.append(f"lean check: {n_gl} gloss(es), {n_flag} read as restating the text"
+                     + (" (python scripts/check-restatement.py; skill lean-biur)" if n_flag else ""))
     for no, line in enumerate(body.split("\n"), raw[: len(raw) - len(body)].count("\n") + 1):
         m = DIRECTIVE.match(line)
         if not m:
