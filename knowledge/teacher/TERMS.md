@@ -25,7 +25,7 @@
 > והחוכמה נקראת אין, והבינה הנקראת כבר יש — [שער היחוד, שיעור 10](../../discourses/002-shaar-hayichud/sessions/010/transcript.md) · נהר יוצא מעדן — החכמה נקראת אין
 > בבינה היא כבר מתחילה להתלבש באותיות — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · ז' תחתונות דבינה — מידות שבשכל
 
-ראה גם: [bina](#bina), [mochin](#mochin)
+במילון: [`chochma`](../lexicon/chochma.yaml) · ראה גם: [bina](#bina), [mochin](#mochin)
 
 ### בינה (אימא)
 <a id="bina"></a>
@@ -45,7 +45,7 @@
 > יש כוח בשכל שהוא נקרא כוח העיון, והוא נקרא פנימיות בינה — [שער היחוד, שיעור 10](../../discourses/002-shaar-hayichud/sessions/010/transcript.md) · פתיחה — מהות ההתבוננות
 > השער הנו"ן זה עניין של כוח העיון, שמשם נובעות רעיונות חדשים — [שער היחוד, שיעור 10](../../discourses/002-shaar-hayichud/sessions/010/transcript.md) · שער הנו"ן — העיון כעיכוב המחשבה
 
-ראה גם: [bina](#bina), [omek](#omek), [pnimiyut-atik](#pnimiyut-atik)
+במילון: [`hitbonenut`](../lexicon/hitbonenut.yaml) · ראה גם: [bina](#bina), [omek](#omek), [pnimiyut-atik](#pnimiyut-atik)
 
 ### עומק, אורך ורוחב (של המושכל)
 <a id="omek"></a>
@@ -55,7 +55,7 @@
 > עומק השכל זה עצם הנקודה של השכל — [שער היחוד, שיעור 10](../../discourses/002-shaar-hayichud/sessions/010/transcript.md) · עומק רום ועומק תחת — שנת ת"ר לחיי נח
 > אתה לא יכול להגיע לעומק המושג עד שלא הבנת אותו לאורך ורוחב — [שער היחוד, שיעור 12](../../discourses/002-shaar-hayichud/sessions/012/transcript.md) · ההתבוננות בממלא כל עלמין
 
-ראה גם: [iyun](#iyun)
+במילון: [`omek-orech-rochav`](../lexicon/omek-orech-rochav.yaml) · ראה גם: [iyun](#iyun)
 
 ### פנימיות עתיק
 <a id="pnimiyut-atik"></a>
@@ -75,7 +75,7 @@
 > כוח התבונה, שהוא נותן את הכוח לדלות מעומק המושג לשטח — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · כוח התבונה — מהעלם לגילוי
 > התבונה היא בעצמה, היא מולידה את המידות, איך אני מתייחס לזה, והמידות זה אהבה ויראה — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · תבונה כבן ובת — להוליד מידות
 
-ראה גם: [bina](#bina), [yisrael-saba-tevuna](#yisrael-saba-tevuna), [malchut-detevuna](#malchut-detevuna)
+במילון: [`tevuna`](../lexicon/tevuna.yaml) · ראה גם: [bina](#bina), [yisrael-saba-tevuna](#yisrael-saba-tevuna), [malchut-detevuna](#malchut-detevuna)
 
 ### ישראל סבא ותבונה (אבא ואמא תתאין)
 <a id="yisrael-saba-tevuna"></a>
@@ -122,7 +122,7 @@
 > אותיות המחשבה כשאנחנו חושבים בצורה מוכרת זה כבר בחינת לאה, שזה נוקבא דזעיר אנפין — [שער היחוד, הקדמה](../../discourses/002-shaar-hayichud/introduction.md) · חב"ד וישראל סבא ותבונה במבנה הנפש
 > אז רומז לנו, שתדע, בספרי הקבלה, דלת רבתי דאחד רומז למלכות דתבונה — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · מלכות התבונה — אותיות המחשבה ולאה
 
-ראה גם: [malchut-detevuna](#malchut-detevuna), [nukva](#nukva)
+במילון: [`leah-rachel`](../lexicon/leah-rachel.yaml) · ראה גם: [malchut-detevuna](#malchut-detevuna), [nukva](#nukva)
 
 ### דעת
 <a id="daat"></a>
@@ -132,7 +132,7 @@
 > דעת זה גם בחינת התקשרות — [שער היחוד, שיעור 12](../../discourses/002-shaar-hayichud/sessions/012/transcript.md) · וידעת היום — דעת המעוררת לב
 > הדעת הזאת היא מעוררת את התפעלות הלב — [שער היחוד, שיעור 12](../../discourses/002-shaar-hayichud/sessions/012/transcript.md) · וידעת היום — דעת המעוררת לב
 
-ראה גם: [chochma](#chochma), [bina](#bina), [hitpaalut](#hitpaalut)
+במילון: [`daat`](../lexicon/daat.yaml) · ראה גם: [chochma](#chochma), [bina](#bina), [hitpaalut](#hitpaalut)
 
 ### פרצוף
 <a id="partzuf"></a>
@@ -141,7 +141,7 @@
 
 > וכל פרצוף הוא מבנה שלם, כדי שנוכל לדבר בפרטים של אותו פרצוף — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · אבא ואמא תתאין — ישראל סבא ותבונה
 
-ראה גם: [mochin](#mochin), [zeir-anpin](#zeir-anpin), [nukva](#nukva)
+במילון: [`nekuda-sefira-partzuf`](../lexicon/nekuda-sefira-partzuf.yaml) · ראה גם: [mochin](#mochin), [zeir-anpin](#zeir-anpin), [nukva](#nukva)
 
 ### מוחין (ג' ראשונות)
 <a id="mochin"></a>
@@ -160,7 +160,7 @@
 > יש את המידות, שכנגד פרצוף זעיר אנפין, של השש ספירות, מחסד ועד יסוד, שזה המידות, זה הבן אדם עצמו — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · ז' תחתונות דבינה — מידות שבשכל
 > והמידות זה אהבה ויראה, מבחינת זעיר אנפין ונוקבא — [שער היחוד, שיעור 11](../../discourses/002-shaar-hayichud/sessions/011/transcript.md) · תבונה כבן ובת — להוליד מידות
 
-ראה גם: [mochin](#mochin), [nukva](#nukva)
+במילון: [`zeir-anpin-middot`](../lexicon/zeir-anpin-middot.yaml) · ראה גם: [mochin](#mochin), [nukva](#nukva)
 
 ### מלכות, נוקבא
 <a id="nukva"></a>
@@ -179,7 +179,7 @@
 
 > וכל הרבדים היותר עמוקים בנפש הם בעלמין סתימין — [שער היחוד, הקדמה](../../discourses/002-shaar-hayichud/introduction.md) · עלמין סתימין ועלמין דאתגליין — שמע ישראל
 
-ראה גם: [almin-ditgalyan](#almin-ditgalyan)
+במילון: [`almin-stimin-ditgalyan`](../lexicon/almin-stimin-ditgalyan.yaml) · ראה גם: [almin-ditgalyan](#almin-ditgalyan)
 
 ### עלמין דאתגליין (בריאה, יצירה, עשיה)
 <a id="almin-ditgalyan"></a>
@@ -190,7 +190,7 @@
 
 **יישום:** בהקבלה אחד לאחד, כנהוג בספרי החסידות: הבריאה המחשבה, היצירה הדיבור, העשיה המעשה. ההקבלה המפורטת היא יישום של העיקרון, ולא נאמרה במפורש בשיעורים.
 
-ראה גם: [almin-stimin](#almin-stimin)
+במילון: [`almin-stimin-ditgalyan`](../lexicon/almin-stimin-ditgalyan.yaml) · ראה גם: [almin-stimin](#almin-stimin)
 
 ### התפעלות
 <a id="hitpaalut"></a>
@@ -199,7 +199,7 @@
 
 > ההתפעלות במוח ולב זה גילוי של נפש רוח נשמה חיה יחידה — [שער היחוד, הקדמה](../../discourses/002-shaar-hayichud/introduction.md) · ההתבוננות — יסוד עבודת חב"ד
 
-ראה גם: [iyun](#iyun), [daat](#daat)
+במילון: [`hitpaalut`](../lexicon/hitpaalut.yaml) · ראה גם: [iyun](#iyun), [daat](#daat)
 
 ### שמע
 <a id="shema"></a>

@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קליפה
+forms:
+- קליפה
+- קליפות
+- הקליפה
+- חיצונים
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'כינוי לכוחות שכנגד הקדושה. בשער היחוד (פנ"ד): כקליפת הפרי, הפסולת שבכל דבר, הבאה מתערובת טוב ורע מסיבת שבירת הכלים,
+    "ז'' מלכים שמתו"; ו"קליפה קדמה לפרי", כמו שבצמיחה הקליפה צומחת תחילה. בפדה בשלום: ה"חיצונים", היונקים מן הקדושה, ואין
+    להם יניקה ביחידה.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '54.1'
+    quote: בטעם שם קליפה כמו קליפת הפרי
+  - work: shaar-hayichud
+    ref: '54.1'
+    quote: וקליפה קדמה לפרי
+  - work: padah-beshalom
+    ref: 52a.1
+    quote: ואין חיצונים מקבלים שם יניקה כלל
+related:
+- kelipat-noga
+- shivat-hamelachim
+- birur
+- chaya-yechida
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+- discourses/006-padah-beshalom

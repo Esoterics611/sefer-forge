@@ -1,0 +1,31 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: צמצום
+forms:
+- צמצום
+- הצמצום
+- מקום פנוי
+abbrev:
+  מק"פ: מקום פנוי
+category: פרצופים ועולמות
+senses:
+- meaning: 'הצמצום הראשון, הנקרא "מקום פנוי": הסתלקות אור העצמות והעלמו בעצמו, כדי שתוכל להיות אחר כך השפעת אור במידה. אין
+    זה שנסתלק לגמרי: כמי שמלמד ענין עמוק בקיצור, הידיעה כולה עדיין בו, רק אינה נגלית. לגבי עצמותו אין שינוי.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '13.1'
+    quote: שזהו בחי' הסתלקות וההעלם לעצמותו כדי שיוכל להיות אח"כ בחי' השפעת אור
+  - work: shaar-hayichud
+    ref: '13.1'
+    quote: ולא שנסתלק ונתעלם לגמרי
+  - work: shaar-hayichud
+    ref: '13.1'
+    quote: אבל לגבי עצמותו אין שינוי
+related:
+- reshimu
+- kav
+- memale-sovev
+caution: אין להבין את הצמצום כהסתלקות ממש. בשער היחוד (פי"ג) הוא העלם, והאור ישנו גם אחריו, רק "שלא נגלה למטה".
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud

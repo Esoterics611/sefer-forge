@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תבונה (אמא תתאה)
+forms:
+- תבונה
+- התבונה
+- איש תבונה
+category: פרצופים ועולמות
+senses:
+- meaning: 'בבינה עצמה שתי מדרגות, בינה ותבונה. התבונה היא התפשטות אור הבינה, מתוך שהמושכל נקלט היטב בכלי, להביאו בכמה ענינים
+    שונים; "איש תבונה ידלנה", דולה את המים העמוקים, עמקות הבינה, להשקות. בזוהר: ישראל סבא ותבונה, "אימא תתאה".'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '2.1'
+    quote: בינה ותבונה וענין התבונ' הוא בחי' התפשטות אור הבינה
+  - work: shaar-hayichud
+    ref: '2.1'
+    quote: איש תבונה ידלנה
+related:
+- ima-bina
+- hitbonenut
+- zivuga-shelim
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: כוח התבונה, שהוא נותן את הכוח לדלות מעומק המושג לשטח
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: התבונה היא בעצמה, היא מולידה את המידות, איך אני מתייחס לזה, והמידות זה אהבה ויראה
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml

@@ -15,6 +15,7 @@ lesson is recorded (`prompts/references-pack.md`), and in anything printed later
 | מקדש מלך | `zohar/mikdash-melekh.he.json` | Sefaria, Zholkva 1864, Public Domain |
 | תניא | `chabad/tanya.he.json` | Sefaria (Kehot); licence not stated |
 | תורה אור; הערות לתורה אור | `chabad/torah-or.he.json`, `chabad/torah-or-notes.he.json` | Sefaria (Kehot); licence not stated |
+| פדה בשלום (שערי תשובה); שער היחוד, אדמו"ר האמצעי | `chabad/padah-beshalom.he.json`, `chabad/shaar-hayichud.he.json` | chabadlibrary.org, as taken into discourses 006 and 007 (their sessions' `ocr.md`); JSON by `scripts/chabadlibrary-import.py` |
 | נהר שלום (with הקדמת רחובות הנהר), the Rashash | `sharabi/nahar-shalom.he.json` | hebrew.grimoar.cz, kept as downloaded in `sharabi/nahar-shalom.grimoar.htm`; JSON by `scripts/grimoar-import.py` |
 | קונטרס חסדי דוד, R. David Magar | `sharabi/chasdei-david.he.json` | the same, `sharabi/chasdei-david.grimoar.htm` |
 

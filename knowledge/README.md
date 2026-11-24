@@ -11,7 +11,7 @@ folder is the understanding built on it.
 
 | Part | Where | What | State |
 |---|---|---|---|
-| **Lexicon** | `lexicon/<slug>.yaml`, index `lexicon/INDEX.md` | one entry per term: its meanings in these texts, each resting on exact words at an address in `sources/` | **started** (2026-11-12, from discourse 004) |
+| **Lexicon** | `lexicon/<slug>.yaml`, index `lexicon/INDEX.md` | one entry per term: its meanings in these texts, each resting on exact words at an address in `sources/` | **started** (2026-11-12, from discourse 004; 100 terms on 2026-11-24, with 006 פדה בשלום and 007 שער היחוד) |
 | Concepts | `concepts/<slug>.md` | a page or two per recurring teaching (מ"ן ומ"ד, בירור הלבושים, פנימיות וחיצוניות…): the argument, its key passages by address, the lexicon terms it uses | planned |
 | Citations | `citations.yaml` | every citation met in any text → the address it resolves to, how sure, and the edition's numbering where it differs | planned (today: `sources/sources.yaml` `numbering:` and each discourse's `biur/notes/citations.md`) |
 | The teacher | `teacher/terms.yaml`, generated `teacher/TERMS.md` | Ronnie's meaning of each term in the soul and in service (the second dimension of every term, 002 introduction): `said:` his words, quoted from the shiur and checked; `applied:` Claude's application of his frame, to confirm. Read by `scripts/teacher-terms.py` (`--check`, `--in <file>`; a plain run writes TERMS.md and syncs each lexicon entry's `teacher:`); printed as the "בנפש האדם" layer of an explanation (`prompts/biur-rules.md`) | **started** (2026-11-16, from 002 and 004) |
@@ -71,6 +71,26 @@ Skill `chassidus-context` says when: before explaining a text, planning a
 teaching pass, drafting with the teacher, or checking what he recorded, read the
 entries for the terms the text uses; and at the end of such work, add the terms
 it met and correct the entries it found wrong.
+
+## From one discourse into the next
+
+What a discourse learns is carried to the next in four steps, at the close of the work on it (skill
+`chassidus-context`, "After the work"):
+
+1. **Its text becomes a source.** A text taken in from chabadlibrary.org (a session's `ocr.md`, final once
+   ingested) is registered in `sources/sources.yaml` (`importer: chabadlibrary`; `raw:` the ocr.md, or a
+   glob of them with `address: chapter` for a work taken in chapter by chapter) and turned into a JSON by
+   `python scripts/chabadlibrary-import.py`. From then on it is looked up and quoted like עץ חיים:
+   `source-lookup.py --find '...' padah-beshalom`, `source-lookup.py shaar-hayichud 12` (פרק יב).
+2. **Its terms enter the lexicon,** each meaning resting on the text's exact words at their address, so the
+   check holds them: what פדה בשלום says of היחידה is `padah-beshalom 52a.1`, not a paraphrase.
+3. **The teacher's meaning joins the entry.** A term Ronnie defined in a shiur (`teacher/terms.yaml`,
+   `lexicon:` naming the entry) is copied into the entry's `teacher:` by `teacher-terms.py`: both dimensions,
+   the sources and the soul, in one place.
+4. **The next discourse starts from it.** `lexicon.py --in <its text>` and `teacher-terms.py --in` list the
+   terms it shares with everything before it; a gloss, a footnote or a glossary entry starts from the entry
+   (a booklet's מילון המונחים, skill `biur-booklet`), and a sense the new text adds is a new sense with its
+   own address.
 
 ## Growing it
 

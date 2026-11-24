@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: תהו ותיקון
+forms:
+- תהו
+- תוהו
+- עולם התיקון
+category: שבירה, קליפות ובירור
+senses:
+- meaning: 'בתהו הספירות נקודות בלבד, כל אחת לעצמה, ולכן אין ביניהן התכללות. התיקון בא בהתחלקות כל ספירה לעשר ובהתכללות המידות
+    זו בזו, ועיקרו בכלים: בכלים יש התכללות של דבר והיפוכו, עד שאור החסד יכול להאיר בכלי הגבורה, מה שאין כן באורות.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '20.1'
+    quote: ההפרש שבין בחי' התהו לבחי' התיקון
+  - work: shaar-hayichud
+    ref: '31.1'
+    quote: דעיקר בחי' התיקון הוא בא מריבוי הכלים
+  - work: shaar-hayichud
+    ref: '31.1'
+    quote: כי יש בכלים דוקא בחי' וענין ההתכללות מדבר והיפוכו
+related:
+- nekuda-sefira-partzuf
+- shivat-hamelachim
+- kelim
+- hitkalelut
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud

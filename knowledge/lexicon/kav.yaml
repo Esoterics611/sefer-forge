@@ -1,0 +1,26 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: קו (הקו והחוט)
+forms:
+- הקו והחוט
+- קו וחוט
+abbrev:
+  קו"ח: קו וחוט
+category: פרצופים ועולמות
+senses:
+- meaning: 'הקו והחוט נמשך מן הרשימו, והוא היפוכו: הרשימו מורה העלם והעדר התפשטות, כנקודה, והקו הוא ההמשכה וההתגלות לאורך.
+    ממנו כל ההשתלשלות.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '14.1'
+    quote: הקו והחוט שנמשך מבחי' הרשימו
+  - work: shaar-hayichud
+    ref: '14.1'
+    quote: שהוא בחי' ההיפוך ממש מבחי' הרשימו
+related:
+- reshimu
+- tzimtzum
+- makif-hayashar-vehachozer
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud

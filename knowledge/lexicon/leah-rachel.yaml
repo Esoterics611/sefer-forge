@@ -1,0 +1,32 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: לאה ורחל
+forms:
+- לאה ורחל
+- לאה
+- רחל
+category: פרצופים ועולמות
+senses:
+- meaning: 'שתי הנוקבין של ז"א, ישראל ויעקב: לאה היא המחשבה ורחל הדיבור, ושתיהן שתי ההי"ן שבשם הוי''. בזוהר: ה'' ראשונה "שם
+    הגדולה", לאה, וה'' אחרונה "שם הקטנה", רחל.'
+  rests_on:
+  - work: shaar-hayichud
+    ref: '37.1'
+    quote: לאה ורחל ידוע שזהו ענין מח' ודבור
+  - work: shaar-hayichud
+    ref: '37.1'
+    quote: ה' ראשונה שם הגדולה לאה וה' אחרונה שם הקטנה רחל
+related:
+- yisrael-yaakov
+- nukva
+- daled-rabati-deechad
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: אותיות המחשבה כשאנחנו חושבים בצורה מוכרת זה כבר בחינת לאה, שזה נוקבא דזעיר אנפין
+  where: discourses/002-shaar-hayichud/introduction.md
+  from: knowledge/teacher/terms.yaml
+- said: אז רומז לנו, שתדע, בספרי הקבלה, דלת רבתי דאחד רומז למלכות דתבונה
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml

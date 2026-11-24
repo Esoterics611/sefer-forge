@@ -23,6 +23,10 @@ The layer is described in `knowledge/README.md`; today it holds the lexicon.
 
 ## After the work
 
+0. If the text worked on is not yet in `sources/` (a discourse's text taken from chabadlibrary.org), take it
+   in: an entry in `sources/sources.yaml` with `importer: chabadlibrary`, then
+   `python scripts/chabadlibrary-import.py <work>` and `python scripts/source-export.py <work>`
+   (`knowledge/README.md`, "From one discourse into the next"). Its terms then rest on its own words.
 1. Add each term the work had to explain and the lexicon lacks: a new `knowledge/lexicon/<slug>.yaml`
    (format in `knowledge/README.md`), its meaning in Hebrew, resting on the exact words at an address found
    with `source-lookup.py`. A source outside `sources/` goes in as `cite:`; an unsettled point under `open:`.

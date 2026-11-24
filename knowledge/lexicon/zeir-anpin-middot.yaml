@@ -1,0 +1,37 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: זעיר אנפין (המידות)
+forms:
+- זעיר אנפין
+- זעיר אנפין דאצילות
+abbrev:
+  ז"א: זעיר אנפין
+category: פרצופים ועולמות
+senses:
+- meaning: ז"א דאצילות הוא "אדם העליון שעל הכסא", מקבל מנה"י דאבא ואימא, והוא המידות דאצילות, עיקר ושורש להשפעה לחיי העולמות.
+    ובכל זאת הוא עדיין "סוף עולם האין סוף", כי באצילות "איהו וחיוהי וגרמוהי חד". המשל לו מן האדם, "מבשרי אחזה".
+  rests_on:
+  - work: shaar-hayichud
+    ref: '32.1'
+    quote: בבחי' אדם העליון דאצי' שעל הכסא
+  - work: shaar-hayichud
+    ref: '32.1'
+    quote: וידוע שהוא ענין ובחי' המדות דאצי'
+  - work: shaar-hayichud
+    ref: '32.1'
+    quote: ועדיין הוא סוף עולם הא"ס
+related:
+- yisrael-yaakov
+- leah-rachel
+- itu-vechayohi
+- nukva
+status: draft
+learned_from:
+- discourses/007-shaar-hayichud-perushim
+- discourses/002-shaar-hayichud
+teacher:
+- said: יש את המידות, שכנגד פרצוף זעיר אנפין, של השש ספירות, מחסד ועד יסוד, שזה המידות, זה הבן אדם עצמו
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml
+- said: והמידות זה אהבה ויראה, מבחינת זעיר אנפין ונוקבא
+  where: discourses/002-shaar-hayichud/sessions/011/transcript.md
+  from: knowledge/teacher/terms.yaml
