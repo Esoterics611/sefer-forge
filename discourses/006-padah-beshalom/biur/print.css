@@ -1,0 +1,6 @@
+/* פדה בשלום only, over templates/biur-woven.css: the body a shade tighter, so the lean text and its four back
+   pages come to a multiple of four (36) and the folded booklet has no blank page (Ronnie, 2026-11-24). */
+body { line-height: 1.8; }
+/* The outline whole on the first page. */
+.outline table { font-size: 10.5pt; line-height: 1.4; }
+.outline th, .outline td { padding: 1.1mm 2mm; }
