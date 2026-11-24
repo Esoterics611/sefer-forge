@@ -28,3 +28,4 @@ Before the writing, while searching for the text, the opening of the recorded le
 - "דעת גנוז בפומא דאימא" as the text has it: the source found is "דעת גניז בפומא דמלכא" (ע"ח שער טנת"א פ"ג, citing זוהר משפטים קכג); the binah as פה is in the same passage. The Kehot note sends to a ספר המאמרים not in sources/.
 - R' Hillel of Paritch's commentary (ליקוטי ביאורים) on this פרק: awaiting Ronnie's photos; to be woven in by @file once transcribed.
 - Lexicon: the terms of this פרק (עיון, עומק המושג, מעמיק, שער הנו"ן) rest on שער היחוד, which is not in sources/; no entries added until it is.
+- (2026-11-24) "משה שהוא הדעת זכה לבינה שהוא שער הנון" (§18) against the Gemara "וכולן ניתנו למשה חסר אחד" (ראש השנה כא, ב), the page the Kehot note gives for it. The ביאור no longer sets them side by side; the reconciliation is for Ronnie (not in sources/).

@@ -61,3 +61,4 @@
 - 2026-11-22: פרק נג (session 053, קמו ע"א – ע"ב), biur-perek-53 (8 pages), with the student read.
 - 2026-11-22: פרק נד (session 054, קמו ע"ב – קמז ע"ב), biur-perek-54 (8 pages), with the student read. With it the ביאור of all fifty-four chapters is written.
 - 2026-11-22: the whole work joined into one book, output/biur/007-shaar-hayichud-complete.pdf (374 pages: title page, contents with page numbers, the 54 chapters, the colophon), by scripts/combine-biur.py; proof-pdf 0 errors.
+- 2026-11-24: פרק א through the passes of 2026-11-24 (skills lean-biur, the middle way; biur-booklet, every sentence whole; the student read): every gloss decided (biur-perek-01/notes/lean-decisions.md), the frame restored, 11 pages, proofed. The model for the other chapters.
