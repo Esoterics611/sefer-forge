@@ -30,6 +30,15 @@ script can see.
    obtained, no "עד כאן מגיע מאמר... שלפניי". They live in `biur/notes/` (`open-questions.md`,
    `removed-from-final.md`).
 
+## Only what the text does not say (Ronnie, 2026-11-24)
+
+After a stretch of the text the explanation gives **only** what the text does not say itself: a term
+explained, a source it cites brought briefly and in its context, and where a "כנ"ל" points when that is
+not plain. A gloss that restates the text in other words is cut; a stretch that needs nothing gets
+nothing, and the text runs on. Nothing is written for the sake of writing. The procedure and the test:
+skill `lean-biur` (`.claude/skills/lean-biur/SKILL.md`); `python scripts/check-restatement.py <folder>`
+lists the glosses, and the build reports how many still read as restatements.
+
 ## In the explanation
 
 - The text of the הגהה, complete, stretch by stretch (`@text`).

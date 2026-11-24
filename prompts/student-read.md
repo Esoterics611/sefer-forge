@@ -23,14 +23,15 @@ reads, deliberately as this student.
    words, or in a footnote if it needs more, resting on the text or a source (nothing from memory).
 2. **A reference that does not land**: "כנ"ל", "לעיל", "בסעיף N", "כפי שיתבאר": does it point where it
    says, and is what it points to recognisable from here?
-3. **A step that jumps**: the explanation moves from one sentence of the text to the next and the
-   connection is not said (why this follows, what question it answers). Say it in one clause.
+3. **A pointer that cannot be followed**: the text says "כנ"ל" or closes a parenthesis and the reader
+   cannot find where. Say where, in a few words. The text's own steps are not retold (skill `lean-biur`).
 4. **A gloss that does not explain**: it repeats the words, or names a source without saying what
    the source adds here.
 5. **A source set in without its point**: after reading the quoted passage, is it clear which words
    matter and what they show? (Mark them with `mark=`; say it in the sentence after.)
-6. **The bold text and the explanation read as one**: the sentence can be read aloud from bold to
-   plain and back without losing the thread; a parenthesis of the text is opened and closed clearly.
+6. **A gloss that restates**: whatever re-says the bold, in its words or in others, is cut, and the
+   text runs on (skill `lean-biur`). The student read never adds a gloss that is not a term, a source
+   or a pointer.
 7. **A claim the student cannot check**: a statement about a letter, a number or a verse that the text
    does not make and no source given supports. Take it out or give the source.
 
