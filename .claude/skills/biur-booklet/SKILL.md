@@ -18,13 +18,16 @@ The model is `discourses/006-padah-beshalom/biur/` (its `biur.src.md`, `abbrevia
    `voice-note-to-text`). His words, in his order; nothing added.
 3. **מבוא**: where the text is printed and its verse, then its main points as bullets, each quoting the
    text. No added connections, no "relatable" opening, no teaser.
-4. **תמצית הפרקים**: short, true to the source, built of the text's own quotations, and **understood by a
+4. **המאמר בקצרה** (under the מבוא; Ronnie): the whole text in tight paragraphs, one per chapter, flowing
+   from one to the next, each its point and its terms in plain words, quick to read. It replaces bullets of
+   "main points" in the מבוא. With this overview in hand the chapter summaries stay light and detailed.
+5. **תמצית הפרקים**: short, true to the source, built of the text's own quotations, and **understood by a
    newcomer** (below). No outline table or table of levels unless asked (Ronnie removed both).
-5. **המאמר עם ביאור**: the woven text with its glosses, reviewed by skill `lean-biur` (the middle way).
-6. **סיכום**.
-7. **מילון המונחים** (`::: {.glossary}`, two columns, one page if it can): every term the summaries
+6. **המאמר עם ביאור**: the woven text with its glosses, reviewed by skill `lean-biur` (the middle way).
+7. **סיכום**.
+8. **מילון המונחים** (`::: {.glossary}`, two columns, one page if it can): every term the summaries
    explain, alphabetical, each defined in a sentence or two from the text and its footnotes.
-8. **Back cover** (`::: {.works}`): Sefer Forge on **one** page, the outside of the back.
+9. **Back cover** (`::: {.works}`): Sefer Forge on **one** page, the outside of the back.
 
 Change only the part asked for. Ronnie's frame (the opening, the summaries) is never cut or rewritten
 when he asked about another part (the lean pass of 2026-11-24 that cut the summaries was undone).
