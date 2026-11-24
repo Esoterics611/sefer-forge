@@ -1,0 +1,29 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: ביטול המיעוט ברוב
+forms:
+- ביטול המיעוט ברוב
+- ביטולו במיעוטו
+- ביטול במיעוטו
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'מושג מן ההלכה: דבר מועט שנתערב ברוב בטל בו. בפדה בשלום: הביטול של הרצון הזר במלחמת התפילה. גם כשהוא נהפך, הוא
+    בטל רק מפני שכנגדו רצון גדול ממנו, "כטיפה בים"; ולכן כשהכוח הגובר מסתלק הוא "חוזר וניעור". כך גם במי שמוסר עצמו בשביל
+    רעהו ואינו מרגיש את הצער.'
+  rests_on:
+  - work: padah-beshalom
+    ref: 52d.1
+    quote: ביטול המיעוט ברוב
+  - work: padah-beshalom
+    ref: 52d.1
+    quote: מביטול טיפה בים
+  - work: padah-beshalom
+    ref: 55b.1
+    quote: אבל מיד חוזר וניער כשבטל כח הגדול המנגד
+related:
+- bitul-beetzem
+- itkafya-ithapcha
+- mesirat-nefesh
+caution: 'אין לזהותו עם "ביטול בעצם": זה תלוי בכוח שכנגדו ולכן הוא לשעה, וזה בא מעצם הנפש ואינו משתנה.'
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

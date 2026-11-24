@@ -34,7 +34,12 @@ senses:
   - work: etz-chaim
     ref: '20.5.2'
     quote: "ד' בחי' היחידה מקיפים מ' דצלם ואח\"כ ג' בחי' מקיפים דחיה ל' דצלם והצ' דצלם הם אורות הפנימים"
-  - cite: 'אדמו"ר האמצעי, שערי תשובה ח"א, ד"ה פדה בשלום, פ"ט (נה ע"א) ופי"ב (נו ע"ג). הנוסח: discourses/006-padah-beshalom/sessions/001/ocr.md'
+  - work: padah-beshalom
+    ref: 55a.1
+    quote: "וזהו ההפרש בין צ' דצלם ללמ\"ד ומ\"ם דצלם"
+  - work: padah-beshalom
+    ref: 56c.2
+    quote: "בבחי' צ' דצלם הנ\"ל"
 related:
 - tzelem-deima
 - hevel-degarmei

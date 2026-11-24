@@ -1,0 +1,25 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: התכללות
+forms:
+- התכללות
+- ההתכללות
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'דבר שנעשה חלק מזולתו ובטל בו. בפדה בשלום: תכלית המלחמה, שהמנוצח ייכלל במנצח. ההתכללות האמיתית היא היפוך המהות,
+    כאש ההופכת מים לאש, ולא הכנעה בלבד ("אכפייא"); ויש התכללות בלי מלחמה, כנר באבוקה.'
+  rests_on:
+  - work: padah-beshalom
+    ref: 49c.1
+    quote: בחי' ההתכללות זב"ז
+  - work: padah-beshalom
+    ref: 52b.1
+    quote: עיקר בחי' ההתכללו' האמיתי
+  - work: padah-beshalom
+    ref: 49c.2
+    quote: הנר בפני האבוקה
+related:
+- itkafya-ithapcha
+- bitul-hamiut-berov
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

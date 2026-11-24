@@ -1,0 +1,27 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: השתוות
+forms:
+- השתוות
+- ההשתוות
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'שוויון הנפש: הדברים הטובים והרעים שבעולם הזה שווים בעיני האדם, ואינו מצטער על אבדנם. בפדה בשלום זה סימן לביטול
+    בעצם: הצער על דבר שנלקח הוא לפי העונג שהיה בו, ולכן מי שאינו מצטער כלל אין לו בו רצון ועונג. שורשו ביחידה, שבגילויה בטל
+    הרצון הזר מאליו.'
+  rests_on:
+  - work: padah-beshalom
+    ref: 53c.1
+    quote: הנקרא בחי' ההשתוות
+  - work: padah-beshalom
+    ref: 54a.1
+    quote: כן הצער בהעדר העונג מגיע בעצמות הנפש
+  - work: padah-beshalom
+    ref: 54b.1
+    quote: ששוה אצלו הן ולאו ממש
+related:
+- bitul-beetzem
+- chaya-yechida
+- nisayon
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

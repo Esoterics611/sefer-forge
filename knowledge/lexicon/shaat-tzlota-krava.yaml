@@ -1,0 +1,28 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: שעת צלותא שעת קרבא
+forms:
+- שעת קרבא
+- צלותא קרבא
+- שעת צלותא
+category: תפילה
+senses:
+- meaning: 'בארמית, מדברי הזוהר: שעת התפילה היא שעת מלחמה, מלחמת הנפש האלקית בנפש הבהמית כדי להפוך גם אותה לרצון ה''. בפדה
+    בשלום יש גם תפילה שאינה מלחמה, כתפילת שבת: הנפש האלקית לבדה בטלה במקורה, "כביטול והתכללות הנר בפני האבוקה".'
+  rests_on:
+  - work: padah-beshalom
+    ref: 49c.2
+    quote: דשעת צלות' שעת קרבא
+  - work: padah-beshalom
+    ref: 49c.2
+    quote: הנר בפני האבוקה
+  - work: tanya
+    ref: Part I; Likkutei Amarim.28.6
+    quote: הן שתי נפשות הנלחמות זו עם זו במוחו של אדם
+related:
+- machshavot-zarot
+- nefesh-elokit-behamit
+- itkafya-ithapcha
+open: מקומו בזוהר לא נמצא ב-sources/ בלשון זו ("צלותא" ו"קרבא" יחד). יש לחפש בזוהר ובתיקונים.
+status: draft
+learned_from:
+- discourses/006-padah-beshalom

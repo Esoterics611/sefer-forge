@@ -1,0 +1,22 @@
+# Lexicon entry. Format: knowledge/README.md. Check: python scripts/lexicon.py --check
+term: מרכבה
+forms:
+- מרכבה
+- המרכבה
+category: תורה, מצוות ותפילה
+senses:
+- meaning: 'מה שבטל לגמרי לרצון העליון, כמרכבה שאין לה רצון משלה ונמשכת אחר רוכבה; כך נקראו האבות. בפדה בשלום: ביטולם היה
+    מן היחידה, ביטול בעצם שאינו משתנה.'
+  rests_on:
+  - work: tanya
+    ref: Part I; Likkutei Amarim.23.7
+    quote: האבות הן הן המרכבה
+  - work: padah-beshalom
+    ref: 54d.1
+    quote: המרכבה
+related:
+- bitul-beetzem
+- chaya-yechida
+status: draft
+learned_from:
+- discourses/006-padah-beshalom
