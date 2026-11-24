@@ -71,8 +71,12 @@ ul { margin: 0 0 3mm; padding-inline-start: 6mm; }
 li { margin: 0 0 1.6mm; text-align: justify; }
 .newpage { break-before: page; }
 
-/* The closing page: the brand, our other works, where to find them. */
-.works { break-before: page; margin-top: 30mm; padding: 8mm 10mm; border-top: 1pt solid #000; border-bottom: 1pt solid #000; }
+/* The closing page: the brand, our other works, where to find them. Folded (`fold: true`), it is the outside of
+   the back cover, the blank pages that fill the booklet to a multiple of four before it; neither carries a
+   running head or a page number. */
+@page bare { @top-right { content: none; } @top-left { content: none; } @bottom-center { content: none; } }
+.blankpage { page: bare; break-before: page; }
+.works { page: bare; break-before: page; margin-top: 30mm; padding: 8mm 10mm; border-top: 1pt solid #000; border-bottom: 1pt solid #000; }
 .works .wordmark { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 18pt;
   letter-spacing: 0.22em; font-weight: 700; }
 .works .tagline { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 11pt;

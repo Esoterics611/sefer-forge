@@ -65,6 +65,10 @@ same number of stretches of the text (bold) and of footnotes, or the build fails
 
 Printing: `engine: weasyprint` prints with WeasyPrint instead of Chrome, for footnotes at the foot of
 the page (`[...]{.fn}`); `css:` names stylesheets laid over templates/biur.css (a path, or a list).
+`fold: true` (a woven explanation printed folded and stapled as a booklet): blank pages before the closing
+page (`::: {.works}`) bring the count to a multiple of four, so the closing page is the outside of the back.
+`open_abbreviations: <yaml>` (beside biur.src.md) prints every abbreviation it lists in full words, in the text
+and the explanation alike; the source keeps them, so the text is still checked word for word against text_file.
 
 Checks: every directive resolves; the @text stretches cover the text in order;
 no directive is left in the output.
@@ -591,6 +595,9 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
         key = terms_key(blocks)
         out += key
         notes.append(f"{len(blocks)} meaning block(s); {sum(1 for k in key if k.startswith('**'))} term(s) in the key")
+    if meta.get("open_abbreviations"):
+        out, n_open = open_abbreviations(out, src.parent / meta["open_abbreviations"])
+        notes.append(f"{n_open} abbreviation(s) printed in full words")
     if meta.get("woven"):
         # A line must not open with the punctuation that follows a stretch of the text or a footnote call:
         # a word joiner (U+2060, not printed) binds it to what precedes it.
@@ -608,6 +615,48 @@ def build(src: Path, with_checks: bool = False, meaning: bool = True) -> tuple[s
     meta_out["built_from"] = src.name
     front = "---\n" + yaml.safe_dump(meta_out, allow_unicode=True, sort_keys=False, width=1000) + "---\n"
     return front + "\n".join(out), meta, notes
+
+
+HEB = "\u05d0-\u05ea"
+# An abbreviation: gershayim before its last letter, or a geresh after it. A quotation mark may stand beside it
+# ("אפי' ... שבשמי'"), but not one that joins it to a word (ו"שעת).
+ABBR = re.compile(rf"(?<![{HEB}'])(?<![{HEB}]\")[{HEB}]*(?:[{HEB}]\"[{HEB}]|[{HEB}]')(?![{HEB}']|\"[{HEB}])")
+PREFIXES = "ובכלמשהד"
+
+
+def open_abbreviations(lines: list[str], table_file: Path) -> tuple[list[str], int]:
+    """Every abbreviation printed in its full words, from a table (front matter `open_abbreviations:`): its
+    `phrases` (a reading that depends on the words around it) first, then each abbreviation by its `words`,
+    found with or without prefix letters; `keep` prints as written. One that is in none of them fails the build."""
+    t = yaml.safe_load(table_file.read_text(encoding="utf-8")) or {}
+    words, keep = t.get("words") or {}, set(t.get("keep") or [])
+    phrases = sorted((t.get("phrases") or {}).items(), key=lambda kv: -len(kv[0]))
+    count, unknown = 0, set()
+
+    def word(m: re.Match) -> str:
+        nonlocal count
+        tok = m.group(0)
+        for i in range(0, 4):
+            pre, base = tok[:i], tok[i:]
+            if i and pre[-1] not in PREFIXES:
+                break
+            if base in keep:
+                return tok
+            if base in words:
+                count += 1
+                return pre + words[base]
+        unknown.add(tok)
+        return tok
+
+    out = []
+    for line in lines:
+        for a, b in phrases:
+            line, n = re.subn(rf"(?<![{HEB}]){re.escape(a)}(?![{HEB}])", b, line)
+            count += n
+        out.append(ABBR.sub(word, line))
+    if unknown:
+        raise BuildError(f"open_abbreviations: not in {table_file.name}: " + " ".join(sorted(unknown)))
+    return out, count
 
 
 def chrome() -> str:
@@ -636,8 +685,18 @@ def to_pdf(md: Path, meta: dict, pdf: Path) -> None:
         fc = FontConfiguration()
         page = re.sub(r'<link rel="stylesheet"[^>]*>', "", htm.read_text(encoding="utf-8"))
         page = re.sub(r"<style>.*?</style>", "", page, flags=re.S)
-        HTML(string=page, base_url=str(CSS.parent)).write_pdf(
-            pdf, stylesheets=[WCSS(filename=str(f), font_config=fc) for f in [CSS] + extra], font_config=fc)
+        sheets = [WCSS(filename=str(f), font_config=fc) for f in [CSS] + extra]
+        doc = HTML(string=page, base_url=str(CSS.parent)).render(stylesheets=sheets, font_config=fc)
+        n = len(doc.pages)
+        if meta.get("fold") and n % 4 and 'class="works"' in page:
+            # Printed as a folded, stapled booklet: the pages must come to a multiple of four, or the printer
+            # adds blank pages after the closing page and it lands inside the back cover. Blank pages go
+            # before it instead, so the closing page is the outside of the back.
+            blanks = '<div class="blankpage">&#160;</div>' * (4 - n % 4)
+            page = page.replace('<div class="works">', blanks + '<div class="works">', 1)
+            doc = HTML(string=page, base_url=str(CSS.parent)).render(stylesheets=sheets, font_config=fc)
+            print(f" · fold: {n} pages, {4 - n % 4} blank before the closing page → {len(doc.pages)}")
+        doc.write_pdf(pdf)
         return
     if extra:
         page = htm.read_text(encoding="utf-8")
