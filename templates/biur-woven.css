@@ -104,18 +104,19 @@ li { margin: 0 0 1.6mm; text-align: justify; }
 .dedicate { margin-top: 4mm; padding: 2.5mm 6mm 0.5mm; break-inside: avoid; border: 0.8pt solid #000; }
 
 /* The back cover: the brand, what the work is, the QR code to the site. */
-.works { page: bare; break-before: page; margin-top: 22mm; padding: 9mm 14mm 7mm; border-top: 1pt solid #000;
+.works { page: bare; break-before: page; margin-top: 12mm; padding: 6mm 10mm 5mm; border-top: 1pt solid #000;
   border-bottom: 1pt solid #000; }
 .works .wordmark { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 22pt;
   letter-spacing: 0.24em; font-weight: 700; }
 .works .tagline { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 11.5pt;
-  letter-spacing: 0.04em; margin: 1mm 0 7mm; }
-.motto { display: block; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 15pt;
-  margin: 0 0 7mm; }
-.works p { text-align: justify; margin: 0 0 3mm; }
-.pillar { font-family: "Frank Ruhl Libre", serif; font-weight: 700; margin-left: 2mm; }
-.works p:has(img), .works figure { text-align: center; margin: 8mm 0 1mm; }
-img.qr { width: 38mm; height: 38mm; }
-.qrcap { display: block; text-align: center; font-size: 11pt; margin-bottom: 3mm; }
+  letter-spacing: 0.04em; margin: 1mm 0 5mm; }
+.headline { display: block; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 19pt;
+  margin: 0 0 4mm; }
+.blead { display: block; text-align: center; font-size: 12.5pt; line-height: 1.6; margin: 0 2mm 4mm; }
+.ph { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+.works p { text-align: justify; font-size: 12pt; margin: 0 0 2.4mm; line-height: 1.6; }
+.works p:has(img), .works figure { text-align: center; margin: 4mm 0 0; }
+img.qr { width: 32mm; height: 32mm; }
+.qrcap { display: block; text-align: center; font-size: 11pt; margin-bottom: 1mm; }
 .works .links { display: block; direction: ltr; text-align: center; font-family: "EB Garamond", serif; font-size: 10.5pt;
   line-height: 1.7; }
