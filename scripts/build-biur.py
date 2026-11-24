@@ -627,7 +627,8 @@ PREFIXES = "ובכלמשהד"
 def open_abbreviations(lines: list[str], table_file: Path) -> tuple[list[str], int]:
     """Every abbreviation printed in its full words, from a table (front matter `open_abbreviations:`): its
     `phrases` (a reading that depends on the words around it) first, then each abbreviation by its `words`,
-    found with or without prefix letters; `keep` prints as written. One that is in none of them fails the build."""
+    found with or without prefix letters; `keep` prints as written, and so does a `[...]{.asis}` span. One that is in
+    none of them fails the build."""
     t = yaml.safe_load(table_file.read_text(encoding="utf-8")) or {}
     words, keep = t.get("words") or {}, set(t.get("keep") or [])
     phrases = sorted((t.get("phrases") or {}).items(), key=lambda kv: -len(kv[0]))
@@ -648,12 +649,18 @@ def open_abbreviations(lines: list[str], table_file: Path) -> tuple[list[str], i
         unknown.add(tok)
         return tok
 
+    def open_part(part: str) -> str:
+        nonlocal count
+        for a, b in phrases:
+            part, n = re.subn(rf"(?<![{HEB}]){re.escape(a)}(?![{HEB}])", b, part)
+            count += n
+        return ABBR.sub(word, part)
+
     out = []
     for line in lines:
-        for a, b in phrases:
-            line, n = re.subn(rf"(?<![{HEB}]){re.escape(a)}(?![{HEB}])", b, line)
-            count += n
-        out.append(ABBR.sub(word, line))
+        # `[...]{.asis}` prints as written: an abbreviation shown as an abbreviation.
+        parts = re.split(r"(\[[^\[\]]*\]\{\.asis\})", line)
+        out.append("".join(p if i % 2 else open_part(p) for i, p in enumerate(parts)))
     if unknown:
         raise BuildError(f"open_abbreviations: not in {table_file.name}: " + " ".join(sorted(unknown)))
     return out, count
