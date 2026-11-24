@@ -30,6 +30,9 @@ h3 { font-family: "Frank Ruhl Libre", serif; font-size: 13.5pt; margin: 9mm 0 3m
   border-top: 0.5pt solid #999; string-set: section content(); break-after: avoid; }
 .opening { break-inside: auto; }
 
+/* The cover's slogan, under the subtitle (פדה בשלום). */
+.slogan { display: block; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 17pt;
+  margin: 7mm 0 1mm; }
 /* A line under a heading that names what the text is (the מבוא of פדה בשלום). */
 .msub { display: block; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 14pt;
   margin: 4mm 0 4mm; }
@@ -107,6 +110,14 @@ li { margin: 0 0 1.6mm; text-align: justify; }
 .ct { display: block; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 13.5pt; margin: 1mm 0 0.5mm; }
 .cd { display: block; }
 .dedicate { margin-top: 4mm; padding: 2.5mm 6mm 0.5mm; break-inside: avoid; border: 0.8pt solid #000; }
+
+/* A glossary of the terms at the end (פדה בשלום): two columns, the terms in bold. */
+.glossary { break-before: page; }
+.gtitle { display: block; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 17pt; text-align: center;
+  margin: 0 0 4mm; padding-bottom: 2.5mm; border-bottom: 0.8pt solid #000; column-span: all; string-set: section content(); }
+.glossary { column-count: 2; column-gap: 7mm; }
+.glossary p { font-size: 11pt; line-height: 1.5; margin: 0 0 2mm; text-align: justify; break-inside: avoid; }
+.gt { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
 
 /* The back cover: the brand, what the work is, the QR code to the site. */
 .works { page: bare; break-before: page; margin-top: 12mm; padding: 6mm 10mm 5mm; border-top: 1pt solid #000;
