@@ -12,3 +12,6 @@
 - 2026-11-24 · the opening back to its tight form (Ronnie); the מבוא: its first paragraph, the subtitle "נשמתו של
   י"ט כסלו, והמבוא לעבודת התפילה בחסידות", two sentences, six points of the maamar (each quotation checked against
   sessions/001/ocr.md), a line into the text. 48 pages, no blank.
+- 2026-11-24 · the stable version (Ronnie): the opening restored exactly as it was this morning (ba622a7), for him to
+  record a narration of it; the explanation section as the middle-way pass left it; אדמו"ר and כ"ק printed as
+  written; the folios (דף מט ע"א – נו ע"ד) taken off the title page. 48 pages, proof clean.
