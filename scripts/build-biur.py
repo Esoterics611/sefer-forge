@@ -445,7 +445,7 @@ def lint(body: str, first_line: int, headings: list[str] | None = None, english:
     errs = []
     allowed = {f"## {h}" for h in headings or []}
     for no, line in enumerate(body.split("\n"), first_line):
-        if line.startswith("@") or line.startswith("# ") or line.strip() in allowed:
+        if line.startswith("@") or line.startswith("# ") or re.sub(r"\s*\{[^{}]*\}\s*$", "", line.strip()) in allowed:
             continue
         prose = re.sub(r"\*\*.+?\*\*", " ", line)                    # a woven text's own words (bold) are not the writer's
         prose = re.sub(r'(?<=[א-ת])["״](?=[א-ת](?![א-ת]))', "", prose)  # the gershayim of an abbreviation, before its last letter (ע"א, דא"ס), is not a quote mark
@@ -453,7 +453,8 @@ def lint(body: str, first_line: int, headings: list[str] | None = None, english:
         for pat, why in FORBIDDEN:
             if why.startswith("method") and english:
                 pat = EN_HEADING
-            if pat.search(prose if not why.startswith("method") else line):
+            head = re.sub(r"\s*\{[^{}]*\}\s*$", "", line) if line.startswith("#") else line  # a heading's {.class}: layout only
+            if pat.search(prose if not why.startswith("method") else head):
                 errs.append(f"line {no}: {why}: {line.strip()[:70]!r}")
                 break
     return errs

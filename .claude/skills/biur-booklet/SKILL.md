@@ -18,13 +18,16 @@ The model is `discourses/006-padah-beshalom/biur/` (its `biur.src.md`, `abbrevia
    `voice-note-to-text`). His words, in his order; nothing added.
 3. **מבוא**: where the text is printed and its verse, then its main points as bullets, each quoting the
    text. No added connections, no "relatable" opening, no teaser.
-4. **תמצית הפרקים**: short, true to the source, built of the text's own quotations, and **understood by a
+4. **המאמר בקצרה** (under the מבוא; Ronnie): the whole text in tight paragraphs, one per chapter, flowing
+   from one to the next, each its point and its terms in plain words, quick to read. It replaces bullets of
+   "main points" in the מבוא. With this overview in hand the chapter summaries stay light and detailed.
+5. **תמצית הפרקים**: short, true to the source, built of the text's own quotations, and **understood by a
    newcomer** (below). No outline table or table of levels unless asked (Ronnie removed both).
-5. **המאמר עם ביאור**: the woven text with its glosses, reviewed by skill `lean-biur` (the middle way).
-6. **סיכום**.
-7. **מילון המונחים** (`::: {.glossary}`, two columns, one page if it can): every term the summaries
+6. **המאמר עם ביאור**: the woven text with its glosses, reviewed by skill `lean-biur` (the middle way).
+7. **סיכום**.
+8. **מילון המונחים** (`::: {.glossary}`, two columns, one page if it can): every term the summaries
    explain, alphabetical, each defined in a sentence or two from the text and its footnotes.
-8. **Back cover** (`::: {.works}`): Sefer Forge on **one** page, the outside of the back.
+9. **Back cover** (`::: {.works}`): Sefer Forge on **one** page, the outside of the back.
 
 Change only the part asked for. Ronnie's frame (the opening, the summaries) is never cut or rewritten
 when he asked about another part (the lean pass of 2026-11-24 that cut the summaries was undone).
@@ -40,7 +43,17 @@ Chassidus. Work in passes, and record nothing as done until the last:
 2. **Rewrite**: the term said once, in plain words, where it first appears ("בירור, כלומר הוצאת הטוב
    מתוך הרע"); a longer explanation in a footnote (`[...]{.fn}`); the verse translated in a clause.
    Precise, not "relatable"; no selling, no "imagine", no slogans; flowing, not long.
-3. **Check**: every quotation exact (`python scripts/check-quotes.py <folder>`: quotations not in the
+   **Every point names its subject** (Ronnie): a summary that opens "שני הפכים רחוקים זה מזה" without
+   saying they are the two fighters of the parable, and that the parable is the two souls, loses the reader
+   at the first line. Say who or what the point is about (the two souls, the יחידה, the war, the verse),
+   and, where a chapter opens, what it explains. **Lean toward the original summary**: its order, its
+   quotations and its wording are the base; an explanation serves the point, never replaces it.
+3. **Every sentence whole** (Ronnie, on "וזו בפנימי ביותר באלקות"): read each sentence alone, as printed.
+   It has its verb and its noun ("ופנימיות התורה קשורה בנקודה הפנימית ביותר באלקות", not "וזו בפנימי
+   ביותר"); every "זו", "הוא", "הן", "מכאן" points to something the reader can name; no fragment that
+   starts from a quotation or a bare term ("שלום, כי..." under a title → ""בשלום", כי..."); two parallel
+   halves say what each is about. Fix in place, the fewest words; the frame, the הקדמה and the סיכום too.
+4. **Check**: every quotation exact (`python scripts/check-quotes.py <folder>`: quotations not in the
    text are listed: a verse quoted from elsewhere is fine, anything else is fixed); then read again for
    flow and length.
 
@@ -65,13 +78,20 @@ back cover is the outside of the back. Blank pages are a last resort. To fit, in
 - the **Sefer Forge pages are the elastic** (Ronnie): one page (the back cover) is the minimum; the
   "מכאן והלאה" page and "עוד מעבודותינו" can be added as filler pages, or dropped;
 - a page Ronnie allowed to go (he named עיקרי המאמר);
-- last, the type: a booklet's own `print.css` beside `biur.src.md` (`css: [templates/biur-woven.css, ...]`),
-  never the shared stylesheet (54 chapters of שער היחוד use it).
+- last, the type: a booklet's own `print.css` beside `biur.src.md` (`css: [templates/biur-woven.css,
+  templates/biur-booklet.css, ...]`), never the shared stylesheets (54 chapters of שער היחוד use biur-woven).
 The build prints `fold: N pages, K blank...` when it pads.
+
+## The look of the page
+
+Printed black and white on A4 sheets folded and stapled: the booklet is set **A5** at reading size, and
+made to catch the eye with its own content (the verse displayed, the overview as numbered steps with
+titles, chapters as tabs, parts opening a page). All of it: skill `booklet-typography`
+(`templates/biur-booklet.css`).
 
 ## Proof, every time
 
-`python scripts/proof-pdf.py output/biur/<name>.pdf --profile biur-woven` (0 errors; the warnings are the
+`python scripts/proof-pdf.py output/biur/<name>.pdf --profile biur-booklet` (0 errors; the warnings are the
 English brand and the bare back pages), then read **every spread** (`output/biur/proof/`), then
 `check-quotes.py`. Record what was found under "Visual review" in the `.proof.md`. Send the PDF with the
 page count and what changed. Only Hebrew unless Ronnie asks for the English edition too.
