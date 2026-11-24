@@ -1,67 +1,87 @@
 ---
 name: lean-biur
-description: The rule for every ביאור, set by Ronnie on 2026-11-24 - after a stretch of the text, write only what the text does not say itself - a term explained, or a source it cites brought briefly and in its context (and where a reference such as כנ"ל points, when that is not plain). A gloss that restates the bold text in other words is cut, and a stretch that needs nothing gets nothing. Use when writing or revising any ביאור (woven or by @text stretches), when the user says "the biur repeats the text", "it restates the bold", "lean", "cut the paraphrase", "don't write for the sake of writing", or before a ביאור's student read and proof. Argument - a biur folder (e.g. discourses/007-shaar-hayichud-perushim/biur-perek-01), or a discourse for all its folders, one at a time.
+description: The rule for every ביאור, set by Ronnie on 2026-11-24 and refined the same day - every gloss after a stretch of the text gets a decision - does it repeat what the text said (cut), explain it (keep, to what the text does not say), or tie it to its context (keep) - and every long stretch gets a question - has the student still understood, or should it be split into sentences, each with its explanation. The middle way between a ביאור that restates the bold and one with no ביאור left. Only the explanation along the text is reviewed; the opening (מבוא, outline, tables, chapter summaries) and the סיכום stay as they are unless Ronnie says otherwise. Use when writing or revising any ביאור (woven or by @text stretches), when the user says "the biur repeats the text", "it restates the bold", "lean", "cut the paraphrase", "don't write for the sake of writing", or before a ביאור's student read and proof. Argument - a biur folder (e.g. discourses/007-shaar-hayichud-perushim/biur-perek-01), or a discourse for all its folders, one at a time.
 ---
 
-# The lean ביאור
+# The lean ביאור: the middle way
 
 Ronnie, 2026-11-24, on שער היחוד עם פירושים: "in most cases the biur is restating the bold text
 without adding anything. If it is repeating the bold text then leave it out; don't force yourself to
 write something for the sake of writing. Only explain terms, or if quoting from another source bring
 the source in brief and in context; otherwise, if you are restating the main text, don't write
-anything." This holds for every ביאור from now on, beside `prompts/biur-rules.md`.
+anything."
 
-## What may follow a stretch of the text
+And the same day, after a pass on פדה בשלום that cut too much: "you took out biurim that were good,
+explaining the sentence before. Include a decision on each: is it repeating what was said, or is it
+explaining or tying to context. And a question: has the reader still understood; should I split it up
+into multiple sentences with explanation. Find the middle way between removing the biur and just
+repeating the bold."
 
-Only these, each as short as it can be:
+So the aim is neither the most glosses nor the fewest: it is a text the student can follow, with
+nothing said twice. This holds for every ביאור, beside `prompts/biur-rules.md`.
 
-1. **A term.** A word the reader of the text may not know: a technical term (היולי, תפסן), a פרצוף or
-   a ספירה within a ספירה (ישראל סבא, אימא תתאה, כתר דבינה), a phrase of Aramaic or Yiddish (translated),
-   a rare usage. Explain the **term**, in a few words, not the sentence it stands in. A term the text
-   itself explains a line later gets nothing. Resting on the text or a source, never on memory
-   (skill `chassidus-context`, the lexicon).
-2. **A source.** A verse, a saying of the Gemara or the Zohar, the Arizal's writings, the Tanya, that
-   the text quotes, alludes to (כמ"ש, כידוע, בכתבים, בזוהר) or rests on: its words briefly, with its
-   address, and in its context — the one clause that shows what in it the text uses. A longer passage by
-   `@source` with `mark=` on the words that matter; a short one inline; background in a footnote. Not the
-   source retold, and not the text's point said again after it.
-3. **A pointer.** Where a "כנ"ל", "לעיל", "כמ"ש למעלה" or the close of a parenthesis points, when the
-   reader cannot see it (a few words: "בסעיף 4", "בפרק א").
+## What this reviews, and what it does not
 
-## What is cut
+Only the explanation woven along the text (the glosses between stretches of bold, and the footnotes).
+The opening of the document (מבוא, מושגי יסוד, the outline, tables, the chapter summaries) and the סיכום
+are not cut by this skill: they are Ronnie's frame, and stay unless he says otherwise.
 
-- A paraphrase of the bold: "**X**: in other words, X." Whatever re-says the stretch, in its words or in
-  others, goes — even when it reads smoothly.
-- Signposts and connectives that carry the text along: "ומכאן קושיא", "והתשובה", "והנמשל", "ועכשיו
-  חוזר", "ומכאן חידוש", "זו הגדרת התבונה". The text has its own ואמנם, אך, ולפי"ז.
-- A conclusion drawn after the text drew it, a summary of a paragraph, a "the point here is".
-- In the frame: a מבוא that retells the chapter (keep only how it joins what came before, two or
-  three sentences, or nothing); a table of the chapter's terms in its own words; a סיכום that retells it.
-  The outline (מהלך הפרק), being navigation, may stay.
+## A decision for every gloss
 
-When a stretch needs nothing, the bold runs on into the next stretch: join them into one bold run
-(`**...**`), with the text's punctuation inside it. Long runs of plain text are right. Do not add a
-gloss to break them.
+Read the bold, then the gloss, and decide which it is:
 
-## The test, for every gloss
+1. **Repeats.** It says again what the bold has just said, in its words or in others, and the student
+   would have understood the bold without it ("**X**: in other words, X"). → **Cut.** Keep the
+   punctuation it carried (see below).
+2. **Explains.** The bold is hard, and the gloss gives what the student would not get alone:
+   - a term (a technical word, a פרצוף, a ספירה within a ספירה, Aramaic or Yiddish translated);
+   - a compressed or archaic sentence said once in plain words, when it cannot be read without it;
+   - the reason (the "because") that the text assumes and does not state;
+   - a source the text cites or alludes to, briefly and in context, with its address;
+   - where a כנ"ל, לעיל or a closing parenthesis points.
+   → **Keep**, trimmed to the part that explains. If half of it repeats and half explains, cut the half
+   that repeats.
+3. **Ties to context.** It joins this stretch to the argument: what the question is before the text
+   answers it, what a משל means in its נמשל, that this is the example of what came before, where the
+   text is going ("ותחילה משל", "הדוגמה לכך מן היסודות", "מכאן תשובה לשאלה..."), or the point a student
+   would miss at the end of a step. → **Keep**, short. Not a summary of what the text already concluded
+   in its own words.
 
-Read the bold, then the gloss, and ask: **what does the gloss give that the bold does not?** A term's
-meaning, a source's words, where a pointer points: keep, and cut it to that. Anything else: delete.
-When unsure, delete; the text was written to be understood.
+When unsure between repeats and explains, ask: **would a student, reading only the bold, have understood
+this?** If yes, it repeats. If no, it explains.
 
-## Steps (one chapter, one folder, at a time — each a standalone work)
+## A question for every long stretch
 
-1. `python scripts/check-restatement.py <folder> --all` — the inventory of every gloss, the ones whose
+After the decisions, read each run of bold that now stands without a gloss and ask: **has the student
+still understood?** A long run (several clauses, a reasoning, a משל and its נמשל, a list of verses) that
+a student would lose the thread of is split: break it into sentences at the text's own joints (ולכן,
+אך, והנה, a new verse), and after the sentence that needs it give a short explanation of kind 2 or 3.
+Do not split for the sake of splitting: a run that reads clearly stays whole.
+
+## The sentence breaks between stretches
+
+The writer's punctuation between two stretches of bold (a period, a comma, a colon) breaks the text,
+which has almost none of its own, into readable sentences. When a gloss is cut, its punctuation stays,
+and the next stretch begins a new sentence. Two stretches are joined into one bold run only when no
+break is needed there.
+
+## Steps (one chapter, one folder, at a time; each a standalone work)
+
+1. `python scripts/check-restatement.py <folder> --all`: the inventory of every gloss, the ones whose
    words already stand in the bold flagged `RESTATES?`. The script cannot see a paraphrase in other
-   words; it shows where to look. Every gloss is judged by the test above, not only the flagged ones.
-2. Edit `biur.src.md`: cut, join the bold runs, shorten what stays to its term or source. Never touch
-   the words of the text (the build holds them to `text_file`, word for word).
-3. `python scripts/build-biur.py <folder> --check`, then `--pdf` (a standalone PDF of the chapter).
-   The build's notes report the gloss count and how many are still flagged.
-4. The student read (`prompts/student-read.md`) asks only: is a term left unexplained, a source left
-   without its point, a pointer that does not land? It adds nothing else.
-5. Proof (skill `proof-pdf`, `--profile biur`) and hand over the chapter's PDF with the count: glosses
-   before → after, words of explanation before → after.
+   words, and cannot see that a gloss explains; it shows where to look.
+2. Decide every gloss (repeats / explains / ties) and record the decision with a few words of reason in
+   `<folder>/notes/lean-decisions.md` (one line each: section, the gloss's first words, the decision,
+   why). Ronnie reads this list.
+3. Ask the long-stretch question; record each split there too.
+4. Edit `biur.src.md`: cut what repeats (keeping its punctuation), trim what half-repeats, add the splits.
+   Never touch the words of the text (the build holds them to `text_file`, word for word).
+5. `python scripts/build-biur.py <folder> --check`, then `--pdf`. The build's notes report the gloss
+   count and how many are still flagged.
+6. The student read (`prompts/student-read.md`): is a term left unexplained, a source without its
+   point, a pointer that does not land, a stretch the student cannot follow?
+7. Proof (skill `proof-pdf`) and hand over the PDF with the count: glosses kept / trimmed / cut, splits
+   added, words of explanation before → after.
 
-Keep a line per chapter in `<folder>/notes/lean.md`: the date, glosses before → after, and anything left
-for Ronnie (a term not found in a source, a doubtful reading).
+Keep a line per chapter in `<folder>/notes/lean.md`: the date, the counts, and anything left for Ronnie
+(a term not found in a source, a doubtful reading).

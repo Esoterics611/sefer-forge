@@ -29,9 +29,9 @@ reads, deliberately as this student.
    the source adds here.
 5. **A source set in without its point**: after reading the quoted passage, is it clear which words
    matter and what they show? (Mark them with `mark=`; say it in the sentence after.)
-6. **A gloss that restates**: whatever re-says the bold, in its words or in others, is cut, and the
-   text runs on (skill `lean-biur`). The student read never adds a gloss that is not a term, a source
-   or a pointer.
+6. **A gloss that restates, or a stretch left bare**: whatever only re-says the bold is cut; and a long
+   stretch the student cannot follow without help is split into sentences, each with a short
+   explanation (skill `lean-biur`: repeats / explains / ties to context).
 7. **A claim the student cannot check**: a statement about a letter, a number or a verse that the text
    does not make and no source given supports. Take it out or give the source.
 
