@@ -61,6 +61,7 @@ table { font-size: 11pt; line-height: 1.55; width: 100%; table-layout: fixed; }
 th, td { border: 0.5pt solid #666; padding: 1.4mm 2.2mm; vertical-align: top; }
 th { background: #eee; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
 td { text-align: right; }
+.outline { break-inside: avoid; }
 .outline table { font-size: 11pt; }
 .outline col:nth-child(1) { width: 8% !important; }
 .outline col:nth-child(2) { width: 13% !important; }
