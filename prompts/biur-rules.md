@@ -30,14 +30,18 @@ script can see.
    obtained, no "עד כאן מגיע מאמר... שלפניי". They live in `biur/notes/` (`open-questions.md`,
    `removed-from-final.md`).
 
-## Only what the text does not say (Ronnie, 2026-11-24)
+## Nothing said twice, nothing the student needs left out (Ronnie, 2026-11-24)
 
-After a stretch of the text the explanation gives **only** what the text does not say itself: a term
-explained, a source it cites brought briefly and in its context, and where a "כנ"ל" points when that is
-not plain. A gloss that restates the text in other words is cut; a stretch that needs nothing gets
-nothing, and the text runs on. Nothing is written for the sake of writing. The procedure and the test:
-skill `lean-biur` (`.claude/skills/lean-biur/SKILL.md`); `python scripts/check-restatement.py <folder>`
-lists the glosses, and the build reports how many still read as restatements.
+Every gloss after a stretch of the text gets a decision: it **repeats** what the text said (cut, keeping
+its punctuation), it **explains** what the student would not get from the text alone (a term, a hard
+sentence in plain words, the reason the text assumes, a source in context, where a "כנ"ל" points: kept,
+trimmed to that), or it **ties** the stretch to its context (the question before the answer, the נמשל of a
+משל, where the argument goes: kept, short). And every long stretch is asked whether the student still
+follows it; if not, it is split into sentences, each with its explanation. Nothing is written for the
+sake of writing, and nothing that explains is cut for the sake of cutting. The opening and the סיכום are
+not reviewed this way. The procedure: skill `lean-biur` (`.claude/skills/lean-biur/SKILL.md`), the
+decisions recorded in `notes/lean-decisions.md`; `python scripts/check-restatement.py <folder>` lists the
+glosses, and the build reports how many still read as restatements.
 
 ## In the explanation
 

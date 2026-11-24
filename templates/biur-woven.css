@@ -30,6 +30,10 @@ h3 { font-family: "Frank Ruhl Libre", serif; font-size: 13.5pt; margin: 9mm 0 3m
   border-top: 0.5pt solid #999; string-set: section content(); break-after: avoid; }
 .opening { break-inside: auto; }
 
+/* A line under a heading that names what the text is (the מבוא of פדה בשלום). */
+.msub { display: block; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 14pt;
+  margin: 4mm 0 4mm; }
+
 /* Footnotes: a concept in plain words. */
 .fn { float: footnote; footnote-policy: line; font-family: "David Libre", serif; font-size: 10pt; line-height: 1.55;
   color: #000; text-align: justify; }
