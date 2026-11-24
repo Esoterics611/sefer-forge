@@ -94,7 +94,8 @@ li { margin: 0 0 1.6mm; text-align: justify; }
 .atitle { display: block; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 17pt; text-align: center;
   margin: 0 0 5mm; padding-bottom: 2.5mm; border-bottom: 0.8pt solid #000; }
 .alead { display: block; font-size: 13.5pt; line-height: 1.7; text-align: center; margin: 0 4mm 6mm; }
-.about p { line-height: 1.7; margin: 0 0 3.2mm; }
+.about { padding-top: 14mm; }
+.about p { font-size: 13.5pt; line-height: 1.85; margin: 0 0 5mm; }
 .catalog p { font-size: 12.5pt; line-height: 1.58; margin: 0 0 2.4mm; }
 .ak { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
 .alinkh { display: block; text-align: center; font-size: 11.5pt; margin-top: 6mm; padding-top: 3mm; border-top: 0.5pt solid #000; }
