@@ -1,0 +1,106 @@
+/* A woven ביאור printed as a booklet (skill `booklet-typography`): A5 pages, so that the booklet prints
+   1:1 on A4 sheets folded in half and stapled at the spine (a printer's booklet mode prints two A5 pages
+   on each side of a sheet). Black and white only: black ink, one light grey for fills, rules for structure.
+   Laid over templates/biur.css and templates/biur-woven.css (front matter
+   `css: [templates/biur-woven.css, templates/biur-booklet.css]`). Proofed with
+   `python scripts/proof-pdf.py <pdf> --profile biur-booklet`.
+
+   Why the sizes: an A4 page scaled to A5 by the printer shrinks 13pt to 9pt. Here every size is the size
+   it prints at: the body 12pt with open leading, footnotes 9.5pt, nothing under 8pt. */
+
+@page {
+  size: A5;
+  margin: 16mm 15mm 17mm 15mm;
+  @top-right { content: string(section); font-family: "David Libre", serif; font-size: 8.5pt; color: #333; }
+  @top-left { content: "Sefer Forge"; font-family: "EB Garamond", serif; font-size: 8pt; letter-spacing: 0.12em; color: #333; }
+  @bottom-center { content: counter(page, hebrew); font-family: "Frank Ruhl Libre", serif; font-size: 10.5pt; color: #000; }
+  @footnote { border-top: 0.5pt solid #000; padding-top: 1.4mm; margin-top: 3mm; direction: rtl; text-align: right; }
+}
+@page :first { @top-right { content: none; } @top-left { content: none; } @bottom-center { content: none; } }
+
+/* Reading text. */
+body { font-size: 12pt; line-height: 1.62; }
+p { margin: 0 0 2.4mm; orphans: 2; widows: 2; hyphens: none; }
+strong { font-size: 12pt; }
+.fn { font-size: 9.5pt; line-height: 1.45; footnote-policy: auto; }
+
+/* The cover: a page of its own. */
+h1 { font-size: 34pt; text-align: center; margin: 34mm 0 3mm; line-height: 1.2; }
+.subtitle { display: block; text-align: center; font-size: 11.5pt; line-height: 1.5; margin: 0 0 12mm; }
+.slogan { font-size: 18pt; line-height: 1.45; margin: 0 6mm 4mm; padding: 5mm 2mm; border-top: 1.6pt solid #000;
+  border-bottom: 1.6pt solid #000; }
+.msub { font-size: 13pt; line-height: 1.5; font-weight: 400; margin: 0 4mm 30mm; }
+.brand { font-size: 9pt; margin: 0 6mm; }
+.bsd { font-size: 10pt; }
+
+/* Each part opens a page; its heading large, centred, over a heavy rule. */
+h2 { break-before: page; font-size: 19pt; text-align: center; margin: 2mm 0 6mm; padding-bottom: 2.5mm;
+  border-bottom: 1.6pt solid #000; }
+.newpage + h2 { break-before: auto; }
+h2 + p { font-size: 12.6pt; line-height: 1.6; }
+
+/* A heading inside a part: a heavy rule above, the heading kept with what follows. */
+h3 { font-size: 14pt; line-height: 1.35; margin: 7mm 0 3mm; padding-top: 2mm; border-top: 1.2pt solid #000; }
+
+/* The verse the text is built on, displayed. */
+.verse { display: block; text-align: center; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 17pt;
+  line-height: 1.45; margin: 4mm 4mm 1mm; }
+.vref { display: block; text-align: center; font-size: 10.5pt; margin: 0 0 5mm; }
+
+/* The text in short (המאמר בקצרה): numbered steps, each a title over its paragraph, the number in a
+   black disc. */
+.steps ul { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+.steps li { counter-increment: step; position: relative; padding-right: 10.5mm; margin: 0 0 4mm; text-align: justify;
+  break-inside: avoid; }
+.steps li::before { content: counter(step, hebrew); position: absolute; right: 0; top: 0.4mm; width: 7.4mm; height: 7.4mm;
+  border-radius: 50%; background: #000; color: #fff; text-align: center; font-family: "Frank Ruhl Libre", serif;
+  font-weight: 700; font-size: 11pt; line-height: 7.4mm; }
+.st { display: block; font-family: "Frank Ruhl Libre", serif; font-weight: 700; font-size: 13pt; line-height: 1.4;
+  margin: 0 0 0.8mm; }
+
+/* The chapter summaries: the chapter as a black tab, its name beside it; points with a square bullet. */
+h4 { font-size: 13pt; line-height: 1.4; margin: 6mm 0 2mm; padding-bottom: 1.2mm; border-bottom: 0.5pt solid #000; }
+.ch { display: inline-block; background: #000; color: #fff; padding: 0.4mm 2.2mm; margin-left: 2.2mm; font-size: 11pt; }
+ul { list-style: none; padding-inline-start: 0; padding-right: 5mm; }
+li { position: relative; margin: 0 0 2mm; }
+li::before { content: ""; position: absolute; right: -4.6mm; top: 2.6mm; width: 1.8mm; height: 1.8mm; background: #000; }
+.steps li::before { right: 0; }
+
+/* The glossary: one column, the term in bold, at reading size. */
+.glossary { column-count: 1; }
+.gtitle { font-size: 19pt; border-bottom-width: 1.6pt; margin-bottom: 5mm; }
+.glossary p { font-size: 11pt; line-height: 1.5; margin: 0 0 2.4mm; }
+
+/* The Sefer Forge pages, at A5. */
+.about { padding-top: 4mm; }
+.about .wordmark { font-size: 12pt; }
+.atitle { font-size: 18pt; }
+.about p { font-size: 11.5pt; line-height: 1.65; margin: 0 0 3.5mm; }
+.works { margin-top: 0; padding: 4mm 2mm 3mm; }
+.works .wordmark { font-size: 18pt; }
+.works .tagline { font-size: 10pt; margin-bottom: 4mm; }
+.headline { font-size: 16pt; margin-bottom: 3mm; }
+.blead { font-size: 11pt; line-height: 1.55; margin-bottom: 3mm; }
+.works p { font-size: 10.5pt; line-height: 1.5; margin: 0 0 2mm; }
+img.qr { width: 26mm; height: 26mm; }
+.qrcap { font-size: 10pt; }
+.works .links { font-size: 9.5pt; }
+
+/* Fixes from the first proof of פדה בשלום at A5. */
+h2 + h3 { border-top: none; padding-top: 0; margin-top: 2mm; }
+h3.part { text-align: center; font-size: 16pt; letter-spacing: 0.02em; border-top: none; padding-top: 0;
+  margin: 8mm 0 5mm; }
+h3.part::after { content: ""; display: block; width: 22mm; margin: 2mm auto 0; border-bottom: 1.2pt solid #000; }
+.glossary p { line-height: 1.42; margin: 0 0 1.5mm; }
+.works { padding: 2mm 0 0; }
+.works .wordmark { font-size: 16pt; }
+.headline { font-size: 14.5pt; margin-bottom: 2mm; }
+.blead { font-size: 10.5pt; line-height: 1.5; margin-bottom: 2.5mm; }
+.works p { font-size: 10pt; line-height: 1.45; margin: 0 0 1.6mm; }
+.works p:has(img), .works figure { margin-top: 2mm; }
+img.qr { width: 22mm; height: 22mm; }
+h2 + p { font-size: 12pt; }
+h2 { margin-bottom: 4.5mm; }
+h2.flow { break-before: auto; margin-top: 9mm; }
+.catalog p { font-size: 11pt; line-height: 1.5; margin: 0 0 2.6mm; }
+.ct { font-size: 12.5pt; }

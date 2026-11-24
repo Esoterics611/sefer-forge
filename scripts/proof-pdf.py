@@ -91,6 +91,13 @@ PROFILES = {
                    "page": "A4", "numerals": "hebrew", "running_header": True, "cover": False, "margin_slack": 3.0,
                    "fonts": {"Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold", "David-Libre", "David-Libre-Bold",
                              "EB-Garamond", "EB-Garamond-Bold"}, "heading": 13.4},
+    # A woven explanation printed as a folded booklet (templates/biur-booklet.css over biur-woven.css; skill
+    # booklet-typography): A5 pages, printed 1:1 on A4 sheets folded and stapled; black, white and one grey.
+    "biur-booklet": {"css": "templates/biur-booklet.css",
+                     "script": ["scripts/build-biur.py", "templates/biur.css", "templates/biur-woven.css"],
+                     "page": "A5", "numerals": "hebrew", "running_header": True, "cover": False, "margin_slack": 3.0,
+                     "fonts": {"Frank-Ruhl-Libre", "Frank-Ruhl-Libre-Bold", "David-Libre", "David-Libre-Bold",
+                               "EB-Garamond", "EB-Garamond-Bold"}, "heading": 12.9},
     # Its English translation (lang: en, templates/biur-woven-en.css): left to right, EB Garamond, page numbers in digits.
     "biur-woven-en": {"css": "templates/biur.css",
                       "script": ["scripts/build-biur.py", "templates/biur-woven.css", "templates/biur-woven-en.css"],

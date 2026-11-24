@@ -73,13 +73,20 @@ back cover is the outside of the back. Blank pages are a last resort. To fit, in
 - the **Sefer Forge pages are the elastic** (Ronnie): one page (the back cover) is the minimum; the
   "מכאן והלאה" page and "עוד מעבודותינו" can be added as filler pages, or dropped;
 - a page Ronnie allowed to go (he named עיקרי המאמר);
-- last, the type: a booklet's own `print.css` beside `biur.src.md` (`css: [templates/biur-woven.css, ...]`),
-  never the shared stylesheet (54 chapters of שער היחוד use it).
+- last, the type: a booklet's own `print.css` beside `biur.src.md` (`css: [templates/biur-woven.css,
+  templates/biur-booklet.css, ...]`), never the shared stylesheets (54 chapters of שער היחוד use biur-woven).
 The build prints `fold: N pages, K blank...` when it pads.
+
+## The look of the page
+
+Printed black and white on A4 sheets folded and stapled: the booklet is set **A5** at reading size, and
+made to catch the eye with its own content (the verse displayed, the overview as numbered steps with
+titles, chapters as tabs, parts opening a page). All of it: skill `booklet-typography`
+(`templates/biur-booklet.css`).
 
 ## Proof, every time
 
-`python scripts/proof-pdf.py output/biur/<name>.pdf --profile biur-woven` (0 errors; the warnings are the
+`python scripts/proof-pdf.py output/biur/<name>.pdf --profile biur-booklet` (0 errors; the warnings are the
 English brand and the bare back pages), then read **every spread** (`output/biur/proof/`), then
 `check-quotes.py`. Record what was found under "Visual review" in the `.proof.md`. Send the PDF with the
 page count and what changed. Only Hebrew unless Ronnie asks for the English edition too.
