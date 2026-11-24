@@ -15,3 +15,10 @@
 - 2026-11-24 · the stable version (Ronnie): the opening restored exactly as it was this morning (ba622a7), for him to
   record a narration of it; the explanation section as the middle-way pass left it; אדמו"ר and כ"ק printed as
   written; the folios (דף מט ע"א – נו ע"ד) taken off the title page. 48 pages, proof clean.
+- 2026-11-24 · the הקדמה from Ronnie's voice note (biur/review/intro-note/: Whisper's raw and timed text, the faithful
+  transcript.md, then intro-2-textbook, intro-3-clear, intro-4-final, which is what prints). On the cover the slogan
+  "גילוי היחידה: הדרך והמפתח של חסידות חב"ד" and the sub-slogan "נשמתו של י"ט כסלו, והמבוא לעבודת התפילה בחסידות",
+  both his words. The מבוא after it: where the maamar is printed and its verse, then its points as bullets. The
+  chapter summaries: lists of secondary examples trimmed (§ד, §ז, §ט, §יא), "הראיה מן התשובה" for עי"ת; nothing added.
+  Not in sources/, printed as his teaching without quotation marks: ניצוץ בורא בניצוץ נברא (he cites עץ חיים) and the
+  BeShT's "העצם כשתופס במקצתו תופס בכולו". print.css (line-height 1.8, a smaller outline) keeps it at 48 pages.
