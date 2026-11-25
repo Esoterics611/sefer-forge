@@ -501,3 +501,11 @@ header nav a[aria-current="page"] { font-weight: 700; color: var(--text); }
 .card.ded .btn { align-self: flex-start; margin-top: 6px; }
 .ded-taken { margin-top: auto !important; padding-top: 10px; color: var(--ins) !important; }
 .ded-pay { margin-top: 32px; }
+
+/* ── "Join the conversation": the booklet's readers, first thing on the Give page ── */
+.join-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px;
+  margin: 8px 0 0; padding: 16px 20px; border-radius: 14px; text-decoration: none; color: var(--text);
+  background: var(--paper); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.join-band:hover { border-color: var(--accent); }
+.join-band .jb-text { font-size: 17px; line-height: 1.5; flex: 1 1 260px; }
+.join-band .btn { flex: none; }
