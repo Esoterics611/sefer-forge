@@ -1,0 +1,133 @@
+# The dedications store: every part of the work a supporter can dedicate,
+# discourse by discourse. scripts/build-dedications.py turns it into
+# site/he/dedicate.html and site/dedicate.html; publish with scripts/deploy-site.sh.
+#
+# Each item:
+#   id          stable, used in links (dedicate.html#<id>)
+#   kind        edition | part | translation | series | volume | year
+#   he / en     title, and what it covers (about)
+#   price       a whole number in `currency`, or null: "by arrangement"
+#   stripe      a Stripe Payment Link (https://buy.stripe.com/...), or empty: the button
+#               then writes to `contact`. Create one per item in Stripe's dashboard
+#               (Payment Links), with a custom field "Dedication text" so the
+#               dedication comes with the payment.
+#   dedicated   once taken: the dedication as it prints (e.g. "לעילוי נשמת ..."); the
+#               item then shows it and takes no more.
+#   repeat      true: many can take it (a chapter of 54, a note of 5), never "taken"
+#
+# Prices are the owner's to set: none is invented here.
+
+contact: esoterics611@gmail.com
+currency: USD
+
+discourses:
+  - id: padah-beshalom
+    he: { title: 'פדה בשלום נפשי', subtitle: 'מאמר כ"ק אדמו"ר האמצעי, עם ביאור · החוברת המודפסת' }
+    en: { title: 'Padah Beshalom Nafshi', subtitle: 'A discourse of the Mitteler Rebbe, explained · the printed booklet' }
+    items:
+      - id: padah-edition
+        kind: edition
+        he: { title: 'הדפסת החוברת', about: 'מהדורת הדפוס של החוברת, מקופלת ומהודקת, ללומדים, לשיעורים ולבתי הכנסת. ההקדשה מודפסת בראשה.' }
+        en: { title: 'Printing the booklet', about: 'The printed edition of the booklet, folded and stapled, for learners, classes and synagogues. The dedication prints at its opening.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: padah-translation
+        kind: translation
+        he: { title: 'תרגום החוברת לאנגלית', about: 'החוברת כולה, המאמר והביאור, באנגלית, מודפסת ומוקלטת.' }
+        en: { title: 'Translating the booklet into English', about: 'The whole booklet, the discourse and its explanation, in English, printed and narrated.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+
+  - id: kavanot-shacharit
+    he: { title: 'ביאור תפילת השחר על פי האר"י', subtitle: '8 מתוך 13 פרקיו כבר כתובים' }
+    en: { title: 'The morning prayer explained after the Arizal', subtitle: '8 of its 13 chapters are written' }
+    items:
+      - id: shacharit-tzitzit
+        kind: part
+        he: { title: 'הציצית', about: 'חלק הציצית בביאור, עד הדפוס.' }
+        en: { title: 'The tzitzit', about: 'The tzitzit section of the explanation, carried through to print.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: shacharit-tefillin
+        kind: part
+        he: { title: 'התפילין', about: 'חלק התפילין בביאור, עד הדפוס.' }
+        en: { title: 'The tefillin', about: 'The tefillin section of the explanation, carried through to print.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: shacharit-shema
+        kind: part
+        he: { title: 'קריאת שמע', about: 'חלק קריאת שמע בביאור, עד הדפוס.' }
+        en: { title: 'Kriat Shema', about: 'The Kriat Shema section of the explanation, carried through to print.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: shacharit-volume
+        kind: volume
+        he: { title: 'הכרך כולו', about: 'ביאור תפילת השחר כולו: השלמת הפרקים, הדפוס, והתרגום לאנגלית ולצרפתית.' }
+        en: { title: 'The whole volume', about: 'The whole morning prayer explained: the chapters still to write, the print, and the English and French translations.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+
+  - id: shaar-hayichud
+    he: { title: 'שער היחוד', subtitle: 'לאדמו"ר האמצעי · 54 פרקים עם ביאור, ושיעורים מוקלטים' }
+    en: { title: 'Shaar HaYichud', subtitle: 'By the Mitteler Rebbe · 54 chapters explained, and recorded lessons' }
+    items:
+      - id: yichud-chapter
+        kind: part
+        repeat: true
+        he: { title: 'פרק מן הביאור', about: 'אחד מ־54 הפרקים, לבחירתכם. ההקדשה מודפסת בראש הפרק.' }
+        en: { title: 'A chapter of the explanation', about: 'One of the 54 chapters, your choice. The dedication prints at the chapter’s head.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: yichud-series
+        kind: series
+        he: { title: 'סדרת השיעורים המוקלטים', about: 'השיעורים על שער היחוד, עם כתוביות, לכיתות ולמי שלומד לבד.' }
+        en: { title: 'The recorded lessons', about: 'The lessons on Shaar HaYichud, with subtitles, for classes and for those who learn alone.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: yichud-volume
+        kind: volume
+        he: { title: 'הכרך כולו', about: 'שער היחוד עם הביאור, כספר אחד מודפס.' }
+        en: { title: 'The whole volume', about: 'Shaar HaYichud with its explanation, as one printed book.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+
+  - id: levushei-haneshama
+    he: { title: 'לבושי הנשמה', subtitle: 'לשון אדמו"ר נ"ע בעצמו · הערה אחר הערה' }
+    en: { title: 'The Garments of the Soul', subtitle: 'In the Rebbe Rashab’s own words · note by note' }
+    items:
+      - id: levushim-note
+        kind: part
+        repeat: true
+        he: { title: 'הערה או שיעור', about: 'הערה אחת או שיעור אחד, עד הדפוס.' }
+        en: { title: 'A note or a lesson', about: 'One note or one lesson, carried through to print.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+      - id: levushim-translation
+        kind: translation
+        he: { title: 'התרגום לאנגלית', about: 'החוברת ודף הלימוד באנגלית.' }
+        en: { title: 'The English translation', about: 'The pamphlet and the class handout in English.' }
+        price: null
+        stripe: ''
+        dedicated: ''
+
+  - id: program
+    he: { title: 'התוכנית כולה', subtitle: 'המחקר, הביאורים, הדפוס והתרגומים' }
+    en: { title: 'The whole program', subtitle: 'The research, the explanations, the print and the translations' }
+    items:
+      - id: program-year
+        kind: year
+        he: { title: 'שנה של התוכנית', about: 'שנה שלמה של עבודה: מאמרים חדשים, חוברות, תרגומים ושיעורים. ההקדשה מודפסת בכל מה שיוצא באותה שנה.' }
+        en: { title: 'A year of the program', about: 'A whole year of work: new discourses, booklets, translations and lessons. The dedication prints in everything published that year.' }
+        price: null
+        stripe: ''
+        dedicated: ''

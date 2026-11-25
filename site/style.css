@@ -485,3 +485,27 @@ header nav a[aria-current="page"] { font-weight: 700; color: var(--text); }
   header nav a.nav-part[aria-current="page"] { display: none; }
   header nav { flex-wrap: wrap; overflow-x: visible; white-space: normal; row-gap: 10px; gap: 10px 12px; }
 }
+
+/* ── The dedications store (dedicate.html, built by scripts/build-dedications.py) ── */
+.ded-steps { counter-reset: s; list-style: none; padding: 0; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.ded-steps li { counter-increment: s; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: 16px; }
+.ded-steps li::before { content: counter(s); display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 14px; margin-inline-end: 8px; }
+.ded-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; }
+.ded-jump a { text-decoration: none; font-size: 15px; padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); }
+.ded-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 16px; }
+.card.ded { display: flex; flex-direction: column; gap: 6px; scroll-margin-top: 16px; }
+.card.ded h3 { font-size: 19px; margin: 0; }
+.card.ded:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.ded-kind { font-size: 13px !important; font-weight: 700; letter-spacing: .04em; color: var(--gold) !important; }
+.ded-price { margin-top: auto !important; padding-top: 10px; font-weight: 700; color: var(--text) !important; font-size: 17px !important; }
+.card.ded .btn { align-self: flex-start; margin-top: 6px; }
+.ded-taken { margin-top: auto !important; padding-top: 10px; color: var(--ins) !important; }
+.ded-pay { margin-top: 32px; }
+
+/* ── "Join the conversation": the booklet's readers, first thing on the Give page ── */
+.join-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px;
+  margin: 8px 0 0; padding: 16px 20px; border-radius: 14px; text-decoration: none; color: var(--text);
+  background: var(--paper); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.join-band:hover { border-color: var(--accent); }
+.join-band .jb-text { font-size: 17px; line-height: 1.5; flex: 1 1 260px; }
+.join-band .btn { flex: none; }

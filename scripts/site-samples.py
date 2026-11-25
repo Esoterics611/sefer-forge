@@ -23,6 +23,12 @@ The samples (2026-11-17):
 - pack: its reading pack (session 001), every page and the PDF.
 - handout-he, handout-en: the four-page class handout on the garments of the
   soul (004), in Hebrew and in English, every page and the PDFs.
+- padah: the פדה בשלום booklet (006), chosen pages and the PDF (Ronnie, 2026-11-25):
+  python scripts/build-biur.py discourses/006-padah-beshalom/biur --pdf
+  python scripts/proof-pdf.py output/biur/006-padah-beshalom.pdf --profile biur-booklet
+- yichud-01: שער היחוד, chapter 1 with its ביאור (007), every page and the PDF:
+  python scripts/build-biur.py discourses/007-shaar-hayichud-perushim/biur-perek-01 --pdf
+  python scripts/proof-pdf.py output/biur/007-shaar-hayichud-perek-01.pdf --profile biur-woven
 
 Build and proof the PDFs first (CLAUDE.md: no PDF goes out unproofed):
 
@@ -72,6 +78,12 @@ SAMPLES = {
                    "handout-he", None, 1240, "levushei-haneshama-handout.pdf"),
     "handout-en": (ROOT / "output/handouts/levushei-haneshama-mavo-en.pdf", "levushei-haneshama",
                    "handout-en", None, 1240, "levushei-haneshama-handout-en.pdf"),
+    # Published at Ronnie's word, 2026-11-25: the פדה בשלום booklet (chosen pages, and the
+    # whole PDF) and the first chapter of שער היחוד with its ביאור (every page, and the PDF).
+    "padah": (ROOT / "output/biur/006-padah-beshalom.pdf", "padah-beshalom", "booklet",
+              [1, 2, 4, 5, 8, 15, 19, 35, 57, 67, 68, 72], 1240, "padah-beshalom.pdf"),
+    "yichud-01": (ROOT / "output/biur/007-shaar-hayichud-perek-01.pdf", "shaar-hayichud", "perek-01",
+                  None, 1240, "shaar-hayichud-perek-01.pdf"),
 }
 
 
