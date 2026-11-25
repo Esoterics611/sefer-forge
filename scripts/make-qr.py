@@ -5,6 +5,8 @@ Black modules on white, a quiet zone of four modules, no fixed size (the stylesh
 ReportLab's QR encoder, which the PDF tools already install. The printed codes:
 
     templates/qr-sefer-forge-he.svg   https://esoterics611.github.io/he/   (the back of a printed ביאור)
+    templates/qr-padah-he.svg         https://esoterics611.github.io/padah (the back of פדה בשלום: its wellspring,
+                                      through site/padah/, the lasting address that forwards there)
 """
 import sys
 
