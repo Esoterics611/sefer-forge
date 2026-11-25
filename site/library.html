@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The texts · Sefer Forge</title>
-<meta name="description" content="Every work of Sefer Forge so far, page by page: the morning prayer after the Arizal, the garments of the soul with its reading pack and class handouts, the stories of the Baal Shem Tov in three languages, the shiurim on Shaar HaYichud, and the lexicon.">
+<meta name="description" content="Every work of Sefer Forge so far, page by page: Padah Beshalom Nafshi explained, Shaar HaYichud chapter 1 explained, the morning prayer after the Arizal, the garments of the soul with its reading pack and class handouts, the stories of the Baal Shem Tov in three languages, the shiurim on Shaar HaYichud, and the lexicon.">
 <link rel="alternate" hreflang="en" href="https://esoterics611.github.io/library.html">
 <link rel="alternate" hreflang="he" href="https://esoterics611.github.io/he/library.html">
 <meta property="og:title" content="The texts · Sefer Forge">
@@ -43,6 +43,14 @@
   <!-- ───────────────────────── The works ───────────────────────── -->
   <section id="works" class="block">
     <div class="works">
+      <div class="work" id="padah"><h3>Padah Beshalom Nafshi</h3>
+        <p lang="he" dir="rtl" class="he-title">פדה בשלום נפשי · מאמר כ"ק אדמו"ר האמצעי</p>
+        <p>The Mitteler Rebbe's discourse written after the redemption of 19 Kislev, explaining
+        what a redemption "in peace" is: the way of Chabad Chassidus in the service of prayer.
+        A 72-page Hebrew booklet: introduction, overview, the discourse in brief, the chapters
+        in summary, the discourse with its explanation, summary and glossary.</p>
+        <p class="work-links"><a href="#pages" data-open="padah">12 chosen pages</a> ·
+        <a href="samples/padah-beshalom/padah-beshalom.pdf">The whole booklet (PDF)</a></p></div>
       <div class="work"><h3>The morning prayer after the Arizal</h3>
         <p lang="he" dir="rtl" class="he-title">כוונות תפילת השחר על פי האר"י ז"ל</p>
         <p>Each step of Shacharit, the Arizal's words set in exactly as printed, and beside each
@@ -64,12 +72,14 @@
         <p>211 stories retold in simple Hebrew and translated into English and French sentence
         by sentence, in 29 themed booklets, and read aloud as narrated episodes with subtitles.</p>
         <p class="work-links"><a href="#episodes">The episodes</a></p></div>
-      <div class="work"><h3>Shaar HaYichud</h3>
+      <div class="work" id="shaar-hayichud"><h3>Shaar HaYichud</h3>
         <p lang="he" dir="rtl" class="he-title">שער היחוד</p>
         <p>7 recorded shiurim on the Mitteler Rebbe's Shaar HaYichud with Rabbi Hillel of
         Paritch's Likkutei Biurim, transcribed and edited for print; the first two also in
-        English, as episodes.</p>
-        <p class="work-links"><a href="#episodes">The episodes</a></p></div>
+        English, as episodes. And chapter 1 with its explanation, in Hebrew, 11 pages.</p>
+        <p class="work-links"><a href="#pages" data-open="yichud01">Chapter 1 explained</a> ·
+        <a href="samples/shaar-hayichud/shaar-hayichud-perek-01.pdf">PDF</a> ·
+        <a href="#episodes">The episodes</a></p></div>
       <div class="work"><h3>The lexicon</h3>
         <p>70 terms of Kabbalah and Chassidus, each meaning resting on exact words at an
         address in the sources.</p>
@@ -87,6 +97,8 @@
         <button role="tab" aria-selected="false" data-doc="pack">The reading pack <span>A4 · 13 pages</span></button>
         <button role="tab" aria-selected="false" data-doc="handoutEn">The garments of the soul <span>English · 4 pages</span></button>
         <button role="tab" aria-selected="false" data-doc="handoutHe">לבושי הנשמה <span>Hebrew · 4 pages</span></button>
+        <button role="tab" aria-selected="false" data-doc="padah">Padah Beshalom <span>A5 · 12 of 72 pages</span></button>
+        <button role="tab" aria-selected="false" data-doc="yichud01">Shaar HaYichud, ch. 1 <span>A4 · 11 pages</span></button>
       </div>
       <div class="stage">
         <div class="frame">
@@ -226,6 +238,43 @@ window.SF_VIEWER = {
         ['Citations 23–24', 'The text continues, citation by citation. Every passage is quoted exactly as the source prints it; only the highlighting is added.'],
         ['Citations 25–26', 'The last citations of Etz Chaim and Pri Etz Chaim.'],
         ['The end, and the other works', 'The end of the text, and the works it names that are not quoted here (Sefer HaGilgulim, Ta’amei HaMitzvot, Mikdash Melech, the Zohar and others), listed so that nothing it cites goes unseen.']
+      ]
+    },
+    padah: {
+      name: 'the Padah Beshalom booklet', label: 'Padah Beshalom',
+      dir: 'samples/padah-beshalom/', prefix: 'booklet',
+      pdf: 'samples/padah-beshalom/padah-beshalom.pdf',
+      pages: [
+        ['Cover (p. 1)', 'Padah Beshalom Nafshi, a discourse of the Mitteler Rebbe in Sha’arei Teshuvah, Sha’ar HaTefillah, with an explanation. The revealing of the yechidah: the way and the key of Chabad Chassidus.'],
+        ['Introduction (p. 2)', 'Written after the Alter Rebbe was freed from prison on 19 Kislev, the discourse explains what a redemption “in peace” is: the way of Chabad Chassidus in the service of prayer.'],
+        ['Overview (p. 4)', 'The verse “He redeemed my soul in peace from the battle against me, for the many were with me,” and the discourse in brief, in numbered points.'],
+        ['The discourse in brief (p. 5)', 'Two levels of prayer, the stray thoughts, inner and surrounding light: the whole course of the discourse, point by point.'],
+        ['The chapters in summary (p. 8)', 'Each chapter of the discourse in a few lines, with its own words in quotation marks.'],
+        ['The discourse with its explanation (p. 15)', 'The discourse’s words in bold, the explanation after each passage: the verses, and the parable of the two wrestlers.'],
+        ['4. Prayer without battle (p. 19)', '“The time of prayer is a time of battle”: prayer that is a battle, and prayer with no battle in it.'],
+        ['18. The yechidah and the two surrounding lights (p. 35)', 'The essence of the soul, above its clothing in the faculties of mind and heart.'],
+        ['35. “My soul”: two levels (p. 57)', 'The root of “He redeemed my soul in peace,” from all that was explained before it.'],
+        ['Summary (p. 67)', 'The two ways in the service of prayer: the way of battle, and the way of peace in the revealing of the yechidah.'],
+        ['Glossary (p. 68)', 'The terms the discourse uses, each in a sentence or two: inner and surrounding light, iskafya and is’hapcha, and more.'],
+        ['Back cover (p. 72)', 'Sefer Forge: every book opens the next.']
+      ]
+    },
+    yichud01: {
+      name: 'Shaar HaYichud, chapter 1', label: 'Shaar HaYichud, ch. 1',
+      dir: 'samples/shaar-hayichud/', prefix: 'perek-01',
+      pdf: 'samples/shaar-hayichud/shaar-hayichud-perek-01.pdf',
+      pages: [
+        ['Title and overview (p. 1)', 'Shaar HaYichud by the Mitteler Rebbe, chapter 1, folios 109a–110a, with an explanation; and an overview of the chapter.'],
+        ['The course of the chapter (p. 2)', 'A table of the chapter’s parts, their folios and the sections of the explanation; and the chapter opens with its explanation.'],
+        ['3. First glance (p. 3)', 'Girsa, and the three dimensions of a concept: breadth, length and depth.'],
+        ['6. All flows from the depth (p. 4)', 'Depth as the source of breadth and length; understanding a river, wisdom a spring.'],
+        ['8. Iyun: dwelling on it (p. 5)', 'Iyun, deepening, and the depths of wisdom.'],
+        ['11. The fiftieth gate; the one who deepens (p. 6)', '“Wisdom comes from nothing”: the fiftieth gate, and understanding in wisdom and wise in understanding.'],
+        ['13. Understanding in wisdom (p. 7)', 'Understanding in wisdom and wisdom in understanding, and the order of levels within understanding.'],
+        ['15. Da’at: connection, not deepening (p. 8)', 'Da’at, and length, breadth and depth in da’at.'],
+        ['17. Contracted da’at, widening iyun (p. 9)', 'The sign of deepened da’at, and up to higher knowledge: Moshe attained understanding.'],
+        ['Summary (p. 10)', 'Contemplation is iyun, the opposite of girsa; and the three dimensions of a concept.'],
+        ['Back cover (p. 11)', 'Sefer Forge, and our other works.']
       ]
     },
     handoutEn: {
